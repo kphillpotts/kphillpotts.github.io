@@ -1,6 +1,6 @@
 basic_settings:
-  site_title: Journal
-  site_tagline: A stunning personal blog Jekyll theme with an image-focused design.
+  site_title: Kym Phillpotts Blog
+  site_tagline: I write about Xamarin Forms, Azure, connected apps or whatever else I might be concentrating on.
   favicon_image: /images/favicon.png
 
 header_settings:
@@ -30,7 +30,7 @@ contact_settings:
 
 social_settings:
   facebook_url: ''
-  twitter_url: ''
+  twitter_url: 'https://twitter.com/kphillpotts'
   instagram_url: ''
   snapchat_url: ''
   youtube_url: ''
