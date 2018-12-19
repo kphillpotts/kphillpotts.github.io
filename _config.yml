@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 site: Journal Jekyll Theme
 
 collections:
@@ -52,3 +53,6 @@ plugins:
 paginate: 6
 paginate_path: "/blog/page:num/"
   
+=======
+theme: jekyll-theme-cayman
+>>>>>>> bb97d88c44e52009cf95f91768020ae4c1186a14
