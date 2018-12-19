@@ -1,8 +1,10 @@
 ---
 title: 'barcelona'
-date: 2018-12-30 15:04:00
+date: 2018-12-19 15:04:00
 featured_image: '/images/demo/demo-square.jpg'
 excerpt: This is a blog post about barcelona.
+categories: [blog, travel]
+tags: [hot, summer]
 ---
 
 ![](/images/demo/demo-landscape.jpg)
