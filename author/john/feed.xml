@@ -2,10 +2,10 @@
 
 <feed xmlns="http://www.w3.org/2005/Atom" >
   <generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator>
-  <link href="http://localhost:4000/jasper2/author/john/feed.xml" rel="self" type="application/atom+xml" />
-  <link href="http://localhost:4000/jasper2/" rel="alternate" type="text/html" />
-  <updated>2018-12-20T09:52:35+01:00</updated>
-  <id>http://localhost:4000/jasper2/author/john/feed.xml</id>
+  <link href="/author/john/feed.xml" rel="self" type="application/atom+xml" />
+  <link href="/" rel="alternate" type="text/html" />
+  <updated>2018-12-20T17:11:50+01:00</updated>
+  <id>/author/john/feed.xml</id>
 
   
   
@@ -45,11 +45,11 @@
   
     <entry>
       <title type="html">A Full and Comprehensive Style Test</title>
-      <link href="http://localhost:4000/jasper2/a-full-and-comprehensive-style-test" rel="alternate" type="text/html" title="A Full and Comprehensive Style Test" />
+      <link href="/a-full-and-comprehensive-style-test" rel="alternate" type="text/html" title="A Full and Comprehensive Style Test" />
       <published>2012-09-01T12:00:00+02:00</published>
       <updated>2012-09-01T12:00:00+02:00</updated>
-      <id>http://localhost:4000/jasper2/a-full-and-comprehensive-style-test</id>
-      <content type="html" xml:base="http://localhost:4000/jasper2/a-full-and-comprehensive-style-test">&lt;p&gt;Below is just about everything you’ll need to style in the theme. Check the source code to see the many embedded elements within paragraphs.&lt;/p&gt;
+      <id>/a-full-and-comprehensive-style-test</id>
+      <content type="html" xml:base="/a-full-and-comprehensive-style-test">&lt;p&gt;Below is just about everything you’ll need to style in the theme. Check the source code to see the many embedded elements within paragraphs.&lt;/p&gt;
 
 
 &lt;hr /&gt;
