@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <!-- Document Settings -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- Base Meta -->
+    <!-- dynamically fixing the title for tag/author pages -->
+
+
+
+    <title>Staying Up To Date with Xamarin Development</title>
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Styles'n'Scripts -->
+    <link rel="stylesheet" type="text/css" href="/assets/built/screen.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/built/screen.edited.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/built/syntax.css" />
+    <!-- highlight.js -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+    <style>.hljs { background: none; }</style>
+
+    <!--[if IE]>
+        <style>
+            p, ol, ul{
+                width: 100%;
+            }
+            blockquote{
+                width: 100%;
+            }
+        </style>
+    <![endif]-->
+    
+    <!-- This tag outputs SEO meta+structured data and other important settings -->
+    <meta name="description" content="I write about Azure, Xamarin.Forms, Connected Apps and whatever else might be on my mind." />
+    <link rel="shortcut icon" href="/assets/images/favicon.png" type="image/png" />
+    <link rel="canonical" href="/staying-up-to-date-with-xamarin-development/" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+
+     <!--title below is coming from _includes/dynamic_title-->
+    <meta property="og:site_name" content="Kym's Blog" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Staying Up To Date with Xamarin Development" />
+    <meta property="og:description" content="I write about Azure, Xamarin.Forms, Connected Apps and whatever else might be on my mind." />
+    <meta property="og:url" content="/staying-up-to-date-with-xamarin-development/" />
+    <meta property="og:image" content="/assets/images/covers/time.jpg" />
+    <meta property="article:publisher" content="https://www.facebook.com/" />
+    <meta property="article:tag" content="Xamarin" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Staying Up To Date with Xamarin Development" />
+    <meta name="twitter:description" content="I write about Azure, Xamarin.Forms, Connected Apps and whatever else might be on my mind." />
+    <meta name="twitter:url" content="/" />
+    <meta name="twitter:image" content="/assets/images/covers/time.jpg" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="Kym's Blog" />
+    <meta name="twitter:label2" content="Filed under" />
+    <meta name="twitter:data2" content="Xamarin" />
+    <meta name="twitter:site" content="@kphillpotts" />
+    <meta name="twitter:creator" content="@kphillpotts" />
+    <meta property="og:image:width" content="2000" />
+    <meta property="og:image:height" content="666" />
+
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Website",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Kym's Blog",
+        "logo": "/false"
+    },
+    "url": "/staying-up-to-date-with-xamarin-development/",
+    "image": {
+        "@type": "ImageObject",
+        "url": "/assets/images/covers/time.jpg",
+        "width": 2000,
+        "height": 666
+    },
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "/staying-up-to-date-with-xamarin-development/"
+    },
+    "description": "I write about Azure, Xamarin.Forms, Connected Apps and whatever else might be on my mind."
+}
+    </script>
+
+    <!-- <script type="text/javascript" src="https://demo.ghost.io/public/ghost-sdk.min.js?v=724281a32e"></script>
+    <script type="text/javascript">
+    ghost.init({
+    	clientId: "ghost-frontend",
+    	clientSecret: "f84a07a72b17"
+    });
+    </script> -->
+
+    <meta name="generator" content="Jekyll 3.6.2" />
+    <link rel="alternate" type="application/rss+xml" title="Staying Up To Date with Xamarin Development" href="/feed.xml" />
+
+
+</head>
+<body class="post-template">
+
+    <div class="site-wrapper">
+        <!-- All the main content gets inserted here, index.hbs, post.hbs, etc -->
+        <!-- default -->
+
+<!-- The tag above means: insert everything in this file
+into the {body} of the default.hbs template -->
+
+<header class="site-header outer">
+    <div class="inner">
+        <nav class="site-nav">
+    <div class="site-nav-left">
+        
+            
+                <a class="site-nav-logo" href="/">Kym's Blog</a>
+            
+        
+        
+            <ul class="nav" role="menu">
+    <li class="nav-home" role="menuitem"><a href="/">Home</a></li>
+    
+
+
+    <li class="nav-about" role="menuitem"><a href="/about/">About Me</a></li>
+    <li class="nav-xamarin" role="menuitem"><a href="/tag/xamarin/">Xamarin</a></li>
+    <li class="nav-azure" role="menuitem"><a href="/tag/azure/">Azure</a></li>
+
+
+</ul>
+
+        
+    </div>
+    <div class="site-nav-right">
+        <div class="social-links">
+            
+            
+                <a class="social-link social-link-tw" href="https://twitter.com/kphillpotts" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg>
+</a>
+            
+        </div>
+        
+    </div>
+</nav>
+
+    </div>
+</header>
+
+<!-- Everything inside the #post tags pulls data from the post -->
+<!-- #post -->
+
+<main id="site-main" class="site-main outer" role="main">
+    <div class="inner">
+
+        <article class="post-full  ">
+
+            <header class="post-full-header">
+                <section class="post-full-meta">
+                    <time class="post-full-meta-date" datetime="18 July 2016">18 July 2016</time>
+                    
+                        <span class="date-divider">/</span>
+                        
+                            
+                               <a href='/tag/xamarin/'>XAMARIN</a>
+                            
+                        
+                    
+                </section>
+                <h1 class="post-full-title">Staying Up To Date with Xamarin Development</h1>
+            </header>
+
+            
+            <figure class="post-full-image" style="background-image: url(/assets/images/covers/time.jpg)">
+            </figure>
+            
+
+            <section class="post-full-content">
+                <div class="kg-card-markdown">
+                    <p class="p1">
+  Xamarin development is booming and as with any great technology, things change fast and you&#8217;ll want to keep up to date with the latest news and releases. Xamarin has such a wonderful, thriving community that it can be a challenge!
+</p>
+
+<p class="p1">
+  <!--more-->
+</p>
+
+<p class="p2">
+  <span class="s1">I&#8217;m often asked by students in Xamarin University classes, what are the best resources to stay up to date with the all the awesomeness. Below are the main resources I use:</span>
+</p>
+
+<h2 id="blogs-p3"><span class="s1"><b>Blogs</b></span> {.p3}</h2>
+
+<p class="p2">
+  <span class="s1">Blogs are probably the most common way of staying up to date with the latest things happening in the Xamarin Community.  There are truck-loads of blogs out there, but if you are just going to follow a couple of blogs, then make it these ones:</span>
+</p>
+
+<ul class="ul1">
+  <li class="li2">
+    <span class="s3"><a href="http://blog.xamarin.com/"><span class="s4">The Xamarin Blog</span></a></span><span class="s1">: The official Xamarin blog which gets updated just about every day with new great aricles.</span>
+  </li>
+  <li class="li2">
+    <span class="s3"><a href="http://planetxamarin.com"><span class="s4">Community Blogs (Planet Xamarin)</span></a></span><span class="s1">: An aggregation of some of the best blogs out there in the community. It is managed by Xamarin and includes posts from a lot of Xamarin staff and MVPs.</span>
+  </li>
+</ul>
+
+<p>Instead of listing out all the other great blogs here, I have a list of blogs I read on Xamarin / Development stuff <a href="http://www.kymphillpotts.com/my-feedly-opml-file/"><span class="s2">at this link</span></a>. (you can even grab the OPML file there).</p>
+
+<hr />
+
+<h2 id="newsletters-p3"><span class="s1"><b>Newsletters</b></span> {.p3}</h2>
+
+<p class="p2">
+  <span class="s1">You can spend a lot of time going down the rabbit hole of reading all the blogs out there. Sometimes it&#8217;s easier to subscribe to a newsletter and let all that delicious Xamarin news come to you. Here are some of the best:</span>
+</p>
+
+<h3 id="xamarin-specific-p5"><span class="s1"><b>Xamarin Specific</b></span> {.p5}</h3>
+
+<p class="p2">
+  <span class="s1">These are the Xamarin specific newsletters and link blogs I follow:</span>
+</p>
+
+<ul class="ul1">
+  <li class="li2">
+    <span class="s3"><a href="http://weeklyxamarin.com/"><span class="s4">Weekly Xamarin</span></a></span><span class="s1">: A hand-picked round up of the best Xamarin development links every week. Curated by Geoffrey Huntley and published every Friday. Free.</span>
+  </li>
+  <li class="li2">
+    <span class="s3"><a href="http://allaboutxamarin.com/"><span class="s4">All About Xamarin</span></a></span><span class="s1">: Dan Rigby has &#8220;The latest tips, tutorials, news, and resources for Xamarin app developers.&#8221; delivered daily.</span>
+  </li>
+  <li class="li2">
+    <span class="s3"><a href="http://paper.li/jamesqquick/1451575955"><span class="s4">Quick&#8217;s Xamarin News</span></a></span><span class="s1"> A daily dose of news about anything Xamarin.</span>
+  </li>
+  <li>
+    <a href="http://us13.campaign-archive2.com/home/?u=9bc39dc111f08d2a130409419&amp;id=68a7cafa60" target="_blank" rel="noopener">Xamarin Forms Monthly Newsletter</a> &#8211; A monthly newsletter of Xamarin awesomeness!
+  </li>
+</ul>
+
+<h3 id="more-general-p5"><span class="s1"><b>More General</b></span> {.p5}</h3>
+
+<p class="p2">
+  <span class="s1">As Xamarin developers it&#8217;s also good to keep up on what&#8217;s going on around the .NET space, here are some Feeds I follow:</span>
+</p>
+
+<ul class="ul1">
+  <li class="li2">
+    <span class="s3"><a href="http://www.alvinashcraft.com/"><span class="s4">Alvin Ashcrofts Morning Dew</span></a></span><span class="s1">: Links covering all things development.</span>
+  </li>
+  <li class="li2">
+    <span class="s3"><a href="http://windowsappdev.com/"><span class="s4">WindowsAppDev</span></a></span><span class="s1">: Another Dan Rigby provided list that is focused on more general Windows development topics.</span>
+  </li>
+  <li class="li2">
+    <span class="s3"><a href="http://blog.cwa.me.uk/"><span class="s4">The Morning Brew</span></a></span><span class="s1">: A daily .NET software development link blog published by Chris Alcock.</span>
+  </li>
+</ul>
+
+<hr />
+
+<h2 id="social-media-p3"><span class="s1"><b>Social Media</b></span> {.p3}</h2>
+
+<h3 id="twitter-p5"><span class="s1"><b>Twitter</b></span> {.p5}</h3>
+
+<p class="p2">
+  <span class="s1">Twitter isn&#8217;t just for letting everyone know what you had for breakfast, it&#8217;s also an great way of staying up to date with the latest happenings. Here are some key twitter accounts and lists you can follow:</span>
+</p>
+
+<ul class="ul1">
+  <li class="li2">
+    <span class="s3"><a href="https://twitter.com/xamarinhq"><span class="s4">@XamarinHQ</span></a></span><span class="s1">: The official twitter account for Xamarin.</span>
+  </li>
+  <li class="li2">
+    <span class="s3"><a href="https://twitter.com/XamarinU"><span class="s4">@XamarinU</span></a></span><span class="s1">: Xamarin University specific updates.</span>
+  </li>
+  <li class="li2">
+    <span class="s3"><a href="https://twitter.com/XamarinEvents"><span class="s4">@XamarinEvents</span></a></span><span class="s1">: Stay up to date with the latest Xamarin Events around the world.</span>
+  </li>
+  <li class="li2">
+    <span class="s3"><a href="https://twitter.com/kwlothrop/lists/xamarin-mvps"><span class="s4">Xamarin MVPs List</span></a></span><span class="s1">: Kerry Lothrop has a list of all the Xamarin MVP twitter accounts.</span>
+  </li>
+  <li class="li2">
+    <span class="s3"><a href="https://twitter.com/danvanderboom/lists/xamarindevs"><span class="s4">XamarinDevs</span></a></span><span class="s1">: Another list of Xamarin accounts, this one is via Dan Vanderboom.</span>
+  </li>
+  <li class="li2">
+    <span class="s3"><a href="https://twitter.com/kphillpotts/lists/xamarintweeters"><span class="s4">XamarinTweeteers</span></a></span><span class="s1">: I also have a list of people who tweet about xamarin.</span>
+  </li>
+  <li class="li2">
+    <span class="s3"><a href="https://twitter.com/RobGibbens/lists/xamuinstructors"><span class="s4">XamUInstructors</span></a></span><span class="s1">: Rob Gibbens has a list of Xamarin University Instructor tweet accounts.</span>
+  </li>
+  <li class="li2">
+    <span class="s3"><a href="https://twitter.com/search?q=xamarin"><span class="s4">Search Twitter</span></a></span><span class="s1">: Finally you can just search twitter for Xamarin updates from everyone. Or you can search for Xamarin related accounts <span class="s2"><a href="https://twitter.com/search?f=users&amp;vertical=default&amp;q=xamarin">here</a>.</span></span>
+  </li>
+</ul>
+
+<h3 id="linked-in-p5"><span class="s1"><b>Linked In</b></span> {.p5}</h3>
+
+<p class="p2">
+  <span class="s1">There are at least 26.2 Billion reasons to look here. Here are some key groups:</span>
+</p>
+
+<ul class="ul1">
+  <li class="li2">
+    <span class="s3"><a href="http://www.linkedin.com/groups/4971276"><span class="s4">Xamarin Developers</span></a></span><span class="s1">: This is a networking group for all Xamarin professionals. A common space for all Xamarin developers to gather and share all things related to Xamarin.</span>
+  </li>
+  <li class="li2">
+    <span class="s3"><a href="http://www.linkedin.com/groups/8184705"><span class="s4">Xamarin Forms</span></a></span><span class="s1">: Focused just on Xamarin Forms.</span>
+  </li>
+  <li class="li2">
+    <span class="s3"><a href="http://www.linkedin.com/groups/3914509"><span class="s4">Xamarin.iOS, Xamarin.Android, and Xamarin.Mac Developers and Users</span></a></span><span class="s1">: The name says it all. This is focused on the more traditional Xamarin approaches.</span>
+  </li>
+  <li class="li2">
+    <span class="s3"><a href="http://www.linkedin.com/groups/6664619"><span class="s4">Xamarin Certified Developers</span></a></span><span class="s1">: Where all the certified kids hang out.</span>
+  </li>
+</ul>
+
+<h3 id="facebook-p5"><span class="s1"><b>Facebook</b></span> {.p5}</h3>
+
+<p class="p2">
+  <span class="s1">Facebook is good for posting pictures of your family, but it&#8217;s also got some good Xamarin groups:</span>
+</p>
+
+<ul class="ul1">
+  <li class="li6">
+    <span class="s5"><span class="s4"><a href="https://www.facebook.com/groups/xamarin.developers/">Xamarin Developers</a>: Yup, where the Xamarin Developers hang out on Facebook.</span></span>
+  </li>
+  <li class="li2">
+    <span class="s3"><span class="s4"><a href="https://www.facebook.com/groups/xamarinuniversity/">Xamarin University</a>:</span></span><span class="s1"> Closed group for Xamarin University Students.</span>
+  </li>
+</ul>
+
+<hr />
+
+<h2 id="podcasts-p3"><span class="s1"><b>Podcasts</b></span> {.p3}</h2>
+
+<p class="p2">
+  <span class="s1">You can&#8217;t beat podcasts for &#8220;on the go&#8221; information, check these ones out:</span>
+</p>
+
+<ul class="ul1">
+  <li class="li2">
+    <span class="s3"><a href="https://soundcloud.com/xamarin-podcast"><span class="s4">Xamarin Podcast</span></a></span><span class="s1">: The home of the official Xamarin Podcast, bringing mobile developers the latest news and information about Xamarin and mobile development.</span>
+  </li>
+  <li class="li2">
+    <span class="s3"><a href="http://gonemobile.io/"><span class="s4">Gone Mobile Podcast</span></a></span><span class="s1">: Hosted by Greg Shackles, Gone Mobile is a podcast discussing the latest in mobile development, with a healthy bias towards Xamarin technologies. The podcast covers in-depth topics with guests ranging from Android, iOS, Windows Phone &amp; Store development to mobile marketing and design, as well as other mobile or not so mobile related technologies.</span>
+  </li>
+  <li class="li2">
+    <span class="s3"><a href="http://www.mergeconflict.fm/"><span class="s4">Merge Conflict</span></a></span><span class="s1">: A new podcast from James Montemagno and Frank A. Krueger (two developer legends) this is a weekly discussion on all things development, technology, &amp; more.</span>
+  </li>
+</ul>
+
+<hr />
+
+<h2 id="videos-p3"><span class="s1"><b>Videos</b></span> {.p3}</h2>
+
+<p class="p2">
+  <span class="s1">Some people prefer videos to learn and stay up to date</span>
+</p>
+
+<ul class="ul1">
+  <li>
+    <a href="https://channel9.msdn.com/Shows/XamarinShow" target="_blank" rel="noopener">The Xamarin Show</a> &#8211; James Montemagno hosts this show over on MSDN Channel 9
+  </li>
+  <li class="li2">
+    <span class="s3"><a href="https://www.youtube.com/user/XamarinVideos"><span class="s4">Xamarin Videos</span></a></span><span class="s1">: There are a plethora of great videos on the Xamarin Youtube channel.</span>
+  </li>
+  <li class="li2">
+    <span class="s3"><a href="https://evolve.xamarin.com/"><span class="s4">Evolve 2016 Videos</span></a></span><span class="s1">: Videos of all the sessions from the amazing Evolve 2016 conference.</span>
+  </li>
+  <li>
+    <a href="https://university.xamarin.com/guestlectures" target="_blank" rel="noopener">Xamarin University Guest Lectures</a> &#8211; Industry experts providing Guest Lectures at Xamarin University. Available even if you aren&#8217;t a Xamarin University subscriber (but you have to wait a month after the session to gain access)
+  </li>
+  <li class="li7">
+    <a href="https://university.xamarin.com/lightninglectures"><span class="s4">Xamarin University Lightning Lecutres</span></a><span class="s6"> &#8211; Short talks on common challenges.</span>
+  </li>
+  <li class="li2">
+    <span class="s3"><a href="https://university.xamarin.com/self-guided"><span class="s4">Xamarin University Self Guided</span></a></span><span class="s1">: Free content from the amazing Xamarin University. The great news here is classes you take will earn credit towards certification.</span>
+  </li>
+  <li class="li2">
+    <span class="s3"><a href="https://brax.tv/"><span class="s4">Brax</span></a></span><span class="s1">: Short instructional videos on iOS, Android and Xamarin development.</span>
+  </li>
+  <li class="li2">
+    <span class="s3"><a href="https://www.pluralsight.com/search?q=xamarin&amp;categories=all"><span class="s4">Pluralsight</span></a></span><span class="s1">: Lots of development videos including some on Xamarin.</span>
+  </li>
+  <li class="li2">
+    <span class="s3"><a href="https://www.youtube.com/user/jamesmontemagno/videos"><span class="s4">James Montemagno&#8217;s Videos (Motz Codes)</span></a></span><span class="s1">: James always has informative fun videos. He also has a series called Motz Codes.</span>
+  </li>
+</ul>
+
+<hr />
+
+<h2 id="releases-support--help-p1"><span class="s1"><b>Releases, Support &amp; Help</b></span> {.p1}</h2>
+
+<p class="p2">
+  <span class="s1">Sometimes you just want to chat to other developers to keep up to speed.</span>
+</p>
+
+<ul class="ul1">
+  <li class="li2">
+    <span class="s3"><a href="http://Xamarinchat.herokuapp.com"><span class="s4">Xamarin Chat Slack Team</span></a></span><span class="s1">: This slack team is full of knowledgeable developers. A great resource.</span>
+  </li>
+  <li class="li2">
+    <span class="s3"><a href="https://forums.xamarin.com/"><span class="s4">Xamarin Forums</span></a></span><span class="s1">: The official Xamarin forums is always a great place to ask questions and get answers. Be part of the community.</span>
+  </li>
+  <li class="li2">
+    <span class="s3"><a href="http://stackoverflow.com/questions/tagged/xamarin"><span class="s4">Stack Overflow</span></a></span><span class="s1">: Stack Overflow has lots of questions and answers around Xamarin.</span>
+  </li>
+  <li class="li2">
+    <span class="s3"><a href="https://developer.xamarin.com/releases"><span class="s4">Xamarin Releases Page</span></a></span><span class="s1">: This page shows all the releases across the various products, including older verions. The <a href="https://developer.xamarin.com/releases/current/"><span class="s2">Current</span></a> link gives an overview of the current state of our distribution channels and preview releases. And within each of these you&#8217;ll find links to the release notes and known issues.</span>
+  </li>
+  <li class="li2">
+    <span class="s3"><a href="https://bugzilla.xamarin.com/"><span class="s4">Xamarin Bugzilla</span></a></span><span class="s1">: Where all the juicy bugs are found.</span>
+  </li>
+</ul>
+
+<hr />
+
+<h2 id="irl-p1"><span class="s1"><b>IRL</b></span> {.p1}</h2>
+
+<p class="p2">
+  <span class="s1">Nothing beats meeting fellow developers In Real Life, here are some links to help you meet them</span>
+</p>
+
+<ul class="ul1">
+  <li class="li2">
+    <span class="s3"><a href="http://www.meetup.com/topics/xamarin/"><span class="s4">Xamarin Meetups</span></a></span><span class="s1">: Listing of meetup groups over at the Meetup sight.</span>
+  </li>
+  <li class="li2">
+    <span class="s3"><a href="https://www.xamarin.com/dev-days"><span class="s4">Xamarin Dev Days</span></a></span><span class="s1">: Xamarin Dev Days provide attendees with an intense, hands-on learning experience. Spend the morning exploring mobile development with sessions from Xamarin, our technology partners, and members of your local developer community, then roll up your sleeves for an afternoon dedicated to diving into code.</span>
+  </li>
+</ul>
+
+<hr />
+
+<h2 id="books-p1"><span class="s1"><b>Books</b></span> {.p1}</h2>
+
+<p class="p2">
+  <span class="s1">I don&#8217;t spend a lot of time reading books on Xamarin, however, I couldn&#8217;t go without mentioning the a couple of free Xamarin books that have excellent content and are totally free.</span>
+</p>
+
+<ul class="ul1">
+  <li class="li6">
+    <span class="s5"><span class="s4"><a href="https://developer.xamarin.com/guides/xamarin-forms/creating-mobile-apps-xamarin-forms/">Creating Mobile Apps with Xamarin.Forms Book First Edition</a> by the legendary Charles Petzold</span></span>
+  </li>
+  <li>
+    <a href="https://developer.xamarin.com/guides/xamarin-forms/enterprise-application-patterns/" target="_blank" rel="noopener">Enterprise Application Patterns using Xamarin.Forms</a> by the equally awesome David Britch
+  </li>
+</ul>
+
+<hr />
+
+<h2 id="what-about-android-and-ios-p1"><span class="s1"><b>What about Android and iOS</b></span> {.p1}</h2>
+
+<p class="p2">
+  <span class="s1">Yup, we should never forget that as Xamarin developers we are also Android and iOS developers, here are some resources:</span>
+</p>
+
+<ul class="ul1">
+  <li class="li2">
+    <span class="s3"><a href="https://plus.google.com/+AndroidDevelopers"><span class="s4">Android Developers on Google+</span></a></span><span class="s1">: A place for Android developers everywhere to meet, share and discuss the latest on Android development. This is the official Google+ home of the Android Engineering teams.</span>
+  </li>
+  <li class="li2">
+    <span class="s3"><a href="http://androidweekly.net/"><span class="s4">Android Weekly</span></a></span><span class="s1">: a free newsletter that helps you to stay cutting-edge with your Android Development.</span>
+  </li>
+  <li class="li2">
+    <span class="s3"><a href="https://indieiosfocus.curated.co/"><span class="s4">Indie iOS Focus</span></a></span><span class="s1">: Indie iOS Focus Weekly is focused on iOS developers and is hand curated every Thursday.</span>
+  </li>
+  <li class="li2">
+    <span class="s3"><a href="https://www.raywenderlich.com/"><span class="s4">Ray Wenderlich</span></a></span><span class="s1">: This blog is focused on developing high quality programming tutorials for both iOS and Android (mostly iOS though).</span>
+  </li>
+  <li class="li2">
+    <span class="s3"><a href="http://iosdevweekly.com/"><span class="s4">iOS Dev Weekly</span></a></span><span class="s1">: a hand-picked round up of the best iOS development links every week. Curated by Dave Verwer and published every Friday. Free.</span>
+  </li>
+</ul>
+
+<hr />
+
+<p class="p2">
+  <span class="s1">Hopefully this list of resources above will give you a launching point for staying up to date with Xamarin Development. There are so many great resources out there for Xamarin development I&#8217;m sure I&#8217;ve missed a few.</span>
+</p>
+
+<p class="p2">
+  <span class="s1">Let me know in the comments or shoot me an email and let me know your must-check-out resources.</span>
+</p>
+
+<p class="p2">
+  <span class="s1">Happy Coding!!!</span>
+</p>
+
+                </div>
+            </section>
+
+            <!-- Email subscribe form at the bottom of the page -->
+            
+
+            <footer class="post-full-footer">
+                <!-- Everything inside the #author tags pulls data from the author -->
+                <!-- #author-->
+                
+                    
+                        <section class="author-card">
+                            
+                                <img class="author-profile-image" src="/assets/images/kphillpotts.jpg" alt="kphillpotts" />
+                            
+                            <section class="author-card-content">
+                                <h4 class="author-card-name"><a href="/author/kphillpotts">Kym Phillpotts</a></h4>
+                                
+                                    <p>Geek, Parent, Human, Xamarin University Instructor. Co-curator of http://weeklyxamarin.com  and twitch streaming live coding at http://twitch.tv/kphillpotts</p>
+                                
+                            </section>
+                        </section>
+                        <div class="post-full-footer-right">
+                            <a class="author-card-button" href="/author/kphillpotts">Read More</a>
+                        </div>
+                    
+                
+                <!-- /author  -->
+            </footer>
+
+            <!-- If you use Disqus comments, just uncomment this block.
+            The only thing you need to change is "test-apkdzgmqhj" - which
+            should be replaced with your own Disqus site-id. -->
+            
+
+        </article>
+
+    </div>
+</main>
+
+<!-- Links to Previous/Next posts -->
+<aside class="read-next outer">
+    <div class="inner">
+        <div class="read-next-feed">
+            
+                
+                
+                
+                
+                    <article class="read-next-card"
+                        
+                            style="background-image: url(/assets/images/blog-cover.jpg)"
+                        
+                    >
+                        <header class="read-next-card-header">
+                            <small class="read-next-card-header-sitetitle">&mdash; Kym's Blog &mdash;</small>
+                            
+                                <h3 class="read-next-card-header-title"><a href="/tag/xamarin/">Xamarin</a></h3>
+                            
+                        </header>
+                        <div class="read-next-divider"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 14.5s2 3 5 3 5.5-2.463 5.5-5.5S21 6.5 18 6.5c-5 0-7 11-12 11C2.962 17.5.5 15.037.5 12S3 6.5 6 6.5s4.5 3.5 4.5 3.5"/></svg>
+</div>
+                        <div class="read-next-card-content">
+                            <ul>
+                                
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/5907-2/">Microsoft //Build/ Recap for Xamarin Developers</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/simple-animation-with-xamarin-forms/">Simple Animation with Xamarin.Forms</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/fastscroll-and-sectionindexer-in-xamarin-forms-listview/">FastScroll and SectionIndexer in Xamarin.Forms ListView</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                            </ul>
+                        </div>
+                        <footer class="read-next-card-footer">
+                            <a href="/tag/xamarin/">
+                                
+                                    See all 7 posts  →
+                                
+                            </a>
+                        </footer>
+                    </article>
+                
+            
+
+            <!-- If there's a next post, display it using the same markup included from - partials/post-card.hbs -->
+            
+                
+    <article class="post-card post-template">
+        
+            <a class="post-card-image-link" href="/social-network-app-layout-design-in-xamarin-forms/">
+                <div class="post-card-image" style="background-image: url(/assets/images/covers/layout3.jpg)"></div>
+            </a>
+        
+        <div class="post-card-content">
+            <a class="post-card-content-link" href="/social-network-app-layout-design-in-xamarin-forms/">
+                <header class="post-card-header">
+                    
+                        
+                            
+                                <span class="post-card-tags">Xamarin</span>
+                            
+                        
+                    
+
+                    <h2 class="post-card-title">Xamarin.Forms Layout Challenges &#8211; Social Network App</h2>
+                </header>
+                <section class="post-card-excerpt">
+                    <p>Xamarin.Forms is a crazy productive framework for building cross platform apps. However, straight out of the box you might find your User Interfaces are a bit bland. A good understanding of the layout</p>
+                </section>
+            </a>
+            <footer class="post-card-meta">
+                
+                    
+                        
+                        <img class="author-profile-image" src="/assets/images/kphillpotts.jpg" alt="Kym Phillpotts" />
+                        
+                        <span class="post-card-author">
+                            <a href="/author/kphillpotts/">Kym Phillpotts</a>
+                        </span>
+                    
+                
+            </footer>
+        </div>
+    </article>
+
+            
+
+            <!-- If there's a previous post, display it using the same markup included from - partials/post-card.hbs -->
+            
+                
+    <article class="post-card  no-image">
+        
+        <div class="post-card-content">
+            <a class="post-card-content-link" href="/xamarin-link-roundup-11-may-2016/">
+                <header class="post-card-header">
+                    
+                        
+                            
+                               <span class="post-card-tags">Android</span>
+                            
+                        
+                            
+                               <span class="post-card-tags">Ios</span>
+                            
+                        
+                            
+                               <span class="post-card-tags">Resources</span>
+                            
+                        
+                            
+                               <span class="post-card-tags">Xamarin</span>
+                            
+                        
+                            
+                                <span class="post-card-tags">Xamarin.forms</span>
+                            
+                        
+                    
+
+                    <h2 class="post-card-title">Xamarin Link Roundup &#8211; 11 May 2016</h2>
+                </header>
+                <section class="post-card-excerpt">
+                    <p>More fantastic links from around the community! Xamarin.Forms Jason Smith’s Xamarin Forms Performance Tips – Jason Smith’s Xamarin Forms Performance Tips Scaffolding Xamarin.Forms Pages with DataPages | Xamarin Blog – An introduction to Xamarin.Forms</p>
+                </section>
+            </a>
+            <footer class="post-card-meta">
+                
+                    
+                
+            </footer>
+        </div>
+    </article>
+
+            
+
+        </div>
+    </div>
+</aside>
+
+<!-- Floating header which appears on-scroll, included from includes/floating-header.hbs -->
+<div class="floating-header">
+    <div class="floating-header-logo">
+        <a href="/">
+            
+            <span>Kym's Blog</span>
+        </a>
+    </div>
+    <span class="floating-header-divider">&mdash;</span>
+    <div class="floating-header-title">Staying Up To Date with Xamarin Development</div>
+    <div class="floating-header-share">
+        <div class="floating-header-share-label">Share this <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M7.5 15.5V4a1.5 1.5 0 1 1 3 0v4.5h2a1 1 0 0 1 1 1h2a1 1 0 0 1 1 1H18a1.5 1.5 0 0 1 1.5 1.5v3.099c0 .929-.13 1.854-.385 2.748L17.5 23.5h-9c-1.5-2-5.417-8.673-5.417-8.673a1.2 1.2 0 0 1 1.76-1.605L7.5 15.5zm6-6v2m-3-3.5v3.5m6-1v2"/>
+</svg>
+</div>
+        <a class="floating-header-share-tw" href="https://twitter.com/share?text=Staying+Up+To+Date+with+Xamarin+Development&amp;url=https://kphillpotts.github.io/staying-up-to-date-with-xamarin-development/"
+            onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg>
+
+        </a>
+        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=https://kphillpotts.github.io/staying-up-to-date-with-xamarin-development/"
+            onclick="window.open(this.href, 'share-facebook','width=580,height=296');return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M19 6h5V0h-5c-3.86 0-7 3.14-7 7v3H8v6h4v16h6V16h5l1-6h-6V7c0-.542.458-1 1-1z"/></svg>
+
+        </a>
+    </div>
+    <progress class="progress" value="0">
+        <div class="progress-container">
+            <span class="progress-bar"></span>
+        </div>
+    </progress>
+</div>
+
+
+<!-- /post -->
+
+<!-- The #contentFor helper here will send everything inside it up to the matching #block helper found in default.hbs -->
+
+
+        <!-- Previous/next page links - displayed on every page -->
+        
+
+        <!-- The footer at the very bottom of the screen -->
+        <footer class="site-footer outer">
+            <div class="site-footer-content inner">
+                <section class="copyright"><a href="/">Kym's Blog</a> &copy; 2019</section>
+                <section class="poweredby">Proudly published with <a href="https://jekyllrb.com/">Jekyll</a> &
+                    <a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a> using
+                    <a href="https://github.com/jekyller/jasper2" target="_blank" rel="noopener">Jasper2</a></section>
+                <nav class="site-footer-nav">
+                    <a href="/">Latest Posts</a>
+                    
+                    <a href="https://twitter.com/kphillpotts" target="_blank" rel="noopener">Twitter</a>
+                    <a href="https://ghost.org" target="_blank" rel="noopener">Ghost</a>
+                </nav>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- The big email subscribe modal content -->
+    
+
+    <!-- highlight.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.10.0/components/prism-abap.min.js"></script>
+    <script>$(document).ready(function() {
+      $('pre code').each(function(i, block) {
+        hljs.highlightBlock(block);
+      });
+    });</script>
+
+    <!-- jQuery + Fitvids, which makes all video embeds responsive -->
+    <script
+        src="https://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous">
+    </script>
+    <script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="https://demo.ghost.io/assets/js/jquery.fitvids.js?v=724281a32e"></script>
+
+
+    <!-- Paginator increased to "infinit" in _config.yml -->
+    <!-- if paginator.posts  -->
+    <!-- <script>
+        var maxPages = parseInt('');
+    </script>
+    <script src="/assets/js/infinitescroll.js"></script> -->
+    <!-- /endif -->
+
+    
+
+
+    <!-- Add Google Analytics  -->
+    <!-- Google Analytics Tracking code -->
+ <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-69281367-1', 'auto');
+  ga('send', 'pageview');
+
+ </script>
+
+
+    <!-- The #block helper will pull in data from the #contentFor other template files. In this case, there's some JavaScript which we only want to use in post.hbs, but it needs to be included down here, after jQuery has already loaded. -->
+    
+        <script>
+
+// NOTE: Scroll performance is poor in Safari
+// - this appears to be due to the events firing much more slowly in Safari.
+//   Dropping the scroll event and using only a raf loop results in smoother
+//   scrolling but continuous processing even when not scrolling
+$(document).ready(function () {
+    // Start fitVids
+    var $postContent = $(".post-full-content");
+    $postContent.fitVids();
+    // End fitVids
+
+    var progressBar = document.querySelector('progress');
+    var header = document.querySelector('.floating-header');
+    var title = document.querySelector('.post-full-title');
+
+    var lastScrollY = window.scrollY;
+    var lastWindowHeight = window.innerHeight;
+    var lastDocumentHeight = $(document).height();
+    var ticking = false;
+
+    function onScroll() {
+        lastScrollY = window.scrollY;
+        requestTick();
+    }
+
+    function onResize() {
+        lastWindowHeight = window.innerHeight;
+        lastDocumentHeight = $(document).height();
+        requestTick();
+    }
+
+    function requestTick() {
+        if (!ticking) {
+            requestAnimationFrame(update);
+        }
+        ticking = true;
+    }
+
+    function update() {
+        var trigger = title.getBoundingClientRect().top + window.scrollY;
+        var triggerOffset = title.offsetHeight + 35;
+        var progressMax = lastDocumentHeight - lastWindowHeight;
+
+        // show/hide floating header
+        if (lastScrollY >= trigger + triggerOffset) {
+            header.classList.add('floating-active');
+        } else {
+            header.classList.remove('floating-active');
+        }
+
+        progressBar.setAttribute('max', progressMax);
+        progressBar.setAttribute('value', lastScrollY);
+
+        ticking = false;
+    }
+
+    window.addEventListener('scroll', onScroll, {passive: true});
+    window.addEventListener('resize', onResize, false);
+
+    update();
+});
+</script>
+
+    
+
+    <!-- Ghost outputs important scripts and data with this tag - it should always be the very last thing before the closing body tag -->
+    <!-- ghost_foot -->
+
+</body>
+</html>

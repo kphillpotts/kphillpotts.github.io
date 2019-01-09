@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<feed xmlns="http://www.w3.org/2005/Atom" >
+  <generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator>
+  <link href="/tag/resources/feed.xml" rel="self" type="application/atom+xml" />
+  <link href="/" rel="alternate" type="text/html" />
+  <updated>2019-01-09T23:10:22+01:00</updated>
+  <id>/tag/resources/feed.xml</id>
+
+  
+  
+  
+
+  
+    <title type="html">Kym’s Blog | </title>
+  
+
+  
+    <subtitle>I write about Azure, Xamarin.Forms, Connected Apps and whatever else might be on my mind.</subtitle>
+  
+
+  
+
+  
+    
+      
+    
+  
+
+  
+  
+
+  
+    <entry>
+      <title type="html">Xamarin Link Roundup – 11 May 2016</title>
+      <link href="/xamarin-link-roundup-11-may-2016/" rel="alternate" type="text/html" title="Xamarin Link Roundup &amp;#8211; 11 May 2016" />
+      <published>2016-05-11T19:03:34+02:00</published>
+      <updated>2016-05-11T19:03:34+02:00</updated>
+      <id>/xamarin-link-roundup-11-may-2016</id>
+      <content type="html" xml:base="/xamarin-link-roundup-11-may-2016/">&lt;p&gt;More fantastic links from around the community!&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;h2 id=&quot;xamarinforms&quot;&gt;Xamarin.Forms&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://kent-boogaart.com/blog/jason-smith's-xamarin-forms-performance-tips&quot; target=&quot;_blank&quot;&gt;Jason Smith’s Xamarin Forms Performance Tips&lt;/a&gt; – Jason Smith’s Xamarin Forms Performance Tips&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://blog.xamarin.com/scaffolding-xamarin-forms-pages-with-datapages/&quot; target=&quot;_blank&quot;&gt;Scaffolding Xamarin.Forms Pages with DataPages | Xamarin Blog&lt;/a&gt; – An introduction to Xamarin.Forms data pages on the Xamarin Blog&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://motzcod.es/post/143599079477/xamarin-evolve-2016-app-development-retrospective&quot; target=&quot;_blank&quot;&gt;Xamarin Evolve 2016 App Development Retrospective&lt;/a&gt; – @JamesMontemagno shares the highs, lows and lessons learnt creating the #XamarinEvolve app.&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://motzcod.es/post/143702671962/xamarinforms-xaml-previewer-design-time-data&quot; target=&quot;_blank&quot;&gt;Xamarin.Forms XAML Previewer Design Time Data&lt;/a&gt; – @JamesMontemagno shows how to integrate design time data into the new XAML Previewer!&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.johankarlsson.net/2016/05/a-very-small-pubsub-solution-for.html?m=1&quot; target=&quot;_blank&quot;&gt;A very small pub/sub solution for Xamarin Forms&lt;/a&gt; – A very small pub/sub solution for Xamarin Forms&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://xamarinhelp.com/xamarin-forms-applinks/&quot; target=&quot;_blank&quot;&gt;Xamarin Forms Deep Linking and App Indexing with AppLinks&lt;/a&gt; – App indexing and deep linking in the Xamarin world&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;ios&quot;&gt;iOS&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://xamarinhelp.com/new-xamarin-ios-visual-studio/&quot; target=&quot;_blank&quot;&gt;Detailed Look At Whats New in Xamarin.iOS for Visual Studio&lt;/a&gt; – Adam Pedley gives the rundown of what’s new for Xamarin.iOS for Visual Studio&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://iosstack.com/tools/&quot; target=&quot;_blank&quot;&gt;Tools – iOSStack&lt;/a&gt; – IOSStack lists out some cool tools to make your Mobile development life easier.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;android&quot;&gt;Android&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://sharpmobilecode.com/using-google-place-picker-for-android/&quot; target=&quot;_blank&quot;&gt;Using Google Place Picker For Android&lt;/a&gt; – Ruben Macias shows how to use the PlacePicker from the Google Places API in Xamarin.Android.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;components-and-tools&quot;&gt;Components and Tools&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://realm.io/news/introducing-realm-xamarin/&quot; target=&quot;_blank&quot;&gt;Introducing Realm Xamarin – Realm is a mobile database: a replacement for SQLite &amp;amp; Core Data&lt;/a&gt; – Realm mobile database release for Xamarin. Sounds super exciting!&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://blog.verslu.is/uncategorized/nuget-gold-nuggets-packages-which-are-in-my-almost-every-xamarin-project/&quot; target=&quot;_blank&quot;&gt;NuGet gold nuggets – packages which are in my almost every Xamarin project&lt;/a&gt; – Gerald Versluis shares a list of NuGet Nuggets&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://gregshackles.com/using-1writer-as-a-presentation-assistant/&quot; target=&quot;_blank&quot;&gt;Using iOS and 1Writer as a Presentation Assistant&lt;/a&gt; – Greg Shackles shows a cool workflow and a nice tool for presenters&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.thexamarinjournal.com/xamarin-dev-ops-with-vsts-getting-started/&quot; target=&quot;_blank&quot;&gt;Getting Started with VSTS and Xamarin&lt;/a&gt; – Richard Woollcott has started a blog series on Mobile DevOps with VSTS / XS / Hockey / Test Cloud&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://ghuntley.com/archive/2016/05/04/announcing-httpclientdiagnostics/&quot; target=&quot;_blank&quot;&gt;Announcing HttpClientDiagnostics – Geoffrey Huntley&lt;/a&gt; – HttpClientDiagnostics is a cross platform, portable class library that provides tracing/logging telemetry of Microsoft.Net.HttpClient requests.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;other&quot;&gt;Other&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://pihrt.net/SnippetEssentials&quot; target=&quot;_blank&quot;&gt;Snippet Essentials&lt;/a&gt; – Because you can never have enough Snippets – Snippet Essentials&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://blogs.walkingtree.in/2016/05/05/xamarin-azure-mobile-services-a-primer/&quot; target=&quot;_blank&quot;&gt;Azure App Services and Xamarin&lt;/a&gt; – Get started with Azure App Services and Xamarin with this tutorial.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;design&quot;&gt;Design&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://rendr.io/from-sketch-to-app-a-design-to-development-workflow/&quot; target=&quot;_blank&quot;&gt;From Sketch to App: A Design to Development Workflow&lt;/a&gt; – David Ortinau continues his #XamarinEvolve discussion on Design to Development workflow.&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://dzone.com/articles/7-tips-for-creating-engaged-informed-users&quot; target=&quot;_blank&quot;&gt;7 Tips for Creating Engaged, Informed Users – DZone Mobile&lt;/a&gt; – 7 tips for creating great mobile app onboarding experiences&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;community&quot;&gt;Community&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://developer.telerik.com/featured/10-developer-takeaways-xamarin-evolve/?linkId=24158759&quot; target=&quot;_blank&quot;&gt;10 Developer Takeaways from Xamarin Evolve -Telerik Developer Network&lt;/a&gt; – Summary of the key takeaways for developers from #XamarinEvolve&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;more-xamarin-link-blogs&quot;&gt;More Xamarin Link Blogs&lt;/h2&gt;
+
+&lt;p&gt;Here are links to the other great Xamarin link blogs out there that are updated regularly&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;http://www.xamarinweekly.com/&quot;&gt;Xamarin Weekly&lt;/a&gt;&lt;/p&gt;
+
+    &lt;p&gt;A free, once-weekly e-mail newsletter roundup of all things Xamarin. Posted Fridays&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;http://xamarinappdev.com/&quot;&gt;Xamarin App Developer Links&lt;/a&gt;&lt;/p&gt;
+
+    &lt;p&gt;The latest tips, tutorials, news, and resources for Xamarin app developers. Posted Daily&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;http://csharpmobiledaily.com/&quot;&gt;C# Mobile (Xamarin) Daily&lt;/a&gt;&lt;/p&gt;
+
+    &lt;p&gt;Your cross-platform C# mobile magazine. Posted Daily&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;hhttp://planet.xamarin.com/&quot;&gt;Xamarin Community Blogs&lt;/a&gt;&lt;/p&gt;
+
+    &lt;p&gt;This is an automatic aggregator which pulls articles from bloggers in the Xamarin developer community.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>Kym</name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="Android" />
+      
+        <category term="iOS" />
+      
+        <category term="Resources" />
+      
+        <category term="xamarin" />
+      
+        <category term="xamarin.forms" />
+      
+
+      
+        <summary type="html">More fantastic links from around the community!</summary>
+      
+
+      
+      
+    </entry>
+  
+    <entry>
+      <title type="html">Xamarin, iBeacons and Geofencing – Some Resources</title>
+      <link href="/xamarin-ibeacons-and-geofencing-some-resources/" rel="alternate" type="text/html" title="Xamarin, iBeacons and Geofencing &amp;#8211; Some Resources" />
+      <published>2014-05-18T23:11:02+02:00</published>
+      <updated>2014-05-18T23:11:02+02:00</updated>
+      <id>/xamarin-ibeacons-and-geofencing-some-resources</id>
+      <content type="html" xml:base="/xamarin-ibeacons-and-geofencing-some-resources/">&lt;p&gt;For an upcoming geekend (a weekend hackfest) we are looking at spending some time digging into iBeacon and Geofencing technologies.  &lt;span style=&quot;line-height: 1.5em;&quot;&gt;I was going to email some of these resources I have found to the participants but thought it might be better if I blog them as a resource for others. &lt;/span&gt;&lt;/p&gt;
+
+&lt;p&gt;Hope it helps&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;p&gt;&lt;span style=&quot;text-decoration: underline;&quot;&gt;&lt;strong&gt;Some General Info About Geofencing and&lt;/strong&gt;&lt;/span&gt; &lt;strong&gt;Beacons&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a style=&quot;line-height: 1.5em;&quot; href=&quot;http://youtu.be/TQrhJZnZacE&quot; target=&quot;_blank&quot;&gt;What’s the difference between beacons and geofencing?&lt;/a&gt;&lt;span style=&quot;line-height: 1.5em;&quot;&gt;&lt;span style=&quot;line-height: 1.5em;&quot;&gt; (video link).&lt;/span&gt;&lt;/span&gt; &lt;/li&gt;
+  &lt;li&gt;&lt;span style=&quot;line-height: 1.5em;&quot;&gt;There is also an interesting &lt;/span&gt;&lt;a style=&quot;line-height: 1.5em;&quot; href=&quot;http://prezi.com/qvmtmmpxpq1p/proximity-the-new-thing-in-retail/&quot; target=&quot;_blank&quot;&gt;prezi presentation here&lt;/a&gt;&lt;span style=&quot;line-height: 1.5em;&quot;&gt;&lt;span style=&quot;line-height: 1.5em;&quot;&gt;, bit sales oriented, but not bad.&lt;/span&gt;&lt;/span&gt; &lt;/li&gt;
+  &lt;li&gt;&lt;span style=&quot;line-height: 1.5em;&quot;&gt;If you need even more convincing that location and geofencing are the future then have a read of this old &lt;/span&gt;&lt;a style=&quot;line-height: 1.5em;&quot; href=&quot;http://www.wired.com/2013/12/4-use-cases-for-ibeacon-the-most-exciting-tech-you-havent-heard-of/&quot; target=&quot;_blank&quot;&gt;Wired article.&lt;/a&gt; &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong style=&quot;line-height: 1.5em;&quot;&gt;Geofencing Implementations&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://docs.xamarin.com/recipes/ios/multitasking/geofencing/&quot; target=&quot;_blank&quot;&gt;Xamarin iOS Geofence documentation&lt;/a&gt; &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.jayway.com/2014/04/22/windows-phone-8-1-for-developers-geolocation-and-geofencing/&quot; target=&quot;_blank&quot;&gt;Windows Phone 8.1 for Developers – Geolocation and Geofencing&lt;/a&gt; &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://blog.rajenki.com/2014/04/trigger-background-task-using-geofence-windows-phone-8-1/?utm_source=rss&quot; target=&quot;_blank&quot;&gt;Trigger a Background Task using Geofence on Windows Phone 8.1&lt;/a&gt; &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://forums.xamarin.com/discussion/15607/geofencing-and-geolocation&quot; target=&quot;_blank&quot;&gt;Android Geofencing and Geolocation&lt;/a&gt; – Xamrin Forum link&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;span style=&quot;text-decoration: underline;&quot;&gt;&lt;strong&gt;Beacons, iBeacons and BLE Implementations&lt;/strong&gt;&lt;/span&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;James Montemagno’s presentation on &lt;a href=&quot;http://www.slideshare.net/JamesMontemagno/ibeacons-for-everyone-from-ios-to-android&quot; target=&quot;_blank&quot;&gt;iBeacons for Everyone, from iOS to Android&lt;/a&gt; &lt;/li&gt;
+  &lt;li&gt;Mike Bluestein blog post (and sample app) – &lt;a href=&quot;http://blog.xamarin.com/play-find-the-monkey-with-ios-7-ibeacons/&quot; target=&quot;_blank&quot;&gt;Play ‘Find The Monkey’ with iOS 7 iBeacons&lt;/a&gt; &lt;/li&gt;
+  &lt;li&gt;Larry O’Briens blog post on &lt;a href=&quot;http://www.knowing.net/index.php/2013/09/19/xamarin-code-for-ibeacons/&quot; target=&quot;_blank&quot;&gt;Xamairn Code for iBeacons&lt;/a&gt; &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/boblautenbach/iBeacon-Generic/tree/master&quot; target=&quot;_blank&quot;&gt;iBeacon Generic&lt;/a&gt; – A Generic Monotouch.iOS binding for beacons.&lt;/li&gt;
+  &lt;li&gt;Very thorough article by Vincent Hoogendoorn – &lt;a href=&quot;http://www.macaw.nl/weblog/2014/4/building-cross-platform-ibeacon-apps-for-ios-android-and-windows-with-csharp-and-xamarin&quot; target=&quot;_blank&quot;&gt;Building Cross-Platform iBeacon Apps for iOS, Android and Windows with C# and Xamarin&lt;/a&gt; &lt;/li&gt;
+  &lt;li&gt;&lt;a style=&quot;line-height: 1.5em;&quot; href=&quot;https://components.xamarin.com/view/xamarin-android-ibeacon-service&quot; target=&quot;_blank&quot;&gt;Chris Riesgo Android iBeacon Service&lt;/a&gt;&lt;span style=&quot;line-height: 1.5em;&quot;&gt;&lt;span style=&quot;line-height: 1.5em;&quot;&gt; (Radius Network beacons)&lt;/span&gt;&lt;/span&gt; &lt;/li&gt;
+  &lt;li&gt;&lt;span style=&quot;line-height: 1.5em;&quot;&gt;Greg Shackles &lt;/span&gt;&lt;a style=&quot;line-height: 1.5em;&quot; href=&quot;https://github.com/gshackles/Estimote-iOS-Xamarin&quot; target=&quot;_blank&quot;&gt;Estimote iOS Bindings for Xamarin&lt;br /&gt; &lt;/a&gt;&lt;span style=&quot;line-height: 1.5em;&quot;&gt;&lt;br /&gt; &lt;/span&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;span style=&quot;line-height: 1.5em;&quot;&gt;Tom Opgenorth has an &lt;/span&gt;&lt;a style=&quot;line-height: 1.5em;&quot; href=&quot;https://components.xamarin.com/view/estimotesdk&quot; target=&quot;_blank&quot;&gt;Estimote SDK binding for Android&lt;/a&gt;&lt;span style=&quot;line-height: 1.5em;&quot;&gt;&lt;span style=&quot;line-height: 1.5em;&quot;&gt; in the Xamarin Component store.&lt;/span&gt;&lt;/span&gt; &lt;/li&gt;
+  &lt;li&gt;&lt;a style=&quot;line-height: 1.5em;&quot; href=&quot;https://github.com/woutercx/Xamarin-EstimoteBeacons&quot; target=&quot;_blank&quot;&gt;Xamarin-EstimoteBeacons on GitHub&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt; &lt;/p&gt;
+
+&lt;p&gt; &lt;/p&gt;
+
+&lt;p&gt; &lt;/p&gt;
+
+&lt;p&gt; &lt;/p&gt;
+
+&lt;p&gt; &lt;/p&gt;
+
+&lt;p&gt; &lt;/p&gt;
+
+&lt;p&gt; &lt;/p&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>Kym</name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="Android" />
+      
+        <category term="development" />
+      
+        <category term="geofencing" />
+      
+        <category term="ibeacon" />
+      
+        <category term="iOS" />
+      
+        <category term="Resources" />
+      
+        <category term="Windows Phone" />
+      
+        <category term="xamarin" />
+      
+
+      
+        <summary type="html">For an upcoming geekend (a weekend hackfest) we are looking at spending some time digging into iBeacon and Geofencing technologies.  I was going to email some of these resources I have found to the participants but thought it might be better if I blog them as a resource for others. </summary>
+      
+
+      
+      
+    </entry>
+  
+</feed>

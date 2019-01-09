@@ -11,7 +11,7 @@
 
 
 
-    <title>About</title>
+    <title>Simulator - Kym's Blog</title>
     <meta name="HandheldFriendly" content="True" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Styles'n'Scripts -->
@@ -36,31 +36,28 @@
     <!-- This tag outputs SEO meta+structured data and other important settings -->
     <meta name="description" content="I write about Azure, Xamarin.Forms, Connected Apps and whatever else might be on my mind." />
     <link rel="shortcut icon" href="/assets/images/favicon.png" type="image/png" />
-    <link rel="canonical" href="/about/" />
+    <link rel="canonical" href="/tag/simulator/" />
     <meta name="referrer" content="no-referrer-when-downgrade" />
 
      <!--title below is coming from _includes/dynamic_title-->
     <meta property="og:site_name" content="Kym's Blog" />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="About" />
-    <meta property="og:description" content="# Hi there! My name is Kym. ## I love development. ## I love mobile. ## I adore Xamarin. &nbsp; I live in Melbourne, Australia with my beautiful family which consists of twin toddler boys, a 6 year old daughter and my wonderful wife. I&#8217;ve been doing development of one" />
-    <meta property="og:url" content="/about/" />
-    <meta property="og:image" content="/assets/images/writing.jpg" />
+    <meta property="og:title" content="Simulator - Kym's Blog" />
+    <meta property="og:description" content="I write about Azure, Xamarin.Forms, Connected Apps and whatever else might be on my mind." />
+    <meta property="og:url" content="/tag/simulator/" />
+    <meta property="og:image" content="/assets/images/blog-cover.jpg" />
     <meta property="article:publisher" content="https://www.facebook.com/" />
-    <meta property="article:author" content="https://www.facebook.com/" />
-    <meta property="article:published_time" content="" />
-    <meta property="article:modified_time" content="" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="About" />
-    <meta name="twitter:description" content="# Hi there! My name is Kym. ## I love development. ## I love mobile. ## I adore Xamarin. &nbsp; I live in Melbourne, Australia with my beautiful family which consists of twin toddler boys, a 6 year old daughter and my wonderful wife. I&#8217;ve been doing development of one" />
+    <meta name="twitter:title" content="Simulator - Kym's Blog" />
+    <meta name="twitter:description" content="I write about Azure, Xamarin.Forms, Connected Apps and whatever else might be on my mind." />
     <meta name="twitter:url" content="/" />
-    <meta name="twitter:image" content="/assets/images/writing.jpg" />
+    <meta name="twitter:image" content="/assets/images/blog-cover.jpg" />
     <meta name="twitter:label1" content="Written by" />
     <meta name="twitter:data1" content="Kym's Blog" />
     <meta name="twitter:site" content="@kphillpotts" />
     <meta name="twitter:creator" content="@kphillpotts" />
-    <meta property="og:image:width" content="1400" />
-    <meta property="og:image:height" content="933" />
+    <meta property="og:image:width" content="2000" />
+    <meta property="og:image:height" content="666" />
 
     <script type="application/ld+json">
 {
@@ -71,18 +68,18 @@
         "name": "Kym's Blog",
         "logo": "/false"
     },
-    "url": "/about/",
+    "url": "/tag/simulator/",
     "image": {
         "@type": "ImageObject",
-        "url": "/assets/images/writing.jpg",
+        "url": "/assets/images/blog-cover.jpg",
         "width": 2000,
         "height": 666
     },
     "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "/about/"
+        "@id": "/tag/simulator/"
     },
-    "description": "# Hi there! My name is Kym. ## I love development. ## I love mobile. ## I adore Xamarin. &nbsp; I live in Melbourne, Australia with my beautiful family which consists of twin toddler boys, a 6 year old daughter and my wonderful wife. I&#8217;ve been doing development of one"
+    "description": "I write about Azure, Xamarin.Forms, Connected Apps and whatever else might be on my mind."
 }
     </script>
 
@@ -95,20 +92,23 @@
     </script> -->
 
     <meta name="generator" content="Jekyll 3.6.2" />
-    <link rel="alternate" type="application/rss+xml" title="About" href="/feed.xml" />
+    <link rel="alternate" type="application/rss+xml" title="Tag Page" href="/feed.xml" />
 
 
 </head>
-<body class="page-template">
+<body class="tag-template">
 
     <div class="site-wrapper">
         <!-- All the main content gets inserted here, index.hbs, post.hbs, etc -->
-        <!-- < default -->
-<!-- The tag above means: insert everything in this file
-into the {body} of the default.hbs template -->
+        <!-- default -->
+<!-- The tag above means - insert everything in this file into the {body} of the default.hbs template -->
 
 <!-- The big featured header, it uses blog cover image as a BG if available -->
-<header class="site-header outer">
+<!-- #tag -->
+<!-- dynamically loading backgrounds for tags,  descriptions and page titles -->
+
+
+<header class="site-header outer no-cover">
     <div class="inner">
         <nav class="site-nav">
     <div class="site-nav-left">
@@ -144,101 +144,59 @@ into the {body} of the default.hbs template -->
     </div>
 </nav>
 
+        <div class="site-header-content">
+            <h1 class="site-title">Simulator</h1>
+            <h2 class="site-description">
+                
+    			    A collection of 1 posts
+                
+            </h2>
+        </div>
     </div>
 </header>
+<!-- tag -->
 
-<!-- Everything inside the #post tags pulls data from the post -->
-<!-- #post -->
-
+<!-- The main content area -->
 <main id="site-main" class="site-main outer" role="main">
     <div class="inner">
-
-        <article class="post-full post page ">
-
-            <header class="post-full-header">
-                <h1 class="post-full-title">About</h1>
-            </header>
-
+        <div class="post-feed">
+            <!-- The tag below includes the markup for each post - partials/post-card.hbs -->
             
-            <figure class="post-full-image" style="background-image: url(/assets/images/writing.jpg)">
-            </figure>
-            
+    <article class="post-card tag-template no-image">
+        
+        <div class="post-card-content">
+            <a class="post-card-content-link" href="/simulating-surface-pro-3-in-the-simulator/">
+                <header class="post-card-header">
+                    
+                        
+                            
+                               <span class="post-card-tags">Simulator</span>
+                            
+                        
+                            
+                                <span class="post-card-tags">Windows</span>
+                            
+                        
+                    
 
-            <section class="post-full-content">
-                <h1 id="hi-there-my-name-is-kym">Hi there! My name is Kym.</h1>
-
-<h2 id="i-love-development">I love development.</h2>
-
-<h2 id="i-love-mobile">I love mobile.</h2>
-
-<h2 id="i-adore-xamarin">I adore Xamarin.</h2>
-
-<p> </p>
-
-<p>I live in Melbourne, Australia with my beautiful family which consists of twin toddler boys, a 6 year old daughter and my wonderful wife.</p>
-
-<p>I’ve been doing development of one kind or another since forever (I gave up counting at 20 years),  Right now, I’m working for Xamarin University as an Instructor.  Most awesome job ever. But always coding and working on projects at night too.  I’m a big fan of Agile and I just love new technologies.</p>
-
-<h2 id="how-you-can-get-in-contact-with-me">How you can get in contact with me:</h2>
-
-<ul>
-  <li>email: kphillpotts at gmail.com or kym.phillpotts at xamarin.com</li>
-  <li>twitter: @kphillpotts</li>
-  <li><a title="LinkedIn Profile" href="https://www.linkedin.com/in/kymphillpotts" target="_blank">LinkedIn</a> Profile</li>
-  <li>github: http://www.github.com/kphillpotts</li>
-  <li>I also blog at http://www.welltechnically.com</li>
-  <li>I put lots of links up on pinboard.in: https://pinboard.in/u:kphillpotts</li>
-  <li>When I see a nice design i pin it on pinterest: http://www.pinterest.com/kphillpotts/</li>
-</ul>
-
-<h2 id="things-im-interested-in">Things I’m interested in:</h2>
-
-<ul>
-  <li>Cycling.  I’ve toured around New Zealand and Asia (Thailand, Cambodia, Vietnam and Laos)</li>
-  <li>Travel. I’ve travelled pretty extensively through Asia, Europe and the Middle East.</li>
-  <li>New Technologies. The closer I am to the bleeding edge, the better.</li>
-</ul>
-
-<h2 id="some-things-ive-done-in-no-particular-order">Some things I’ve done (in no particular order):</h2>
-
-<ul>
-  <li>I’m a Xamarin Certified Mobile Developer</li>
-  <li>I’ve been a Microsoft Certified Trainer</li>
-  <li>I’ve worked in lots of industries (government, health, banking, security, startups)</li>
-  <li>I’m a Certified Scrum Master</li>
-  <li>I have facilitated multiple Geekends (weekend hackfests)</li>
-  <li>I’m was the 6th Microsoft Certified Solution Developer in Australia</li>
-  <li>I’ve walked across Iceland</li>
-  <li>I had an app in the Windows 8 Store on launch day</li>
-  <li>I’ve had an app demoed on stage at Microsoft Partners Conference</li>
-  <li>I’ve had some zany job titles like “Product Evangelist” and “Technology Coach”</li>
-  <li>I presented at TechEd 1995 on Word Templates in Government</li>
-  <li>Came second in a Teched Hackfest in 2012 (won an xbox but ya just can’t beat an app for kids with diabetes)</li>
-  <li>I was awarded Team member of the Year for Fred Health in 2013</li>
-</ul>
-
-<p>Thanks for stopping by.</p>
-
-<p>Please shoot me an email and say hi, or if you are in Melbourne maybe we can catch up.</p>
+                    <h2 class="post-card-title">Simulating Surface Pro 3 in the Simulator</h2>
+                </header>
+                <section class="post-card-excerpt">
+                    <p>I’m working on a project at the moment that needs to run on a Surface Pro 3. During testing there were some weird redraw issues that only appeared on the Surface 3.  </p>
+                </section>
+            </a>
+            <footer class="post-card-meta">
+                
+                    
+                
+            </footer>
+        </div>
+    </article>
 
 
-            </section>
-
-        </article>
-
+        </div>
     </div>
 </main>
-
-<!-- /post -->
-
-<!-- The #contentFor helper here will send everything inside it up to the matching #block helper found in default.hbs -->
-<script>
-$(function() {
-    var $postContent = $(".post-full-content");
-    $postContent.fitVids();
-});
-</script>
-
 
 
         <!-- Previous/next page links - displayed on every page -->
@@ -286,7 +244,7 @@ $(function() {
     <!-- Paginator increased to "infinit" in _config.yml -->
     <!-- if paginator.posts  -->
     <!-- <script>
-        var maxPages = parseInt('');
+        var maxPages = parseInt('1');
     </script>
     <script src="/assets/js/infinitescroll.js"></script> -->
     <!-- /endif -->
@@ -309,14 +267,6 @@ $(function() {
 
 
     <!-- The #block helper will pull in data from the #contentFor other template files. In this case, there's some JavaScript which we only want to use in post.hbs, but it needs to be included down here, after jQuery has already loaded. -->
-    
-        <script>
-$(function() {
-    var $postContent = $(".post-full-content");
-    $postContent.fitVids();
-});
-</script>
-
     
 
     <!-- Ghost outputs important scripts and data with this tag - it should always be the very last thing before the closing body tag -->

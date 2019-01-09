@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <!-- Document Settings -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- Base Meta -->
+    <!-- dynamically fixing the title for tag/author pages -->
+
+
+
+    <title>Common UI Patterns in Xamarin.Forms Part 1 – Springboards</title>
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Styles'n'Scripts -->
+    <link rel="stylesheet" type="text/css" href="/assets/built/screen.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/built/screen.edited.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/built/syntax.css" />
+    <!-- highlight.js -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+    <style>.hljs { background: none; }</style>
+
+    <!--[if IE]>
+        <style>
+            p, ol, ul{
+                width: 100%;
+            }
+            blockquote{
+                width: 100%;
+            }
+        </style>
+    <![endif]-->
+    
+    <!-- This tag outputs SEO meta+structured data and other important settings -->
+    <meta name="description" content="I write about Azure, Xamarin.Forms, Connected Apps and whatever else might be on my mind." />
+    <link rel="shortcut icon" href="/assets/images/favicon.png" type="image/png" />
+    <link rel="canonical" href="/common-ui-patterns-in-xamarin-forms-part-1-springboards/" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+
+     <!--title below is coming from _includes/dynamic_title-->
+    <meta property="og:site_name" content="Kym's Blog" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Common UI Patterns in Xamarin.Forms Part 1 – Springboards" />
+    <meta property="og:description" content="I write about Azure, Xamarin.Forms, Connected Apps and whatever else might be on my mind." />
+    <meta property="og:url" content="/common-ui-patterns-in-xamarin-forms-part-1-springboards/" />
+    <meta property="og:image" content="/assets/images/blog-cover.jpg" />
+    <meta property="article:publisher" content="https://www.facebook.com/" />
+    <meta property="article:tag" content="Navigation" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Common UI Patterns in Xamarin.Forms Part 1 – Springboards" />
+    <meta name="twitter:description" content="I write about Azure, Xamarin.Forms, Connected Apps and whatever else might be on my mind." />
+    <meta name="twitter:url" content="/" />
+    <meta name="twitter:image" content="/assets/images/blog-cover.jpg" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="Kym's Blog" />
+    <meta name="twitter:label2" content="Filed under" />
+    <meta name="twitter:data2" content="Navigation" />
+    <meta name="twitter:site" content="@kphillpotts" />
+    <meta name="twitter:creator" content="@kphillpotts" />
+    <meta property="og:image:width" content="2000" />
+    <meta property="og:image:height" content="666" />
+
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Website",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Kym's Blog",
+        "logo": "/false"
+    },
+    "url": "/common-ui-patterns-in-xamarin-forms-part-1-springboards/",
+    "image": {
+        "@type": "ImageObject",
+        "url": "/assets/images/blog-cover.jpg",
+        "width": 2000,
+        "height": 666
+    },
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "/common-ui-patterns-in-xamarin-forms-part-1-springboards/"
+    },
+    "description": "I write about Azure, Xamarin.Forms, Connected Apps and whatever else might be on my mind."
+}
+    </script>
+
+    <!-- <script type="text/javascript" src="https://demo.ghost.io/public/ghost-sdk.min.js?v=724281a32e"></script>
+    <script type="text/javascript">
+    ghost.init({
+    	clientId: "ghost-frontend",
+    	clientSecret: "f84a07a72b17"
+    });
+    </script> -->
+
+    <meta name="generator" content="Jekyll 3.6.2" />
+    <link rel="alternate" type="application/rss+xml" title="Common UI Patterns in Xamarin.Forms Part 1 – Springboards" href="/feed.xml" />
+
+
+</head>
+<body class="home-template">
+
+    <div class="site-wrapper">
+        <!-- All the main content gets inserted here, index.hbs, post.hbs, etc -->
+        <!-- default -->
+
+<!-- The tag above means: insert everything in this file
+into the {body} of the default.hbs template -->
+
+<header class="site-header outer">
+    <div class="inner">
+        <nav class="site-nav">
+    <div class="site-nav-left">
+        
+            
+                <a class="site-nav-logo" href="/">Kym's Blog</a>
+            
+        
+        
+    </div>
+    <div class="site-nav-right">
+        <div class="social-links">
+            
+            
+                <a class="social-link social-link-tw" href="https://twitter.com/kphillpotts" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg>
+</a>
+            
+        </div>
+        
+    </div>
+</nav>
+
+    </div>
+</header>
+
+<!-- Everything inside the #post tags pulls data from the post -->
+<!-- #post -->
+
+<main id="site-main" class="site-main outer" role="main">
+    <div class="inner">
+
+        <article class="post-full  no-image">
+
+            <header class="post-full-header">
+                <section class="post-full-meta">
+                    <time class="post-full-meta-date" datetime="22 February 2015">22 February 2015</time>
+                    
+                        <span class="date-divider">/</span>
+                        
+                            
+                               <a href='/tag/navigation/'>NAVIGATION</a>,
+                            
+                        
+                            
+                               <a href='/tag/patterns/'>PATTERNS</a>,
+                            
+                        
+                            
+                               <a href='/tag/xamarin.forms/'>XAMARIN.FORMS</a>
+                            
+                        
+                    
+                </section>
+                <h1 class="post-full-title">Common UI Patterns in Xamarin.Forms Part 1 – Springboards</h1>
+            </header>
+
+            
+
+            <section class="post-full-content">
+                <div class="kg-card-markdown">
+                    <h1 id="introduction">Introduction</h1>
+
+<p>This is the first post in a series covering Common UI Patterns in Xamarin.Forms. This post will walk through creating one of the most common UI Navigation Patterns, namely the Springboard (sometimes called a Launchpad or Dashboard).</p>
+
+<!--more-->
+
+<h1 id="springboard-primer">Springboard Primer</h1>
+
+<p>So what is a Springboard?  Springboards are characterized by a landing page of menu options (normally buttons with text) that act as a jumping off point into the application.  Typically they are in a grid format, however, the don’t have to. Some options can be proportionately larger to convey greater importance.  Here are some classic examples of Springboard layouts:</p>
+
+<p><a href="https://i1.wp.com/res.cloudinary.com/dlstb15av/image/upload/v1506381701/Slide2_dkfjtk.jpg"><img class="aligncenter wp-image-5510 size-medium" src="https://i0.wp.com/res.cloudinary.com/dlstb15av/image/upload/h_394,w_700/v1506381701/Slide2_dkfjtk.jpg?resize=700%2C394" alt="Slide2" data-recalc-dims="1" /></a></p>
+
+<h3 id="whats-to-like-about-springboards">What’s to like about springboards</h3>
+
+<ul>
+  <li>Springboards are OS agnostic.  If you think about it all of the major mobile platforms use Springboards in one way or another to launch apps.  Windows Phone probably takes the customization aspects further than the others, but when you boil it down, it’s still a Springboard.  Have a look at the images below and you’ll see what I mean.</li>
+</ul>
+
+<p><a href="https://i2.wp.com/res.cloudinary.com/dlstb15av/image/upload/v1506381700/Slide3_wqc5xp.jpg"><img class="aligncenter wp-image-5511 size-medium" src="https://i0.wp.com/res.cloudinary.com/dlstb15av/image/upload/h_394,w_700/v1506381700/Slide3_wqc5xp.jpg?resize=700%2C394" alt="Slide3" data-recalc-dims="1" /></a></p>
+
+<ul>
+  <li>Springboards have a high level of user acceptance because we have grown familiar with them and they don’t involve any hidden offscreen elements like you would find with a slide out menu.</li>
+  <li>Springboards are probably best when displaying a flat information hierarchy where there are several “parts” to the application that don’t necessarily relate to each other.</li>
+</ul>
+
+<h3 id="whats-not-to-like-about-springboards">What’s not to like about Springboards</h3>
+
+<p>Springboards aren’t for everyone though, here are some reasons why they aren’t the cool kids on the block</p>
+
+<ul>
+  <li> They are a “navigation first” metaphor.  Meaning, the first thing you see is not content, but rather the user is thrown into the navigation system straight off the bat.</li>
+  <li>To a certain degree, Springboards imply an understanding of the information hierarchy that the developers / designers have used.  If this isn’t very logical then it will be difficult for users to know which button they should click on.</li>
+</ul>
+
+<h1 id="implementation-a-springboard-in-xamarinforms">Implementation a Springboard in Xamarin.Forms</h1>
+
+<p>There are many ways we could implement a Springboard layout in Xamarin Forms. Some simple, some pretty complex. Obviously what you choose is very dependent on the complexity of your springboard and how complex your solution / app is going to be. Because we are early in this series, lets start simple, very simple. Later on, in another post, we can always come back and beef up the implementation with custom renderers and a nicer architectural model.</p>
+
+<p>Before we jump in to code, let’s discuss conceptually how we are going to layout the page. The page we are trying to achieve looks like this:</p>
+
+<p><a href="https://i2.wp.com/res.cloudinary.com/dlstb15av/image/upload/v1506381702/iOS-Simulator-Screen-Shot-21-Feb-2015-1.16.11-pm_qtchlr.png" target="_blank"><img class=" wp-image-5507 alignnone" src="https://i2.wp.com/res.cloudinary.com/dlstb15av/image/upload/v1506381702/iOS-Simulator-Screen-Shot-21-Feb-2015-1.16.11-pm_qtchlr.png?resize=375%2C667" alt="iOS Simulator Screen Shot 21 Feb 2015 1.16.11 pm" data-recalc-dims="1" /></a></p>
+
+<p> </p>
+
+<p>Looking at the page structure, we want a header, an area for the buttons and a footer. It would be possible to implement with a vertical StackLayout, however, because stacklayouts just grow as you add children, it would be difficult to ensure the page lays out correctly.</p>
+
+<p>So let’s use a grid with 3 rows instead for the main page structure.The first row is the header, the second row is for the buttons and the third row is for the footer. Nice and easy.  Now for the “guts” of the springboard… the buttons.   If we think about springboards, it’s normally just a Grid of buttons, So again let’s use the Grid view to contain our buttons and plonk that in the second row.  Conceptually, its like this:</p>
+
+<p><a href="https://i1.wp.com/res.cloudinary.com/dlstb15av/image/upload/v1506381699/Slide4_zgo9ci.jpg"><img class="aligncenter wp-image-5514 size-medium" src="https://i1.wp.com/res.cloudinary.com/dlstb15av/image/upload/h_394,w_700/v1506381699/Slide4_zgo9ci.jpg?resize=700%2C394" alt="Slide4" data-recalc-dims="1" /></a></p>
+
+<p>From there it’s just styling, handling taps and navigation. Enough waffle, let’s create this thing.</p>
+
+<p> </p>
+
+<h1 id="creating-the-project">Creating the project</h1>
+
+<p>The first thing we are going to do is create a brand new Xamarin.Forms Portable Solution.</p>
+
+<p>You will now have a basic Xamarin.Forms Portable solution consisting of three projects.</p>
+
+<p><strong>Springboard</strong> – This is the actual Xamarin.Forms project which is where all the shared non-platform specific code lives. This is where we will be doing most of our work</p>
+
+<p><strong>Springboard.Droid</strong> – Android platform specific project. We will only be using this for image resource files.</p>
+
+<p><strong>Springboard.iOS</strong> – iOS platform specific project. We will only be using this for image resource files</p>
+
+<blockquote>
+  <p>For more information on Xamarin.Forms project structures have a look here at the <a href="http://developer.xamarin.com/guides/cross-platform/xamarin-forms/introduction-to-xamarin-forms/" target="_blank">Xamarin.Forms documentation</a></p>
+</blockquote>
+
+<h1 id="creating-the-basic-page-layout">Creating the basic page layout</h1>
+
+<p>We need to add some images to use for our dashboard solution.  Any images will do, but the location you put the images is important for Xamarin.Forms projects.  In a Xamarin.Forms project we add the images into the platform specific projects:</p>
+
+<blockquote>
+  <p><strong>iOS</strong> – Place images in the <strong>Resources</strong> folder with <span class="UIItem">Build Action: BundleResource</span> . Retina versions of the image should also be supplied – twice the resolution with an “@2x” suffix on the filename before the file extension.</p>
+
+  <p> </p>
+
+  <p><strong>Android</strong> – Place images in the <strong>Resources/drawable</strong> directory with <span class="UIItem">Build Action: AndroidResource</span> . High- and low-DPI versions of an image can also be supplied (in appropriately named <strong>Resources</strong>subdirectories such as <strong>drawable-ldpi</strong> , <strong>drawable-hdpi</strong> , and <strong>drawable-xhdpi</strong> ).</p>
+
+  <p> </p>
+
+  <p><strong>Windows Phone</strong> – Place images in the application’s root directory with <span class="UIItem">Build Action: Content</span> .</p>
+</blockquote>
+
+<p> </p>
+
+<p>More information on using images can be found on the Xamarin site <a href="http://developer.xamarin.com/guides/cross-platform/xamarin-forms/working-with/images/" target="_blank">here</a>.</p>
+
+<p>Now we have our project and image resources in place we will want to create our main springboard page under the shared solution “Springboard”. Right click on the shared project, select new and add a new Forms XAML Page called MainSpringboard.xaml</p>
+
+<p>Here is the XAML for the basic page layout.</p>
+
+<div class="gist-oembed" data-gist="kphillpotts/48ca250c71799b495a5d.json">
+</div>
+
+<p>The key points of interest in the xaml are:</p>
+
+<ul>
+  <li>The page layout itself is just a simple 3 row grid containing the header, the body and the footer.  Notice the outer grid has a RowSpacing of 0, this is This is because by default grids put a bit of spacing between rows and columns, but in our case we don’t want that – we want the rows to butt against each other. Also note that the second row is set to fill the available space by using a Height of “*” . The top and bottom rows we have specified a size, but we could also have used a height of “AUTO” if we wanted to do something like space it out for a logo.</li>
+  <li>We use boxviews to put some colors behind the grids</li>
+  <li>We have just thrown a label into the header but more than likely you might use an app logo</li>
+  <li>We have added a 2×2 grid into the middle row to serve as the button grid. Obviously depending on your needs you could use as may rows and columns as you want.</li>
+  <li>Inside the button grid we have added images controls for the buttons.</li>
+</ul>
+
+<p>Before we can see any of this we have to modify our main app class to actually call our new page. So let’s modify the App class to call our new page.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>public App()
+{
+  // The root page of your application
+  MainPage = new MainSwitchboard();
+}
+</code></pre></div></div>
+
+<p>Run the application and we’ve got the basic layout looking pretty good.</p>
+
+<p><a href="https://i0.wp.com/res.cloudinary.com/dlstb15av/image/upload/v1506381696/Springboard_BasicPageLayout_j9uitz.png" target="_blank"><img class=" wp-image-5541 alignnone" src="https://i0.wp.com/res.cloudinary.com/dlstb15av/image/upload/v1506381696/Springboard_BasicPageLayout_j9uitz.png?resize=325%2C578" alt="Springboard_BasicPageLayout" data-recalc-dims="1" /></a></p>
+
+<p>Awesome!</p>
+
+<p>But we need to put labels under each of those buttons. Unfortunately, we can’t use the standard Xamarin.Forms button control because it only allows putting the text to the right of the image.  A way we could get around this is to use a vertical StackLayout containing an image and a label underneath and replicate this into each button cell.</p>
+
+<p>Whilst that doesn’t seem like too much overhead, but it’s still a bunch of boilerplate code scattered throughout your page. Also the big problem is you would be replicating style and layout in each button and therefore if you wanted to change the font or something you would have to change it for every button.</p>
+
+<p>There’s got to be a better way, and of course there is.</p>
+
+<h1 id="creating-a-reusable-button-content-view">Creating a Reusable Button Content View</h1>
+
+<p>We can create a Content View with a Image and Label which will essentially make a composite user control for us.</p>
+
+<ul>
+  <li>In Xamarin Studio you can just create a new “Forms ContentView Xaml” file in the solution.</li>
+  <li>In Visual Studio there isn’t this template so you need to create a new “Forms Xaml Page” and then change it from being a ContentPage to a ContentView. You need to do this inside the Xaml file, but also in the code behind of the page.</li>
+</ul>
+
+<p>So Create a new ContentView Xaml control called SpringboardButton.xaml.  Because we want to be able to set the Image and the Label text for each instance of the button, we need to add some properties for these in the code behind and bind them to the Xaml form.</p>
+
+<p>Xaml File</p>
+
+<div class="gist-oembed" data-gist="kphillpotts/67f318054ba4e1232c3d.json">
+</div>
+
+<p>Code behind</p>
+
+<div class="gist-oembed" data-gist="kphillpotts/677beb933c5509f140e2.json">
+</div>
+
+<h1 id="using-our-new-button-control">Using our new Button Control</h1>
+
+<p>Back in the MainSpringboard page, let’s replace our images with instances of our new SpringboardButton.</p>
+
+<p>In order to reference the new SwitchboardButton control we need to include the namespace into the XAML namespaces at the top of the file. Modify the namespaces to include:</p>
+
+<p>xmlns:controls=”clr-namespace:Switchboard;assembly=Switchboard”</p>
+
+<p>Now we can replace our images with the controls, like this:</p>
+
+<div class="gist-oembed" data-gist="kphillpotts/1a219caf2972d759b777.json">
+</div>
+
+<p>Run the application and we should be in pretty good shape. And of course as a bonus if we wanted to change the font on all those buttons we could easily do it in just one place.</p>
+
+<p>You will notice however, that we can’t interact with our buttons. We need to add the ability to respond to taps.</p>
+
+<h1 id="handling-taps-on-the-buttons">Handling Taps on the Buttons</h1>
+
+<p>Some controls in Xamarin.Forms have Tapped (or clicked) events, but images and labels don’t, and our new composite content view control certainly does not. Fortunately Xamarin.Forms has a concept called GestureRecognizers which you can add to any view to enable handling of tapped events. You can read more about them <a href="http://developer.xamarin.com/guides/cross-platform/xamarin-forms/working-with/gestures/" target="_blank">here</a>.</p>
+
+<p>In our simple situation we will add a gesture recognizer to each of our buttons which will call a corresponding tapped event in the code behind page.  So in the MainSwitchboard.xaml we expand each button to have a GestureRecognizer that calls a method in the code behind.</p>
+
+<div class="gist-oembed" data-gist="kphillpotts/298803e5c84375197121.json">
+</div>
+
+<p>Now let’s make those taps do something.</p>
+
+<h1 id="adding-navigation">Adding Navigation</h1>
+
+<p>Talking about navigation is a whole post in itself, but we will cover just enough to get this Springboard working.</p>
+
+<p>Xamarin.Forms has a navigation framework baked in. It has methods to push and pop pages into the navigation stack. However, in order to do this you need to first create that navigation stack. Fortunately all we have to do is surround our first page with a NavigationPage and we are magically given this navigation context.</p>
+
+<p>So we modify the App Main Page to add a navigation context</p>
+
+<p>MainPage = new NavigationPage(new MainSwitchboard());</p>
+
+<p>We need to add page(s) that we want to navigate to. In my case I created 4 simple pages.</p>
+
+<p>Now we do the modification of the code behind on the MainSpringboard to navigate to those pages, like this:</p>
+
+<div class="gist-oembed" data-gist="kphillpotts/4637ac75a91ceeaf35d6.json">
+</div>
+
+<p>If we run the application now, we are pretty much there. Our pages should navigate and we have a functioning switchboard.</p>
+
+<h1 id="summary">Summary</h1>
+
+<p>So there you have it, a simple implementation of a Springboard page. We covered:</p>
+
+<ul>
+  <li>Creating the basic page layout</li>
+  <li>Creating a reusable control for the buttons</li>
+  <li>Adding gesture recognizers to the controls</li>
+  <li>Simple navigation</li>
+</ul>
+
+<p> </p>
+
+<p>The code for this sample is on Github at <a href="https://github.com/kphillpotts/XamarinForms-NavigationPatterns" target="_blank">https://github.com/kphillpotts/XamarinForms-NavigationPatterns</a></p>
+
+<p>Thanks for reading and if you have any questions, comments, or improvements please let me know.</p>
+
+                </div>
+            </section>
+
+            <!-- Email subscribe form at the bottom of the page -->
+            
+
+            <footer class="post-full-footer">
+                <!-- Everything inside the #author tags pulls data from the author -->
+                <!-- #author-->
+                
+                    
+                
+                <!-- /author  -->
+            </footer>
+
+            <!-- If you use Disqus comments, just uncomment this block.
+            The only thing you need to change is "test-apkdzgmqhj" - which
+            should be replaced with your own Disqus site-id. -->
+            
+
+        </article>
+
+    </div>
+</main>
+
+<!-- Links to Previous/Next posts -->
+<aside class="read-next outer">
+    <div class="inner">
+        <div class="read-next-feed">
+            
+                
+                
+                
+                
+                    <article class="read-next-card"
+                        
+                            style="background-image: url(/assets/images/blog-cover.jpg)"
+                        
+                    >
+                        <header class="read-next-card-header">
+                            <small class="read-next-card-header-sitetitle">&mdash; Kym's Blog &mdash;</small>
+                            
+                                <h3 class="read-next-card-header-title"><a href="/tag/navigation/">Navigation</a></h3>
+                            
+                        </header>
+                        <div class="read-next-divider"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 14.5s2 3 5 3 5.5-2.463 5.5-5.5S21 6.5 18 6.5c-5 0-7 11-12 11C2.962 17.5.5 15.037.5 12S3 6.5 6 6.5s4.5 3.5 4.5 3.5"/></svg>
+</div>
+                        <div class="read-next-card-content">
+                            <ul>
+                                
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/common-ui-patterns-in-xamarin-forms-part-0/">Common UI Patterns in Xamarin.Forms &#8211; Part 0</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                            </ul>
+                        </div>
+                        <footer class="read-next-card-footer">
+                            <a href="/tag/navigation/">
+                                
+                                    See all 1 posts  →
+                                
+                            </a>
+                        </footer>
+                    </article>
+                
+            
+
+            <!-- If there's a next post, display it using the same markup included from - partials/post-card.hbs -->
+            
+                
+    <article class="post-card  no-image">
+        
+        <div class="post-card-content">
+            <a class="post-card-content-link" href="/xamarin-link-roundup-23-feb-2015/">
+                <header class="post-card-header">
+                    
+
+                    <h2 class="post-card-title">Xamarin Link Roundup &#8211; 23 Feb 2015</h2>
+                </header>
+                <section class="post-card-excerpt">
+                    <p>What happened in the Xamarin Community last week? Xamarin.Forms Behaviors for Xamarin Forms v2.0 Version 2.0 of my behavior implementation for Xamarin Forms Navigation Service for Cross Platform Page/View Navigation from View Model</p>
+                </section>
+            </a>
+            <footer class="post-card-meta">
+                
+                    
+                
+            </footer>
+        </div>
+    </article>
+
+            
+
+            <!-- If there's a previous post, display it using the same markup included from - partials/post-card.hbs -->
+            
+                
+    <article class="post-card  no-image">
+        
+        <div class="post-card-content">
+            <a class="post-card-content-link" href="/xamarin-link-roundup-16-feb-2015/">
+                <header class="post-card-header">
+                    
+
+                    <h2 class="post-card-title">Xamarin Link Roundup &#8211; 16 Feb 2015</h2>
+                </header>
+                <section class="post-card-excerpt">
+                    <p>What happened in the Xamarin community last week? Xamarin.Forms Platform Specific Styling with Xamarin Forms Customising styling in Xamarin.Forms based on platform Refactoring SignalR Feedback for Cross Platform with AutoFac and CommonServiceLocator for</p>
+                </section>
+            </a>
+            <footer class="post-card-meta">
+                
+                    
+                
+            </footer>
+        </div>
+    </article>
+
+            
+
+        </div>
+    </div>
+</aside>
+
+<!-- Floating header which appears on-scroll, included from includes/floating-header.hbs -->
+<div class="floating-header">
+    <div class="floating-header-logo">
+        <a href="/">
+            
+            <span>Kym's Blog</span>
+        </a>
+    </div>
+    <span class="floating-header-divider">&mdash;</span>
+    <div class="floating-header-title">Common UI Patterns in Xamarin.Forms Part 1 – Springboards</div>
+    <div class="floating-header-share">
+        <div class="floating-header-share-label">Share this <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M7.5 15.5V4a1.5 1.5 0 1 1 3 0v4.5h2a1 1 0 0 1 1 1h2a1 1 0 0 1 1 1H18a1.5 1.5 0 0 1 1.5 1.5v3.099c0 .929-.13 1.854-.385 2.748L17.5 23.5h-9c-1.5-2-5.417-8.673-5.417-8.673a1.2 1.2 0 0 1 1.76-1.605L7.5 15.5zm6-6v2m-3-3.5v3.5m6-1v2"/>
+</svg>
+</div>
+        <a class="floating-header-share-tw" href="https://twitter.com/share?text=Common+UI+Patterns+in+Xamarin.Forms+Part+1+%E2%80%93+Springboards&amp;url=https://kphillpotts.github.io/common-ui-patterns-in-xamarin-forms-part-1-springboards/"
+            onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg>
+
+        </a>
+        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=https://kphillpotts.github.io/common-ui-patterns-in-xamarin-forms-part-1-springboards/"
+            onclick="window.open(this.href, 'share-facebook','width=580,height=296');return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M19 6h5V0h-5c-3.86 0-7 3.14-7 7v3H8v6h4v16h6V16h5l1-6h-6V7c0-.542.458-1 1-1z"/></svg>
+
+        </a>
+    </div>
+    <progress class="progress" value="0">
+        <div class="progress-container">
+            <span class="progress-bar"></span>
+        </div>
+    </progress>
+</div>
+
+
+<!-- /post -->
+
+<!-- The #contentFor helper here will send everything inside it up to the matching #block helper found in default.hbs -->
+
+
+        <!-- Previous/next page links - displayed on every page -->
+        
+
+        <!-- The footer at the very bottom of the screen -->
+        <footer class="site-footer outer">
+            <div class="site-footer-content inner">
+                <section class="copyright"><a href="/">Kym's Blog</a> &copy; 2019</section>
+                <section class="poweredby">Proudly published with <a href="https://jekyllrb.com/">Jekyll</a> &
+                    <a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a> using
+                    <a href="https://github.com/jekyller/jasper2" target="_blank" rel="noopener">Jasper2</a></section>
+                <nav class="site-footer-nav">
+                    <a href="/">Latest Posts</a>
+                    
+                    <a href="https://twitter.com/kphillpotts" target="_blank" rel="noopener">Twitter</a>
+                    <a href="https://ghost.org" target="_blank" rel="noopener">Ghost</a>
+                </nav>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- The big email subscribe modal content -->
+    
+
+    <!-- highlight.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.10.0/components/prism-abap.min.js"></script>
+    <script>$(document).ready(function() {
+      $('pre code').each(function(i, block) {
+        hljs.highlightBlock(block);
+      });
+    });</script>
+
+    <!-- jQuery + Fitvids, which makes all video embeds responsive -->
+    <script
+        src="https://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous">
+    </script>
+    <script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="https://demo.ghost.io/assets/js/jquery.fitvids.js?v=724281a32e"></script>
+
+
+    <!-- Paginator increased to "infinit" in _config.yml -->
+    <!-- if paginator.posts  -->
+    <!-- <script>
+        var maxPages = parseInt('');
+    </script>
+    <script src="/assets/js/infinitescroll.js"></script> -->
+    <!-- /endif -->
+
+    
+
+
+    <!-- Add Google Analytics  -->
+    <!-- Google Analytics Tracking code -->
+ <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-69281367-1', 'auto');
+  ga('send', 'pageview');
+
+ </script>
+
+
+    <!-- The #block helper will pull in data from the #contentFor other template files. In this case, there's some JavaScript which we only want to use in post.hbs, but it needs to be included down here, after jQuery has already loaded. -->
+    
+
+    <!-- Ghost outputs important scripts and data with this tag - it should always be the very last thing before the closing body tag -->
+    <!-- ghost_foot -->
+
+</body>
+</html>

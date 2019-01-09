@@ -1,0 +1,359 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<feed xmlns="http://www.w3.org/2005/Atom" >
+  <generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator>
+  <link href="/tag/patterns/feed.xml" rel="self" type="application/atom+xml" />
+  <link href="/" rel="alternate" type="text/html" />
+  <updated>2019-01-09T23:10:22+01:00</updated>
+  <id>/tag/patterns/feed.xml</id>
+
+  
+  
+  
+
+  
+    <title type="html">Kym’s Blog | </title>
+  
+
+  
+    <subtitle>I write about Azure, Xamarin.Forms, Connected Apps and whatever else might be on my mind.</subtitle>
+  
+
+  
+
+  
+    
+      
+    
+  
+
+  
+  
+
+  
+    <entry>
+      <title type="html">Common UI Patterns in Xamarin.Forms Part 1 – Springboards</title>
+      <link href="/common-ui-patterns-in-xamarin-forms-part-1-springboards/" rel="alternate" type="text/html" title="Common UI Patterns in Xamarin.Forms Part 1 – Springboards" />
+      <published>2015-02-22T23:59:29+01:00</published>
+      <updated>2015-02-22T23:59:29+01:00</updated>
+      <id>/common-ui-patterns-in-xamarin-forms-part-1-springboards</id>
+      <content type="html" xml:base="/common-ui-patterns-in-xamarin-forms-part-1-springboards/">&lt;h1 id=&quot;introduction&quot;&gt;Introduction&lt;/h1&gt;
+
+&lt;p&gt;This is the first post in a series covering Common UI Patterns in Xamarin.Forms. This post will walk through creating one of the most common UI Navigation Patterns, namely the Springboard (sometimes called a Launchpad or Dashboard).&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;h1 id=&quot;springboard-primer&quot;&gt;Springboard Primer&lt;/h1&gt;
+
+&lt;p&gt;So what is a Springboard?  Springboards are characterized by a landing page of menu options (normally buttons with text) that act as a jumping off point into the application.  Typically they are in a grid format, however, the don’t have to. Some options can be proportionately larger to convey greater importance.  Here are some classic examples of Springboard layouts:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://i1.wp.com/res.cloudinary.com/dlstb15av/image/upload/v1506381701/Slide2_dkfjtk.jpg&quot;&gt;&lt;img class=&quot;aligncenter wp-image-5510 size-medium&quot; src=&quot;https://i0.wp.com/res.cloudinary.com/dlstb15av/image/upload/h_394,w_700/v1506381701/Slide2_dkfjtk.jpg?resize=700%2C394&quot; alt=&quot;Slide2&quot; data-recalc-dims=&quot;1&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;whats-to-like-about-springboards&quot;&gt;What’s to like about springboards&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Springboards are OS agnostic.  If you think about it all of the major mobile platforms use Springboards in one way or another to launch apps.  Windows Phone probably takes the customization aspects further than the others, but when you boil it down, it’s still a Springboard.  Have a look at the images below and you’ll see what I mean.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://i2.wp.com/res.cloudinary.com/dlstb15av/image/upload/v1506381700/Slide3_wqc5xp.jpg&quot;&gt;&lt;img class=&quot;aligncenter wp-image-5511 size-medium&quot; src=&quot;https://i0.wp.com/res.cloudinary.com/dlstb15av/image/upload/h_394,w_700/v1506381700/Slide3_wqc5xp.jpg?resize=700%2C394&quot; alt=&quot;Slide3&quot; data-recalc-dims=&quot;1&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Springboards have a high level of user acceptance because we have grown familiar with them and they don’t involve any hidden offscreen elements like you would find with a slide out menu.&lt;/li&gt;
+  &lt;li&gt;Springboards are probably best when displaying a flat information hierarchy where there are several “parts” to the application that don’t necessarily relate to each other.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;whats-not-to-like-about-springboards&quot;&gt;What’s not to like about Springboards&lt;/h3&gt;
+
+&lt;p&gt;Springboards aren’t for everyone though, here are some reasons why they aren’t the cool kids on the block&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt; They are a “navigation first” metaphor.  Meaning, the first thing you see is not content, but rather the user is thrown into the navigation system straight off the bat.&lt;/li&gt;
+  &lt;li&gt;To a certain degree, Springboards imply an understanding of the information hierarchy that the developers / designers have used.  If this isn’t very logical then it will be difficult for users to know which button they should click on.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;implementation-a-springboard-in-xamarinforms&quot;&gt;Implementation a Springboard in Xamarin.Forms&lt;/h1&gt;
+
+&lt;p&gt;There are many ways we could implement a Springboard layout in Xamarin Forms. Some simple, some pretty complex. Obviously what you choose is very dependent on the complexity of your springboard and how complex your solution / app is going to be. Because we are early in this series, lets start simple, very simple. Later on, in another post, we can always come back and beef up the implementation with custom renderers and a nicer architectural model.&lt;/p&gt;
+
+&lt;p&gt;Before we jump in to code, let’s discuss conceptually how we are going to layout the page. The page we are trying to achieve looks like this:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://i2.wp.com/res.cloudinary.com/dlstb15av/image/upload/v1506381702/iOS-Simulator-Screen-Shot-21-Feb-2015-1.16.11-pm_qtchlr.png&quot; target=&quot;_blank&quot;&gt;&lt;img class=&quot; wp-image-5507 alignnone&quot; src=&quot;https://i2.wp.com/res.cloudinary.com/dlstb15av/image/upload/v1506381702/iOS-Simulator-Screen-Shot-21-Feb-2015-1.16.11-pm_qtchlr.png?resize=375%2C667&quot; alt=&quot;iOS Simulator Screen Shot 21 Feb 2015 1.16.11 pm&quot; data-recalc-dims=&quot;1&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt; &lt;/p&gt;
+
+&lt;p&gt;Looking at the page structure, we want a header, an area for the buttons and a footer. It would be possible to implement with a vertical StackLayout, however, because stacklayouts just grow as you add children, it would be difficult to ensure the page lays out correctly.&lt;/p&gt;
+
+&lt;p&gt;So let’s use a grid with 3 rows instead for the main page structure.The first row is the header, the second row is for the buttons and the third row is for the footer. Nice and easy.  Now for the “guts” of the springboard… the buttons.   If we think about springboards, it’s normally just a Grid of buttons, So again let’s use the Grid view to contain our buttons and plonk that in the second row.  Conceptually, its like this:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://i1.wp.com/res.cloudinary.com/dlstb15av/image/upload/v1506381699/Slide4_zgo9ci.jpg&quot;&gt;&lt;img class=&quot;aligncenter wp-image-5514 size-medium&quot; src=&quot;https://i1.wp.com/res.cloudinary.com/dlstb15av/image/upload/h_394,w_700/v1506381699/Slide4_zgo9ci.jpg?resize=700%2C394&quot; alt=&quot;Slide4&quot; data-recalc-dims=&quot;1&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;From there it’s just styling, handling taps and navigation. Enough waffle, let’s create this thing.&lt;/p&gt;
+
+&lt;p&gt; &lt;/p&gt;
+
+&lt;h1 id=&quot;creating-the-project&quot;&gt;Creating the project&lt;/h1&gt;
+
+&lt;p&gt;The first thing we are going to do is create a brand new Xamarin.Forms Portable Solution.&lt;/p&gt;
+
+&lt;p&gt;You will now have a basic Xamarin.Forms Portable solution consisting of three projects.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Springboard&lt;/strong&gt; – This is the actual Xamarin.Forms project which is where all the shared non-platform specific code lives. This is where we will be doing most of our work&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Springboard.Droid&lt;/strong&gt; – Android platform specific project. We will only be using this for image resource files.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Springboard.iOS&lt;/strong&gt; – iOS platform specific project. We will only be using this for image resource files&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;For more information on Xamarin.Forms project structures have a look here at the &lt;a href=&quot;http://developer.xamarin.com/guides/cross-platform/xamarin-forms/introduction-to-xamarin-forms/&quot; target=&quot;_blank&quot;&gt;Xamarin.Forms documentation&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h1 id=&quot;creating-the-basic-page-layout&quot;&gt;Creating the basic page layout&lt;/h1&gt;
+
+&lt;p&gt;We need to add some images to use for our dashboard solution.  Any images will do, but the location you put the images is important for Xamarin.Forms projects.  In a Xamarin.Forms project we add the images into the platform specific projects:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;iOS&lt;/strong&gt; – Place images in the &lt;strong&gt;Resources&lt;/strong&gt; folder with &lt;span class=&quot;UIItem&quot;&gt;Build Action: BundleResource&lt;/span&gt; . Retina versions of the image should also be supplied – twice the resolution with an “@2x” suffix on the filename before the file extension.&lt;/p&gt;
+
+  &lt;p&gt; &lt;/p&gt;
+
+  &lt;p&gt;&lt;strong&gt;Android&lt;/strong&gt; – Place images in the &lt;strong&gt;Resources/drawable&lt;/strong&gt; directory with &lt;span class=&quot;UIItem&quot;&gt;Build Action: AndroidResource&lt;/span&gt; . High- and low-DPI versions of an image can also be supplied (in appropriately named &lt;strong&gt;Resources&lt;/strong&gt;subdirectories such as &lt;strong&gt;drawable-ldpi&lt;/strong&gt; , &lt;strong&gt;drawable-hdpi&lt;/strong&gt; , and &lt;strong&gt;drawable-xhdpi&lt;/strong&gt; ).&lt;/p&gt;
+
+  &lt;p&gt; &lt;/p&gt;
+
+  &lt;p&gt;&lt;strong&gt;Windows Phone&lt;/strong&gt; – Place images in the application’s root directory with &lt;span class=&quot;UIItem&quot;&gt;Build Action: Content&lt;/span&gt; .&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt; &lt;/p&gt;
+
+&lt;p&gt;More information on using images can be found on the Xamarin site &lt;a href=&quot;http://developer.xamarin.com/guides/cross-platform/xamarin-forms/working-with/images/&quot; target=&quot;_blank&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Now we have our project and image resources in place we will want to create our main springboard page under the shared solution “Springboard”. Right click on the shared project, select new and add a new Forms XAML Page called MainSpringboard.xaml&lt;/p&gt;
+
+&lt;p&gt;Here is the XAML for the basic page layout.&lt;/p&gt;
+
+&lt;div class=&quot;gist-oembed&quot; data-gist=&quot;kphillpotts/48ca250c71799b495a5d.json&quot;&gt;
+&lt;/div&gt;
+
+&lt;p&gt;The key points of interest in the xaml are:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;The page layout itself is just a simple 3 row grid containing the header, the body and the footer.  Notice the outer grid has a RowSpacing of 0, this is This is because by default grids put a bit of spacing between rows and columns, but in our case we don’t want that – we want the rows to butt against each other. Also note that the second row is set to fill the available space by using a Height of “*” . The top and bottom rows we have specified a size, but we could also have used a height of “AUTO” if we wanted to do something like space it out for a logo.&lt;/li&gt;
+  &lt;li&gt;We use boxviews to put some colors behind the grids&lt;/li&gt;
+  &lt;li&gt;We have just thrown a label into the header but more than likely you might use an app logo&lt;/li&gt;
+  &lt;li&gt;We have added a 2×2 grid into the middle row to serve as the button grid. Obviously depending on your needs you could use as may rows and columns as you want.&lt;/li&gt;
+  &lt;li&gt;Inside the button grid we have added images controls for the buttons.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Before we can see any of this we have to modify our main app class to actually call our new page. So let’s modify the App class to call our new page.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;public App()
+{
+  // The root page of your application
+  MainPage = new MainSwitchboard();
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Run the application and we’ve got the basic layout looking pretty good.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://i0.wp.com/res.cloudinary.com/dlstb15av/image/upload/v1506381696/Springboard_BasicPageLayout_j9uitz.png&quot; target=&quot;_blank&quot;&gt;&lt;img class=&quot; wp-image-5541 alignnone&quot; src=&quot;https://i0.wp.com/res.cloudinary.com/dlstb15av/image/upload/v1506381696/Springboard_BasicPageLayout_j9uitz.png?resize=325%2C578&quot; alt=&quot;Springboard_BasicPageLayout&quot; data-recalc-dims=&quot;1&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Awesome!&lt;/p&gt;
+
+&lt;p&gt;But we need to put labels under each of those buttons. Unfortunately, we can’t use the standard Xamarin.Forms button control because it only allows putting the text to the right of the image.  A way we could get around this is to use a vertical StackLayout containing an image and a label underneath and replicate this into each button cell.&lt;/p&gt;
+
+&lt;p&gt;Whilst that doesn’t seem like too much overhead, but it’s still a bunch of boilerplate code scattered throughout your page. Also the big problem is you would be replicating style and layout in each button and therefore if you wanted to change the font or something you would have to change it for every button.&lt;/p&gt;
+
+&lt;p&gt;There’s got to be a better way, and of course there is.&lt;/p&gt;
+
+&lt;h1 id=&quot;creating-a-reusable-button-content-view&quot;&gt;Creating a Reusable Button Content View&lt;/h1&gt;
+
+&lt;p&gt;We can create a Content View with a Image and Label which will essentially make a composite user control for us.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;In Xamarin Studio you can just create a new “Forms ContentView Xaml” file in the solution.&lt;/li&gt;
+  &lt;li&gt;In Visual Studio there isn’t this template so you need to create a new “Forms Xaml Page” and then change it from being a ContentPage to a ContentView. You need to do this inside the Xaml file, but also in the code behind of the page.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;So Create a new ContentView Xaml control called SpringboardButton.xaml.  Because we want to be able to set the Image and the Label text for each instance of the button, we need to add some properties for these in the code behind and bind them to the Xaml form.&lt;/p&gt;
+
+&lt;p&gt;Xaml File&lt;/p&gt;
+
+&lt;div class=&quot;gist-oembed&quot; data-gist=&quot;kphillpotts/67f318054ba4e1232c3d.json&quot;&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Code behind&lt;/p&gt;
+
+&lt;div class=&quot;gist-oembed&quot; data-gist=&quot;kphillpotts/677beb933c5509f140e2.json&quot;&gt;
+&lt;/div&gt;
+
+&lt;h1 id=&quot;using-our-new-button-control&quot;&gt;Using our new Button Control&lt;/h1&gt;
+
+&lt;p&gt;Back in the MainSpringboard page, let’s replace our images with instances of our new SpringboardButton.&lt;/p&gt;
+
+&lt;p&gt;In order to reference the new SwitchboardButton control we need to include the namespace into the XAML namespaces at the top of the file. Modify the namespaces to include:&lt;/p&gt;
+
+&lt;p&gt;xmlns:controls=”clr-namespace:Switchboard;assembly=Switchboard”&lt;/p&gt;
+
+&lt;p&gt;Now we can replace our images with the controls, like this:&lt;/p&gt;
+
+&lt;div class=&quot;gist-oembed&quot; data-gist=&quot;kphillpotts/1a219caf2972d759b777.json&quot;&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Run the application and we should be in pretty good shape. And of course as a bonus if we wanted to change the font on all those buttons we could easily do it in just one place.&lt;/p&gt;
+
+&lt;p&gt;You will notice however, that we can’t interact with our buttons. We need to add the ability to respond to taps.&lt;/p&gt;
+
+&lt;h1 id=&quot;handling-taps-on-the-buttons&quot;&gt;Handling Taps on the Buttons&lt;/h1&gt;
+
+&lt;p&gt;Some controls in Xamarin.Forms have Tapped (or clicked) events, but images and labels don’t, and our new composite content view control certainly does not. Fortunately Xamarin.Forms has a concept called GestureRecognizers which you can add to any view to enable handling of tapped events. You can read more about them &lt;a href=&quot;http://developer.xamarin.com/guides/cross-platform/xamarin-forms/working-with/gestures/&quot; target=&quot;_blank&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;In our simple situation we will add a gesture recognizer to each of our buttons which will call a corresponding tapped event in the code behind page.  So in the MainSwitchboard.xaml we expand each button to have a GestureRecognizer that calls a method in the code behind.&lt;/p&gt;
+
+&lt;div class=&quot;gist-oembed&quot; data-gist=&quot;kphillpotts/298803e5c84375197121.json&quot;&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Now let’s make those taps do something.&lt;/p&gt;
+
+&lt;h1 id=&quot;adding-navigation&quot;&gt;Adding Navigation&lt;/h1&gt;
+
+&lt;p&gt;Talking about navigation is a whole post in itself, but we will cover just enough to get this Springboard working.&lt;/p&gt;
+
+&lt;p&gt;Xamarin.Forms has a navigation framework baked in. It has methods to push and pop pages into the navigation stack. However, in order to do this you need to first create that navigation stack. Fortunately all we have to do is surround our first page with a NavigationPage and we are magically given this navigation context.&lt;/p&gt;
+
+&lt;p&gt;So we modify the App Main Page to add a navigation context&lt;/p&gt;
+
+&lt;p&gt;MainPage = new NavigationPage(new MainSwitchboard());&lt;/p&gt;
+
+&lt;p&gt;We need to add page(s) that we want to navigate to. In my case I created 4 simple pages.&lt;/p&gt;
+
+&lt;p&gt;Now we do the modification of the code behind on the MainSpringboard to navigate to those pages, like this:&lt;/p&gt;
+
+&lt;div class=&quot;gist-oembed&quot; data-gist=&quot;kphillpotts/4637ac75a91ceeaf35d6.json&quot;&gt;
+&lt;/div&gt;
+
+&lt;p&gt;If we run the application now, we are pretty much there. Our pages should navigate and we have a functioning switchboard.&lt;/p&gt;
+
+&lt;h1 id=&quot;summary&quot;&gt;Summary&lt;/h1&gt;
+
+&lt;p&gt;So there you have it, a simple implementation of a Springboard page. We covered:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Creating the basic page layout&lt;/li&gt;
+  &lt;li&gt;Creating a reusable control for the buttons&lt;/li&gt;
+  &lt;li&gt;Adding gesture recognizers to the controls&lt;/li&gt;
+  &lt;li&gt;Simple navigation&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt; &lt;/p&gt;
+
+&lt;p&gt;The code for this sample is on Github at &lt;a href=&quot;https://github.com/kphillpotts/XamarinForms-NavigationPatterns&quot; target=&quot;_blank&quot;&gt;https://github.com/kphillpotts/XamarinForms-NavigationPatterns&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Thanks for reading and if you have any questions, comments, or improvements please let me know.&lt;/p&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>Kym</name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="navigation" />
+      
+        <category term="patterns" />
+      
+        <category term="xamarin.forms" />
+      
+
+      
+        <summary type="html">Introduction</summary>
+      
+
+      
+      
+        
+        <media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://res.cloudinary.com/dlstb15av/image/upload/v1506381703/phone_types_dtijhv.jpg" />
+      
+    </entry>
+  
+    <entry>
+      <title type="html">Common UI Patterns in Xamarin.Forms – Part 0</title>
+      <link href="/common-ui-patterns-in-xamarin-forms-part-0/" rel="alternate" type="text/html" title="Common UI Patterns in Xamarin.Forms &amp;#8211; Part 0" />
+      <published>2015-02-12T23:54:16+01:00</published>
+      <updated>2015-02-12T23:54:16+01:00</updated>
+      <id>/common-ui-patterns-in-xamarin-forms-part-0</id>
+      <content type="html" xml:base="/common-ui-patterns-in-xamarin-forms-part-0/">&lt;p&gt;This is the start of a blog mini series about implementing Common UI Patterns in Xamarin.Forms.&lt;/p&gt;
+
+&lt;p&gt;Xamarin.Forms is an incredibly powerful platform to build cross platform mobile apps. I believe that unlike other “write once, run anywhere” style solutions Xamarin.Forms still holds the real promise of creating high performance professional apps. The beauty is that everything actually resolves down to native controls and views, and where required can be tweaked using Custom Renderers and other platform specific tweaks.&lt;/p&gt;
+
+&lt;p&gt;One of the things that attracts me to Xamarin.Forms is the ability to rapidly build solutions but I don’t think this needs to come at the cost of sloppy (or lowest common denominator) interfaces.  I would like to explore the possibilities (and limitations) of Xamarin.Forms by implementing  common mobile UI patterns and designs that I see in popular apps and established patterns.&lt;/p&gt;
+
+&lt;h2 id=&quot;topics&quot;&gt;topics&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;h3 id=&quot;layouts-andnavigation-patterns&quot;&gt;Layouts and Navigation Patterns&lt;/h3&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;Springboard / Launchpads&lt;/li&gt;
+      &lt;li&gt;Lists (vertical, infinite, grouped, text, graphical)&lt;/li&gt;
+      &lt;li&gt;Tabbed Pages&lt;/li&gt;
+      &lt;li&gt;Slide Out Menus (master, detail)&lt;/li&gt;
+      &lt;li&gt;Carousel&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;h3 id=&quot;common-flows--screens&quot;&gt;Common Flows / Screens&lt;/h3&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;Sign in and Registration Flows&lt;/li&gt;
+      &lt;li&gt;Data entry screens&lt;/li&gt;
+      &lt;li&gt;Checkout / shopping&lt;/li&gt;
+      &lt;li&gt;Settings&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;And no doubt heaps more once I get going.  Stay tuned.&lt;/p&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>Kym</name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="design" />
+      
+        <category term="navigation" />
+      
+        <category term="patterns" />
+      
+
+      
+        <summary type="html">This is the start of a blog mini series about implementing Common UI Patterns in Xamarin.Forms.</summary>
+      
+
+      
+      
+        
+        <media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://res.cloudinary.com/dlstb15av/image/upload/v1506381703/phone_types_dtijhv.jpg" />
+      
+    </entry>
+  
+</feed>

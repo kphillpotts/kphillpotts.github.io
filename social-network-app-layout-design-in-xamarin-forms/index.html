@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <!-- Document Settings -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- Base Meta -->
+    <!-- dynamically fixing the title for tag/author pages -->
+
+
+
+    <title>Xamarin.Forms Layout Challenges &#8211; Social Network App</title>
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Styles'n'Scripts -->
+    <link rel="stylesheet" type="text/css" href="/assets/built/screen.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/built/screen.edited.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/built/syntax.css" />
+    <!-- highlight.js -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+    <style>.hljs { background: none; }</style>
+
+    <!--[if IE]>
+        <style>
+            p, ol, ul{
+                width: 100%;
+            }
+            blockquote{
+                width: 100%;
+            }
+        </style>
+    <![endif]-->
+    
+    <!-- This tag outputs SEO meta+structured data and other important settings -->
+    <meta name="description" content="I write about Azure, Xamarin.Forms, Connected Apps and whatever else might be on my mind." />
+    <link rel="shortcut icon" href="/assets/images/favicon.png" type="image/png" />
+    <link rel="canonical" href="/social-network-app-layout-design-in-xamarin-forms/" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+
+     <!--title below is coming from _includes/dynamic_title-->
+    <meta property="og:site_name" content="Kym's Blog" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Xamarin.Forms Layout Challenges &#8211; Social Network App" />
+    <meta property="og:description" content="I write about Azure, Xamarin.Forms, Connected Apps and whatever else might be on my mind." />
+    <meta property="og:url" content="/social-network-app-layout-design-in-xamarin-forms/" />
+    <meta property="og:image" content="/assets/images/covers/layout3.jpg" />
+    <meta property="article:publisher" content="https://www.facebook.com/" />
+    <meta property="article:tag" content="Xamarin" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Xamarin.Forms Layout Challenges &#8211; Social Network App" />
+    <meta name="twitter:description" content="I write about Azure, Xamarin.Forms, Connected Apps and whatever else might be on my mind." />
+    <meta name="twitter:url" content="/" />
+    <meta name="twitter:image" content="/assets/images/covers/layout3.jpg" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="Kym's Blog" />
+    <meta name="twitter:label2" content="Filed under" />
+    <meta name="twitter:data2" content="Xamarin" />
+    <meta name="twitter:site" content="@kphillpotts" />
+    <meta name="twitter:creator" content="@kphillpotts" />
+    <meta property="og:image:width" content="2000" />
+    <meta property="og:image:height" content="666" />
+
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Website",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Kym's Blog",
+        "logo": "/false"
+    },
+    "url": "/social-network-app-layout-design-in-xamarin-forms/",
+    "image": {
+        "@type": "ImageObject",
+        "url": "/assets/images/covers/layout3.jpg",
+        "width": 2000,
+        "height": 666
+    },
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "/social-network-app-layout-design-in-xamarin-forms/"
+    },
+    "description": "I write about Azure, Xamarin.Forms, Connected Apps and whatever else might be on my mind."
+}
+    </script>
+
+    <!-- <script type="text/javascript" src="https://demo.ghost.io/public/ghost-sdk.min.js?v=724281a32e"></script>
+    <script type="text/javascript">
+    ghost.init({
+    	clientId: "ghost-frontend",
+    	clientSecret: "f84a07a72b17"
+    });
+    </script> -->
+
+    <meta name="generator" content="Jekyll 3.6.2" />
+    <link rel="alternate" type="application/rss+xml" title="Xamarin.Forms Layout Challenges &#8211; Social Network App" href="/feed.xml" />
+
+
+</head>
+<body class="post-template">
+
+    <div class="site-wrapper">
+        <!-- All the main content gets inserted here, index.hbs, post.hbs, etc -->
+        <!-- default -->
+
+<!-- The tag above means: insert everything in this file
+into the {body} of the default.hbs template -->
+
+<header class="site-header outer">
+    <div class="inner">
+        <nav class="site-nav">
+    <div class="site-nav-left">
+        
+            
+                <a class="site-nav-logo" href="/">Kym's Blog</a>
+            
+        
+        
+            <ul class="nav" role="menu">
+    <li class="nav-home" role="menuitem"><a href="/">Home</a></li>
+    
+
+
+    <li class="nav-about" role="menuitem"><a href="/about/">About Me</a></li>
+    <li class="nav-xamarin" role="menuitem"><a href="/tag/xamarin/">Xamarin</a></li>
+    <li class="nav-azure" role="menuitem"><a href="/tag/azure/">Azure</a></li>
+
+
+</ul>
+
+        
+    </div>
+    <div class="site-nav-right">
+        <div class="social-links">
+            
+            
+                <a class="social-link social-link-tw" href="https://twitter.com/kphillpotts" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg>
+</a>
+            
+        </div>
+        
+    </div>
+</nav>
+
+    </div>
+</header>
+
+<!-- Everything inside the #post tags pulls data from the post -->
+<!-- #post -->
+
+<main id="site-main" class="site-main outer" role="main">
+    <div class="inner">
+
+        <article class="post-full  ">
+
+            <header class="post-full-header">
+                <section class="post-full-meta">
+                    <time class="post-full-meta-date" datetime=" 5 March 2017"> 5 March 2017</time>
+                    
+                        <span class="date-divider">/</span>
+                        
+                            
+                               <a href='/tag/xamarin/'>XAMARIN</a>
+                            
+                        
+                    
+                </section>
+                <h1 class="post-full-title">Xamarin.Forms Layout Challenges &#8211; Social Network App</h1>
+            </header>
+
+            
+            <figure class="post-full-image" style="background-image: url(/assets/images/covers/layout3.jpg)">
+            </figure>
+            
+
+            <section class="post-full-content">
+                <div class="kg-card-markdown">
+                    <p>Xamarin.Forms is a crazy productive framework for building cross platform apps. However, straight out of the box you might find your User Interfaces are a bit bland. A good understanding of the layout system (and a good graphic designer) are really going to help you make your UI’s awesome. (or at least not suck).<!--more--></p>
+
+<p>So let’s see how to recreate a simple Social Network profile type page in Xamarin.Forms.</p>
+
+<p>There are two challenge ingredients for this app.</p>
+
+<ol>
+  <li>Creating a curved header Image</li>
+  <li>Making a Profile Image that overlaps the header</li>
+</ol>
+
+<p>The design of the app looks a little like this:</p>
+
+<p><img class="size-medium aligncenter" src="https://i0.wp.com/raw.githubusercontent.com/kphillpotts/XamarinFormsLayoutChallenges/master/SocialNetwork/Screenshots/iPhone6-33.png?resize=248%2C440&#038;ssl=1" data-recalc-dims="1" /></p>
+
+<h2 id="basic-layout">Basic Layout</h2>
+
+<p>Grids are my default goto layout container for Xamarin.Forms. They aren’t perfect for every situation, but they do provide:</p>
+
+<ul>
+  <li>Proportional sizing of rows and columns,</li>
+  <li>The ability to overlaying controls within a cell (or multiple cells), and</li>
+  <li>They resize reasonably well by default</li>
+</ul>
+
+<p>All of which make them pretty useful for a range of designs.</p>
+
+<p>The basic structure of the page is a simple Grid with one column and multiple rows. Within the cells are stack layouts for some of the text elements that stack on each other, and to provide the three social stats across the page it has a nested grid with three columns.</p>
+
+<p>Using Xamarin Inspector is a pretty good way of visualising the View Hierarchy.</p>
+
+<p><img class="size-medium aligncenter" src="https://i1.wp.com/raw.githubusercontent.com/kphillpotts/XamarinFormsLayoutChallenges/master/SocialNetwork/Screenshots/Inspector.png?resize=700%2C572&#038;ssl=1" data-recalc-dims="1" /></p>
+
+<h2 id="lets-break-it-down">Let’s break it down</h2>
+
+<p> </p>
+
+<h3 id="header">Header</h3>
+
+<p>The header is just basically an Image that fills the first row of the Grid. To get the curve at the bottom you have a couple of options.</p>
+
+<p><span style="text-decoration: underline;"><strong>Option 1: Pre-made Image</strong></span></p>
+
+<p>You could create your header image with a curve at the bottom like this:</p>
+
+<p><img class="alignnone size-medium" src="https://i0.wp.com/raw.githubusercontent.com/kphillpotts/XamarinFormsLayoutChallenges/master/SocialNetwork/Screenshots/HeaderCurved.png?resize=360%2C200&#038;ssl=1" data-recalc-dims="1" /></p>
+
+<p>The downside of this is that you have to prepare this ahead of time, and may not be appropriate for dynamically loaded images.</p>
+
+<p><span style="text-decoration: underline;"><strong>Option 2: Apply a mask</strong></span></p>
+
+<p>Instead, we can kind of cheat and just add a mask image that lays over the bottom of the background header image. This is the option I went for here because it provides more flexibility. We could for example, have different masks for different OS’s or different Idioms (eg. Phone, Tablet, Desktop). The mask image could be any design you want, but for this I just went for a simple arc, like this (shadow added so you can see the shape).</p>
+
+<p><img class="alignnone size-medium" src="https://i0.wp.com/raw.githubusercontent.com/kphillpotts/XamarinFormsLayoutChallenges/master/SocialNetwork/Screenshots/CurvedMask-sample.png?resize=370%2C50&#038;ssl=1" data-recalc-dims="1" /></p>
+
+<pre class="lang:xhtml decode:true">&lt;!-- header background --&gt;
+&lt;Image Source="HeaderBackground.png" Aspect="AspectFill"/&gt;
+&lt;Image Source="CurvedMask.png" VerticalOptions="End" Aspect="AspectFill" Margin="0,0,0,-1"/&gt;</pre>
+
+<p>It provides a nice effect and the only real downside is that it has to be the same colour as the background. You may notice that there is something slightly hacky in there and that is setting the `Margin` bottom to -1. This is just to cover off some weirdness you might get on different sizes where the background shows underneath (presumably due to rounding errors of the AspectFill). So putting the value to -1 just means it will handle that boundary condition.</p>
+
+<h3 id="profile-image">Profile Image</h3>
+
+<p>The profile image is just a simple graphic, but the trick to get it to overlay the background image is with just a couple of settings.</p>
+
+<pre class="lang:xhtml decode:true ">&lt;Image Source="ProfilePic.png" Margin="0,0,0,-50" HeightRequest="100" WidthRequest="100" HorizontalOptions="Center" VerticalOptions="End"/&gt;</pre>
+
+<ul>
+  <li>Set the `WidthRequest` and `HeightRequest` to a known value (100 in this case)</li>
+  <li>Set the `Margin` to a negative value so that it comes up the page by half of it’s height (50).</li>
+</ul>
+
+<p>And that’s it.</p>
+
+<p>Now I did kind of cheat because I’ve got a precreated image for this sample, but that’s because I just wanted to talk about layout. In a real app, I highly recommend you use the <a href="https://github.com/jamesmontemagno/ImageCirclePlugin">ImageCirclePlugin</a> from James Montemagno, or use the <a href="https://github.com/luberda-molinet/FFImageLoading">FFImageLoading</a> Library and apply a <a href="https://github.com/luberda-molinet/FFImageLoading/wiki/Transformations-Guide#circletransformation">CircleTransformation</a> to the image.</p>
+
+<h3 id="scrollview">ScrollView</h3>
+
+<p>I’ve wrapped the main grid with a ScrollView, this is just so if the page ends up being larger than the screen then you can scroll down to the bottom.</p>
+
+<p>Also there is a ScrollView around the Profile Description. Generally speaking having one ScrollView within another is a no-no, but in this case it’s not really a deal breaker because it is just there to handle the case where the profile description is just a little bit longer and pushes the button off the bottom of the page.</p>
+
+<h2 id="how-does-it-scale">How does it scale?</h2>
+
+<p> </p>
+
+<p>The true test of any page is how does it scale across different sizes, and actually it does pretty well. That’s the magic of grids.</p>
+
+<p><img class="alignnone size-medium" src="https://i0.wp.com/raw.githubusercontent.com/kphillpotts/XamarinFormsLayoutChallenges/master/SocialNetwork/Screenshots/iPhone6-33.png?resize=248%2C440&#038;ssl=1" data-recalc-dims="1" /><img class="alignnone size-medium" src="https://i1.wp.com/raw.githubusercontent.com/kphillpotts/XamarinFormsLayoutChallenges/master/SocialNetwork/Screenshots/iPhone5-33.png?resize=158%2C281&#038;ssl=1" data-recalc-dims="1" /></p>
+
+<h2 id="show-me-the-codez">Show me the codez</h2>
+
+<pre class="lang:xhtml decode:true">&lt;?xml version="1.0" encoding="utf-8" ?&gt;
+&lt;ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:SocialNetwork"
+             x:Class="SocialNetwork.MainPage"
+	BackgroundColor="White"&gt;
+
+    &lt;ScrollView&gt;
+        &lt;Grid ColumnSpacing="0" RowSpacing="0"&gt;
+            &lt;Grid.RowDefinitions&gt;
+                &lt;RowDefinition Height="AUTO" /&gt;
+                &lt;RowDefinition Height="AUTO" /&gt;
+                &lt;RowDefinition Height="AUTO" /&gt;
+                &lt;RowDefinition Height="*" /&gt;
+                &lt;RowDefinition Height="AUTO" /&gt;
+            &lt;/Grid.RowDefinitions&gt;
+
+	    &lt;!-- header background --&gt;
+	    &lt;Image Source="HeaderBackground.png" Aspect="AspectFill"/&gt;
+	    &lt;Image Source="CurvedMask.png" VerticalOptions="End" Aspect="AspectFill" Margin="0,0,0,-1"/&gt;
+
+	    &lt;!-- profile image --&gt;
+	    &lt;Image Source="ProfilePic.png" Margin="0,0,0,-50" HeightRequest="100" WidthRequest="100" HorizontalOptions="Center" VerticalOptions="End"/&gt;
+
+	    &lt;!-- Profile Name --&gt;
+            &lt;StackLayout Grid.Row="1" HorizontalOptions="Center" Padding="0,50,0,00"&gt;
+                &lt;Label HorizontalTextAlignment="Center" Text="Clementine" Style="{StaticResource ProfileNameLabel}"/&gt;
+                &lt;Label HorizontalTextAlignment="Center" Text="Hipster Coffee Drinker" Margin="0,-5" Style="{StaticResource ProfileTagLabel}"/&gt;
+            &lt;/StackLayout&gt;
+
+	    &lt;!-- Social Stats Section --&gt;
+            &lt;Grid Grid.Row="2" ColumnSpacing="0" RowSpacing="0" Margin="0,30"&gt;
+                &lt;Grid.ColumnDefinitions&gt;
+                    &lt;ColumnDefinition Width="*" /&gt;
+                    &lt;ColumnDefinition Width="*" /&gt;
+                    &lt;ColumnDefinition Width="*" /&gt;
+                &lt;/Grid.ColumnDefinitions&gt;
+
+                &lt;StackLayout&gt;
+                	&lt;Label Text="33" Style="{StaticResource StatsNumberLabel}"/&gt;
+         		&lt;Label Text="Likes" Style="{StaticResource StatsCaptionLabel}"/&gt;
+		&lt;/StackLayout&gt;
+
+	        &lt;StackLayout Grid.Column="1"&gt;
+                	&lt;Label Text="94" Style="{StaticResource StatsNumberLabel}"/&gt;
+         		&lt;Label Text="Following" Style="{StaticResource StatsCaptionLabel}"/&gt;
+		&lt;/StackLayout&gt;
+
+	        &lt;StackLayout Grid.Column="2"&gt;
+                	&lt;Label Text="957" Style="{StaticResource StatsNumberLabel}"/&gt;
+         		&lt;Label Text="Followers" Style="{StaticResource StatsCaptionLabel}"/&gt;
+		&lt;/StackLayout&gt;
+           &lt;/Grid&gt;
+
+	   &lt;!-- profile description --&gt;
+	   &lt;ScrollView Grid.Row="3"&gt;
+            	&lt;Label Margin="20,0" HorizontalTextAlignment="Center" Style="{StaticResource MainBodyLabel}" 
+				Text="Spicy jalapeno bacon ipsum dolor amet pork loin pork sint sed occaecat swine ham capicola deserunt pork belly frankfurter magna drumstick." /&gt;
+           &lt;/ScrollView&gt;
+
+           &lt;!-- follow button --&gt;
+           &lt;Button Grid.Row="4" Text="Follow" Margin="20" VerticalOptions="End" Style="{StaticResource FollowButton}"/&gt;
+
+        &lt;/Grid&gt;
+    &lt;/ScrollView&gt;
+&lt;/ContentPage&gt;</pre>
+
+<p> </p>
+
+<h2 id="a-little-bit-of-style">A little bit of Style</h2>
+
+<p> </p>
+
+<p>You’ll notice that I use Styles throughout the page. This is really important so you are hard coding values all around the place. The basic structure of my ResourceDictionary is normally something like:</p>
+
+<pre class="lang:xhtml decode:true ">&lt;!-- Application resource dictionary --&gt;
+&lt;ResourceDictionary&gt;
+    &lt;!-- colors --&gt;
+    &lt;!-- font families --&gt;
+    &lt;!-- fonts --&gt;
+    &lt;!-- styles --&gt;
+&lt;/ResourceDictionary&gt;</pre>
+
+<p> </p>
+
+<h3 id="colors">Colors</h3>
+
+<p>First I specify the colors I use throughout the system. Of course, this makes it nice and easy to change later on.</p>
+
+<pre class="lang:xhtml decode:true ">&lt;!-- colors --&gt;
+&lt;Color x:Key="HeaderTextColor"&gt;#585858&lt;/Color&gt;
+&lt;Color x:Key="BodyTextColor"&gt;#C3C3C3&lt;/Color&gt;
+&lt;Color x:Key="ButtonBackgroundColor"&gt;#5992FF&lt;/Color&gt;</pre>
+
+<p> </p>
+
+<h3 id="font-families">Font Families</h3>
+
+<p>Specifying font families for each platform allow me to specify the base fonts used for different weights and on different platforms. This makes it dead simple to change the fonts across the application if required.</p>
+
+<pre class="lang:xhtml decode:true ">&lt;!-- font families --&gt;
+&lt;OnPlatform x:Key="RegularFontFamily" x:TypeArguments="x:String"
+            iOS="HelveticaNeue"
+            Android="sans-serif" /&gt;
+&lt;OnPlatform x:Key="LightFontFamily" x:TypeArguments="x:String"
+            iOS="HelveticaNeue-Light"
+            Android="sans-serif-light" /&gt;
+&lt;OnPlatform x:Key="MediumFontFamily" x:TypeArguments="x:String"
+            iOS="HelveticaNeue-Medium"
+            Android="sans-serif-medium" /&gt;</pre>
+
+<p> </p>
+
+<h3 id="fonts">Fonts</h3>
+
+<p>Specifying the fonts allows me to create basic font types which incorporate FontSize and FontFamily, which references the font families already defined in resource dictionary.</p>
+
+<pre class="lang:xhtml decode:true ">&lt;!-- fonts --&gt;
+&lt;Font x:Key="TitleFont" FontSize="20" FontFamily="{StaticResource MediumFontFamily}" /&gt;
+&lt;Font x:Key="BodyFont" FontSize="18" FontFamily="{StaticResource RegularFontFamily}" /&gt;
+&lt;Font x:Key="TagTextFont" FontSize="18" FontFamily="{StaticResource RegularFontFamily}" /&gt;
+&lt;Font x:Key="StatsNumberFont" FontSize="20" FontFamily="{StaticResource LightFontFamily}" /&gt;
+&lt;Font x:Key="StatsCaptionFont" FontSize="16" FontFamily="{StaticResource LightFontFamily}" /&gt;
+&lt;Font x:Key="ButtonFont" FontSize="14" FontFamily="{StaticResource MediumFontFamily}" /&gt;</pre>
+
+<p> </p>
+
+<h3 id="styles">Styles</h3>
+
+<p>And finally we have the styles, these are the various styles for elements I want to use throughout the application. This basically brings together colours and Fonts into styles which I can apply to my elements.</p>
+
+<pre class="lang:xhtml decode:true ">&lt;!-- Styles --&gt;
+&lt;Style x:Key="ProfileNameLabel" TargetType="Label"&gt;
+    &lt;Setter Property="TextColor" Value="{StaticResource HeaderTextColor}" /&gt;
+    &lt;Setter Property="Font" Value="{StaticResource TitleFont}" /&gt;
+&lt;/Style&gt;
+
+&lt;Style x:Key="ProfileTagLabel" TargetType="Label"&gt;
+    &lt;Setter Property="TextColor" Value="{StaticResource BodyTextColor}" /&gt;
+    &lt;Setter Property="Font" Value="{StaticResource TagTextFont}" /&gt;
+&lt;/Style&gt;
+
+&lt;Style x:Key="StatsNumberLabel" TargetType="Label"&gt;
+    &lt;Setter Property="TextColor" Value="{StaticResource HeaderTextColor}" /&gt;
+    &lt;Setter Property="HorizontalTextAlignment" Value="Center"/&gt;
+    &lt;Setter Property="Font" Value="{StaticResource StatsNumberFont}" /&gt;
+&lt;/Style&gt;
+
+&lt;Style x:Key="StatsCaptionLabel" TargetType="Label"&gt;
+    &lt;Setter Property="TextColor" Value="{StaticResource BodyTextColor}" /&gt;
+    &lt;Setter Property="Margin" Value="0,-5,0,0"/&gt;
+    &lt;Setter Property="HorizontalTextAlignment" Value="Center"/&gt;
+    &lt;Setter Property="Font" Value="{StaticResource StatsCaptionFont}" /&gt;
+&lt;/Style&gt;
+
+&lt;Style x:Key="MainBodyLabel" TargetType="Label"&gt;
+    &lt;Setter Property="TextColor" Value="{StaticResource BodyTextColor}" /&gt;
+    &lt;Setter Property="Font" Value="{StaticResource BodyFont}" /&gt;
+&lt;/Style&gt;
+
+&lt;Style x:Key="FollowButton" TargetType="Button"&gt;
+    &lt;Setter Property="BackgroundColor" Value="{StaticResource ButtonBackgroundColor}"/&gt;
+    &lt;Setter Property="TextColor" Value="White"/&gt;
+    &lt;Setter Property="HeightRequest" Value="40"/&gt;
+    &lt;Setter Property="BorderRadius" Value="20"/&gt;
+    &lt;Setter Property="Font" Value="{StaticResource ButtonFont}"/&gt;
+&lt;/Style&gt;</pre>
+
+<p> </p>
+
+<h2 id="more-to-come">More to come</h2>
+
+<p> </p>
+
+<p>So that’s a a quick sample of how to do a pretty common layout in Xamarin.Forms with grids and some overlapping elements. Always remember, there are lots of different ways we could achieve the same layout, but this what sprang to mind.</p>
+
+<p>I’ve got a whole series of layouts I’ll be posting over the comming weeks to show different layout techniques and ideas.</p>
+
+<p>As YouTubers would say: “let me know in the comments if you liked this” 🙂 Also, If you have any layouts that you thing would be interesting to cover, just let me know.</p>
+
+<p>Oh yeah, and you can grab the project over at <a href="https://github.com/kphillpotts/XamarinFormsLayoutChallenges">https://github.com/kphillpotts/XamarinFormsLayoutChallenges</a></p>
+
+<p>Happy Layouts!</p>
+
+                </div>
+            </section>
+
+            <!-- Email subscribe form at the bottom of the page -->
+            
+
+            <footer class="post-full-footer">
+                <!-- Everything inside the #author tags pulls data from the author -->
+                <!-- #author-->
+                
+                    
+                        <section class="author-card">
+                            
+                                <img class="author-profile-image" src="/assets/images/kphillpotts.jpg" alt="kphillpotts" />
+                            
+                            <section class="author-card-content">
+                                <h4 class="author-card-name"><a href="/author/kphillpotts">Kym Phillpotts</a></h4>
+                                
+                                    <p>Geek, Parent, Human, Xamarin University Instructor. Co-curator of http://weeklyxamarin.com  and twitch streaming live coding at http://twitch.tv/kphillpotts</p>
+                                
+                            </section>
+                        </section>
+                        <div class="post-full-footer-right">
+                            <a class="author-card-button" href="/author/kphillpotts">Read More</a>
+                        </div>
+                    
+                
+                <!-- /author  -->
+            </footer>
+
+            <!-- If you use Disqus comments, just uncomment this block.
+            The only thing you need to change is "test-apkdzgmqhj" - which
+            should be replaced with your own Disqus site-id. -->
+            
+
+        </article>
+
+    </div>
+</main>
+
+<!-- Links to Previous/Next posts -->
+<aside class="read-next outer">
+    <div class="inner">
+        <div class="read-next-feed">
+            
+                
+                
+                
+                
+                    <article class="read-next-card"
+                        
+                            style="background-image: url(/assets/images/blog-cover.jpg)"
+                        
+                    >
+                        <header class="read-next-card-header">
+                            <small class="read-next-card-header-sitetitle">&mdash; Kym's Blog &mdash;</small>
+                            
+                                <h3 class="read-next-card-header-title"><a href="/tag/xamarin/">Xamarin</a></h3>
+                            
+                        </header>
+                        <div class="read-next-divider"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 14.5s2 3 5 3 5.5-2.463 5.5-5.5S21 6.5 18 6.5c-5 0-7 11-12 11C2.962 17.5.5 15.037.5 12S3 6.5 6 6.5s4.5 3.5 4.5 3.5"/></svg>
+</div>
+                        <div class="read-next-card-content">
+                            <ul>
+                                
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/5907-2/">Microsoft //Build/ Recap for Xamarin Developers</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/simple-animation-with-xamarin-forms/">Simple Animation with Xamarin.Forms</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/fastscroll-and-sectionindexer-in-xamarin-forms-listview/">FastScroll and SectionIndexer in Xamarin.Forms ListView</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                            </ul>
+                        </div>
+                        <footer class="read-next-card-footer">
+                            <a href="/tag/xamarin/">
+                                
+                                    See all 7 posts  →
+                                
+                            </a>
+                        </footer>
+                    </article>
+                
+            
+
+            <!-- If there's a next post, display it using the same markup included from - partials/post-card.hbs -->
+            
+                
+    <article class="post-card post-template">
+        
+            <a class="post-card-image-link" href="/xamarin-forms-layout-challenges-timeline/">
+                <div class="post-card-image" style="background-image: url(/assets/images/covers/layout2.jpg)"></div>
+            </a>
+        
+        <div class="post-card-content">
+            <a class="post-card-content-link" href="/xamarin-forms-layout-challenges-timeline/">
+                <header class="post-card-header">
+                    
+                        
+                            
+                                <span class="post-card-tags">Xamarin</span>
+                            
+                        
+                    
+
+                    <h2 class="post-card-title">Xamarin.Forms Layout Challenges &#8211; Timeline</h2>
+                </header>
+                <section class="post-card-excerpt">
+                    <p>A layout I’m seeing more and more these days is a timeline of activities.  This is useful for things like transportation schedules or class times.  So let’s put together a simple layout for</p>
+                </section>
+            </a>
+            <footer class="post-card-meta">
+                
+                    
+                        
+                        <img class="author-profile-image" src="/assets/images/kphillpotts.jpg" alt="Kym Phillpotts" />
+                        
+                        <span class="post-card-author">
+                            <a href="/author/kphillpotts/">Kym Phillpotts</a>
+                        </span>
+                    
+                
+            </footer>
+        </div>
+    </article>
+
+            
+
+            <!-- If there's a previous post, display it using the same markup included from - partials/post-card.hbs -->
+            
+                
+    <article class="post-card post-template">
+        
+            <a class="post-card-image-link" href="/staying-up-to-date-with-xamarin-development/">
+                <div class="post-card-image" style="background-image: url(/assets/images/covers/time.jpg)"></div>
+            </a>
+        
+        <div class="post-card-content">
+            <a class="post-card-content-link" href="/staying-up-to-date-with-xamarin-development/">
+                <header class="post-card-header">
+                    
+                        
+                            
+                                <span class="post-card-tags">Xamarin</span>
+                            
+                        
+                    
+
+                    <h2 class="post-card-title">Staying Up To Date with Xamarin Development</h2>
+                </header>
+                <section class="post-card-excerpt">
+                    <p>Xamarin development is booming and as with any great technology, things change fast and you&#8217;ll want to keep up to date with the latest news and releases. Xamarin has such a wonderful, thriving</p>
+                </section>
+            </a>
+            <footer class="post-card-meta">
+                
+                    
+                        
+                        <img class="author-profile-image" src="/assets/images/kphillpotts.jpg" alt="Kym Phillpotts" />
+                        
+                        <span class="post-card-author">
+                            <a href="/author/kphillpotts/">Kym Phillpotts</a>
+                        </span>
+                    
+                
+            </footer>
+        </div>
+    </article>
+
+            
+
+        </div>
+    </div>
+</aside>
+
+<!-- Floating header which appears on-scroll, included from includes/floating-header.hbs -->
+<div class="floating-header">
+    <div class="floating-header-logo">
+        <a href="/">
+            
+            <span>Kym's Blog</span>
+        </a>
+    </div>
+    <span class="floating-header-divider">&mdash;</span>
+    <div class="floating-header-title">Xamarin.Forms Layout Challenges &#8211; Social Network App</div>
+    <div class="floating-header-share">
+        <div class="floating-header-share-label">Share this <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M7.5 15.5V4a1.5 1.5 0 1 1 3 0v4.5h2a1 1 0 0 1 1 1h2a1 1 0 0 1 1 1H18a1.5 1.5 0 0 1 1.5 1.5v3.099c0 .929-.13 1.854-.385 2.748L17.5 23.5h-9c-1.5-2-5.417-8.673-5.417-8.673a1.2 1.2 0 0 1 1.76-1.605L7.5 15.5zm6-6v2m-3-3.5v3.5m6-1v2"/>
+</svg>
+</div>
+        <a class="floating-header-share-tw" href="https://twitter.com/share?text=Xamarin.Forms+Layout+Challenges+%26%238211%3B+Social+Network+App&amp;url=https://kphillpotts.github.io/social-network-app-layout-design-in-xamarin-forms/"
+            onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg>
+
+        </a>
+        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=https://kphillpotts.github.io/social-network-app-layout-design-in-xamarin-forms/"
+            onclick="window.open(this.href, 'share-facebook','width=580,height=296');return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M19 6h5V0h-5c-3.86 0-7 3.14-7 7v3H8v6h4v16h6V16h5l1-6h-6V7c0-.542.458-1 1-1z"/></svg>
+
+        </a>
+    </div>
+    <progress class="progress" value="0">
+        <div class="progress-container">
+            <span class="progress-bar"></span>
+        </div>
+    </progress>
+</div>
+
+
+<!-- /post -->
+
+<!-- The #contentFor helper here will send everything inside it up to the matching #block helper found in default.hbs -->
+
+
+        <!-- Previous/next page links - displayed on every page -->
+        
+
+        <!-- The footer at the very bottom of the screen -->
+        <footer class="site-footer outer">
+            <div class="site-footer-content inner">
+                <section class="copyright"><a href="/">Kym's Blog</a> &copy; 2019</section>
+                <section class="poweredby">Proudly published with <a href="https://jekyllrb.com/">Jekyll</a> &
+                    <a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a> using
+                    <a href="https://github.com/jekyller/jasper2" target="_blank" rel="noopener">Jasper2</a></section>
+                <nav class="site-footer-nav">
+                    <a href="/">Latest Posts</a>
+                    
+                    <a href="https://twitter.com/kphillpotts" target="_blank" rel="noopener">Twitter</a>
+                    <a href="https://ghost.org" target="_blank" rel="noopener">Ghost</a>
+                </nav>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- The big email subscribe modal content -->
+    
+
+    <!-- highlight.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.10.0/components/prism-abap.min.js"></script>
+    <script>$(document).ready(function() {
+      $('pre code').each(function(i, block) {
+        hljs.highlightBlock(block);
+      });
+    });</script>
+
+    <!-- jQuery + Fitvids, which makes all video embeds responsive -->
+    <script
+        src="https://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous">
+    </script>
+    <script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="https://demo.ghost.io/assets/js/jquery.fitvids.js?v=724281a32e"></script>
+
+
+    <!-- Paginator increased to "infinit" in _config.yml -->
+    <!-- if paginator.posts  -->
+    <!-- <script>
+        var maxPages = parseInt('');
+    </script>
+    <script src="/assets/js/infinitescroll.js"></script> -->
+    <!-- /endif -->
+
+    
+
+
+    <!-- Add Google Analytics  -->
+    <!-- Google Analytics Tracking code -->
+ <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-69281367-1', 'auto');
+  ga('send', 'pageview');
+
+ </script>
+
+
+    <!-- The #block helper will pull in data from the #contentFor other template files. In this case, there's some JavaScript which we only want to use in post.hbs, but it needs to be included down here, after jQuery has already loaded. -->
+    
+        <script>
+
+// NOTE: Scroll performance is poor in Safari
+// - this appears to be due to the events firing much more slowly in Safari.
+//   Dropping the scroll event and using only a raf loop results in smoother
+//   scrolling but continuous processing even when not scrolling
+$(document).ready(function () {
+    // Start fitVids
+    var $postContent = $(".post-full-content");
+    $postContent.fitVids();
+    // End fitVids
+
+    var progressBar = document.querySelector('progress');
+    var header = document.querySelector('.floating-header');
+    var title = document.querySelector('.post-full-title');
+
+    var lastScrollY = window.scrollY;
+    var lastWindowHeight = window.innerHeight;
+    var lastDocumentHeight = $(document).height();
+    var ticking = false;
+
+    function onScroll() {
+        lastScrollY = window.scrollY;
+        requestTick();
+    }
+
+    function onResize() {
+        lastWindowHeight = window.innerHeight;
+        lastDocumentHeight = $(document).height();
+        requestTick();
+    }
+
+    function requestTick() {
+        if (!ticking) {
+            requestAnimationFrame(update);
+        }
+        ticking = true;
+    }
+
+    function update() {
+        var trigger = title.getBoundingClientRect().top + window.scrollY;
+        var triggerOffset = title.offsetHeight + 35;
+        var progressMax = lastDocumentHeight - lastWindowHeight;
+
+        // show/hide floating header
+        if (lastScrollY >= trigger + triggerOffset) {
+            header.classList.add('floating-active');
+        } else {
+            header.classList.remove('floating-active');
+        }
+
+        progressBar.setAttribute('max', progressMax);
+        progressBar.setAttribute('value', lastScrollY);
+
+        ticking = false;
+    }
+
+    window.addEventListener('scroll', onScroll, {passive: true});
+    window.addEventListener('resize', onResize, false);
+
+    update();
+});
+</script>
+
+    
+
+    <!-- Ghost outputs important scripts and data with this tag - it should always be the very last thing before the closing body tag -->
+    <!-- ghost_foot -->
+
+</body>
+</html>

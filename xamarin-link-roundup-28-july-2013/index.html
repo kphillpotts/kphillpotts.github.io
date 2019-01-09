@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <!-- Document Settings -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- Base Meta -->
+    <!-- dynamically fixing the title for tag/author pages -->
+
+
+
+    <title>Xamarin Link Roundup &#8211; 28 July 2013</title>
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Styles'n'Scripts -->
+    <link rel="stylesheet" type="text/css" href="/assets/built/screen.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/built/screen.edited.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/built/syntax.css" />
+    <!-- highlight.js -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+    <style>.hljs { background: none; }</style>
+
+    <!--[if IE]>
+        <style>
+            p, ol, ul{
+                width: 100%;
+            }
+            blockquote{
+                width: 100%;
+            }
+        </style>
+    <![endif]-->
+    
+    <!-- This tag outputs SEO meta+structured data and other important settings -->
+    <meta name="description" content="I write about Azure, Xamarin.Forms, Connected Apps and whatever else might be on my mind." />
+    <link rel="shortcut icon" href="/assets/images/favicon.png" type="image/png" />
+    <link rel="canonical" href="/xamarin-link-roundup-28-july-2013/" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+
+     <!--title below is coming from _includes/dynamic_title-->
+    <meta property="og:site_name" content="Kym's Blog" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Xamarin Link Roundup &#8211; 28 July 2013" />
+    <meta property="og:description" content="I write about Azure, Xamarin.Forms, Connected Apps and whatever else might be on my mind." />
+    <meta property="og:url" content="/xamarin-link-roundup-28-july-2013/" />
+    <meta property="og:image" content="/assets/images/blog-cover.jpg" />
+    <meta property="article:publisher" content="https://www.facebook.com/" />
+    <meta property="article:tag" content="Xamarin" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Xamarin Link Roundup &#8211; 28 July 2013" />
+    <meta name="twitter:description" content="I write about Azure, Xamarin.Forms, Connected Apps and whatever else might be on my mind." />
+    <meta name="twitter:url" content="/" />
+    <meta name="twitter:image" content="/assets/images/blog-cover.jpg" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="Kym's Blog" />
+    <meta name="twitter:label2" content="Filed under" />
+    <meta name="twitter:data2" content="Xamarin" />
+    <meta name="twitter:site" content="@kphillpotts" />
+    <meta name="twitter:creator" content="@kphillpotts" />
+    <meta property="og:image:width" content="2000" />
+    <meta property="og:image:height" content="666" />
+
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Website",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Kym's Blog",
+        "logo": "/false"
+    },
+    "url": "/xamarin-link-roundup-28-july-2013/",
+    "image": {
+        "@type": "ImageObject",
+        "url": "/assets/images/blog-cover.jpg",
+        "width": 2000,
+        "height": 666
+    },
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "/xamarin-link-roundup-28-july-2013/"
+    },
+    "description": "I write about Azure, Xamarin.Forms, Connected Apps and whatever else might be on my mind."
+}
+    </script>
+
+    <!-- <script type="text/javascript" src="https://demo.ghost.io/public/ghost-sdk.min.js?v=724281a32e"></script>
+    <script type="text/javascript">
+    ghost.init({
+    	clientId: "ghost-frontend",
+    	clientSecret: "f84a07a72b17"
+    });
+    </script> -->
+
+    <meta name="generator" content="Jekyll 3.6.2" />
+    <link rel="alternate" type="application/rss+xml" title="Xamarin Link Roundup &#8211; 28 July 2013" href="/feed.xml" />
+
+
+</head>
+<body class="home-template">
+
+    <div class="site-wrapper">
+        <!-- All the main content gets inserted here, index.hbs, post.hbs, etc -->
+        <!-- default -->
+
+<!-- The tag above means: insert everything in this file
+into the {body} of the default.hbs template -->
+
+<header class="site-header outer">
+    <div class="inner">
+        <nav class="site-nav">
+    <div class="site-nav-left">
+        
+            
+                <a class="site-nav-logo" href="/">Kym's Blog</a>
+            
+        
+        
+    </div>
+    <div class="site-nav-right">
+        <div class="social-links">
+            
+            
+                <a class="social-link social-link-tw" href="https://twitter.com/kphillpotts" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg>
+</a>
+            
+        </div>
+        
+    </div>
+</nav>
+
+    </div>
+</header>
+
+<!-- Everything inside the #post tags pulls data from the post -->
+<!-- #post -->
+
+<main id="site-main" class="site-main outer" role="main">
+    <div class="inner">
+
+        <article class="post-full  no-image">
+
+            <header class="post-full-header">
+                <section class="post-full-meta">
+                    <time class="post-full-meta-date" datetime="28 July 2013">28 July 2013</time>
+                    
+                        <span class="date-divider">/</span>
+                        
+                            
+                               <a href='/tag/xamarin/'>XAMARIN</a>
+                            
+                        
+                    
+                </section>
+                <h1 class="post-full-title">Xamarin Link Roundup &#8211; 28 July 2013</h1>
+            </header>
+
+            
+
+            <section class="post-full-content">
+                <div class="kg-card-markdown">
+                    <p>It’s been a big week in Xamarin world. So many fantastic links flying around the interwebs.  Here’s a selection of things I’ve seen this week that took my fancy.<!--more--></p>
+
+<h2 id="the-news">The News</h2>
+
+<ul>
+  <li>
+    <p><a href="http://blog.xamarin.com/major-upgrades-to-xamarin%E2%80%99s-platform-async-is-here/" target="_blank">Major upgrades to Xamarin’s platform: Async is here</a> – Miguel de Icaza.</p>
+
+    <p>As they say, the await is finally over.  Also there is a good series of videos on Channel 9 called <a href="http://channel9.msdn.com/Series/Three-Essential-Tips-for-Async" target="_blank">Three Essential Tips for Async</a> that is worth a watch – not Xamarin specific but some good tips none-the-less.</p>
+  </li>
+  <li><a href="http://blog.xamarin.com/xamarin.mobile-new-improved-and-open-sourced/" target="_blank">Xamarin.Mobile: new, improved and open-sourced</a> – Craig Dunn. They also open-sourcing Xamarin.Social, Xamarin.Mobile and Xamarin.Auth</li>
+  <li>The <a href="http://monkeyspace.org/" target="_blank">Monkey Space conference </a>was on.  Wish I could have been there.  Oh well, there is always next year.  According to their twitter account, <a href="http://vimeo.com/monkeysquare" target="_blank">videos of this years sessions will start being posted here</a>.</li>
+  <li><span style="line-height: 19.5px;"><a href="http://www.digitaltrends.com/mobile/dropbox-datastore-features/" target="_blank">Can Dropbox succeed where iCloud has failed?</a> – Andy Boxall, Digital Trends<br /> </span></li>
+</ul>
+
+<h2 id="cool-code">Cool Code</h2>
+
+<ul>
+  <li><span style="line-height: 13px;"><a href="https://github.com/patridge/PDRating" target="_blank">PDRating – A Xamarin Control for ratings</a> – Adam Patridge. (coming to the component store soon by the sound of it)</span></li>
+  <li><a href="http://www.gregshackles.com/2013/05/building-a-real-time-photo-gallery-with-xamarin-signalr-azure-and-webapi/" target="_blank">Building a Real-Time Photo Gallery with Xamarin, SignalR, Azure, and WebAPI</a> – Greg Shackles. Check out how sweet this is!</li>
+  <li><a href="http://www.toptensoftware.com/xibfree/" target="_blank">XibFree – A lightweight, code-only layout engine for Xamarin.iOS </a> – topten software</li>
+  <li><a href="http://blog.bluetubeinteractive.com/2013/07/memory-management-pitfalls-in-xamarin-ios-pitfall-2.html" target="_blank">Memory Management Pitfalls in Xamarin.iOS – Pitfall 2</a> – Bluetube Blog</li>
+  <li><a href="https://github.com/xpaulbettsx/refit" target="_blank">Refit: The automatic type-safe REST library for Xamarin and .NET</a> – Paul Betts</li>
+  <li><a href="http://blog.xamarin.com/hello-mr.-bond_agent_watch/" target="_blank">Hello, Mr. Bond; Hacking the Agent Watch with Xamarin.Android</a> – Bryan Costanich</li>
+  <li><a href="http://slodge.blogspot.co.uk/2013/07/playing-with-constraints.html?m=1" target="_blank">Playing with Constraints – FluentConstraints and FluentLayouts for Xamarin.iOS</a> – Stuart Lodge</li>
+  <li><a href="http://visualstudiomagazine.com/articles/2013/06/01/how-to-use-google-maps-for-ios.aspx?m=1" target="_blank">Create a MapView in Google Maps for iOS</a> – Wallace McClure. <a href="http://visualstudiomagazine.com/articles/2013/07/01/mapping-and-location-with-mono-for-android.aspx?m=1" target="_blank">Also check his Android edition</a></li>
+  <li><a href="http://redth.info/Auto-Wire-Up-Views-Xamarin-Activity/" target="_blank">How to Auto Wire Up Android Activity Views in Xamarin.Android</a> – Red</li>
+</ul>
+
+<h2 id="tips-and-techniques">Tips and Techniques</h2>
+
+<ul>
+  <li><a href="http://blogs.infosupport.com/tips-on-code-sharing-with-partial-classes-and-methods/" target="_blank">Tips on code sharing with Partial classes and methods</a> – Marcel de Vries</li>
+  <li><a href="http://www.knowing.net/index.php/2013/07/17/using-extension-methods-on-a-c-interface-to-enable-dci-in-xamarin/" target="_blank">Using Extension Methods on a C# Interface to Enable DCI in Xamarin</a> – Larry O’Brien</li>
+  <li><span style="line-height: 13px;"><a href="http://thirteendaysaweek.com/2013/04/11/missing-svn-support-in-xamarin-studio/" target="_blank">Missing SVN Support in Xamarin Studio</a> – Christopher House<br /> </span></li>
+  <li><a href="http://blog.westmonroepartners.com/cross-platform-native-mobile-apps/" target="_blank">Cross-Platform Native Mobile Apps</a> – John Sprunger</li>
+  <li><a href="http://rolfkvinge.blogspot.com.es/2012/04/native-crashes-in-monotouch.html?m=1" target="_blank">Native crashes in MonoTouch</a> – Rolf Vinge</li>
+</ul>
+
+<h2 id="xamarin-stories">Xamarin Stories</h2>
+
+<ul>
+  <li><span style="line-height: 13px;"><a href="http://eggmoonstudio.com/making-scope-nights-with-xamarin/" target="_blank">Making Scope Nights: Astronomy Weather Reports with Xamarin</a> – Egg Moon Studios<br /> </span></li>
+  <li>From Zero to Xamarin – <a href="http://welltechnically.com/?p=544" target="_blank">Part 0</a>, <a href="http://welltechnically.com/?p=556" target="_blank">Part 1</a>, <a href="http://welltechnically.com/?p=562" target="_blank">Part 2</a>, <a href="http://welltechnically.com/?p=661" target="_blank">Part 3</a> – Kym Phillpotts, Well Technically Blog (shameless self promotion)</li>
+</ul>
+
+<h2 id="design--inspiration">Design &amp; Inspiration</h2>
+
+<ul>
+  <li><span style="line-height: 13px;"><a href="http://www.youtube.com/watch?v=VIX5yE-7Leg&amp;feature=youtu.be" target="_blank">Video of a sweet looking Clear-Like UI impelmented in Xamarin and MonoTouch.Dialog</a>.  – Egor Bykov</span></li>
+  <li><a href="http://www.enriqueaguilarvargas.com/2013/07/crear-menu-lateral-para-ios-con.html" target="_blank">Create Side Menu with Xamarin iOS FlyoutComponent Studio</a> – Enrique Aguilar Vargas – video in spanish</li>
+  <li><a href="http://placeit.breezi.com/" target="_blank">Create great images of your app in flight with Placit</a> – pretty cool tool for mock usage screenshots</li>
+  <li><a href="http://iosfonts.com/" target="_blank">iOS Fonts</a> – Shows the system fonts for various iOS versions</li>
+  <li><a href="http://www.idev101.com/code/User_Interface/sizes.html" target="_blank">Sizes of iPhone UI Elements</a> – quick reference guide to iPhone UI elements for Retina and Non Retina displays</li>
+  <li><a href="http://pttrns.com" target="_blank">Pttrns – Mobile User Interface Patterns</a> – Lots of great looking UI’s for inspiration</li>
+  <li><a href="http://www.mobile-patterns.com/" target="_blank">Mobile Patterns</a> – Even more UI Inspiration</li>
+  <li><a href="http://kintek.com.au/blog/portkit-ux-metaphor-equivalents-for-ios-and-android/" target="_blank">PortKit: UX Metaphor Equivalents for iOS &amp; Android</a></li>
+  <li><a href="http://www.androiduipatterns.com/2013/06/donts-of-android-design.html" target="_blank">Don’ts of Android design</a></li>
+  <li><a href="http://www.ijailbreak.com/news/ios-6-vs-ios-7-ui-view-comparison-infographic/" target="_blank">iOS 6 vs iOS 7 UI View Comparison Infographic</a></li>
+</ul>
+
+<h2 id="other-random-googlings">Other random Googlings</h2>
+
+<p>These are just other posts I came acorss throughout the week whilst working on my current project</p>
+
+<ul>
+  <li><span style="line-height: 13px;"><a href="http://stackoverflow.com/questions/15739820/can-entryelement-be-readonly-on-monotouch-dialog" target="_blank">Can EntryElement be readonly on Monotouch.Dialog?</a> – StackOverflow<br /> </span></li>
+  <li><a href="http://stackoverflow.com/questions/3838336/iphone-system-font" target="_blank">Getting the iPhone System Font</a> – StackOverflow.  Not strictly Xamarin code, but shows how cool it is that the Xamarin wrappers mirror native APIs</li>
+  <li><a href="http://docs.xamarin.com/recipes/ios/standard_controls/fonts/enumerate_fonts" target="_blank">Enumerating fonts available in iOS</a> – Xamarin Documentation</li>
+  <li><a href="http://blog.xamarin.com/custom-fonts-in-ios/" target="_blank">Using custom Fonts in Xamarin.iOS</a> – Michael James, Xamrin Blog</li>
+  <li><a href="http://forums.xamarin.com/discussion/2917/advanced-custom-styling-in-xamarin-ios" target="_blank">Advanced custom styling in Xamarin.iOS</a> – Forum post on Xamarin</li>
+  <li><a href="http://blog.xamarin.com/third-party-libraries-with-monotouch-and-mono-for-android/" target="_blank">Third Party Libraries with MonoTouch and Mono for Android</a> – Chris Hardy, Xamarin Blog</li>
+  <li>Getting a Nexus 4 to work for Xamarin deployment – <a href="http://stackoverflow.com/questions/14005176/adb-not-recognising-nexus-4-under-windows-7" target="_blank">ADB not recognising Nexus 4 under Windows 7</a> and <a href="http://www.androidcentral.com/how-enable-developer-settings-android-42" target="_blank">How to enable developer settings on Android 4.2</a></li>
+</ul>
+
+<address>
+  <em>If you have any suggestions, comments or resources please let me know&#8230; either in the comments or via twitter <a href="https://twitter.com/kphillpotts" target="_blank">@kphillpotts</a></em>
+</address>
+
+                </div>
+            </section>
+
+            <!-- Email subscribe form at the bottom of the page -->
+            
+
+            <footer class="post-full-footer">
+                <!-- Everything inside the #author tags pulls data from the author -->
+                <!-- #author-->
+                
+                    
+                
+                <!-- /author  -->
+            </footer>
+
+            <!-- If you use Disqus comments, just uncomment this block.
+            The only thing you need to change is "test-apkdzgmqhj" - which
+            should be replaced with your own Disqus site-id. -->
+            
+
+        </article>
+
+    </div>
+</main>
+
+<!-- Links to Previous/Next posts -->
+<aside class="read-next outer">
+    <div class="inner">
+        <div class="read-next-feed">
+            
+                
+                
+                
+                
+                    <article class="read-next-card"
+                        
+                            style="background-image: url(/assets/images/blog-cover.jpg)"
+                        
+                    >
+                        <header class="read-next-card-header">
+                            <small class="read-next-card-header-sitetitle">&mdash; Kym's Blog &mdash;</small>
+                            
+                                <h3 class="read-next-card-header-title"><a href="/tag/xamarin/">Xamarin</a></h3>
+                            
+                        </header>
+                        <div class="read-next-divider"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 14.5s2 3 5 3 5.5-2.463 5.5-5.5S21 6.5 18 6.5c-5 0-7 11-12 11C2.962 17.5.5 15.037.5 12S3 6.5 6 6.5s4.5 3.5 4.5 3.5"/></svg>
+</div>
+                        <div class="read-next-card-content">
+                            <ul>
+                                
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/xamarin-link-roundup-11-may-2016/">Xamarin Link Roundup &#8211; 11 May 2016</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/xamarin-link-roundup-29-december-2015/">Xamarin Link Roundup &#8211; 29 December 2015</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/emacs-key-mappings-for-xamarin-studio-on-mac/">Emacs key mappings for Xamarin Studio on Mac</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                            </ul>
+                        </div>
+                        <footer class="read-next-card-footer">
+                            <a href="/tag/xamarin/">
+                                
+                                    See all 16 posts  →
+                                
+                            </a>
+                        </footer>
+                    </article>
+                
+            
+
+            <!-- If there's a next post, display it using the same markup included from - partials/post-card.hbs -->
+            
+                
+    <article class="post-card  no-image">
+        
+        <div class="post-card-content">
+            <a class="post-card-content-link" href="/xamarin-link-roundup-6-aug-2013/">
+                <header class="post-card-header">
+                    
+                        
+                            
+                                <span class="post-card-tags">Xamarin</span>
+                            
+                        
+                    
+
+                    <h2 class="post-card-title">Xamarin Link Roundup &#8211; 6 Aug 2013</h2>
+                </header>
+                <section class="post-card-excerpt">
+                    <p>News Introducing the Google Play Services Component for Xamarin.Android Frameworks PlayScript is an open source Adobe ActionScript compatible compiler and Flash compatible runtime that runs in the Mono .NET environment, targeting mobile devices</p>
+                </section>
+            </a>
+            <footer class="post-card-meta">
+                
+                    
+                
+            </footer>
+        </div>
+    </article>
+
+            
+
+            <!-- If there's a previous post, display it using the same markup included from - partials/post-card.hbs -->
+            
+                
+    <article class="post-card  no-image">
+        
+        <div class="post-card-content">
+            <a class="post-card-content-link" href="/from-zero-to-xamarin-part-3-first-week-in-the-trenches/">
+                <header class="post-card-header">
+                    
+                        
+                            
+                                <span class="post-card-tags">Xamarin</span>
+                            
+                        
+                    
+
+                    <h2 class="post-card-title">From Zero to Xamarin &#8211; Part 3 &#8211; First week in the trenches</h2>
+                </header>
+                <section class="post-card-excerpt">
+                    <p>We finished up our first week of  “real” coding using Xamarin.  By real I mean, actually working on (what we hope will be) production code.  So I thought I’d post up some thoughts</p>
+                </section>
+            </a>
+            <footer class="post-card-meta">
+                
+                    
+                
+            </footer>
+        </div>
+    </article>
+
+            
+
+        </div>
+    </div>
+</aside>
+
+<!-- Floating header which appears on-scroll, included from includes/floating-header.hbs -->
+<div class="floating-header">
+    <div class="floating-header-logo">
+        <a href="/">
+            
+            <span>Kym's Blog</span>
+        </a>
+    </div>
+    <span class="floating-header-divider">&mdash;</span>
+    <div class="floating-header-title">Xamarin Link Roundup &#8211; 28 July 2013</div>
+    <div class="floating-header-share">
+        <div class="floating-header-share-label">Share this <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M7.5 15.5V4a1.5 1.5 0 1 1 3 0v4.5h2a1 1 0 0 1 1 1h2a1 1 0 0 1 1 1H18a1.5 1.5 0 0 1 1.5 1.5v3.099c0 .929-.13 1.854-.385 2.748L17.5 23.5h-9c-1.5-2-5.417-8.673-5.417-8.673a1.2 1.2 0 0 1 1.76-1.605L7.5 15.5zm6-6v2m-3-3.5v3.5m6-1v2"/>
+</svg>
+</div>
+        <a class="floating-header-share-tw" href="https://twitter.com/share?text=Xamarin+Link+Roundup+%26%238211%3B+28+July+2013&amp;url=https://kphillpotts.github.io/xamarin-link-roundup-28-july-2013/"
+            onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg>
+
+        </a>
+        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=https://kphillpotts.github.io/xamarin-link-roundup-28-july-2013/"
+            onclick="window.open(this.href, 'share-facebook','width=580,height=296');return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M19 6h5V0h-5c-3.86 0-7 3.14-7 7v3H8v6h4v16h6V16h5l1-6h-6V7c0-.542.458-1 1-1z"/></svg>
+
+        </a>
+    </div>
+    <progress class="progress" value="0">
+        <div class="progress-container">
+            <span class="progress-bar"></span>
+        </div>
+    </progress>
+</div>
+
+
+<!-- /post -->
+
+<!-- The #contentFor helper here will send everything inside it up to the matching #block helper found in default.hbs -->
+
+
+        <!-- Previous/next page links - displayed on every page -->
+        
+
+        <!-- The footer at the very bottom of the screen -->
+        <footer class="site-footer outer">
+            <div class="site-footer-content inner">
+                <section class="copyright"><a href="/">Kym's Blog</a> &copy; 2019</section>
+                <section class="poweredby">Proudly published with <a href="https://jekyllrb.com/">Jekyll</a> &
+                    <a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a> using
+                    <a href="https://github.com/jekyller/jasper2" target="_blank" rel="noopener">Jasper2</a></section>
+                <nav class="site-footer-nav">
+                    <a href="/">Latest Posts</a>
+                    
+                    <a href="https://twitter.com/kphillpotts" target="_blank" rel="noopener">Twitter</a>
+                    <a href="https://ghost.org" target="_blank" rel="noopener">Ghost</a>
+                </nav>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- The big email subscribe modal content -->
+    
+
+    <!-- highlight.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.10.0/components/prism-abap.min.js"></script>
+    <script>$(document).ready(function() {
+      $('pre code').each(function(i, block) {
+        hljs.highlightBlock(block);
+      });
+    });</script>
+
+    <!-- jQuery + Fitvids, which makes all video embeds responsive -->
+    <script
+        src="https://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous">
+    </script>
+    <script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="https://demo.ghost.io/assets/js/jquery.fitvids.js?v=724281a32e"></script>
+
+
+    <!-- Paginator increased to "infinit" in _config.yml -->
+    <!-- if paginator.posts  -->
+    <!-- <script>
+        var maxPages = parseInt('');
+    </script>
+    <script src="/assets/js/infinitescroll.js"></script> -->
+    <!-- /endif -->
+
+    
+
+
+    <!-- Add Google Analytics  -->
+    <!-- Google Analytics Tracking code -->
+ <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-69281367-1', 'auto');
+  ga('send', 'pageview');
+
+ </script>
+
+
+    <!-- The #block helper will pull in data from the #contentFor other template files. In this case, there's some JavaScript which we only want to use in post.hbs, but it needs to be included down here, after jQuery has already loaded. -->
+    
+
+    <!-- Ghost outputs important scripts and data with this tag - it should always be the very last thing before the closing body tag -->
+    <!-- ghost_foot -->
+
+</body>
+</html>

@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <!-- Document Settings -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- Base Meta -->
+    <!-- dynamically fixing the title for tag/author pages -->
+
+
+
+    <title>Xamarin and Android – Specific Solutions to Specific Problems #2</title>
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Styles'n'Scripts -->
+    <link rel="stylesheet" type="text/css" href="/assets/built/screen.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/built/screen.edited.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/built/syntax.css" />
+    <!-- highlight.js -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+    <style>.hljs { background: none; }</style>
+
+    <!--[if IE]>
+        <style>
+            p, ol, ul{
+                width: 100%;
+            }
+            blockquote{
+                width: 100%;
+            }
+        </style>
+    <![endif]-->
+    
+    <!-- This tag outputs SEO meta+structured data and other important settings -->
+    <meta name="description" content="I write about Azure, Xamarin.Forms, Connected Apps and whatever else might be on my mind." />
+    <link rel="shortcut icon" href="/assets/images/favicon.png" type="image/png" />
+    <link rel="canonical" href="/xamarin-and-android-specific-solutions-to-specific-problems-2/" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+
+     <!--title below is coming from _includes/dynamic_title-->
+    <meta property="og:site_name" content="Kym's Blog" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Xamarin and Android – Specific Solutions to Specific Problems #2" />
+    <meta property="og:description" content="I write about Azure, Xamarin.Forms, Connected Apps and whatever else might be on my mind." />
+    <meta property="og:url" content="/xamarin-and-android-specific-solutions-to-specific-problems-2/" />
+    <meta property="og:image" content="/assets/images/blog-cover.jpg" />
+    <meta property="article:publisher" content="https://www.facebook.com/" />
+    <meta property="article:tag" content="Android" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Xamarin and Android – Specific Solutions to Specific Problems #2" />
+    <meta name="twitter:description" content="I write about Azure, Xamarin.Forms, Connected Apps and whatever else might be on my mind." />
+    <meta name="twitter:url" content="/" />
+    <meta name="twitter:image" content="/assets/images/blog-cover.jpg" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="Kym's Blog" />
+    <meta name="twitter:label2" content="Filed under" />
+    <meta name="twitter:data2" content="Android" />
+    <meta name="twitter:site" content="@kphillpotts" />
+    <meta name="twitter:creator" content="@kphillpotts" />
+    <meta property="og:image:width" content="2000" />
+    <meta property="og:image:height" content="666" />
+
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Website",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Kym's Blog",
+        "logo": "/false"
+    },
+    "url": "/xamarin-and-android-specific-solutions-to-specific-problems-2/",
+    "image": {
+        "@type": "ImageObject",
+        "url": "/assets/images/blog-cover.jpg",
+        "width": 2000,
+        "height": 666
+    },
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "/xamarin-and-android-specific-solutions-to-specific-problems-2/"
+    },
+    "description": "I write about Azure, Xamarin.Forms, Connected Apps and whatever else might be on my mind."
+}
+    </script>
+
+    <!-- <script type="text/javascript" src="https://demo.ghost.io/public/ghost-sdk.min.js?v=724281a32e"></script>
+    <script type="text/javascript">
+    ghost.init({
+    	clientId: "ghost-frontend",
+    	clientSecret: "f84a07a72b17"
+    });
+    </script> -->
+
+    <meta name="generator" content="Jekyll 3.6.2" />
+    <link rel="alternate" type="application/rss+xml" title="Xamarin and Android – Specific Solutions to Specific Problems #2" href="/feed.xml" />
+
+
+</head>
+<body class="home-template">
+
+    <div class="site-wrapper">
+        <!-- All the main content gets inserted here, index.hbs, post.hbs, etc -->
+        <!-- default -->
+
+<!-- The tag above means: insert everything in this file
+into the {body} of the default.hbs template -->
+
+<header class="site-header outer">
+    <div class="inner">
+        <nav class="site-nav">
+    <div class="site-nav-left">
+        
+            
+                <a class="site-nav-logo" href="/">Kym's Blog</a>
+            
+        
+        
+    </div>
+    <div class="site-nav-right">
+        <div class="social-links">
+            
+            
+                <a class="social-link social-link-tw" href="https://twitter.com/kphillpotts" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg>
+</a>
+            
+        </div>
+        
+    </div>
+</nav>
+
+    </div>
+</header>
+
+<!-- Everything inside the #post tags pulls data from the post -->
+<!-- #post -->
+
+<main id="site-main" class="site-main outer" role="main">
+    <div class="inner">
+
+        <article class="post-full  no-image">
+
+            <header class="post-full-header">
+                <section class="post-full-meta">
+                    <time class="post-full-meta-date" datetime=" 9 September 2013"> 9 September 2013</time>
+                    
+                        <span class="date-divider">/</span>
+                        
+                            
+                               <a href='/tag/android/'>ANDROID</a>,
+                            
+                        
+                            
+                               <a href='/tag/xamarin/'>XAMARIN</a>
+                            
+                        
+                    
+                </section>
+                <h1 class="post-full-title">Xamarin and Android – Specific Solutions to Specific Problems #2</h1>
+            </header>
+
+            
+
+            <section class="post-full-content">
+                <div class="kg-card-markdown">
+                    <p>Welcome to the second post in my <strong><em>Specific Solutions to Specific Problems</em></strong> series. Hopefully somebody is getting some benefit out of these but even if nobody is reading it, the process is pretty cathartic anyway…</p>
+
+<p>These are a handful of issues that I encountered in my second week on Monodroid. These are the solutions I discovered to my problems.</p>
+
+<!--more-->
+
+<p><strong>1. When I am loading a ListView, how do I show a loading message before I actually fill the element with items?</strong></p>
+
+<p>There’s a few ways to do this. One choice is to use an entirely different list adapter while loading which will give you the most control over the look and feel of the UI elements. The other solution which I use regularly is to use the android-empty-id-view and set the list view source to an empty list while loading.</p>
+
+<p>The list view and associated empty view look like the following. Remember to set the visibility of the empty view element to <strong><em>gone</em></strong>. Android will take care of showing or hiding the element at the correct times:</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>[syntax type=”html</td>
+      <td>php</td>
+      <td>js</td>
+      <td>css”]</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>&lt;ListView android:id=”@+id/drugs_list” android:layout_width=”fill_parent” android:layout_below=”@+id/patientName” android:layout_height=”wrap_content” /&gt;</p>
+
+<p>&lt;TextView android:id=”@+id/empty” android:text=”No drugs found” android:layout_width=”fill_parent” android:layout_height=”120dp” android:layout_below=”@+id/patientName” android:gravity=”center” android:visibility=”gone” /&gt;</p>
+
+<p>[/syntax]</p>
+
+<p>In order to show the empty view I simply assign the list adapter with an empty collection. This will cause Android to show the empty view with the text “Loading items…”:</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>[syntax type=”html</td>
+      <td>php</td>
+      <td>js</td>
+      <td>css”]</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>var itemsList = FindViewById<ListView>(Resource.Id.items_list);</ListView></p>
+
+<p>var emptyTextView = FindViewById<TextView>(Resource.Id.empty);</TextView></p>
+
+<p>emptyTextView.Text = “Loading items…”;</p>
+
+<p>itemsList.EmptyView = _emptyTextView;</p>
+
+<p>itemsList.Adapter = new MyListAdapter(this, new List<Item>());</Item></p>
+
+<p>// Perform some long running operation to get items</p>
+
+<p>var items = await ItemService.GetAllItems();</p>
+
+<p>itemsList.Adapter = new MyListAdapter(this, items);</p>
+
+<p>// Set empty to no drugs in case items.Count == 0</p>
+
+<p>emptyTextView.Text = “No items found”;</p>
+
+<p>[/syntax]</p>
+
+<p>After I execute my long running operation to retrieve the data I set adapter again with the new collection. I also set the empty view message to be “No items found” so if necessary the system can actually show the existence of an empty view.</p>
+
+<p><strong>2. Every time I debug or deploy my application from Visual Studio I lose all of the application state on the device. How do I deploy without losing my state?</strong></p>
+
+<p>The application we are developing stores state in an SQL Lite database. Every time I debugged or deployed the application, the state would be wiped and the program would insist it was being run for the first time. In order to tell Xamarin to not wipe the state every time I checked the following option under <strong><em>Tools &gt; Options &gt; Xamarin &gt; Android Settings:</em></strong></p>
+
+<p><a href="https://i0.wp.com/welltechnically.com/wp-content/uploads/2013/09/fastdeploy.png"><img src="https://i2.wp.com/welltechnically.com/wp-content/uploads/2013/09/fastdeploy-300x174.png?resize=300%2C174" alt="fastdeploy" class="alignnone size-medium wp-image-3151" data-recalc-dims="1" /></a>{.lightbox}</p>
+
+<p>Once this setting is checked the application state won’t be reset between debugging sessions. In order to reset the state I simply uninstall the app and the next deployment will have a fresh start.</p>
+
+<p><strong>3. I seem to be using the exact same code everywhere to show a progress dialog. Can I work some lambda and func magic so I can have a reusable piece of logic that I call throughout the application?</strong></p>
+
+<p>No problem. I have created a static function that returns a Task so I can await on it. It takes the alert title, the message and an awaitable Func representing the long running operation.</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>[syntax type=”html</td>
+      <td>php</td>
+      <td>js</td>
+      <td>css”]</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>async public static Task ShowProgressDialog(Context context, string title, string message, Func func)</p>
+
+<p>{</p>
+
+<p>using (ProgressDialog progressDialog = ProgressDialog.Show(context, title, message, true))</p>
+
+<p>{</p>
+
+<p>try</p>
+
+<p>{</p>
+
+<p>await func.Invoke();</p>
+
+<p>}</p>
+
+<p>finally</p>
+
+<p>{</p>
+
+<p>// Now hide the progress dialog</p>
+
+<p>progressDialog.Dismiss();</p>
+
+<p>}</p>
+
+<p>}</p>
+
+<p>}</p>
+
+<p>[/syntax]</p>
+
+<p>I would then call this like so:</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>[syntax type=”html</td>
+      <td>php</td>
+      <td>js</td>
+      <td>css”]</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>await AppHelper.ShowProgressDialog(this,</p>
+
+<p>“Please wait…”,</p>
+
+<p>“Logging in…”,</p>
+
+<p>async () =&gt; await auth.LoginUser(authInfo));</p>
+
+<p>[/syntax]</p>
+
+<p>I use this throughout the application and there is no need to repeat the same boiler plate code everywhere I want to show a progress dialog.</p>
+
+<p><strong>4. When I use a custom theme to change the window title any progress dialogs I create look like they have no theme applied. How can I force a progress dialog to use a specific theme?</strong></p>
+
+<p>We have several activities where I have re-defined the style to have a custom title bar. When I show a progress dialog from these activities the dialog will not be Holo and instead appear as if no theme has been applied. I found several posts that suggested the use of a <strong><em>ContextThemeWrapper</em></strong>:</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>[syntax type=”html</td>
+      <td>php</td>
+      <td>js</td>
+      <td>css”]</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Context dialogContext = new ContextThemeWrapper(this, AlertDialog.ThemeHoloDark);</p>
+
+<p>ProgressDialog dialog = ProgressDialog.Show(dialogContext, “Important…”, “Logging in…”, true);</p>
+
+<p>[/syntax]</p>
+
+<p>I couldn’t get this to work as expected however and instead I had to instantiate a ProgressDialog as the constructor allows for the specification of a theme. When I updated the static method I had created earlier, it looked like this:</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>[syntax type=”html</td>
+      <td>php</td>
+      <td>js</td>
+      <td>css”]</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>async public static Task ShowProgressDialog(Context context, string title, string message, Func<Task> func)</Task></p>
+
+<p>{</p>
+
+<p>using (ProgressDialog progressDialog = new ProgressDialog(context, AlertDialog.ThemeHoloDark))</p>
+
+<p>{</p>
+
+<p>progressDialog.Indeterminate = true;</p>
+
+<p>progressDialog.SetTitle(title);</p>
+
+<p>progressDialog.SetMessage(message);</p>
+
+<p>progressDialog.Show();</p>
+
+<p>try</p>
+
+<p>{</p>
+
+<p>await func.Invoke();</p>
+
+<p>}</p>
+
+<p>finally</p>
+
+<p>{</p>
+
+<p>// Now hide the progress dialog</p>
+
+<p>progressDialog.Dismiss();</p>
+
+<p>}</p>
+
+<p>}</p>
+
+<p>}</p>
+
+<p>[/syntax]</p>
+
+<p>The progress dialog now has the Holo Dark theme applied to it everywhere in the application that I use this function from.</p>
+
+                </div>
+            </section>
+
+            <!-- Email subscribe form at the bottom of the page -->
+            
+
+            <footer class="post-full-footer">
+                <!-- Everything inside the #author tags pulls data from the author -->
+                <!-- #author-->
+                
+                    
+                
+                <!-- /author  -->
+            </footer>
+
+            <!-- If you use Disqus comments, just uncomment this block.
+            The only thing you need to change is "test-apkdzgmqhj" - which
+            should be replaced with your own Disqus site-id. -->
+            
+
+        </article>
+
+    </div>
+</main>
+
+<!-- Links to Previous/Next posts -->
+<aside class="read-next outer">
+    <div class="inner">
+        <div class="read-next-feed">
+            
+                
+                
+                
+                
+                    <article class="read-next-card"
+                        
+                            style="background-image: url(/assets/images/blog-cover.jpg)"
+                        
+                    >
+                        <header class="read-next-card-header">
+                            <small class="read-next-card-header-sitetitle">&mdash; Kym's Blog &mdash;</small>
+                            
+                                <h3 class="read-next-card-header-title"><a href="/tag/android/">Android</a></h3>
+                            
+                        </header>
+                        <div class="read-next-divider"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 14.5s2 3 5 3 5.5-2.463 5.5-5.5S21 6.5 18 6.5c-5 0-7 11-12 11C2.962 17.5.5 15.037.5 12S3 6.5 6 6.5s4.5 3.5 4.5 3.5"/></svg>
+</div>
+                        <div class="read-next-card-content">
+                            <ul>
+                                
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/xamarin-link-roundup-11-may-2016/">Xamarin Link Roundup &#8211; 11 May 2016</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/xamarin-ibeacons-and-geofencing-some-resources/">Xamarin, iBeacons and Geofencing &#8211; Some Resources</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/xamarin-and-android-specific-solutions-to-specific-problems-3-3/">Xamarin and Android – Specific Solutions to Specific Problems #3</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                            </ul>
+                        </div>
+                        <footer class="read-next-card-footer">
+                            <a href="/tag/android/">
+                                
+                                    See all 3 posts  →
+                                
+                            </a>
+                        </footer>
+                    </article>
+                
+            
+
+            <!-- If there's a next post, display it using the same markup included from - partials/post-card.hbs -->
+            
+                
+    <article class="post-card  no-image">
+        
+        <div class="post-card-content">
+            <a class="post-card-content-link" href="/xamarin-and-android-specific-solutions-to-specific-problems-3-3/">
+                <header class="post-card-header">
+                    
+                        
+                            
+                               <span class="post-card-tags">Android</span>
+                            
+                        
+                            
+                                <span class="post-card-tags">Xamarin</span>
+                            
+                        
+                    
+
+                    <h2 class="post-card-title">Xamarin and Android – Specific Solutions to Specific Problems #3</h2>
+                </header>
+                <section class="post-card-excerpt">
+                    <p>Welcome to another installment in my series exploring the specific problems that nearly beat me this week. I write these on Sunday night after a huge week of balancing my work and fatherly</p>
+                </section>
+            </a>
+            <footer class="post-card-meta">
+                
+                    
+                
+            </footer>
+        </div>
+    </article>
+
+            
+
+            <!-- If there's a previous post, display it using the same markup included from - partials/post-card.hbs -->
+            
+                
+    <article class="post-card  no-image">
+        
+        <div class="post-card-content">
+            <a class="post-card-content-link" href="/xamarin-and-android-specific-solutions-to-specific-problems-1-2/">
+                <header class="post-card-header">
+                    
+
+                    <h2 class="post-card-title">Xamarin and Android &#8211; Specific Solutions to Specific Problems #1</h2>
+                </header>
+                <section class="post-card-excerpt">
+                    <p>At our company, I am the soul that has been tasked with doing our Android development. We have chosen to use Xamarin for this and as I race up the learning curve, I</p>
+                </section>
+            </a>
+            <footer class="post-card-meta">
+                
+                    
+                
+            </footer>
+        </div>
+    </article>
+
+            
+
+        </div>
+    </div>
+</aside>
+
+<!-- Floating header which appears on-scroll, included from includes/floating-header.hbs -->
+<div class="floating-header">
+    <div class="floating-header-logo">
+        <a href="/">
+            
+            <span>Kym's Blog</span>
+        </a>
+    </div>
+    <span class="floating-header-divider">&mdash;</span>
+    <div class="floating-header-title">Xamarin and Android – Specific Solutions to Specific Problems #2</div>
+    <div class="floating-header-share">
+        <div class="floating-header-share-label">Share this <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M7.5 15.5V4a1.5 1.5 0 1 1 3 0v4.5h2a1 1 0 0 1 1 1h2a1 1 0 0 1 1 1H18a1.5 1.5 0 0 1 1.5 1.5v3.099c0 .929-.13 1.854-.385 2.748L17.5 23.5h-9c-1.5-2-5.417-8.673-5.417-8.673a1.2 1.2 0 0 1 1.76-1.605L7.5 15.5zm6-6v2m-3-3.5v3.5m6-1v2"/>
+</svg>
+</div>
+        <a class="floating-header-share-tw" href="https://twitter.com/share?text=Xamarin+and+Android+%E2%80%93+Specific+Solutions+to+Specific+Problems+%232&amp;url=https://kphillpotts.github.io/xamarin-and-android-specific-solutions-to-specific-problems-2/"
+            onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg>
+
+        </a>
+        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=https://kphillpotts.github.io/xamarin-and-android-specific-solutions-to-specific-problems-2/"
+            onclick="window.open(this.href, 'share-facebook','width=580,height=296');return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M19 6h5V0h-5c-3.86 0-7 3.14-7 7v3H8v6h4v16h6V16h5l1-6h-6V7c0-.542.458-1 1-1z"/></svg>
+
+        </a>
+    </div>
+    <progress class="progress" value="0">
+        <div class="progress-container">
+            <span class="progress-bar"></span>
+        </div>
+    </progress>
+</div>
+
+
+<!-- /post -->
+
+<!-- The #contentFor helper here will send everything inside it up to the matching #block helper found in default.hbs -->
+
+
+        <!-- Previous/next page links - displayed on every page -->
+        
+
+        <!-- The footer at the very bottom of the screen -->
+        <footer class="site-footer outer">
+            <div class="site-footer-content inner">
+                <section class="copyright"><a href="/">Kym's Blog</a> &copy; 2019</section>
+                <section class="poweredby">Proudly published with <a href="https://jekyllrb.com/">Jekyll</a> &
+                    <a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a> using
+                    <a href="https://github.com/jekyller/jasper2" target="_blank" rel="noopener">Jasper2</a></section>
+                <nav class="site-footer-nav">
+                    <a href="/">Latest Posts</a>
+                    
+                    <a href="https://twitter.com/kphillpotts" target="_blank" rel="noopener">Twitter</a>
+                    <a href="https://ghost.org" target="_blank" rel="noopener">Ghost</a>
+                </nav>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- The big email subscribe modal content -->
+    
+
+    <!-- highlight.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.10.0/components/prism-abap.min.js"></script>
+    <script>$(document).ready(function() {
+      $('pre code').each(function(i, block) {
+        hljs.highlightBlock(block);
+      });
+    });</script>
+
+    <!-- jQuery + Fitvids, which makes all video embeds responsive -->
+    <script
+        src="https://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous">
+    </script>
+    <script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="https://demo.ghost.io/assets/js/jquery.fitvids.js?v=724281a32e"></script>
+
+
+    <!-- Paginator increased to "infinit" in _config.yml -->
+    <!-- if paginator.posts  -->
+    <!-- <script>
+        var maxPages = parseInt('');
+    </script>
+    <script src="/assets/js/infinitescroll.js"></script> -->
+    <!-- /endif -->
+
+    
+
+
+    <!-- Add Google Analytics  -->
+    <!-- Google Analytics Tracking code -->
+ <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-69281367-1', 'auto');
+  ga('send', 'pageview');
+
+ </script>
+
+
+    <!-- The #block helper will pull in data from the #contentFor other template files. In this case, there's some JavaScript which we only want to use in post.hbs, but it needs to be included down here, after jQuery has already loaded. -->
+    
+
+    <!-- Ghost outputs important scripts and data with this tag - it should always be the very last thing before the closing body tag -->
+    <!-- ghost_foot -->
+
+</body>
+</html>

@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<feed xmlns="http://www.w3.org/2005/Atom" >
+  <generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator>
+  <link href="/tag/properties/feed.xml" rel="self" type="application/atom+xml" />
+  <link href="/" rel="alternate" type="text/html" />
+  <updated>2019-01-09T23:10:22+01:00</updated>
+  <id>/tag/properties/feed.xml</id>
+
+  
+  
+  
+
+  
+    <title type="html">Kym’s Blog | </title>
+  
+
+  
+    <subtitle>I write about Azure, Xamarin.Forms, Connected Apps and whatever else might be on my mind.</subtitle>
+  
+
+  
+
+  
+    
+      
+    
+  
+
+  
+  
+
+  
+    <entry>
+      <title type="html">Exploring Xamarin.Forms 1.3: Properties Dictionary</title>
+      <link href="/exploring-xamarin-forms-1-3-properties-dictionary/" rel="alternate" type="text/html" title="Exploring Xamarin.Forms 1.3: Properties Dictionary" />
+      <published>2015-01-31T16:33:29+01:00</published>
+      <updated>2015-01-31T16:33:29+01:00</updated>
+      <id>/exploring-xamarin-forms-1-3-properties-dictionary</id>
+      <content type="html" xml:base="/exploring-xamarin-forms-1-3-properties-dictionary/">&lt;p&gt;Xamarin.Forms 1.3 includes a tidy little way to do simple state persistence between app restarts and when suspending/resuming.  Particularly useful if you want to take the user back to their location if the application gets suspended or terminated. This is done through &lt;strong&gt;Application.Current.Properties.&lt;/strong&gt;&lt;!--more--&gt;&lt;/p&gt;
+
+&lt;p&gt;It is pretty much just a standard Dictionary of objects but with the added benefit that Xamarin.Forms does the magic of persisting to the file system when your app sleeps, restoring when it resumes and makes it available from *almost* anywhere in your Xamarin.Forms code.  It looks something like this:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;public &amp;lt;a href=&quot;http://iosapi.xamarin.com/monodoc.ashx?link=T%3aSystem.Collections.Generic.IDictionary%602&quot;&amp;gt;IDictionary&amp;lt;string, object&amp;gt;&amp;lt;/a&amp;gt; &amp;lt;b&amp;gt;Properties&amp;lt;/b&amp;gt; { get; }
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;how-do-i-use-it&quot;&gt;How do I use it?&lt;/h2&gt;
+
+&lt;p&gt;It couldn’t be easier really.  You can access the &lt;strong&gt;Properties&lt;/strong&gt; dictionary in your Xamarin.Forms code by using &lt;strong&gt;Application.Current.Properties&lt;/strong&gt;. For example:&lt;/p&gt;
+
+&lt;h3 id=&quot;storing-a-value&quot;&gt;Storing a value&lt;/h3&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;int Id = 42 // some object to store
+Application.Current.Properties [&quot;id&quot;] = Id;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;reading-a-value&quot;&gt;Reading a value&lt;/h3&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;if (Application.Current.Properties.ContainsKey(&quot;id&quot;))
+{
+  var Id = Convert.ToInt32(Application.Current.Properties [&quot;id&quot;]);
+  ...
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Note how I checked the existence of the key before accessing it.  That’s important (as with any dictionary access).&lt;/p&gt;
+
+&lt;h3 id=&quot;clearing-a-value&quot;&gt;Clearing a value&lt;/h3&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;if (Application.Current.Properties.ContainsKey(&quot;id&quot;))
+{
+  Application.Current.Properties.Remove(&quot;id&quot;);
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;nukingeverything&quot;&gt;Nuking everything&lt;/h3&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Application.Current.Properties.Clear();
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;So that was all pretty straight forward, right? Well, there are still a couple of gotchas to watch out for.&lt;/p&gt;
+
+&lt;h2 id=&quot;gotchas&quot;&gt;Gotchas&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;The values in the Properties dictionary are only stored when the app goes to sleep. (the OnSleep() method).  Which means if your application crashes out with an exception your properties may not be saved.  As best I can tell there is no ability to programatically flush the properties, which is a real shame.&lt;/li&gt;
+  &lt;li&gt;One interesting side effect of the properties only being saved during OnSleep() is that when debugging if you hit the Stop button your values will not be stored. (because OnSleep() is not called).  However, you can make the OnSleep() fire by quickly switching away from your app before hitting Stop. (but that kinda sucks).&lt;/li&gt;
+  &lt;li&gt;Because Properties is just a dictionary of objects you can stick anything you want in there… including your own classes which will get serialized, however, because the entire dictionary is serialized together in a file, *IF* there are issues with deserializing the file then entire Properties collection will be empty.  It’s an all or nothing kind of affair.&lt;/li&gt;
+  &lt;li&gt;I can’t reproduce this right now, but I believe there are problems accessing the Application.Current.Properties property in the constructor of your Application class.  And consequently any other methods / objects that are called from your constructor… For example, the constructor of  a page you create.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;more-information&quot;&gt; More Information:&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://iosapi.xamarin.com/?link=P%3aXamarin.Forms.Application.Properties&quot; target=&quot;_blank&quot;&gt;API Documentation&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://developer.xamarin.com/guides/cross-platform/xamarin-forms/working-with/app-lifecycle/#Properties_Dictionary&quot; target=&quot;_blank&quot;&gt;Xamarin Guides Documentation&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt; &lt;/p&gt;
+
+&lt;p&gt;Please keep coming back as I look into more interesting Xamarin Forms 1.3 goodness.&lt;/p&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>Kym</name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="properties" />
+      
+        <category term="xamarin" />
+      
+        <category term="xamarin.forms" />
+      
+
+      
+        <summary type="html">Xamarin.Forms 1.3 includes a tidy little way to do simple state persistence between app restarts and when suspending/resuming.  Particularly useful if you want to take the user back to their location if the application gets suspended or terminated. This is done through Application.Current.Properties.</summary>
+      
+
+      
+      
+    </entry>
+  
+</feed>

@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<feed xmlns="http://www.w3.org/2005/Atom" >
+  <generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator>
+  <link href="/tag/ibeacon/feed.xml" rel="self" type="application/atom+xml" />
+  <link href="/" rel="alternate" type="text/html" />
+  <updated>2019-01-09T23:10:22+01:00</updated>
+  <id>/tag/ibeacon/feed.xml</id>
+
+  
+  
+  
+
+  
+    <title type="html">Kym’s Blog | </title>
+  
+
+  
+    <subtitle>I write about Azure, Xamarin.Forms, Connected Apps and whatever else might be on my mind.</subtitle>
+  
+
+  
+
+  
+    
+      
+    
+  
+
+  
+  
+
+  
+    <entry>
+      <title type="html">Xamarin, iBeacons and Geofencing – Some Resources</title>
+      <link href="/xamarin-ibeacons-and-geofencing-some-resources/" rel="alternate" type="text/html" title="Xamarin, iBeacons and Geofencing &amp;#8211; Some Resources" />
+      <published>2014-05-18T23:11:02+02:00</published>
+      <updated>2014-05-18T23:11:02+02:00</updated>
+      <id>/xamarin-ibeacons-and-geofencing-some-resources</id>
+      <content type="html" xml:base="/xamarin-ibeacons-and-geofencing-some-resources/">&lt;p&gt;For an upcoming geekend (a weekend hackfest) we are looking at spending some time digging into iBeacon and Geofencing technologies.  &lt;span style=&quot;line-height: 1.5em;&quot;&gt;I was going to email some of these resources I have found to the participants but thought it might be better if I blog them as a resource for others. &lt;/span&gt;&lt;/p&gt;
+
+&lt;p&gt;Hope it helps&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;p&gt;&lt;span style=&quot;text-decoration: underline;&quot;&gt;&lt;strong&gt;Some General Info About Geofencing and&lt;/strong&gt;&lt;/span&gt; &lt;strong&gt;Beacons&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a style=&quot;line-height: 1.5em;&quot; href=&quot;http://youtu.be/TQrhJZnZacE&quot; target=&quot;_blank&quot;&gt;What’s the difference between beacons and geofencing?&lt;/a&gt;&lt;span style=&quot;line-height: 1.5em;&quot;&gt;&lt;span style=&quot;line-height: 1.5em;&quot;&gt; (video link).&lt;/span&gt;&lt;/span&gt; &lt;/li&gt;
+  &lt;li&gt;&lt;span style=&quot;line-height: 1.5em;&quot;&gt;There is also an interesting &lt;/span&gt;&lt;a style=&quot;line-height: 1.5em;&quot; href=&quot;http://prezi.com/qvmtmmpxpq1p/proximity-the-new-thing-in-retail/&quot; target=&quot;_blank&quot;&gt;prezi presentation here&lt;/a&gt;&lt;span style=&quot;line-height: 1.5em;&quot;&gt;&lt;span style=&quot;line-height: 1.5em;&quot;&gt;, bit sales oriented, but not bad.&lt;/span&gt;&lt;/span&gt; &lt;/li&gt;
+  &lt;li&gt;&lt;span style=&quot;line-height: 1.5em;&quot;&gt;If you need even more convincing that location and geofencing are the future then have a read of this old &lt;/span&gt;&lt;a style=&quot;line-height: 1.5em;&quot; href=&quot;http://www.wired.com/2013/12/4-use-cases-for-ibeacon-the-most-exciting-tech-you-havent-heard-of/&quot; target=&quot;_blank&quot;&gt;Wired article.&lt;/a&gt; &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong style=&quot;line-height: 1.5em;&quot;&gt;Geofencing Implementations&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://docs.xamarin.com/recipes/ios/multitasking/geofencing/&quot; target=&quot;_blank&quot;&gt;Xamarin iOS Geofence documentation&lt;/a&gt; &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.jayway.com/2014/04/22/windows-phone-8-1-for-developers-geolocation-and-geofencing/&quot; target=&quot;_blank&quot;&gt;Windows Phone 8.1 for Developers – Geolocation and Geofencing&lt;/a&gt; &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://blog.rajenki.com/2014/04/trigger-background-task-using-geofence-windows-phone-8-1/?utm_source=rss&quot; target=&quot;_blank&quot;&gt;Trigger a Background Task using Geofence on Windows Phone 8.1&lt;/a&gt; &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://forums.xamarin.com/discussion/15607/geofencing-and-geolocation&quot; target=&quot;_blank&quot;&gt;Android Geofencing and Geolocation&lt;/a&gt; – Xamrin Forum link&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;span style=&quot;text-decoration: underline;&quot;&gt;&lt;strong&gt;Beacons, iBeacons and BLE Implementations&lt;/strong&gt;&lt;/span&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;James Montemagno’s presentation on &lt;a href=&quot;http://www.slideshare.net/JamesMontemagno/ibeacons-for-everyone-from-ios-to-android&quot; target=&quot;_blank&quot;&gt;iBeacons for Everyone, from iOS to Android&lt;/a&gt; &lt;/li&gt;
+  &lt;li&gt;Mike Bluestein blog post (and sample app) – &lt;a href=&quot;http://blog.xamarin.com/play-find-the-monkey-with-ios-7-ibeacons/&quot; target=&quot;_blank&quot;&gt;Play ‘Find The Monkey’ with iOS 7 iBeacons&lt;/a&gt; &lt;/li&gt;
+  &lt;li&gt;Larry O’Briens blog post on &lt;a href=&quot;http://www.knowing.net/index.php/2013/09/19/xamarin-code-for-ibeacons/&quot; target=&quot;_blank&quot;&gt;Xamairn Code for iBeacons&lt;/a&gt; &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/boblautenbach/iBeacon-Generic/tree/master&quot; target=&quot;_blank&quot;&gt;iBeacon Generic&lt;/a&gt; – A Generic Monotouch.iOS binding for beacons.&lt;/li&gt;
+  &lt;li&gt;Very thorough article by Vincent Hoogendoorn – &lt;a href=&quot;http://www.macaw.nl/weblog/2014/4/building-cross-platform-ibeacon-apps-for-ios-android-and-windows-with-csharp-and-xamarin&quot; target=&quot;_blank&quot;&gt;Building Cross-Platform iBeacon Apps for iOS, Android and Windows with C# and Xamarin&lt;/a&gt; &lt;/li&gt;
+  &lt;li&gt;&lt;a style=&quot;line-height: 1.5em;&quot; href=&quot;https://components.xamarin.com/view/xamarin-android-ibeacon-service&quot; target=&quot;_blank&quot;&gt;Chris Riesgo Android iBeacon Service&lt;/a&gt;&lt;span style=&quot;line-height: 1.5em;&quot;&gt;&lt;span style=&quot;line-height: 1.5em;&quot;&gt; (Radius Network beacons)&lt;/span&gt;&lt;/span&gt; &lt;/li&gt;
+  &lt;li&gt;&lt;span style=&quot;line-height: 1.5em;&quot;&gt;Greg Shackles &lt;/span&gt;&lt;a style=&quot;line-height: 1.5em;&quot; href=&quot;https://github.com/gshackles/Estimote-iOS-Xamarin&quot; target=&quot;_blank&quot;&gt;Estimote iOS Bindings for Xamarin&lt;br /&gt; &lt;/a&gt;&lt;span style=&quot;line-height: 1.5em;&quot;&gt;&lt;br /&gt; &lt;/span&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;span style=&quot;line-height: 1.5em;&quot;&gt;Tom Opgenorth has an &lt;/span&gt;&lt;a style=&quot;line-height: 1.5em;&quot; href=&quot;https://components.xamarin.com/view/estimotesdk&quot; target=&quot;_blank&quot;&gt;Estimote SDK binding for Android&lt;/a&gt;&lt;span style=&quot;line-height: 1.5em;&quot;&gt;&lt;span style=&quot;line-height: 1.5em;&quot;&gt; in the Xamarin Component store.&lt;/span&gt;&lt;/span&gt; &lt;/li&gt;
+  &lt;li&gt;&lt;a style=&quot;line-height: 1.5em;&quot; href=&quot;https://github.com/woutercx/Xamarin-EstimoteBeacons&quot; target=&quot;_blank&quot;&gt;Xamarin-EstimoteBeacons on GitHub&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt; &lt;/p&gt;
+
+&lt;p&gt; &lt;/p&gt;
+
+&lt;p&gt; &lt;/p&gt;
+
+&lt;p&gt; &lt;/p&gt;
+
+&lt;p&gt; &lt;/p&gt;
+
+&lt;p&gt; &lt;/p&gt;
+
+&lt;p&gt; &lt;/p&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>Kym</name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="Android" />
+      
+        <category term="development" />
+      
+        <category term="geofencing" />
+      
+        <category term="ibeacon" />
+      
+        <category term="iOS" />
+      
+        <category term="Resources" />
+      
+        <category term="Windows Phone" />
+      
+        <category term="xamarin" />
+      
+
+      
+        <summary type="html">For an upcoming geekend (a weekend hackfest) we are looking at spending some time digging into iBeacon and Geofencing technologies.  I was going to email some of these resources I have found to the participants but thought it might be better if I blog them as a resource for others. </summary>
+      
+
+      
+      
+    </entry>
+  
+</feed>

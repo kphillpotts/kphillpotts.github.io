@@ -1,0 +1,966 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <!-- Document Settings -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- Base Meta -->
+    <!-- dynamically fixing the title for tag/author pages -->
+
+
+
+    <title>Xamarin Tools and Resources</title>
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Styles'n'Scripts -->
+    <link rel="stylesheet" type="text/css" href="/assets/built/screen.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/built/screen.edited.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/built/syntax.css" />
+    <!-- highlight.js -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+    <style>.hljs { background: none; }</style>
+
+    <!--[if IE]>
+        <style>
+            p, ol, ul{
+                width: 100%;
+            }
+            blockquote{
+                width: 100%;
+            }
+        </style>
+    <![endif]-->
+    
+    <!-- This tag outputs SEO meta+structured data and other important settings -->
+    <meta name="description" content="I write about Azure, Xamarin.Forms, Connected Apps and whatever else might be on my mind." />
+    <link rel="shortcut icon" href="/assets/images/favicon.png" type="image/png" />
+    <link rel="canonical" href="/xamarin-tools-and-resources/" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+
+     <!--title below is coming from _includes/dynamic_title-->
+    <meta property="og:site_name" content="Kym's Blog" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Xamarin Tools and Resources" />
+    <meta property="og:description" content="I write about Azure, Xamarin.Forms, Connected Apps and whatever else might be on my mind." />
+    <meta property="og:url" content="/xamarin-tools-and-resources/" />
+    <meta property="og:image" content="/assets/images/covers/tools.jpg" />
+    <meta property="article:publisher" content="https://www.facebook.com/" />
+    <meta property="article:tag" content="Xamarin" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Xamarin Tools and Resources" />
+    <meta name="twitter:description" content="I write about Azure, Xamarin.Forms, Connected Apps and whatever else might be on my mind." />
+    <meta name="twitter:url" content="/" />
+    <meta name="twitter:image" content="/assets/images/covers/tools.jpg" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="Kym's Blog" />
+    <meta name="twitter:label2" content="Filed under" />
+    <meta name="twitter:data2" content="Xamarin" />
+    <meta name="twitter:site" content="@kphillpotts" />
+    <meta name="twitter:creator" content="@kphillpotts" />
+    <meta property="og:image:width" content="2000" />
+    <meta property="og:image:height" content="666" />
+
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Website",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Kym's Blog",
+        "logo": "/false"
+    },
+    "url": "/xamarin-tools-and-resources/",
+    "image": {
+        "@type": "ImageObject",
+        "url": "/assets/images/covers/tools.jpg",
+        "width": 2000,
+        "height": 666
+    },
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "/xamarin-tools-and-resources/"
+    },
+    "description": "I write about Azure, Xamarin.Forms, Connected Apps and whatever else might be on my mind."
+}
+    </script>
+
+    <!-- <script type="text/javascript" src="https://demo.ghost.io/public/ghost-sdk.min.js?v=724281a32e"></script>
+    <script type="text/javascript">
+    ghost.init({
+    	clientId: "ghost-frontend",
+    	clientSecret: "f84a07a72b17"
+    });
+    </script> -->
+
+    <meta name="generator" content="Jekyll 3.6.2" />
+    <link rel="alternate" type="application/rss+xml" title="Xamarin Tools and Resources" href="/feed.xml" />
+
+
+</head>
+<body class="post-template">
+
+    <div class="site-wrapper">
+        <!-- All the main content gets inserted here, index.hbs, post.hbs, etc -->
+        <!-- default -->
+
+<!-- The tag above means: insert everything in this file
+into the {body} of the default.hbs template -->
+
+<header class="site-header outer">
+    <div class="inner">
+        <nav class="site-nav">
+    <div class="site-nav-left">
+        
+            
+                <a class="site-nav-logo" href="/">Kym's Blog</a>
+            
+        
+        
+            <ul class="nav" role="menu">
+    <li class="nav-home" role="menuitem"><a href="/">Home</a></li>
+    
+
+
+    <li class="nav-about" role="menuitem"><a href="/about/">About Me</a></li>
+    <li class="nav-xamarin" role="menuitem"><a href="/tag/xamarin/">Xamarin</a></li>
+    <li class="nav-azure" role="menuitem"><a href="/tag/azure/">Azure</a></li>
+
+
+</ul>
+
+        
+    </div>
+    <div class="site-nav-right">
+        <div class="social-links">
+            
+            
+                <a class="social-link social-link-tw" href="https://twitter.com/kphillpotts" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg>
+</a>
+            
+        </div>
+        
+    </div>
+</nav>
+
+    </div>
+</header>
+
+<!-- Everything inside the #post tags pulls data from the post -->
+<!-- #post -->
+
+<main id="site-main" class="site-main outer" role="main">
+    <div class="inner">
+
+        <article class="post-full  ">
+
+            <header class="post-full-header">
+                <section class="post-full-meta">
+                    <time class="post-full-meta-date" datetime="24 August 2017">24 August 2017</time>
+                    
+                        <span class="date-divider">/</span>
+                        
+                            
+                               <a href='/tag/xamarin/'>XAMARIN</a>
+                            
+                        
+                    
+                </section>
+                <h1 class="post-full-title">Xamarin Tools and Resources</h1>
+            </header>
+
+            
+            <figure class="post-full-image" style="background-image: url(/assets/images/covers/tools.jpg)">
+            </figure>
+            
+
+            <section class="post-full-content">
+                <div class="kg-card-markdown">
+                    <p>As software developers we often use a scary number of Tools and Utilities to get our jobs done. Whenever you learn a new platform you also need to work out the “tools of the trade”. I recently gave a talk on the tools and resources I use to do Xamarin development, so I thought I would just share these out on a blog post.<!--more--></p>
+
+<p>Be warned, the list I’m going through here is by no means a complete list of the tools available – just a list of the tools that I use. If you use some other tools that you think are worth sharing with the community then shoot me an email or leave a comment.</p>
+
+<p>Given that much of development is not just writing code, I thought I would go through the tools that I use from concept through to supporting an app.</p>
+
+<p>Okay, let’s go.</p>
+
+<hr />
+
+<h1 style="text-align: center;">
+  Design
+</h1>
+
+<hr />
+
+<p>The first thing you need to know to effectively design for a platform is the rules of the platform. Here are some handy links:</p>
+
+<h3 id="ios">iOS</h3>
+
+<ul>
+  <li><a href="https://developer.apple.com/design/" target="_blank" rel="noopener"><strong>Apple Human Interface Guidelines</strong></a> – These are the official apple guidelines, you should read them, however, they tend to be a little bland.</li>
+  <li><a href="http://ivomynttinen.com/blog/ios-design-guidelines" target="_blank" rel="noopener"><strong>The iOS Design Guidelines Cheatsheet</strong> by Ivo Mynttinen</a> – This is a much quicker, easier place to check out information about icons, fonts, iconography and design resources.</li>
+</ul>
+
+<h3 id="android">Android</h3>
+
+<p>Android has come a long way in it’s design guidelines. It used to be all over the shop, but now things are much nicer.</p>
+
+<ul>
+  <li><a href="https://developer.android.com/design/index.html" target="_blank" rel="noopener"><strong>Android Design Guidelines</strong></a> – All the juicy guidance from google.</li>
+  <li><a href="https://material.io/" target="_blank" rel="noopener"><strong>Material Design</strong></a> – I find the Material Design website surprisingly bland and nasty to use, however, it does have some great resources, including all the <a href="https://material.io/icons/" target="_blank" rel="noopener">icons</a>, The design <a href="https://material.io/guidelines/" target="_blank" rel="noopener">guidelines</a>, a nifty <a href="https://material.io/color/" target="_blank" rel="noopener">color tool</a>, a handy reference for <a href="https://material.io/devices/" target="_blank" rel="noopener">devices sizes and resolutions</a> and other handy tools.</li>
+</ul>
+
+<h3 id="uwp">UWP</h3>
+
+<p>Let’s not forget Universal Windows apps.</p>
+
+<ul>
+  <li><strong><a href="https://developer.microsoft.com/en-us/windows/apps/design" target="_blank" rel="noopener">UWP Design Guidelines</a></strong> – covers off everything you need to know to effectively design UWP apps, along with links into the new fancy pants <a href="https://fluent.microsoft.com/" target="_blank" rel="noopener">Fluid Design Language</a>. They also have some really great advice for <a href="https://docs.microsoft.com/en-us/windows/uwp/porting/" target="_blank" rel="noopener">porting applications from different platforms across to UWP</a>.  One of the nice sections is a handy table which maps <a href="https://docs.microsoft.com/en-us/windows/uwp/porting/android-ios-uwp-map" target="_blank" rel="noopener">Android and IOS concepts across to UWP.</a></li>
+</ul>
+
+<h3 id="design-is-a-process">Design is a process</h3>
+
+<p>I think one of the most underrated parts of developing an application is the process of going from a sketch through wire-framing to mock-ups and prototyping. The first thing I like to do when starting a design is seek inspiration. There are a bunch of great places you can go to get your brain juices flowing:</p>
+
+<ul>
+  <li><a href="https://dribbble.com/" target="_blank" rel="noopener"><strong>Dribbble</strong></a> – This is probably my default go-to place for looking at beautiful UI and interaction designs.  So many talented people contribute designs.</li>
+  <li><a href="https://www.behance.net/" target="_blank" rel="noopener"><strong>Behance</strong></a> –  Another location for our hipster designer friends to submit their goods.</li>
+  <li><a href="http://inspired-ui.com/" target="_blank" rel="noopener"><strong>Inspired UI</strong></a> – A categorised selection of mobile designs. It has sections for iOS, iPad and Android.</li>
+  <li><a href="http://collectui.com/designs" target="_blank" rel="noopener"><strong>CollectUI</strong></a> – Another categorised selection of design inspirations.</li>
+  <li><strong><a href="http://www.mobile-patterns.com/" target="_blank" rel="noopener">Mobile Patterns</a></strong> – Yet another set of mobile design inspirations. Also has sections for iOS and Android.</li>
+  <li><a href="https://pttrns.com/" target="_blank" rel="noopener"><strong>Pttrns</strong></a> – Mobile designs. This has sections for iPhone, iPad, Watch and Android.</li>
+  <li><a href="https://snppts.io/" target="_blank" rel="noopener"><strong>Snppts</strong></a> – Xamarin Forms UI Snippets.  This is a great site to look at if you are interested to see how other devs layout their Xamarin Forms pages, it has links to source code and XAML.</li>
+</ul>
+
+<p>Next it’s on to the actual process.</p>
+
+<p>For me, I like to start sketching on paper, I find this a very fast and adaptive way of designing the flow of applications. I personally use stencils for different device types that I print out from <a href="https://www.interfacesketch.com/" target="_blank" rel="noopener">Interface Sketch.</a></p>
+
+<p>Once I have an idea on paper I will move through to formalising the wire-frames and mock-ups, my tools of choice are:</p>
+
+<ul>
+  <li><a href="https://balsamiq.com" target="_blank" rel="noopener"><strong>Balsamiq</strong></a> – This is an unapologetically simple drawing tool for quick wire-frames an mock-ups. It deliberately tries to avoid representing a finished application. The reason for this is simple: If you want to get feedback on the basic wire-frame of an app and you give someone a colourised “realistic” looking design, they will probably spend a bunch of time telling you about what’s wrong with your font and colour choices as opposed to telling you what you really want to know – does this app flow nicely and represent the information in usable fashion.</li>
+</ul>
+
+<p>Next it’s on to more of the Mockup and prototyping phases:</p>
+
+<ul>
+  <li><a href="https://www.sketchapp.com/" target="_blank" rel="noopener"><strong>Sketch</strong></a> – Sketch has almost become the default for UI design in mobile and web applications, superseding things like Photoshop. The main reason is that modern app development means that you are going to be working on a variety of different sizes and densities, so it’s super important to be designing in Vector formats that can resize nicely. Sketch also has an amazing community of components available at places like <a href="https://www.sketchappsources.com/" target="_blank" rel="noopener">Sketch Resources</a> and <a href="https://sketchrepo.com" target="_blank" rel="noopener">SketchRepo</a>.</li>
+  <li><a href="https://zeplin.io" target="_blank" rel="noopener"><strong>Zeplin</strong></a> – Zeplin is a great way of getting the information about fonts and colors and stuff from those sketch files so you can use them in development.</li>
+  <li><a href="http://www.adobe.com/au/products/experience-design.html" target="_blank" rel="noopener"><strong>Adobe Experience Designer (XD)</strong></a>  – I’ve been playing around with Adobe XD recently and I’ve really enjoyed using this app. It may become my default designer tool (at least for mock-ups). It pretty blatantly copies the great things from sketch and at the moment it is free to use whilst in Beta. My opinion may change when I have to pay for it via Adobe Cloud.</li>
+</ul>
+
+<h3 id="image-and-font-resources">Image and Font Resources</h3>
+
+<p>Lastly for design, here are some resources I use for icons and fonts (because I’m really not great at creating icons).  And let’s face it, good choice of fonts and icons can make or break an application:</p>
+
+<ul>
+  <li><a href="https://www.iconfinder.com/" target="_blank" rel="noopener"><strong>IconFinder</strong></a> – lots of icons in multiple sizes.  It has a paid section, but it’s also got a lot of free resources.</li>
+  <li><strong><a href="https://www.syncfusion.com/downloads/metrostudio" target="_blank" rel="noopener">MetroStudio</a></strong> – This is a great Windows app that has thousands of icons that you can search through and also combine together. Free.</li>
+  <li><a href="https://icons8.com/" target="_blank" rel="noopener"><strong>Icons8</strong></a> – Thousands of free icons in different styles and sizes.  You can also recolour them as well.</li>
+  <li><a href="https://material.io/icons/" target="_blank" rel="noopener"><strong>Official Material Design Icons</strong></a> – If you are designing for Android you should probably try and stick the the official icons if you can.  Get’em here.</li>
+  <li><a href="https://fonts.google.com/" target="_blank" rel="noopener"><strong>Google Fonts</strong></a> – Google has loads of fonts you can download and use in your apps.</li>
+  <li><strong><a href="https://www.fontsquirrel.com/" target="_blank" rel="noopener">Font Squirrel</a></strong> – If you are after something a little more wacky, Font Squirrel probably has you covered.</li>
+  <li><strong><a href="http://iosfontlist.com/" target="_blank" rel="noopener">iOS Font List</a></strong> – Not really a font archive, but a great resource to see what fonts are available on different versions of iOS.</li>
+</ul>
+
+<hr />
+
+<h1 style="text-align: center;">
+  Develop
+</h1>
+
+<hr />
+
+<p>Let’s talk IDEs first and foremost. I use VS2017 on PC and on Mac, both are amazing IDEs. I also use Visual Studio Code on Mac and PC, mostly for editing Mark Down files or file previewing. I don’t use a lot of different Extensions in the IDE’s but here are some of my favorites:</p>
+
+<h3 id="vs2017-mac-extensions">VS2017 Mac Extensions</h3>
+
+<ul>
+  <li><a href="https://www.mfractor.com/" target="_blank" rel="noopener"><strong>mFractor</strong></a> – An amazing set of tools targeted right at Xamarin developers to help them get their job done.  I won’t say this is like ReSharper for VSMac, because it’s actually more useful than that. It’s got cool editor extensions like quick navigation between Views and ViewModels, Android Resource previewing and checking, a nifty Image Resizer, and tons more stuff.  If you live in VSMac then seriously check it out.</li>
+  <li><a href="https://github.com/Redth/XamarinStudio.RedthsAddin" target="_blank" rel="noopener"><strong>ObliteratePaths</strong></a> – Redths extension for nuking Bin and Obj folders.  This is super handy for getting rid of those folders before emailing some source code to someone else… Also Clean and Rebuild sometimes doesn’t really clean.  James Montemagno has a good <a href="http://motzcod.es/post/120368961047/xamarin-studio-obliterate-output-paths-binobj" target="_blank" rel="noopener">blog post on how to install</a>.</li>
+</ul>
+
+<h3 id="vs2017-pc-extensions">VS2017 PC Extensions</h3>
+
+<ul>
+  <li><a href="https://marketplace.visualstudio.com/items?itemName=TeamXavalon.XAMLStyler" target="_blank" rel="noopener"><strong>XAML Styler</strong></a> – Formats your XAML when you save your XAML files. This just makes working with XAML nicer.  Also if you work with a team then you can have consistent indenting and attributes across your files.</li>
+  <li><a href="https://marketplace.visualstudio.com/items?itemName=MadsKristensen.CleanSolution" target="_blank" rel="noopener"><strong>Clean Solution</strong></a> – Cleans up the solution for the next time you open it. Closes open documents and collapses folders automatically when a solution is being closed.</li>
+  <li><a href="https://marketplace.visualstudio.com/items?itemName=VisualStudioProductTeam.ProductivityPowerPack2017" target="_blank" rel="noopener"><strong>Productivity Power Tools 2017</strong></a> – Installs a whole bunch of useful IDE extensions.</li>
+</ul>
+
+<h3 id="working-with-data">Working with Data</h3>
+
+<p>Like it or not, a great deal of our time is working with Data.  In a mobile context that mostly means hitting Web Services and local databases (SQLite or Realm). Here are my favorite tools and libraries:</p>
+
+<ul>
+  <li><strong><a href="https://www.getpostman.com/" target="_blank" rel="noopener">Postman</a></strong> – This is an essential tool for hitting web services checking requests and responses. It has amazing capabilities like the ability to share request information with other members of your team, creating tests and also basically just seeing how an API works and what it’s going to give you back. Another tool I use to create my Data Transfer Objects (DTO’s) for services is sites like <a href="http://json2csharp.com/" target="_blank" rel="noopener">json2csharp</a>. The workflow looks something like this: Make A Request in Postman, copy the resulting JSON into JSON2CSharp (or in VS2017 PC, you can just use Edit -&gt; Paste Special -&gt; Paste JSON as CSharp). Create DTO classes… too easy!</li>
+  <li><a href="https://github.com/paulcbetts/refit" target="_blank" rel="noopener"><strong>Refit</strong></a> – Simplify calling Rest services.  If you want to simplify your code for calling web services give Refit a shot, you can basically just create an interface which describes your web service, then let it do all the hard work of accessing the service… no need to worry about doing the serializing and deserializing yourself or creating GET and PUT methods… it’ll do it for you.</li>
+  <li><a href="http://www.thepollyproject.org/" target="_blank" rel="noopener"><strong>Polly</strong></a> – Automatic retry policies. The reality is that on mobile devices your connection sucks. It’s going to disappear for no apparent reason and sometimes the best thing is to just reissue a request. Polly is going to help you out here by allowing you to define automatic retry policies.</li>
+  <li><a href="http://www.newtonsoft.com/json" target="_blank" rel="noopener"><strong>JSON.NET</strong></a> – The <strong>only</strong> library for parsing JSON results.</li>
+</ul>
+
+<p>Rob Gibbens has a really great blog post on putting some of these tools together in his Resilient Network Services with Mobile Xamarin Apps article, you should definitely read this. <a href="http://arteksoftware.com/resilient-network-services-with-xamarin/" target="_blank" rel="noopener">http://arteksoftware.com/resilient-network-services-with-xamarin/</a></p>
+
+<h3 id="sqlite">SQLite</h3>
+
+<ul>
+  <li><strong><a href="https://www.nuget.org/packages/sqlite-net-pcl" target="_blank" rel="noopener">Sqlite-Net-PCL</a></strong> – Dead simple SQLite integration – This package from Frank Krueger is the best way (I know of) to integrate SQLite into your Xamarin Apps. It also provides a light weight ORM interface to make it really simple to use.</li>
+</ul>
+
+<p>Sometimes, you need to have a look at those pesky SQLite databases, here are my favorite tools:</p>
+
+<ul>
+  <li><a href="http://datumapps.com/datum.html" target="_blank" rel="noopener"><strong>Datum</strong></a> – SQLite browser (Mac) – Available from the App Store.  There is a free edition and it just seems to work.</li>
+  <li><a href="http://sqlitebrowser.org/" target="_blank" rel="noopener"><strong>DB Browser for SQLite</strong></a> –  free cross platform tool which will allow you to create databases, define the schema, and add records to the database.</li>
+</ul>
+
+<h3 id="cloud-town">Cloud Town</h3>
+
+<p>It’s a cloud first world… or that’s what they tell me. Azure is my go to cloud provider…</p>
+
+<ul>
+  <li><strong><a href="https://www.nuget.org/packages/Microsoft.Azure.Mobile.Client/" target="_blank" rel="noopener">Azure Mobile Client SDK</a></strong> – A really nice client library that provides abstraction over the HTTP messaging and all the other hard stuff.</li>
+  <li><a href="https://github.com/MikeCodesDotNet/App-Service-Helpers" target="_blank" rel="noopener"><strong>App Service Helpers</strong></a> – Some of the Xamarin Dev Evangelist types have also create a helper class that makes it even easier</li>
+</ul>
+
+<p>Talking of Azure services, the Cognitive services stuff in Azure is amazing. Some great speech and vision API’s.. If you ever wanted to write “<a href="https://www.youtube.com/watch?v=ACmydtFDTGs" target="_blank" rel="noopener">Not Hotdog</a>” but don’t have the required Machine Learning / AI qualifications, let <a href="https://azure.microsoft.com/en-au/services/cognitive-services/" target="_blank" rel="noopener">Cognitive Services</a> do it for you.</p>
+
+<h3 id="debugging-and-profiling">Debugging and Profiling</h3>
+
+<p>Let’s face it, unless you are super-human you probably spend half your time <em>writing</em> bugs. So debugging and profiling is an important part of #developerlife. Here are the tools I tend to use:</p>
+
+<ul>
+  <li><a href="https://www.jetbrains.com/decompiler/" target="_blank" rel="noopener"><strong>JetBrains dotPeek</strong></a> – Because sometimes you just have to decompile some stuff to see how it works.</li>
+  <li><a href="https://developer.android.com/studio/profile/monitor.html" target="_blank" rel="noopener"><strong>Android Device Monitor</strong></a> – Comes with the Android Studio and is installed with Xamarin. I mainly use this for looking at logs but it’s also useful for looking at process memory usage and accessing the file system on emulators.</li>
+  <li><a href="https://developer.android.com/studio/debug/dev-options.html" target="_blank" rel="noopener"><strong>On-Device Developer Options</strong></a> – Android devices also have some pretty cool tools built right in under the Developer Options. I mainly use this to debug overdraw and to slow down animations, but there is other cool stuff in there as well.</li>
+  <li><a href="https://developer.apple.com/library/content/documentation/DeveloperTools/Conceptual/InstrumentsUserGuide/index.html" target="_blank" rel="noopener"><strong>Xcode Instruments</strong></a> – Event though it’s part of XCode and targetted at Objective-C and Swift apps, you can also use this to profile your Xamarin.IOS applications. Well technically, it doesn’t really understand anything about Xamarin and managed memory, but still it can be used to track things like allocations and memory usage. <a href="https://developer.xamarin.com/guides/ios/deployment,_testing,_and_metrics/using_instruments_to_detect_native_leaks_using_markheap/" target="_blank" rel="noopener">Xamarin has some docs on using it too</a>.</li>
+  <li><a href="https://developer.apple.com/download/more/?q=Additional%20Tools" target="_blank" rel="noopener"><strong>Network Link Conditioner</strong></a> – Another cool tool which can be used to test how your Xamarin.iOS app handles crappy networks is the Network Link Conditioner. Here is a <a href="http://nshipster.com/network-link-conditioner/" target="_blank" rel="noopener">pretty good reference</a> to get you started.</li>
+  <li><a href="https://www.xamarin.com/profiler" target="_blank" rel="noopener"><strong>Xamarin Profiler</strong></a> – When all else fails I pull out the big guns… The Xamarin Profiler! Unfortunately this is a Visual Studio Enterprise feature but it’s definitely worth its weight in gold when trying to find memory leaks in your Xamarin applications.</li>
+  <li><strong><a href="https://docs.microsoft.com/en-au/visualstudio/profiling/index" target="_blank" rel="noopener">Visual Studio 2017 Profiler Tools</a></strong> – Also don’t forget that you can also use the Visual Studio Profiler for profiling quite a bit of stuff. Especially Shared PCLs and libraries that you are using.</li>
+</ul>
+
+<h3 id="visual-design">Visual Design</h3>
+
+<p>I’m not too bad at laying out screens, but I still love to be able to get previews of what I’m doing. In Xamarin.IOS and Xamarin.Android you are fine because you have the Designers built into Visual Studio. For Xamarin.Forms things get a little bit trickier. Here are some tools I use to keep myself going insane whilst laying out screens.</p>
+
+<ul>
+  <li><a href="http://gorillaplayer.com/" target="_blank" rel="noopener"><strong>Gorilla Player</strong></a> – This is a great tool, which is now free. It allows you to preview your Xamarin.Forms XAML on multiple devices, it requires a little bit of setup but once you are setup anytime you save your XAML file it will be sent out to gorilla player on whatever devices (or simulators) you have connected so you can preview. Pro Tip: run it on multiple different sized devices (and OS’s) at the same time to see how things look.</li>
+  <li><a href="https://www.xamarin.com/live" target="_blank" rel="noopener"><strong>Xamarin Live Player</strong></a> – This is the new kid on the block. This allows you to preview your applications (actually running) on a device as you edit your code (not only your XAML). Also works with Xamarin.IOS and Xamarin.Android. It’s still pretty heavily under development, but you should definitely give this a shot. Also, sign up for the Xamarin Live Player Alpha to get the latest bits.</li>
+  <li><strong><a href="https://developer.xamarin.com/guides/cross-platform/workbooks/" target="_blank" rel="noopener">Xamarin WorkBooks</a></strong> – A great way to experimenting with different things and also useful for documentation. There is also the <a href="https://developer.xamarin.com/guides/cross-platform/inspector/" target="_blank" rel="noopener">Xamarin Inspector</a> which you can use to interrogate the UI of your application.</li>
+  <li><strong><a href="https://www.paintcodeapp.com/" target="_blank" rel="noopener">PaintCode</a></strong> – This one is a little different, but with PaintCode you can draw your images and vectors and then have it spit out source code for your designs. It’s a paid mac app, but if you are going to be doing lots of graphics it may just be worth it. Especially, if you want to use drawing code to provide resolution independence.</li>
+</ul>
+
+<h3 id="mirroring-devices">Mirroring Devices</h3>
+
+<p>You always want to be testing on physical devices, and heaven forbid, sometimes you even have to present your apps to other people. Here are some tools to help:</p>
+
+<ul>
+  <li><strong><a href="http://vysor.io" target="_blank" rel="noopener">Vysor</a></strong> – This is a sweet little utility for mirroring your Android physical device to your screen. You can even interact with the device through your mouse. Highly recommended!</li>
+  <li><a href="https://medium.com/@patrickswong/how-to-mirror-your-iphone-with-a-lightning-cable-using-quicktime-in-os-x-yosemite-ace3f40ef483" target="_blank" rel="noopener"><strong>QuickTime Player</strong></a> – For mirroring iOS devices my goto is the inbuilt QuickTime Player. Great for mirroring your iOS devices during demonstrations.</li>
+  <li><a href="https://www.airserver.com/" target="_blank" rel="noopener"><strong>AirServer</strong></a> – If you want to mirror your iOS device to windows I have found that this works very well. It also works for Android and Miracast as well. It’s a paid app though.</li>
+</ul>
+
+<h3 id="mvvm-life">MVVM Life</h3>
+
+<p>I often joke that <em>to be good at MVVM you really just need to have a really strong opinions and tell everyone else they are doing it wrong</em>. But seriously MVVM is a great architecture for building your applications. I tend to stay fairly light weight and don’t use many frameworks, having said that here are some frameworks and l do use:</p>
+
+<ul>
+  <li><a href="https://github.com/Fody/PropertyChanged" target="_blank" rel="noopener"><strong>Fody Property Changed</strong></a> – This is an code weaver that can help you out writing your INotifyPropertyChange notifications and keep your code nice and clean.  Clean models FTW.</li>
+  <li><a href="https://github.com/jamesmontemagno/mvvm-helpers" target="_blank" rel="noopener"><strong>MVVMHelpers</strong></a> – a nice light weight set of MVVM Helpers from James Montemagno that just has the stuff you need.</li>
+  <li><a href="https://github.com/xamarinhq/xamu-infrastructure" target="_blank" rel="noopener"><strong>Xamarin University Infrastructure</strong></a> – There are some great bits in here, including abstractions for the Xamarin Forms navigation service, a bunch of converters, behaviors, and services. Dig through and check it out.</li>
+</ul>
+
+<p>And then there are the frameworks. Like I said I don’t use a lot of these, but I would feel like a bad developer if I didn’t mention them 🙂 :</p>
+
+<ul>
+  <li><a href="https://github.com/PrismLibrary/Prism" target="_blank" rel="noopener"><strong>Prism</strong></a> – Has an amazing navigation system. There is also an <a href="https://xamgirl.com/prism-in-xamarin-forms-step-by-step-part-1/" target="_blank" rel="noopener">excellent series of blog posts from XamGirl</a> to help get you started.</li>
+  <li><strong><a href="https://github.com/rid00z/FreshMvvm" target="_blank" rel="noopener">FreshMvvM</a></strong> – Super lightweight and just includes the stuff that vanilla Xamarin.Forms leaves out</li>
+  <li><strong><a href="https://exrin.net/" target="_blank" rel="noopener">ExRin</a></strong> – A larger framework for enterprise scale apps</li>
+  <li><strong><a href="https://www.mvvmcross.com/" target="_blank" rel="noopener">MVVMCross</a></strong> – Very popular Framework</li>
+  <li><a href="http://www.mvvmlight.net/" target="_blank" rel="noopener"><strong>MVVMLight</strong></a> – yet another popular framework</li>
+  <li><a href="https://reactiveui.net/" target="_blank" rel="noopener"><strong>ReactiveUI</strong></a> – Reactive programming is definitely something I should look into more.</li>
+</ul>
+
+<h3 id="libraries-and-components">Libraries and Components</h3>
+
+<p>I’m a lazy developer. If I can find an existing component and library to do what I want, I’ll use it.</p>
+
+<ul>
+  <li><strong><a href="https://github.com/xamarin/XamarinComponents" target="_blank" rel="noopener">Xamarin Plugins</a></strong> – This is the motherload of components you can use with your Xamarin applications that give you a cross platform API to access device specific things. You should seriously check this out. The most common ones I use in just about every project are:
+    <ul>
+      <li><a href="https://github.com/jamesmontemagno/ConnectivityPlugin" target="_blank" rel="noopener"><strong>Connectivity</strong></a></li>
+      <li><a href="https://github.com/molinch/FFImageLoading" target="_blank" rel="noopener"><strong>FFImageLoading</strong></a></li>
+      <li><a href="https://github.com/jamesmontemagno/SettingsPlugin" target="_blank" rel="noopener"><strong>Settings</strong></a></li>
+      <li><a href="https://github.com/dsplaisted/PCLStorage" target="_blank" rel="noopener"><strong>PCL File Storage</strong></a></li>
+      <li><a href="https://github.com/aritchie/userdialogs" target="_blank" rel="noopener"><strong>ACR User Dialogs</strong></a></li>
+    </ul>
+  </li>
+</ul>
+
+<p>But there are some other amazing libraries, like:</p>
+
+<ul>
+  <li><a href="https://github.com/martijn00/LottieXamarin" target="_blank" rel="noopener"><strong>Lottie</strong></a> – If you are working with designers who are throwing After Effects animations at you, or if you just want to spice up your UI have a look at this bad boy.</li>
+  <li><a href="https://github.com/jsmarcus/Xamarin.Plugins/tree/master/Iconize" target="_blank" rel="noopener"><strong>Iconize</strong></a> – Provides a nice easy way to integrate font libraries like FontAwesome into your applications. Using these will help you keep your file sizes down and provide images that scale nicely.</li>
+  <li><a href="https://github.com/rotorgames/Rg.Plugins.Popup" target="_blank" rel="noopener"><strong>RG.Plugins.Popup</strong></a> – If you want to create popups in your app, this is a really nice approach.</li>
+  <li><a href="https://github.com/MarcBruins/awesome-xamarin" target="_blank" rel="noopener"><strong>Awesome Xamarin</strong></a> – There are a million other libraries you should consider, Marc Bruins has a great list.</li>
+</ul>
+
+<p>And then we have the UI Components from the vendors. I have students quite regularly ask things like “I want to build a grid control with XYZ features, how should I do it”… normally my answer is don’t. Save yourself some time and check out components from vendors who do this stuff for a living. The cost saving in terms of time is normally worth it.</p>
+
+<ul>
+  <li><strong><a href="https://www.syncfusion.com/products/xamarin" target="_blank" rel="noopener">SyncFusion</a></strong></li>
+  <li><a href="http://www.telerik.com/xamarin-ui" target="_blank" rel="noopener"><strong>Telerik</strong></a></li>
+  <li><a href="https://www.devexpress.com/products/xamarin/" target="_blank" rel="noopener"><strong>DevExpress</strong></a></li>
+  <li><a href="https://www.infragistics.com/products/xamarin" target="_blank" rel="noopener"><strong>Infragistics</strong></a></li>
+  <li><a href="https://www.steema.com/product/forms" target="_blank" rel="noopener"><strong>Steema</strong></a></li>
+  <li><a href="http://www.goxuni.com/" target="_blank" rel="noopener"><strong>GrapeCity</strong></a></li>
+</ul>
+
+<hr />
+
+<h1 style="text-align: center;">
+  Test
+</h1>
+
+<hr />
+
+<p>We all unit test, right? Sure. 🙂 If you are using Nunit then you’ll want to use:</p>
+
+<ul>
+  <li><a href="https://www.google.com.au/url?sa=t&amp;rct=j&amp;q=&amp;esrc=s&amp;source=web&amp;cd=1&amp;cad=rja&amp;uact=8&amp;ved=0ahUKEwjZqvrFru3VAhVFvrwKHePjBZAQFggoMAA&amp;url=https%3A%2F%2Fmarketplace.visualstudio.com%2Fitems%3FitemName%3DNUnitDevelopers.NUnit3TestAdapter&amp;usg=AFQjCNFmslTGuiphMZ9AIzclWitYyhPnwA" target="_blank" rel="noopener"><strong>Nunit Test Adapter</strong></a> – plugs into Visual Studio so you can integrate unit tests into your VS Life.</li>
+  <li><a href="https://marketplace.visualstudio.com/items?itemName=NUnitDevelopers.NUnitTemplatesforVisualStudio" target="_blank" rel="noopener"><strong>Nunit Templates</strong></a> – a set of templates for creating unit test files… because nobody has time to remember all those attributes. But speaking of attributes, here is a <a href="https://lukewickstead.wordpress.com/2013/01/16/nunit-cheat-sheet/" target="_blank" rel="noopener">nice cheat sheet for Nunit</a>.</li>
+  <li>Visual Studio 2017 now has a great feature called Live Testing, which I would highly recommend having a look at as well.</li>
+  <li><a href="https://github.com/AutoFixture/AutoFixture" target="_blank" rel="noopener"><strong>AutoFixture</strong></a> – because sometimes you can’t be bother creating your own data for unit tests. This library will reflect over your models, so you can just ask it to create a bunch of objects for you.</li>
+</ul>
+
+<h3 id="ui-testing">UI Testing</h3>
+
+<p>Mobile applications run on a bunch of different devices, so you’ll want to make sure you test how your UI is going to look on a range of devices. You can find some good stats on iOS and Android usage information here over at <a href="https://data.apteligent.com/" target="_blank" rel="noopener">Apteligent</a>. Also, you don’t want to be testing UI manually, because it’s really slow and inconsistent.</p>
+
+<ul>
+  <li><a href="https://developer.xamarin.com/guides/testcloud/uitest/" target="_blank" rel="noopener"><strong>Xamarin.UITest</strong></a> – Write your tests in C# and test on simulators and devices.</li>
+  <li><a href="https://www.xamarin.com/test-cloud/recorder" target="_blank" rel="noopener"><strong>Xamarin Test Recorder</strong></a> – Record your interactions with your application and output them as UITests. The fastest way to create your tests… then take the code and fine tune as required. Often, the thing to do is to move them across to a page object type of structure so they are more maintainable. <a href="https://danatxamarin.com/2015/05/12/building-a-scalable-test-suite-with-xamarin-uitest-and-page-objects/" target="_blank" rel="noopener">Here is a good blog series on it</a>.</li>
+  <li><a href="https://www.xamarin.com/test-cloud" target="_blank" rel="noopener"><strong>Test Cloud</strong></a> – When you are ready to test on <a href="https://testcloud.xamarin.com/devices" target="_blank" rel="noopener">thousands of physical devices</a>, you should consider having a look at Test Cloud. They’ve got more devices than you can poke a stick at.</li>
+</ul>
+
+<hr />
+
+<h1 style="text-align: center;">
+  Deploy
+</h1>
+
+<hr />
+
+<p>Continuous Integration and Continuous Deployment practices these days should be considered a “must have”. And with the tools available it’s really very simple to get started. Here are my favorites:</p>
+
+<ul>
+  <li><a href="https://mobile.azure.com" target="_blank" rel="noopener"><strong>Mobile Center</strong></a> – – This is an amazing service from Microsoft. It’s dead simple to setup automated builds. Check it out. It also does crash reporting which is an essential part of any mobile application.</li>
+  <li><a href="https://raygun.com/" target="_blank" rel="noopener"><strong>RayGun</strong></a> – A great analytics tool.</li>
+  <li><a href="https://www.bitrise.io/" target="_blank" rel="noopener"><strong>BitRise</strong></a> – I’ve really enjoyed creating builds through BitRise. It’s simple to use and very powerful.</li>
+  <li><a href="https://fastlane.tools/" target="_blank" rel="noopener"><strong>Fastlane</strong></a> – A collection of amazing tools to help you with iOS provisioning Profile hell and automated deployments to the app stores</li>
+</ul>
+
+<hr />
+
+<h1 style="text-align: center;">
+  Staying Up To Date
+</h1>
+
+<hr />
+
+<p>Finally it’s worth mentioning that keeping up to date with all the tools and new stuff happening in the Xamarin (and mobile) world is hard (but necessary). Instead of putting out all the sources here, let me point you to my blog post on <a href="http://www.kymphillpotts.com/staying-up-to-date-with-xamarin-development/" target="_blank" rel="noopener">Staying up to Date with Xamarin Development</a>.</p>
+
+<hr />
+
+<h1 style="text-align: center;">
+  Conclusion
+</h1>
+
+<hr />
+
+<p>So there you have it people, a grab bag of tools, libraries and resources I use for Xamarin Development. I hope you find it useful. Maybe you have some tools or resources which you consider essential… please let me know or post some comments below. Remember, sharing is caring.</p>
+
+<p>Take care, and happy coding!</p>
+
+                </div>
+            </section>
+
+            <!-- Email subscribe form at the bottom of the page -->
+            
+
+            <footer class="post-full-footer">
+                <!-- Everything inside the #author tags pulls data from the author -->
+                <!-- #author-->
+                
+                    
+                        <section class="author-card">
+                            
+                                <img class="author-profile-image" src="/assets/images/kphillpotts.jpg" alt="kphillpotts" />
+                            
+                            <section class="author-card-content">
+                                <h4 class="author-card-name"><a href="/author/kphillpotts">Kym Phillpotts</a></h4>
+                                
+                                    <p>Geek, Parent, Human, Xamarin University Instructor. Co-curator of http://weeklyxamarin.com  and twitch streaming live coding at http://twitch.tv/kphillpotts</p>
+                                
+                            </section>
+                        </section>
+                        <div class="post-full-footer-right">
+                            <a class="author-card-button" href="/author/kphillpotts">Read More</a>
+                        </div>
+                    
+                
+                <!-- /author  -->
+            </footer>
+
+            <!-- If you use Disqus comments, just uncomment this block.
+            The only thing you need to change is "test-apkdzgmqhj" - which
+            should be replaced with your own Disqus site-id. -->
+            
+
+        </article>
+
+    </div>
+</main>
+
+<!-- Links to Previous/Next posts -->
+<aside class="read-next outer">
+    <div class="inner">
+        <div class="read-next-feed">
+            
+                
+                
+                
+                
+                    <article class="read-next-card"
+                        
+                            style="background-image: url(/assets/images/blog-cover.jpg)"
+                        
+                    >
+                        <header class="read-next-card-header">
+                            <small class="read-next-card-header-sitetitle">&mdash; Kym's Blog &mdash;</small>
+                            
+                                <h3 class="read-next-card-header-title"><a href="/tag/xamarin/">Xamarin</a></h3>
+                            
+                        </header>
+                        <div class="read-next-divider"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 14.5s2 3 5 3 5.5-2.463 5.5-5.5S21 6.5 18 6.5c-5 0-7 11-12 11C2.962 17.5.5 15.037.5 12S3 6.5 6 6.5s4.5 3.5 4.5 3.5"/></svg>
+</div>
+                        <div class="read-next-card-content">
+                            <ul>
+                                
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/5907-2/">Microsoft //Build/ Recap for Xamarin Developers</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/simple-animation-with-xamarin-forms/">Simple Animation with Xamarin.Forms</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/fastscroll-and-sectionindexer-in-xamarin-forms-listview/">FastScroll and SectionIndexer in Xamarin.Forms ListView</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                            </ul>
+                        </div>
+                        <footer class="read-next-card-footer">
+                            <a href="/tag/xamarin/">
+                                
+                                    See all 7 posts  →
+                                
+                            </a>
+                        </footer>
+                    </article>
+                
+            
+
+            <!-- If there's a next post, display it using the same markup included from - partials/post-card.hbs -->
+            
+                
+    <article class="post-card post-template">
+        
+            <a class="post-card-image-link" href="/fastscroll-and-sectionindexer-in-xamarin-forms-listview/">
+                <div class="post-card-image" style="background-image: url(/assets/images/covers/speed.jpg)"></div>
+            </a>
+        
+        <div class="post-card-content">
+            <a class="post-card-content-link" href="/fastscroll-and-sectionindexer-in-xamarin-forms-listview/">
+                <header class="post-card-header">
+                    
+                        
+                            
+                                <span class="post-card-tags">Xamarin</span>
+                            
+                        
+                    
+
+                    <h2 class="post-card-title">FastScroll and SectionIndexer in Xamarin.Forms ListView</h2>
+                </header>
+                <section class="post-card-excerpt">
+                    <p>Those of you who have played around with ListViews in Xamarin.Android are probably familiar with the FastScroll and SectionIndexer features.  They essentially make it really easy for users to navigate long lists by</p>
+                </section>
+            </a>
+            <footer class="post-card-meta">
+                
+                    
+                        
+                        <img class="author-profile-image" src="/assets/images/kphillpotts.jpg" alt="Kym Phillpotts" />
+                        
+                        <span class="post-card-author">
+                            <a href="/author/kphillpotts/">Kym Phillpotts</a>
+                        </span>
+                    
+                
+            </footer>
+        </div>
+    </article>
+
+            
+
+            <!-- If there's a previous post, display it using the same markup included from - partials/post-card.hbs -->
+            
+                
+    <article class="post-card post-template">
+        
+            <a class="post-card-image-link" href="/xamarin-forms-layout-challenges-great-places/">
+                <div class="post-card-image" style="background-image: url(/assets/images/covers/layout.jpg)"></div>
+            </a>
+        
+        <div class="post-card-content">
+            <a class="post-card-content-link" href="/xamarin-forms-layout-challenges-great-places/">
+                <header class="post-card-header">
+                    
+                        
+                            
+                                <span class="post-card-tags">Xamarin</span>
+                            
+                        
+                    
+
+                    <h2 class="post-card-title">Xamarin.Forms Layout Challenges &#8211; Great Places</h2>
+                </header>
+                <section class="post-card-excerpt">
+                    <p>When your app is all about the images, sometimes you want your images to be hero of the UI.  That’s what this weeks Xamarin.Forms Layout Challenge is all about.    Normally I prefer</p>
+                </section>
+            </a>
+            <footer class="post-card-meta">
+                
+                    
+                        
+                        <img class="author-profile-image" src="/assets/images/kphillpotts.jpg" alt="Kym Phillpotts" />
+                        
+                        <span class="post-card-author">
+                            <a href="/author/kphillpotts/">Kym Phillpotts</a>
+                        </span>
+                    
+                
+            </footer>
+        </div>
+    </article>
+
+            
+
+        </div>
+    </div>
+</aside>
+
+<!-- Floating header which appears on-scroll, included from includes/floating-header.hbs -->
+<div class="floating-header">
+    <div class="floating-header-logo">
+        <a href="/">
+            
+            <span>Kym's Blog</span>
+        </a>
+    </div>
+    <span class="floating-header-divider">&mdash;</span>
+    <div class="floating-header-title">Xamarin Tools and Resources</div>
+    <div class="floating-header-share">
+        <div class="floating-header-share-label">Share this <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M7.5 15.5V4a1.5 1.5 0 1 1 3 0v4.5h2a1 1 0 0 1 1 1h2a1 1 0 0 1 1 1H18a1.5 1.5 0 0 1 1.5 1.5v3.099c0 .929-.13 1.854-.385 2.748L17.5 23.5h-9c-1.5-2-5.417-8.673-5.417-8.673a1.2 1.2 0 0 1 1.76-1.605L7.5 15.5zm6-6v2m-3-3.5v3.5m6-1v2"/>
+</svg>
+</div>
+        <a class="floating-header-share-tw" href="https://twitter.com/share?text=Xamarin+Tools+and+Resources&amp;url=https://kphillpotts.github.io/xamarin-tools-and-resources/"
+            onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg>
+
+        </a>
+        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=https://kphillpotts.github.io/xamarin-tools-and-resources/"
+            onclick="window.open(this.href, 'share-facebook','width=580,height=296');return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M19 6h5V0h-5c-3.86 0-7 3.14-7 7v3H8v6h4v16h6V16h5l1-6h-6V7c0-.542.458-1 1-1z"/></svg>
+
+        </a>
+    </div>
+    <progress class="progress" value="0">
+        <div class="progress-container">
+            <span class="progress-bar"></span>
+        </div>
+    </progress>
+</div>
+
+
+<!-- /post -->
+
+<!-- The #contentFor helper here will send everything inside it up to the matching #block helper found in default.hbs -->
+
+
+        <!-- Previous/next page links - displayed on every page -->
+        
+
+        <!-- The footer at the very bottom of the screen -->
+        <footer class="site-footer outer">
+            <div class="site-footer-content inner">
+                <section class="copyright"><a href="/">Kym's Blog</a> &copy; 2019</section>
+                <section class="poweredby">Proudly published with <a href="https://jekyllrb.com/">Jekyll</a> &
+                    <a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a> using
+                    <a href="https://github.com/jekyller/jasper2" target="_blank" rel="noopener">Jasper2</a></section>
+                <nav class="site-footer-nav">
+                    <a href="/">Latest Posts</a>
+                    
+                    <a href="https://twitter.com/kphillpotts" target="_blank" rel="noopener">Twitter</a>
+                    <a href="https://ghost.org" target="_blank" rel="noopener">Ghost</a>
+                </nav>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- The big email subscribe modal content -->
+    
+
+    <!-- highlight.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.10.0/components/prism-abap.min.js"></script>
+    <script>$(document).ready(function() {
+      $('pre code').each(function(i, block) {
+        hljs.highlightBlock(block);
+      });
+    });</script>
+
+    <!-- jQuery + Fitvids, which makes all video embeds responsive -->
+    <script
+        src="https://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous">
+    </script>
+    <script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="https://demo.ghost.io/assets/js/jquery.fitvids.js?v=724281a32e"></script>
+
+
+    <!-- Paginator increased to "infinit" in _config.yml -->
+    <!-- if paginator.posts  -->
+    <!-- <script>
+        var maxPages = parseInt('');
+    </script>
+    <script src="/assets/js/infinitescroll.js"></script> -->
+    <!-- /endif -->
+
+    
+
+
+    <!-- Add Google Analytics  -->
+    <!-- Google Analytics Tracking code -->
+ <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-69281367-1', 'auto');
+  ga('send', 'pageview');
+
+ </script>
+
+
+    <!-- The #block helper will pull in data from the #contentFor other template files. In this case, there's some JavaScript which we only want to use in post.hbs, but it needs to be included down here, after jQuery has already loaded. -->
+    
+        <script>
+
+// NOTE: Scroll performance is poor in Safari
+// - this appears to be due to the events firing much more slowly in Safari.
+//   Dropping the scroll event and using only a raf loop results in smoother
+//   scrolling but continuous processing even when not scrolling
+$(document).ready(function () {
+    // Start fitVids
+    var $postContent = $(".post-full-content");
+    $postContent.fitVids();
+    // End fitVids
+
+    var progressBar = document.querySelector('progress');
+    var header = document.querySelector('.floating-header');
+    var title = document.querySelector('.post-full-title');
+
+    var lastScrollY = window.scrollY;
+    var lastWindowHeight = window.innerHeight;
+    var lastDocumentHeight = $(document).height();
+    var ticking = false;
+
+    function onScroll() {
+        lastScrollY = window.scrollY;
+        requestTick();
+    }
+
+    function onResize() {
+        lastWindowHeight = window.innerHeight;
+        lastDocumentHeight = $(document).height();
+        requestTick();
+    }
+
+    function requestTick() {
+        if (!ticking) {
+            requestAnimationFrame(update);
+        }
+        ticking = true;
+    }
+
+    function update() {
+        var trigger = title.getBoundingClientRect().top + window.scrollY;
+        var triggerOffset = title.offsetHeight + 35;
+        var progressMax = lastDocumentHeight - lastWindowHeight;
+
+        // show/hide floating header
+        if (lastScrollY >= trigger + triggerOffset) {
+            header.classList.add('floating-active');
+        } else {
+            header.classList.remove('floating-active');
+        }
+
+        progressBar.setAttribute('max', progressMax);
+        progressBar.setAttribute('value', lastScrollY);
+
+        ticking = false;
+    }
+
+    window.addEventListener('scroll', onScroll, {passive: true});
+    window.addEventListener('resize', onResize, false);
+
+    update();
+});
+</script>
+
+    
+
+    <!-- Ghost outputs important scripts and data with this tag - it should always be the very last thing before the closing body tag -->
+    <!-- ghost_foot -->
+
+</body>
+</html>

@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <!-- Document Settings -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- Base Meta -->
+    <!-- dynamically fixing the title for tag/author pages -->
+
+
+
+    <title>Xamarin Link Roundup – 13 June 2015</title>
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Styles'n'Scripts -->
+    <link rel="stylesheet" type="text/css" href="/assets/built/screen.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/built/screen.edited.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/built/syntax.css" />
+    <!-- highlight.js -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+    <style>.hljs { background: none; }</style>
+
+    <!--[if IE]>
+        <style>
+            p, ol, ul{
+                width: 100%;
+            }
+            blockquote{
+                width: 100%;
+            }
+        </style>
+    <![endif]-->
+    
+    <!-- This tag outputs SEO meta+structured data and other important settings -->
+    <meta name="description" content="I write about Azure, Xamarin.Forms, Connected Apps and whatever else might be on my mind." />
+    <link rel="shortcut icon" href="/assets/images/favicon.png" type="image/png" />
+    <link rel="canonical" href="/xamarin-link-roundup-13-june-2015/" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+
+     <!--title below is coming from _includes/dynamic_title-->
+    <meta property="og:site_name" content="Kym's Blog" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Xamarin Link Roundup – 13 June 2015" />
+    <meta property="og:description" content="I write about Azure, Xamarin.Forms, Connected Apps and whatever else might be on my mind." />
+    <meta property="og:url" content="/xamarin-link-roundup-13-june-2015/" />
+    <meta property="og:image" content="/assets/images/blog-cover.jpg" />
+    <meta property="article:publisher" content="https://www.facebook.com/" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Xamarin Link Roundup – 13 June 2015" />
+    <meta name="twitter:description" content="I write about Azure, Xamarin.Forms, Connected Apps and whatever else might be on my mind." />
+    <meta name="twitter:url" content="/" />
+    <meta name="twitter:image" content="/assets/images/blog-cover.jpg" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="Kym's Blog" />
+    <meta name="twitter:site" content="@kphillpotts" />
+    <meta name="twitter:creator" content="@kphillpotts" />
+    <meta property="og:image:width" content="2000" />
+    <meta property="og:image:height" content="666" />
+
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Website",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Kym's Blog",
+        "logo": "/false"
+    },
+    "url": "/xamarin-link-roundup-13-june-2015/",
+    "image": {
+        "@type": "ImageObject",
+        "url": "/assets/images/blog-cover.jpg",
+        "width": 2000,
+        "height": 666
+    },
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "/xamarin-link-roundup-13-june-2015/"
+    },
+    "description": "I write about Azure, Xamarin.Forms, Connected Apps and whatever else might be on my mind."
+}
+    </script>
+
+    <!-- <script type="text/javascript" src="https://demo.ghost.io/public/ghost-sdk.min.js?v=724281a32e"></script>
+    <script type="text/javascript">
+    ghost.init({
+    	clientId: "ghost-frontend",
+    	clientSecret: "f84a07a72b17"
+    });
+    </script> -->
+
+    <meta name="generator" content="Jekyll 3.6.2" />
+    <link rel="alternate" type="application/rss+xml" title="Xamarin Link Roundup – 13 June 2015" href="/feed.xml" />
+
+
+</head>
+<body class="home-template">
+
+    <div class="site-wrapper">
+        <!-- All the main content gets inserted here, index.hbs, post.hbs, etc -->
+        <!-- default -->
+
+<!-- The tag above means: insert everything in this file
+into the {body} of the default.hbs template -->
+
+<header class="site-header outer">
+    <div class="inner">
+        <nav class="site-nav">
+    <div class="site-nav-left">
+        
+            
+                <a class="site-nav-logo" href="/">Kym's Blog</a>
+            
+        
+        
+    </div>
+    <div class="site-nav-right">
+        <div class="social-links">
+            
+            
+                <a class="social-link social-link-tw" href="https://twitter.com/kphillpotts" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg>
+</a>
+            
+        </div>
+        
+    </div>
+</nav>
+
+    </div>
+</header>
+
+<!-- Everything inside the #post tags pulls data from the post -->
+<!-- #post -->
+
+<main id="site-main" class="site-main outer" role="main">
+    <div class="inner">
+
+        <article class="post-full  no-image">
+
+            <header class="post-full-header">
+                <section class="post-full-meta">
+                    <time class="post-full-meta-date" datetime="13 June 2015">13 June 2015</time>
+                    
+                </section>
+                <h1 class="post-full-title">Xamarin Link Roundup – 13 June 2015</h1>
+            </header>
+
+            
+
+            <section class="post-full-content">
+                <div class="kg-card-markdown">
+                    <p>What happened in the Xamarin Community last week?</p>
+
+<!--more-->
+
+<h2 id="xamarinforms">Xamarin.Forms</h2>
+
+<p>&lt;/p&gt;</p>
+
+<ul>
+  <li><a target="_blank" href="http://blog.twintechs.com/advanced-xamarin-forms-techniques-for-flexible-and-performant-cross-platform-apps-part-3">Advanced Xamarin Forms Techniques for flexible and performant cross platform apps – Part 3</a><br />
+3rd part in a series on applying advanced techniques to Xamarin Forms to facilitate performant and flexible cross platform development.</li>
+  <li><a target="_blank" href="http://www.johankarlsson.net/2015/06/building-swiper-control-part-2-android.html?m=1">Building the Swiper control – Part 2 (Android)</a><br />
+Johan Karlson’s second part of implementing the swiper control. This time looking at the Android component.</li>
+  <li><a target="_blank" href="http://enginecore.blogspot.com.au/2015/05/calldatamethod-trigger-in-xamarin-forms.html?m=1">CallDataMethod trigger in Xamarin Forms</a><br />
+Andrei implements a CallDataMethod trigger in Xamarin.Forms</li>
+  <li><a target="_blank" href="http://www.cazzulino.com/dynamic-forms.html">Dynamic Xamarin Forms From XAML and JSON</a><br />
+Daniel Cazzulino shows how to dynamically create a Xamarin.Forms page from JSON</li>
+  <li><a target="_blank" href="http://enginecore.blogspot.ro/2015/06/iconview-in-xamarin-forms.html?m=1">IconView control for Xamarin Forms</a><br />
+Andrei shares a Xamarin.Forms control that takes a local image and applies a color on it.</li>
+  <li><a target="_blank" href="http://www.michaelridland.com/xamarin/introduction-ios9-multitasking-xamarin-forms/">Introduction to iOS9 Multitasking and Xamarin.Forms first-thoughts</a><br />
+Michael Ridland looks at the new iOS9 Multitasking released at WWDC</li>
+  <li><a target="_blank" href="http://brianlagunas.com/whats-new-in-prism-for-xamarin-forms-5-7-0-pre1-release/">What’s New in Prism for Xamarin.Forms 5.7.0-Pre1 Release – Brian Lagunas’ XAML Blog</a><br />
+Brian Lagunas looks at the newest improvements and features added to Prism for Xamarin.Forms</li>
+  <li><a target="_blank" href="https://www.SyntaxIsMyUI.com/xamarin-forms-button-nugget/">Xamarin.Forms Button Nugget</a><br />
+The amazing Adam Wolf digs into the Xamarin.Forms buttons less known features</li>
+  <li><a target="_blank" href="https://www.syntaxismyui.com/xamarin-forms-nuggets-a-sweet-and-sour-blog-series/">Xamarin.Forms Nuggets – A Sweet and Sour Blog Series – Syntax is my UI</a><br />
+Adam Wolf introduces his series of Xamarin.Forms Nuggets</li>
+</ul>
+<p>&lt;/UL&gt;</p>
+
+<h2 id="general">General</h2>
+
+<p>&lt;/p&gt;</p>
+
+<ul>
+  <li><a target="_blank" href="http://blog.xamarin.com/better-apps-and-faster-release-cycles-part-i/">Better Apps &amp; Faster Release Cycles Part I</a><br />
+Karl Krukow’s four part series on simple steps to improve your apps and make your release cycles faster</li>
+  <li><a target="_blank" href="http://blog.mrlacey.co.uk/2015/05/whats-point-of-where-value-in-project.html?m=1">Creating Awesome Windows Apps: What’s the point of (where is the value in) Project Astoria and Project Islandwood?</a><br />
+Matt Lacey answers the questions “What’s this Project Astoria and Islandwood all about then? When should you be using them?”</li>
+  <li><a target="_blank" href="http://www.smashingmagazine.com/2015/05/14/functional-ux-design-animations/">Functional Animation In UX Design</a><br />
+Animation in UX design done right enhances usability. Amit Daliot at Smashing Magazine highlights some best practices</li>
+  <li><a target="_blank" href="http://blog.xamarin.com/keep-users-from-leaving-your-app-with-chrome-custom-tabs/">Keep Users from Leaving Your App with Chrome Custom Tabs</a><br />
+Jon Dick looks at using the using the newly announced Chrome Custom Tabs in your Xamarin apps</li>
+  <li><a target="_blank" href="http://channel9.msdn.com/Blogs/Seth-Juarez/Making-the-Case-for-using-F-with-Tomas-Petricek">Making the Case for using F# with Tomas Petricek</a><br />
+Need to be convinced to investigate F#… look no further with this video from Channel 9</li>
+  <li><a target="_blank" href="http://oren.codes/2015/06/09/pcls-net-core-dnx-and-uwp/">Oren Novotny » Demystifying PCL’s, .NET Core, DNX and UWP</a><br />
+Oren Novotny investigates the new PCL target frameworkds</li>
+  <li><a target="_blank" href="http://blog.xamarin.com/put-some-cyanogen-in-your-xamarin-apps/">Put Some Cyanogen in Your Xamarin Apps</a><br />
+John Dick discusses the new Cyanogen mod api</li>
+  <li><a target="_blank" href="https://msdn.microsoft.com/en-us/magazine/mt147239.aspx">Xamarin – Implementing and Using Data Binding in Xamarin</a><br />
+Laurent Bugnion talks data binding in Xamarin</li>
+</ul>
+<p>&lt;/UL&gt;</p>
+
+<h2 id="components-and-tools">Components and Tools</h2>
+
+<p>&lt;/p&gt;</p>
+
+<ul>
+  <li><a target="_blank" href="http://mikebluestein.com/2015/06/08/couchbase-lite-xamarin-slides/">Couchbase Lite &amp; Xamarin slides</a><br />
+Mike Bluesteins slides introduce Couchbase Lite</li>
+  <li><a target="_blank" href="http://blog.thomaslebrun.net/2015/06/xamarin-getting-started-with-couchbase-lite/#.VXKngVLXenM">Getting started with Couchbase Lite!</a><br />
+Tom introduces Couchbase Lite</li>
+  <li><a target="_blank" href="http://lastexitcode.com/blog/2015/06/09/PaketSupportInXamarinStudio/">Paket Support in Xamarin Studio – Matt Ward</a><br />
+Xamarin Studio and MonoDevelop now have support for Paket with an alpha release of the Paket Addin.</li>
+</ul>
+<p>&lt;/UL&gt;</p>
+
+<h2 id="ios">iOS</h2>
+
+<p>&lt;/p&gt;</p>
+
+<ul>
+  <li><a target="_blank" href="http://www.michaelridland.com/xamarin/introducing-watchkit-watchos-2/">Introducing WatchKit and watchOS 2</a><br />
+Michael Ridland looks at three new frameworks, WatchKit, ClockKit and Watch Connectivity</li>
+  <li><a target="_blank" href="http://www.michaelridland.com/xamarin/ios-9-search-api-killer-way-engage-users/">iOS 9 Search API – A killer way to engage with users</a><br />
+Michael Ridland investigates the new iOS9 search API</li>
+  <li><a target="_blank" href="http://blog.xamarin.com/wwdc-2015-recap-for-ios-developers/">WWDC 2015 Recap for iOS Developers</a><br />
+Michael James covers off the important announcements from WWDC 2015</li>
+  <li><a target="_blank" href="http://www.michaelridland.com/xamarin/wwdc-keynote/">WWDC n+1 – The Keynote + Platforms State of the Union</a><br />
+Michael Ridland reports on the WWDC keynote and State of the Union</li>
+</ul>
+<p>&lt;/UL&gt;</p>
+
+<h2 id="more-xamarin-link-blogs">More Xamarin Link Blogs</h2>
+
+<p>Here are links to the other great Xamarin link blogs out there that are updated regularly</p>
+
+<ul>
+  <li>
+    <p><a href="http://www.xamarinweekly.com/">Xamarin Weekly</a></p>
+
+    <p>A free, once-weekly e-mail newsletter roundup of all things Xamarin. Posted Fridays</p>
+  </li>
+  <li>
+    <p><a href="http://xamarinappdev.com/">Xamarin App Developer Links</a></p>
+
+    <p>The latest tips, tutorials, news, and resources for Xamarin app developers. Posted Daily</p>
+  </li>
+  <li>
+    <p><a href="http://csharpmobiledaily.com/">C# Mobile (Xamarin) Daily</a></p>
+
+    <p>Your cross-platform C# mobile magazine. Posted Daily</p>
+  </li>
+  <li>
+    <p><a href="hhttp://planet.xamarin.com/">Xamarin Community Blogs</a></p>
+
+    <p>This is an automatic aggregator which pulls articles from bloggers in the Xamarin developer community.</p>
+  </li>
+</ul>
+
+                </div>
+            </section>
+
+            <!-- Email subscribe form at the bottom of the page -->
+            
+
+            <footer class="post-full-footer">
+                <!-- Everything inside the #author tags pulls data from the author -->
+                <!-- #author-->
+                
+                    
+                
+                <!-- /author  -->
+            </footer>
+
+            <!-- If you use Disqus comments, just uncomment this block.
+            The only thing you need to change is "test-apkdzgmqhj" - which
+            should be replaced with your own Disqus site-id. -->
+            
+
+        </article>
+
+    </div>
+</main>
+
+<!-- Links to Previous/Next posts -->
+<aside class="read-next outer">
+    <div class="inner">
+        <div class="read-next-feed">
+            
+
+            <!-- If there's a next post, display it using the same markup included from - partials/post-card.hbs -->
+            
+                
+    <article class="post-card  no-image">
+        
+        <div class="post-card-content">
+            <a class="post-card-content-link" href="/emacs-key-mappings-for-xamarin-studio-on-mac/">
+                <header class="post-card-header">
+                    
+                        
+                            
+                               <span class="post-card-tags">Development</span>
+                            
+                        
+                            
+                               <span class="post-card-tags">Tools</span>
+                            
+                        
+                            
+                                <span class="post-card-tags">Xamarin</span>
+                            
+                        
+                    
+
+                    <h2 class="post-card-title">Emacs key mappings for Xamarin Studio on Mac</h2>
+                </header>
+                <section class="post-card-excerpt">
+                    <p>One of the great things about my job instructing at Xamarin is the diverse set of questions I get exposure to via all the people who attend Xamarin University. For example, just the</p>
+                </section>
+            </a>
+            <footer class="post-card-meta">
+                
+                    
+                
+            </footer>
+        </div>
+    </article>
+
+            
+
+            <!-- If there's a previous post, display it using the same markup included from - partials/post-card.hbs -->
+            
+                
+    <article class="post-card  no-image">
+        
+        <div class="post-card-content">
+            <a class="post-card-content-link" href="/xamarin-link-roundup-2-mar-2015/">
+                <header class="post-card-header">
+                    
+
+                    <h2 class="post-card-title">Xamarin Link Roundup &#8211;  2 Mar 2015</h2>
+                </header>
+                <section class="post-card-excerpt">
+                    <p>What happened in the Xamarin Community last week? Xamarin Forms Responding to Orientation Changes in Xamarin Forms Jeff Prosise shows a way of handling orientation changes in Xamarin.Forms given the lack of Orientation</p>
+                </section>
+            </a>
+            <footer class="post-card-meta">
+                
+                    
+                
+            </footer>
+        </div>
+    </article>
+
+            
+
+        </div>
+    </div>
+</aside>
+
+<!-- Floating header which appears on-scroll, included from includes/floating-header.hbs -->
+<div class="floating-header">
+    <div class="floating-header-logo">
+        <a href="/">
+            
+            <span>Kym's Blog</span>
+        </a>
+    </div>
+    <span class="floating-header-divider">&mdash;</span>
+    <div class="floating-header-title">Xamarin Link Roundup – 13 June 2015</div>
+    <div class="floating-header-share">
+        <div class="floating-header-share-label">Share this <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M7.5 15.5V4a1.5 1.5 0 1 1 3 0v4.5h2a1 1 0 0 1 1 1h2a1 1 0 0 1 1 1H18a1.5 1.5 0 0 1 1.5 1.5v3.099c0 .929-.13 1.854-.385 2.748L17.5 23.5h-9c-1.5-2-5.417-8.673-5.417-8.673a1.2 1.2 0 0 1 1.76-1.605L7.5 15.5zm6-6v2m-3-3.5v3.5m6-1v2"/>
+</svg>
+</div>
+        <a class="floating-header-share-tw" href="https://twitter.com/share?text=Xamarin+Link+Roundup+%E2%80%93+13+June+2015&amp;url=https://kphillpotts.github.io/xamarin-link-roundup-13-june-2015/"
+            onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg>
+
+        </a>
+        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=https://kphillpotts.github.io/xamarin-link-roundup-13-june-2015/"
+            onclick="window.open(this.href, 'share-facebook','width=580,height=296');return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M19 6h5V0h-5c-3.86 0-7 3.14-7 7v3H8v6h4v16h6V16h5l1-6h-6V7c0-.542.458-1 1-1z"/></svg>
+
+        </a>
+    </div>
+    <progress class="progress" value="0">
+        <div class="progress-container">
+            <span class="progress-bar"></span>
+        </div>
+    </progress>
+</div>
+
+
+<!-- /post -->
+
+<!-- The #contentFor helper here will send everything inside it up to the matching #block helper found in default.hbs -->
+
+
+        <!-- Previous/next page links - displayed on every page -->
+        
+
+        <!-- The footer at the very bottom of the screen -->
+        <footer class="site-footer outer">
+            <div class="site-footer-content inner">
+                <section class="copyright"><a href="/">Kym's Blog</a> &copy; 2019</section>
+                <section class="poweredby">Proudly published with <a href="https://jekyllrb.com/">Jekyll</a> &
+                    <a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a> using
+                    <a href="https://github.com/jekyller/jasper2" target="_blank" rel="noopener">Jasper2</a></section>
+                <nav class="site-footer-nav">
+                    <a href="/">Latest Posts</a>
+                    
+                    <a href="https://twitter.com/kphillpotts" target="_blank" rel="noopener">Twitter</a>
+                    <a href="https://ghost.org" target="_blank" rel="noopener">Ghost</a>
+                </nav>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- The big email subscribe modal content -->
+    
+
+    <!-- highlight.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.10.0/components/prism-abap.min.js"></script>
+    <script>$(document).ready(function() {
+      $('pre code').each(function(i, block) {
+        hljs.highlightBlock(block);
+      });
+    });</script>
+
+    <!-- jQuery + Fitvids, which makes all video embeds responsive -->
+    <script
+        src="https://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous">
+    </script>
+    <script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="https://demo.ghost.io/assets/js/jquery.fitvids.js?v=724281a32e"></script>
+
+
+    <!-- Paginator increased to "infinit" in _config.yml -->
+    <!-- if paginator.posts  -->
+    <!-- <script>
+        var maxPages = parseInt('');
+    </script>
+    <script src="/assets/js/infinitescroll.js"></script> -->
+    <!-- /endif -->
+
+    
+
+
+    <!-- Add Google Analytics  -->
+    <!-- Google Analytics Tracking code -->
+ <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-69281367-1', 'auto');
+  ga('send', 'pageview');
+
+ </script>
+
+
+    <!-- The #block helper will pull in data from the #contentFor other template files. In this case, there's some JavaScript which we only want to use in post.hbs, but it needs to be included down here, after jQuery has already loaded. -->
+    
+
+    <!-- Ghost outputs important scripts and data with this tag - it should always be the very last thing before the closing body tag -->
+    <!-- ghost_foot -->
+
+</body>
+</html>

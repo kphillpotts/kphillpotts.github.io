@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <!-- Document Settings -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- Base Meta -->
+    <!-- dynamically fixing the title for tag/author pages -->
+
+
+
+    <title>Xamarin and Android – Specific Solutions to Specific Problems #3</title>
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Styles'n'Scripts -->
+    <link rel="stylesheet" type="text/css" href="/assets/built/screen.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/built/screen.edited.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/built/syntax.css" />
+    <!-- highlight.js -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+    <style>.hljs { background: none; }</style>
+
+    <!--[if IE]>
+        <style>
+            p, ol, ul{
+                width: 100%;
+            }
+            blockquote{
+                width: 100%;
+            }
+        </style>
+    <![endif]-->
+    
+    <!-- This tag outputs SEO meta+structured data and other important settings -->
+    <meta name="description" content="I write about Azure, Xamarin.Forms, Connected Apps and whatever else might be on my mind." />
+    <link rel="shortcut icon" href="/assets/images/favicon.png" type="image/png" />
+    <link rel="canonical" href="/xamarin-and-android-specific-solutions-to-specific-problems-3-3/" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+
+     <!--title below is coming from _includes/dynamic_title-->
+    <meta property="og:site_name" content="Kym's Blog" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Xamarin and Android – Specific Solutions to Specific Problems #3" />
+    <meta property="og:description" content="I write about Azure, Xamarin.Forms, Connected Apps and whatever else might be on my mind." />
+    <meta property="og:url" content="/xamarin-and-android-specific-solutions-to-specific-problems-3-3/" />
+    <meta property="og:image" content="/assets/images/blog-cover.jpg" />
+    <meta property="article:publisher" content="https://www.facebook.com/" />
+    <meta property="article:tag" content="Android" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Xamarin and Android – Specific Solutions to Specific Problems #3" />
+    <meta name="twitter:description" content="I write about Azure, Xamarin.Forms, Connected Apps and whatever else might be on my mind." />
+    <meta name="twitter:url" content="/" />
+    <meta name="twitter:image" content="/assets/images/blog-cover.jpg" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="Kym's Blog" />
+    <meta name="twitter:label2" content="Filed under" />
+    <meta name="twitter:data2" content="Android" />
+    <meta name="twitter:site" content="@kphillpotts" />
+    <meta name="twitter:creator" content="@kphillpotts" />
+    <meta property="og:image:width" content="2000" />
+    <meta property="og:image:height" content="666" />
+
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Website",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Kym's Blog",
+        "logo": "/false"
+    },
+    "url": "/xamarin-and-android-specific-solutions-to-specific-problems-3-3/",
+    "image": {
+        "@type": "ImageObject",
+        "url": "/assets/images/blog-cover.jpg",
+        "width": 2000,
+        "height": 666
+    },
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "/xamarin-and-android-specific-solutions-to-specific-problems-3-3/"
+    },
+    "description": "I write about Azure, Xamarin.Forms, Connected Apps and whatever else might be on my mind."
+}
+    </script>
+
+    <!-- <script type="text/javascript" src="https://demo.ghost.io/public/ghost-sdk.min.js?v=724281a32e"></script>
+    <script type="text/javascript">
+    ghost.init({
+    	clientId: "ghost-frontend",
+    	clientSecret: "f84a07a72b17"
+    });
+    </script> -->
+
+    <meta name="generator" content="Jekyll 3.6.2" />
+    <link rel="alternate" type="application/rss+xml" title="Xamarin and Android – Specific Solutions to Specific Problems #3" href="/feed.xml" />
+
+
+</head>
+<body class="home-template">
+
+    <div class="site-wrapper">
+        <!-- All the main content gets inserted here, index.hbs, post.hbs, etc -->
+        <!-- default -->
+
+<!-- The tag above means: insert everything in this file
+into the {body} of the default.hbs template -->
+
+<header class="site-header outer">
+    <div class="inner">
+        <nav class="site-nav">
+    <div class="site-nav-left">
+        
+            
+                <a class="site-nav-logo" href="/">Kym's Blog</a>
+            
+        
+        
+    </div>
+    <div class="site-nav-right">
+        <div class="social-links">
+            
+            
+                <a class="social-link social-link-tw" href="https://twitter.com/kphillpotts" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg>
+</a>
+            
+        </div>
+        
+    </div>
+</nav>
+
+    </div>
+</header>
+
+<!-- Everything inside the #post tags pulls data from the post -->
+<!-- #post -->
+
+<main id="site-main" class="site-main outer" role="main">
+    <div class="inner">
+
+        <article class="post-full  no-image">
+
+            <header class="post-full-header">
+                <section class="post-full-meta">
+                    <time class="post-full-meta-date" datetime="16 September 2013">16 September 2013</time>
+                    
+                        <span class="date-divider">/</span>
+                        
+                            
+                               <a href='/tag/android/'>ANDROID</a>,
+                            
+                        
+                            
+                               <a href='/tag/xamarin/'>XAMARIN</a>
+                            
+                        
+                    
+                </section>
+                <h1 class="post-full-title">Xamarin and Android – Specific Solutions to Specific Problems #3</h1>
+            </header>
+
+            
+
+            <section class="post-full-content">
+                <div class="kg-card-markdown">
+                    <p>Welcome to another installment in my series exploring the specific problems that nearly beat me this week. I write these on Sunday night after a huge week of balancing my work and fatherly responsibilities so I hope they make sense…</p>
+
+<!--more-->
+
+<p><em>**</em> </p>
+
+<p><strong>1. I have put a relative layout inside a scroll view and my layout_alignParentBottom properties don’t work any more. How can I align elements to the bottom of a layout inside a scroll view?</strong></p>
+
+<p>As soon as put things in a scroll view I saw this exact behaivour. After some searching on the interwebs I found the following <a href="http://stackoverflow.com/questions/3126347/android-relativelayout-how-to-alignparentbottom-when-wrapped-in-a-scrollview">quote by Romain Guy</a> on Stack Overflow:</p>
+
+<blockquote>
+  <p>Using fill_parent as the height of a child of a ScrollView is meaningless. You are telling the RelativeLayout to be always as tall as its parent. In this case, the ScrollView becomes useless! The height of the RelativeLayout should be set to wrap_content, in which case, depending on what the RelativeLayout contains, alignParentBottom may not work as you expect.</p>
+</blockquote>
+
+<p>The trick here is to use the <strong><em>android:fillViewport</em></strong> property on the scroll view. As soon as you set this to true, the scroll view will fill the screen and the layout_alignParentBottom will start to function as expected:</p>
+
+<div id="scid:9D7513F9-C04C-4721-824A-2B34F0212519:f603d778-3b3b-4899-885d-9755abd00899" class="wlWriterEditableSmartContent" style="float: none; padding-bottom: 0px; padding-top: 0px; padding-left: 0px; margin: 0px; display: inline; padding-right: 0px">
+  <pre style=" width: 548px; height: 227px;background-color:White;overflow: auto;"><div>
+  <!--
+
+Code highlighting produced by Actipro CodeHighlighter (freeware)
+http://www.CodeHighlighter.com/
+
+-->
+  
+  <span style="color: #000000;">&lt;</span><span style="color: #000000;">ScrollView xmlns:android</span><span style="color: #000000;">=</span><span style="color: #800000;">"</span><span style="color: #800000;">http://schemas.android.com/apk/res/android</span><span style="color: #800000;">"</span><span style="color: #000000;">
+      android:layout_width</span><span style="color: #000000;">=</span><span style="color: #800000;">"</span><span style="color: #800000;">fill_parent</span><span style="color: #800000;">"</span><span style="color: #000000;">
+      android:layout_height</span><span style="color: #000000;">=</span><span style="color: #800000;">"</span><span style="color: #800000;">fill_parent</span><span style="color: #800000;">"</span><span style="color: #000000;">
+      android:background</span><span style="color: #000000;">=</span><span style="color: #800000;">"</span><span style="color: #800000;">@color/white</span><span style="color: #800000;">"</span><span style="color: #000000;">
+      android:fillViewport</span><span style="color: #000000;">=</span><span style="color: #800000;">"</span><span style="color: #800000;">true</span><span style="color: #800000;">"</span><span style="color: #000000;">&gt;</span><span style="color: #000000;">
+  
+  ... 
+  
+  </span><span style="color: #000000;">&lt;/</span><span style="color: #000000;">ScrollView</span><span style="color: #000000;">&gt;</span><span style="color: #000000;"> 
+  
+  </span>
+</div></pre>
+  
+  <p>
+    <!-- Code inserted with Steve Dunn's Windows Live Writer Code Formatter Plugin.  http://dunnhq.com -->&lt;/div&gt; 
+    
+    <p>
+      &nbsp;
+    </p>
+    
+    <p>
+      <strong>2. When I use async/await in my code the execution will fall through to other methods that require data that hasn&#8217;t been intialised yet. Is there anyway to signal in an async/await scenario?</strong>
+    </p>
+    
+    <p>
+      I first witnessed this kind of scenario when I needed to use async/await in my <strong><em>OnActivityResult</em></strong> methods. In my examples I had started an activity and when I returned I needed to load data to be used in the layout. As soon as I used await the execution would fall through to the OnRestart/OnResume and if I wanted to use a single set of logic in these methods to display data I was in trouble. Bear in mind that with some re-organisation of my code and where I do my filling of controls I could probably minimise the impact of this issue but this example is being used to show the problem more clearly.
+    </p>
+    
+    <div id="scid:9D7513F9-C04C-4721-824A-2B34F0212519:4ad5ea4c-0f10-4fd5-883c-6f709417dc3b" class="wlWriterEditableSmartContent" style="float: none; padding-bottom: 0px; padding-top: 0px; padding-left: 0px; margin: 0px; display: inline; padding-right: 0px">
+      <pre style=" width: 708px; height: 173px;background-color:White;overflow: auto;"><div>
+  <!--
+
+Code highlighting produced by Actipro CodeHighlighter (freeware)
+http://www.CodeHighlighter.com/
+
+-->
+  
+  <span style="color: #000000;">async </span><span style="color: #0000FF;">protected</span><span style="color: #000000;"> </span><span style="color: #0000FF;">override</span><span style="color: #000000;"> </span><span style="color: #0000FF;">void</span><span style="color: #000000;"> OnActivityResult(</span><span style="color: #0000FF;">int</span><span style="color: #000000;"> requestCode, Result resultCode, Intent data)
+  {
+      </span><span style="color: #0000FF;">base</span><span style="color: #000000;">.OnActivityResult(requestCode, resultCode, data);
+  
+      </span><span style="color: #0000FF;">string</span><span style="color: #000000;"> itemId </span><span style="color: #000000;">=</span><span style="color: #000000;"> data.GetStringExtra(</span><span style="color: #800000;">"</span><span style="color: #800000;">ItemId</span><span style="color: #800000;">"</span><span style="color: #000000;">);
+      _item </span><span style="color: #000000;">=</span><span style="color: #000000;"> await ItemHelper.GetItem(itemId);
+  }</span>
+</div></pre>
+      
+      <p>
+        <!-- Code inserted with Steve Dunn's Windows Live Writer Code Formatter Plugin.  http://dunnhq.com -->&lt;/div&gt; 
+        
+        <p>
+          In the following code in my <strong><em>OnResume</em></strong> I am setting a text edit to the item description:
+        </p>
+        
+        <div id="scid:9D7513F9-C04C-4721-824A-2B34F0212519:b825257c-4b77-4a8c-b6f8-8b6b745cadbb" class="wlWriterEditableSmartContent" style="float: none; padding-bottom: 0px; padding-top: 0px; padding-left: 0px; margin: 0px; display: inline; padding-right: 0px">
+          <pre style=" width: 538px; height: 194px;background-color:White;overflow: auto;"><div>
+  <!--
+
+Code highlighting produced by Actipro CodeHighlighter (freeware)
+http://www.CodeHighlighter.com/
+
+-->
+  
+  <span style="color: #0000FF;">protected</span><span style="color: #000000;"> </span><span style="color: #0000FF;">override</span><span style="color: #000000;"> </span><span style="color: #0000FF;">void</span><span style="color: #000000;"> OnResume()
+  {
+      </span><span style="color: #0000FF;">base</span><span style="color: #000000;">.OnResume();
+  
+      </span><span style="color: #008000;">//</span><span style="color: #008000;"> I'm in trouble here because the item hasn't actually
+      </span><span style="color: #008000;">//</span><span style="color: #008000;"> been retrieved yet.</span><span style="color: #008000;">
+  </span><span style="color: #000000;">    _itemTextEdit.Text </span><span style="color: #000000;">=</span><span style="color: #000000;"> _item.Description;
+  }
+  </span>
+</div></pre>
+          
+          <p>
+            <!-- Code inserted with Steve Dunn's Windows Live Writer Code Formatter Plugin.  http://dunnhq.com -->&lt;/div&gt;
+          </p>
+          
+          <p>
+            In normal threading situations I would have usually used something like an <strong><em>AutoResetEvent</em></strong>&nbsp; to signal the logic that it is now ready to load but in the async/await world I needed something a little more appropriate. Enter <strong><em>TaskCompletionStatus</em></strong>. For more information on this bad boy please have a look at <a href="http://blogs.msdn.com/b/pfxteam/archive/2009/06/02/9685804.aspx?Redirected=true">Stephen Toub’s article</a> on MSDN. The nuts and bolts of it are that I can await on this in my <strong>OnResume </strong>and signal for it to continue once I have actually loaded the data it needs. The code for the <strong><em>OnActivityResult</em></strong> ends up looking like this:
+          </p>
+          
+          <div id="scid:9D7513F9-C04C-4721-824A-2B34F0212519:913fccb4-60b3-49c3-bdea-125e71886398" class="wlWriterEditableSmartContent" style="float: none; padding-bottom: 0px; padding-top: 0px; padding-left: 0px; margin: 0px; display: inline; padding-right: 0px">
+            <pre style=" width: 528px; height: 370px;background-color:White;overflow: auto;"><div>
+  <!--
+
+Code highlighting produced by Actipro CodeHighlighter (freeware)
+http://www.CodeHighlighter.com/
+
+-->
+  
+  <span style="color: #0000FF;">private</span><span style="color: #000000;"> TaskCompletionSource</span><span style="color: #000000;">&lt;</span><span style="color: #0000FF;">object</span><span style="color: #000000;">&gt;</span><span style="color: #000000;"> _taskCompletionSource </span><span style="color: #000000;">=</span><span style="color: #000000;"> </span><span style="color: #0000FF;">new</span><span style="color: #000000;"> TaskCompletionSource</span><span style="color: #000000;">&lt;</span><span style="color: #0000FF;">object</span><span style="color: #000000;">&gt;</span><span style="color: #000000;">();
+  
+  async </span><span style="color: #0000FF;">protected</span><span style="color: #000000;"> </span><span style="color: #0000FF;">override</span><span style="color: #000000;"> </span><span style="color: #0000FF;">void</span><span style="color: #000000;"> OnActivityResult(</span><span style="color: #0000FF;">int</span><span style="color: #000000;"> requestCode, Result resultCode, Intent data)
+  {
+      </span><span style="color: #0000FF;">base</span><span style="color: #000000;">.OnActivityResult(requestCode, resultCode, data);
+  
+      _taskCompletionSource </span><span style="color: #000000;">=</span><span style="color: #000000;"> </span><span style="color: #0000FF;">new</span><span style="color: #000000;"> TaskCompletionSource</span><span style="color: #000000;">&lt;</span><span style="color: #0000FF;">object</span><span style="color: #000000;">&gt;</span><span style="color: #000000;">();
+  
+      </span><span style="color: #0000FF;">string</span><span style="color: #000000;"> itemId </span><span style="color: #000000;">=</span><span style="color: #000000;"> data.GetStringExtra(</span><span style="color: #800000;">"</span><span style="color: #800000;">ItemId</span><span style="color: #800000;">"</span><span style="color: #000000;">);
+      _item </span><span style="color: #000000;">=</span><span style="color: #000000;"> await ItemHelper.GetItem(itemId);
+      
+      </span><span style="color: #008000;">//</span><span style="color: #008000;"> Set the result and signal any async code awaiting
+      </span><span style="color: #008000;">//</span><span style="color: #008000;"> on the TaskCompletionSource</span><span style="color: #008000;">
+  </span><span style="color: #000000;">    _taskCompletionSource.SetResult(</span><span style="color: #0000FF;">null</span><span style="color: #000000;">);
+  }</span>
+</div></pre>
+            
+            <p>
+              <!-- Code inserted with Steve Dunn's Windows Live Writer Code Formatter Plugin.  http://dunnhq.com -->&lt;/div&gt; 
+              
+              <p>
+                The <strong><em>OnResume</em></strong>&nbsp; is changed to include an await to prevent it from running until the data is ready:
+              </p>
+              
+              <div id="scid:9D7513F9-C04C-4721-824A-2B34F0212519:796052f9-f779-4096-80f1-d7f65c096566" class="wlWriterEditableSmartContent" style="float: none; padding-bottom: 0px; padding-top: 0px; padding-left: 0px; margin: 0px; display: inline; padding-right: 0px">
+                <pre style=" width: 528px; height: 255px;background-color:White;overflow: auto;"><div>
+  <!--
+
+Code highlighting produced by Actipro CodeHighlighter (freeware)
+http://www.CodeHighlighter.com/
+
+-->
+  
+  <span style="color: #0000FF;">protected</span><span style="color: #000000;"> </span><span style="color: #0000FF;">override</span><span style="color: #000000;"> </span><span style="color: #0000FF;">void</span><span style="color: #000000;"> OnResume()
+  {
+      </span><span style="color: #0000FF;">base</span><span style="color: #000000;">.OnResume();
+  
+      </span><span style="color: #008000;">//</span><span style="color: #008000;"> The execution will wait here until SetResult
+      </span><span style="color: #008000;">//</span><span style="color: #008000;"> is called.</span><span style="color: #008000;">
+  </span><span style="color: #000000;">    await _taskCompletionSource.Task;
+  
+      _itemTextEdit.Text </span><span style="color: #000000;">=</span><span style="color: #000000;"> _item.Description;
+  }</span>
+</div></pre>
+                
+                <p>
+                  <!-- Code inserted with Steve Dunn's Windows Live Writer Code Formatter Plugin.  http://dunnhq.com -->&lt;/div&gt; 
+                  
+                  <p>
+                    As I am exclusively using async/await the UI will continue to run without blocking but now the logic won’t attempt to update my controls until the data is ready.
+                  </p>
+                  
+                  <p>
+                    As I said, this problem could probably be addressed by reorganising where the data retrieval is performed but it still demonstrates a strategy that could potentially be utilised in a variety of scenarios.
+                  </p>
+                  
+                  <p>
+                    &nbsp;
+                  </p>
+                  
+                  <p>
+                    <strong>3. All of a sudden when I use a map fragment in my application the map loads with a grey screen. It was working before, what is going on?</strong>
+                  </p>
+                  
+                  <p>
+                    I have seen this weirdness a few times and it seems to be a permission problem. I originally found the answer in this <a href="http://forums.xamarin.com/discussion/comment/25330/#Comment_25330">post by Ryan Langton</a> on the Xamarin forums.
+                  </p>
+                  
+                  <p>
+                    The crux of it is that when you change the properties of your AppManifest.xml using the property pages in Visual Studio, sometimes some strange stuff can happen to your xml and your maps will start showing up as blank.
+                  </p>
+                  
+                  <p>
+                    I simply made sure my <strong><em>AndroidManifest.xml </em></strong>looked something like the following an everything starts working again:
+                  </p>
+                  
+                  <blockquote>
+                    <p>
+                      <font size="2"><?xml version=&#8221;1.0&#8243; encoding=&#8221;utf-8&#8243;?><br />&lt;manifest xmlns:android=&#8221;</font><a href="http://schemas.android.com/apk/res/android&quot;"><font size="2">http://schemas.android.com/apk/res/android&#8221;</font></a><font size="2"> android:installLocation=&#8221;auto&#8221; package=&#8221;au.com.company.someApp&#8221; android:versionCode=&#8221;3&#8243; android:versionName=&#8221;1.2&#8243;&gt;<br />&nbsp;&nbsp;&nbsp; &lt;uses-sdk android:targetSdkVersion=&#8221;14&#8243; android:minSdkVersion=&#8221;14&#8243; /&gt;<br />&nbsp;&nbsp;&nbsp; &lt;uses-permission android:name=&#8221;android.permission.CAMERA&#8221; /&gt;<br />&nbsp;&nbsp;&nbsp; &lt;!&#8211; Google Maps for Android v2 requires OpenGL ES v2 &#8211;&gt;<br />&nbsp;&nbsp;&nbsp; &lt;uses-feature android:glEsVersion=&#8221;0x00020000&#8243; android:required=&#8221;true&#8221; /&gt;<br />&nbsp; &lt;permission<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; android:name=&#8221;au.com.company.someApp.permission.MAPS_RECEIVE&#8221;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; android:protectionLevel=&#8221;signature&#8221;/&gt;<br />&nbsp; &lt;uses-permission android:name=&#8221;au.com.company.someApp.permission.MAPS_RECEIVE&#8221;/&gt;&nbsp; <br />&nbsp;&nbsp;&nbsp; &lt;!&#8211; We need to be able to download map tiles and access Google Play Services&#8211;&gt;<br />&nbsp; &lt;uses-permission android:name=&#8221;android.permission.INTERNET&#8221; /&gt;<br />&nbsp; &lt;!&#8211; Allow the application to access Google web-based services. &#8211;&gt;<br />&nbsp; &lt;uses-permission android:name=&#8221;com.google.android.providers.gsf.permission.READ_GSERVICES&#8221; /&gt;<br />&nbsp; &lt;!&#8211; Google Maps for Android v2 will cache map tiles on external storage &#8211;&gt;<br />&nbsp; &lt;uses-permission android:name=&#8221;android.permission.WRITE_EXTERNAL_STORAGE&#8221; /&gt;<br />&nbsp; &lt;!&#8211; Google Maps for Android v2 needs this permission so that it may check the connection state as it must download data &#8211;&gt;<br />&nbsp; &lt;uses-permission android:name=&#8221;android.permission.ACCESS_NETWORK_STATE&#8221; /&gt;<br />&nbsp; &lt;!&#8211; These are optional, but recommended. They will allow Maps to use the My Location provider. &#8211;&gt;<br />&nbsp; &lt;uses-permission android:name=&#8221;android.permission.ACCESS_COARSE_LOCATION&#8221; /&gt;<br />&nbsp; &lt;uses-permission android:name=&#8221;android.permission.ACCESS_FINE_LOCATION&#8221; /&gt;<br />&nbsp;&nbsp;&nbsp; &lt;application android:label=&#8221;@string/app_name&#8221;&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;!&#8211; Put your Google Maps V2 API Key here. This key will not work for you.&#8211;&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;!&#8211; See </font><a href="https://developers.google.com/maps/documentation/android/start#obtaining_an_api_key"><font size="2">https://developers.google.com/maps/documentation/android/start#obtaining_an_api_key</font></a><font size="2"> &#8211;&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;meta-data android:name=&#8221;com.google.android.maps.v2.API_KEY&#8221; android:value=&#8221;<ENTER API="" KEY="" HERE="">&#8221; /&gt;<br />&nbsp;&nbsp;&nbsp; &lt;/application&gt;<br />&lt;/manifest&gt;&lt;/font&gt;
+                    &lt;/p&gt;
+                  &lt;/blockquote&gt;
+                  
+                  <p>
+                    I don’t know why this happens but fixing the xml manually has sorted it for me several times.
+                  </p>
+</ENTER></font></p></blockquote></p></div></p></div></div></p></div></p></div>
+
+                </div>
+            </section>
+
+            <!-- Email subscribe form at the bottom of the page -->
+            
+
+            <footer class="post-full-footer">
+                <!-- Everything inside the #author tags pulls data from the author -->
+                <!-- #author-->
+                
+                    
+                
+                <!-- /author  -->
+            </footer>
+
+            <!-- If you use Disqus comments, just uncomment this block.
+            The only thing you need to change is "test-apkdzgmqhj" - which
+            should be replaced with your own Disqus site-id. -->
+            
+
+        </article>
+
+    </div>
+</main>
+
+<!-- Links to Previous/Next posts -->
+<aside class="read-next outer">
+    <div class="inner">
+        <div class="read-next-feed">
+            
+                
+                
+                
+                
+                    <article class="read-next-card"
+                        
+                            style="background-image: url(/assets/images/blog-cover.jpg)"
+                        
+                    >
+                        <header class="read-next-card-header">
+                            <small class="read-next-card-header-sitetitle">&mdash; Kym's Blog &mdash;</small>
+                            
+                                <h3 class="read-next-card-header-title"><a href="/tag/android/">Android</a></h3>
+                            
+                        </header>
+                        <div class="read-next-divider"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 14.5s2 3 5 3 5.5-2.463 5.5-5.5S21 6.5 18 6.5c-5 0-7 11-12 11C2.962 17.5.5 15.037.5 12S3 6.5 6 6.5s4.5 3.5 4.5 3.5"/></svg>
+</div>
+                        <div class="read-next-card-content">
+                            <ul>
+                                
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/xamarin-link-roundup-11-may-2016/">Xamarin Link Roundup &#8211; 11 May 2016</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/xamarin-ibeacons-and-geofencing-some-resources/">Xamarin, iBeacons and Geofencing &#8211; Some Resources</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/xamarin-and-android-specific-solutions-to-specific-problems-2/">Xamarin and Android – Specific Solutions to Specific Problems #2</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                            </ul>
+                        </div>
+                        <footer class="read-next-card-footer">
+                            <a href="/tag/android/">
+                                
+                                    See all 3 posts  →
+                                
+                            </a>
+                        </footer>
+                    </article>
+                
+            
+
+            <!-- If there's a next post, display it using the same markup included from - partials/post-card.hbs -->
+            
+                
+    <article class="post-card  no-image">
+        
+        <div class="post-card-content">
+            <a class="post-card-content-link" href="/xamarin-and-android-specific-solutions-to-specific-problems-4-2/">
+                <header class="post-card-header">
+                    
+
+                    <h2 class="post-card-title">Xamarin and Android – Specific Solutions to Specific Problems #4</h2>
+                </header>
+                <section class="post-card-excerpt">
+                    <p>  It’s been a while but I’m finally back with another one of my recent discoveries while working with Xamarin and Android. We are at the pointy end of our project so it</p>
+                </section>
+            </a>
+            <footer class="post-card-meta">
+                
+                    
+                
+            </footer>
+        </div>
+    </article>
+
+            
+
+            <!-- If there's a previous post, display it using the same markup included from - partials/post-card.hbs -->
+            
+                
+    <article class="post-card  no-image">
+        
+        <div class="post-card-content">
+            <a class="post-card-content-link" href="/xamarin-and-android-specific-solutions-to-specific-problems-2/">
+                <header class="post-card-header">
+                    
+                        
+                            
+                               <span class="post-card-tags">Android</span>
+                            
+                        
+                            
+                                <span class="post-card-tags">Xamarin</span>
+                            
+                        
+                    
+
+                    <h2 class="post-card-title">Xamarin and Android – Specific Solutions to Specific Problems #2</h2>
+                </header>
+                <section class="post-card-excerpt">
+                    <p>Welcome to the second post in my Specific Solutions to Specific Problems series. Hopefully somebody is getting some benefit out of these but even if nobody is reading it, the process is pretty</p>
+                </section>
+            </a>
+            <footer class="post-card-meta">
+                
+                    
+                
+            </footer>
+        </div>
+    </article>
+
+            
+
+        </div>
+    </div>
+</aside>
+
+<!-- Floating header which appears on-scroll, included from includes/floating-header.hbs -->
+<div class="floating-header">
+    <div class="floating-header-logo">
+        <a href="/">
+            
+            <span>Kym's Blog</span>
+        </a>
+    </div>
+    <span class="floating-header-divider">&mdash;</span>
+    <div class="floating-header-title">Xamarin and Android – Specific Solutions to Specific Problems #3</div>
+    <div class="floating-header-share">
+        <div class="floating-header-share-label">Share this <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M7.5 15.5V4a1.5 1.5 0 1 1 3 0v4.5h2a1 1 0 0 1 1 1h2a1 1 0 0 1 1 1H18a1.5 1.5 0 0 1 1.5 1.5v3.099c0 .929-.13 1.854-.385 2.748L17.5 23.5h-9c-1.5-2-5.417-8.673-5.417-8.673a1.2 1.2 0 0 1 1.76-1.605L7.5 15.5zm6-6v2m-3-3.5v3.5m6-1v2"/>
+</svg>
+</div>
+        <a class="floating-header-share-tw" href="https://twitter.com/share?text=Xamarin+and+Android+%E2%80%93+Specific+Solutions+to+Specific+Problems+%233&amp;url=https://kphillpotts.github.io/xamarin-and-android-specific-solutions-to-specific-problems-3-3/"
+            onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg>
+
+        </a>
+        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=https://kphillpotts.github.io/xamarin-and-android-specific-solutions-to-specific-problems-3-3/"
+            onclick="window.open(this.href, 'share-facebook','width=580,height=296');return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M19 6h5V0h-5c-3.86 0-7 3.14-7 7v3H8v6h4v16h6V16h5l1-6h-6V7c0-.542.458-1 1-1z"/></svg>
+
+        </a>
+    </div>
+    <progress class="progress" value="0">
+        <div class="progress-container">
+            <span class="progress-bar"></span>
+        </div>
+    </progress>
+</div>
+
+
+<!-- /post -->
+
+<!-- The #contentFor helper here will send everything inside it up to the matching #block helper found in default.hbs -->
+
+
+        <!-- Previous/next page links - displayed on every page -->
+        
+
+        <!-- The footer at the very bottom of the screen -->
+        <footer class="site-footer outer">
+            <div class="site-footer-content inner">
+                <section class="copyright"><a href="/">Kym's Blog</a> &copy; 2019</section>
+                <section class="poweredby">Proudly published with <a href="https://jekyllrb.com/">Jekyll</a> &
+                    <a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a> using
+                    <a href="https://github.com/jekyller/jasper2" target="_blank" rel="noopener">Jasper2</a></section>
+                <nav class="site-footer-nav">
+                    <a href="/">Latest Posts</a>
+                    
+                    <a href="https://twitter.com/kphillpotts" target="_blank" rel="noopener">Twitter</a>
+                    <a href="https://ghost.org" target="_blank" rel="noopener">Ghost</a>
+                </nav>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- The big email subscribe modal content -->
+    
+
+    <!-- highlight.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.10.0/components/prism-abap.min.js"></script>
+    <script>$(document).ready(function() {
+      $('pre code').each(function(i, block) {
+        hljs.highlightBlock(block);
+      });
+    });</script>
+
+    <!-- jQuery + Fitvids, which makes all video embeds responsive -->
+    <script
+        src="https://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous">
+    </script>
+    <script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="https://demo.ghost.io/assets/js/jquery.fitvids.js?v=724281a32e"></script>
+
+
+    <!-- Paginator increased to "infinit" in _config.yml -->
+    <!-- if paginator.posts  -->
+    <!-- <script>
+        var maxPages = parseInt('');
+    </script>
+    <script src="/assets/js/infinitescroll.js"></script> -->
+    <!-- /endif -->
+
+    
+
+
+    <!-- Add Google Analytics  -->
+    <!-- Google Analytics Tracking code -->
+ <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-69281367-1', 'auto');
+  ga('send', 'pageview');
+
+ </script>
+
+
+    <!-- The #block helper will pull in data from the #contentFor other template files. In this case, there's some JavaScript which we only want to use in post.hbs, but it needs to be included down here, after jQuery has already loaded. -->
+    
+
+    <!-- Ghost outputs important scripts and data with this tag - it should always be the very last thing before the closing body tag -->
+    <!-- ghost_foot -->
+
+</body>
+</html>

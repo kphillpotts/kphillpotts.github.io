@@ -1,44 +1,43 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title> - Articles</title>
-    <description>I write about Azure, Xamarin.Forms, Connected Apps and whatever else might be on my mind.</description>
-    <link>
-    </link>
-    
-      
-      <item>
-        <title>Microsoft //Build/ Recap for Xamarin Developers</title>
-        
-          <description>I presented a session on all the imprortant stuff from Microsoft //Build/ for Xamarin Developers at the Melbourne Xamarin User Group yesterday.  Just sharing out the links from the session.</description>
-        
-        <pubDate>Thu, 17 May 2018 13:16:31 +0200</pubDate>
-        <link>
-        /5907-2/</link>
-        <guid isPermaLink="true">/5907-2/</guid>
-      </item>
-      
-    
-      
-      <item>
-        <title>Simple Animation with Xamarin.Forms</title>
-        
-          <description>&lt;p&gt;Those of you know me (or have visited my blog) know that I love playing around with Xamarin.Forms Layouts.   Recently, Matt Soucoup was on the &lt;a href=&quot;https://www.youtube.com/watch?v=ypKnAKJL9CA&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Xamarin Show talking about Animations&lt;/a&gt;. He showed how easy it is to do simple animations in Xamarin Forms. Personally, I don’t think developers do enough with animations – they can really spice up your UI and show your users how much you care.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?>
 
-</description>
-        
-        <pubDate>Tue, 27 Mar 2018 14:43:50 +0200</pubDate>
-        <link>
-        /simple-animation-with-xamarin-forms/</link>
-        <guid isPermaLink="true">/simple-animation-with-xamarin-forms/</guid>
-      </item>
-      
+<feed xmlns="http://www.w3.org/2005/Atom" >
+  <generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator>
+  <link href="/tag/coding/feed.xml" rel="self" type="application/atom+xml" />
+  <link href="/" rel="alternate" type="text/html" />
+  <updated>2019-01-09T23:10:22+01:00</updated>
+  <id>/tag/coding/feed.xml</id>
+
+  
+  
+  
+
+  
+    <title type="html">Kym’s Blog | </title>
+  
+
+  
+    <subtitle>I write about Azure, Xamarin.Forms, Connected Apps and whatever else might be on my mind.</subtitle>
+  
+
+  
+
+  
     
       
-      <item>
-        <title>Unit Testing Tips</title>
-        
-          <description>&lt;p&gt;I’ve been writing a few unit tests recently. I actually like writing unit tests, I find something very cathartic about seeing those little green ticks show up.  However, one thing that can make writing unit tests a drag is setting up testing data for each test. Well, there are some nice patterns and tools out there to help. Let’s check some out…&lt;/p&gt;
+    
+  
+
+  
+  
+
+  
+    <entry>
+      <title type="html">Unit Testing Tips</title>
+      <link href="/unit-testing-tips/" rel="alternate" type="text/html" title="Unit Testing Tips" />
+      <published>2018-03-07T09:50:32+01:00</published>
+      <updated>2018-03-07T09:50:32+01:00</updated>
+      <id>/unit-testing-tips</id>
+      <content type="html" xml:base="/unit-testing-tips/">&lt;p&gt;I’ve been writing a few unit tests recently. I actually like writing unit tests, I find something very cathartic about seeing those little green ticks show up.  However, one thing that can make writing unit tests a drag is setting up testing data for each test. Well, there are some nice patterns and tools out there to help. Let’s check some out…&lt;/p&gt;
 
 &lt;h2 id=&quot;autofixture&quot;&gt;AutoFixture&lt;/h2&gt;
 
@@ -274,642 +273,32 @@
 
 &lt;p&gt;These are just some little things that you may consider next time you are writing unit tests. It will make setting up your data a little easier whilst also creating more maintainable and easier to read unit tests.&lt;/p&gt;
 
-&lt;p&gt;Till next time, happy coding!&lt;/p&gt;
-</description>
-        
-        <pubDate>Wed, 07 Mar 2018 09:50:32 +0100</pubDate>
-        <link>
-        /unit-testing-tips/</link>
-        <guid isPermaLink="true">/unit-testing-tips/</guid>
-      </item>
-      
-    
-      
-      <item>
-        <title>FastScroll and SectionIndexer in Xamarin.Forms ListView</title>
-        
-          <description>Those of you who have played around with ListViews in Xamarin.Android are probably familiar with the FastScroll and SectionIndexer features. Unfortunately, this feature isn't available in Xamarin.Forms ListViews running on Android, or is it? </description>
-        
-        <pubDate>Thu, 18 Jan 2018 11:12:06 +0100</pubDate>
-        <link>
-        /fastscroll-and-sectionindexer-in-xamarin-forms-listview/</link>
-        <guid isPermaLink="true">/fastscroll-and-sectionindexer-in-xamarin-forms-listview/</guid>
-      </item>
-      
-    
-      
-      <item>
-        <title>Xamarin Tools and Resources</title>
-        
-          <description>&lt;p&gt;As software developers we often use a scary number of Tools and Utilities to get our jobs done. Whenever you learn a new platform you also need to work out the “tools of the trade”. I recently gave a talk on the tools and resources I use to do Xamarin development, so I thought I would just share these out on a blog post.&lt;!--more--&gt;&lt;/p&gt;
+&lt;p&gt;Till next time, happy coding!&lt;/p&gt;</content>
 
-</description>
-        
-        <pubDate>Thu, 24 Aug 2017 01:33:01 +0200</pubDate>
-        <link>
-        /xamarin-tools-and-resources/</link>
-        <guid isPermaLink="true">/xamarin-tools-and-resources/</guid>
-      </item>
       
-    
       
-      <item>
-        <title>Xamarin.Forms Layout Challenges &amp;#8211; Great Places</title>
-        
-          <description>&lt;p&gt;When your app is all about the images, sometimes you want your images to be hero of the UI.  That’s what this weeks Xamarin.Forms Layout Challenge is all about.    &lt;!--more--&gt;Normally I prefer a light themed application, so just to change things up a bit, I thought I would go for a dark themed layout. They say, variety is the spice of life.&lt;/p&gt;
+      
+      
+      
 
-</description>
+      <author>
+          <name>Kym Phillpotts</name>
         
-        <pubDate>Mon, 20 Mar 2017 22:50:36 +0100</pubDate>
-        <link>
-        /xamarin-forms-layout-challenges-great-places/</link>
-        <guid isPermaLink="true">/xamarin-forms-layout-challenges-great-places/</guid>
-      </item>
-      
-    
-      
-      <item>
-        <title>Xamarin.Forms Layout Challenges &amp;#8211; Timeline</title>
         
-          <description>&lt;p&gt;A layout I’m seeing more and more these days is a timeline of activities.  This is useful for things like transportation schedules or class times.  So let’s put together a simple layout for a timeline using a ListView with headers and footers and a custom ViewCell.&lt;!--more--&gt;&lt;/p&gt;
+      </author>
 
-</description>
-        
-        <pubDate>Thu, 09 Mar 2017 15:53:17 +0100</pubDate>
-        <link>
-        /xamarin-forms-layout-challenges-timeline/</link>
-        <guid isPermaLink="true">/xamarin-forms-layout-challenges-timeline/</guid>
-      </item>
       
-    
-      
-      <item>
-        <title>Xamarin.Forms Layout Challenges &amp;#8211; Social Network App</title>
-        
-          <description>&lt;p&gt;Xamarin.Forms is a crazy productive framework for building cross platform apps. However, straight out of the box you might find your User Interfaces are a bit bland. A good understanding of the layout system (and a good graphic designer) are really going to help you make your UI’s awesome. (or at least not suck).&lt;!--more--&gt;&lt;/p&gt;
 
-</description>
-        
-        <pubDate>Sun, 05 Mar 2017 22:53:33 +0100</pubDate>
-        <link>
-        /social-network-app-layout-design-in-xamarin-forms/</link>
-        <guid isPermaLink="true">/social-network-app-layout-design-in-xamarin-forms/</guid>
-      </item>
       
-    
+        <category term="Coding" />
       
-      <item>
-        <title>Staying Up To Date with Xamarin Development</title>
-        
-          <description>Xamarin development is booming and as with any great technology, things change fast and you'll want to keep up to date with the latest news and releases. Xamarin has such a wonderful, thriving community that it can be a challenge!</description>
-        
-        <pubDate>Mon, 18 Jul 2016 01:57:59 +0200</pubDate>
-        <link>
-        /staying-up-to-date-with-xamarin-development/</link>
-        <guid isPermaLink="true">/staying-up-to-date-with-xamarin-development/</guid>
-      </item>
-      
-    
-      
-      <item>
-        <title>Xamarin Link Roundup &amp;#8211; 11 May 2016</title>
-        
-          <description>&lt;p&gt;More fantastic links from around the community!&lt;/p&gt;
 
-</description>
-        
-        <pubDate>Wed, 11 May 2016 19:03:34 +0200</pubDate>
-        <link>
-        /xamarin-link-roundup-11-may-2016/</link>
-        <guid isPermaLink="true">/xamarin-link-roundup-11-may-2016/</guid>
-      </item>
       
-    
+        <summary type="html">I’ve been writing a few unit tests recently. I actually like writing unit tests, I find something very cathartic about seeing those little green ticks show up.  However, one thing that can make writing unit tests a drag is setting up testing data for each test. Well, there are some nice patterns and tools out there to help. Let’s check some out… AutoFixture If you just need to generate some data (and don’t care too much about what it contains) you might want to have a look at a nice little library called AutoFixture AutoFixture is an open source library for .NET designed to minimize the ‘Arrange’ phase of your unit tests in order to maximize maintainability. Its primary goal is to allow developers to focus on what is being tested rather than how to set up the test scenario, by making it easier to create object graphs containing test data. TestCase Attribute Sometimes you want to run a number of values through a unit test and you don’t necessarily want to write different unit tests for each of them. The TestCase attribute is very useful here because you can get Nunit to just pass a series of values in: [TestCase(12, 2, 6)] [TestCase(12, 4, 3)] public void DivideTest(int n, int d, int q) { Assert.AreEqual(q, n / d); } A really nice thing about TestCase is that each element will appear as a different unit test in your runner, which means if one of the values fails you can instantly see which one failed. I’ve used this pretty extensively in the past, but one area where this starts to make your unit tests hard to understand is when you have a lot of values – pretty soon the number of attributes starts to make it kind of difficult to understand. But fear not, the TestCaseSource attribute is here to save you. TestCaseSource Attribute This is something that has been around forever, but I’ve never bothered playing with. Turns out it’s a really nice way of structuring that test data. Basically, you create a class that returns an IEnumerable of your test data. public class MyTests { [Test, TestCaseSource(typeof(MyDataClass), &quot;TestCases&quot;)] public int DivideTest(int n, int d) { return n / d; } } public class MyDataClass { public static IEnumerable TestCases { get { yield return new TestCaseData(12, 3).Returns(4); yield return new TestCaseData(12, 2).Returns(6); yield return new TestCaseData(12, 4).Returns(3); } } } Now in my case, I was writing some tests for a simple converter application with some numeric buttons, a backspace key, a decimal point key ‘.’. You know, a numeric keypad. It actually turns out that there are a number of things to consider. For example, what if someone tries to enter two decimal points, or maybe tries to have a bunch of leading zeros. Putting the scenarios into a TestCaseSource made this easy to write and also easy to visualize. NOTE: my architecture is MVVM, so I made sure I used commands behind all the buttons which means I can test what happens when a user presses a button (effectively testing the UI). For my unit test inputs, I provided a string with the keys pressed and had a little method to execute the appropriate command on the ViewModel. [Test, TestCaseSource(typeof(KeySequenceTestData), &quot;KeySequenceData&quot;)] public string KeySequence_Commands_GivesCorrectValue (string keySequence)  {     var vm = new MainViewModel();     foreach (var key in keySequence)         ProcessCharacter(vm, key);     return vm.FromValue; } private void ProcessCharacter(MainViewModel vm, char character) {     switch (character)     {         case '&amp;lt;': // user hits the backspace key             vm.BackSpaceCommand.Execute(null);             break;         case '.': // user hits the decimal point              vm.DecimalPointCommand.Execute(null);             break;         default: // any other key (which in case is a number key)             vm.NumberCommand.Execute(character.ToString());             break;     } } public class KeySequenceTestData {     public static IEnumerable KeySequenceData     {         get         {             // simple numeric value tests              yield return new TestCaseData(&quot;0&quot;).Returns(&quot;0&quot;);             yield return new TestCaseData(&quot;1&quot;).Returns(&quot;1&quot;);             yield return new TestCaseData(&quot;99&quot;).Returns(&quot;99&quot;);             yield return new TestCaseData(&quot;909&quot;).Returns(&quot;909&quot;);             // testing leading and trailing zeros             yield return new TestCaseData(&quot;00&quot;).Returns(&quot;0&quot;);             yield return new TestCaseData(&quot;10&quot;).Returns(&quot;10&quot;);             yield return new TestCaseData(&quot;0.&quot;).Returns(&quot;0.&quot;);             yield return new TestCaseData(&quot;.0&quot;).Returns(&quot;0.0&quot;);             yield return new TestCaseData(&quot;...0&quot;).Returns(&quot;0.0&quot;);             yield return new TestCaseData(&quot;.000&quot;).Returns(&quot;0.000&quot;);             yield return new TestCaseData(&quot;000.&quot;).Returns(&quot;0.&quot;);             yield return new TestCaseData(&quot;000.00&quot;).Returns(&quot;0.00&quot;);             yield return new TestCaseData(&quot;10.00001&quot;).Returns(&quot;10.00001&quot;);             yield return new TestCaseData(&quot;10.10&quot;).Returns(&quot;10.10&quot;);             yield return new TestCaseData(&quot;10..10&quot;).Returns(&quot;10.10&quot;);             yield return new TestCaseData(&quot;10.10.&quot;).Returns(&quot;10.10&quot;);             yield return new TestCaseData(&quot;001.10.&quot;).Returns(&quot;1.10&quot;);             // testing hitting the back key             yield return new TestCaseData(&quot;&amp;lt;&quot;).Returns(&quot;0&quot;);             yield return new TestCaseData(&quot;&amp;lt;.&quot;).Returns(&quot;0.&quot;);             yield return new TestCaseData(&quot;&amp;lt;&amp;lt;&quot;).Returns(&quot;0&quot;);             yield return new TestCaseData(&quot;0&amp;lt;0&quot;).Returns(&quot;0&quot;);             yield return new TestCaseData(&quot;12&amp;lt;&quot;).Returns(&quot;1&quot;);             yield return new TestCaseData(&quot;1&amp;lt;2&quot;).Returns(&quot;2&quot;);             yield return new TestCaseData(&quot;12&amp;lt;&amp;lt;&quot;).Returns(&quot;0&quot;);             yield return new TestCaseData(&quot;0.9&amp;lt;&quot;).Returns(&quot;0.&quot;);             yield return new TestCaseData(&quot;0.&amp;lt;9&amp;lt;&quot;).Returns(&quot;0&quot;);         }     } } The Builder Pattern for Test Data The Builder pattern turns out to be a nice pattern for creating test data. I first heard of this usage from Steve Smith when he appeared on .NET Rocks episode 1494. You should take a listen to that episode. The Basic idea is you create yourself a Builder class for your model object that goes and creates an object for you with some default values and then you have builder methods that allow you to set specific values if that is important for your test. Why not just create the objects with their values straight in your test? Well, you don’t want your tests littered with code to setup objects because it distracts you from the purpose of your test… and what if you change that model object later, you’ve got a thousand different unit tests you need to update. Here is a trivial example: As I said, I’m working on a simple converter application which has a variety of different Unit objects. So I create myself Builder object which allows me to easily create a Unit to covert. public class UnitBuilder { private string name = &quot;A Unit&quot;; private string description = &quot;Description of a unit&quot;; private UnitCategory category = UnitCategory.Weight; private double baseUnitValue = 1; public BaseUnit Build() { return new BaseUnit(name, description, category, baseUnitValue); } public UnitBuilder WithName(string name) { this.name = name; return this; } public UnitBuilder WithDescription(string description) { this.description = description; return this; } public UnitBuilder WithCategory(UnitCategory category) { this.category = category; return this; } public UnitBuilder WithBaseUnitValue (double baseUnitValue) { this.baseUnitValue = baseUnitValue; return this; } /// /// Implicit converter object, so we can turn a builder straight into a unit /// Builder Instance public static implicit operator BaseUnit(UnitBuilder instance) { return instance.Build(); } } Once I have that setup, within my unit test I can use this builder object to create my Unit objects. It will have default values but allows me to override whatever I want, all without having a hard dependency on the constructor for the object. For example, [Test] public void SimpleConversion_OneUnit() {     BaseUnit cm = new UnitBuilder().WithName(&quot;centimeters&quot;).WithBaseUnitValue(1);     BaseUnit meter = new UnitBuilder().WithName(&quot;meters&quot;).WithBaseUnitValue(100);     Converter.ConvertUnit(cm, meter, 1).ShouldEqual(0.01);     Converter.ConvertUnit(meter, cm, 1).ShouldEqual(100); } This just makes it really nice to construct tests which are nice a readable without being polluted with too much setup code. You can read a bunch more about this pattern at: Flexible and expressive unit tests with the builder pattern Improve tests with the builder pattern for test data One last thing you may notice, I also used a little library called Should, which makes reading the unit test just a teeny-tiny bit more readable. public void Should_assertions() { object obj = null; obj.ShouldBeNull(); obj = new object(); obj.ShouldBeType(typeof(object)); obj.ShouldEqual(obj); obj.ShouldNotBeNull(); obj.ShouldNotBeSameAs(new object()); obj.ShouldNotBeType(typeof(string)); obj.ShouldNotEqual(&quot;foo&quot;); obj = &quot;x&quot;; obj.ShouldNotBeInRange(&quot;y&quot;, &quot;z&quot;); obj.ShouldBeInRange(&quot;a&quot;, &quot;z&quot;); obj.ShouldBeSameAs(&quot;x&quot;); &quot;This String&quot;.ShouldContain(&quot;This&quot;); &quot;This String&quot;.ShouldNotBeEmpty(); &quot;This String&quot;.ShouldNotContain(&quot;foobar&quot;); false.ShouldBeFalse(); true.ShouldBeTrue(); var list = new List&amp;lt;&amp;gt;(); list.ShouldBeEmpty(); list.ShouldNotContain(new object()); var item = new object(); list.Add(item); list.ShouldNotBeEmpty(); list.ShouldContain(item); } In Conclusion These are just some little things that you may consider next time you are writing unit tests. It will make setting up your data a little easier whilst also creating more maintainable and easier to read unit tests. Till next time, happy coding!</summary>
       
-      <item>
-        <title>Xamarin Link Roundup &amp;#8211; 6 January 2016</title>
-        
-          <description>&lt;p&gt;Happy New Year! here are links from the community to start your New Year.&lt;/p&gt;
 
-</description>
-        
-        <pubDate>Wed, 06 Jan 2016 15:41:42 +0100</pubDate>
-        <link>
-        /xamarin-link-roundup-6-january-2016/</link>
-        <guid isPermaLink="true">/xamarin-link-roundup-6-january-2016/</guid>
-      </item>
       
-    
       
-      <item>
-        <title>Xamarin Link Roundup &amp;#8211; 29 December 2015</title>
-        
-          <description>&lt;p&gt;Merry Christmas Xamarin Peeps!… Here is a weekly dump of Xamarin links from around the inter-webs.&lt;/p&gt;
-
-&lt;!--more--&gt;
-
-</description>
-        
-        <pubDate>Tue, 29 Dec 2015 23:22:32 +0100</pubDate>
-        <link>
-        /xamarin-link-roundup-29-december-2015/</link>
-        <guid isPermaLink="true">/xamarin-link-roundup-29-december-2015/</guid>
-      </item>
-      
-    
-      
-      <item>
-        <title>Xamarin Link Roundup &amp;#8211; 22 December 2015</title>
-        
-          <description>&lt;h2 id=&quot;components-and-tools&quot;&gt;Components and Tools&lt;/h2&gt;
-
-</description>
-        
-        <pubDate>Tue, 22 Dec 2015 12:12:13 +0100</pubDate>
-        <link>
-        /xamarin-link-roundup-22-december-2015/</link>
-        <guid isPermaLink="true">/xamarin-link-roundup-22-december-2015/</guid>
-      </item>
-      
-    
-      
-      <item>
-        <title>Emacs key mappings for Xamarin Studio on Mac</title>
-        
-          <description>&lt;p style=&quot;text-align: left;&quot;&gt;
-  One of the great things about my job instructing at Xamarin is the diverse set of questions I get exposure to via all the people who attend Xamarin University.
-&lt;/p&gt;
-
-</description>
-        
-        <pubDate>Wed, 12 Aug 2015 01:52:32 +0200</pubDate>
-        <link>
-        /emacs-key-mappings-for-xamarin-studio-on-mac/</link>
-        <guid isPermaLink="true">/emacs-key-mappings-for-xamarin-studio-on-mac/</guid>
-      </item>
-      
-    
-      
-      <item>
-        <title>Xamarin Link Roundup – 13 June 2015</title>
-        
-          <description>&lt;p&gt;What happened in the Xamarin Community last week?&lt;/p&gt;
-
-&lt;!--more--&gt;
-
-</description>
-        
-        <pubDate>Sat, 13 Jun 2015 09:18:30 +0200</pubDate>
-        <link>
-        /xamarin-link-roundup-13-june-2015/</link>
-        <guid isPermaLink="true">/xamarin-link-roundup-13-june-2015/</guid>
-      </item>
-      
-    
-      
-      <item>
-        <title>Xamarin Link Roundup &amp;#8211;  2 Mar 2015</title>
-        
-          <description>&lt;p&gt;What happened in the Xamarin Community last week?&lt;/p&gt;
-
-&lt;!--more--&gt;
-
-</description>
-        
-        <pubDate>Mon, 02 Mar 2015 23:21:31 +0100</pubDate>
-        <link>
-        /xamarin-link-roundup-2-mar-2015/</link>
-        <guid isPermaLink="true">/xamarin-link-roundup-2-mar-2015/</guid>
-      </item>
-      
-    
-      
-      <item>
-        <title>Common UI Patterns in Xamarin Forms &amp;#8211; Part 2 &amp;#8211; Tabbed Pages</title>
-        
-          <description>&lt;p&gt;Tabbed Pages are a common pattern that regular mobile App users are familiar with. At it’s simplest it is just a collection of pages tied together by a toolbar menu at the top or bottom of the screen. I say top or bottom because iOS, Android and WP do things differently here, and Xamarin.Forms does it’s best to keep true to the platforms. On Android it uses a bar at the top, for iOS the tab bar at the bottom, and on Windows Phone it uses a Pivot control.&lt;!--more--&gt;&lt;/p&gt;
-
-</description>
-        
-        <pubDate>Sun, 01 Mar 2015 15:14:22 +0100</pubDate>
-        <link>
-        /common-ui-patterns-in-xamarin-forms-part-2-tabbed-pages/</link>
-        <guid isPermaLink="true">/common-ui-patterns-in-xamarin-forms-part-2-tabbed-pages/</guid>
-      </item>
-      
-    
-      
-      <item>
-        <title>Xamarin Link Roundup &amp;#8211; 23 Feb 2015</title>
-        
-          <description>&lt;p&gt;What happened in the Xamarin Community last week?&lt;/p&gt;
-
-&lt;!--more--&gt;
-
-</description>
-        
-        <pubDate>Mon, 23 Feb 2015 22:57:10 +0100</pubDate>
-        <link>
-        /xamarin-link-roundup-23-feb-2015/</link>
-        <guid isPermaLink="true">/xamarin-link-roundup-23-feb-2015/</guid>
-      </item>
-      
-    
-      
-      <item>
-        <title>Common UI Patterns in Xamarin.Forms Part 1 – Springboards</title>
-        
-          <description>&lt;h1 id=&quot;introduction&quot;&gt;Introduction&lt;/h1&gt;
-
-</description>
-        
-        <pubDate>Sun, 22 Feb 2015 23:59:29 +0100</pubDate>
-        <link>
-        /common-ui-patterns-in-xamarin-forms-part-1-springboards/</link>
-        <guid isPermaLink="true">/common-ui-patterns-in-xamarin-forms-part-1-springboards/</guid>
-      </item>
-      
-    
-      
-      <item>
-        <title>Xamarin Link Roundup &amp;#8211; 16 Feb 2015</title>
-        
-          <description>&lt;p&gt;What happened in the Xamarin community last week?&lt;/p&gt;
-
-&lt;!--more--&gt;
-
-</description>
-        
-        <pubDate>Mon, 16 Feb 2015 15:05:23 +0100</pubDate>
-        <link>
-        /xamarin-link-roundup-16-feb-2015/</link>
-        <guid isPermaLink="true">/xamarin-link-roundup-16-feb-2015/</guid>
-      </item>
-      
-    
-      
-      <item>
-        <title>Common UI Patterns in Xamarin.Forms &amp;#8211; Part 0</title>
-        
-          <description>&lt;p&gt;This is the start of a blog mini series about implementing Common UI Patterns in Xamarin.Forms.&lt;/p&gt;
-
-</description>
-        
-        <pubDate>Thu, 12 Feb 2015 23:54:16 +0100</pubDate>
-        <link>
-        /common-ui-patterns-in-xamarin-forms-part-0/</link>
-        <guid isPermaLink="true">/common-ui-patterns-in-xamarin-forms-part-0/</guid>
-      </item>
-      
-    
-      
-      <item>
-        <title>Xamarin Link Roundup &amp;#8211; 9 Feb 2015</title>
-        
-          <description>&lt;p&gt;What happened in the Xamarin community last week?&lt;/p&gt;
-
-&lt;!--more--&gt;
-
-</description>
-        
-        <pubDate>Mon, 09 Feb 2015 12:56:21 +0100</pubDate>
-        <link>
-        /xamarin-link-roundup-9-feb-2015/</link>
-        <guid isPermaLink="true">/xamarin-link-roundup-9-feb-2015/</guid>
-      </item>
-      
-    
-      
-      <item>
-        <title>Xamarin Certification Exam Study Guide</title>
-        
-          <description>&lt;p&gt;Are you studying for the Xamarin Certified Mobile Developer exam?  It’s a pretty daunting exam, there is just such a large amount of material covered.  So I thought I’d share my experiences and topics covered during my certification exam to help others on their way.&lt;!--more--&gt;&lt;/p&gt;
-
-</description>
-        
-        <pubDate>Wed, 04 Feb 2015 17:51:22 +0100</pubDate>
-        <link>
-        /xamarin-certification-exam-study-guide/</link>
-        <guid isPermaLink="true">/xamarin-certification-exam-study-guide/</guid>
-      </item>
-      
-    
-      
-      <item>
-        <title>Xamarin Link Roundup &amp;#8211; 2 Feb 2015</title>
-        
-          <description>&lt;p&gt;What happened in the Xamarin community during the last week?&lt;/p&gt;
-
-&lt;!--more--&gt;
-
-</description>
-        
-        <pubDate>Mon, 02 Feb 2015 09:06:55 +0100</pubDate>
-        <link>
-        /xamarin-link-roundup-2-feb-2015/</link>
-        <guid isPermaLink="true">/xamarin-link-roundup-2-feb-2015/</guid>
-      </item>
-      
-    
-      
-      <item>
-        <title>Exploring Xamarin.Forms 1.3: Properties Dictionary</title>
-        
-          <description>&lt;p&gt;Xamarin.Forms 1.3 includes a tidy little way to do simple state persistence between app restarts and when suspending/resuming.  Particularly useful if you want to take the user back to their location if the application gets suspended or terminated. This is done through &lt;strong&gt;Application.Current.Properties.&lt;/strong&gt;&lt;!--more--&gt;&lt;/p&gt;
-
-</description>
-        
-        <pubDate>Sat, 31 Jan 2015 16:33:29 +0100</pubDate>
-        <link>
-        /exploring-xamarin-forms-1-3-properties-dictionary/</link>
-        <guid isPermaLink="true">/exploring-xamarin-forms-1-3-properties-dictionary/</guid>
-      </item>
-      
-    
-      
-      <item>
-        <title>Xamarin.Forms Productivity Tools</title>
-        
-          <description>&lt;p&gt;There are lots of great extensions out there to help you out with your Xamarin.Forms development.  Here are some of my favourites.&lt;!--more--&gt;&lt;/p&gt;
-
-</description>
-        
-        <pubDate>Fri, 23 Jan 2015 19:15:13 +0100</pubDate>
-        <link>
-        /xamarin-forms-tools/</link>
-        <guid isPermaLink="true">/xamarin-forms-tools/</guid>
-      </item>
-      
-    
-      
-      <item>
-        <title>Simulating Surface Pro 3 in the Simulator</title>
-        
-          <description>&lt;p&gt;I’m working on a project at the moment that needs to run on a Surface Pro 3. During testing there were some weird redraw issues that only appeared on the Surface 3.   We were unable to reproduce this in our dev environments because  the simulator that comes with Visual Studio doesn’t have a screen size that is compatible with the Surface 3.&lt;/p&gt;
-
-</description>
-        
-        <pubDate>Mon, 22 Dec 2014 14:34:42 +0100</pubDate>
-        <link>
-        /simulating-surface-pro-3-in-the-simulator/</link>
-        <guid isPermaLink="true">/simulating-surface-pro-3-in-the-simulator/</guid>
-      </item>
-      
-    
-      
-      <item>
-        <title>Xamarin Link Roundup 7 Jul 2014</title>
-        
-          <description>&lt;h3 id=&quot;news&quot;&gt;News&lt;/h3&gt;
-
-</description>
-        
-        <pubDate>Wed, 16 Jul 2014 23:16:59 +0200</pubDate>
-        <link>
-        /xamarin-link-roundup-6/</link>
-        <guid isPermaLink="true">/xamarin-link-roundup-6/</guid>
-      </item>
-      
-    
-      
-      <item>
-        <title>Xamarin, iBeacons and Geofencing &amp;#8211; Some Resources</title>
-        
-          <description>&lt;p&gt;For an upcoming geekend (a weekend hackfest) we are looking at spending some time digging into iBeacon and Geofencing technologies.  &lt;span style=&quot;line-height: 1.5em;&quot;&gt;I was going to email some of these resources I have found to the participants but thought it might be better if I blog them as a resource for others. &lt;/span&gt;&lt;/p&gt;
-
-</description>
-        
-        <pubDate>Sun, 18 May 2014 23:11:02 +0200</pubDate>
-        <link>
-        /xamarin-ibeacons-and-geofencing-some-resources/</link>
-        <guid isPermaLink="true">/xamarin-ibeacons-and-geofencing-some-resources/</guid>
-      </item>
-      
-    
-      
-      <item>
-        <title>Xamarin and iOS – Moving to iOS 7 and Xcode 5</title>
-        
-          <description>&lt;p&gt;Apple has now decreed that all apps submitted to the store must be built on XCode5 and iOS7.&lt;/p&gt;
-
-</description>
-        
-        <pubDate>Tue, 04 Feb 2014 09:53:35 +0100</pubDate>
-        <link>
-        /xamarin-and-ios-moving-to-ios-7-and-xcode-5/</link>
-        <guid isPermaLink="true">/xamarin-and-ios-moving-to-ios-7-and-xcode-5/</guid>
-      </item>
-      
-    
-      
-      <item>
-        <title>Xamarin and Android – Specific Solutions to Specific Problems #4</title>
-        
-          <description>&lt;p&gt; &lt;/p&gt;
-
-</description>
-        
-        <pubDate>Wed, 23 Oct 2013 07:50:05 +0200</pubDate>
-        <link>
-        /xamarin-and-android-specific-solutions-to-specific-problems-4-2/</link>
-        <guid isPermaLink="true">/xamarin-and-android-specific-solutions-to-specific-problems-4-2/</guid>
-      </item>
-      
-    
-      
-      <item>
-        <title>Xamarin and Android – Specific Solutions to Specific Problems #3</title>
-        
-          <description>&lt;p&gt;Welcome to another installment in my series exploring the specific problems that nearly beat me this week. I write these on Sunday night after a huge week of balancing my work and fatherly responsibilities so I hope they make sense…&lt;/p&gt;
-
-</description>
-        
-        <pubDate>Mon, 16 Sep 2013 01:15:33 +0200</pubDate>
-        <link>
-        /xamarin-and-android-specific-solutions-to-specific-problems-3-3/</link>
-        <guid isPermaLink="true">/xamarin-and-android-specific-solutions-to-specific-problems-3-3/</guid>
-      </item>
-      
-    
-      
-      <item>
-        <title>Xamarin and Android – Specific Solutions to Specific Problems #2</title>
-        
-          <description>&lt;p&gt;Welcome to the second post in my &lt;strong&gt;&lt;em&gt;Specific Solutions to Specific Problems&lt;/em&gt;&lt;/strong&gt; series. Hopefully somebody is getting some benefit out of these but even if nobody is reading it, the process is pretty cathartic anyway…&lt;/p&gt;
-
-</description>
-        
-        <pubDate>Mon, 09 Sep 2013 08:36:03 +0200</pubDate>
-        <link>
-        /xamarin-and-android-specific-solutions-to-specific-problems-2/</link>
-        <guid isPermaLink="true">/xamarin-and-android-specific-solutions-to-specific-problems-2/</guid>
-      </item>
-      
-    
-      
-      <item>
-        <title>Xamarin and Android &amp;#8211; Specific Solutions to Specific Problems #1</title>
-        
-          <description>&lt;p&gt;At our company, I am the soul that has been tasked with doing our Android development. We have chosen to use Xamarin for this and as I race up the learning curve, I thought it pertinent to start blogging the solutions to any problems I encounter along the way. Welcome to my “&lt;em&gt;Specific Solutions to Specific Problems&lt;/em&gt;” series…&lt;/p&gt;
-
-</description>
-        
-        <pubDate>Sun, 01 Sep 2013 04:13:58 +0200</pubDate>
-        <link>
-        /xamarin-and-android-specific-solutions-to-specific-problems-1-2/</link>
-        <guid isPermaLink="true">/xamarin-and-android-specific-solutions-to-specific-problems-1-2/</guid>
-      </item>
-      
-    
-      
-      <item>
-        <title>Xamarin and Resource.Designer.cs</title>
-        
-          <description>&lt;p&gt;I am doing a lot of development using Xamarin for Android and while most of the time it works really well, there are a few circumstances where it acts a little weirdly.&lt;/p&gt;
-
-</description>
-        
-        <pubDate>Tue, 27 Aug 2013 10:30:24 +0200</pubDate>
-        <link>
-        /xamarin-and-resource-designer-cs/</link>
-        <guid isPermaLink="true">/xamarin-and-resource-designer-cs/</guid>
-      </item>
-      
-    
-      
-      <item>
-        <title>Xamarin Link Roundup &amp;#8211; 24 Aug 2014</title>
-        
-          <description>&lt;p&gt;As usual, another Link Roundup of Xamarin / Mobile related links collected over the last week or so. Don’t forget if you have seen something cool that should be on the list, email me, comment or tweet me.&lt;/p&gt;
-
-</description>
-        
-        <pubDate>Sat, 24 Aug 2013 02:16:07 +0200</pubDate>
-        <link>
-        /xamarin-link-roundup-24-aug-2014/</link>
-        <guid isPermaLink="true">/xamarin-link-roundup-24-aug-2014/</guid>
-      </item>
-      
-    
-      
-      <item>
-        <title>Xamarin Link Roundup &amp;#8211; 15 Aug 2013</title>
-        
-          <description>&lt;h2 id=&quot;news-and-events&quot;&gt;News and Events&lt;/h2&gt;
-
-</description>
-        
-        <pubDate>Sat, 17 Aug 2013 01:06:26 +0200</pubDate>
-        <link>
-        /xamarin-link-roundup-15-aug-2013/</link>
-        <guid isPermaLink="true">/xamarin-link-roundup-15-aug-2013/</guid>
-      </item>
-      
-    
-      
-      <item>
-        <title>Xamarin Link Roundup &amp;#8211; 6 Aug 2013</title>
-        
-          <description>&lt;h2 id=&quot;news&quot;&gt;News&lt;/h2&gt;
-
-</description>
-        
-        <pubDate>Wed, 07 Aug 2013 01:38:45 +0200</pubDate>
-        <link>
-        /xamarin-link-roundup-6-aug-2013/</link>
-        <guid isPermaLink="true">/xamarin-link-roundup-6-aug-2013/</guid>
-      </item>
-      
-    
-      
-      <item>
-        <title>Xamarin Link Roundup &amp;#8211; 28 July 2013</title>
-        
-          <description>&lt;p&gt;It’s been a big week in Xamarin world. So many fantastic links flying around the interwebs.  Here’s a selection of things I’ve seen this week that took my fancy.&lt;!--more--&gt;&lt;/p&gt;
-
-</description>
-        
-        <pubDate>Sun, 28 Jul 2013 21:55:05 +0200</pubDate>
-        <link>
-        /xamarin-link-roundup-28-july-2013/</link>
-        <guid isPermaLink="true">/xamarin-link-roundup-28-july-2013/</guid>
-      </item>
-      
-    
-      
-      <item>
-        <title>From Zero to Xamarin &amp;#8211; Part 3 &amp;#8211; First week in the trenches</title>
-        
-          <description>&lt;p&gt;We finished up our first week of  “real” coding using Xamarin.  By real I mean, actually working on (what we hope will be) production code.  So I thought I’d post up some thoughts and experiences from the week.&lt;!--more--&gt;&lt;/p&gt;
-
-</description>
-        
-        <pubDate>Sun, 28 Jul 2013 15:35:49 +0200</pubDate>
-        <link>
-        /from-zero-to-xamarin-part-3-first-week-in-the-trenches/</link>
-        <guid isPermaLink="true">/from-zero-to-xamarin-part-3-first-week-in-the-trenches/</guid>
-      </item>
-      
-    
-      
-      <item>
-        <title>Xamarin Link Roundup &amp;#8211; 22 July 2013</title>
-        
-          <description>&lt;h1 id=&quot;news&quot;&gt;News&lt;/h1&gt;
-
-</description>
-        
-        <pubDate>Tue, 23 Jul 2013 00:08:04 +0200</pubDate>
-        <link>
-        /interesting-xamarin-links-22-july-2013/</link>
-        <guid isPermaLink="true">/interesting-xamarin-links-22-july-2013/</guid>
-      </item>
-      
-    
-      
-      <item>
-        <title>From Zero To Xamarin &amp;#8211; Part 2 &amp;#8211; Learning To Fly</title>
-        
-          <description>&lt;p&gt;Learning to fly by yourself can be hard (as the picture below illustrates).&lt;/p&gt;
-
-</description>
-        
-        <pubDate>Mon, 15 Jul 2013 00:40:45 +0200</pubDate>
-        <link>
-        /from-zero-to-xamarin-part-2-learning-to-fly/</link>
-        <guid isPermaLink="true">/from-zero-to-xamarin-part-2-learning-to-fly/</guid>
-      </item>
-      
-    
-      
-      <item>
-        <title>From Zero to  Xamarin – Part 1 – First contact</title>
-        
-          <description>&lt;p&gt;In order to evaluate Xamarin as a potential platform for developing our mobile app, myself and a couple of co-workers downloaded and installed the free trial edition at various points in time. A little while later I got an email from a Xamarin “Customer Success Engineer” who noticed that a few people from the same company had downloaded Xamarin and wanted to know if there was anything they could do to help us get going. Okay so a couple of things here:&lt;!--more--&gt;&lt;/p&gt;
-
-</description>
-        
-        <pubDate>Sat, 13 Jul 2013 00:22:56 +0200</pubDate>
-        <link>
-        /from-zero-to-xamarin-part-1-first-contact/</link>
-        <guid isPermaLink="true">/from-zero-to-xamarin-part-1-first-contact/</guid>
-      </item>
-      
-    
-      
-      <item>
-        <title>From Zero to Xamarin &amp;#8211; Part 0 &amp;#8211; A New Hope</title>
-        
-          <description>&lt;p&gt;I’m working on a fantastic project at work at the moment.  It’s 51% awesome and 49% scary as hell.&lt;/p&gt;
-
-</description>
-        
-        <pubDate>Wed, 10 Jul 2013 01:36:32 +0200</pubDate>
-        <link>
-        /from-zero-to-xamarin/</link>
-        <guid isPermaLink="true">/from-zero-to-xamarin/</guid>
-      </item>
-      
-    
-  </channel>
-</rss>
+    </entry>
+  
+</feed>

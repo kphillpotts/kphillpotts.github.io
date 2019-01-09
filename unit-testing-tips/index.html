@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <!-- Document Settings -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- Base Meta -->
+    <!-- dynamically fixing the title for tag/author pages -->
+
+
+
+    <title>Unit Testing Tips</title>
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Styles'n'Scripts -->
+    <link rel="stylesheet" type="text/css" href="/assets/built/screen.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/built/screen.edited.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/built/syntax.css" />
+    <!-- highlight.js -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+    <style>.hljs { background: none; }</style>
+
+    <!--[if IE]>
+        <style>
+            p, ol, ul{
+                width: 100%;
+            }
+            blockquote{
+                width: 100%;
+            }
+        </style>
+    <![endif]-->
+    
+    <!-- This tag outputs SEO meta+structured data and other important settings -->
+    <meta name="description" content="I write about Azure, Xamarin.Forms, Connected Apps and whatever else might be on my mind." />
+    <link rel="shortcut icon" href="/assets/images/favicon.png" type="image/png" />
+    <link rel="canonical" href="/unit-testing-tips/" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+
+     <!--title below is coming from _includes/dynamic_title-->
+    <meta property="og:site_name" content="Kym's Blog" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Unit Testing Tips" />
+    <meta property="og:description" content="I write about Azure, Xamarin.Forms, Connected Apps and whatever else might be on my mind." />
+    <meta property="og:url" content="/unit-testing-tips/" />
+    <meta property="og:image" content="/assets/images/covers/instruments.jpg" />
+    <meta property="article:publisher" content="https://www.facebook.com/" />
+    <meta property="article:tag" content="Coding" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Unit Testing Tips" />
+    <meta name="twitter:description" content="I write about Azure, Xamarin.Forms, Connected Apps and whatever else might be on my mind." />
+    <meta name="twitter:url" content="/" />
+    <meta name="twitter:image" content="/assets/images/covers/instruments.jpg" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="Kym's Blog" />
+    <meta name="twitter:label2" content="Filed under" />
+    <meta name="twitter:data2" content="Coding" />
+    <meta name="twitter:site" content="@kphillpotts" />
+    <meta name="twitter:creator" content="@kphillpotts" />
+    <meta property="og:image:width" content="2000" />
+    <meta property="og:image:height" content="666" />
+
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Website",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Kym's Blog",
+        "logo": "/false"
+    },
+    "url": "/unit-testing-tips/",
+    "image": {
+        "@type": "ImageObject",
+        "url": "/assets/images/covers/instruments.jpg",
+        "width": 2000,
+        "height": 666
+    },
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "/unit-testing-tips/"
+    },
+    "description": "I write about Azure, Xamarin.Forms, Connected Apps and whatever else might be on my mind."
+}
+    </script>
+
+    <!-- <script type="text/javascript" src="https://demo.ghost.io/public/ghost-sdk.min.js?v=724281a32e"></script>
+    <script type="text/javascript">
+    ghost.init({
+    	clientId: "ghost-frontend",
+    	clientSecret: "f84a07a72b17"
+    });
+    </script> -->
+
+    <meta name="generator" content="Jekyll 3.6.2" />
+    <link rel="alternate" type="application/rss+xml" title="Unit Testing Tips" href="/feed.xml" />
+
+
+</head>
+<body class="post-template">
+
+    <div class="site-wrapper">
+        <!-- All the main content gets inserted here, index.hbs, post.hbs, etc -->
+        <!-- default -->
+
+<!-- The tag above means: insert everything in this file
+into the {body} of the default.hbs template -->
+
+<header class="site-header outer">
+    <div class="inner">
+        <nav class="site-nav">
+    <div class="site-nav-left">
+        
+            
+                <a class="site-nav-logo" href="/">Kym's Blog</a>
+            
+        
+        
+            <ul class="nav" role="menu">
+    <li class="nav-home" role="menuitem"><a href="/">Home</a></li>
+    
+
+
+    <li class="nav-about" role="menuitem"><a href="/about/">About Me</a></li>
+    <li class="nav-xamarin" role="menuitem"><a href="/tag/xamarin/">Xamarin</a></li>
+    <li class="nav-azure" role="menuitem"><a href="/tag/azure/">Azure</a></li>
+
+
+</ul>
+
+        
+    </div>
+    <div class="site-nav-right">
+        <div class="social-links">
+            
+            
+                <a class="social-link social-link-tw" href="https://twitter.com/kphillpotts" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg>
+</a>
+            
+        </div>
+        
+    </div>
+</nav>
+
+    </div>
+</header>
+
+<!-- Everything inside the #post tags pulls data from the post -->
+<!-- #post -->
+
+<main id="site-main" class="site-main outer" role="main">
+    <div class="inner">
+
+        <article class="post-full  ">
+
+            <header class="post-full-header">
+                <section class="post-full-meta">
+                    <time class="post-full-meta-date" datetime=" 7 March 2018"> 7 March 2018</time>
+                    
+                        <span class="date-divider">/</span>
+                        
+                            
+                               <a href='/tag/coding/'>CODING</a>
+                            
+                        
+                    
+                </section>
+                <h1 class="post-full-title">Unit Testing Tips</h1>
+            </header>
+
+            
+            <figure class="post-full-image" style="background-image: url(/assets/images/covers/instruments.jpg)">
+            </figure>
+            
+
+            <section class="post-full-content">
+                <div class="kg-card-markdown">
+                    <p>I’ve been writing a few unit tests recently. I actually like writing unit tests, I find something very cathartic about seeing those little green ticks show up.  However, one thing that can make writing unit tests a drag is setting up testing data for each test. Well, there are some nice patterns and tools out there to help. Let’s check some out…</p>
+
+<h2 id="autofixture">AutoFixture</h2>
+
+<p>If you just need to generate some data (and don’t care too much about what it contains) you might want to have a look at a nice little library called AutoFixture</p>
+
+<blockquote>
+  <p>AutoFixture is an open source library for .NET designed to minimize the ‘Arrange’ phase of your unit tests in order to maximize maintainability. Its primary goal is to allow developers to focus on what is being tested rather than how to set up the test scenario, by making it easier to create object graphs containing test data.</p>
+</blockquote>
+
+<h2 id="testcase-attribute">TestCase Attribute</h2>
+
+<p>Sometimes you want to run a number of values through a unit test and you don’t necessarily want to write different unit tests for each of them. The TestCase attribute is very useful here because you can get Nunit to just pass a series of values in:</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">[TestCase(12, 2, 6)]</span>
+<span class="na">[TestCase(12, 4, 3)]</span>
+<span class="k">public</span> <span class="k">void</span> <span class="nf">DivideTest</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">,</span> <span class="kt">int</span> <span class="n">d</span><span class="p">,</span> <span class="kt">int</span> <span class="n">q</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">Assert</span><span class="p">.</span><span class="nf">AreEqual</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="n">n</span> <span class="p">/</span> <span class="n">d</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>A really nice thing about TestCase is that each element will appear as a different unit test in your runner, which means if one of the values fails you can instantly see which one failed. I’ve used this pretty extensively in the past, but one area where this starts to make your unit tests hard to understand is when you have a lot of values – pretty soon the number of attributes starts to make it kind of difficult to understand. But fear not, the TestCaseSource attribute is here to save you.</p>
+
+<h2 id="testcasesource-attribute">TestCaseSource Attribute</h2>
+
+<p>This is something that has been around forever, but I’ve never bothered playing with. Turns out it’s a really nice way of structuring that test data. Basically, you create a class that returns an IEnumerable of your test data.</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">class</span> <span class="nc">MyTests</span>
+<span class="p">{</span>
+    <span class="p">[</span><span class="n">Test</span><span class="p">,</span> <span class="nf">TestCaseSource</span><span class="p">(</span><span class="k">typeof</span><span class="p">(</span><span class="n">MyDataClass</span><span class="p">),</span> <span class="s">"TestCases"</span><span class="p">)]</span>
+    <span class="k">public</span> <span class="kt">int</span> <span class="nf">DivideTest</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">,</span> <span class="kt">int</span> <span class="n">d</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="n">n</span> <span class="p">/</span> <span class="n">d</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="k">public</span> <span class="k">class</span> <span class="nc">MyDataClass</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">static</span> <span class="n">IEnumerable</span> <span class="n">TestCases</span>
+    <span class="p">{</span>
+        <span class="k">get</span>
+        <span class="p">{</span>
+            <span class="k">yield</span> <span class="k">return</span> <span class="k">new</span> <span class="nf">TestCaseData</span><span class="p">(</span><span class="m">12</span><span class="p">,</span> <span class="m">3</span><span class="p">).</span><span class="nf">Returns</span><span class="p">(</span><span class="m">4</span><span class="p">);</span>
+            <span class="k">yield</span> <span class="k">return</span> <span class="k">new</span> <span class="nf">TestCaseData</span><span class="p">(</span><span class="m">12</span><span class="p">,</span> <span class="m">2</span><span class="p">).</span><span class="nf">Returns</span><span class="p">(</span><span class="m">6</span><span class="p">);</span>
+            <span class="k">yield</span> <span class="k">return</span> <span class="k">new</span> <span class="nf">TestCaseData</span><span class="p">(</span><span class="m">12</span><span class="p">,</span> <span class="m">4</span><span class="p">).</span><span class="nf">Returns</span><span class="p">(</span><span class="m">3</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>  
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Now in my case, I was writing some tests for a simple converter application with some numeric buttons, a backspace key, a decimal point key ‘.’. You know, a numeric keypad. It actually turns out that there are a number of things to consider. For example, what if someone tries to enter two decimal points, or maybe tries to have a bunch of leading zeros. Putting the scenarios into a TestCaseSource made this easy to write and also easy to visualize.</p>
+
+<p>NOTE: my architecture is MVVM, so I made sure I used commands behind all the buttons which means I can test what happens when a user presses a button (effectively testing the UI). For my unit test inputs, I provided a string with the keys pressed and had a little method to execute the appropriate command on the ViewModel.</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">[Test, TestCaseSource(typeof(KeySequenceTestData), "KeySequenceData")]</span>
+<span class="k">public</span><span class="err"> </span><span class="kt">string</span><span class="err"> </span><span class="n">KeySequence_Commands_GivesCorrectValue</span><span class="err"> </span><span class="p">(</span><span class="kt">string</span><span class="err"> </span><span class="n">keySequence</span><span class="p">)</span><span class="err"> </span>
+<span class="p">{</span>
+<span class="err">    </span><span class="kt">var</span><span class="err"> </span><span class="n">vm</span><span class="err"> </span><span class="p">=</span><span class="err"> </span><span class="k">new</span><span class="err"> </span><span class="nf">MainViewModel</span><span class="p">();</span>
+ 
+<span class="err">    </span><span class="k">foreach</span><span class="err"> </span><span class="p">(</span><span class="kt">var</span><span class="err"> </span><span class="n">key</span><span class="err"> </span><span class="k">in</span><span class="err"> </span><span class="n">keySequence</span><span class="p">)</span>
+<span class="err">        </span><span class="nf">ProcessCharacter</span><span class="p">(</span><span class="n">vm</span><span class="p">,</span><span class="err"> </span><span class="n">key</span><span class="p">);</span>
+ 
+<span class="err">    </span><span class="k">return</span><span class="err"> </span><span class="n">vm</span><span class="p">.</span><span class="n">FromValue</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">private</span><span class="err"> </span><span class="k">void</span><span class="err"> </span><span class="nf">ProcessCharacter</span><span class="p">(</span><span class="n">MainViewModel</span><span class="err"> </span><span class="n">vm</span><span class="p">,</span><span class="err"> </span><span class="kt">char</span><span class="err"> </span><span class="n">character</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="err">    </span><span class="k">switch</span><span class="err"> </span><span class="p">(</span><span class="n">character</span><span class="p">)</span>
+<span class="err">    </span><span class="p">{</span>
+<span class="err">        </span><span class="k">case</span><span class="err"> </span><span class="sc">'&lt;'</span><span class="p">:</span><span class="err"> </span><span class="c1">// user hits the backspace key</span>
+<span class="err">            </span><span class="n">vm</span><span class="p">.</span><span class="n">BackSpaceCommand</span><span class="p">.</span><span class="nf">Execute</span><span class="p">(</span><span class="k">null</span><span class="p">);</span>
+<span class="err">            </span><span class="k">break</span><span class="p">;</span>
+<span class="err">        </span><span class="k">case</span><span class="err"> </span><span class="sc">'.'</span><span class="p">:</span><span class="err"> </span><span class="c1">// user hits the decimal point </span>
+<span class="err">            </span><span class="n">vm</span><span class="p">.</span><span class="n">DecimalPointCommand</span><span class="p">.</span><span class="nf">Execute</span><span class="p">(</span><span class="k">null</span><span class="p">);</span>
+<span class="err">            </span><span class="k">break</span><span class="p">;</span>
+<span class="err">        </span><span class="k">default</span><span class="p">:</span><span class="err"> </span><span class="c1">// any other key (which in case is a number key)</span>
+<span class="err">            </span><span class="n">vm</span><span class="p">.</span><span class="n">NumberCommand</span><span class="p">.</span><span class="nf">Execute</span><span class="p">(</span><span class="n">character</span><span class="p">.</span><span class="nf">ToString</span><span class="p">());</span>
+<span class="err">            </span><span class="k">break</span><span class="p">;</span>
+<span class="err">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">public</span><span class="err"> </span><span class="k">class</span><span class="err"> </span><span class="nc">KeySequenceTestData</span>
+<span class="p">{</span>
+<span class="err">    </span><span class="k">public</span><span class="err"> </span><span class="k">static</span><span class="err"> </span><span class="n">IEnumerable</span><span class="err"> </span><span class="n">KeySequenceData</span>
+<span class="err">    </span><span class="p">{</span>
+<span class="err">        </span><span class="k">get</span>
+<span class="err">        </span><span class="p">{</span>
+<span class="err">            </span><span class="c1">// simple numeric value tests </span>
+<span class="err">            </span><span class="k">yield</span><span class="err"> </span><span class="k">return</span><span class="err"> </span><span class="k">new</span><span class="err"> </span><span class="nf">TestCaseData</span><span class="p">(</span><span class="s">"0"</span><span class="p">).</span><span class="nf">Returns</span><span class="p">(</span><span class="s">"0"</span><span class="p">);</span>
+<span class="err">            </span><span class="k">yield</span><span class="err"> </span><span class="k">return</span><span class="err"> </span><span class="k">new</span><span class="err"> </span><span class="nf">TestCaseData</span><span class="p">(</span><span class="s">"1"</span><span class="p">).</span><span class="nf">Returns</span><span class="p">(</span><span class="s">"1"</span><span class="p">);</span>
+<span class="err">            </span><span class="k">yield</span><span class="err"> </span><span class="k">return</span><span class="err"> </span><span class="k">new</span><span class="err"> </span><span class="nf">TestCaseData</span><span class="p">(</span><span class="s">"99"</span><span class="p">).</span><span class="nf">Returns</span><span class="p">(</span><span class="s">"99"</span><span class="p">);</span>
+<span class="err">            </span><span class="k">yield</span><span class="err"> </span><span class="k">return</span><span class="err"> </span><span class="k">new</span><span class="err"> </span><span class="nf">TestCaseData</span><span class="p">(</span><span class="s">"909"</span><span class="p">).</span><span class="nf">Returns</span><span class="p">(</span><span class="s">"909"</span><span class="p">);</span>
+ 
+<span class="err">            </span><span class="c1">// testing leading and trailing zeros</span>
+<span class="err">            </span><span class="k">yield</span><span class="err"> </span><span class="k">return</span><span class="err"> </span><span class="k">new</span><span class="err"> </span><span class="nf">TestCaseData</span><span class="p">(</span><span class="s">"00"</span><span class="p">).</span><span class="nf">Returns</span><span class="p">(</span><span class="s">"0"</span><span class="p">);</span>
+<span class="err">            </span><span class="k">yield</span><span class="err"> </span><span class="k">return</span><span class="err"> </span><span class="k">new</span><span class="err"> </span><span class="nf">TestCaseData</span><span class="p">(</span><span class="s">"10"</span><span class="p">).</span><span class="nf">Returns</span><span class="p">(</span><span class="s">"10"</span><span class="p">);</span>
+<span class="err">            </span><span class="k">yield</span><span class="err"> </span><span class="k">return</span><span class="err"> </span><span class="k">new</span><span class="err"> </span><span class="nf">TestCaseData</span><span class="p">(</span><span class="s">"0."</span><span class="p">).</span><span class="nf">Returns</span><span class="p">(</span><span class="s">"0."</span><span class="p">);</span>
+<span class="err">            </span><span class="k">yield</span><span class="err"> </span><span class="k">return</span><span class="err"> </span><span class="k">new</span><span class="err"> </span><span class="nf">TestCaseData</span><span class="p">(</span><span class="s">".0"</span><span class="p">).</span><span class="nf">Returns</span><span class="p">(</span><span class="s">"0.0"</span><span class="p">);</span>
+<span class="err">            </span><span class="k">yield</span><span class="err"> </span><span class="k">return</span><span class="err"> </span><span class="k">new</span><span class="err"> </span><span class="nf">TestCaseData</span><span class="p">(</span><span class="s">"...0"</span><span class="p">).</span><span class="nf">Returns</span><span class="p">(</span><span class="s">"0.0"</span><span class="p">);</span>
+<span class="err">            </span><span class="k">yield</span><span class="err"> </span><span class="k">return</span><span class="err"> </span><span class="k">new</span><span class="err"> </span><span class="nf">TestCaseData</span><span class="p">(</span><span class="s">".000"</span><span class="p">).</span><span class="nf">Returns</span><span class="p">(</span><span class="s">"0.000"</span><span class="p">);</span>
+<span class="err">            </span><span class="k">yield</span><span class="err"> </span><span class="k">return</span><span class="err"> </span><span class="k">new</span><span class="err"> </span><span class="nf">TestCaseData</span><span class="p">(</span><span class="s">"000."</span><span class="p">).</span><span class="nf">Returns</span><span class="p">(</span><span class="s">"0."</span><span class="p">);</span>
+<span class="err">            </span><span class="k">yield</span><span class="err"> </span><span class="k">return</span><span class="err"> </span><span class="k">new</span><span class="err"> </span><span class="nf">TestCaseData</span><span class="p">(</span><span class="s">"000.00"</span><span class="p">).</span><span class="nf">Returns</span><span class="p">(</span><span class="s">"0.00"</span><span class="p">);</span>
+<span class="err">            </span><span class="k">yield</span><span class="err"> </span><span class="k">return</span><span class="err"> </span><span class="k">new</span><span class="err"> </span><span class="nf">TestCaseData</span><span class="p">(</span><span class="s">"10.00001"</span><span class="p">).</span><span class="nf">Returns</span><span class="p">(</span><span class="s">"10.00001"</span><span class="p">);</span>
+<span class="err">            </span><span class="k">yield</span><span class="err"> </span><span class="k">return</span><span class="err"> </span><span class="k">new</span><span class="err"> </span><span class="nf">TestCaseData</span><span class="p">(</span><span class="s">"10.10"</span><span class="p">).</span><span class="nf">Returns</span><span class="p">(</span><span class="s">"10.10"</span><span class="p">);</span>
+<span class="err">            </span><span class="k">yield</span><span class="err"> </span><span class="k">return</span><span class="err"> </span><span class="k">new</span><span class="err"> </span><span class="nf">TestCaseData</span><span class="p">(</span><span class="s">"10..10"</span><span class="p">).</span><span class="nf">Returns</span><span class="p">(</span><span class="s">"10.10"</span><span class="p">);</span>
+<span class="err">            </span><span class="k">yield</span><span class="err"> </span><span class="k">return</span><span class="err"> </span><span class="k">new</span><span class="err"> </span><span class="nf">TestCaseData</span><span class="p">(</span><span class="s">"10.10."</span><span class="p">).</span><span class="nf">Returns</span><span class="p">(</span><span class="s">"10.10"</span><span class="p">);</span>
+<span class="err">            </span><span class="k">yield</span><span class="err"> </span><span class="k">return</span><span class="err"> </span><span class="k">new</span><span class="err"> </span><span class="nf">TestCaseData</span><span class="p">(</span><span class="s">"001.10."</span><span class="p">).</span><span class="nf">Returns</span><span class="p">(</span><span class="s">"1.10"</span><span class="p">);</span>
+ 
+<span class="err">            </span><span class="c1">// testing hitting the back key</span>
+<span class="err">            </span><span class="k">yield</span><span class="err"> </span><span class="k">return</span><span class="err"> </span><span class="k">new</span><span class="err"> </span><span class="nf">TestCaseData</span><span class="p">(</span><span class="s">"&lt;"</span><span class="p">).</span><span class="nf">Returns</span><span class="p">(</span><span class="s">"0"</span><span class="p">);</span>
+<span class="err">            </span><span class="k">yield</span><span class="err"> </span><span class="k">return</span><span class="err"> </span><span class="k">new</span><span class="err"> </span><span class="nf">TestCaseData</span><span class="p">(</span><span class="s">"&lt;."</span><span class="p">).</span><span class="nf">Returns</span><span class="p">(</span><span class="s">"0."</span><span class="p">);</span>
+<span class="err">            </span><span class="k">yield</span><span class="err"> </span><span class="k">return</span><span class="err"> </span><span class="k">new</span><span class="err"> </span><span class="nf">TestCaseData</span><span class="p">(</span><span class="s">"&lt;&lt;"</span><span class="p">).</span><span class="nf">Returns</span><span class="p">(</span><span class="s">"0"</span><span class="p">);</span>
+<span class="err">            </span><span class="k">yield</span><span class="err"> </span><span class="k">return</span><span class="err"> </span><span class="k">new</span><span class="err"> </span><span class="nf">TestCaseData</span><span class="p">(</span><span class="s">"0&lt;0"</span><span class="p">).</span><span class="nf">Returns</span><span class="p">(</span><span class="s">"0"</span><span class="p">);</span>
+<span class="err">            </span><span class="k">yield</span><span class="err"> </span><span class="k">return</span><span class="err"> </span><span class="k">new</span><span class="err"> </span><span class="nf">TestCaseData</span><span class="p">(</span><span class="s">"12&lt;"</span><span class="p">).</span><span class="nf">Returns</span><span class="p">(</span><span class="s">"1"</span><span class="p">);</span>
+<span class="err">            </span><span class="k">yield</span><span class="err"> </span><span class="k">return</span><span class="err"> </span><span class="k">new</span><span class="err"> </span><span class="nf">TestCaseData</span><span class="p">(</span><span class="s">"1&lt;2"</span><span class="p">).</span><span class="nf">Returns</span><span class="p">(</span><span class="s">"2"</span><span class="p">);</span>
+<span class="err">            </span><span class="k">yield</span><span class="err"> </span><span class="k">return</span><span class="err"> </span><span class="k">new</span><span class="err"> </span><span class="nf">TestCaseData</span><span class="p">(</span><span class="s">"12&lt;&lt;"</span><span class="p">).</span><span class="nf">Returns</span><span class="p">(</span><span class="s">"0"</span><span class="p">);</span>
+<span class="err">            </span><span class="k">yield</span><span class="err"> </span><span class="k">return</span><span class="err"> </span><span class="k">new</span><span class="err"> </span><span class="nf">TestCaseData</span><span class="p">(</span><span class="s">"0.9&lt;"</span><span class="p">).</span><span class="nf">Returns</span><span class="p">(</span><span class="s">"0."</span><span class="p">);</span>
+<span class="err">            </span><span class="k">yield</span><span class="err"> </span><span class="k">return</span><span class="err"> </span><span class="k">new</span><span class="err"> </span><span class="nf">TestCaseData</span><span class="p">(</span><span class="s">"0.&lt;9&lt;"</span><span class="p">).</span><span class="nf">Returns</span><span class="p">(</span><span class="s">"0"</span><span class="p">);</span>
+<span class="err">        </span><span class="p">}</span>
+<span class="err">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="the-builder-pattern-for-test-data">The Builder Pattern for Test Data</h2>
+
+<p>The Builder pattern turns out to be a nice pattern for creating test data. I first heard of this usage from Steve Smith when he appeared on <a href="https://www.dotnetrocks.com/?show=1494" target="_blank" rel="noopener">.NET Rocks episode 1494</a>. You should take a listen to that episode.</p>
+
+<p>The Basic idea is you create yourself a Builder class for your model object that goes and creates an object for you with some default values and then you have builder methods that allow you to set specific values if that is important for your test. Why not just create the objects with their values straight in your test? Well, you don’t want your tests littered with code to setup objects because it distracts you from the purpose of your test… and what if you change that model object later, you’ve got a thousand different unit tests you need to update.</p>
+
+<p>Here is a trivial example: As I said, I’m working on a simple converter application which has a variety of different Unit objects. So I create myself Builder object which allows me to easily create a Unit to covert.</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">class</span> <span class="nc">UnitBuilder</span>
+<span class="p">{</span>
+    <span class="k">private</span> <span class="kt">string</span> <span class="n">name</span> <span class="p">=</span> <span class="s">"A Unit"</span><span class="p">;</span>
+    <span class="k">private</span> <span class="kt">string</span> <span class="n">description</span> <span class="p">=</span> <span class="s">"Description of a unit"</span><span class="p">;</span>
+    <span class="k">private</span> <span class="n">UnitCategory</span> <span class="n">category</span> <span class="p">=</span> <span class="n">UnitCategory</span><span class="p">.</span><span class="n">Weight</span><span class="p">;</span>
+    <span class="k">private</span> <span class="kt">double</span> <span class="n">baseUnitValue</span> <span class="p">=</span> <span class="m">1</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="n">BaseUnit</span> <span class="nf">Build</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nf">BaseUnit</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">description</span><span class="p">,</span> <span class="n">category</span><span class="p">,</span> <span class="n">baseUnitValue</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="n">UnitBuilder</span> <span class="nf">WithName</span><span class="p">(</span><span class="kt">string</span> <span class="n">name</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="n">name</span> <span class="p">=</span> <span class="n">name</span><span class="p">;</span>
+        <span class="k">return</span> <span class="k">this</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="n">UnitBuilder</span> <span class="nf">WithDescription</span><span class="p">(</span><span class="kt">string</span> <span class="n">description</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="n">description</span> <span class="p">=</span> <span class="n">description</span><span class="p">;</span>
+        <span class="k">return</span> <span class="k">this</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="n">UnitBuilder</span> <span class="nf">WithCategory</span><span class="p">(</span><span class="n">UnitCategory</span> <span class="n">category</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="n">category</span> <span class="p">=</span> <span class="n">category</span><span class="p">;</span>
+        <span class="k">return</span> <span class="k">this</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="n">UnitBuilder</span> <span class="nf">WithBaseUnitValue</span> <span class="p">(</span><span class="kt">double</span> <span class="n">baseUnitValue</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="n">baseUnitValue</span> <span class="p">=</span> <span class="n">baseUnitValue</span><span class="p">;</span>
+        <span class="k">return</span> <span class="k">this</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">/// </span>
+    <span class="c1">/// Implicit converter object, so we can turn a builder straight into a unit</span>
+    <span class="c1">///</span>
+    <span class="n">Builder</span> <span class="n">Instance</span> <span class="k">public</span> <span class="k">static</span> <span class="k">implicit</span> <span class="k">operator</span> <span class="nf">BaseUnit</span><span class="p">(</span><span class="n">UnitBuilder</span> <span class="n">instance</span><span class="p">)</span> 
+    <span class="p">{</span> <span class="k">return</span> <span class="n">instance</span><span class="p">.</span><span class="nf">Build</span><span class="p">();</span> <span class="p">}</span> 
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Once I have that setup, within my unit test I can use this builder object to create my Unit objects. It will have default values but allows me to override whatever I want, all without having a hard dependency on the constructor for the object. For example,</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">[Test]</span>
+<span class="k">public</span><span class="err"> </span><span class="k">void</span><span class="err"> </span><span class="nf">SimpleConversion_OneUnit</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="err">    </span><span class="n">BaseUnit</span><span class="err"> </span><span class="n">cm</span><span class="err"> </span><span class="p">=</span><span class="err"> </span><span class="k">new</span><span class="err"> </span><span class="nf">UnitBuilder</span><span class="p">().</span><span class="nf">WithName</span><span class="p">(</span><span class="s">"centimeters"</span><span class="p">).</span><span class="nf">WithBaseUnitValue</span><span class="p">(</span><span class="m">1</span><span class="p">);</span>
+<span class="err">    </span><span class="n">BaseUnit</span><span class="err"> </span><span class="n">meter</span><span class="err"> </span><span class="p">=</span><span class="err"> </span><span class="k">new</span><span class="err"> </span><span class="nf">UnitBuilder</span><span class="p">().</span><span class="nf">WithName</span><span class="p">(</span><span class="s">"meters"</span><span class="p">).</span><span class="nf">WithBaseUnitValue</span><span class="p">(</span><span class="m">100</span><span class="p">);</span>
+<span class="err">    </span><span class="n">Converter</span><span class="p">.</span><span class="nf">ConvertUnit</span><span class="p">(</span><span class="n">cm</span><span class="p">,</span><span class="err"> </span><span class="n">meter</span><span class="p">,</span><span class="err"> </span><span class="m">1</span><span class="p">).</span><span class="nf">ShouldEqual</span><span class="p">(</span><span class="m">0.01</span><span class="p">);</span>
+<span class="err">    </span><span class="n">Converter</span><span class="p">.</span><span class="nf">ConvertUnit</span><span class="p">(</span><span class="n">meter</span><span class="p">,</span><span class="err"> </span><span class="n">cm</span><span class="p">,</span><span class="err"> </span><span class="m">1</span><span class="p">).</span><span class="nf">ShouldEqual</span><span class="p">(</span><span class="m">100</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>This just makes it really nice to construct tests which are nice a readable without being polluted with too much setup code. You can read a bunch more about this pattern at:</p>
+
+<ul>
+  <li><a href="https://www.kenneth-truyers.net/2013/07/15/flexible-and-expressive-unit-tests-with-the-builder-pattern/" target="_blank" rel="noopener">Flexible and expressive unit tests with the builder pattern</a></li>
+  <li><a href="https://ardalis.com/improve-tests-with-the-builder-pattern-for-test-data" target="_blank" rel="noopener">Improve tests with the builder pattern for test data</a></li>
+</ul>
+
+<p>One last thing you may notice, I also used a little library called Should, which makes reading the unit test just a teeny-tiny bit more readable.</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">void</span> <span class="nf">Should_assertions</span><span class="p">()</span>
+<span class="p">{</span>
+   <span class="kt">object</span> <span class="n">obj</span> <span class="p">=</span> <span class="k">null</span><span class="p">;</span>
+   <span class="n">obj</span><span class="p">.</span><span class="nf">ShouldBeNull</span><span class="p">();</span>
+
+    <span class="n">obj</span> <span class="p">=</span> <span class="k">new</span> <span class="kt">object</span><span class="p">();</span>
+    <span class="n">obj</span><span class="p">.</span><span class="nf">ShouldBeType</span><span class="p">(</span><span class="k">typeof</span><span class="p">(</span><span class="kt">object</span><span class="p">));</span>
+    <span class="n">obj</span><span class="p">.</span><span class="nf">ShouldEqual</span><span class="p">(</span><span class="n">obj</span><span class="p">);</span>
+    <span class="n">obj</span><span class="p">.</span><span class="nf">ShouldNotBeNull</span><span class="p">();</span>
+    <span class="n">obj</span><span class="p">.</span><span class="nf">ShouldNotBeSameAs</span><span class="p">(</span><span class="k">new</span> <span class="kt">object</span><span class="p">());</span>
+    <span class="n">obj</span><span class="p">.</span><span class="nf">ShouldNotBeType</span><span class="p">(</span><span class="k">typeof</span><span class="p">(</span><span class="kt">string</span><span class="p">));</span>
+    <span class="n">obj</span><span class="p">.</span><span class="nf">ShouldNotEqual</span><span class="p">(</span><span class="s">"foo"</span><span class="p">);</span>
+
+    <span class="n">obj</span> <span class="p">=</span> <span class="s">"x"</span><span class="p">;</span>
+    <span class="n">obj</span><span class="p">.</span><span class="nf">ShouldNotBeInRange</span><span class="p">(</span><span class="s">"y"</span><span class="p">,</span> <span class="s">"z"</span><span class="p">);</span>
+    <span class="n">obj</span><span class="p">.</span><span class="nf">ShouldBeInRange</span><span class="p">(</span><span class="s">"a"</span><span class="p">,</span> <span class="s">"z"</span><span class="p">);</span>
+    <span class="n">obj</span><span class="p">.</span><span class="nf">ShouldBeSameAs</span><span class="p">(</span><span class="s">"x"</span><span class="p">);</span>
+
+    <span class="s">"This String"</span><span class="p">.</span><span class="nf">ShouldContain</span><span class="p">(</span><span class="s">"This"</span><span class="p">);</span>
+    <span class="s">"This String"</span><span class="p">.</span><span class="nf">ShouldNotBeEmpty</span><span class="p">();</span>
+    <span class="s">"This String"</span><span class="p">.</span><span class="nf">ShouldNotContain</span><span class="p">(</span><span class="s">"foobar"</span><span class="p">);</span>
+
+    <span class="k">false</span><span class="p">.</span><span class="nf">ShouldBeFalse</span><span class="p">();</span>
+    <span class="k">true</span><span class="p">.</span><span class="nf">ShouldBeTrue</span><span class="p">();</span>
+
+    <span class="kt">var</span> <span class="n">list</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;&gt;();</span>
+    <span class="n">list</span><span class="p">.</span><span class="nf">ShouldBeEmpty</span><span class="p">();</span>
+    <span class="n">list</span><span class="p">.</span><span class="nf">ShouldNotContain</span><span class="p">(</span><span class="k">new</span> <span class="kt">object</span><span class="p">());</span>
+
+    <span class="kt">var</span> <span class="n">item</span> <span class="p">=</span> <span class="k">new</span> <span class="kt">object</span><span class="p">();</span>
+    <span class="n">list</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="n">item</span><span class="p">);</span>
+    <span class="n">list</span><span class="p">.</span><span class="nf">ShouldNotBeEmpty</span><span class="p">();</span>
+    <span class="n">list</span><span class="p">.</span><span class="nf">ShouldContain</span><span class="p">(</span><span class="n">item</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="in-conclusion">In Conclusion</h2>
+
+<p>These are just some little things that you may consider next time you are writing unit tests. It will make setting up your data a little easier whilst also creating more maintainable and easier to read unit tests.</p>
+
+<p>Till next time, happy coding!</p>
+
+                </div>
+            </section>
+
+            <!-- Email subscribe form at the bottom of the page -->
+            
+
+            <footer class="post-full-footer">
+                <!-- Everything inside the #author tags pulls data from the author -->
+                <!-- #author-->
+                
+                    
+                        <section class="author-card">
+                            
+                                <img class="author-profile-image" src="/assets/images/kphillpotts.jpg" alt="kphillpotts" />
+                            
+                            <section class="author-card-content">
+                                <h4 class="author-card-name"><a href="/author/kphillpotts">Kym Phillpotts</a></h4>
+                                
+                                    <p>Geek, Parent, Human, Xamarin University Instructor. Co-curator of http://weeklyxamarin.com  and twitch streaming live coding at http://twitch.tv/kphillpotts</p>
+                                
+                            </section>
+                        </section>
+                        <div class="post-full-footer-right">
+                            <a class="author-card-button" href="/author/kphillpotts">Read More</a>
+                        </div>
+                    
+                
+                <!-- /author  -->
+            </footer>
+
+            <!-- If you use Disqus comments, just uncomment this block.
+            The only thing you need to change is "test-apkdzgmqhj" - which
+            should be replaced with your own Disqus site-id. -->
+            
+
+        </article>
+
+    </div>
+</main>
+
+<!-- Links to Previous/Next posts -->
+<aside class="read-next outer">
+    <div class="inner">
+        <div class="read-next-feed">
+            
+                
+                
+                
+                
+            
+
+            <!-- If there's a next post, display it using the same markup included from - partials/post-card.hbs -->
+            
+                
+    <article class="post-card post-template">
+        
+            <a class="post-card-image-link" href="/simple-animation-with-xamarin-forms/">
+                <div class="post-card-image" style="background-image: url(/assets/images/covers/generic_mobile_1.png)"></div>
+            </a>
+        
+        <div class="post-card-content">
+            <a class="post-card-content-link" href="/simple-animation-with-xamarin-forms/">
+                <header class="post-card-header">
+                    
+                        
+                            
+                                <span class="post-card-tags">Xamarin</span>
+                            
+                        
+                    
+
+                    <h2 class="post-card-title">Simple Animation with Xamarin.Forms</h2>
+                </header>
+                <section class="post-card-excerpt">
+                    <p>Those of you know me (or have visited my blog) know that I love playing around with Xamarin.Forms Layouts.   Recently, Matt Soucoup was on the Xamarin Show talking about Animations. He showed</p>
+                </section>
+            </a>
+            <footer class="post-card-meta">
+                
+                    
+                        
+                        <img class="author-profile-image" src="/assets/images/kphillpotts.jpg" alt="Kym Phillpotts" />
+                        
+                        <span class="post-card-author">
+                            <a href="/author/kphillpotts/">Kym Phillpotts</a>
+                        </span>
+                    
+                
+            </footer>
+        </div>
+    </article>
+
+            
+
+            <!-- If there's a previous post, display it using the same markup included from - partials/post-card.hbs -->
+            
+                
+    <article class="post-card post-template">
+        
+            <a class="post-card-image-link" href="/fastscroll-and-sectionindexer-in-xamarin-forms-listview/">
+                <div class="post-card-image" style="background-image: url(/assets/images/covers/speed.jpg)"></div>
+            </a>
+        
+        <div class="post-card-content">
+            <a class="post-card-content-link" href="/fastscroll-and-sectionindexer-in-xamarin-forms-listview/">
+                <header class="post-card-header">
+                    
+                        
+                            
+                                <span class="post-card-tags">Xamarin</span>
+                            
+                        
+                    
+
+                    <h2 class="post-card-title">FastScroll and SectionIndexer in Xamarin.Forms ListView</h2>
+                </header>
+                <section class="post-card-excerpt">
+                    <p>Those of you who have played around with ListViews in Xamarin.Android are probably familiar with the FastScroll and SectionIndexer features.  They essentially make it really easy for users to navigate long lists by</p>
+                </section>
+            </a>
+            <footer class="post-card-meta">
+                
+                    
+                        
+                        <img class="author-profile-image" src="/assets/images/kphillpotts.jpg" alt="Kym Phillpotts" />
+                        
+                        <span class="post-card-author">
+                            <a href="/author/kphillpotts/">Kym Phillpotts</a>
+                        </span>
+                    
+                
+            </footer>
+        </div>
+    </article>
+
+            
+
+        </div>
+    </div>
+</aside>
+
+<!-- Floating header which appears on-scroll, included from includes/floating-header.hbs -->
+<div class="floating-header">
+    <div class="floating-header-logo">
+        <a href="/">
+            
+            <span>Kym's Blog</span>
+        </a>
+    </div>
+    <span class="floating-header-divider">&mdash;</span>
+    <div class="floating-header-title">Unit Testing Tips</div>
+    <div class="floating-header-share">
+        <div class="floating-header-share-label">Share this <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M7.5 15.5V4a1.5 1.5 0 1 1 3 0v4.5h2a1 1 0 0 1 1 1h2a1 1 0 0 1 1 1H18a1.5 1.5 0 0 1 1.5 1.5v3.099c0 .929-.13 1.854-.385 2.748L17.5 23.5h-9c-1.5-2-5.417-8.673-5.417-8.673a1.2 1.2 0 0 1 1.76-1.605L7.5 15.5zm6-6v2m-3-3.5v3.5m6-1v2"/>
+</svg>
+</div>
+        <a class="floating-header-share-tw" href="https://twitter.com/share?text=Unit+Testing+Tips&amp;url=https://kphillpotts.github.io/unit-testing-tips/"
+            onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg>
+
+        </a>
+        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=https://kphillpotts.github.io/unit-testing-tips/"
+            onclick="window.open(this.href, 'share-facebook','width=580,height=296');return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M19 6h5V0h-5c-3.86 0-7 3.14-7 7v3H8v6h4v16h6V16h5l1-6h-6V7c0-.542.458-1 1-1z"/></svg>
+
+        </a>
+    </div>
+    <progress class="progress" value="0">
+        <div class="progress-container">
+            <span class="progress-bar"></span>
+        </div>
+    </progress>
+</div>
+
+
+<!-- /post -->
+
+<!-- The #contentFor helper here will send everything inside it up to the matching #block helper found in default.hbs -->
+
+
+        <!-- Previous/next page links - displayed on every page -->
+        
+
+        <!-- The footer at the very bottom of the screen -->
+        <footer class="site-footer outer">
+            <div class="site-footer-content inner">
+                <section class="copyright"><a href="/">Kym's Blog</a> &copy; 2019</section>
+                <section class="poweredby">Proudly published with <a href="https://jekyllrb.com/">Jekyll</a> &
+                    <a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a> using
+                    <a href="https://github.com/jekyller/jasper2" target="_blank" rel="noopener">Jasper2</a></section>
+                <nav class="site-footer-nav">
+                    <a href="/">Latest Posts</a>
+                    
+                    <a href="https://twitter.com/kphillpotts" target="_blank" rel="noopener">Twitter</a>
+                    <a href="https://ghost.org" target="_blank" rel="noopener">Ghost</a>
+                </nav>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- The big email subscribe modal content -->
+    
+
+    <!-- highlight.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.10.0/components/prism-abap.min.js"></script>
+    <script>$(document).ready(function() {
+      $('pre code').each(function(i, block) {
+        hljs.highlightBlock(block);
+      });
+    });</script>
+
+    <!-- jQuery + Fitvids, which makes all video embeds responsive -->
+    <script
+        src="https://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous">
+    </script>
+    <script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="https://demo.ghost.io/assets/js/jquery.fitvids.js?v=724281a32e"></script>
+
+
+    <!-- Paginator increased to "infinit" in _config.yml -->
+    <!-- if paginator.posts  -->
+    <!-- <script>
+        var maxPages = parseInt('');
+    </script>
+    <script src="/assets/js/infinitescroll.js"></script> -->
+    <!-- /endif -->
+
+    
+
+
+    <!-- Add Google Analytics  -->
+    <!-- Google Analytics Tracking code -->
+ <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-69281367-1', 'auto');
+  ga('send', 'pageview');
+
+ </script>
+
+
+    <!-- The #block helper will pull in data from the #contentFor other template files. In this case, there's some JavaScript which we only want to use in post.hbs, but it needs to be included down here, after jQuery has already loaded. -->
+    
+        <script>
+
+// NOTE: Scroll performance is poor in Safari
+// - this appears to be due to the events firing much more slowly in Safari.
+//   Dropping the scroll event and using only a raf loop results in smoother
+//   scrolling but continuous processing even when not scrolling
+$(document).ready(function () {
+    // Start fitVids
+    var $postContent = $(".post-full-content");
+    $postContent.fitVids();
+    // End fitVids
+
+    var progressBar = document.querySelector('progress');
+    var header = document.querySelector('.floating-header');
+    var title = document.querySelector('.post-full-title');
+
+    var lastScrollY = window.scrollY;
+    var lastWindowHeight = window.innerHeight;
+    var lastDocumentHeight = $(document).height();
+    var ticking = false;
+
+    function onScroll() {
+        lastScrollY = window.scrollY;
+        requestTick();
+    }
+
+    function onResize() {
+        lastWindowHeight = window.innerHeight;
+        lastDocumentHeight = $(document).height();
+        requestTick();
+    }
+
+    function requestTick() {
+        if (!ticking) {
+            requestAnimationFrame(update);
+        }
+        ticking = true;
+    }
+
+    function update() {
+        var trigger = title.getBoundingClientRect().top + window.scrollY;
+        var triggerOffset = title.offsetHeight + 35;
+        var progressMax = lastDocumentHeight - lastWindowHeight;
+
+        // show/hide floating header
+        if (lastScrollY >= trigger + triggerOffset) {
+            header.classList.add('floating-active');
+        } else {
+            header.classList.remove('floating-active');
+        }
+
+        progressBar.setAttribute('max', progressMax);
+        progressBar.setAttribute('value', lastScrollY);
+
+        ticking = false;
+    }
+
+    window.addEventListener('scroll', onScroll, {passive: true});
+    window.addEventListener('resize', onResize, false);
+
+    update();
+});
+</script>
+
+    
+
+    <!-- Ghost outputs important scripts and data with this tag - it should always be the very last thing before the closing body tag -->
+    <!-- ghost_foot -->
+
+</body>
+</html>
