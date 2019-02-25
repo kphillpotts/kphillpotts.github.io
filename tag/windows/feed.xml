@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator>
   <link href="/tag/windows/feed.xml" rel="self" type="application/atom+xml" />
   <link href="/" rel="alternate" type="text/html" />
-  <updated>2019-01-12T16:48:00+01:00</updated>
+  <updated>2019-02-26T10:09:56+11:00</updated>
   <id>/tag/windows/feed.xml</id>
 
   
@@ -34,8 +34,8 @@
     <entry>
       <title type="html">Simulating Surface Pro 3 in the Simulator</title>
       <link href="/simulating-surface-pro-3-in-the-simulator/" rel="alternate" type="text/html" title="Simulating Surface Pro 3 in the Simulator" />
-      <published>2014-12-22T14:34:42+01:00</published>
-      <updated>2014-12-22T14:34:42+01:00</updated>
+      <published>2014-12-23T00:34:42+11:00</published>
+      <updated>2014-12-23T00:34:42+11:00</updated>
       <id>/simulating-surface-pro-3-in-the-simulator</id>
       <content type="html" xml:base="/simulating-surface-pro-3-in-the-simulator/">&lt;p&gt;I’m working on a project at the moment that needs to run on a Surface Pro 3. During testing there were some weird redraw issues that only appeared on the Surface 3.   We were unable to reproduce this in our dev environments because  the simulator that comes with Visual Studio doesn’t have a screen size that is compatible with the Surface 3.&lt;/p&gt;
 

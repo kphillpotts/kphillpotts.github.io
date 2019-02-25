@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator>
   <link href="/tag/ios7/feed.xml" rel="self" type="application/atom+xml" />
   <link href="/" rel="alternate" type="text/html" />
-  <updated>2019-01-12T16:48:00+01:00</updated>
+  <updated>2019-02-26T10:09:56+11:00</updated>
   <id>/tag/ios7/feed.xml</id>
 
   
@@ -34,8 +34,8 @@
     <entry>
       <title type="html">Xamarin and iOS – Moving to iOS 7 and Xcode 5</title>
       <link href="/xamarin-and-ios-moving-to-ios-7-and-xcode-5/" rel="alternate" type="text/html" title="Xamarin and iOS – Moving to iOS 7 and Xcode 5" />
-      <published>2014-02-04T09:53:35+01:00</published>
-      <updated>2014-02-04T09:53:35+01:00</updated>
+      <published>2014-02-04T19:53:35+11:00</published>
+      <updated>2014-02-04T19:53:35+11:00</updated>
       <id>/xamarin-and-ios-moving-to-ios-7-and-xcode-5</id>
       <content type="html" xml:base="/xamarin-and-ios-moving-to-ios-7-and-xcode-5/">&lt;p&gt;Apple has now decreed that all apps submitted to the store must be built on XCode5 and iOS7.&lt;/p&gt;
 

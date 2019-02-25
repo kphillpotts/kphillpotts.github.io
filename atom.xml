@@ -12,7 +12,7 @@
         
           <description>I presented a session on all the imprortant stuff from Microsoft //Build/ for Xamarin Developers at the Melbourne Xamarin User Group yesterday.  Just sharing out the links from the session.</description>
         
-        <pubDate>Thu, 17 May 2018 13:16:31 +0200</pubDate>
+        <pubDate>Thu, 17 May 2018 21:16:31 +1000</pubDate>
         <link>
         /5907-2/</link>
         <guid isPermaLink="true">/5907-2/</guid>
@@ -27,7 +27,7 @@
 
 </description>
         
-        <pubDate>Tue, 27 Mar 2018 14:43:50 +0200</pubDate>
+        <pubDate>Tue, 27 Mar 2018 23:43:50 +1100</pubDate>
         <link>
         /simple-animation-with-xamarin-forms/</link>
         <guid isPermaLink="true">/simple-animation-with-xamarin-forms/</guid>
@@ -277,7 +277,7 @@
 &lt;p&gt;Till next time, happy coding!&lt;/p&gt;
 </description>
         
-        <pubDate>Wed, 07 Mar 2018 09:50:32 +0100</pubDate>
+        <pubDate>Wed, 07 Mar 2018 19:50:32 +1100</pubDate>
         <link>
         /unit-testing-tips/</link>
         <guid isPermaLink="true">/unit-testing-tips/</guid>
@@ -290,7 +290,7 @@
         
           <description>Those of you who have played around with ListViews in Xamarin.Android are probably familiar with the FastScroll and SectionIndexer features. Unfortunately, this feature isn't available in Xamarin.Forms ListViews running on Android, or is it? </description>
         
-        <pubDate>Thu, 18 Jan 2018 11:12:06 +0100</pubDate>
+        <pubDate>Thu, 18 Jan 2018 21:12:06 +1100</pubDate>
         <link>
         /fastscroll-and-sectionindexer-in-xamarin-forms-listview/</link>
         <guid isPermaLink="true">/fastscroll-and-sectionindexer-in-xamarin-forms-listview/</guid>
@@ -305,7 +305,7 @@
 
 </description>
         
-        <pubDate>Thu, 24 Aug 2017 01:33:01 +0200</pubDate>
+        <pubDate>Thu, 24 Aug 2017 09:33:01 +1000</pubDate>
         <link>
         /xamarin-tools-and-resources/</link>
         <guid isPermaLink="true">/xamarin-tools-and-resources/</guid>
@@ -320,7 +320,7 @@
 
 </description>
         
-        <pubDate>Mon, 20 Mar 2017 22:50:36 +0100</pubDate>
+        <pubDate>Tue, 21 Mar 2017 08:50:36 +1100</pubDate>
         <link>
         /xamarin-forms-layout-challenges-great-places/</link>
         <guid isPermaLink="true">/xamarin-forms-layout-challenges-great-places/</guid>
@@ -335,7 +335,7 @@
 
 </description>
         
-        <pubDate>Thu, 09 Mar 2017 15:53:17 +0100</pubDate>
+        <pubDate>Fri, 10 Mar 2017 01:53:17 +1100</pubDate>
         <link>
         /xamarin-forms-layout-challenges-timeline/</link>
         <guid isPermaLink="true">/xamarin-forms-layout-challenges-timeline/</guid>
@@ -350,7 +350,7 @@
 
 </description>
         
-        <pubDate>Sun, 05 Mar 2017 22:53:33 +0100</pubDate>
+        <pubDate>Mon, 06 Mar 2017 08:53:33 +1100</pubDate>
         <link>
         /social-network-app-layout-design-in-xamarin-forms/</link>
         <guid isPermaLink="true">/social-network-app-layout-design-in-xamarin-forms/</guid>
@@ -363,7 +363,7 @@
         
           <description>Xamarin development is booming and as with any great technology, things change fast and you'll want to keep up to date with the latest news and releases. Xamarin has such a wonderful, thriving community that it can be a challenge!</description>
         
-        <pubDate>Mon, 18 Jul 2016 01:57:59 +0200</pubDate>
+        <pubDate>Mon, 18 Jul 2016 09:57:59 +1000</pubDate>
         <link>
         /staying-up-to-date-with-xamarin-development/</link>
         <guid isPermaLink="true">/staying-up-to-date-with-xamarin-development/</guid>
@@ -378,7 +378,7 @@
 
 </description>
         
-        <pubDate>Wed, 11 May 2016 19:03:34 +0200</pubDate>
+        <pubDate>Thu, 12 May 2016 03:03:34 +1000</pubDate>
         <link>
         /xamarin-link-roundup-11-may-2016/</link>
         <guid isPermaLink="true">/xamarin-link-roundup-11-may-2016/</guid>
@@ -393,7 +393,7 @@
 
 </description>
         
-        <pubDate>Wed, 06 Jan 2016 15:41:42 +0100</pubDate>
+        <pubDate>Thu, 07 Jan 2016 01:41:42 +1100</pubDate>
         <link>
         /xamarin-link-roundup-6-january-2016/</link>
         <guid isPermaLink="true">/xamarin-link-roundup-6-january-2016/</guid>
@@ -410,7 +410,7 @@
 
 </description>
         
-        <pubDate>Tue, 29 Dec 2015 23:22:32 +0100</pubDate>
+        <pubDate>Wed, 30 Dec 2015 09:22:32 +1100</pubDate>
         <link>
         /xamarin-link-roundup-29-december-2015/</link>
         <guid isPermaLink="true">/xamarin-link-roundup-29-december-2015/</guid>
@@ -425,7 +425,7 @@
 
 </description>
         
-        <pubDate>Tue, 22 Dec 2015 12:12:13 +0100</pubDate>
+        <pubDate>Tue, 22 Dec 2015 22:12:13 +1100</pubDate>
         <link>
         /xamarin-link-roundup-22-december-2015/</link>
         <guid isPermaLink="true">/xamarin-link-roundup-22-december-2015/</guid>
@@ -442,7 +442,7 @@
 
 </description>
         
-        <pubDate>Wed, 12 Aug 2015 01:52:32 +0200</pubDate>
+        <pubDate>Wed, 12 Aug 2015 09:52:32 +1000</pubDate>
         <link>
         /emacs-key-mappings-for-xamarin-studio-on-mac/</link>
         <guid isPermaLink="true">/emacs-key-mappings-for-xamarin-studio-on-mac/</guid>
@@ -459,7 +459,7 @@
 
 </description>
         
-        <pubDate>Sat, 13 Jun 2015 09:18:30 +0200</pubDate>
+        <pubDate>Sat, 13 Jun 2015 17:18:30 +1000</pubDate>
         <link>
         /xamarin-link-roundup-13-june-2015/</link>
         <guid isPermaLink="true">/xamarin-link-roundup-13-june-2015/</guid>
@@ -476,7 +476,7 @@
 
 </description>
         
-        <pubDate>Mon, 02 Mar 2015 23:21:31 +0100</pubDate>
+        <pubDate>Tue, 03 Mar 2015 09:21:31 +1100</pubDate>
         <link>
         /xamarin-link-roundup-2-mar-2015/</link>
         <guid isPermaLink="true">/xamarin-link-roundup-2-mar-2015/</guid>
@@ -491,7 +491,7 @@
 
 </description>
         
-        <pubDate>Sun, 01 Mar 2015 15:14:22 +0100</pubDate>
+        <pubDate>Mon, 02 Mar 2015 01:14:22 +1100</pubDate>
         <link>
         /common-ui-patterns-in-xamarin-forms-part-2-tabbed-pages/</link>
         <guid isPermaLink="true">/common-ui-patterns-in-xamarin-forms-part-2-tabbed-pages/</guid>
@@ -508,7 +508,7 @@
 
 </description>
         
-        <pubDate>Mon, 23 Feb 2015 22:57:10 +0100</pubDate>
+        <pubDate>Tue, 24 Feb 2015 08:57:10 +1100</pubDate>
         <link>
         /xamarin-link-roundup-23-feb-2015/</link>
         <guid isPermaLink="true">/xamarin-link-roundup-23-feb-2015/</guid>
@@ -523,7 +523,7 @@
 
 </description>
         
-        <pubDate>Sun, 22 Feb 2015 23:59:29 +0100</pubDate>
+        <pubDate>Mon, 23 Feb 2015 09:59:29 +1100</pubDate>
         <link>
         /common-ui-patterns-in-xamarin-forms-part-1-springboards/</link>
         <guid isPermaLink="true">/common-ui-patterns-in-xamarin-forms-part-1-springboards/</guid>
@@ -540,7 +540,7 @@
 
 </description>
         
-        <pubDate>Mon, 16 Feb 2015 15:05:23 +0100</pubDate>
+        <pubDate>Tue, 17 Feb 2015 01:05:23 +1100</pubDate>
         <link>
         /xamarin-link-roundup-16-feb-2015/</link>
         <guid isPermaLink="true">/xamarin-link-roundup-16-feb-2015/</guid>
@@ -555,7 +555,7 @@
 
 </description>
         
-        <pubDate>Thu, 12 Feb 2015 23:54:16 +0100</pubDate>
+        <pubDate>Fri, 13 Feb 2015 09:54:16 +1100</pubDate>
         <link>
         /common-ui-patterns-in-xamarin-forms-part-0/</link>
         <guid isPermaLink="true">/common-ui-patterns-in-xamarin-forms-part-0/</guid>
@@ -572,7 +572,7 @@
 
 </description>
         
-        <pubDate>Mon, 09 Feb 2015 12:56:21 +0100</pubDate>
+        <pubDate>Mon, 09 Feb 2015 22:56:21 +1100</pubDate>
         <link>
         /xamarin-link-roundup-9-feb-2015/</link>
         <guid isPermaLink="true">/xamarin-link-roundup-9-feb-2015/</guid>
@@ -587,7 +587,7 @@
 
 </description>
         
-        <pubDate>Wed, 04 Feb 2015 17:51:22 +0100</pubDate>
+        <pubDate>Thu, 05 Feb 2015 03:51:22 +1100</pubDate>
         <link>
         /xamarin-certification-exam-study-guide/</link>
         <guid isPermaLink="true">/xamarin-certification-exam-study-guide/</guid>
@@ -604,7 +604,7 @@
 
 </description>
         
-        <pubDate>Mon, 02 Feb 2015 09:06:55 +0100</pubDate>
+        <pubDate>Mon, 02 Feb 2015 19:06:55 +1100</pubDate>
         <link>
         /xamarin-link-roundup-2-feb-2015/</link>
         <guid isPermaLink="true">/xamarin-link-roundup-2-feb-2015/</guid>
@@ -619,7 +619,7 @@
 
 </description>
         
-        <pubDate>Sat, 31 Jan 2015 16:33:29 +0100</pubDate>
+        <pubDate>Sun, 01 Feb 2015 02:33:29 +1100</pubDate>
         <link>
         /exploring-xamarin-forms-1-3-properties-dictionary/</link>
         <guid isPermaLink="true">/exploring-xamarin-forms-1-3-properties-dictionary/</guid>
@@ -634,7 +634,7 @@
 
 </description>
         
-        <pubDate>Fri, 23 Jan 2015 19:15:13 +0100</pubDate>
+        <pubDate>Sat, 24 Jan 2015 05:15:13 +1100</pubDate>
         <link>
         /xamarin-forms-tools/</link>
         <guid isPermaLink="true">/xamarin-forms-tools/</guid>
@@ -649,7 +649,7 @@
 
 </description>
         
-        <pubDate>Mon, 22 Dec 2014 14:34:42 +0100</pubDate>
+        <pubDate>Tue, 23 Dec 2014 00:34:42 +1100</pubDate>
         <link>
         /simulating-surface-pro-3-in-the-simulator/</link>
         <guid isPermaLink="true">/simulating-surface-pro-3-in-the-simulator/</guid>
@@ -664,7 +664,7 @@
 
 </description>
         
-        <pubDate>Wed, 16 Jul 2014 23:16:59 +0200</pubDate>
+        <pubDate>Thu, 17 Jul 2014 07:16:59 +1000</pubDate>
         <link>
         /xamarin-link-roundup-6/</link>
         <guid isPermaLink="true">/xamarin-link-roundup-6/</guid>
@@ -679,7 +679,7 @@
 
 </description>
         
-        <pubDate>Sun, 18 May 2014 23:11:02 +0200</pubDate>
+        <pubDate>Mon, 19 May 2014 07:11:02 +1000</pubDate>
         <link>
         /xamarin-ibeacons-and-geofencing-some-resources/</link>
         <guid isPermaLink="true">/xamarin-ibeacons-and-geofencing-some-resources/</guid>
@@ -694,7 +694,7 @@
 
 </description>
         
-        <pubDate>Tue, 04 Feb 2014 09:53:35 +0100</pubDate>
+        <pubDate>Tue, 04 Feb 2014 19:53:35 +1100</pubDate>
         <link>
         /xamarin-and-ios-moving-to-ios-7-and-xcode-5/</link>
         <guid isPermaLink="true">/xamarin-and-ios-moving-to-ios-7-and-xcode-5/</guid>
@@ -709,7 +709,7 @@
 
 </description>
         
-        <pubDate>Wed, 23 Oct 2013 07:50:05 +0200</pubDate>
+        <pubDate>Wed, 23 Oct 2013 16:50:05 +1100</pubDate>
         <link>
         /xamarin-and-android-specific-solutions-to-specific-problems-4-2/</link>
         <guid isPermaLink="true">/xamarin-and-android-specific-solutions-to-specific-problems-4-2/</guid>
@@ -724,7 +724,7 @@
 
 </description>
         
-        <pubDate>Mon, 16 Sep 2013 01:15:33 +0200</pubDate>
+        <pubDate>Mon, 16 Sep 2013 09:15:33 +1000</pubDate>
         <link>
         /xamarin-and-android-specific-solutions-to-specific-problems-3-3/</link>
         <guid isPermaLink="true">/xamarin-and-android-specific-solutions-to-specific-problems-3-3/</guid>
@@ -739,7 +739,7 @@
 
 </description>
         
-        <pubDate>Mon, 09 Sep 2013 08:36:03 +0200</pubDate>
+        <pubDate>Mon, 09 Sep 2013 16:36:03 +1000</pubDate>
         <link>
         /xamarin-and-android-specific-solutions-to-specific-problems-2/</link>
         <guid isPermaLink="true">/xamarin-and-android-specific-solutions-to-specific-problems-2/</guid>
@@ -754,7 +754,7 @@
 
 </description>
         
-        <pubDate>Sun, 01 Sep 2013 04:13:58 +0200</pubDate>
+        <pubDate>Sun, 01 Sep 2013 12:13:58 +1000</pubDate>
         <link>
         /xamarin-and-android-specific-solutions-to-specific-problems-1-2/</link>
         <guid isPermaLink="true">/xamarin-and-android-specific-solutions-to-specific-problems-1-2/</guid>
@@ -769,7 +769,7 @@
 
 </description>
         
-        <pubDate>Tue, 27 Aug 2013 10:30:24 +0200</pubDate>
+        <pubDate>Tue, 27 Aug 2013 18:30:24 +1000</pubDate>
         <link>
         /xamarin-and-resource-designer-cs/</link>
         <guid isPermaLink="true">/xamarin-and-resource-designer-cs/</guid>
@@ -784,7 +784,7 @@
 
 </description>
         
-        <pubDate>Sat, 24 Aug 2013 02:16:07 +0200</pubDate>
+        <pubDate>Sat, 24 Aug 2013 10:16:07 +1000</pubDate>
         <link>
         /xamarin-link-roundup-24-aug-2014/</link>
         <guid isPermaLink="true">/xamarin-link-roundup-24-aug-2014/</guid>
@@ -799,7 +799,7 @@
 
 </description>
         
-        <pubDate>Sat, 17 Aug 2013 01:06:26 +0200</pubDate>
+        <pubDate>Sat, 17 Aug 2013 09:06:26 +1000</pubDate>
         <link>
         /xamarin-link-roundup-15-aug-2013/</link>
         <guid isPermaLink="true">/xamarin-link-roundup-15-aug-2013/</guid>
@@ -814,7 +814,7 @@
 
 </description>
         
-        <pubDate>Wed, 07 Aug 2013 01:38:45 +0200</pubDate>
+        <pubDate>Wed, 07 Aug 2013 09:38:45 +1000</pubDate>
         <link>
         /xamarin-link-roundup-6-aug-2013/</link>
         <guid isPermaLink="true">/xamarin-link-roundup-6-aug-2013/</guid>
@@ -829,7 +829,7 @@
 
 </description>
         
-        <pubDate>Sun, 28 Jul 2013 21:55:05 +0200</pubDate>
+        <pubDate>Mon, 29 Jul 2013 05:55:05 +1000</pubDate>
         <link>
         /xamarin-link-roundup-28-july-2013/</link>
         <guid isPermaLink="true">/xamarin-link-roundup-28-july-2013/</guid>
@@ -844,7 +844,7 @@
 
 </description>
         
-        <pubDate>Sun, 28 Jul 2013 15:35:49 +0200</pubDate>
+        <pubDate>Sun, 28 Jul 2013 23:35:49 +1000</pubDate>
         <link>
         /from-zero-to-xamarin-part-3-first-week-in-the-trenches/</link>
         <guid isPermaLink="true">/from-zero-to-xamarin-part-3-first-week-in-the-trenches/</guid>
@@ -859,7 +859,7 @@
 
 </description>
         
-        <pubDate>Tue, 23 Jul 2013 00:08:04 +0200</pubDate>
+        <pubDate>Tue, 23 Jul 2013 08:08:04 +1000</pubDate>
         <link>
         /interesting-xamarin-links-22-july-2013/</link>
         <guid isPermaLink="true">/interesting-xamarin-links-22-july-2013/</guid>
@@ -874,7 +874,7 @@
 
 </description>
         
-        <pubDate>Mon, 15 Jul 2013 00:40:45 +0200</pubDate>
+        <pubDate>Mon, 15 Jul 2013 08:40:45 +1000</pubDate>
         <link>
         /from-zero-to-xamarin-part-2-learning-to-fly/</link>
         <guid isPermaLink="true">/from-zero-to-xamarin-part-2-learning-to-fly/</guid>
@@ -889,7 +889,7 @@
 
 </description>
         
-        <pubDate>Sat, 13 Jul 2013 00:22:56 +0200</pubDate>
+        <pubDate>Sat, 13 Jul 2013 08:22:56 +1000</pubDate>
         <link>
         /from-zero-to-xamarin-part-1-first-contact/</link>
         <guid isPermaLink="true">/from-zero-to-xamarin-part-1-first-contact/</guid>
@@ -904,7 +904,7 @@
 
 </description>
         
-        <pubDate>Wed, 10 Jul 2013 01:36:32 +0200</pubDate>
+        <pubDate>Wed, 10 Jul 2013 09:36:32 +1000</pubDate>
         <link>
         /from-zero-to-xamarin/</link>
         <guid isPermaLink="true">/from-zero-to-xamarin/</guid>
