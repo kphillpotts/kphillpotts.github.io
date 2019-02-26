@@ -11,7 +11,7 @@
 
 
 
-    <title>FastScroll and SectionIndexer in Xamarin.Forms ListView</title>
+    <title>How to stream a meetup</title>
     <meta name="HandheldFriendly" content="True" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Styles'n'Scripts -->
@@ -36,27 +36,27 @@
     <!-- This tag outputs SEO meta+structured data and other important settings -->
     <meta name="description" content="I write about Azure, Xamarin.Forms, Connected Apps and whatever else might be on my mind." />
     <link rel="shortcut icon" href="/assets/images/favicon.png" type="image/png" />
-    <link rel="canonical" href="/fastscroll-and-sectionindexer-in-xamarin-forms-listview/" />
+    <link rel="canonical" href="/how-to-stream-a-meetup.html" />
     <meta name="referrer" content="no-referrer-when-downgrade" />
 
      <!--title below is coming from _includes/dynamic_title-->
     <meta property="og:site_name" content="Kym's Blog" />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="FastScroll and SectionIndexer in Xamarin.Forms ListView" />
+    <meta property="og:title" content="How to stream a meetup" />
     <meta property="og:description" content="I write about Azure, Xamarin.Forms, Connected Apps and whatever else might be on my mind." />
-    <meta property="og:url" content="/fastscroll-and-sectionindexer-in-xamarin-forms-listview/" />
-    <meta property="og:image" content="/assets/images/covers/speed.jpg" />
+    <meta property="og:url" content="/how-to-stream-a-meetup.html" />
+    <meta property="og:image" content="/assets/images/covers/streaming.jpg" />
     <meta property="article:publisher" content="https://www.facebook.com/" />
-    <meta property="article:tag" content="Xamarin" />
+    <meta property="article:tag" content="Other" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="FastScroll and SectionIndexer in Xamarin.Forms ListView" />
+    <meta name="twitter:title" content="How to stream a meetup" />
     <meta name="twitter:description" content="I write about Azure, Xamarin.Forms, Connected Apps and whatever else might be on my mind." />
     <meta name="twitter:url" content="/" />
-    <meta name="twitter:image" content="/assets/images/covers/speed.jpg" />
+    <meta name="twitter:image" content="/assets/images/covers/streaming.jpg" />
     <meta name="twitter:label1" content="Written by" />
     <meta name="twitter:data1" content="Kym's Blog" />
     <meta name="twitter:label2" content="Filed under" />
-    <meta name="twitter:data2" content="Xamarin" />
+    <meta name="twitter:data2" content="Other" />
     <meta name="twitter:site" content="@kphillpotts" />
     <meta name="twitter:creator" content="@kphillpotts" />
     <meta property="og:image:width" content="2000" />
@@ -71,16 +71,16 @@
         "name": "Kym's Blog",
         "logo": "/false"
     },
-    "url": "/fastscroll-and-sectionindexer-in-xamarin-forms-listview/",
+    "url": "/how-to-stream-a-meetup.html",
     "image": {
         "@type": "ImageObject",
-        "url": "/assets/images/covers/speed.jpg",
+        "url": "/assets/images/covers/streaming.jpg",
         "width": 2000,
         "height": 666
     },
     "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "/fastscroll-and-sectionindexer-in-xamarin-forms-listview/"
+        "@id": "/how-to-stream-a-meetup.html"
     },
     "description": "I write about Azure, Xamarin.Forms, Connected Apps and whatever else might be on my mind."
 }
@@ -95,7 +95,7 @@
     </script> -->
 
     <meta name="generator" content="Jekyll 3.6.2" />
-    <link rel="alternate" type="application/rss+xml" title="FastScroll and SectionIndexer in Xamarin.Forms ListView" href="/feed.xml" />
+    <link rel="alternate" type="application/rss+xml" title="How to stream a meetup" href="/feed.xml" />
 
 
 </head>
@@ -158,51 +158,185 @@ into the {body} of the default.hbs template -->
 
             <header class="post-full-header">
                 <section class="post-full-meta">
-                    <time class="post-full-meta-date" datetime="18 January 2018">18 January 2018</time>
+                    <time class="post-full-meta-date" datetime="25 February 2019">25 February 2019</time>
                     
                         <span class="date-divider">/</span>
                         
                             
-                               <a href='/tag/xamarin/'>XAMARIN</a>
+                               <a href='/tag/other/'>OTHER</a>
                             
                         
                     
                 </section>
-                <h1 class="post-full-title">FastScroll and SectionIndexer in Xamarin.Forms ListView</h1>
+                <h1 class="post-full-title">How to stream a meetup</h1>
             </header>
 
             
-            <figure class="post-full-image" style="background-image: url(/assets/images/covers/speed.jpg)">
+            <figure class="post-full-image" style="background-image: url(/assets/images/covers/streaming.jpg)">
             </figure>
             
 
             <section class="post-full-content">
                 <div class="kg-card-markdown">
-                    <p>Those of you who have played around with ListViews in Xamarin.Android are probably familiar with the FastScroll and SectionIndexer features.  They essentially make it really easy for users to navigate long lists by providing them with a little “handle” to quickly drag through lists, and with the SectionIndexer it also gives them a nice little popup showing where they are up to in the list.</p>
+                    <p>Have you ever wanted to record or live stream your meetup? It’s not as hard as you might think.  In this post, we will go through how <em>we</em> stream the <a href="https://www.meetup.com/en-AU/Melbourne-Xamarin-Meetup/">Melbourne Xamarin Meetup</a> live to the Internet via Twitch.</p>
 
-<p>Unfortunately, this feature isn’t available in Xamarin.Forms ListViews running on Android.</p>
+<blockquote>
+  <p>Be aware that there are many different possible solutions and technologies you could use to stream, depending on what your goals are, what your budget is, and what equipment you already have available. What we will discuss here is what we have used and found successful, bearing in mind we try and keep a fairly minimalist setup.</p>
+</blockquote>
 
-<p><img class="alignnone size-full wp-image-5863" src="https://i1.wp.com/www.kymphillpotts.com/wp-content/uploads/2018/01/Or-is-it.jpg?resize=250%2C208" alt="" data-recalc-dims="1" /></p>
+<p>Let’s get straight into it. This is the setup that we currently use:<br />
+<img src="assets/images/posts/streaming-topology-0000.png" alt="Streaming Topology" /></p>
 
-<p>Well, it actually turns out is available through an Android Platform-Specific by the name of <strong>SetIsFastScrollEnabled.</strong></p>
-
-<p>And it’s dead simple to use, just with a single line of code:</p>
-
-<p><span class="syntax-container syntax-theme-base"><code class="syntax highlighted">&lt;span class="csharp"&gt;listView.&lt;span class="function"&gt;On&lt;/span&gt;&lt;span class="operator"&gt;&lt;&lt;/span&gt;&lt;span class="type"&gt;Android&lt;/span&gt;&lt;span class="operator"&gt;&gt;&lt;/span&gt;().&lt;span class="function"&gt;SetIsFastScrollEnabled&lt;/span&gt;(&lt;span class="constant"&gt;true&lt;/span&gt;);&lt;/span&gt;</code></span></p>
-
-<p>Once you add that code, you will get the FastScroll thumb, but as a super-duper bonus if your ListView is grouped then you also get the SectionIndexer. So now your Xamarin.Forms lists can look like this:</p>
-
-<p><img class="alignnone size-full wp-image-5860" src="https://i2.wp.com/www.kymphillpotts.com/wp-content/uploads/2018/01/FastScrollIndexer.gif?resize=410%2C728" alt="" data-recalc-dims="1" /></p>
-
-<p>Note: One thing to be aware of, in order for the FastScroll thumb to be visible, you will have to have a sufficiently large number of rows in your ListView (about 3 times as many rows as you have screen real estate for).</p>
-
-<p>Further reading:</p>
-
+<h2 id="hardware-breakdown">Hardware Breakdown</h2>
 <ul>
-  <li><a href="https://developer.xamarin.com/guides/xamarin-forms/platform-features/platform-specifics/consuming/android/#Enabling_Fast_Scrolling_in_a_ListView">Docs on Fast Scrolling Platform Specific</a></li>
+  <li><strong>Microphone</strong>: <a href="https://www.amazon.com/Blue-Yeti-USB-Microphone-Silver/dp/B002VA464S">Blue Yeti USB Microphone</a></li>
+  <li><strong>Webcam</strong>: <a href="https://www.amazon.com/Logitech-Widescreen-Calling-Recording-Desktop/dp/B006JH8T3S/">Logitech C920 Webcam</a></li>
+  <li><strong>Presenter Computer</strong>: PC/Mac doesn’t matter as long as it has a HDMI output.</li>
+  <li><strong>Capture Device</strong>: <a href="https://www.amazon.com/AVerMedia-Portable-Pass-Through-Playstation-GC513/dp/B0763TFZWT/">AVerMedia Live Gamer Portable 2 Plus</a></li>
+  <li><strong>Projector</strong>: Whatever as long as it has a HDMI input.</li>
+  <li><strong>USB Hub</strong>: <a href="https://www.amazon.com/Anker-9-Port-Smart-Charging-Adapter/dp/B005NGQWL2">Anker USB 3.0 10 Port Hub</a></li>
+  <li><strong>Stream Deck</strong>: <a href="https://www.amazon.com/Elgato-Stream-Deck-Controller-Customizable/dp/B06XKNZT1P">Elgato Stream Deck</a> (optional)</li>
+  <li><strong>Local Storage</strong>: <a href="https://www.amazon.com/LaCie-Rugged-Thunderbolt-Portable-LAC9000488/dp/B00LN8QJYY">LaCie Rugged Thunderbolt and USB 3.0 Portable Drive</a> (optional)</li>
+  <li><strong>Streaming / Recording Computer</strong>: I use an old-ish Macbook Pro 15”, but PC is cool too.</li>
+  <li><strong>Bonus Item</strong>: <a href="https://www.amazon.com.au/gp/product/B0795GG65Y/">Ottertooth Selfie Stick Tripod</a> for the webcam.</li>
 </ul>
 
-<p>So I hope that helps, and Happy Coding!</p>
+<p>Okay, so that’s what we currently use, and it seems like a whole bunch of hardware. Let me break it down a little more with regard to  the decision process for each of the various aspects of the setup.</p>
+
+<h3 id="audio">Audio</h3>
+
+<p>Audio is crucial, if your audience can’t hear the presenter then really there isn’t much point broadcasting your meetup at all.  I use a <a href="https://www.amazon.com/Blue-Yeti-USB-Microphone-Silver/dp/B002VA464S">Blue Yeti USB Microphone</a> because it’s a very versatile microphone which allows you to have “directional” recording so that you can focus on the speakers audio but reduce the sound coming from the audience shuffling in their seats.</p>
+
+<blockquote>
+  <p><strong>Pro Tip:</strong> The directional aspect is a double edged sword - It does reduce “background” noise, but it also means it’s hard to pick up questions being asked - as such, I ask the presenters to always make sure they repeat any questions before answering them (which arguably is good practice anyway).</p>
+</blockquote>
+
+<p>I’d highly recommend avoiding the audio input on your webcam or PC if you can avoid it. It will probably sound rubbish.</p>
+
+<hr />
+
+<h3 id="video">Video</h3>
+
+<p><strong>Webcam</strong>: Technically, you don’t need to have a camera at all if you don’t want to have video of the presenter. However, having video of the presenter as well as their desktop really makes a much compelling session.  We use a <a href="https://www.amazon.com/Logitech-Widescreen-Calling-Recording-Desktop/dp/B006JH8T3S/">Logitech C920 Webcam</a>, but any webcam would do.  Having said that, the C920 is a pretty popular choice for streamers because it’s low cost but still gives a pretty good image. (also, I just happen to have one laying around)</p>
+
+<blockquote>
+  <p><strong>Pro Tip:</strong> We mount the webcam on a little Selfie Stick Tripod.  This allows us to have better control over the position of the camera. Having a webcam mounted on a monitor doesn’t give a great camera angle. Make sure you get one that extends &gt; 1m in height so it can see over the desk.</p>
+</blockquote>
+
+<p><strong>Presenter Computer</strong>: This is the source for slides and code the presenter is showing. The only requirement we have is that the presenter computer has a HDMI output, so presenters can use a PC or Mac.</p>
+
+<blockquote>
+  <p><strong>Pro Tip:</strong> Don’t put a burdon on your presenters in terms of setting up hardware or software (they have enough to focus on already). You might notice in our configuration, all the presenter needs to do is plug in a HDMI cable - so the whole recording process is completely transparent to them.</p>
+</blockquote>
+
+<p><strong>Capture Device</strong>: You will need a way of capturing the presenters desktop. We use a Avermedia capture device, but there are others on the market.  Another popular choice is the Elgato HD60(s). The idea is that you pass the HDMI from the presenters machine through the capture device and then out to the projector.  This gives you a way to “capture” the video on the way through and send to your broadcasting machine.</p>
+
+<p>The reason I chose the Avermedia is that it has support for recording directly onto an SD card on device, which means that if all of my computer hardware fails (or I get a BSOD) I could still record the presentation onto the card.  The Avermedia also supports 4K - but in reality I can’t see that being useful for some years to come. So you could probably go for a cheaper option.</p>
+
+<hr />
+
+<h3 id="record--streaming">Record / Streaming</h3>
+
+<p><strong>USB Hub</strong>: With all this hardware, you are going to have a lot of USB inputs - probably more than you have ports for on your computer (especially if you use a Mac). Having a hub also simplifies your life because you will essentially just have a single USB coming into your broadcasting computer.</p>
+
+<blockquote>
+  <p><strong>Pro Tip:</strong> Prefer a powered USB 3.0 hub. There’s lots of data going through and also the devices need power.</p>
+</blockquote>
+
+<p><strong>Stream Deck</strong>: This is COMPLETELY OPTIONAL. I use it to transition easily between scenes (full webcam, presenters desktop, presenters desktop with webcam overlayed). It is super convenient and means I don’t have to be clicking around software, but as I said, it’s completely optional.</p>
+
+<blockquote>
+  <p><strong>Pro Tip:</strong> If you are going to get a Stream Deck, make sure you get the one with 15 buttons.</p>
+</blockquote>
+
+<p><img src="assets/images/posts/stream-machine.png" alt="Streaming Machine" /></p>
+
+<p><strong>Local Storage</strong>: Again, this is optional (if you have a large drive in your broadcast machine). I have a macbook with a 256G drive and it’s always full, so having an external drive works for me. The reason I even need hard drive space is because I stream out to Twitch, but I also record locally as well. This means that even if the internet goes down, I still have a recording.</p>
+
+<blockquote>
+  <p><strong>Pro Tip:</strong> Always record locally as well.</p>
+</blockquote>
+
+<p><strong>Recording / Streaming Computer</strong>: I use a Macbook Pro 15” (Mid 2015) / 2.5Ghz i7 / 16GB Memory.  It handles the recording process easily. But given the software we are going to use (OBS) works on both PC and Mac feel free to use whatever you want. However, you will need to have a reasonably powerful machine, because it’s going to bo doing some video encoding.</p>
+
+<blockquote>
+  <p><strong>Pro Tip:</strong> Test, test test. Always test to make sure that your machine can keep up with the CPU load before you use it in anger.</p>
+</blockquote>
+
+<hr />
+
+<h3 id="software">Software</h3>
+
+<p>We now have a bunch of hardware configured and connected, but how do we put all of this together and stream and/or record the session.</p>
+
+<p><strong>Open Broadcast Software (OBS) Studio</strong>: This is the (software) heart of the solution. OBS is free software and it works on Windows / Mac and Linux. Essentially what OBS allows you to do is create <code class="highlighter-rouge">Scenes</code> with your various Audio / Video sources and output them to your favorite streaming platform and/or record locally.  There is a lot of information on the internet about configuring and using OBS, so I won’t try and reproduce that here, but here are the key things unique to our environment.</p>
+
+<p>We have 4 Scenes setup in OBS, but of course do whatever is right for you setup. Our four basic scenes are:</p>
+
+<p><strong>Starting Soon</strong> - This is what we show as everyone is getting ready</p>
+
+<p><img src="assets/images/posts/Scene1.png" alt="Scene1" /></p>
+
+<p><strong>Desktop - with speaker side by side</strong> - A nice scene for doing introductions and general admin before getting into the presentation.</p>
+
+<p><img src="assets/images/posts/Scene2.png" alt="Scene2" /></p>
+
+<p><strong>Desktop - with speaker inset</strong> - A scene to focus on the presentation.</p>
+
+<p><img src="assets/images/posts/Scene3.png" alt="Scene3" /></p>
+
+<p><strong>Stream Ending</strong> - This is what we show for a minute or so once the stream finishes, we normally put the date of the next meeting on this page</p>
+
+<p><img src="assets/images/posts/Scene4.png" alt="Scene4" /></p>
+
+<p>Also, here are some settings I use in OBS that you might find useful:</p>
+
+<p><code class="highlighter-rouge">Output -&gt; Rate Control -&gt; CBR</code> - Twitch seems to handle Constant Bit Rate streams a little better than Variable Bit Rate (VBR).</p>
+
+<p><code class="highlighter-rouge">Output -&gt; Bitrate</code> - 2500. That seems to be a nice compromise. Remember, you don’t want to output at such a high bitrate that all of your audience is buffering.</p>
+
+<p><code class="highlighter-rouge">Video -&gt; Output (Scaled) Resolution</code> - 1280x720. We output at 720 because again, it isn’t too taxing for people watching the stream</p>
+
+<p><code class="highlighter-rouge">Video -&gt; FPS</code> - 30. You don’t need 60 frames per second for a coding presentation.</p>
+
+<blockquote>
+  <p><strong>Pro Tip:</strong> OBS has an <code class="highlighter-rouge">Auto Configuration Wizard</code> which will help you set a baseline for your settings giving account to the power of your computer and the bandwidth available.</p>
+</blockquote>
+
+<p><strong>Twitch</strong>: We use Twitch as our streaming platform. I have found Twitch to have higher quality streams than Youtube live. It’s also starting to get some good developer focused channels as well. Here are a couple of important things you’ll want to setup in twitch:</p>
+
+<ul>
+  <li>Make sure you check a setting in your Twitch dashboard to <code class="highlighter-rouge">Store past broadcasts</code>, if you don’t recordings will not be available after you have finished your stream.</li>
+  <li>Even if you do store your past broadcasts, Twitch will only keep them for 14 days. We also have a <a href="https://www.youtube.com/channel/UCIFSs792nxCmr0trPq_hsrQ">YouTube channel</a> which is where we archive our recordings to.  And the nice thing is, Twitch has a way of pushing your videos straight across to Youtube without you having to download and re-upload them to Youtube.</li>
+  <li>Make sure you update your <code class="highlighter-rouge">Stream Information</code> before you stream to indicate the title of the presentation</li>
+  <li>Make sure you Tweet out before that you are going live, so people have time to tune in. We will normally start broadcasting about 5-10 minutes before our presentation to give people time to tune in.</li>
+  <li>Have someone with a mobile device and the Twitch App installed to monitor the Twitch chat, so you can relay “questions from the internet”</li>
+</ul>
+
+<h2 id="but-my-internet-sucks">But, my internet sucks</h2>
+<p>We are fortunate to have pretty good bandwidth and stability where we hold our meetups, so streaming has not been a problem. However, not everyone is so fortunate. If you fall into this camp then remember that with OBS you don’t HAVE to stream, you can use it purely to record the session onto your local hard drive and then upload later on.</p>
+
+<p>It’s simple, in OBS there are two buttons: <code class="highlighter-rouge">Start Recording</code> and <code class="highlighter-rouge">Start Streaming</code>.  If you just want to record locally and not stream, just hit the <code class="highlighter-rouge">Start Recording</code> button. If you want to stream AND record locally (which is what I’d recommend) then hit both buttons.  This is also one of the reasons I love OBS, it’s the same bit of software regardless of if you want to stream, record for later, or both.</p>
+
+<h2 id="future-improvements">Future improvements</h2>
+<p>Our streaming setup is pretty basic, and there are always ways to improve it. Having said that, it has served us pretty well.  Here are the changes I’d make if I had more money / time:</p>
+
+<ul>
+  <li>
+    <p><strong>Audio</strong>: Get a wireless Lavalier microphone.  This would give us much better speaker audio, and it would also allow the speaker to walk around the room without impacting audio.</p>
+  </li>
+  <li>
+    <p><strong>Video</strong>: Upgrade from a simple webcam to a DSLR or Camcorder with HDMI output. This would give better quality video. Also, If we had this on a tripod with a pan head we could follow the speaker as they move around.  Even better, if we had multiple cameras, we could have different camera angles.</p>
+  </li>
+</ul>
+
+<hr />
+
+<p>I hope this has given you some insight into the setup we use for streaming at the Melbourne Xamarin Meetup.  If you have any questions or comments or suggestions please shoot them through, or if you want any further information let me know, I’m always happy to help however I can.</p>
+
+<p>Happy Coding,
+❤
+Kym</p>
 
                 </div>
             </section>
@@ -253,210 +387,9 @@ into the {body} of the default.hbs template -->
                 
                 
                 
-                    <article class="read-next-card"
-                        
-                            style="background-image: url(/assets/images/blog-cover.jpg)"
-                        
-                    >
-                        <header class="read-next-card-header">
-                            <small class="read-next-card-header-sitetitle">&mdash; Kym's Blog &mdash;</small>
-                            
-                                <h3 class="read-next-card-header-title"><a href="/tag/xamarin/">Xamarin</a></h3>
-                            
-                        </header>
-                        <div class="read-next-divider"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 14.5s2 3 5 3 5.5-2.463 5.5-5.5S21 6.5 18 6.5c-5 0-7 11-12 11C2.962 17.5.5 15.037.5 12S3 6.5 6 6.5s4.5 3.5 4.5 3.5"/></svg>
-</div>
-                        <div class="read-next-card-content">
-                            <ul>
-                                
-                                
-                                  
-                                
-                                  
-                                    
-                                        
-                                        
-                                            <li><a href="/5907-2/">Microsoft //Build/ Recap for Xamarin Developers</a></li>
-                                        
-                                    
-                                  
-                                
-                                  
-                                    
-                                        
-                                        
-                                            <li><a href="/simple-animation-with-xamarin-forms/">Simple Animation with Xamarin.Forms</a></li>
-                                        
-                                    
-                                  
-                                
-                                  
-                                
-                                  
-                                    
-                                  
-                                
-                                  
-                                    
-                                        
-                                        
-                                            <li><a href="/xamarin-tools-and-resources/">Xamarin Tools and Resources</a></li>
-                                        
-                                    
-                                  
-                                
-                                  
-                                    
-                                        
-                                        
-                                    
-                                  
-                                
-                                  
-                                    
-                                        
-                                        
-                                    
-                                  
-                                
-                                  
-                                    
-                                        
-                                        
-                                    
-                                  
-                                
-                                  
-                                    
-                                        
-                                        
-                                    
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                            </ul>
-                        </div>
-                        <footer class="read-next-card-footer">
-                            <a href="/tag/xamarin/">
-                                
-                                    See all 7 posts  →
-                                
-                            </a>
-                        </footer>
-                    </article>
-                
             
 
             <!-- If there's a next post, display it using the same markup included from - partials/post-card.hbs -->
-            
-                
-    <article class="post-card post-template">
-        
-            <a class="post-card-image-link" href="/unit-testing-tips/">
-                <div class="post-card-image" style="background-image: url(/assets/images/covers/instruments.jpg)"></div>
-            </a>
-        
-        <div class="post-card-content">
-            <a class="post-card-content-link" href="/unit-testing-tips/">
-                <header class="post-card-header">
-                    
-                        
-                            
-                                <span class="post-card-tags">Coding</span>
-                            
-                        
-                    
-
-                    <h2 class="post-card-title">Unit Testing Tips</h2>
-                </header>
-                <section class="post-card-excerpt">
-                    <p>I’ve been writing a few unit tests recently. I actually like writing unit tests, I find something very cathartic about seeing those little green ticks show up.  However, one thing that can make</p>
-                </section>
-            </a>
-            <footer class="post-card-meta">
-                
-                    
-                        
-                        <img class="author-profile-image" src="/assets/images/kphillpotts.jpg" alt="Kym Phillpotts" />
-                        
-                        <span class="post-card-author">
-                            <a href="/author/kphillpotts/">Kym Phillpotts</a>
-                        </span>
-                    
-                
-            </footer>
-        </div>
-    </article>
-
             
 
             <!-- If there's a previous post, display it using the same markup included from - partials/post-card.hbs -->
@@ -464,12 +397,12 @@ into the {body} of the default.hbs template -->
                 
     <article class="post-card post-template">
         
-            <a class="post-card-image-link" href="/xamarin-tools-and-resources/">
-                <div class="post-card-image" style="background-image: url(/assets/images/covers/tools.jpg)"></div>
+            <a class="post-card-image-link" href="/5907-2/">
+                <div class="post-card-image" style="background-image: url(/assets/images/covers/build.jpg)"></div>
             </a>
         
         <div class="post-card-content">
-            <a class="post-card-content-link" href="/xamarin-tools-and-resources/">
+            <a class="post-card-content-link" href="/5907-2/">
                 <header class="post-card-header">
                     
                         
@@ -479,10 +412,10 @@ into the {body} of the default.hbs template -->
                         
                     
 
-                    <h2 class="post-card-title">Xamarin Tools and Resources</h2>
+                    <h2 class="post-card-title">Microsoft //Build/ Recap for Xamarin Developers</h2>
                 </header>
                 <section class="post-card-excerpt">
-                    <p>As software developers we often use a scary number of Tools and Utilities to get our jobs done. Whenever you learn a new platform you also need to work out the “tools of</p>
+                    <p>I presented a session on all the imprortant stuff from Microsoft //Build/ for Xamarin Developers at the Melbourne Xamarin User Group yesterday. Just sharing out the links from the session. The slides are</p>
                 </section>
             </a>
             <footer class="post-card-meta">
@@ -515,18 +448,18 @@ into the {body} of the default.hbs template -->
         </a>
     </div>
     <span class="floating-header-divider">&mdash;</span>
-    <div class="floating-header-title">FastScroll and SectionIndexer in Xamarin.Forms ListView</div>
+    <div class="floating-header-title">How to stream a meetup</div>
     <div class="floating-header-share">
         <div class="floating-header-share-label">Share this <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
     <path d="M7.5 15.5V4a1.5 1.5 0 1 1 3 0v4.5h2a1 1 0 0 1 1 1h2a1 1 0 0 1 1 1H18a1.5 1.5 0 0 1 1.5 1.5v3.099c0 .929-.13 1.854-.385 2.748L17.5 23.5h-9c-1.5-2-5.417-8.673-5.417-8.673a1.2 1.2 0 0 1 1.76-1.605L7.5 15.5zm6-6v2m-3-3.5v3.5m6-1v2"/>
 </svg>
 </div>
-        <a class="floating-header-share-tw" href="https://twitter.com/share?text=FastScroll+and+SectionIndexer+in+Xamarin.Forms+ListView&amp;url=https://kphillpotts.github.io/fastscroll-and-sectionindexer-in-xamarin-forms-listview/"
+        <a class="floating-header-share-tw" href="https://twitter.com/share?text=How+to+stream+a+meetup&amp;url=https://kphillpotts.github.io/how-to-stream-a-meetup.html"
             onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg>
 
         </a>
-        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=https://kphillpotts.github.io/fastscroll-and-sectionindexer-in-xamarin-forms-listview/"
+        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=https://kphillpotts.github.io/how-to-stream-a-meetup.html"
             onclick="window.open(this.href, 'share-facebook','width=580,height=296');return false;">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M19 6h5V0h-5c-3.86 0-7 3.14-7 7v3H8v6h4v16h6V16h5l1-6h-6V7c0-.542.458-1 1-1z"/></svg>
 

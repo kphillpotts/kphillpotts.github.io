@@ -1,4 +1,162 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2019-02-26T10:43:20+11:00</updated><id>/</id><title type="html">Kym’s Blog</title><subtitle>I write about Azure, Xamarin.Forms, Connected Apps and whatever else might be on my mind.</subtitle><entry><title type="html">Microsoft //Build/ Recap for Xamarin Developers</title><link href="/5907-2/" rel="alternate" type="text/html" title="Microsoft //Build/ Recap for Xamarin Developers" /><published>2018-05-17T21:16:31+10:00</published><updated>2018-05-17T21:16:31+10:00</updated><id>/build-recap-for-xamarin-developers</id><content type="html" xml:base="/5907-2/">&lt;p&gt;I presented a session on all the imprortant stuff from Microsoft //Build/ for Xamarin Developers at the Melbourne Xamarin User Group yesterday. Just sharing out the links from the session.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2019-02-26T16:16:32+11:00</updated><id>/</id><title type="html">Kym’s Blog</title><subtitle>I write about Azure, Xamarin.Forms, Connected Apps and whatever else might be on my mind.</subtitle><entry><title type="html">How to stream a meetup</title><link href="/how-to-stream-a-meetup.html" rel="alternate" type="text/html" title="How to stream a meetup" /><published>2019-02-25T12:16:31+11:00</published><updated>2019-02-25T12:16:31+11:00</updated><id>/how-to-stream-a-meetup</id><content type="html" xml:base="/how-to-stream-a-meetup.html">&lt;p&gt;Have you ever wanted to record or live stream your meetup? It’s not as hard as you might think.  In this post, we will go through how &lt;em&gt;we&lt;/em&gt; stream the &lt;a href=&quot;https://www.meetup.com/en-AU/Melbourne-Xamarin-Meetup/&quot;&gt;Melbourne Xamarin Meetup&lt;/a&gt; live to the Internet via Twitch.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Be aware that there are many different possible solutions and technologies you could use to stream, depending on what your goals are, what your budget is, and what equipment you already have available. What we will discuss here is what we have used and found successful, bearing in mind we try and keep a fairly minimalist setup.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Let’s get straight into it. This is the setup that we currently use:&lt;br /&gt;
+&lt;img src=&quot;assets/images/posts/streaming-topology-0000.png&quot; alt=&quot;Streaming Topology&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;hardware-breakdown&quot;&gt;Hardware Breakdown&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Microphone&lt;/strong&gt;: &lt;a href=&quot;https://www.amazon.com/Blue-Yeti-USB-Microphone-Silver/dp/B002VA464S&quot;&gt;Blue Yeti USB Microphone&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Webcam&lt;/strong&gt;: &lt;a href=&quot;https://www.amazon.com/Logitech-Widescreen-Calling-Recording-Desktop/dp/B006JH8T3S/&quot;&gt;Logitech C920 Webcam&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Presenter Computer&lt;/strong&gt;: PC/Mac doesn’t matter as long as it has a HDMI output.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Capture Device&lt;/strong&gt;: &lt;a href=&quot;https://www.amazon.com/AVerMedia-Portable-Pass-Through-Playstation-GC513/dp/B0763TFZWT/&quot;&gt;AVerMedia Live Gamer Portable 2 Plus&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Projector&lt;/strong&gt;: Whatever as long as it has a HDMI input.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;USB Hub&lt;/strong&gt;: &lt;a href=&quot;https://www.amazon.com/Anker-9-Port-Smart-Charging-Adapter/dp/B005NGQWL2&quot;&gt;Anker USB 3.0 10 Port Hub&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Stream Deck&lt;/strong&gt;: &lt;a href=&quot;https://www.amazon.com/Elgato-Stream-Deck-Controller-Customizable/dp/B06XKNZT1P&quot;&gt;Elgato Stream Deck&lt;/a&gt; (optional)&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Local Storage&lt;/strong&gt;: &lt;a href=&quot;https://www.amazon.com/LaCie-Rugged-Thunderbolt-Portable-LAC9000488/dp/B00LN8QJYY&quot;&gt;LaCie Rugged Thunderbolt and USB 3.0 Portable Drive&lt;/a&gt; (optional)&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Streaming / Recording Computer&lt;/strong&gt;: I use an old-ish Macbook Pro 15”, but PC is cool too.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Bonus Item&lt;/strong&gt;: &lt;a href=&quot;https://www.amazon.com.au/gp/product/B0795GG65Y/&quot;&gt;Ottertooth Selfie Stick Tripod&lt;/a&gt; for the webcam.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Okay, so that’s what we currently use, and it seems like a whole bunch of hardware. Let me break it down a little more with regard to  the decision process for each of the various aspects of the setup.&lt;/p&gt;
+
+&lt;h3 id=&quot;audio&quot;&gt;Audio&lt;/h3&gt;
+
+&lt;p&gt;Audio is crucial, if your audience can’t hear the presenter then really there isn’t much point broadcasting your meetup at all.  I use a &lt;a href=&quot;https://www.amazon.com/Blue-Yeti-USB-Microphone-Silver/dp/B002VA464S&quot;&gt;Blue Yeti USB Microphone&lt;/a&gt; because it’s a very versatile microphone which allows you to have “directional” recording so that you can focus on the speakers audio but reduce the sound coming from the audience shuffling in their seats.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;Pro Tip:&lt;/strong&gt; The directional aspect is a double edged sword - It does reduce “background” noise, but it also means it’s hard to pick up questions being asked - as such, I ask the presenters to always make sure they repeat any questions before answering them (which arguably is good practice anyway).&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;I’d highly recommend avoiding the audio input on your webcam or PC if you can avoid it. It will probably sound rubbish.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;video&quot;&gt;Video&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;Webcam&lt;/strong&gt;: Technically, you don’t need to have a camera at all if you don’t want to have video of the presenter. However, having video of the presenter as well as their desktop really makes a much compelling session.  We use a &lt;a href=&quot;https://www.amazon.com/Logitech-Widescreen-Calling-Recording-Desktop/dp/B006JH8T3S/&quot;&gt;Logitech C920 Webcam&lt;/a&gt;, but any webcam would do.  Having said that, the C920 is a pretty popular choice for streamers because it’s low cost but still gives a pretty good image. (also, I just happen to have one laying around)&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;Pro Tip:&lt;/strong&gt; We mount the webcam on a little Selfie Stick Tripod.  This allows us to have better control over the position of the camera. Having a webcam mounted on a monitor doesn’t give a great camera angle. Make sure you get one that extends &amp;gt; 1m in height so it can see over the desk.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;strong&gt;Presenter Computer&lt;/strong&gt;: This is the source for slides and code the presenter is showing. The only requirement we have is that the presenter computer has a HDMI output, so presenters can use a PC or Mac.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;Pro Tip:&lt;/strong&gt; Don’t put a burdon on your presenters in terms of setting up hardware or software (they have enough to focus on already). You might notice in our configuration, all the presenter needs to do is plug in a HDMI cable - so the whole recording process is completely transparent to them.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;strong&gt;Capture Device&lt;/strong&gt;: You will need a way of capturing the presenters desktop. We use a Avermedia capture device, but there are others on the market.  Another popular choice is the Elgato HD60(s). The idea is that you pass the HDMI from the presenters machine through the capture device and then out to the projector.  This gives you a way to “capture” the video on the way through and send to your broadcasting machine.&lt;/p&gt;
+
+&lt;p&gt;The reason I chose the Avermedia is that it has support for recording directly onto an SD card on device, which means that if all of my computer hardware fails (or I get a BSOD) I could still record the presentation onto the card.  The Avermedia also supports 4K - but in reality I can’t see that being useful for some years to come. So you could probably go for a cheaper option.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;record--streaming&quot;&gt;Record / Streaming&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;USB Hub&lt;/strong&gt;: With all this hardware, you are going to have a lot of USB inputs - probably more than you have ports for on your computer (especially if you use a Mac). Having a hub also simplifies your life because you will essentially just have a single USB coming into your broadcasting computer.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;Pro Tip:&lt;/strong&gt; Prefer a powered USB 3.0 hub. There’s lots of data going through and also the devices need power.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;strong&gt;Stream Deck&lt;/strong&gt;: This is COMPLETELY OPTIONAL. I use it to transition easily between scenes (full webcam, presenters desktop, presenters desktop with webcam overlayed). It is super convenient and means I don’t have to be clicking around software, but as I said, it’s completely optional.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;Pro Tip:&lt;/strong&gt; If you are going to get a Stream Deck, make sure you get the one with 15 buttons.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;img src=&quot;assets/images/posts/stream-machine.png&quot; alt=&quot;Streaming Machine&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Local Storage&lt;/strong&gt;: Again, this is optional (if you have a large drive in your broadcast machine). I have a macbook with a 256G drive and it’s always full, so having an external drive works for me. The reason I even need hard drive space is because I stream out to Twitch, but I also record locally as well. This means that even if the internet goes down, I still have a recording.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;Pro Tip:&lt;/strong&gt; Always record locally as well.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;strong&gt;Recording / Streaming Computer&lt;/strong&gt;: I use a Macbook Pro 15” (Mid 2015) / 2.5Ghz i7 / 16GB Memory.  It handles the recording process easily. But given the software we are going to use (OBS) works on both PC and Mac feel free to use whatever you want. However, you will need to have a reasonably powerful machine, because it’s going to bo doing some video encoding.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;Pro Tip:&lt;/strong&gt; Test, test test. Always test to make sure that your machine can keep up with the CPU load before you use it in anger.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;software&quot;&gt;Software&lt;/h3&gt;
+
+&lt;p&gt;We now have a bunch of hardware configured and connected, but how do we put all of this together and stream and/or record the session.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Open Broadcast Software (OBS) Studio&lt;/strong&gt;: This is the (software) heart of the solution. OBS is free software and it works on Windows / Mac and Linux. Essentially what OBS allows you to do is create &lt;code class=&quot;highlighter-rouge&quot;&gt;Scenes&lt;/code&gt; with your various Audio / Video sources and output them to your favorite streaming platform and/or record locally.  There is a lot of information on the internet about configuring and using OBS, so I won’t try and reproduce that here, but here are the key things unique to our environment.&lt;/p&gt;
+
+&lt;p&gt;We have 4 Scenes setup in OBS, but of course do whatever is right for you setup. Our four basic scenes are:&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Starting Soon&lt;/strong&gt; - This is what we show as everyone is getting ready&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;assets/images/posts/Scene1.png&quot; alt=&quot;Scene1&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Desktop - with speaker side by side&lt;/strong&gt; - A nice scene for doing introductions and general admin before getting into the presentation.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;assets/images/posts/Scene2.png&quot; alt=&quot;Scene2&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Desktop - with speaker inset&lt;/strong&gt; - A scene to focus on the presentation.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;assets/images/posts/Scene3.png&quot; alt=&quot;Scene3&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Stream Ending&lt;/strong&gt; - This is what we show for a minute or so once the stream finishes, we normally put the date of the next meeting on this page&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;assets/images/posts/Scene4.png&quot; alt=&quot;Scene4&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Also, here are some settings I use in OBS that you might find useful:&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Output -&amp;gt; Rate Control -&amp;gt; CBR&lt;/code&gt; - Twitch seems to handle Constant Bit Rate streams a little better than Variable Bit Rate (VBR).&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Output -&amp;gt; Bitrate&lt;/code&gt; - 2500. That seems to be a nice compromise. Remember, you don’t want to output at such a high bitrate that all of your audience is buffering.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Video -&amp;gt; Output (Scaled) Resolution&lt;/code&gt; - 1280x720. We output at 720 because again, it isn’t too taxing for people watching the stream&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Video -&amp;gt; FPS&lt;/code&gt; - 30. You don’t need 60 frames per second for a coding presentation.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;Pro Tip:&lt;/strong&gt; OBS has an &lt;code class=&quot;highlighter-rouge&quot;&gt;Auto Configuration Wizard&lt;/code&gt; which will help you set a baseline for your settings giving account to the power of your computer and the bandwidth available.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;strong&gt;Twitch&lt;/strong&gt;: We use Twitch as our streaming platform. I have found Twitch to have higher quality streams than Youtube live. It’s also starting to get some good developer focused channels as well. Here are a couple of important things you’ll want to setup in twitch:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Make sure you check a setting in your Twitch dashboard to &lt;code class=&quot;highlighter-rouge&quot;&gt;Store past broadcasts&lt;/code&gt;, if you don’t recordings will not be available after you have finished your stream.&lt;/li&gt;
+  &lt;li&gt;Even if you do store your past broadcasts, Twitch will only keep them for 14 days. We also have a &lt;a href=&quot;https://www.youtube.com/channel/UCIFSs792nxCmr0trPq_hsrQ&quot;&gt;YouTube channel&lt;/a&gt; which is where we archive our recordings to.  And the nice thing is, Twitch has a way of pushing your videos straight across to Youtube without you having to download and re-upload them to Youtube.&lt;/li&gt;
+  &lt;li&gt;Make sure you update your &lt;code class=&quot;highlighter-rouge&quot;&gt;Stream Information&lt;/code&gt; before you stream to indicate the title of the presentation&lt;/li&gt;
+  &lt;li&gt;Make sure you Tweet out before that you are going live, so people have time to tune in. We will normally start broadcasting about 5-10 minutes before our presentation to give people time to tune in.&lt;/li&gt;
+  &lt;li&gt;Have someone with a mobile device and the Twitch App installed to monitor the Twitch chat, so you can relay “questions from the internet”&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;but-my-internet-sucks&quot;&gt;But, my internet sucks&lt;/h2&gt;
+&lt;p&gt;We are fortunate to have pretty good bandwidth and stability where we hold our meetups, so streaming has not been a problem. However, not everyone is so fortunate. If you fall into this camp then remember that with OBS you don’t HAVE to stream, you can use it purely to record the session onto your local hard drive and then upload later on.&lt;/p&gt;
+
+&lt;p&gt;It’s simple, in OBS there are two buttons: &lt;code class=&quot;highlighter-rouge&quot;&gt;Start Recording&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;Start Streaming&lt;/code&gt;.  If you just want to record locally and not stream, just hit the &lt;code class=&quot;highlighter-rouge&quot;&gt;Start Recording&lt;/code&gt; button. If you want to stream AND record locally (which is what I’d recommend) then hit both buttons.  This is also one of the reasons I love OBS, it’s the same bit of software regardless of if you want to stream, record for later, or both.&lt;/p&gt;
+
+&lt;h2 id=&quot;future-improvements&quot;&gt;Future improvements&lt;/h2&gt;
+&lt;p&gt;Our streaming setup is pretty basic, and there are always ways to improve it. Having said that, it has served us pretty well.  Here are the changes I’d make if I had more money / time:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Audio&lt;/strong&gt;: Get a wireless Lavalier microphone.  This would give us much better speaker audio, and it would also allow the speaker to walk around the room without impacting audio.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Video&lt;/strong&gt;: Upgrade from a simple webcam to a DSLR or Camcorder with HDMI output. This would give better quality video. Also, If we had this on a tripod with a pan head we could follow the speaker as they move around.  Even better, if we had multiple cameras, we could have different camera angles.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;I hope this has given you some insight into the setup we use for streaming at the Melbourne Xamarin Meetup.  If you have any questions or comments or suggestions please shoot them through, or if you want any further information let me know, I’m always happy to help however I can.&lt;/p&gt;
+
+&lt;p&gt;Happy Coding,
+❤
+Kym&lt;/p&gt;</content><author><name>Kym Phillpotts</name></author><category term="Other" /><summary type="html">Have you ever wanted to record or live stream your meetup? It’s not as hard as you might think. In this post, we will go through how we stream the Melbourne Xamarin Meetup live to the Internet via Twitch.</summary></entry><entry><title type="html">Microsoft //Build/ Recap for Xamarin Developers</title><link href="/5907-2/" rel="alternate" type="text/html" title="Microsoft //Build/ Recap for Xamarin Developers" /><published>2018-05-17T21:16:31+10:00</published><updated>2018-05-17T21:16:31+10:00</updated><id>/build-recap-for-xamarin-developers</id><content type="html" xml:base="/5907-2/">&lt;p&gt;I presented a session on all the imprortant stuff from Microsoft //Build/ for Xamarin Developers at the Melbourne Xamarin User Group yesterday. Just sharing out the links from the session.&lt;/p&gt;
 
 &lt;iframe src=&quot;https://www.slideshare.net/slideshow/embed_code/97354210&quot; width=&quot;700&quot; height=&quot;574&quot; allowfullscreen=&quot;&quot; webkitallowfullscreen=&quot;&quot; mozallowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
 
@@ -1666,87 +1824,4 @@ private void AnimateOut()
 
 &lt;p class=&quot;p2&quot;&gt;
   &lt;span class=&quot;s1&quot;&gt;Happy Coding!!!&lt;/span&gt;
-&lt;/p&gt;</content><author><name>Kym Phillpotts</name></author><category term="Xamarin" /><summary type="html">Xamarin development is booming and as with any great technology, things change fast and you'll want to keep up to date with the latest news and releases. Xamarin has such a wonderful, thriving community that it can be a challenge!</summary></entry><entry><title type="html">Xamarin Link Roundup – 11 May 2016</title><link href="/xamarin-link-roundup-11-may-2016/" rel="alternate" type="text/html" title="Xamarin Link Roundup &amp;#8211; 11 May 2016" /><published>2016-05-12T03:03:34+10:00</published><updated>2016-05-12T03:03:34+10:00</updated><id>/xamarin-link-roundup-11-may-2016</id><content type="html" xml:base="/xamarin-link-roundup-11-may-2016/">&lt;p&gt;More fantastic links from around the community!&lt;/p&gt;
-
-&lt;!--more--&gt;
-
-&lt;h2 id=&quot;xamarinforms&quot;&gt;Xamarin.Forms&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;http://kent-boogaart.com/blog/jason-smith's-xamarin-forms-performance-tips&quot; target=&quot;_blank&quot;&gt;Jason Smith’s Xamarin Forms Performance Tips&lt;/a&gt; – Jason Smith’s Xamarin Forms Performance Tips&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://blog.xamarin.com/scaffolding-xamarin-forms-pages-with-datapages/&quot; target=&quot;_blank&quot;&gt;Scaffolding Xamarin.Forms Pages with DataPages | Xamarin Blog&lt;/a&gt; – An introduction to Xamarin.Forms data pages on the Xamarin Blog&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;http://motzcod.es/post/143599079477/xamarin-evolve-2016-app-development-retrospective&quot; target=&quot;_blank&quot;&gt;Xamarin Evolve 2016 App Development Retrospective&lt;/a&gt; – @JamesMontemagno shares the highs, lows and lessons learnt creating the #XamarinEvolve app.&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;http://motzcod.es/post/143702671962/xamarinforms-xaml-previewer-design-time-data&quot; target=&quot;_blank&quot;&gt;Xamarin.Forms XAML Previewer Design Time Data&lt;/a&gt; – @JamesMontemagno shows how to integrate design time data into the new XAML Previewer!&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;http://www.johankarlsson.net/2016/05/a-very-small-pubsub-solution-for.html?m=1&quot; target=&quot;_blank&quot;&gt;A very small pub/sub solution for Xamarin Forms&lt;/a&gt; – A very small pub/sub solution for Xamarin Forms&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://xamarinhelp.com/xamarin-forms-applinks/&quot; target=&quot;_blank&quot;&gt;Xamarin Forms Deep Linking and App Indexing with AppLinks&lt;/a&gt; – App indexing and deep linking in the Xamarin world&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;ios&quot;&gt;iOS&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://xamarinhelp.com/new-xamarin-ios-visual-studio/&quot; target=&quot;_blank&quot;&gt;Detailed Look At Whats New in Xamarin.iOS for Visual Studio&lt;/a&gt; – Adam Pedley gives the rundown of what’s new for Xamarin.iOS for Visual Studio&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;http://iosstack.com/tools/&quot; target=&quot;_blank&quot;&gt;Tools – iOSStack&lt;/a&gt; – IOSStack lists out some cool tools to make your Mobile development life easier.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;android&quot;&gt;Android&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;http://sharpmobilecode.com/using-google-place-picker-for-android/&quot; target=&quot;_blank&quot;&gt;Using Google Place Picker For Android&lt;/a&gt; – Ruben Macias shows how to use the PlacePicker from the Google Places API in Xamarin.Android.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;components-and-tools&quot;&gt;Components and Tools&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://realm.io/news/introducing-realm-xamarin/&quot; target=&quot;_blank&quot;&gt;Introducing Realm Xamarin – Realm is a mobile database: a replacement for SQLite &amp;amp; Core Data&lt;/a&gt; – Realm mobile database release for Xamarin. Sounds super exciting!&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://blog.verslu.is/uncategorized/nuget-gold-nuggets-packages-which-are-in-my-almost-every-xamarin-project/&quot; target=&quot;_blank&quot;&gt;NuGet gold nuggets – packages which are in my almost every Xamarin project&lt;/a&gt; – Gerald Versluis shares a list of NuGet Nuggets&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;http://gregshackles.com/using-1writer-as-a-presentation-assistant/&quot; target=&quot;_blank&quot;&gt;Using iOS and 1Writer as a Presentation Assistant&lt;/a&gt; – Greg Shackles shows a cool workflow and a nice tool for presenters&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;http://www.thexamarinjournal.com/xamarin-dev-ops-with-vsts-getting-started/&quot; target=&quot;_blank&quot;&gt;Getting Started with VSTS and Xamarin&lt;/a&gt; – Richard Woollcott has started a blog series on Mobile DevOps with VSTS / XS / Hockey / Test Cloud&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://ghuntley.com/archive/2016/05/04/announcing-httpclientdiagnostics/&quot; target=&quot;_blank&quot;&gt;Announcing HttpClientDiagnostics – Geoffrey Huntley&lt;/a&gt; – HttpClientDiagnostics is a cross platform, portable class library that provides tracing/logging telemetry of Microsoft.Net.HttpClient requests.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;other&quot;&gt;Other&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;http://pihrt.net/SnippetEssentials&quot; target=&quot;_blank&quot;&gt;Snippet Essentials&lt;/a&gt; – Because you can never have enough Snippets – Snippet Essentials&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://blogs.walkingtree.in/2016/05/05/xamarin-azure-mobile-services-a-primer/&quot; target=&quot;_blank&quot;&gt;Azure App Services and Xamarin&lt;/a&gt; – Get started with Azure App Services and Xamarin with this tutorial.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;design&quot;&gt;Design&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;http://rendr.io/from-sketch-to-app-a-design-to-development-workflow/&quot; target=&quot;_blank&quot;&gt;From Sketch to App: A Design to Development Workflow&lt;/a&gt; – David Ortinau continues his #XamarinEvolve discussion on Design to Development workflow.&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://dzone.com/articles/7-tips-for-creating-engaged-informed-users&quot; target=&quot;_blank&quot;&gt;7 Tips for Creating Engaged, Informed Users – DZone Mobile&lt;/a&gt; – 7 tips for creating great mobile app onboarding experiences&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;community&quot;&gt;Community&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;http://developer.telerik.com/featured/10-developer-takeaways-xamarin-evolve/?linkId=24158759&quot; target=&quot;_blank&quot;&gt;10 Developer Takeaways from Xamarin Evolve -Telerik Developer Network&lt;/a&gt; – Summary of the key takeaways for developers from #XamarinEvolve&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;more-xamarin-link-blogs&quot;&gt;More Xamarin Link Blogs&lt;/h2&gt;
-
-&lt;p&gt;Here are links to the other great Xamarin link blogs out there that are updated regularly&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;a href=&quot;http://www.xamarinweekly.com/&quot;&gt;Xamarin Weekly&lt;/a&gt;&lt;/p&gt;
-
-    &lt;p&gt;A free, once-weekly e-mail newsletter roundup of all things Xamarin. Posted Fridays&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;a href=&quot;http://xamarinappdev.com/&quot;&gt;Xamarin App Developer Links&lt;/a&gt;&lt;/p&gt;
-
-    &lt;p&gt;The latest tips, tutorials, news, and resources for Xamarin app developers. Posted Daily&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;a href=&quot;http://csharpmobiledaily.com/&quot;&gt;C# Mobile (Xamarin) Daily&lt;/a&gt;&lt;/p&gt;
-
-    &lt;p&gt;Your cross-platform C# mobile magazine. Posted Daily&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;a href=&quot;hhttp://planet.xamarin.com/&quot;&gt;Xamarin Community Blogs&lt;/a&gt;&lt;/p&gt;
-
-    &lt;p&gt;This is an automatic aggregator which pulls articles from bloggers in the Xamarin developer community.&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;</content><author><name>Kym</name></author><category term="Android" /><category term="iOS" /><category term="Resources" /><category term="xamarin" /><category term="xamarin.forms" /><summary type="html">More fantastic links from around the community!</summary></entry></feed>
+&lt;/p&gt;</content><author><name>Kym Phillpotts</name></author><category term="Xamarin" /><summary type="html">Xamarin development is booming and as with any great technology, things change fast and you'll want to keep up to date with the latest news and releases. Xamarin has such a wonderful, thriving community that it can be a challenge!</summary></entry></feed>
