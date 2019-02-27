@@ -2,10 +2,10 @@
 
 <feed xmlns="http://www.w3.org/2005/Atom" >
   <generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator>
-  <link href="/tag/ios7/feed.xml" rel="self" type="application/atom+xml" />
-  <link href="/" rel="alternate" type="text/html" />
-  <updated>2019-02-26T16:16:32+11:00</updated>
-  <id>/tag/ios7/feed.xml</id>
+  <link href="https://kymphillpotts.com//tag/ios7/feed.xml" rel="self" type="application/atom+xml" />
+  <link href="https://kymphillpotts.com//" rel="alternate" type="text/html" />
+  <updated>2019-02-27T14:11:06+11:00</updated>
+  <id>https://kymphillpotts.com//tag/ios7/feed.xml</id>
 
   
   
@@ -33,11 +33,11 @@
   
     <entry>
       <title type="html">Xamarin and iOS – Moving to iOS 7 and Xcode 5</title>
-      <link href="/xamarin-and-ios-moving-to-ios-7-and-xcode-5/" rel="alternate" type="text/html" title="Xamarin and iOS – Moving to iOS 7 and Xcode 5" />
+      <link href="https://kymphillpotts.com//xamarin-and-ios-moving-to-ios-7-and-xcode-5/" rel="alternate" type="text/html" title="Xamarin and iOS – Moving to iOS 7 and Xcode 5" />
       <published>2014-02-04T19:53:35+11:00</published>
       <updated>2014-02-04T19:53:35+11:00</updated>
-      <id>/xamarin-and-ios-moving-to-ios-7-and-xcode-5</id>
-      <content type="html" xml:base="/xamarin-and-ios-moving-to-ios-7-and-xcode-5/">&lt;p&gt;Apple has now decreed that all apps submitted to the store must be built on XCode5 and iOS7.&lt;/p&gt;
+      <id>https://kymphillpotts.com//xamarin-and-ios-moving-to-ios-7-and-xcode-5</id>
+      <content type="html" xml:base="https://kymphillpotts.com//xamarin-and-ios-moving-to-ios-7-and-xcode-5/">&lt;p&gt;Apple has now decreed that all apps submitted to the store must be built on XCode5 and iOS7.&lt;/p&gt;
 
 &lt;p&gt;And so it shall be…&lt;/p&gt;
 

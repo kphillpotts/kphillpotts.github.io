@@ -2,10 +2,10 @@
 
 <feed xmlns="http://www.w3.org/2005/Atom" >
   <generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator>
-  <link href="/tag/xamarin.forms/feed.xml" rel="self" type="application/atom+xml" />
-  <link href="/" rel="alternate" type="text/html" />
-  <updated>2019-02-26T16:16:32+11:00</updated>
-  <id>/tag/xamarin.forms/feed.xml</id>
+  <link href="https://kymphillpotts.com//tag/xamarin.forms/feed.xml" rel="self" type="application/atom+xml" />
+  <link href="https://kymphillpotts.com//" rel="alternate" type="text/html" />
+  <updated>2019-02-27T14:11:06+11:00</updated>
+  <id>https://kymphillpotts.com//tag/xamarin.forms/feed.xml</id>
 
   
   
@@ -33,11 +33,11 @@
   
     <entry>
       <title type="html">Xamarin Link Roundup – 11 May 2016</title>
-      <link href="/xamarin-link-roundup-11-may-2016/" rel="alternate" type="text/html" title="Xamarin Link Roundup &amp;#8211; 11 May 2016" />
+      <link href="https://kymphillpotts.com//xamarin-link-roundup-11-may-2016/" rel="alternate" type="text/html" title="Xamarin Link Roundup &amp;#8211; 11 May 2016" />
       <published>2016-05-12T03:03:34+10:00</published>
       <updated>2016-05-12T03:03:34+10:00</updated>
-      <id>/xamarin-link-roundup-11-may-2016</id>
-      <content type="html" xml:base="/xamarin-link-roundup-11-may-2016/">&lt;p&gt;More fantastic links from around the community!&lt;/p&gt;
+      <id>https://kymphillpotts.com//xamarin-link-roundup-11-may-2016</id>
+      <content type="html" xml:base="https://kymphillpotts.com//xamarin-link-roundup-11-may-2016/">&lt;p&gt;More fantastic links from around the community!&lt;/p&gt;
 
 &lt;!--more--&gt;
 
@@ -158,11 +158,11 @@
   
     <entry>
       <title type="html">Common UI Patterns in Xamarin.Forms Part 1 – Springboards</title>
-      <link href="/common-ui-patterns-in-xamarin-forms-part-1-springboards/" rel="alternate" type="text/html" title="Common UI Patterns in Xamarin.Forms Part 1 – Springboards" />
+      <link href="https://kymphillpotts.com//common-ui-patterns-in-xamarin-forms-part-1-springboards/" rel="alternate" type="text/html" title="Common UI Patterns in Xamarin.Forms Part 1 – Springboards" />
       <published>2015-02-23T09:59:29+11:00</published>
       <updated>2015-02-23T09:59:29+11:00</updated>
-      <id>/common-ui-patterns-in-xamarin-forms-part-1-springboards</id>
-      <content type="html" xml:base="/common-ui-patterns-in-xamarin-forms-part-1-springboards/">&lt;h1 id=&quot;introduction&quot;&gt;Introduction&lt;/h1&gt;
+      <id>https://kymphillpotts.com//common-ui-patterns-in-xamarin-forms-part-1-springboards</id>
+      <content type="html" xml:base="https://kymphillpotts.com//common-ui-patterns-in-xamarin-forms-part-1-springboards/">&lt;h1 id=&quot;introduction&quot;&gt;Introduction&lt;/h1&gt;
 
 &lt;p&gt;This is the first post in a series covering Common UI Patterns in Xamarin.Forms. This post will walk through creating one of the most common UI Navigation Patterns, namely the Springboard (sometimes called a Launchpad or Dashboard).&lt;/p&gt;
 
@@ -410,11 +410,11 @@
   
     <entry>
       <title type="html">Exploring Xamarin.Forms 1.3: Properties Dictionary</title>
-      <link href="/exploring-xamarin-forms-1-3-properties-dictionary/" rel="alternate" type="text/html" title="Exploring Xamarin.Forms 1.3: Properties Dictionary" />
+      <link href="https://kymphillpotts.com//exploring-xamarin-forms-1-3-properties-dictionary/" rel="alternate" type="text/html" title="Exploring Xamarin.Forms 1.3: Properties Dictionary" />
       <published>2015-02-01T02:33:29+11:00</published>
       <updated>2015-02-01T02:33:29+11:00</updated>
-      <id>/exploring-xamarin-forms-1-3-properties-dictionary</id>
-      <content type="html" xml:base="/exploring-xamarin-forms-1-3-properties-dictionary/">&lt;p&gt;Xamarin.Forms 1.3 includes a tidy little way to do simple state persistence between app restarts and when suspending/resuming.  Particularly useful if you want to take the user back to their location if the application gets suspended or terminated. This is done through &lt;strong&gt;Application.Current.Properties.&lt;/strong&gt;&lt;!--more--&gt;&lt;/p&gt;
+      <id>https://kymphillpotts.com//exploring-xamarin-forms-1-3-properties-dictionary</id>
+      <content type="html" xml:base="https://kymphillpotts.com//exploring-xamarin-forms-1-3-properties-dictionary/">&lt;p&gt;Xamarin.Forms 1.3 includes a tidy little way to do simple state persistence between app restarts and when suspending/resuming.  Particularly useful if you want to take the user back to their location if the application gets suspended or terminated. This is done through &lt;strong&gt;Application.Current.Properties.&lt;/strong&gt;&lt;!--more--&gt;&lt;/p&gt;
 
 &lt;p&gt;It is pretty much just a standard Dictionary of objects but with the added benefit that Xamarin.Forms does the magic of persisting to the file system when your app sleeps, restoring when it resumes and makes it available from *almost* anywhere in your Xamarin.Forms code.  It looks something like this:&lt;/p&gt;
 
@@ -509,11 +509,11 @@ Application.Current.Properties [&quot;id&quot;] = Id;
   
     <entry>
       <title type="html">Xamarin.Forms Productivity Tools</title>
-      <link href="/xamarin-forms-tools/" rel="alternate" type="text/html" title="Xamarin.Forms Productivity Tools" />
+      <link href="https://kymphillpotts.com//xamarin-forms-tools/" rel="alternate" type="text/html" title="Xamarin.Forms Productivity Tools" />
       <published>2015-01-24T05:15:13+11:00</published>
       <updated>2015-01-24T05:15:13+11:00</updated>
-      <id>/xamarin-forms-tools</id>
-      <content type="html" xml:base="/xamarin-forms-tools/">&lt;p&gt;There are lots of great extensions out there to help you out with your Xamarin.Forms development.  Here are some of my favourites.&lt;!--more--&gt;&lt;/p&gt;
+      <id>https://kymphillpotts.com//xamarin-forms-tools</id>
+      <content type="html" xml:base="https://kymphillpotts.com//xamarin-forms-tools/">&lt;p&gt;There are lots of great extensions out there to help you out with your Xamarin.Forms development.  Here are some of my favourites.&lt;!--more--&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;mobile-essentials&quot;&gt;&lt;a title=&quot;Mobile Essentials&quot; href=&quot;http://www.cazzulino.com/mobileessentials.html&quot; target=&quot;_blank&quot;&gt;Mobile Essentials&lt;/a&gt;&lt;/h2&gt;
 

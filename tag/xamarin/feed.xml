@@ -2,10 +2,10 @@
 
 <feed xmlns="http://www.w3.org/2005/Atom" >
   <generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator>
-  <link href="/tag/xamarin/feed.xml" rel="self" type="application/atom+xml" />
-  <link href="/" rel="alternate" type="text/html" />
-  <updated>2019-02-26T16:16:32+11:00</updated>
-  <id>/tag/xamarin/feed.xml</id>
+  <link href="https://kymphillpotts.com//tag/xamarin/feed.xml" rel="self" type="application/atom+xml" />
+  <link href="https://kymphillpotts.com//" rel="alternate" type="text/html" />
+  <updated>2019-02-27T14:11:06+11:00</updated>
+  <id>https://kymphillpotts.com//tag/xamarin/feed.xml</id>
 
   
   
@@ -33,11 +33,11 @@
   
     <entry>
       <title type="html">Microsoft //Build/ Recap for Xamarin Developers</title>
-      <link href="/5907-2/" rel="alternate" type="text/html" title="Microsoft //Build/ Recap for Xamarin Developers" />
+      <link href="https://kymphillpotts.com//5907-2/" rel="alternate" type="text/html" title="Microsoft //Build/ Recap for Xamarin Developers" />
       <published>2018-05-17T21:16:31+10:00</published>
       <updated>2018-05-17T21:16:31+10:00</updated>
-      <id>/build-recap-for-xamarin-developers</id>
-      <content type="html" xml:base="/5907-2/">&lt;p&gt;I presented a session on all the imprortant stuff from Microsoft //Build/ for Xamarin Developers at the Melbourne Xamarin User Group yesterday. Just sharing out the links from the session.&lt;/p&gt;
+      <id>https://kymphillpotts.com//build-recap-for-xamarin-developers</id>
+      <content type="html" xml:base="https://kymphillpotts.com//5907-2/">&lt;p&gt;I presented a session on all the imprortant stuff from Microsoft //Build/ for Xamarin Developers at the Melbourne Xamarin User Group yesterday. Just sharing out the links from the session.&lt;/p&gt;
 
 &lt;iframe src=&quot;https://www.slideshare.net/slideshow/embed_code/97354210&quot; width=&quot;700&quot; height=&quot;574&quot; allowfullscreen=&quot;&quot; webkitallowfullscreen=&quot;&quot; mozallowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
 
@@ -198,11 +198,11 @@
   
     <entry>
       <title type="html">Simple Animation with Xamarin.Forms</title>
-      <link href="/simple-animation-with-xamarin-forms/" rel="alternate" type="text/html" title="Simple Animation with Xamarin.Forms" />
+      <link href="https://kymphillpotts.com//simple-animation-with-xamarin-forms/" rel="alternate" type="text/html" title="Simple Animation with Xamarin.Forms" />
       <published>2018-03-27T23:43:50+11:00</published>
       <updated>2018-03-27T23:43:50+11:00</updated>
-      <id>/simple-animation-with-xamarin-forms</id>
-      <content type="html" xml:base="/simple-animation-with-xamarin-forms/">&lt;p&gt;Those of you know me (or have visited my blog) know that I love playing around with Xamarin.Forms Layouts.   Recently, Matt Soucoup was on the &lt;a href=&quot;https://www.youtube.com/watch?v=ypKnAKJL9CA&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Xamarin Show talking about Animations&lt;/a&gt;. He showed how easy it is to do simple animations in Xamarin Forms. Personally, I don’t think developers do enough with animations – they can really spice up your UI and show your users how much you care.&lt;/p&gt;
+      <id>https://kymphillpotts.com//simple-animation-with-xamarin-forms</id>
+      <content type="html" xml:base="https://kymphillpotts.com//simple-animation-with-xamarin-forms/">&lt;p&gt;Those of you know me (or have visited my blog) know that I love playing around with Xamarin.Forms Layouts.   Recently, Matt Soucoup was on the &lt;a href=&quot;https://www.youtube.com/watch?v=ypKnAKJL9CA&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Xamarin Show talking about Animations&lt;/a&gt;. He showed how easy it is to do simple animations in Xamarin Forms. Personally, I don’t think developers do enough with animations – they can really spice up your UI and show your users how much you care.&lt;/p&gt;
 
 &lt;p&gt;I thought it might be fun to use some of the stuff that Matt was talking about and put it into a more real world context.&lt;/p&gt;
 
@@ -369,11 +369,11 @@ private void AnimateOut()
   
     <entry>
       <title type="html">FastScroll and SectionIndexer in Xamarin.Forms ListView</title>
-      <link href="/fastscroll-and-sectionindexer-in-xamarin-forms-listview/" rel="alternate" type="text/html" title="FastScroll and SectionIndexer in Xamarin.Forms ListView" />
+      <link href="https://kymphillpotts.com//fastscroll-and-sectionindexer-in-xamarin-forms-listview/" rel="alternate" type="text/html" title="FastScroll and SectionIndexer in Xamarin.Forms ListView" />
       <published>2018-01-18T21:12:06+11:00</published>
       <updated>2018-01-18T21:12:06+11:00</updated>
-      <id>/fastscroll-and-sectionindexer-in-xamarin-forms-listview</id>
-      <content type="html" xml:base="/fastscroll-and-sectionindexer-in-xamarin-forms-listview/">&lt;p&gt;Those of you who have played around with ListViews in Xamarin.Android are probably familiar with the FastScroll and SectionIndexer features.  They essentially make it really easy for users to navigate long lists by providing them with a little “handle” to quickly drag through lists, and with the SectionIndexer it also gives them a nice little popup showing where they are up to in the list.&lt;/p&gt;
+      <id>https://kymphillpotts.com//fastscroll-and-sectionindexer-in-xamarin-forms-listview</id>
+      <content type="html" xml:base="https://kymphillpotts.com//fastscroll-and-sectionindexer-in-xamarin-forms-listview/">&lt;p&gt;Those of you who have played around with ListViews in Xamarin.Android are probably familiar with the FastScroll and SectionIndexer features.  They essentially make it really easy for users to navigate long lists by providing them with a little “handle” to quickly drag through lists, and with the SectionIndexer it also gives them a nice little popup showing where they are up to in the list.&lt;/p&gt;
 
 &lt;p&gt;Unfortunately, this feature isn’t available in Xamarin.Forms ListViews running on Android.&lt;/p&gt;
 
@@ -427,11 +427,11 @@ private void AnimateOut()
   
     <entry>
       <title type="html">Xamarin Tools and Resources</title>
-      <link href="/xamarin-tools-and-resources/" rel="alternate" type="text/html" title="Xamarin Tools and Resources" />
+      <link href="https://kymphillpotts.com//xamarin-tools-and-resources/" rel="alternate" type="text/html" title="Xamarin Tools and Resources" />
       <published>2017-08-24T09:33:01+10:00</published>
       <updated>2017-08-24T09:33:01+10:00</updated>
-      <id>/xamarin-tools-and-resources</id>
-      <content type="html" xml:base="/xamarin-tools-and-resources/">&lt;p&gt;As software developers we often use a scary number of Tools and Utilities to get our jobs done. Whenever you learn a new platform you also need to work out the “tools of the trade”. I recently gave a talk on the tools and resources I use to do Xamarin development, so I thought I would just share these out on a blog post.&lt;!--more--&gt;&lt;/p&gt;
+      <id>https://kymphillpotts.com//xamarin-tools-and-resources</id>
+      <content type="html" xml:base="https://kymphillpotts.com//xamarin-tools-and-resources/">&lt;p&gt;As software developers we often use a scary number of Tools and Utilities to get our jobs done. Whenever you learn a new platform you also need to work out the “tools of the trade”. I recently gave a talk on the tools and resources I use to do Xamarin development, so I thought I would just share these out on a blog post.&lt;!--more--&gt;&lt;/p&gt;
 
 &lt;p&gt;Be warned, the list I’m going through here is by no means a complete list of the tools available – just a list of the tools that I use. If you use some other tools that you think are worth sharing with the community then shoot me an email or leave a comment.&lt;/p&gt;
 
@@ -770,11 +770,11 @@ private void AnimateOut()
   
     <entry>
       <title type="html">Xamarin.Forms Layout Challenges – Great Places</title>
-      <link href="/xamarin-forms-layout-challenges-great-places/" rel="alternate" type="text/html" title="Xamarin.Forms Layout Challenges &amp;#8211; Great Places" />
+      <link href="https://kymphillpotts.com//xamarin-forms-layout-challenges-great-places/" rel="alternate" type="text/html" title="Xamarin.Forms Layout Challenges &amp;#8211; Great Places" />
       <published>2017-03-21T08:50:36+11:00</published>
       <updated>2017-03-21T08:50:36+11:00</updated>
-      <id>/xamarin-forms-layout-challenges-great-places</id>
-      <content type="html" xml:base="/xamarin-forms-layout-challenges-great-places/">&lt;p&gt;When your app is all about the images, sometimes you want your images to be hero of the UI.  That’s what this weeks Xamarin.Forms Layout Challenge is all about.    &lt;!--more--&gt;Normally I prefer a light themed application, so just to change things up a bit, I thought I would go for a dark themed layout. They say, variety is the spice of life.&lt;/p&gt;
+      <id>https://kymphillpotts.com//xamarin-forms-layout-challenges-great-places</id>
+      <content type="html" xml:base="https://kymphillpotts.com//xamarin-forms-layout-challenges-great-places/">&lt;p&gt;When your app is all about the images, sometimes you want your images to be hero of the UI.  That’s what this weeks Xamarin.Forms Layout Challenge is all about.    &lt;!--more--&gt;Normally I prefer a light themed application, so just to change things up a bit, I thought I would go for a dark themed layout. They say, variety is the spice of life.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/assets/images/posts/Simulator-Screen-Shot-20-Mar-2017-10.23.36-pm_fhaatz.png&quot; alt=&quot;alt text&quot; title=&quot;Logo Title Text 1&quot; /&gt;
 &lt;img src=&quot;/assets/images/posts/Screenshot_1490009341_ad3uvq.png&quot; alt=&quot;alt text&quot; title=&quot;Logo Title Text 1&quot; /&gt;&lt;/p&gt;
@@ -905,11 +905,11 @@ private void AnimateOut()
   
     <entry>
       <title type="html">Xamarin.Forms Layout Challenges – Timeline</title>
-      <link href="/xamarin-forms-layout-challenges-timeline/" rel="alternate" type="text/html" title="Xamarin.Forms Layout Challenges &amp;#8211; Timeline" />
+      <link href="https://kymphillpotts.com//xamarin-forms-layout-challenges-timeline/" rel="alternate" type="text/html" title="Xamarin.Forms Layout Challenges &amp;#8211; Timeline" />
       <published>2017-03-10T01:53:17+11:00</published>
       <updated>2017-03-10T01:53:17+11:00</updated>
-      <id>/xamarin-forms-layout-challenges-timeline</id>
-      <content type="html" xml:base="/xamarin-forms-layout-challenges-timeline/">&lt;p&gt;A layout I’m seeing more and more these days is a timeline of activities.  This is useful for things like transportation schedules or class times.  So let’s put together a simple layout for a timeline using a ListView with headers and footers and a custom ViewCell.&lt;!--more--&gt;&lt;/p&gt;
+      <id>https://kymphillpotts.com//xamarin-forms-layout-challenges-timeline</id>
+      <content type="html" xml:base="https://kymphillpotts.com//xamarin-forms-layout-challenges-timeline/">&lt;p&gt;A layout I’m seeing more and more these days is a timeline of activities.  This is useful for things like transportation schedules or class times.  So let’s put together a simple layout for a timeline using a ListView with headers and footers and a custom ViewCell.&lt;!--more--&gt;&lt;/p&gt;
 
 &lt;div id=&quot;gallery-1&quot; class=&quot;gallery galleryid-5699 gallery-columns-2 gallery-size-full&quot;&gt;
   &lt;dl class=&quot;gallery-item&quot;&gt;
@@ -1093,11 +1093,11 @@ private void AnimateOut()
   
     <entry>
       <title type="html">Xamarin.Forms Layout Challenges – Social Network App</title>
-      <link href="/social-network-app-layout-design-in-xamarin-forms/" rel="alternate" type="text/html" title="Xamarin.Forms Layout Challenges &amp;#8211; Social Network App" />
+      <link href="https://kymphillpotts.com//social-network-app-layout-design-in-xamarin-forms/" rel="alternate" type="text/html" title="Xamarin.Forms Layout Challenges &amp;#8211; Social Network App" />
       <published>2017-03-06T08:53:33+11:00</published>
       <updated>2017-03-06T08:53:33+11:00</updated>
-      <id>/social-network-app-layout-design-in-xamarin-forms</id>
-      <content type="html" xml:base="/social-network-app-layout-design-in-xamarin-forms/">&lt;p&gt;Xamarin.Forms is a crazy productive framework for building cross platform apps. However, straight out of the box you might find your User Interfaces are a bit bland. A good understanding of the layout system (and a good graphic designer) are really going to help you make your UI’s awesome. (or at least not suck).&lt;!--more--&gt;&lt;/p&gt;
+      <id>https://kymphillpotts.com//social-network-app-layout-design-in-xamarin-forms</id>
+      <content type="html" xml:base="https://kymphillpotts.com//social-network-app-layout-design-in-xamarin-forms/">&lt;p&gt;Xamarin.Forms is a crazy productive framework for building cross platform apps. However, straight out of the box you might find your User Interfaces are a bit bland. A good understanding of the layout system (and a good graphic designer) are really going to help you make your UI’s awesome. (or at least not suck).&lt;!--more--&gt;&lt;/p&gt;
 
 &lt;p&gt;So let’s see how to recreate a simple Social Network profile type page in Xamarin.Forms.&lt;/p&gt;
 
@@ -1401,11 +1401,11 @@ private void AnimateOut()
   
     <entry>
       <title type="html">Staying Up To Date with Xamarin Development</title>
-      <link href="/staying-up-to-date-with-xamarin-development/" rel="alternate" type="text/html" title="Staying Up To Date with Xamarin Development" />
+      <link href="https://kymphillpotts.com//staying-up-to-date-with-xamarin-development/" rel="alternate" type="text/html" title="Staying Up To Date with Xamarin Development" />
       <published>2016-07-18T09:57:59+10:00</published>
       <updated>2016-07-18T09:57:59+10:00</updated>
-      <id>/staying-up-to-date-with-xamarin-development</id>
-      <content type="html" xml:base="/staying-up-to-date-with-xamarin-development/">&lt;p class=&quot;p1&quot;&gt;
+      <id>https://kymphillpotts.com//staying-up-to-date-with-xamarin-development</id>
+      <content type="html" xml:base="https://kymphillpotts.com//staying-up-to-date-with-xamarin-development/">&lt;p class=&quot;p1&quot;&gt;
   Xamarin development is booming and as with any great technology, things change fast and you&amp;#8217;ll want to keep up to date with the latest news and releases. Xamarin has such a wonderful, thriving community that it can be a challenge!
 &lt;/p&gt;
 
