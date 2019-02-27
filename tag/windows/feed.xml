@@ -2,10 +2,10 @@
 
 <feed xmlns="http://www.w3.org/2005/Atom" >
   <generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator>
-  <link href="https://kymphillpotts.com//tag/windows/feed.xml" rel="self" type="application/atom+xml" />
-  <link href="https://kymphillpotts.com//" rel="alternate" type="text/html" />
-  <updated>2019-02-27T14:11:06+11:00</updated>
-  <id>https://kymphillpotts.com//tag/windows/feed.xml</id>
+  <link href="https://kymphillpotts.com/tag/windows/feed.xml" rel="self" type="application/atom+xml" />
+  <link href="https://kymphillpotts.com/" rel="alternate" type="text/html" />
+  <updated>2019-02-27T14:19:26+11:00</updated>
+  <id>https://kymphillpotts.com/tag/windows/feed.xml</id>
 
   
   
@@ -33,11 +33,11 @@
   
     <entry>
       <title type="html">Simulating Surface Pro 3 in the Simulator</title>
-      <link href="https://kymphillpotts.com//simulating-surface-pro-3-in-the-simulator/" rel="alternate" type="text/html" title="Simulating Surface Pro 3 in the Simulator" />
+      <link href="https://kymphillpotts.com/simulating-surface-pro-3-in-the-simulator/" rel="alternate" type="text/html" title="Simulating Surface Pro 3 in the Simulator" />
       <published>2014-12-23T00:34:42+11:00</published>
       <updated>2014-12-23T00:34:42+11:00</updated>
-      <id>https://kymphillpotts.com//simulating-surface-pro-3-in-the-simulator</id>
-      <content type="html" xml:base="https://kymphillpotts.com//simulating-surface-pro-3-in-the-simulator/">&lt;p&gt;I’m working on a project at the moment that needs to run on a Surface Pro 3. During testing there were some weird redraw issues that only appeared on the Surface 3.   We were unable to reproduce this in our dev environments because  the simulator that comes with Visual Studio doesn’t have a screen size that is compatible with the Surface 3.&lt;/p&gt;
+      <id>https://kymphillpotts.com/simulating-surface-pro-3-in-the-simulator</id>
+      <content type="html" xml:base="https://kymphillpotts.com/simulating-surface-pro-3-in-the-simulator/">&lt;p&gt;I’m working on a project at the moment that needs to run on a Surface Pro 3. During testing there were some weird redraw issues that only appeared on the Surface 3.   We were unable to reproduce this in our dev environments because  the simulator that comes with Visual Studio doesn’t have a screen size that is compatible with the Surface 3.&lt;/p&gt;
 
 &lt;p&gt;For reference, the surface 3 has these specs:&lt;/p&gt;
 
