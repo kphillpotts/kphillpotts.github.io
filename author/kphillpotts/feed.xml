@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator>
   <link href="https://kymphillpotts.com/author/kphillpotts/feed.xml" rel="self" type="application/atom+xml" />
   <link href="https://kymphillpotts.com/" rel="alternate" type="text/html" />
-  <updated>2019-02-27T14:45:15+11:00</updated>
+  <updated>2019-02-27T15:44:42+11:00</updated>
   <id>https://kymphillpotts.com/author/kphillpotts/feed.xml</id>
 
   
@@ -818,7 +818,9 @@ private void AnimateOut()
       
 
       
-        <category term="Coding" />
+        <category term="Other" />
+      
+        <category term="Xamarin" />
       
 
       
