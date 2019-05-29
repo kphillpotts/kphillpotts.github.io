@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator>
   <link href="https://kymphillpotts.com/tag/xamarin/feed.xml" rel="self" type="application/atom+xml" />
   <link href="https://kymphillpotts.com/" rel="alternate" type="text/html" />
-  <updated>2019-02-27T23:11:43+11:00</updated>
+  <updated>2019-05-30T09:51:32+10:00</updated>
   <id>https://kymphillpotts.com/tag/xamarin/feed.xml</id>
 
   
@@ -30,6 +30,314 @@
   
   
 
+  
+    <entry>
+      <title type="html">Xamarin.Forms UI Challenges - Art Auction</title>
+      <link href="https://kymphillpotts.com/xamarin-forms-ui-challenge-artauction.html" rel="alternate" type="text/html" title="Xamarin.Forms UI Challenges - Art Auction" />
+      <published>2019-05-30T09:50:31+10:00</published>
+      <updated>2019-05-30T09:50:31+10:00</updated>
+      <id>https://kymphillpotts.com/xamarin-forms-ui-challenge-artauction</id>
+      <content type="html" xml:base="https://kymphillpotts.com/xamarin-forms-ui-challenge-artauction.html">&lt;p&gt;It’s time for another Xamarin.Forms UI Challenge! This time we are going to see how we can reproduce a design I found over at &lt;a href=&quot;https://dribbble.com/shots/6177235-Valuable-Auction-Product-Page&quot;&gt;Dribbble&lt;/a&gt; by &lt;a href=&quot;https://dribbble.com/alex_pesenka&quot;&gt;Alex Pesenka&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&quot;lets-break-it-down&quot;&gt;Let’s break it down&lt;/h2&gt;
+&lt;p&gt;The design has a reasonably complex layout involving animated popups and overlays, which makes it a good candidate for a Xamarin.Forms UI challenge.&lt;/p&gt;
+
+&lt;p&gt;Here is a little video of the animations in the design in motion:&lt;/p&gt;
+
+&lt;div class=&quot;myvideo&quot;&gt;
+   &lt;video style=&quot;display:block; width:600px; height:auto;&quot; autoplay=&quot;&quot; controls=&quot;&quot; loop=&quot;loop&quot;&gt;
+       &lt;source src=&quot;assets/videos/artauction.mp4&quot; type=&quot;video/mp4&quot; /&gt;
+   &lt;/video&gt;
+&lt;/div&gt;
+
+&lt;p&gt;It’s a little bit tricky to see what’s going on with all that zooming going on, but let’s break down the screens and see how we can lay it out in Xamarin.Forms.&lt;/p&gt;
+
+&lt;h3 id=&quot;art-details-screen&quot;&gt;Art Details Screen&lt;/h3&gt;
+&lt;p&gt;This is the main screen of the applciation.
+&lt;img src=&quot;assets/images/posts/artauction-screen1.png&quot; /&gt;
+This screen is actually pretty basic, the key elements are:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Root layout is a &lt;code class=&quot;highlighter-rouge&quot;&gt;Grid&lt;/code&gt; with 2 rows.  So the footer section can always be at the bottom of the page&lt;/li&gt;
+  &lt;li&gt;The main section is contained within a &lt;code class=&quot;highlighter-rouge&quot;&gt;ScrollView&lt;/code&gt; so that if it gets longer than the page it will allow us to scroll to see the additional information.&lt;/li&gt;
+  &lt;li&gt;Then it’s pretty much a &lt;code class=&quot;highlighter-rouge&quot;&gt;StackLayout&lt;/code&gt; to lay the elements down the screen&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The intersting bits of this screen are:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;The top bit of text with the &lt;code class=&quot;highlighter-rouge&quot;&gt;Read More&lt;/code&gt; section which was provided by a very kind community contribution by &lt;a href=&quot;https://github.com/pictos&quot;&gt;Pedro Jesus&lt;/a&gt;.  It’s a custom control with a couple of bindable properties which specify the &lt;code class=&quot;highlighter-rouge&quot;&gt;MaxLength&lt;/code&gt; of the label and a &lt;code class=&quot;highlighter-rouge&quot;&gt;ReadMore&lt;/code&gt; property which specifies the color of the readmore text.  When the text is set it creates a &lt;code class=&quot;highlighter-rouge&quot;&gt;FormattedText&lt;/code&gt; with a &lt;code class=&quot;highlighter-rouge&quot;&gt;Span&lt;/code&gt; for both the text and the Read More section. You can see the &lt;a href=&quot;https://github.com/kphillpotts/ArtAuction/blob/master/src/ArtAuction/ArtAuction/CustomControl/LabelLength.xaml.cs&quot;&gt;code here&lt;/a&gt;.&lt;/li&gt;
+  &lt;li&gt;The Vincent Van Gogh image got the circular treatment thanks to James Montemagno’s &lt;a href=&quot;https://github.com/jamesmontemagno/ImageCirclePlugin&quot;&gt;ImageCirclePlugin&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;The Wikipedia icon is a SVG.  In Android it’s an &lt;code class=&quot;highlighter-rouge&quot;&gt;xml&lt;/code&gt; file that sits under the &lt;code class=&quot;highlighter-rouge&quot;&gt;drawable&lt;/code&gt; file and in iOS it is provided by an AssetCatalog which creates a Vector from a PDF.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;the-popup-bits&quot;&gt;The Popup Bits&lt;/h4&gt;
+&lt;p&gt;The nicest part of this screen is the fading and popup that happens when you press the &lt;code class=&quot;highlighter-rouge&quot;&gt;MAKE A BID&lt;/code&gt; button.  The idea is to have the main part of the screen fade out, whilst a popup flies in from the bottom.&lt;/p&gt;
+
+&lt;p&gt;The fading is achieved by having a &lt;code class=&quot;highlighter-rouge&quot;&gt;BoxView&lt;/code&gt; that covers the entire screen which we can adjust the opacity of.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-xml&quot; data-lang=&quot;xml&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;BoxView&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;x:Name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;PageFader&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;Grid.Row=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;0&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;Grid.RowSpan=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;1&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;BackgroundColor=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{StaticResource PageFadeColor}&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;IsVisible=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;false&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;Opacity=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;0&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;BoxView.GestureRecognizers&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;TapGestureRecognizer&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Tapped=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;PageFader_Tapped&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/BoxView.GestureRecognizers&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/BoxView&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;When the user taps the button at the bottom of the screen the &lt;code class=&quot;highlighter-rouge&quot;&gt;PageFader&lt;/code&gt; becomes visible via changing it’s opacity and visibility. At the same time it animates in the &lt;code class=&quot;highlighter-rouge&quot;&gt;BidPopup&lt;/code&gt; from the bottom of the screen by animating it’s TranslationY property via the &lt;code class=&quot;highlighter-rouge&quot;&gt;TranslateTo&lt;/code&gt; method.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-csharp&quot; data-lang=&quot;csharp&quot;&gt;&lt;span class=&quot;k&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;BidPopupButton_Clicked&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;object&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sender&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;EventArgs&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kt&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pageHeight&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Height&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;kt&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;firstSection&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;BidPopup&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;FirstSectionHeight&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;PageFader&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;IsVisible&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;PageFader&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;FadeTo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;AnimationSpeed&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Easing&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SinInOut&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;BidPopup&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;TranslateTo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pageHeight&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;firstSection&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;AnimationSpeed&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Easing&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SinInOut&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;The &lt;code class=&quot;highlighter-rouge&quot;&gt;BidPopup&lt;/code&gt; only animates in half way though, because it’s a two stage popup. There is a property called &lt;code class=&quot;highlighter-rouge&quot;&gt;FirstSectionHeight&lt;/code&gt; on the &lt;code class=&quot;highlighter-rouge&quot;&gt;BidPopup&lt;/code&gt; which tells us how high the first popup should be.&lt;/p&gt;
+
+&lt;p&gt;Next, if the the user taps on the &lt;code class=&quot;highlighter-rouge&quot;&gt;PageFader&lt;/code&gt; (so the background outsie the popup) it will Translate the BidPopup down off the bottom of the screen and then fade the &lt;code class=&quot;highlighter-rouge&quot;&gt;PageFader&lt;/code&gt; out.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-csharp&quot; data-lang=&quot;csharp&quot;&gt;&lt;span class=&quot;k&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;async&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;PageFader_Tapped&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;object&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sender&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;EventArgs&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;BidPopup&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;TranslateTo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Height&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;AnimationSpeed&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Easing&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SinInOut&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;ArtistDetailsPopup&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;TranslateTo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Height&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;AnimationSpeed&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Easing&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SinInOut&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;await&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PageFader&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;FadeTo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;AnimationSpeed&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Easing&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SinInOut&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;PageFader&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;IsVisible&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h3 id=&quot;the-bid-popup&quot;&gt;The Bid Popup&lt;/h3&gt;
+&lt;p&gt;This is a &lt;code class=&quot;highlighter-rouge&quot;&gt;ContentView&lt;/code&gt; that pops up from the bottom of the main screen. The tricky thing about this screen is that it happens in two “phases”. The first tap, brings in the gray section, then if the user taps again, it expands further to show the extended orange section.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;assets/images/posts/artauction-screen3.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;It looks kind of tricky, but the way the multi-stage popup works is to have a property on the &lt;code class=&quot;highlighter-rouge&quot;&gt;ContentView&lt;/code&gt; which exposes the height of the &lt;code class=&quot;highlighter-rouge&quot;&gt;FirstSection&lt;/code&gt;.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-csharp&quot; data-lang=&quot;csharp&quot;&gt;&lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;double&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;FirstSectionHeight&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;get&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;FirstSection&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Height&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;And an event that is raised when the user taps on the first section, so that it knows to popup to it’s larger size.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-csharp&quot; data-lang=&quot;csharp&quot;&gt;&lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;delegate&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;ClickExpandDelegate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ClickExpandDelegate&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;OnExpandTapped&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;FirstSection_Tapped&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;object&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sender&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;EventArgs&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;OnExpandTapped&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;?.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Invoke&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;On the MainPage it listens for this event to animate the &lt;code class=&quot;highlighter-rouge&quot;&gt;ContentView&lt;/code&gt; in to it’s full height.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-csharp&quot; data-lang=&quot;csharp&quot;&gt;&lt;span class=&quot;k&quot;&gt;protected&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;override&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;OnAppearing&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;base&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;OnAppearing&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;BidPopup&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;OnExpandTapped&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ExpandPopup&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;ArtistDetailsPopup&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;OnExpandTapped&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ExpandArtistDetails&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;ExpandPopup&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kt&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;height&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;BidPopup&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Height&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;BidPopup&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;TranslateTo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Height&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;height&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;AnimationSpeed&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Easing&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SinInOut&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;The rounded corners at the top of the page are achieved by the awesome &lt;code class=&quot;highlighter-rouge&quot;&gt;CornerRadius&lt;/code&gt; properties of a &lt;code class=&quot;highlighter-rouge&quot;&gt;BoxView&lt;/code&gt; which allows us to control the rounding of each corner.&lt;/p&gt;
+
+&lt;p&gt;The other part that is interesting is the gradient backgrounds on the buttons, which is achieved by using the magnificent &lt;a href=&quot;https://github.com/sthewissen/Xamarin.Forms.PancakeView&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;PancakeView&lt;/code&gt;&lt;/a&gt; control by &lt;a href=&quot;https://github.com/sthewissen&quot;&gt;Steven Thewissen&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;artist-details-popup&quot;&gt;Artist Details Popup&lt;/h3&gt;
+&lt;p&gt;The layout of this screen is fairly simple as well.  Technically, it’s a content view, which animates over the main page when the user taps on the artist name in the main page. Let’s have a look at it.
+&lt;img src=&quot;assets/images/posts/artauction-screen2.png&quot; /&gt;
+Most of the screen is just regular layouts using &lt;code class=&quot;highlighter-rouge&quot;&gt;Grid&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;StackLayout&lt;/code&gt;.  The cool bit is the staggered list which shows the artists works.  This was a lovely implementation contributed by &lt;a href=&quot;https://github.com/lachlanwgordon&quot;&gt;Lachlan Gordon&lt;/a&gt;.  At it’s core it’s a &lt;code class=&quot;highlighter-rouge&quot;&gt;FlexLayout&lt;/code&gt; with a BindableLayout of art works that sits within a &lt;code class=&quot;highlighter-rouge&quot;&gt;ScrollView&lt;/code&gt;. Nice and simple, but super effective. (just the way code should be)&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-xml&quot; data-lang=&quot;xml&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;ScrollView&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;Grid.Row=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;9&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;Padding=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;5&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;BackgroundColor=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{StaticResource LightBackgroundColor}&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;StackLayout&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;Label&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;Margin=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;5&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;FontAttributes=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Bold&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;Style=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{StaticResource BodyText}&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;Text=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Other Van Gogh Works&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;FlexLayout&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;BindableLayout.ItemsSource=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{Binding ArtWorks}&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;Direction=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Column&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;HeightRequest=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;930&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;HorizontalOptions=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Center&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;Wrap=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Wrap&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;BindableLayout.ItemTemplate&amp;gt;&lt;/span&gt;
+                &lt;span class=&quot;nt&quot;&gt;&amp;lt;DataTemplate&amp;gt;&lt;/span&gt;
+                    &lt;span class=&quot;nt&quot;&gt;&amp;lt;StackLayout&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Padding=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;5&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+                        &lt;span class=&quot;nt&quot;&gt;&amp;lt;ImageButton&lt;/span&gt;
+                            &lt;span class=&quot;na&quot;&gt;Aspect=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;AspectFill&quot;&lt;/span&gt;
+                            &lt;span class=&quot;na&quot;&gt;CornerRadius=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;10&quot;&lt;/span&gt;
+                            &lt;span class=&quot;na&quot;&gt;HeightRequest=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{Binding Height}&quot;&lt;/span&gt;
+                            &lt;span class=&quot;na&quot;&gt;Source=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{Binding ImagePath}&quot;&lt;/span&gt;
+                            &lt;span class=&quot;na&quot;&gt;VerticalOptions=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Start&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+                        &lt;span class=&quot;nt&quot;&gt;&amp;lt;Label&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Style=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{StaticResource BodyText}&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Text=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{Binding Name}&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+                        &lt;span class=&quot;nt&quot;&gt;&amp;lt;Label&lt;/span&gt;
+                            &lt;span class=&quot;na&quot;&gt;Margin=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;0,0,0,10&quot;&lt;/span&gt;
+                            &lt;span class=&quot;na&quot;&gt;Style=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{StaticResource SubtitleText}&quot;&lt;/span&gt;
+                            &lt;span class=&quot;na&quot;&gt;Text=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{Binding Path=Price, StringFormat='{0:C}'}&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+                    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/StackLayout&amp;gt;&lt;/span&gt;
+                &lt;span class=&quot;nt&quot;&gt;&amp;lt;/DataTemplate&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;/BindableLayout.ItemTemplate&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;/FlexLayout&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/StackLayout&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/ScrollView&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h3 id=&quot;styling&quot;&gt;Styling&lt;/h3&gt;
+&lt;p&gt;Custom Fonts were used to give the all improtant visual style we wanted. Also using Application Styles were used to make it easier to get consistent colors. Here is the Styles used:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-xml&quot; data-lang=&quot;xml&quot;&gt;    &lt;span class=&quot;nt&quot;&gt;&amp;lt;Application.Resources&amp;gt;&lt;/span&gt;
+
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;Color&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;x:Key=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;BackgroundColor&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;#1F1E1E&lt;span class=&quot;nt&quot;&gt;&amp;lt;/Color&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;Color&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;x:Key=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;LightBackgroundColor&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;#292828&lt;span class=&quot;nt&quot;&gt;&amp;lt;/Color&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;Color&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;x:Key=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;ForegroundTextColor&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;White&lt;span class=&quot;nt&quot;&gt;&amp;lt;/Color&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;Color&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;x:Key=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;SubtitleTextColor&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;#C5C4C4&lt;span class=&quot;nt&quot;&gt;&amp;lt;/Color&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;Color&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;x:Key=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;AccentColor&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;#FF910A&lt;span class=&quot;nt&quot;&gt;&amp;lt;/Color&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;Color&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;x:Key=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;LightAccentColor&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;#FFC57E&lt;span class=&quot;nt&quot;&gt;&amp;lt;/Color&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;Color&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;x:Key=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;PageFadeColor&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;#AA000000&lt;span class=&quot;nt&quot;&gt;&amp;lt;/Color&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;Color&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;x:Key=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;HighlightGradientStart&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;#ffca8a&lt;span class=&quot;nt&quot;&gt;&amp;lt;/Color&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;Color&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;x:Key=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;HighlightGradientEnd&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;#ffba67&lt;span class=&quot;nt&quot;&gt;&amp;lt;/Color&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;Color&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;x:Key=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;NonHighlightGradientStart&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;#ffad4a&lt;span class=&quot;nt&quot;&gt;&amp;lt;/Color&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;Color&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;x:Key=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;NonHighlightGradientEnd&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;#ff9d24&lt;span class=&quot;nt&quot;&gt;&amp;lt;/Color&amp;gt;&lt;/span&gt;
+
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;OnPlatform&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;x:Key=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;TitleFontFamily&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;x:TypeArguments=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;x:String&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;On&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Platform=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;iOS&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Value=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Old Standard TT&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;On&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Platform=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Android&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Value=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;OldStandard-Bold.ttf#Old Standard TT&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;/OnPlatform&amp;gt;&lt;/span&gt;
+
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;OnPlatform&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;x:Key=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;BodyFontFamily&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;x:TypeArguments=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;x:String&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;On&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Platform=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;iOS&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Value=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Questrial&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;On&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Platform=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Android&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Value=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Questrial-Regular.ttf#Questrial&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;/OnPlatform&amp;gt;&lt;/span&gt;
+
+
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;Style&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;TargetType=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Grid&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;Setter&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Property=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;RowSpacing&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Value=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;0&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;Setter&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Property=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;ColumnSpacing&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Value=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;0&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;/Style&amp;gt;&lt;/span&gt;
+
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;Style&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;x:Key=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;TitleText&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;TargetType=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Label&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;Setter&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Property=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;TextColor&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Value=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{StaticResource ForegroundTextColor}&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;Setter&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Property=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;FontFamily&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Value=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{StaticResource TitleFontFamily}&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;Setter&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Property=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;FontSize&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Value=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;30&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;/Style&amp;gt;&lt;/span&gt;
+
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;Style&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;x:Key=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;SubtitleText&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;TargetType=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Label&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;Setter&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Property=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;TextColor&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Value=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{StaticResource SubtitleTextColor}&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;Setter&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Property=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;FontFamily&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Value=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{StaticResource BodyFontFamily}&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;Setter&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Property=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;FontSize&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Value=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Small&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;/Style&amp;gt;&lt;/span&gt;
+
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;Style&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;x:Key=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;BodyText&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;TargetType=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Label&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;Setter&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Property=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;TextColor&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Value=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{StaticResource ForegroundTextColor}&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;Setter&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Property=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;FontFamily&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Value=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{StaticResource BodyFontFamily}&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;Setter&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Property=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;FontSize&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Value=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Medium&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;/Style&amp;gt;&lt;/span&gt;
+
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;x:Double&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;x:Key=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;LinkImageSize&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;50&lt;span class=&quot;nt&quot;&gt;&amp;lt;/x:Double&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;x:Double&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;x:Key=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;LinkImageCornerSize&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;25&lt;span class=&quot;nt&quot;&gt;&amp;lt;/x:Double&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/Application.Resources&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h2 id=&quot;the-final-result&quot;&gt;The Final Result&lt;/h2&gt;
+&lt;p&gt;I think we could call this Xamarin.Forms UI Challenge a success.  It does highlight that you can achieve some pretty amazing things without having to resort to custom renderers.  Layouts, Styles and Animations for the win!&lt;/p&gt;
+
+&lt;h3 id=&quot;ios-version&quot;&gt;iOS Version&lt;/h3&gt;
+&lt;div class=&quot;myvideo&quot;&gt;
+   &lt;video style=&quot;display:block; height:600px;&quot; autoplay=&quot;&quot; controls=&quot;&quot; loop=&quot;loop&quot;&gt;
+       &lt;source src=&quot;assets/videos/artauction-ios.mp4&quot; type=&quot;video/mp4&quot; /&gt;
+   &lt;/video&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;android-version&quot;&gt;Android Version&lt;/h3&gt;
+&lt;div class=&quot;myvideo&quot;&gt;
+   &lt;video style=&quot;display:block; height:600px;&quot; autoplay=&quot;&quot; controls=&quot;&quot; loop=&quot;loop&quot;&gt;
+       &lt;source src=&quot;assets/videos/artauction-android.mp4&quot; type=&quot;video/mp4&quot; /&gt;
+   &lt;/video&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;get-the-code&quot;&gt;Get the code&lt;/h2&gt;
+&lt;p&gt;All the code is available open source on GitHub at &lt;a href=&quot;https://github.com/kphillpotts/ArtAuction/&quot;&gt;https://github.com/kphillpotts/ArtAuction/&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;techniques-used&quot;&gt;Techniques Used&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;ImageCirclePlugin&lt;/li&gt;
+  &lt;li&gt;Xamarin.Forms Animations&lt;/li&gt;
+  &lt;li&gt;BindableProperties&lt;/li&gt;
+  &lt;li&gt;PancakeView&lt;/li&gt;
+  &lt;li&gt;Custom Fonts&lt;/li&gt;
+  &lt;li&gt;XAML Styles and Resources&lt;/li&gt;
+  &lt;li&gt;FlexLayout&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;watch-me-code-it&quot;&gt;Watch me code it&lt;/h2&gt;
+&lt;p&gt;I actually did this UI Challenge live over Twitch, so if you want to watch hours of me coding this up then check out these recordings.&lt;/p&gt;
+
+&lt;h4 id=&quot;part-1---missing-in-action&quot;&gt;Part 1 - Missing in action&lt;/h4&gt;
+&lt;p&gt;(NOTE: Because I’m an idiot and didn’t back up my files from Twitch, I lost the first session).&lt;/p&gt;
+
+&lt;h4 id=&quot;part-2&quot;&gt;Part 2&lt;/h4&gt;
+&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/dmGxxz6kbNk&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
+
+&lt;h4 id=&quot;part-3&quot;&gt;Part 3&lt;/h4&gt;
+&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/S7eygoR7ESs&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
+
+&lt;p&gt;Also, if you want to catch me doing other live coding things, with Xamarin and Azure follow me on Twitch. It’s a great platform where we can chat as we build software, ask questions, submit code).  Follow me at &lt;a href=&quot;https://www.twitch.tv/kymphillpotts&quot;&gt;https://www.twitch.tv/kymphillpotts&lt;/a&gt; and come join in the fun!&lt;/p&gt;
+
+&lt;h3 id=&quot;techniques-used-1&quot;&gt;Techniques Used&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;ImageCirclePlugin&lt;/li&gt;
+  &lt;li&gt;Xamarin.Forms Animations&lt;/li&gt;
+  &lt;li&gt;BindableProperties&lt;/li&gt;
+  &lt;li&gt;PancakeView&lt;/li&gt;
+  &lt;li&gt;Custom Fonts&lt;/li&gt;
+  &lt;li&gt;XAML Styles and Resources&lt;/li&gt;
+  &lt;li&gt;FlexLayout&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;I hope these posts are useful for you, feel free to leave me a comment below or reach out to me via &lt;a href=&quot;https://twitter.com/kphillpotts&quot;&gt;Twitter&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Until next time, Happy Coding&lt;/p&gt;
+
+&lt;p&gt;❤
+Kym&lt;/p&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>Kym Phillpotts</name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="Xamarin" />
+      
+
+      
+        <summary type="html">It’s time for another Xamarin.Forms UI Challenge! This time we are going to see how we can reproduce a design I found over at Dribbble by Alex Pesenka. Let’s break it down The design has a reasonably complex layout involving animated popups and overlays, which makes it a good candidate for a Xamarin.Forms UI challenge.</summary>
+      
+
+      
+      
+    </entry>
   
     <entry>
       <title type="html">Microsoft //Build/ Recap for Xamarin Developers</title>
@@ -2004,123 +2312,6 @@ private void AnimateOut()
 
       
         <summary type="html">Xamarin development is booming and as with any great technology, things change fast and you'll want to keep up to date with the latest news and releases. Xamarin has such a wonderful, thriving community that it can be a challenge!</summary>
-      
-
-      
-      
-    </entry>
-  
-    <entry>
-      <title type="html">Xamarin Link Roundup – 11 May 2016</title>
-      <link href="https://kymphillpotts.com/xamarin-link-roundup-11-may-2016/" rel="alternate" type="text/html" title="Xamarin Link Roundup &amp;#8211; 11 May 2016" />
-      <published>2016-05-12T03:03:34+10:00</published>
-      <updated>2016-05-12T03:03:34+10:00</updated>
-      <id>https://kymphillpotts.com/xamarin-link-roundup-11-may-2016</id>
-      <content type="html" xml:base="https://kymphillpotts.com/xamarin-link-roundup-11-may-2016/">&lt;p&gt;More fantastic links from around the community!&lt;/p&gt;
-
-&lt;!--more--&gt;
-
-&lt;h2 id=&quot;xamarinforms&quot;&gt;Xamarin.Forms&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;http://kent-boogaart.com/blog/jason-smith's-xamarin-forms-performance-tips&quot; target=&quot;_blank&quot;&gt;Jason Smith’s Xamarin Forms Performance Tips&lt;/a&gt; – Jason Smith’s Xamarin Forms Performance Tips&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://blog.xamarin.com/scaffolding-xamarin-forms-pages-with-datapages/&quot; target=&quot;_blank&quot;&gt;Scaffolding Xamarin.Forms Pages with DataPages | Xamarin Blog&lt;/a&gt; – An introduction to Xamarin.Forms data pages on the Xamarin Blog&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;http://motzcod.es/post/143599079477/xamarin-evolve-2016-app-development-retrospective&quot; target=&quot;_blank&quot;&gt;Xamarin Evolve 2016 App Development Retrospective&lt;/a&gt; – @JamesMontemagno shares the highs, lows and lessons learnt creating the #XamarinEvolve app.&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;http://motzcod.es/post/143702671962/xamarinforms-xaml-previewer-design-time-data&quot; target=&quot;_blank&quot;&gt;Xamarin.Forms XAML Previewer Design Time Data&lt;/a&gt; – @JamesMontemagno shows how to integrate design time data into the new XAML Previewer!&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;http://www.johankarlsson.net/2016/05/a-very-small-pubsub-solution-for.html?m=1&quot; target=&quot;_blank&quot;&gt;A very small pub/sub solution for Xamarin Forms&lt;/a&gt; – A very small pub/sub solution for Xamarin Forms&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://xamarinhelp.com/xamarin-forms-applinks/&quot; target=&quot;_blank&quot;&gt;Xamarin Forms Deep Linking and App Indexing with AppLinks&lt;/a&gt; – App indexing and deep linking in the Xamarin world&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;ios&quot;&gt;iOS&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://xamarinhelp.com/new-xamarin-ios-visual-studio/&quot; target=&quot;_blank&quot;&gt;Detailed Look At Whats New in Xamarin.iOS for Visual Studio&lt;/a&gt; – Adam Pedley gives the rundown of what’s new for Xamarin.iOS for Visual Studio&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;http://iosstack.com/tools/&quot; target=&quot;_blank&quot;&gt;Tools – iOSStack&lt;/a&gt; – IOSStack lists out some cool tools to make your Mobile development life easier.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;android&quot;&gt;Android&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;http://sharpmobilecode.com/using-google-place-picker-for-android/&quot; target=&quot;_blank&quot;&gt;Using Google Place Picker For Android&lt;/a&gt; – Ruben Macias shows how to use the PlacePicker from the Google Places API in Xamarin.Android.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;components-and-tools&quot;&gt;Components and Tools&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://realm.io/news/introducing-realm-xamarin/&quot; target=&quot;_blank&quot;&gt;Introducing Realm Xamarin – Realm is a mobile database: a replacement for SQLite &amp;amp; Core Data&lt;/a&gt; – Realm mobile database release for Xamarin. Sounds super exciting!&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://blog.verslu.is/uncategorized/nuget-gold-nuggets-packages-which-are-in-my-almost-every-xamarin-project/&quot; target=&quot;_blank&quot;&gt;NuGet gold nuggets – packages which are in my almost every Xamarin project&lt;/a&gt; – Gerald Versluis shares a list of NuGet Nuggets&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;http://gregshackles.com/using-1writer-as-a-presentation-assistant/&quot; target=&quot;_blank&quot;&gt;Using iOS and 1Writer as a Presentation Assistant&lt;/a&gt; – Greg Shackles shows a cool workflow and a nice tool for presenters&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;http://www.thexamarinjournal.com/xamarin-dev-ops-with-vsts-getting-started/&quot; target=&quot;_blank&quot;&gt;Getting Started with VSTS and Xamarin&lt;/a&gt; – Richard Woollcott has started a blog series on Mobile DevOps with VSTS / XS / Hockey / Test Cloud&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://ghuntley.com/archive/2016/05/04/announcing-httpclientdiagnostics/&quot; target=&quot;_blank&quot;&gt;Announcing HttpClientDiagnostics – Geoffrey Huntley&lt;/a&gt; – HttpClientDiagnostics is a cross platform, portable class library that provides tracing/logging telemetry of Microsoft.Net.HttpClient requests.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;other&quot;&gt;Other&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;http://pihrt.net/SnippetEssentials&quot; target=&quot;_blank&quot;&gt;Snippet Essentials&lt;/a&gt; – Because you can never have enough Snippets – Snippet Essentials&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://blogs.walkingtree.in/2016/05/05/xamarin-azure-mobile-services-a-primer/&quot; target=&quot;_blank&quot;&gt;Azure App Services and Xamarin&lt;/a&gt; – Get started with Azure App Services and Xamarin with this tutorial.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;design&quot;&gt;Design&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;http://rendr.io/from-sketch-to-app-a-design-to-development-workflow/&quot; target=&quot;_blank&quot;&gt;From Sketch to App: A Design to Development Workflow&lt;/a&gt; – David Ortinau continues his #XamarinEvolve discussion on Design to Development workflow.&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://dzone.com/articles/7-tips-for-creating-engaged-informed-users&quot; target=&quot;_blank&quot;&gt;7 Tips for Creating Engaged, Informed Users – DZone Mobile&lt;/a&gt; – 7 tips for creating great mobile app onboarding experiences&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;community&quot;&gt;Community&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;http://developer.telerik.com/featured/10-developer-takeaways-xamarin-evolve/?linkId=24158759&quot; target=&quot;_blank&quot;&gt;10 Developer Takeaways from Xamarin Evolve -Telerik Developer Network&lt;/a&gt; – Summary of the key takeaways for developers from #XamarinEvolve&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;more-xamarin-link-blogs&quot;&gt;More Xamarin Link Blogs&lt;/h2&gt;
-
-&lt;p&gt;Here are links to the other great Xamarin link blogs out there that are updated regularly&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;a href=&quot;http://www.xamarinweekly.com/&quot;&gt;Xamarin Weekly&lt;/a&gt;&lt;/p&gt;
-
-    &lt;p&gt;A free, once-weekly e-mail newsletter roundup of all things Xamarin. Posted Fridays&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;a href=&quot;http://xamarinappdev.com/&quot;&gt;Xamarin App Developer Links&lt;/a&gt;&lt;/p&gt;
-
-    &lt;p&gt;The latest tips, tutorials, news, and resources for Xamarin app developers. Posted Daily&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;a href=&quot;http://csharpmobiledaily.com/&quot;&gt;C# Mobile (Xamarin) Daily&lt;/a&gt;&lt;/p&gt;
-
-    &lt;p&gt;Your cross-platform C# mobile magazine. Posted Daily&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;a href=&quot;hhttp://planet.xamarin.com/&quot;&gt;Xamarin Community Blogs&lt;/a&gt;&lt;/p&gt;
-
-    &lt;p&gt;This is an automatic aggregator which pulls articles from bloggers in the Xamarin developer community.&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;</content>
-
-      
-      
-      
-      
-      
-
-      <author>
-          <name>Kym</name>
-        
-        
-      </author>
-
-      
-
-      
-        <category term="Xamarin" />
-      
-
-      
-        <summary type="html">More fantastic links from around the community!</summary>
       
 
       

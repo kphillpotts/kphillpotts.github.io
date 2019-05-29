@@ -8,6 +8,23 @@
     
       
       <item>
+        <title>Xamarin.Forms UI Challenges - Art Auction</title>
+        
+          <description>&lt;p&gt;It’s time for another Xamarin.Forms UI Challenge! This time we are going to see how we can reproduce a design I found over at &lt;a href=&quot;https://dribbble.com/shots/6177235-Valuable-Auction-Product-Page&quot;&gt;Dribbble&lt;/a&gt; by &lt;a href=&quot;https://dribbble.com/alex_pesenka&quot;&gt;Alex Pesenka&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&quot;lets-break-it-down&quot;&gt;Let’s break it down&lt;/h2&gt;
+&lt;p&gt;The design has a reasonably complex layout involving animated popups and overlays, which makes it a good candidate for a Xamarin.Forms UI challenge.&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Thu, 30 May 2019 09:50:31 +1000</pubDate>
+        <link>
+        https://kymphillpotts.com/xamarin-forms-ui-challenge-artauction.html</link>
+        <guid isPermaLink="true">https://kymphillpotts.com/xamarin-forms-ui-challenge-artauction.html</guid>
+      </item>
+      
+    
+      
+      <item>
         <title>How to stream a meetup</title>
         
           <description>&lt;p&gt;Have you ever wanted to record or live stream your meetup? It’s not as hard as you might think.  In this post, we will go through how &lt;em&gt;we&lt;/em&gt; stream the &lt;a href=&quot;https://www.meetup.com/en-AU/Melbourne-Xamarin-Meetup/&quot;&gt;Melbourne Xamarin Meetup&lt;/a&gt; live to the Internet via Twitch.&lt;/p&gt;
