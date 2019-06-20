@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator>
   <link href="https://kymphillpotts.com/tag/xamarin/feed.xml" rel="self" type="application/atom+xml" />
   <link href="https://kymphillpotts.com/" rel="alternate" type="text/html" />
-  <updated>2019-06-20T16:33:20+10:00</updated>
+  <updated>2019-06-20T16:46:59+10:00</updated>
   <id>https://kymphillpotts.com/tag/xamarin/feed.xml</id>
 
   
@@ -506,11 +506,11 @@ Kym&lt;/p&gt;</content>
   
     <entry>
       <title type="html">Simple Animation with Xamarin.Forms</title>
-      <link href="https://kymphillpotts.com/simple-animation-with-xamarin-forms.html" rel="alternate" type="text/html" title="Simple Animation with Xamarin.Forms" />
+      <link href="https://kymphillpotts.com/simple-animation-with-xamarin-forms/" rel="alternate" type="text/html" title="Simple Animation with Xamarin.Forms" />
       <published>2018-03-27T23:43:50+11:00</published>
       <updated>2018-03-27T23:43:50+11:00</updated>
       <id>https://kymphillpotts.com/simple-animation-with-xamarin-forms</id>
-      <content type="html" xml:base="https://kymphillpotts.com/simple-animation-with-xamarin-forms.html">&lt;p&gt;Those of you know me (or have visited my blog) know that I love playing around with Xamarin.Forms Layouts.   Recently, Matt Soucoup was on the &lt;a href=&quot;https://www.youtube.com/watch?v=ypKnAKJL9CA&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Xamarin Show talking about Animations&lt;/a&gt;. He showed how easy it is to do simple animations in Xamarin Forms. Personally, I don’t think developers do enough with animations – they can really spice up your UI and show your users how much you care.&lt;/p&gt;
+      <content type="html" xml:base="https://kymphillpotts.com/simple-animation-with-xamarin-forms/">&lt;p&gt;Those of you know me (or have visited my blog) know that I love playing around with Xamarin.Forms Layouts.   Recently, Matt Soucoup was on the &lt;a href=&quot;https://www.youtube.com/watch?v=ypKnAKJL9CA&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Xamarin Show talking about Animations&lt;/a&gt;. He showed how easy it is to do simple animations in Xamarin Forms. Personally, I don’t think developers do enough with animations – they can really spice up your UI and show your users how much you care.&lt;/p&gt;
 
 &lt;p&gt;I thought it might be fun to use some of the stuff that Matt was talking about and put it into a more real world context.&lt;/p&gt;
 
