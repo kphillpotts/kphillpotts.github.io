@@ -58,7 +58,7 @@
 
 <meta name="description" content="I write about Azure, Xamarin.Forms, Connected Apps and whatever else might be on my mind." />
     <link rel="shortcut icon" href="https://kymphillpotts.com/assets/images/icons/favicon-96x96.png" type="image/png" />
-    <link rel="canonical" href="https://kymphillpotts.com/simple-animation-with-xamarin-forms/" />
+    <link rel="canonical" href="https://kymphillpotts.com/simple-animation-with-xamarin-forms.html" />
     <meta name="referrer" content="no-referrer-when-downgrade" />
 
      <!--title below is coming from _includes/dynamic_title-->
@@ -66,7 +66,7 @@
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Simple Animation with Xamarin.Forms" />
     <meta property="og:description" content="I write about Azure, Xamarin.Forms, Connected Apps and whatever else might be on my mind." />
-    <meta property="og:url" content="https://kymphillpotts.com/simple-animation-with-xamarin-forms/" />
+    <meta property="og:url" content="https://kymphillpotts.com/simple-animation-with-xamarin-forms.html" />
     <meta property="og:image" content="https://kymphillpotts.com/assets/images/covers/generic_mobile_1.png" />
     <meta property="article:publisher" content="https://www.facebook.com/" />
     <meta property="article:tag" content="Xamarin" />
@@ -93,7 +93,7 @@
         "name": "Kym's Blog",
         "logo": "https://kymphillpotts.com/false"
     },
-    "url": "https://kymphillpotts.com/simple-animation-with-xamarin-forms/",
+    "url": "https://kymphillpotts.com/simple-animation-with-xamarin-forms.html",
     "image": {
         "@type": "ImageObject",
         "url": "https://kymphillpotts.com/assets/images/covers/generic_mobile_1.png",
@@ -102,7 +102,7 @@
     },
     "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "https://kymphillpotts.com/simple-animation-with-xamarin-forms/"
+        "@id": "https://kymphillpotts.com/simple-animation-with-xamarin-forms.html"
     },
     "description": "I write about Azure, Xamarin.Forms, Connected Apps and whatever else might be on my mind."
 }
@@ -208,18 +208,20 @@ into the {body} of the default.hbs template -->
 
 <p>The animation itself, is very simple and looks a lot like this:</p>
 
-<div style="width: 286px;" class="wp-video">
-  <!--[if lt IE 9]><![endif]--><video class="wp-video-shortcode" id="video-5879-1" width="286" height="508" preload="metadata" controls="controls"><source type="video/mp4" src="http://www.kymphillpotts.com/wp-content/uploads/2018/03/android-50.mp4?_=1" />
-  
-  <a href="http://www.kymphillpotts.com/wp-content/uploads/2018/03/android-50.mp4">http://www.kymphillpotts.com/wp-content/uploads/2018/03/android-50.mp4</a></video>
+<div class="myvideo">
+   <video style="display:block;" autoplay="" controls="" loop="loop">
+       <source src="/assets/videos/android-50.mp4" type="video/mp4" />
+   </video>
 </div>
 
 <p> </p>
 
 <p>and on iOS, like this:</p>
 
-<div style="width: 286px;" class="wp-video">
-  <video class="wp-video-shortcode" id="video-5879-2" width="286" height="512" preload="metadata" controls="controls"><source type="video/mp4" src="http://www.kymphillpotts.com/wp-content/uploads/2018/03/ios-50-1.mp4?_=2" /><a href="http://www.kymphillpotts.com/wp-content/uploads/2018/03/ios-50-1.mp4">http://www.kymphillpotts.com/wp-content/uploads/2018/03/ios-50-1.mp4</a></video>
+<div class="myvideo">
+   <video style="display:block;" autoplay="" controls="" loop="loop">
+       <source src="/assets/videos/ios-50.mp4" type="video/mp4" />
+   </video>
 </div>
 
 <p> </p>
@@ -228,29 +230,27 @@ into the {body} of the default.hbs template -->
 
 <h3 id="the-page-layout">The Page Layout</h3>
 
-<pre class="lang:xml decode:true"><?xml version="1.0" encoding="utf-8" ?>
-&lt;ContentPage x:Class="Animation.AnimationPage" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:Animation" xmlns:views="clr-namespace:Animation.Views" BackgroundColor="#181818"&gt;
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;ContentPage</span> <span class="na">x:Class=</span><span class="s">"Animation.AnimationPage"</span> <span class="na">xmlns=</span><span class="s">"http://xamarin.com/schemas/2014/forms"</span> <span class="na">xmlns:x=</span><span class="s">"http://schemas.microsoft.com/winfx/2009/xaml"</span> <span class="na">xmlns:local=</span><span class="s">"clr-namespace:Animation"</span> <span class="na">xmlns:views=</span><span class="s">"clr-namespace:Animation.Views"</span> <span class="na">BackgroundColor=</span><span class="s">"#181818"</span><span class="nt">&gt;</span>
 
-    &lt;Grid Padding="0" ColumnSpacing="0" RowSpacing="0"&gt;
-        &lt;Grid.RowDefinitions&gt;
-            &lt;RowDefinition Height="*" /&gt;
-            &lt;RowDefinition Height="AUTO" /&gt;
-        &lt;/Grid.RowDefinitions&gt;
+    <span class="nt">&lt;Grid</span> <span class="na">Padding=</span><span class="s">"0"</span> <span class="na">ColumnSpacing=</span><span class="s">"0"</span> <span class="na">RowSpacing=</span><span class="s">"0"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;Grid.RowDefinitions&gt;</span>
+            <span class="nt">&lt;RowDefinition</span> <span class="na">Height=</span><span class="s">"*"</span> <span class="nt">/&gt;</span>
+            <span class="nt">&lt;RowDefinition</span> <span class="na">Height=</span><span class="s">"AUTO"</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;/Grid.RowDefinitions&gt;</span>
 
-        &lt;Image x:Name="MainImage" Grid.Row="0" Grid.RowSpan="2" Aspect="AspectFill" Source="mugello.jpg"&gt;
-            &lt;Image.GestureRecognizers&gt;
-                &lt;TapGestureRecognizer NumberOfTapsRequired="1" Tapped="Handle_Tapped" /&gt;
-            &lt;/Image.GestureRecognizers&gt;
-        &lt;/Image&gt;
+        <span class="nt">&lt;Image</span> <span class="na">x:Name=</span><span class="s">"MainImage"</span> <span class="na">Grid.Row=</span><span class="s">"0"</span> <span class="na">Grid.RowSpan=</span><span class="s">"2"</span> <span class="na">Aspect=</span><span class="s">"AspectFill"</span> <span class="na">Source=</span><span class="s">"mugello.jpg"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;Image.GestureRecognizers&gt;</span>
+                <span class="nt">&lt;TapGestureRecognizer</span> <span class="na">NumberOfTapsRequired=</span><span class="s">"1"</span> <span class="na">Tapped=</span><span class="s">"Handle_Tapped"</span> <span class="nt">/&gt;</span>
+            <span class="nt">&lt;/Image.GestureRecognizers&gt;</span>
+        <span class="nt">&lt;/Image&gt;</span>
 
-        &lt;views:ExpandBar x:Name="ExpandBar" Grid.Row="1" Padding="0" TranslationY="1" VerticalOptions="End" /&gt;
+        <span class="nt">&lt;views:ExpandBar</span> <span class="na">x:Name=</span><span class="s">"ExpandBar"</span> <span class="na">Grid.Row=</span><span class="s">"1"</span> <span class="na">Padding=</span><span class="s">"0"</span> <span class="na">TranslationY=</span><span class="s">"1"</span> <span class="na">VerticalOptions=</span><span class="s">"End"</span> <span class="nt">/&gt;</span>
 
-        &lt;views:DescriptionPane x:Name="BottomFrame" Grid.Row="1" IsVisible="true" Text="The Mugello is a historic region and valley in northern Tuscany, in Italy. It is located to the north of the city of Florence and consists of the northernmost portion of the Metropolitan City of Florence.  It is connected to the separate Santerno river valley by the Futa Pass." VerticalOptions="End" /&gt;
+        <span class="nt">&lt;views:DescriptionPane</span> <span class="na">x:Name=</span><span class="s">"BottomFrame"</span> <span class="na">Grid.Row=</span><span class="s">"1"</span> <span class="na">IsVisible=</span><span class="s">"true"</span> <span class="na">Text=</span><span class="s">"The Mugello is a historic region and valley in northern Tuscany, in Italy. It is located to the north of the city of Florence and consists of the northernmost portion of the Metropolitan City of Florence.  It is connected to the separate Santerno river valley by the Futa Pass."</span> <span class="na">VerticalOptions=</span><span class="s">"End"</span> <span class="nt">/&gt;</span>
 
-        &lt;views:Title x:Name="Title" Grid.Row="0" Margin="0,40,0,0" HorizontalOptions="Start" VerticalOptions="Start" /&gt;
-    &lt;/Grid&gt;
-&lt;/ContentPage&gt;
-</pre>
+        <span class="nt">&lt;views:Title</span> <span class="na">x:Name=</span><span class="s">"Title"</span> <span class="na">Grid.Row=</span><span class="s">"0"</span> <span class="na">Margin=</span><span class="s">"0,40,0,0"</span> <span class="na">HorizontalOptions=</span><span class="s">"Start"</span> <span class="na">VerticalOptions=</span><span class="s">"Start"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;/Grid&gt;</span>
+<span class="nt">&lt;/ContentPage&gt;</span></code></pre></figure>
 
 <p>Nothing too exciting happening here. Just a ContentPage with a grid inside with a few overlapped elements. I’ve made put each element that will be animated into a ContentView so that I can move all it’s sub elements by just controlling the animations on the ContentViews. There is also a GestureRecognizer on the Image which is actually going to trigger the animations.</p>
 
@@ -268,60 +268,58 @@ into the {body} of the default.hbs template -->
 
 <p>Throw in some Easing on those animations to provide a nice spring effect and we are in business. Here is the code that does the animation:</p>
 
-<pre class="lang:csharp decode:true">void Handle_Tapped(object sender, System.EventArgs e)
-{
-    if (isExpanded)
-        AnimateIn();
-    else
-        AnimateOut();
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">void</span> <span class="nf">Handle_Tapped</span><span class="p">(</span><span class="kt">object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">System</span><span class="p">.</span><span class="n">EventArgs</span> <span class="n">e</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">isExpanded</span><span class="p">)</span>
+        <span class="nf">AnimateIn</span><span class="p">();</span>
+    <span class="k">else</span>
+        <span class="nf">AnimateOut</span><span class="p">();</span>
 
-    isExpanded = !isExpanded;
-}
+    <span class="n">isExpanded</span> <span class="p">=</span> <span class="p">!</span><span class="n">isExpanded</span><span class="p">;</span>
+<span class="p">}</span>
 
-private void AnimateIn()
-{
-    MainImage.LayoutTo(detailsRect, 1200, Easing.SpringOut);
-    BottomFrame.TranslateTo(0, 0, 1200, Easing.SpringOut);
-    Title.TranslateTo(0, 0, 1200, Easing.SpringOut);
-    ExpandBar.FadeTo(.01, 250, Easing.SinInOut);
-}
+<span class="k">private</span> <span class="k">void</span> <span class="nf">AnimateIn</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">MainImage</span><span class="p">.</span><span class="nf">LayoutTo</span><span class="p">(</span><span class="n">detailsRect</span><span class="p">,</span> <span class="m">1200</span><span class="p">,</span> <span class="n">Easing</span><span class="p">.</span><span class="n">SpringOut</span><span class="p">);</span>
+    <span class="n">BottomFrame</span><span class="p">.</span><span class="nf">TranslateTo</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">1200</span><span class="p">,</span> <span class="n">Easing</span><span class="p">.</span><span class="n">SpringOut</span><span class="p">);</span>
+    <span class="n">Title</span><span class="p">.</span><span class="nf">TranslateTo</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">1200</span><span class="p">,</span> <span class="n">Easing</span><span class="p">.</span><span class="n">SpringOut</span><span class="p">);</span>
+    <span class="n">ExpandBar</span><span class="p">.</span><span class="nf">FadeTo</span><span class="p">(.</span><span class="m">01</span><span class="p">,</span> <span class="m">250</span><span class="p">,</span> <span class="n">Easing</span><span class="p">.</span><span class="n">SinInOut</span><span class="p">);</span>
+<span class="p">}</span>
 
-private void AnimateOut()
-{
-    MainImage.LayoutTo(expandedRect, 1200, Easing.SpringOut);
-    BottomFrame.TranslateTo(0, BottomFrame.Height, 1200, Easing.SpringOut);
-    Title.TranslateTo(-Title.Width, 0, 1200, Easing.SpringOut);
-    ExpandBar.FadeTo(1, 250, Easing.SinInOut);
-}
-</pre>
+<span class="k">private</span> <span class="k">void</span> <span class="nf">AnimateOut</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">MainImage</span><span class="p">.</span><span class="nf">LayoutTo</span><span class="p">(</span><span class="n">expandedRect</span><span class="p">,</span> <span class="m">1200</span><span class="p">,</span> <span class="n">Easing</span><span class="p">.</span><span class="n">SpringOut</span><span class="p">);</span>
+    <span class="n">BottomFrame</span><span class="p">.</span><span class="nf">TranslateTo</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="n">BottomFrame</span><span class="p">.</span><span class="n">Height</span><span class="p">,</span> <span class="m">1200</span><span class="p">,</span> <span class="n">Easing</span><span class="p">.</span><span class="n">SpringOut</span><span class="p">);</span>
+    <span class="n">Title</span><span class="p">.</span><span class="nf">TranslateTo</span><span class="p">(-</span><span class="n">Title</span><span class="p">.</span><span class="n">Width</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">1200</span><span class="p">,</span> <span class="n">Easing</span><span class="p">.</span><span class="n">SpringOut</span><span class="p">);</span>
+    <span class="n">ExpandBar</span><span class="p">.</span><span class="nf">FadeTo</span><span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="m">250</span><span class="p">,</span> <span class="n">Easing</span><span class="p">.</span><span class="n">SinInOut</span><span class="p">);</span>
+<span class="p">}</span></code></pre></figure>
 
 <h3 id="starting-state">Starting State</h3>
 
 <p>The only other bit of significant logic (and it’s not that significant) is just starting all the elements in their correct starting positions. I’ve done this on the OnSizeAllocated because then we can also handle positioning things in the correct locations on a rotation of the device. Again the code is super simple:</p>
 
-<pre class="lang:csharp decode:true">protected override void OnSizeAllocated(double width, double height)
-{
-    base.OnSizeAllocated(width, height);
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">protected</span> <span class="k">override</span> <span class="k">void</span> <span class="nf">OnSizeAllocated</span><span class="p">(</span><span class="kt">double</span> <span class="n">width</span><span class="p">,</span> <span class="kt">double</span> <span class="n">height</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">base</span><span class="p">.</span><span class="nf">OnSizeAllocated</span><span class="p">(</span><span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">);</span>
 
-    // cache the bounds for the image so I don't repeat calculations everywhere
-    detailsRect = new Rectangle(0, 0, width, BottomFrame.Bounds.Top + 20);
-    expandedRect = new Rectangle(0, 0, width, height);
+    <span class="c1">// cache the bounds for the image so I don't repeat calculations everywhere</span>
+    <span class="n">detailsRect</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Rectangle</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">BottomFrame</span><span class="p">.</span><span class="n">Bounds</span><span class="p">.</span><span class="n">Top</span> <span class="p">+</span> <span class="m">20</span><span class="p">);</span>
+    <span class="n">expandedRect</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Rectangle</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">);</span>
 
-    // move things to their starting point
-    if (isExpanded)
-    {
-        MainImage.Layout(expandedRect);
-        BottomFrame.TranslationY = BottomFrame.Height;
-        Title.TranslationX = -Title.Width;
-    }
-    else
-    {
-        MainImage.Layout(detailsRect);
-        BottomFrame.TranslationY = 0;
-        Title.TranslationX = 0;
-    }
-}
-</pre>
+    <span class="c1">// move things to their starting point</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">isExpanded</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">MainImage</span><span class="p">.</span><span class="nf">Layout</span><span class="p">(</span><span class="n">expandedRect</span><span class="p">);</span>
+        <span class="n">BottomFrame</span><span class="p">.</span><span class="n">TranslationY</span> <span class="p">=</span> <span class="n">BottomFrame</span><span class="p">.</span><span class="n">Height</span><span class="p">;</span>
+        <span class="n">Title</span><span class="p">.</span><span class="n">TranslationX</span> <span class="p">=</span> <span class="p">-</span><span class="n">Title</span><span class="p">.</span><span class="n">Width</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">else</span>
+    <span class="p">{</span>
+        <span class="n">MainImage</span><span class="p">.</span><span class="nf">Layout</span><span class="p">(</span><span class="n">detailsRect</span><span class="p">);</span>
+        <span class="n">BottomFrame</span><span class="p">.</span><span class="n">TranslationY</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span>
+        <span class="n">Title</span><span class="p">.</span><span class="n">TranslationX</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
 
 <h3 id="conclusion">Conclusion</h3>
 
@@ -376,8 +374,8 @@ private void AnimateOut()
                     <div id="disqus_thread"></div>
                     <script>
                         var disqus_config = function () {
-                            this.page.url = 'https://kymphillpotts.com/simple-animation-with-xamarin-forms/';
-                            this.page.identifier = '/simple-animation-with-xamarin-forms/';
+                            this.page.url = 'https://kymphillpotts.com/simple-animation-with-xamarin-forms.html';
+                            this.page.identifier = '/simple-animation-with-xamarin-forms.html';
                         };
                         (function() {
                             var d = document, s = d.createElement('script');
@@ -858,12 +856,12 @@ private void AnimateOut()
     <path d="M7.5 15.5V4a1.5 1.5 0 1 1 3 0v4.5h2a1 1 0 0 1 1 1h2a1 1 0 0 1 1 1H18a1.5 1.5 0 0 1 1.5 1.5v3.099c0 .929-.13 1.854-.385 2.748L17.5 23.5h-9c-1.5-2-5.417-8.673-5.417-8.673a1.2 1.2 0 0 1 1.76-1.605L7.5 15.5zm6-6v2m-3-3.5v3.5m6-1v2"/>
 </svg>
 </div>
-        <a class="floating-header-share-tw" href="https://twitter.com/share?text=Simple+Animation+with+Xamarin.Forms&amp;url=https://kphillpotts.github.io/simple-animation-with-xamarin-forms/"
+        <a class="floating-header-share-tw" href="https://twitter.com/share?text=Simple+Animation+with+Xamarin.Forms&amp;url=https://kphillpotts.github.io/simple-animation-with-xamarin-forms.html"
             onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg>
 
         </a>
-        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=https://kphillpotts.github.io/simple-animation-with-xamarin-forms/"
+        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=https://kphillpotts.github.io/simple-animation-with-xamarin-forms.html"
             onclick="window.open(this.href, 'share-facebook','width=580,height=296');return false;">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M19 6h5V0h-5c-3.86 0-7 3.14-7 7v3H8v6h4v16h6V16h5l1-6h-6V7c0-.542.458-1 1-1z"/></svg>
 
