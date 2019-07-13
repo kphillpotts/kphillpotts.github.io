@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator>
   <link href="https://kymphillpotts.com/author/kphillpotts/feed.xml" rel="self" type="application/atom+xml" />
   <link href="https://kymphillpotts.com/" rel="alternate" type="text/html" />
-  <updated>2019-06-20T16:46:59+10:00</updated>
+  <updated>2019-07-13T14:31:41+10:00</updated>
   <id>https://kymphillpotts.com/author/kphillpotts/feed.xml</id>
 
   
@@ -30,6 +30,540 @@
   
   
 
+  
+    <entry>
+      <title type="html">Xamarin.Forms UI Challenges - Day vs Night</title>
+      <link href="https://kymphillpotts.com/xamarin-forms-ui-challenge-dayvsnight.html" rel="alternate" type="text/html" title="Xamarin.Forms UI Challenges - Day vs Night" />
+      <published>2019-07-13T10:00:00+10:00</published>
+      <updated>2019-07-13T10:00:00+10:00</updated>
+      <id>https://kymphillpotts.com/xamarin-forms-ui-challenge-dayvsnight</id>
+      <content type="html" xml:base="https://kymphillpotts.com/xamarin-forms-ui-challenge-dayvsnight.html">&lt;p&gt;Sometimes when developing Xamarin.Forms user interfaces you get to a point where you just need to handle the drawing yourself, and for that SkiaSharp is invaluable.  And that’s one of the core pieces of this UI Challenge, using SkiaSharp to create controls that are unlike any other.&lt;/p&gt;
+
+&lt;p&gt;First, I should mention that this amazing design concept that we are reproducing was created by &lt;a href=&quot;https://dribbble.com/ionuss&quot;&gt;Ionut Zamfir&lt;/a&gt; over at &lt;a href=&quot;https://dribbble.com/shots/4840427-Dashboard-Day-vs-Night&quot;&gt;Dribbble&lt;/a&gt;.  The key elements that drew my attention to this layout were:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Beautiful use of colours&lt;/li&gt;
+  &lt;li&gt;Light and Dark themes&lt;/li&gt;
+  &lt;li&gt;Complex multi-colour gradients&lt;/li&gt;
+  &lt;li&gt;Unique custom slider for the temperature&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Seriously, just check it out in all it’s beauty:&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;img src=&quot;assets/images/posts/dayvsnight/day.png&quot; /&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;img src=&quot;assets/images/posts/dayvsnight/night.png&quot; /&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&quot;xamarin-ui-july&quot;&gt;Xamarin UI July&lt;/h2&gt;
+&lt;p&gt;This post is part of &lt;a href=&quot;https://www.thewissen.io/introducing-xamarin-ui-july/&quot;&gt;Xamarin UI July&lt;/a&gt;, organised by &lt;a href=&quot;https://twitter.com/devnl&quot;&gt;Steve Thewissen&lt;/a&gt;. Today is day 13 with another exciting post coming out every day for the rest of the month.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.thewissen.io/introducing-xamarin-ui-july/&quot; target=&quot;_blank&quot;&gt;&lt;img src=&quot;assets/images/xamuijuly.png&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;lets-break-it-down&quot;&gt;Let’s break it down&lt;/h2&gt;
+&lt;p&gt;So let’s try and reproduce this layout in Xamarin.Forms.  When you look at it, the overall page layout itself is fairly straight forward consisting of a main &lt;code class=&quot;highlighter-rouge&quot;&gt;Grid&lt;/code&gt; with a &lt;code class=&quot;highlighter-rouge&quot;&gt;StackLayout&lt;/code&gt; to lay the elements out down the page.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Pro Tip: Grids are a great root layout element because they allow you to position elements proportionally on a page whilst still allowing overlapping elements&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;the-background&quot;&gt;The Background&lt;/h3&gt;
+&lt;p&gt;If you focus just on the background of the design it has two elements:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;A multi-colour gradient across the entire page&lt;/li&gt;
+  &lt;li&gt;The mountain image, at the bottom of the page&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;For the implementation the main page consists of a &lt;code class=&quot;highlighter-rouge&quot;&gt;SKCanvasView&lt;/code&gt; for the background gradient.  There is also an Image with a &lt;code class=&quot;highlighter-rouge&quot;&gt;VerticalOptions&lt;/code&gt; of &lt;code class=&quot;highlighter-rouge&quot;&gt;End&lt;/code&gt; which positions it at the bottom of the screen but above the gradient.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-xml&quot; data-lang=&quot;xml&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;Grid&amp;gt;&lt;/span&gt;
+
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;Grid.RowDefinitions&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;RowDefinition&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Height=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;*&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;RowDefinition&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Height=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Auto&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/Grid.RowDefinitions&amp;gt;&lt;/span&gt;
+    
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;skia:SKCanvasView&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;x:Name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;BackgroundGradient&quot;&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;Grid.RowSpan=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;2&quot;&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;HorizontalOptions=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Fill&quot;&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;PaintSurface=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;BackgroundGradient_PaintSurface&quot;&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;VerticalOptions=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Fill&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;Image&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;Grid.RowSpan=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;2&quot;&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;Aspect=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;AspectFill&quot;&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;HorizontalOptions=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Fill&quot;&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;Source=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{DynamicResource MountainImage}&quot;&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;VerticalOptions=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;End&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+
+...&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;The order of elements in your Xaml is important because it implies the z-order. Which is to say, elements that appear later in your Xaml will appear in-front of earlier elements&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;The background gradient is a little more complex than it may first appear because it isn’t just a linear gradient between two colours. It’s actually a radial gradient between three colours. This complexity means we can’t use something like &lt;code class=&quot;highlighter-rouge&quot;&gt;PancakeView&lt;/code&gt; for the gradient, instead we can render this with SkiaSharp. Complex gradients are surprisingly easy in SkiaSharp, but does require you implement them in code.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Code to render gradient&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;The following code is called whenever the &lt;code class=&quot;highlighter-rouge&quot;&gt;BackgroundGradient&lt;/code&gt; canvas needs to be drawn. First thing it does is load up the colours from the application resources (because different themes have different gradient colours - but more on that later). Then it uses those colours to  create a &lt;code class=&quot;highlighter-rouge&quot;&gt;RadialGradient&lt;/code&gt; shader which is drawn over the entire canvas area.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-csharp&quot; data-lang=&quot;csharp&quot;&gt;&lt;span class=&quot;k&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;BackgroundGradient_PaintSurface&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;object&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sender&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;SkiaSharp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Views&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Forms&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SKPaintSurfaceEventArgs&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;SKImageInfo&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;info&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Info&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;SKSurface&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;surface&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Surface&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;SKCanvas&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;canvas&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;surface&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Canvas&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;n&quot;&gt;canvas&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Clear&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+
+    &lt;span class=&quot;c1&quot;&gt;// get the brush based on the theme&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;SKColor&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;gradientStart&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Color&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Application&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Current&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Resources&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;BackgroundGradientStartColor&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]).&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;ToSKColor&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;SKColor&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;gradientMid&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Color&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Application&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Current&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Resources&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;BackgroundGradientMidColor&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]).&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;ToSKColor&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;SKColor&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;gradientEnd&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Color&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Application&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Current&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Resources&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;BackgroundGradientEndColor&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]).&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;ToSKColor&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+
+    &lt;span class=&quot;c1&quot;&gt;// gradient background with 3 colors&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;backgroundBrush&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Shader&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;SKShader&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;CreateRadialGradient&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;SKPoint&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;info&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Height&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;8f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;info&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Height&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;*.&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;8f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;SKColor&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;gradientStart&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;gradientMid&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;gradientEnd&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;float&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;5f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;  &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;SKShaderTileMode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Clamp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+    &lt;span class=&quot;n&quot;&gt;SKRect&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;backgroundBounds&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;SKRect&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;info&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Width&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;info&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Height&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;canvas&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;DrawRect&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;backgroundBounds&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;backgroundBrush&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;The documentation and samples for SkiaSharp are excellent, don’t be scared to check them out.  For example, here are the docs for &lt;a href=&quot;https://docs.microsoft.com/en-us/xamarin/xamarin-forms/user-interface/graphics/skiasharp/effects/shaders/circular-gradients&quot;&gt;Creating Radial Gradients&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;temperature-slider&quot;&gt;Temperature Slider&lt;/h3&gt;
+&lt;p&gt;Okay, this is the fun bit, that temperature slider.  Notice how it has a slider thumb and above it, it dynamically eats into (or clips) the slider background. There isn’t a control like this in Xamarin.Forms (or anywhere for that matter), so it’s time to write a control in SkiaSharp, named appropriately &lt;code class=&quot;highlighter-rouge&quot;&gt;GaugeControl&lt;/code&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;myvideo&quot;&gt;
+   &lt;video style=&quot;display:block;&quot; autoplay=&quot;&quot; controls=&quot;&quot; loop=&quot;loop&quot;&gt;
+       &lt;source src=&quot;assets/videos/dayvsnight-slider.mp4&quot; type=&quot;video/mp4&quot; /&gt;
+   &lt;/video&gt;
+&lt;/div&gt;
+
+&lt;p&gt;The background of the slider is really just a &lt;code class=&quot;highlighter-rouge&quot;&gt;RoundedRect&lt;/code&gt; with a gradient fill. No big deal.  However, the trick is to have a bit “clipped” out where the slider thumb is.  Well, it turns out that with SkiaSharp you can provide a path to clip out of the drawing, which is what we do above the slider thumb.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-csharp&quot; data-lang=&quot;csharp&quot;&gt;&lt;span class=&quot;n&quot;&gt;SKPath&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;clipPath&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;SKPath&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;ParseSvgPathData&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;M.021 28.481a25.933 25.933 0 0 0 8.824-2.112 27.72 27.72 0 0 0 7.391-5.581l19.08-17.045S39.879.5 44.516.5s9.352 3.243 9.352 3.243l20.74 18.628a30.266 30.266 0 0 0 4.525 3.545c3.318 2.263 11.011 2.564 11.011 2.564z&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+&lt;span class=&quot;p&quot;&gt;...&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;// get density&lt;/span&gt;
+&lt;span class=&quot;kt&quot;&gt;float&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;density&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;info&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Width&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;float&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Width&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;// get the path of the clip region&lt;/span&gt;
+&lt;span class=&quot;kt&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;scaledClipPath&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;SKPath&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;clipPath&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;scaledClipPath&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Transform&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SKMatrix&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;MakeScale&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;density&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;density&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;scaledClipPath&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;GetTightBounds&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;out&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tightBounds&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;// apply translations to position the clip path&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;canvas&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Translate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;translateX&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;translateY&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;canvas&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;ClipPath&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;scaledClipPath&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;SKClipOperation&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Difference&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;canvas&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Translate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;translateX&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;translateY&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+&lt;span class=&quot;p&quot;&gt;...&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;One thing to note in the code above is that when you are dealing with SkiaSharp you are dealing with pixels, so if you are used to working with Xamarin.Forms units you need to actually work out the scaling of your device.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;The key line in there is the &lt;code class=&quot;highlighter-rouge&quot;&gt;ClipPath&lt;/code&gt; method call which uses the path and a &lt;code class=&quot;highlighter-rouge&quot;&gt;SKClipOperation.Difference&lt;/code&gt; which basically means, only render whatever you output where it falls outside of the clip path.  One thing to consider is that every drawing operation you perform after you call &lt;code class=&quot;highlighter-rouge&quot;&gt;ClipPath&lt;/code&gt; will have the clipping applied.  But one little trick you can do is restore you canvas to a point before the clipping by using &lt;code class=&quot;highlighter-rouge&quot;&gt;SKAutoCanvasRestore&lt;/code&gt;.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-csharp&quot; data-lang=&quot;csharp&quot;&gt;&lt;span class=&quot;c1&quot;&gt;// do some drawing stuff here - it won't be clipped&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;...&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;using&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;SKAutoCanvasRestore&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;canvas&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;...&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;canvas&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;ClipPath&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;scaledClipPath&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;SKClipOperation&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Difference&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;...&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;// everything here will have the clipping applied&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;...&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// after the USING the canvas is restored to it's previous state so no clipping will happen&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;...&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;&lt;em&gt;Handling User Input&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;It’s one thing to draw the control, it’s quite another to make it interact with the user.  In our case, we want to detect when the user drags on the control so that we can update the position of the thumb slider and the clipping path.  To do this we use a Xamarin.Forms effect which reports touch operations.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-xml&quot; data-lang=&quot;xml&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;Grid&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;skia:SKCanvasView&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;x:Name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;TempGaugeCanvas&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;PaintSurface=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;TempGaugeCanvas_PaintSurface&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;Grid.Effects&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;local:TouchEffect&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Capture=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;True&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;TouchAction=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;TouchEffect_TouchAction&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/Grid.Effects&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/Grid&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;So when we get a TouchAction we update the percent of the slider, which in turn calls &lt;code class=&quot;highlighter-rouge&quot;&gt;InvalidateSurface&lt;/code&gt; causing a redraw of the SkiaSharp canvas.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-csharp&quot; data-lang=&quot;csharp&quot;&gt;&lt;span class=&quot;k&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;TouchEffect_TouchAction&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;object&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sender&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;TouchEffect&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;TouchActionEventArgs&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;Percent&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Location&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;TempGaugeCanvas&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Width&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;100&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;double&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Percent&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;get&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;percent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;set&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;percent&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;TempGaugeCanvas&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;InvalidateSurface&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;The &lt;code class=&quot;highlighter-rouge&quot;&gt;TouchEffect&lt;/code&gt; I lifted from the awesome SkiaSharp samples. For more about the TouchEffect check out &lt;a href=&quot;https://docs.microsoft.com/en-us/xamarin/xamarin-forms/user-interface/graphics/skiasharp/paths/finger-paint&quot;&gt;Finger Painting in SkiaSharp&lt;/a&gt; in the Docs.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;switching-themes&quot;&gt;Switching Themes&lt;/h3&gt;
+&lt;p&gt;Another interesting bit about this design is the dark and light themes.  For this UI Challenge we make it so when you click on the profile image it toggles between dark and light.  In a real application you would probably tie this to user preferences, or even cooler, to the ambient light sensor of the device so it automatically switches based on lighting conditions. For us thought, it’s just tied to the profile image, like so:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-csharp&quot; data-lang=&quot;csharp&quot;&gt;&lt;span class=&quot;k&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;ProfileImage_Tapped&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;object&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sender&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;EventArgs&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;themeName&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;light&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;themeName&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;dark&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;themeName&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;light&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;n&quot;&gt;ThemeHelper&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;ChangeTheme&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;themeName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;The result is quite nice though, as shown in this video:&lt;/p&gt;
+
+&lt;div class=&quot;myvideo&quot;&gt;
+   &lt;video style=&quot;display:block; height:600px;&quot; autoplay=&quot;&quot; controls=&quot;&quot; loop=&quot;loop&quot;&gt;
+       &lt;source src=&quot;assets/videos/dayvsnight-themechange.mp4&quot; type=&quot;video/mp4&quot; /&gt;
+   &lt;/video&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;em&gt;Multiple Theme Files&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;I have multiple themes (technically &lt;code class=&quot;highlighter-rouge&quot;&gt;ResourceDictionary&lt;/code&gt;) that have different values for resources. For example:&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;LightTheme.xaml&lt;/strong&gt;&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-xml&quot; data-lang=&quot;xml&quot;&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;ResourceDictionary&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;xmlns=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;http://xamarin.com/schemas/2014/forms&quot;&lt;/span&gt; 
+             &lt;span class=&quot;na&quot;&gt;xmlns:x=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;http://schemas.microsoft.com/winfx/2009/xaml&quot;&lt;/span&gt;
+             &lt;span class=&quot;na&quot;&gt;x:Class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;DayVsNight.Themes.LightTheme&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+
+    &lt;span class=&quot;c&quot;&gt;&amp;lt;!-- Background Image --&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;x:String&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;x:Key=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;MountainImage&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;mountain_light&lt;span class=&quot;nt&quot;&gt;&amp;lt;/x:String&amp;gt;&lt;/span&gt;
+
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;Color&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;x:Key=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;HeaderColor&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;#213654&lt;span class=&quot;nt&quot;&gt;&amp;lt;/Color&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;Color&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;x:Key=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;ArrowColor&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;#768ea0&lt;span class=&quot;nt&quot;&gt;&amp;lt;/Color&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;Color&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;x:Key=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;BorderColor&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;#d2d7dd&lt;span class=&quot;nt&quot;&gt;&amp;lt;/Color&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;Color&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;x:Key=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;TagColor&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;#ffa318&lt;span class=&quot;nt&quot;&gt;&amp;lt;/Color&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;Color&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;x:Key=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;TabSubTextColor&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;#96a7dd&lt;span class=&quot;nt&quot;&gt;&amp;lt;/Color&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;Color&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;x:Key=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;SubTextColor&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;#95a8b6&lt;span class=&quot;nt&quot;&gt;&amp;lt;/Color&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;Color&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;x:Key=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;TempLabelColor&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;#ffffff&lt;span class=&quot;nt&quot;&gt;&amp;lt;/Color&amp;gt;&lt;/span&gt;
+    
+    &lt;span class=&quot;c&quot;&gt;&amp;lt;!--BackgroundGradients--&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;Color&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;x:Key=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;BackgroundGradientStartColor&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;#FFF1EA&lt;span class=&quot;nt&quot;&gt;&amp;lt;/Color&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;Color&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;x:Key=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;BackgroundGradientMidColor&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;#D6D7E3&lt;span class=&quot;nt&quot;&gt;&amp;lt;/Color&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;Color&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;x:Key=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;BackgroundGradientEndColor&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;#F0F6FF&lt;span class=&quot;nt&quot;&gt;&amp;lt;/Color&amp;gt;&lt;/span&gt;
+    
+    &lt;span class=&quot;c&quot;&gt;&amp;lt;!--Gauge Gradients--&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;Color&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;x:Key=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;GaugeGradientStartColor&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;#99C2FF&lt;span class=&quot;nt&quot;&gt;&amp;lt;/Color&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;Color&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;x:Key=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;GaugeGradientEndColor&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;#FB7D80&lt;span class=&quot;nt&quot;&gt;&amp;lt;/Color&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/ResourceDictionary&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;&lt;strong&gt;DarkTheme.xaml&lt;/strong&gt;&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-xml&quot; data-lang=&quot;xml&quot;&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;ResourceDictionary&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;xmlns=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;http://xamarin.com/schemas/2014/forms&quot;&lt;/span&gt; 
+             &lt;span class=&quot;na&quot;&gt;xmlns:x=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;http://schemas.microsoft.com/winfx/2009/xaml&quot;&lt;/span&gt;
+             &lt;span class=&quot;na&quot;&gt;x:Class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;DayVsNight.Themes.DarkTheme&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+
+    &lt;span class=&quot;c&quot;&gt;&amp;lt;!-- Background Image --&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;x:String&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;x:Key=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;MountainImage&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;mountain_dark&lt;span class=&quot;nt&quot;&gt;&amp;lt;/x:String&amp;gt;&lt;/span&gt;
+
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;Color&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;x:Key=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;HeaderColor&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;#FFFFFF&lt;span class=&quot;nt&quot;&gt;&amp;lt;/Color&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;Color&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;x:Key=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;ArrowColor&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;#768ea0&lt;span class=&quot;nt&quot;&gt;&amp;lt;/Color&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;Color&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;x:Key=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;BorderColor&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;#d2d7dd&lt;span class=&quot;nt&quot;&gt;&amp;lt;/Color&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;Color&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;x:Key=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;TagColor&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;#ffa318&lt;span class=&quot;nt&quot;&gt;&amp;lt;/Color&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;Color&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;x:Key=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;TabSubTextColor&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;#FFFFFF&lt;span class=&quot;nt&quot;&gt;&amp;lt;/Color&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;Color&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;x:Key=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;SubTextColor&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;#FFFFFF&lt;span class=&quot;nt&quot;&gt;&amp;lt;/Color&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;Color&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;x:Key=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;TempLabelColor&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;#ffffff&lt;span class=&quot;nt&quot;&gt;&amp;lt;/Color&amp;gt;&lt;/span&gt;
+
+    &lt;span class=&quot;c&quot;&gt;&amp;lt;!--BackgroundGradients--&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;Color&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;x:Key=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;BackgroundGradientStartColor&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;#E8D6CB&lt;span class=&quot;nt&quot;&gt;&amp;lt;/Color&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;Color&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;x:Key=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;BackgroundGradientMidColor&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;#6683A9&lt;span class=&quot;nt&quot;&gt;&amp;lt;/Color&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;Color&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;x:Key=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;BackgroundGradientEndColor&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;#192E4A&lt;span class=&quot;nt&quot;&gt;&amp;lt;/Color&amp;gt;&lt;/span&gt;
+
+    &lt;span class=&quot;c&quot;&gt;&amp;lt;!--Gauge Gradients--&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;Color&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;x:Key=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;GaugeGradientStartColor&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;#7A89B1&lt;span class=&quot;nt&quot;&gt;&amp;lt;/Color&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;Color&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;x:Key=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;GaugeGradientEndColor&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;#FB7D80&lt;span class=&quot;nt&quot;&gt;&amp;lt;/Color&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/ResourceDictionary&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;For this challenge we just have a dark and light theme, but of course you could have as many themes as you like. Or even allow the user to create their own.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;em&gt;Theme Switcher&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;To go along with the themes we have a helper to switch between them.  This essentially just loads resources from a resource dictionary into the application resources and then fires a message through the &lt;code class=&quot;highlighter-rouge&quot;&gt;MessagingCenter&lt;/code&gt; so that other parts of the application can know when themes are switched.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-csharp&quot; data-lang=&quot;csharp&quot;&gt;&lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;ThemeHelper&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;string&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;CurrentTheme&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;ChangeTheme&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;string&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;theme&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;// don't change to the same theme&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;theme&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;CurrentTheme&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+        &lt;span class=&quot;n&quot;&gt;ResourceDictionary&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;applicationResourceDictionary&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Application&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Current&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Resources&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;ResourceDictionary&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;newTheme&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+        &lt;span class=&quot;k&quot;&gt;switch&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;theme&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;ToLowerInvariant&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;light&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;newTheme&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;LightTheme&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;break&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;dark&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;newTheme&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;DarkTheme&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;break&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+        &lt;span class=&quot;k&quot;&gt;foreach&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;merged&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;newTheme&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;MergedDictionaries&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;applicationResourceDictionary&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;MergedDictionaries&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Add&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;merged&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+        &lt;span class=&quot;nf&quot;&gt;ManuallyCopyThemes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;newTheme&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;applicationResourceDictionary&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+        &lt;span class=&quot;n&quot;&gt;CurrentTheme&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;theme&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;MessagingCenter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Send&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ThemeMessage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;ThemeMessage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ThemeMessage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ThemeChanged&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;ManuallyCopyThemes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ResourceDictionary&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fromResource&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ResourceDictionary&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;toResource&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;foreach&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;item&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fromResource&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Keys&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;toResource&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;item&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fromResource&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;item&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;&lt;em&gt;Using Dynamic Resources&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;In order for Views to respond to changes in the Application Resources the key is to use &lt;code class=&quot;highlighter-rouge&quot;&gt;DynamicResource&lt;/code&gt; instead of &lt;code class=&quot;highlighter-rouge&quot;&gt;StaticResource&lt;/code&gt;.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;DynamicResource&lt;/code&gt; will automatically respond if the resource value changes, &lt;a href=&quot;https://docs.microsoft.com/en-us/xamarin/xamarin-forms/user-interface/styles/xaml/dynamic&quot;&gt;check the documentation here&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;As an example, if you look at the styles setup in the &lt;code class=&quot;highlighter-rouge&quot;&gt;App.xaml&lt;/code&gt;, you’ll see that I have used &lt;code class=&quot;highlighter-rouge&quot;&gt;DynamicResource&lt;/code&gt; for the &lt;code class=&quot;highlighter-rouge&quot;&gt;TextColor&lt;/code&gt; so that it’ll update when the &lt;code class=&quot;highlighter-rouge&quot;&gt;ThemeManager&lt;/code&gt; changes the Color values, no additional code required.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-xml&quot; data-lang=&quot;xml&quot;&gt;&lt;span class=&quot;c&quot;&gt;&amp;lt;!--  Styles  --&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;Style&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;x:Key=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Header&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;TargetType=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Label&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;Setter&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Property=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;FontFamily&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Value=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{StaticResource TextBold}&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;Setter&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Property=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;FontSize&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Value=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;30&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;Setter&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Property=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;TextColor&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Value=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{DynamicResource HeaderColor}&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/Style&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;And to make the mountain image at the bottom change it is dynamically linked to an image name from the theme.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-xml&quot; data-lang=&quot;xml&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;Image&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;Grid.RowSpan=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;2&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;Aspect=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;AspectFill&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;HorizontalOptions=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Fill&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;Source=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{DynamicResource MountainImage}&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;VerticalOptions=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;End&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;&lt;em&gt;Sending Theme Message&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;One aspect that will not automatically update when the theme changes is the SkiaSharp elements, so we need to trigger them to update somehow. As mentioned previously, we use the &lt;code class=&quot;highlighter-rouge&quot;&gt;MessagingCenter&lt;/code&gt; (although any notification mechanism would work).&lt;/p&gt;
+
+&lt;p&gt;In the &lt;code class=&quot;highlighter-rouge&quot;&gt;MainPage&lt;/code&gt; we register for notifications in the OnAppearing.  When it fires (from the &lt;code class=&quot;highlighter-rouge&quot;&gt;ThemeHelper&lt;/code&gt;), we call &lt;code class=&quot;highlighter-rouge&quot;&gt;UpdateTheme&lt;/code&gt;, which effectively just calls &lt;code class=&quot;highlighter-rouge&quot;&gt;InvalidateSurface&lt;/code&gt; which asks SkiaSharp to redraw the background.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-csharp&quot; data-lang=&quot;csharp&quot;&gt;&lt;span class=&quot;k&quot;&gt;protected&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;override&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;OnAppearing&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;base&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;OnAppearing&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;MessagingCenter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Subscribe&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ThemeMessage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ThemeMessage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ThemeChanged&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tm&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;UpdateTheme&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tm&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;UpdateTheme&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ThemeMessage&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tm&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;BackgroundGradient&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;InvalidateSurface&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;protected&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;override&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;OnDisappearing&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;base&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;OnDisappearing&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;MessagingCenter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Unsubscribe&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ThemeMessage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ThemeMessage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ThemeChanged&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Always remember to Unsubscribe from the &lt;code class=&quot;highlighter-rouge&quot;&gt;MessagingCenter&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Finally, in the Background SkiaSharp paint code we read the new colour values from the application dictionary that are used to draw the Gradient.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-csharp&quot; data-lang=&quot;csharp&quot;&gt;    &lt;span class=&quot;c1&quot;&gt;// get the brush based on the theme&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;SKColor&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;gradientStart&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Color&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Application&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Current&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Resources&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;BackgroundGradientStartColor&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]).&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;ToSKColor&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;SKColor&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;gradientMid&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Color&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Application&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Current&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Resources&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;BackgroundGradientMidColor&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]).&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;ToSKColor&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;SKColor&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;gradientEnd&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Color&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Application&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Current&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Resources&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;BackgroundGradientEndColor&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]).&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;ToSKColor&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;The same sort of logic also applies to the background gradients in the &lt;code class=&quot;highlighter-rouge&quot;&gt;GaugeView&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;security-zones&quot;&gt;Security Zones&lt;/h3&gt;
+&lt;p&gt;The two sections right down the bottom of the page are simply horizontal scrolling &lt;code class=&quot;highlighter-rouge&quot;&gt;StackLayout&lt;/code&gt; with &lt;code class=&quot;highlighter-rouge&quot;&gt;Grids&lt;/code&gt; in them and using the &lt;code class=&quot;highlighter-rouge&quot;&gt;PancakeView&lt;/code&gt; to give them rounded corners.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-xml&quot; data-lang=&quot;xml&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;ScrollView&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;HorizontalScrollBarVisibility=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Never&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Orientation=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Horizontal&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;StackLayout&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Orientation=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Horizontal&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;c&quot;&gt;&amp;lt;!--  room  --&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;pancake:PancakeView&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;CornerRadius=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;10&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;Grid&lt;/span&gt;
+                &lt;span class=&quot;na&quot;&gt;BackgroundColor=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Red&quot;&lt;/span&gt;
+                &lt;span class=&quot;na&quot;&gt;HeightRequest=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;100&quot;&lt;/span&gt;
+                &lt;span class=&quot;na&quot;&gt;WidthRequest=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;150&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+                &lt;span class=&quot;nt&quot;&gt;&amp;lt;Image&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Aspect=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;AspectFill&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Source=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Room1&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+                &lt;span class=&quot;nt&quot;&gt;&amp;lt;Frame&lt;/span&gt;
+                    &lt;span class=&quot;na&quot;&gt;Margin=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;5&quot;&lt;/span&gt;
+                    &lt;span class=&quot;na&quot;&gt;Padding=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;10,5&quot;&lt;/span&gt;
+                    &lt;span class=&quot;na&quot;&gt;BackgroundColor=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{StaticResource TagColor}&quot;&lt;/span&gt;
+                    &lt;span class=&quot;na&quot;&gt;CornerRadius=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;15&quot;&lt;/span&gt;
+                    &lt;span class=&quot;na&quot;&gt;HasShadow=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;False&quot;&lt;/span&gt;
+                    &lt;span class=&quot;na&quot;&gt;HorizontalOptions=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Start&quot;&lt;/span&gt;
+                    &lt;span class=&quot;na&quot;&gt;VerticalOptions=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Start&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+                    &lt;span class=&quot;nt&quot;&gt;&amp;lt;Label&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Style=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{StaticResource TagLabel}&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Text=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Zone 1&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+                &lt;span class=&quot;nt&quot;&gt;&amp;lt;/Frame&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;/Grid&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;/pancake:PancakeView&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;pancake:PancakeView&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;CornerRadius=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;10&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;Grid&lt;/span&gt;
+                &lt;span class=&quot;na&quot;&gt;BackgroundColor=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Red&quot;&lt;/span&gt;
+                &lt;span class=&quot;na&quot;&gt;HeightRequest=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;100&quot;&lt;/span&gt;
+                &lt;span class=&quot;na&quot;&gt;WidthRequest=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;150&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+                &lt;span class=&quot;nt&quot;&gt;&amp;lt;Image&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Aspect=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;AspectFill&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Source=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Room2&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+                &lt;span class=&quot;nt&quot;&gt;&amp;lt;Frame&lt;/span&gt;
+                    &lt;span class=&quot;na&quot;&gt;Margin=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;5&quot;&lt;/span&gt;
+                    &lt;span class=&quot;na&quot;&gt;Padding=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;10,5&quot;&lt;/span&gt;
+                    &lt;span class=&quot;na&quot;&gt;BackgroundColor=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{StaticResource TagColor}&quot;&lt;/span&gt;
+                    &lt;span class=&quot;na&quot;&gt;CornerRadius=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;15&quot;&lt;/span&gt;
+                    &lt;span class=&quot;na&quot;&gt;HasShadow=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;False&quot;&lt;/span&gt;
+                    &lt;span class=&quot;na&quot;&gt;HorizontalOptions=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Start&quot;&lt;/span&gt;
+                    &lt;span class=&quot;na&quot;&gt;VerticalOptions=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Start&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+                    &lt;span class=&quot;nt&quot;&gt;&amp;lt;Label&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Style=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{StaticResource TagLabel}&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Text=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Zone 2&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+                &lt;span class=&quot;nt&quot;&gt;&amp;lt;/Frame&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;/Grid&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;/pancake:PancakeView&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;pancake:PancakeView&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;CornerRadius=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;10&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;Grid&lt;/span&gt;
+                &lt;span class=&quot;na&quot;&gt;BackgroundColor=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Red&quot;&lt;/span&gt;
+                &lt;span class=&quot;na&quot;&gt;HeightRequest=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;100&quot;&lt;/span&gt;
+                &lt;span class=&quot;na&quot;&gt;WidthRequest=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;150&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+                &lt;span class=&quot;nt&quot;&gt;&amp;lt;Image&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Aspect=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;AspectFill&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Source=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Room3&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+                &lt;span class=&quot;nt&quot;&gt;&amp;lt;Frame&lt;/span&gt;
+                    &lt;span class=&quot;na&quot;&gt;Margin=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;5&quot;&lt;/span&gt;
+                    &lt;span class=&quot;na&quot;&gt;Padding=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;10,5&quot;&lt;/span&gt;
+                    &lt;span class=&quot;na&quot;&gt;BackgroundColor=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{StaticResource TagColor}&quot;&lt;/span&gt;
+                    &lt;span class=&quot;na&quot;&gt;CornerRadius=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;15&quot;&lt;/span&gt;
+                    &lt;span class=&quot;na&quot;&gt;HasShadow=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;False&quot;&lt;/span&gt;
+                    &lt;span class=&quot;na&quot;&gt;HorizontalOptions=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Start&quot;&lt;/span&gt;
+                    &lt;span class=&quot;na&quot;&gt;VerticalOptions=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Start&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+                    &lt;span class=&quot;nt&quot;&gt;&amp;lt;Label&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Style=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{StaticResource TagLabel}&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Text=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Zone 3&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+                &lt;span class=&quot;nt&quot;&gt;&amp;lt;/Frame&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;/Grid&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;/pancake:PancakeView&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/StackLayout&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/ScrollView&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;In a real solution, you might want to try using the new &lt;code class=&quot;highlighter-rouge&quot;&gt;CollectionView&lt;/code&gt;, but for the sake of our exercise, the &lt;code class=&quot;highlighter-rouge&quot;&gt;ScrollView&lt;/code&gt; will do.&lt;/p&gt;
+
+&lt;h2 id=&quot;the-final-result&quot;&gt;The Final Result&lt;/h2&gt;
+&lt;p&gt;I think we could call this Xamarin.Forms UI Challenge a success. It’s great to see how well SkiaSharp integrates with Xamarin.Forms to allow us to create crazy-cool custom controls. Also multiple themes/styles is not too hard to implement as well.&lt;/p&gt;
+
+&lt;h3 id=&quot;ios-version&quot;&gt;iOS Version&lt;/h3&gt;
+&lt;div class=&quot;myvideo&quot;&gt;
+   &lt;video style=&quot;display:block; height:600px;&quot; autoplay=&quot;&quot; controls=&quot;&quot; loop=&quot;loop&quot;&gt;
+       &lt;source src=&quot;assets/videos/dayvsnight-ios.mp4&quot; type=&quot;video/mp4&quot; /&gt;
+   &lt;/video&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;android-version&quot;&gt;Android Version&lt;/h3&gt;
+&lt;div class=&quot;myvideo&quot;&gt;
+   &lt;video style=&quot;display:block; height:600px;&quot; autoplay=&quot;&quot; controls=&quot;&quot; loop=&quot;loop&quot;&gt;
+       &lt;source src=&quot;assets/videos/dayvsnight-android.mp4&quot; type=&quot;video/mp4&quot; /&gt;
+   &lt;/video&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;get-the-code&quot;&gt;Get the code&lt;/h2&gt;
+&lt;p&gt;All the code is available open source on GitHub at &lt;a href=&quot;https://github.com/kphillpotts/DayVsNight&quot;&gt;https://github.com/kphillpotts/DayVsNight&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;techniques-used&quot;&gt;Techniques Used&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;ImageCirclePlugin&lt;/li&gt;
+  &lt;li&gt;PancakeView&lt;/li&gt;
+  &lt;li&gt;Custom Fonts&lt;/li&gt;
+  &lt;li&gt;XAML Styles and Resources&lt;/li&gt;
+  &lt;li&gt;Theme Switching&lt;/li&gt;
+  &lt;li&gt;SkiaSharp controls&lt;/li&gt;
+  &lt;li&gt;MessagingCenter notifications&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;watch-me-code-it&quot;&gt;Watch me code it&lt;/h2&gt;
+&lt;p&gt;I actually did this UI Challenge live over Twitch, so if you want to watch hours of me coding this up then check out these recordings over at YouTube.&lt;/p&gt;
+
+&lt;h4 id=&quot;part-1&quot;&gt;Part 1&lt;/h4&gt;
+&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/p6VTXVfJMoQ&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
+
+&lt;h4 id=&quot;part-2&quot;&gt;Part 2&lt;/h4&gt;
+&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/wl85fSpH4vE&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
+
+&lt;h4 id=&quot;part-3&quot;&gt;Part 3&lt;/h4&gt;
+&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/dB8eXit39UA&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
+
+&lt;p&gt;If you want to catch me doing other live coding things follow me on Twitch. It’s a great platform where we can chat as we build software, ask questions, submit code).  Follow me at &lt;a href=&quot;https://www.twitch.tv/kymphillpotts&quot;&gt;https://www.twitch.tv/kymphillpotts&lt;/a&gt; and come join in the fun!&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://twitch.tv/kymphillpotts&quot; target=&quot;_blank&quot;&gt;&lt;img src=&quot;assets/images/twitch_banner.png&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;I hope you find these posts useful, feel free to leave me a comment below or reach out to me via &lt;a href=&quot;https://twitter.com/kphillpotts&quot;&gt;Twitter&lt;/a&gt; with some feedback.&lt;/p&gt;
+
+&lt;p&gt;Until next time, Happy Coding&lt;/p&gt;
+
+&lt;p&gt;❤
+Kym&lt;/p&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>Kym Phillpotts</name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="Xamarin" />
+      
+
+      
+        <summary type="html">Sometimes when developing Xamarin.Forms user interfaces you get to a point where you just need to handle the drawing yourself, and for that SkiaSharp is invaluable. And that’s one of the core pieces of this UI Challenge, using SkiaSharp to create controls that are unlike any other.</summary>
+      
+
+      
+      
+    </entry>
   
     <entry>
       <title type="html">Xamarin.Forms UI Challenges - Art Auction</title>
@@ -1130,7 +1664,7 @@ Kym&lt;/p&gt;</content>
       
 
       
-        <summary type="html">I’ve been writing a few unit tests recently. I actually like writing unit tests, I find something very cathartic about seeing those little green ticks show up.  However, one thing that can make writing unit tests a drag is setting up testing data for each test. Well, there are some nice patterns and tools out there to help. Let’s check some out…</summary>
+        <summary type="html">I’ve been writing a few unit tests recently. I actually like writing unit tests, I find something very cathartic about seeing those little green ticks show up.  However, one thing that can make writing unit tests a drag is setting up testing data for each test. Well, there are some nice patterns and tools out there to help. Let’s check some out… AutoFixture If you just need to generate some data (and don’t care too much about what it contains) you might want to have a look at a nice little library called AutoFixture AutoFixture is an open source library for .NET designed to minimize the ‘Arrange’ phase of your unit tests in order to maximize maintainability. Its primary goal is to allow developers to focus on what is being tested rather than how to set up the test scenario, by making it easier to create object graphs containing test data. TestCase Attribute Sometimes you want to run a number of values through a unit test and you don’t necessarily want to write different unit tests for each of them. The TestCase attribute is very useful here because you can get Nunit to just pass a series of values in: [TestCase(12, 2, 6)] [TestCase(12, 4, 3)] public void DivideTest(int n, int d, int q) { Assert.AreEqual(q, n / d); } A really nice thing about TestCase is that each element will appear as a different unit test in your runner, which means if one of the values fails you can instantly see which one failed. I’ve used this pretty extensively in the past, but one area where this starts to make your unit tests hard to understand is when you have a lot of values – pretty soon the number of attributes starts to make it kind of difficult to understand. But fear not, the TestCaseSource attribute is here to save you. TestCaseSource Attribute This is something that has been around forever, but I’ve never bothered playing with. Turns out it’s a really nice way of structuring that test data. Basically, you create a class that returns an IEnumerable of your test data. public class MyTests { [Test, TestCaseSource(typeof(MyDataClass), &quot;TestCases&quot;)] public int DivideTest(int n, int d) { return n / d; } } public class MyDataClass { public static IEnumerable TestCases { get { yield return new TestCaseData(12, 3).Returns(4); yield return new TestCaseData(12, 2).Returns(6); yield return new TestCaseData(12, 4).Returns(3); } } } Now in my case, I was writing some tests for a simple converter application with some numeric buttons, a backspace key, a decimal point key ‘.’. You know, a numeric keypad. It actually turns out that there are a number of things to consider. For example, what if someone tries to enter two decimal points, or maybe tries to have a bunch of leading zeros. Putting the scenarios into a TestCaseSource made this easy to write and also easy to visualize. NOTE: my architecture is MVVM, so I made sure I used commands behind all the buttons which means I can test what happens when a user presses a button (effectively testing the UI). For my unit test inputs, I provided a string with the keys pressed and had a little method to execute the appropriate command on the ViewModel. [Test, TestCaseSource(typeof(KeySequenceTestData), &quot;KeySequenceData&quot;)] public string KeySequence_Commands_GivesCorrectValue (string keySequence)  {     var vm = new MainViewModel();     foreach (var key in keySequence)         ProcessCharacter(vm, key);     return vm.FromValue; } private void ProcessCharacter(MainViewModel vm, char character) {     switch (character)     {         case '&amp;lt;': // user hits the backspace key             vm.BackSpaceCommand.Execute(null);             break;         case '.': // user hits the decimal point              vm.DecimalPointCommand.Execute(null);             break;         default: // any other key (which in case is a number key)             vm.NumberCommand.Execute(character.ToString());             break;     } } public class KeySequenceTestData {     public static IEnumerable KeySequenceData     {         get         {             // simple numeric value tests              yield return new TestCaseData(&quot;0&quot;).Returns(&quot;0&quot;);             yield return new TestCaseData(&quot;1&quot;).Returns(&quot;1&quot;);             yield return new TestCaseData(&quot;99&quot;).Returns(&quot;99&quot;);             yield return new TestCaseData(&quot;909&quot;).Returns(&quot;909&quot;);             // testing leading and trailing zeros             yield return new TestCaseData(&quot;00&quot;).Returns(&quot;0&quot;);             yield return new TestCaseData(&quot;10&quot;).Returns(&quot;10&quot;);             yield return new TestCaseData(&quot;0.&quot;).Returns(&quot;0.&quot;);             yield return new TestCaseData(&quot;.0&quot;).Returns(&quot;0.0&quot;);             yield return new TestCaseData(&quot;...0&quot;).Returns(&quot;0.0&quot;);             yield return new TestCaseData(&quot;.000&quot;).Returns(&quot;0.000&quot;);             yield return new TestCaseData(&quot;000.&quot;).Returns(&quot;0.&quot;);             yield return new TestCaseData(&quot;000.00&quot;).Returns(&quot;0.00&quot;);             yield return new TestCaseData(&quot;10.00001&quot;).Returns(&quot;10.00001&quot;);             yield return new TestCaseData(&quot;10.10&quot;).Returns(&quot;10.10&quot;);             yield return new TestCaseData(&quot;10..10&quot;).Returns(&quot;10.10&quot;);             yield return new TestCaseData(&quot;10.10.&quot;).Returns(&quot;10.10&quot;);             yield return new TestCaseData(&quot;001.10.&quot;).Returns(&quot;1.10&quot;);             // testing hitting the back key             yield return new TestCaseData(&quot;&amp;lt;&quot;).Returns(&quot;0&quot;);             yield return new TestCaseData(&quot;&amp;lt;.&quot;).Returns(&quot;0.&quot;);             yield return new TestCaseData(&quot;&amp;lt;&amp;lt;&quot;).Returns(&quot;0&quot;);             yield return new TestCaseData(&quot;0&amp;lt;0&quot;).Returns(&quot;0&quot;);             yield return new TestCaseData(&quot;12&amp;lt;&quot;).Returns(&quot;1&quot;);             yield return new TestCaseData(&quot;1&amp;lt;2&quot;).Returns(&quot;2&quot;);             yield return new TestCaseData(&quot;12&amp;lt;&amp;lt;&quot;).Returns(&quot;0&quot;);             yield return new TestCaseData(&quot;0.9&amp;lt;&quot;).Returns(&quot;0.&quot;);             yield return new TestCaseData(&quot;0.&amp;lt;9&amp;lt;&quot;).Returns(&quot;0&quot;);         }     } } The Builder Pattern for Test Data The Builder pattern turns out to be a nice pattern for creating test data. I first heard of this usage from Steve Smith when he appeared on .NET Rocks episode 1494. You should take a listen to that episode. The Basic idea is you create yourself a Builder class for your model object that goes and creates an object for you with some default values and then you have builder methods that allow you to set specific values if that is important for your test. Why not just create the objects with their values straight in your test? Well, you don’t want your tests littered with code to setup objects because it distracts you from the purpose of your test… and what if you change that model object later, you’ve got a thousand different unit tests you need to update. Here is a trivial example: As I said, I’m working on a simple converter application which has a variety of different Unit objects. So I create myself Builder object which allows me to easily create a Unit to covert. public class UnitBuilder { private string name = &quot;A Unit&quot;; private string description = &quot;Description of a unit&quot;; private UnitCategory category = UnitCategory.Weight; private double baseUnitValue = 1; public BaseUnit Build() { return new BaseUnit(name, description, category, baseUnitValue); } public UnitBuilder WithName(string name) { this.name = name; return this; } public UnitBuilder WithDescription(string description) { this.description = description; return this; } public UnitBuilder WithCategory(UnitCategory category) { this.category = category; return this; } public UnitBuilder WithBaseUnitValue (double baseUnitValue) { this.baseUnitValue = baseUnitValue; return this; } /// /// Implicit converter object, so we can turn a builder straight into a unit /// Builder Instance public static implicit operator BaseUnit(UnitBuilder instance) { return instance.Build(); } } Once I have that setup, within my unit test I can use this builder object to create my Unit objects. It will have default values but allows me to override whatever I want, all without having a hard dependency on the constructor for the object. For example, [Test] public void SimpleConversion_OneUnit() {     BaseUnit cm = new UnitBuilder().WithName(&quot;centimeters&quot;).WithBaseUnitValue(1);     BaseUnit meter = new UnitBuilder().WithName(&quot;meters&quot;).WithBaseUnitValue(100);     Converter.ConvertUnit(cm, meter, 1).ShouldEqual(0.01);     Converter.ConvertUnit(meter, cm, 1).ShouldEqual(100); } This just makes it really nice to construct tests which are nice a readable without being polluted with too much setup code. You can read a bunch more about this pattern at: Flexible and expressive unit tests with the builder pattern Improve tests with the builder pattern for test data One last thing you may notice, I also used a little library called Should, which makes reading the unit test just a teeny-tiny bit more readable. public void Should_assertions() { object obj = null; obj.ShouldBeNull(); obj = new object(); obj.ShouldBeType(typeof(object)); obj.ShouldEqual(obj); obj.ShouldNotBeNull(); obj.ShouldNotBeSameAs(new object()); obj.ShouldNotBeType(typeof(string)); obj.ShouldNotEqual(&quot;foo&quot;); obj = &quot;x&quot;; obj.ShouldNotBeInRange(&quot;y&quot;, &quot;z&quot;); obj.ShouldBeInRange(&quot;a&quot;, &quot;z&quot;); obj.ShouldBeSameAs(&quot;x&quot;); &quot;This String&quot;.ShouldContain(&quot;This&quot;); &quot;This String&quot;.ShouldNotBeEmpty(); &quot;This String&quot;.ShouldNotContain(&quot;foobar&quot;); false.ShouldBeFalse(); true.ShouldBeTrue(); var list = new List&amp;lt;&amp;gt;(); list.ShouldBeEmpty(); list.ShouldNotContain(new object()); var item = new object(); list.Add(item); list.ShouldNotBeEmpty(); list.ShouldContain(item); } In Conclusion These are just some little things that you may consider next time you are writing unit tests. It will make setting up your data a little easier whilst also creating more maintainable and easier to read unit tests. Till next time, happy coding!</summary>
       
 
       
@@ -1855,314 +2389,6 @@ Kym&lt;/p&gt;</content>
 
       
         <summary type="html">A layout I’m seeing more and more these days is a timeline of activities.  This is useful for things like transportation schedules or class times.  So let’s put together a simple layout for a timeline using a ListView with headers and footers and a custom ViewCell.</summary>
-      
-
-      
-      
-    </entry>
-  
-    <entry>
-      <title type="html">Xamarin.Forms Layout Challenges – Social Network App</title>
-      <link href="https://kymphillpotts.com/social-network-app-layout-design-in-xamarin-forms/" rel="alternate" type="text/html" title="Xamarin.Forms Layout Challenges &amp;#8211; Social Network App" />
-      <published>2017-03-06T08:53:33+11:00</published>
-      <updated>2017-03-06T08:53:33+11:00</updated>
-      <id>https://kymphillpotts.com/social-network-app-layout-design-in-xamarin-forms</id>
-      <content type="html" xml:base="https://kymphillpotts.com/social-network-app-layout-design-in-xamarin-forms/">&lt;p&gt;Xamarin.Forms is a crazy productive framework for building cross platform apps. However, straight out of the box you might find your User Interfaces are a bit bland. A good understanding of the layout system (and a good graphic designer) are really going to help you make your UI’s awesome. (or at least not suck).&lt;!--more--&gt;&lt;/p&gt;
-
-&lt;p&gt;So let’s see how to recreate a simple Social Network profile type page in Xamarin.Forms.&lt;/p&gt;
-
-&lt;p&gt;There are two challenge ingredients for this app.&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;Creating a curved header Image&lt;/li&gt;
-  &lt;li&gt;Making a Profile Image that overlaps the header&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;The design of the app looks a little like this:&lt;/p&gt;
-
-&lt;p&gt;&lt;img class=&quot;size-medium aligncenter&quot; src=&quot;https://i0.wp.com/raw.githubusercontent.com/kphillpotts/XamarinFormsLayoutChallenges/master/SocialNetwork/Screenshots/iPhone6-33.png?resize=248%2C440&amp;#038;ssl=1&quot; data-recalc-dims=&quot;1&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;basic-layout&quot;&gt;Basic Layout&lt;/h2&gt;
-
-&lt;p&gt;Grids are my default goto layout container for Xamarin.Forms. They aren’t perfect for every situation, but they do provide:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Proportional sizing of rows and columns,&lt;/li&gt;
-  &lt;li&gt;The ability to overlaying controls within a cell (or multiple cells), and&lt;/li&gt;
-  &lt;li&gt;They resize reasonably well by default&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;All of which make them pretty useful for a range of designs.&lt;/p&gt;
-
-&lt;p&gt;The basic structure of the page is a simple Grid with one column and multiple rows. Within the cells are stack layouts for some of the text elements that stack on each other, and to provide the three social stats across the page it has a nested grid with three columns.&lt;/p&gt;
-
-&lt;p&gt;Using Xamarin Inspector is a pretty good way of visualising the View Hierarchy.&lt;/p&gt;
-
-&lt;p&gt;&lt;img class=&quot;size-medium aligncenter&quot; src=&quot;https://i1.wp.com/raw.githubusercontent.com/kphillpotts/XamarinFormsLayoutChallenges/master/SocialNetwork/Screenshots/Inspector.png?resize=700%2C572&amp;#038;ssl=1&quot; data-recalc-dims=&quot;1&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;lets-break-it-down&quot;&gt;Let’s break it down&lt;/h2&gt;
-
-&lt;p&gt; &lt;/p&gt;
-
-&lt;h3 id=&quot;header&quot;&gt;Header&lt;/h3&gt;
-
-&lt;p&gt;The header is just basically an Image that fills the first row of the Grid. To get the curve at the bottom you have a couple of options.&lt;/p&gt;
-
-&lt;p&gt;&lt;span style=&quot;text-decoration: underline;&quot;&gt;&lt;strong&gt;Option 1: Pre-made Image&lt;/strong&gt;&lt;/span&gt;&lt;/p&gt;
-
-&lt;p&gt;You could create your header image with a curve at the bottom like this:&lt;/p&gt;
-
-&lt;p&gt;&lt;img class=&quot;alignnone size-medium&quot; src=&quot;https://i0.wp.com/raw.githubusercontent.com/kphillpotts/XamarinFormsLayoutChallenges/master/SocialNetwork/Screenshots/HeaderCurved.png?resize=360%2C200&amp;#038;ssl=1&quot; data-recalc-dims=&quot;1&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;The downside of this is that you have to prepare this ahead of time, and may not be appropriate for dynamically loaded images.&lt;/p&gt;
-
-&lt;p&gt;&lt;span style=&quot;text-decoration: underline;&quot;&gt;&lt;strong&gt;Option 2: Apply a mask&lt;/strong&gt;&lt;/span&gt;&lt;/p&gt;
-
-&lt;p&gt;Instead, we can kind of cheat and just add a mask image that lays over the bottom of the background header image. This is the option I went for here because it provides more flexibility. We could for example, have different masks for different OS’s or different Idioms (eg. Phone, Tablet, Desktop). The mask image could be any design you want, but for this I just went for a simple arc, like this (shadow added so you can see the shape).&lt;/p&gt;
-
-&lt;p&gt;&lt;img class=&quot;alignnone size-medium&quot; src=&quot;https://i0.wp.com/raw.githubusercontent.com/kphillpotts/XamarinFormsLayoutChallenges/master/SocialNetwork/Screenshots/CurvedMask-sample.png?resize=370%2C50&amp;#038;ssl=1&quot; data-recalc-dims=&quot;1&quot; /&gt;&lt;/p&gt;
-
-&lt;pre class=&quot;lang:xhtml decode:true&quot;&gt;&amp;lt;!-- header background --&amp;gt;
-&amp;lt;Image Source=&quot;HeaderBackground.png&quot; Aspect=&quot;AspectFill&quot;/&amp;gt;
-&amp;lt;Image Source=&quot;CurvedMask.png&quot; VerticalOptions=&quot;End&quot; Aspect=&quot;AspectFill&quot; Margin=&quot;0,0,0,-1&quot;/&amp;gt;&lt;/pre&gt;
-
-&lt;p&gt;It provides a nice effect and the only real downside is that it has to be the same colour as the background. You may notice that there is something slightly hacky in there and that is setting the `Margin` bottom to -1. This is just to cover off some weirdness you might get on different sizes where the background shows underneath (presumably due to rounding errors of the AspectFill). So putting the value to -1 just means it will handle that boundary condition.&lt;/p&gt;
-
-&lt;h3 id=&quot;profile-image&quot;&gt;Profile Image&lt;/h3&gt;
-
-&lt;p&gt;The profile image is just a simple graphic, but the trick to get it to overlay the background image is with just a couple of settings.&lt;/p&gt;
-
-&lt;pre class=&quot;lang:xhtml decode:true &quot;&gt;&amp;lt;Image Source=&quot;ProfilePic.png&quot; Margin=&quot;0,0,0,-50&quot; HeightRequest=&quot;100&quot; WidthRequest=&quot;100&quot; HorizontalOptions=&quot;Center&quot; VerticalOptions=&quot;End&quot;/&amp;gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Set the `WidthRequest` and `HeightRequest` to a known value (100 in this case)&lt;/li&gt;
-  &lt;li&gt;Set the `Margin` to a negative value so that it comes up the page by half of it’s height (50).&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;And that’s it.&lt;/p&gt;
-
-&lt;p&gt;Now I did kind of cheat because I’ve got a precreated image for this sample, but that’s because I just wanted to talk about layout. In a real app, I highly recommend you use the &lt;a href=&quot;https://github.com/jamesmontemagno/ImageCirclePlugin&quot;&gt;ImageCirclePlugin&lt;/a&gt; from James Montemagno, or use the &lt;a href=&quot;https://github.com/luberda-molinet/FFImageLoading&quot;&gt;FFImageLoading&lt;/a&gt; Library and apply a &lt;a href=&quot;https://github.com/luberda-molinet/FFImageLoading/wiki/Transformations-Guide#circletransformation&quot;&gt;CircleTransformation&lt;/a&gt; to the image.&lt;/p&gt;
-
-&lt;h3 id=&quot;scrollview&quot;&gt;ScrollView&lt;/h3&gt;
-
-&lt;p&gt;I’ve wrapped the main grid with a ScrollView, this is just so if the page ends up being larger than the screen then you can scroll down to the bottom.&lt;/p&gt;
-
-&lt;p&gt;Also there is a ScrollView around the Profile Description. Generally speaking having one ScrollView within another is a no-no, but in this case it’s not really a deal breaker because it is just there to handle the case where the profile description is just a little bit longer and pushes the button off the bottom of the page.&lt;/p&gt;
-
-&lt;h2 id=&quot;how-does-it-scale&quot;&gt;How does it scale?&lt;/h2&gt;
-
-&lt;p&gt; &lt;/p&gt;
-
-&lt;p&gt;The true test of any page is how does it scale across different sizes, and actually it does pretty well. That’s the magic of grids.&lt;/p&gt;
-
-&lt;p&gt;&lt;img class=&quot;alignnone size-medium&quot; src=&quot;https://i0.wp.com/raw.githubusercontent.com/kphillpotts/XamarinFormsLayoutChallenges/master/SocialNetwork/Screenshots/iPhone6-33.png?resize=248%2C440&amp;#038;ssl=1&quot; data-recalc-dims=&quot;1&quot; /&gt;&lt;img class=&quot;alignnone size-medium&quot; src=&quot;https://i1.wp.com/raw.githubusercontent.com/kphillpotts/XamarinFormsLayoutChallenges/master/SocialNetwork/Screenshots/iPhone5-33.png?resize=158%2C281&amp;#038;ssl=1&quot; data-recalc-dims=&quot;1&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;show-me-the-codez&quot;&gt;Show me the codez&lt;/h2&gt;
-
-&lt;pre class=&quot;lang:xhtml decode:true&quot;&gt;&amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&amp;gt;
-&amp;lt;ContentPage xmlns=&quot;http://xamarin.com/schemas/2014/forms&quot;
-             xmlns:x=&quot;http://schemas.microsoft.com/winfx/2009/xaml&quot;
-             xmlns:local=&quot;clr-namespace:SocialNetwork&quot;
-             x:Class=&quot;SocialNetwork.MainPage&quot;
-	BackgroundColor=&quot;White&quot;&amp;gt;
-
-    &amp;lt;ScrollView&amp;gt;
-        &amp;lt;Grid ColumnSpacing=&quot;0&quot; RowSpacing=&quot;0&quot;&amp;gt;
-            &amp;lt;Grid.RowDefinitions&amp;gt;
-                &amp;lt;RowDefinition Height=&quot;AUTO&quot; /&amp;gt;
-                &amp;lt;RowDefinition Height=&quot;AUTO&quot; /&amp;gt;
-                &amp;lt;RowDefinition Height=&quot;AUTO&quot; /&amp;gt;
-                &amp;lt;RowDefinition Height=&quot;*&quot; /&amp;gt;
-                &amp;lt;RowDefinition Height=&quot;AUTO&quot; /&amp;gt;
-            &amp;lt;/Grid.RowDefinitions&amp;gt;
-
-	    &amp;lt;!-- header background --&amp;gt;
-	    &amp;lt;Image Source=&quot;HeaderBackground.png&quot; Aspect=&quot;AspectFill&quot;/&amp;gt;
-	    &amp;lt;Image Source=&quot;CurvedMask.png&quot; VerticalOptions=&quot;End&quot; Aspect=&quot;AspectFill&quot; Margin=&quot;0,0,0,-1&quot;/&amp;gt;
-
-	    &amp;lt;!-- profile image --&amp;gt;
-	    &amp;lt;Image Source=&quot;ProfilePic.png&quot; Margin=&quot;0,0,0,-50&quot; HeightRequest=&quot;100&quot; WidthRequest=&quot;100&quot; HorizontalOptions=&quot;Center&quot; VerticalOptions=&quot;End&quot;/&amp;gt;
-
-	    &amp;lt;!-- Profile Name --&amp;gt;
-            &amp;lt;StackLayout Grid.Row=&quot;1&quot; HorizontalOptions=&quot;Center&quot; Padding=&quot;0,50,0,00&quot;&amp;gt;
-                &amp;lt;Label HorizontalTextAlignment=&quot;Center&quot; Text=&quot;Clementine&quot; Style=&quot;{StaticResource ProfileNameLabel}&quot;/&amp;gt;
-                &amp;lt;Label HorizontalTextAlignment=&quot;Center&quot; Text=&quot;Hipster Coffee Drinker&quot; Margin=&quot;0,-5&quot; Style=&quot;{StaticResource ProfileTagLabel}&quot;/&amp;gt;
-            &amp;lt;/StackLayout&amp;gt;
-
-	    &amp;lt;!-- Social Stats Section --&amp;gt;
-            &amp;lt;Grid Grid.Row=&quot;2&quot; ColumnSpacing=&quot;0&quot; RowSpacing=&quot;0&quot; Margin=&quot;0,30&quot;&amp;gt;
-                &amp;lt;Grid.ColumnDefinitions&amp;gt;
-                    &amp;lt;ColumnDefinition Width=&quot;*&quot; /&amp;gt;
-                    &amp;lt;ColumnDefinition Width=&quot;*&quot; /&amp;gt;
-                    &amp;lt;ColumnDefinition Width=&quot;*&quot; /&amp;gt;
-                &amp;lt;/Grid.ColumnDefinitions&amp;gt;
-
-                &amp;lt;StackLayout&amp;gt;
-                	&amp;lt;Label Text=&quot;33&quot; Style=&quot;{StaticResource StatsNumberLabel}&quot;/&amp;gt;
-         		&amp;lt;Label Text=&quot;Likes&quot; Style=&quot;{StaticResource StatsCaptionLabel}&quot;/&amp;gt;
-		&amp;lt;/StackLayout&amp;gt;
-
-	        &amp;lt;StackLayout Grid.Column=&quot;1&quot;&amp;gt;
-                	&amp;lt;Label Text=&quot;94&quot; Style=&quot;{StaticResource StatsNumberLabel}&quot;/&amp;gt;
-         		&amp;lt;Label Text=&quot;Following&quot; Style=&quot;{StaticResource StatsCaptionLabel}&quot;/&amp;gt;
-		&amp;lt;/StackLayout&amp;gt;
-
-	        &amp;lt;StackLayout Grid.Column=&quot;2&quot;&amp;gt;
-                	&amp;lt;Label Text=&quot;957&quot; Style=&quot;{StaticResource StatsNumberLabel}&quot;/&amp;gt;
-         		&amp;lt;Label Text=&quot;Followers&quot; Style=&quot;{StaticResource StatsCaptionLabel}&quot;/&amp;gt;
-		&amp;lt;/StackLayout&amp;gt;
-           &amp;lt;/Grid&amp;gt;
-
-	   &amp;lt;!-- profile description --&amp;gt;
-	   &amp;lt;ScrollView Grid.Row=&quot;3&quot;&amp;gt;
-            	&amp;lt;Label Margin=&quot;20,0&quot; HorizontalTextAlignment=&quot;Center&quot; Style=&quot;{StaticResource MainBodyLabel}&quot; 
-				Text=&quot;Spicy jalapeno bacon ipsum dolor amet pork loin pork sint sed occaecat swine ham capicola deserunt pork belly frankfurter magna drumstick.&quot; /&amp;gt;
-           &amp;lt;/ScrollView&amp;gt;
-
-           &amp;lt;!-- follow button --&amp;gt;
-           &amp;lt;Button Grid.Row=&quot;4&quot; Text=&quot;Follow&quot; Margin=&quot;20&quot; VerticalOptions=&quot;End&quot; Style=&quot;{StaticResource FollowButton}&quot;/&amp;gt;
-
-        &amp;lt;/Grid&amp;gt;
-    &amp;lt;/ScrollView&amp;gt;
-&amp;lt;/ContentPage&amp;gt;&lt;/pre&gt;
-
-&lt;p&gt; &lt;/p&gt;
-
-&lt;h2 id=&quot;a-little-bit-of-style&quot;&gt;A little bit of Style&lt;/h2&gt;
-
-&lt;p&gt; &lt;/p&gt;
-
-&lt;p&gt;You’ll notice that I use Styles throughout the page. This is really important so you are hard coding values all around the place. The basic structure of my ResourceDictionary is normally something like:&lt;/p&gt;
-
-&lt;pre class=&quot;lang:xhtml decode:true &quot;&gt;&amp;lt;!-- Application resource dictionary --&amp;gt;
-&amp;lt;ResourceDictionary&amp;gt;
-    &amp;lt;!-- colors --&amp;gt;
-    &amp;lt;!-- font families --&amp;gt;
-    &amp;lt;!-- fonts --&amp;gt;
-    &amp;lt;!-- styles --&amp;gt;
-&amp;lt;/ResourceDictionary&amp;gt;&lt;/pre&gt;
-
-&lt;p&gt; &lt;/p&gt;
-
-&lt;h3 id=&quot;colors&quot;&gt;Colors&lt;/h3&gt;
-
-&lt;p&gt;First I specify the colors I use throughout the system. Of course, this makes it nice and easy to change later on.&lt;/p&gt;
-
-&lt;pre class=&quot;lang:xhtml decode:true &quot;&gt;&amp;lt;!-- colors --&amp;gt;
-&amp;lt;Color x:Key=&quot;HeaderTextColor&quot;&amp;gt;#585858&amp;lt;/Color&amp;gt;
-&amp;lt;Color x:Key=&quot;BodyTextColor&quot;&amp;gt;#C3C3C3&amp;lt;/Color&amp;gt;
-&amp;lt;Color x:Key=&quot;ButtonBackgroundColor&quot;&amp;gt;#5992FF&amp;lt;/Color&amp;gt;&lt;/pre&gt;
-
-&lt;p&gt; &lt;/p&gt;
-
-&lt;h3 id=&quot;font-families&quot;&gt;Font Families&lt;/h3&gt;
-
-&lt;p&gt;Specifying font families for each platform allow me to specify the base fonts used for different weights and on different platforms. This makes it dead simple to change the fonts across the application if required.&lt;/p&gt;
-
-&lt;pre class=&quot;lang:xhtml decode:true &quot;&gt;&amp;lt;!-- font families --&amp;gt;
-&amp;lt;OnPlatform x:Key=&quot;RegularFontFamily&quot; x:TypeArguments=&quot;x:String&quot;
-            iOS=&quot;HelveticaNeue&quot;
-            Android=&quot;sans-serif&quot; /&amp;gt;
-&amp;lt;OnPlatform x:Key=&quot;LightFontFamily&quot; x:TypeArguments=&quot;x:String&quot;
-            iOS=&quot;HelveticaNeue-Light&quot;
-            Android=&quot;sans-serif-light&quot; /&amp;gt;
-&amp;lt;OnPlatform x:Key=&quot;MediumFontFamily&quot; x:TypeArguments=&quot;x:String&quot;
-            iOS=&quot;HelveticaNeue-Medium&quot;
-            Android=&quot;sans-serif-medium&quot; /&amp;gt;&lt;/pre&gt;
-
-&lt;p&gt; &lt;/p&gt;
-
-&lt;h3 id=&quot;fonts&quot;&gt;Fonts&lt;/h3&gt;
-
-&lt;p&gt;Specifying the fonts allows me to create basic font types which incorporate FontSize and FontFamily, which references the font families already defined in resource dictionary.&lt;/p&gt;
-
-&lt;pre class=&quot;lang:xhtml decode:true &quot;&gt;&amp;lt;!-- fonts --&amp;gt;
-&amp;lt;Font x:Key=&quot;TitleFont&quot; FontSize=&quot;20&quot; FontFamily=&quot;{StaticResource MediumFontFamily}&quot; /&amp;gt;
-&amp;lt;Font x:Key=&quot;BodyFont&quot; FontSize=&quot;18&quot; FontFamily=&quot;{StaticResource RegularFontFamily}&quot; /&amp;gt;
-&amp;lt;Font x:Key=&quot;TagTextFont&quot; FontSize=&quot;18&quot; FontFamily=&quot;{StaticResource RegularFontFamily}&quot; /&amp;gt;
-&amp;lt;Font x:Key=&quot;StatsNumberFont&quot; FontSize=&quot;20&quot; FontFamily=&quot;{StaticResource LightFontFamily}&quot; /&amp;gt;
-&amp;lt;Font x:Key=&quot;StatsCaptionFont&quot; FontSize=&quot;16&quot; FontFamily=&quot;{StaticResource LightFontFamily}&quot; /&amp;gt;
-&amp;lt;Font x:Key=&quot;ButtonFont&quot; FontSize=&quot;14&quot; FontFamily=&quot;{StaticResource MediumFontFamily}&quot; /&amp;gt;&lt;/pre&gt;
-
-&lt;p&gt; &lt;/p&gt;
-
-&lt;h3 id=&quot;styles&quot;&gt;Styles&lt;/h3&gt;
-
-&lt;p&gt;And finally we have the styles, these are the various styles for elements I want to use throughout the application. This basically brings together colours and Fonts into styles which I can apply to my elements.&lt;/p&gt;
-
-&lt;pre class=&quot;lang:xhtml decode:true &quot;&gt;&amp;lt;!-- Styles --&amp;gt;
-&amp;lt;Style x:Key=&quot;ProfileNameLabel&quot; TargetType=&quot;Label&quot;&amp;gt;
-    &amp;lt;Setter Property=&quot;TextColor&quot; Value=&quot;{StaticResource HeaderTextColor}&quot; /&amp;gt;
-    &amp;lt;Setter Property=&quot;Font&quot; Value=&quot;{StaticResource TitleFont}&quot; /&amp;gt;
-&amp;lt;/Style&amp;gt;
-
-&amp;lt;Style x:Key=&quot;ProfileTagLabel&quot; TargetType=&quot;Label&quot;&amp;gt;
-    &amp;lt;Setter Property=&quot;TextColor&quot; Value=&quot;{StaticResource BodyTextColor}&quot; /&amp;gt;
-    &amp;lt;Setter Property=&quot;Font&quot; Value=&quot;{StaticResource TagTextFont}&quot; /&amp;gt;
-&amp;lt;/Style&amp;gt;
-
-&amp;lt;Style x:Key=&quot;StatsNumberLabel&quot; TargetType=&quot;Label&quot;&amp;gt;
-    &amp;lt;Setter Property=&quot;TextColor&quot; Value=&quot;{StaticResource HeaderTextColor}&quot; /&amp;gt;
-    &amp;lt;Setter Property=&quot;HorizontalTextAlignment&quot; Value=&quot;Center&quot;/&amp;gt;
-    &amp;lt;Setter Property=&quot;Font&quot; Value=&quot;{StaticResource StatsNumberFont}&quot; /&amp;gt;
-&amp;lt;/Style&amp;gt;
-
-&amp;lt;Style x:Key=&quot;StatsCaptionLabel&quot; TargetType=&quot;Label&quot;&amp;gt;
-    &amp;lt;Setter Property=&quot;TextColor&quot; Value=&quot;{StaticResource BodyTextColor}&quot; /&amp;gt;
-    &amp;lt;Setter Property=&quot;Margin&quot; Value=&quot;0,-5,0,0&quot;/&amp;gt;
-    &amp;lt;Setter Property=&quot;HorizontalTextAlignment&quot; Value=&quot;Center&quot;/&amp;gt;
-    &amp;lt;Setter Property=&quot;Font&quot; Value=&quot;{StaticResource StatsCaptionFont}&quot; /&amp;gt;
-&amp;lt;/Style&amp;gt;
-
-&amp;lt;Style x:Key=&quot;MainBodyLabel&quot; TargetType=&quot;Label&quot;&amp;gt;
-    &amp;lt;Setter Property=&quot;TextColor&quot; Value=&quot;{StaticResource BodyTextColor}&quot; /&amp;gt;
-    &amp;lt;Setter Property=&quot;Font&quot; Value=&quot;{StaticResource BodyFont}&quot; /&amp;gt;
-&amp;lt;/Style&amp;gt;
-
-&amp;lt;Style x:Key=&quot;FollowButton&quot; TargetType=&quot;Button&quot;&amp;gt;
-    &amp;lt;Setter Property=&quot;BackgroundColor&quot; Value=&quot;{StaticResource ButtonBackgroundColor}&quot;/&amp;gt;
-    &amp;lt;Setter Property=&quot;TextColor&quot; Value=&quot;White&quot;/&amp;gt;
-    &amp;lt;Setter Property=&quot;HeightRequest&quot; Value=&quot;40&quot;/&amp;gt;
-    &amp;lt;Setter Property=&quot;BorderRadius&quot; Value=&quot;20&quot;/&amp;gt;
-    &amp;lt;Setter Property=&quot;Font&quot; Value=&quot;{StaticResource ButtonFont}&quot;/&amp;gt;
-&amp;lt;/Style&amp;gt;&lt;/pre&gt;
-
-&lt;p&gt; &lt;/p&gt;
-
-&lt;h2 id=&quot;more-to-come&quot;&gt;More to come&lt;/h2&gt;
-
-&lt;p&gt; &lt;/p&gt;
-
-&lt;p&gt;So that’s a a quick sample of how to do a pretty common layout in Xamarin.Forms with grids and some overlapping elements. Always remember, there are lots of different ways we could achieve the same layout, but this what sprang to mind.&lt;/p&gt;
-
-&lt;p&gt;I’ve got a whole series of layouts I’ll be posting over the comming weeks to show different layout techniques and ideas.&lt;/p&gt;
-
-&lt;p&gt;As YouTubers would say: “let me know in the comments if you liked this” 🙂 Also, If you have any layouts that you thing would be interesting to cover, just let me know.&lt;/p&gt;
-
-&lt;p&gt;Oh yeah, and you can grab the project over at &lt;a href=&quot;https://github.com/kphillpotts/XamarinFormsLayoutChallenges&quot;&gt;https://github.com/kphillpotts/XamarinFormsLayoutChallenges&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Happy Layouts!&lt;/p&gt;</content>
-
-      
-      
-      
-      
-      
-
-      <author>
-          <name>Kym Phillpotts</name>
-        
-        
-      </author>
-
-      
-
-      
-        <category term="Xamarin" />
-      
-
-      
-        <summary type="html">Xamarin.Forms is a crazy productive framework for building cross platform apps. However, straight out of the box you might find your User Interfaces are a bit bland. A good understanding of the layout system (and a good graphic designer) are really going to help you make your UI’s awesome. (or at least not suck).</summary>
       
 
       

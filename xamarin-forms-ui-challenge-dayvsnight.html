@@ -1,0 +1,1351 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <!-- Document Settings -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- Base Meta -->
+    <!-- dynamically fixing the title for tag/author pages -->
+
+
+
+    <title>Xamarin.Forms UI Challenges - Day vs Night</title>
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Styles'n'Scripts -->
+    <link rel="stylesheet" type="text/css" href="/assets/built/screen.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/built/screen.edited.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/built/syntax.css" />
+    <!-- highlight.js -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+    <style>.hljs { background: none; }</style>
+
+    <!--[if IE]>
+        <style>
+            p, ol, ul{
+                width: 100%;
+            }
+            blockquote{
+                width: 100%;
+            }
+        </style>
+    <![endif]-->
+    
+    <!-- This tag outputs SEO meta+structured data and other important settings -->
+    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="/assets/images/icons/apple-touch-icon-57x57.png" />
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/assets/images/icons/apple-touch-icon-114x114.png" />
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/assets/images/icons/apple-touch-icon-72x72.png" />
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/images/icons/apple-touch-icon-144x144.png" />
+<link rel="apple-touch-icon-precomposed" sizes="60x60" href=/"assets/images/icons/apple-touch-icon-60x60.png" />
+<link rel="apple-touch-icon-precomposed" sizes="120x120" href="/assets/images/icons/apple-touch-icon-120x120.png" />
+<link rel="apple-touch-icon-precomposed" sizes="76x76" href="/assets/images/icons/apple-touch-icon-76x76.png" />
+<link rel="apple-touch-icon-precomposed" sizes="152x152" href="/assets/images/icons/apple-touch-icon-152x152.png" />
+<link rel="icon" type="image/png" href="/assets/images/icons/favicon-196x196.png" sizes="196x196" />
+<link rel="icon" type="image/png" href="/assets/images/icons/favicon-96x96.png" sizes="96x96" />
+<link rel="icon" type="image/png" href="/assets/images/icons/favicon-32x32.png" sizes="32x32" />
+<link rel="icon" type="image/png" href="/assets/images/icons/favicon-16x16.png" sizes="16x16" />
+<link rel="icon" type="image/png" href="/assets/images/icons/favicon-128.png" sizes="128x128" />
+<meta name="application-name" content="&nbsp;"/>
+<meta name="msapplication-TileColor" content="#FFFFFF" />
+<meta name="msapplication-TileImage" content="/assets/images/icons/mstile-144x144.png" />
+<meta name="msapplication-square70x70logo" content="/assets/images/icons/mstile-70x70.png" />
+<meta name="msapplication-square150x150logo" content="/assets/images/icons/mstile-150x150.png" />
+<meta name="msapplication-wide310x150logo" content="/assets/images/icons/mstile-310x150.png" />
+<meta name="msapplication-square310x310logo" content="/assets/images/icons/mstile-310x310.png" />
+
+
+<meta name="description" content="Day vs Night Xamarin.Forms UI challenge" />
+    <link rel="shortcut icon" href="https://kymphillpotts.com/assets/images/icons/favicon-96x96.png" type="image/png" />
+    <link rel="canonical" href="https://kymphillpotts.com/xamarin-forms-ui-challenge-dayvsnight.html" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+
+     <!--title below is coming from _includes/dynamic_title-->
+    <meta property="og:site_name" content="Kym's Blog" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Xamarin.Forms UI Challenges - Day vs Night" />
+    <meta property="og:description" content="Day vs Night Xamarin.Forms UI challenge" />
+    <meta property="og:url" content="https://kymphillpotts.com/xamarin-forms-ui-challenge-dayvsnight.html" />
+    <meta property="og:image" content="https://kymphillpotts.com/assets/images/covers/dayvsnight.png" />
+    <meta property="article:publisher" content="https://www.facebook.com/" />
+    <meta property="article:tag" content="Xamarin" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Xamarin.Forms UI Challenges - Day vs Night" />
+    <meta name="twitter:description" content="Day vs Night Xamarin.Forms UI challenge" />
+    <meta name="twitter:url" content="https://kymphillpotts.com/" />
+    <meta name="twitter:image" content="https://kymphillpotts.com/assets/images/covers/dayvsnight.png" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="Kym's Blog" />
+    <meta name="twitter:label2" content="Filed under" />
+    <meta name="twitter:data2" content="Xamarin" />
+    <meta name="twitter:site" content="@kphillpotts" />
+    <meta name="twitter:creator" content="@kphillpotts" />
+    <meta property="og:image:width" content="2000" />
+    <meta property="og:image:height" content="666" />
+
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Website",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Kym's Blog",
+        "logo": "https://kymphillpotts.com/false"
+    },
+    "url": "https://kymphillpotts.com/xamarin-forms-ui-challenge-dayvsnight.html",
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://kymphillpotts.com/assets/images/covers/dayvsnight.png",
+        "width": 2000,
+        "height": 666
+    },
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://kymphillpotts.com/xamarin-forms-ui-challenge-dayvsnight.html"
+    },
+    "description": "Day vs Night Xamarin.Forms UI challenge"
+}
+    </script>
+
+    <!-- <script type="text/javascript" src="https://demo.ghost.io/public/ghost-sdk.min.js?v=724281a32e"></script>
+    <script type="text/javascript">
+    ghost.init({
+    	clientId: "ghost-frontend",
+    	clientSecret: "f84a07a72b17"
+    });
+    </script> -->
+
+    <meta name="generator" content="Jekyll 3.6.2" />
+    <link rel="alternate" type="application/rss+xml" title="Xamarin.Forms UI Challenges - Day vs Night" href="/feed.xml" />
+
+
+</head>
+<body class="post-template">
+
+    <div class="site-wrapper">
+        <!-- All the main content gets inserted here, index.hbs, post.hbs, etc -->
+        <!-- default -->
+
+<!-- The tag above means: insert everything in this file
+into the {body} of the default.hbs template -->
+
+<header class="site-header outer">
+    <div class="inner">
+        <nav class="site-nav">
+    <div class="site-nav-left">
+        
+            
+                <a class="site-nav-logo" href="https://kymphillpotts.com/">Kym's Blog</a>
+            
+        
+        
+            <ul class="nav" role="menu">
+    <li class="nav-home" role="menuitem"><a href="/">Home</a></li>
+    
+
+
+    <li class="nav-about" role="menuitem"><a href="/about/">About Me</a></li>
+    <li class="nav-xamarin" role="menuitem"><a href="/tag/xamarin/">Xamarin</a></li>
+    <li class="nav-azure" role="menuitem"><a href="/tag/azure/">Azure</a></li>
+    <li class="nav-stream" role="menuitem"><a href="/tag/stream/">Streams</a></li>
+    <li class="nav-other" role="menuitem"><a href="/tag/other/">Other</a></li>
+
+
+</ul>
+
+        
+    </div>
+    <div class="site-nav-right">
+        <div class="social-links">
+            
+            
+                <a class="social-link social-link-tw" href="https://twitter.com/kphillpotts" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg>
+</a>
+            
+        </div>
+        
+    </div>
+</nav>
+
+    </div>
+</header>
+
+<!-- Everything inside the #post tags pulls data from the post -->
+<!-- #post -->
+
+<main id="site-main" class="site-main outer" role="main">
+    <div class="inner">
+
+        <article class="post-full  ">
+
+            <header class="post-full-header">
+                <section class="post-full-meta">
+                    <time class="post-full-meta-date" datetime="13 July 2019">13 July 2019</time>
+                    
+                        <span class="date-divider">/</span>
+                        
+                            
+                               <a href='/tag/xamarin/'>XAMARIN</a>
+                            
+                        
+                    
+                </section>
+                <h1 class="post-full-title">Xamarin.Forms UI Challenges - Day vs Night</h1>
+            </header>
+
+            
+            <figure class="post-full-image" style="background-image: url(/assets/images/covers/dayvsnight.png)">
+            </figure>
+            
+
+            <section class="post-full-content">
+                <div class="kg-card-markdown">
+                    <p>Sometimes when developing Xamarin.Forms user interfaces you get to a point where you just need to handle the drawing yourself, and for that SkiaSharp is invaluable.  And that’s one of the core pieces of this UI Challenge, using SkiaSharp to create controls that are unlike any other.</p>
+
+<p>First, I should mention that this amazing design concept that we are reproducing was created by <a href="https://dribbble.com/ionuss">Ionut Zamfir</a> over at <a href="https://dribbble.com/shots/4840427-Dashboard-Day-vs-Night">Dribbble</a>.  The key elements that drew my attention to this layout were:</p>
+<ul>
+  <li>Beautiful use of colours</li>
+  <li>Light and Dark themes</li>
+  <li>Complex multi-colour gradients</li>
+  <li>Unique custom slider for the temperature</li>
+</ul>
+
+<p>Seriously, just check it out in all it’s beauty:</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td><img src="assets/images/posts/dayvsnight/day.png" /></td>
+      <td><img src="assets/images/posts/dayvsnight/night.png" /></td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="xamarin-ui-july">Xamarin UI July</h2>
+<p>This post is part of <a href="https://www.thewissen.io/introducing-xamarin-ui-july/">Xamarin UI July</a>, organised by <a href="https://twitter.com/devnl">Steve Thewissen</a>. Today is day 13 with another exciting post coming out every day for the rest of the month.</p>
+
+<p><a href="https://www.thewissen.io/introducing-xamarin-ui-july/" target="_blank"><img src="assets/images/xamuijuly.png" /></a></p>
+
+<h2 id="lets-break-it-down">Let’s break it down</h2>
+<p>So let’s try and reproduce this layout in Xamarin.Forms.  When you look at it, the overall page layout itself is fairly straight forward consisting of a main <code class="highlighter-rouge">Grid</code> with a <code class="highlighter-rouge">StackLayout</code> to lay the elements out down the page.</p>
+
+<blockquote>
+  <p>Pro Tip: Grids are a great root layout element because they allow you to position elements proportionally on a page whilst still allowing overlapping elements</p>
+</blockquote>
+
+<h3 id="the-background">The Background</h3>
+<p>If you focus just on the background of the design it has two elements:</p>
+<ul>
+  <li>A multi-colour gradient across the entire page</li>
+  <li>The mountain image, at the bottom of the page</li>
+</ul>
+
+<p>For the implementation the main page consists of a <code class="highlighter-rouge">SKCanvasView</code> for the background gradient.  There is also an Image with a <code class="highlighter-rouge">VerticalOptions</code> of <code class="highlighter-rouge">End</code> which positions it at the bottom of the screen but above the gradient.</p>
+
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;Grid&gt;</span>
+
+    <span class="nt">&lt;Grid.RowDefinitions&gt;</span>
+        <span class="nt">&lt;RowDefinition</span> <span class="na">Height=</span><span class="s">"*"</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;RowDefinition</span> <span class="na">Height=</span><span class="s">"Auto"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;/Grid.RowDefinitions&gt;</span>
+    
+    <span class="nt">&lt;skia:SKCanvasView</span>
+        <span class="na">x:Name=</span><span class="s">"BackgroundGradient"</span>
+        <span class="na">Grid.RowSpan=</span><span class="s">"2"</span>
+        <span class="na">HorizontalOptions=</span><span class="s">"Fill"</span>
+        <span class="na">PaintSurface=</span><span class="s">"BackgroundGradient_PaintSurface"</span>
+        <span class="na">VerticalOptions=</span><span class="s">"Fill"</span> <span class="nt">/&gt;</span>
+
+    <span class="nt">&lt;Image</span>
+        <span class="na">Grid.RowSpan=</span><span class="s">"2"</span>
+        <span class="na">Aspect=</span><span class="s">"AspectFill"</span>
+        <span class="na">HorizontalOptions=</span><span class="s">"Fill"</span>
+        <span class="na">Source=</span><span class="s">"{DynamicResource MountainImage}"</span>
+        <span class="na">VerticalOptions=</span><span class="s">"End"</span> <span class="nt">/&gt;</span>
+
+...</code></pre></figure>
+
+<blockquote>
+  <p>The order of elements in your Xaml is important because it implies the z-order. Which is to say, elements that appear later in your Xaml will appear in-front of earlier elements</p>
+</blockquote>
+
+<p>The background gradient is a little more complex than it may first appear because it isn’t just a linear gradient between two colours. It’s actually a radial gradient between three colours. This complexity means we can’t use something like <code class="highlighter-rouge">PancakeView</code> for the gradient, instead we can render this with SkiaSharp. Complex gradients are surprisingly easy in SkiaSharp, but does require you implement them in code.</p>
+
+<p><em>Code to render gradient</em></p>
+
+<p>The following code is called whenever the <code class="highlighter-rouge">BackgroundGradient</code> canvas needs to be drawn. First thing it does is load up the colours from the application resources (because different themes have different gradient colours - but more on that later). Then it uses those colours to  create a <code class="highlighter-rouge">RadialGradient</code> shader which is drawn over the entire canvas area.</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">private</span> <span class="k">void</span> <span class="nf">BackgroundGradient_PaintSurface</span><span class="p">(</span><span class="kt">object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">SkiaSharp</span><span class="p">.</span><span class="n">Views</span><span class="p">.</span><span class="n">Forms</span><span class="p">.</span><span class="n">SKPaintSurfaceEventArgs</span> <span class="n">e</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">SKImageInfo</span> <span class="n">info</span> <span class="p">=</span> <span class="n">e</span><span class="p">.</span><span class="n">Info</span><span class="p">;</span>
+    <span class="n">SKSurface</span> <span class="n">surface</span> <span class="p">=</span> <span class="n">e</span><span class="p">.</span><span class="n">Surface</span><span class="p">;</span>
+    <span class="n">SKCanvas</span> <span class="n">canvas</span> <span class="p">=</span> <span class="n">surface</span><span class="p">.</span><span class="n">Canvas</span><span class="p">;</span>
+
+    <span class="n">canvas</span><span class="p">.</span><span class="nf">Clear</span><span class="p">();</span>
+
+    <span class="c1">// get the brush based on the theme</span>
+    <span class="n">SKColor</span> <span class="n">gradientStart</span> <span class="p">=</span> <span class="p">((</span><span class="n">Color</span><span class="p">)</span><span class="n">Application</span><span class="p">.</span><span class="n">Current</span><span class="p">.</span><span class="n">Resources</span><span class="p">[</span><span class="s">"BackgroundGradientStartColor"</span><span class="p">]).</span><span class="nf">ToSKColor</span><span class="p">();</span>
+    <span class="n">SKColor</span> <span class="n">gradientMid</span> <span class="p">=</span> <span class="p">((</span><span class="n">Color</span><span class="p">)</span><span class="n">Application</span><span class="p">.</span><span class="n">Current</span><span class="p">.</span><span class="n">Resources</span><span class="p">[</span><span class="s">"BackgroundGradientMidColor"</span><span class="p">]).</span><span class="nf">ToSKColor</span><span class="p">();</span>
+    <span class="n">SKColor</span> <span class="n">gradientEnd</span> <span class="p">=</span> <span class="p">((</span><span class="n">Color</span><span class="p">)</span><span class="n">Application</span><span class="p">.</span><span class="n">Current</span><span class="p">.</span><span class="n">Resources</span><span class="p">[</span><span class="s">"BackgroundGradientEndColor"</span><span class="p">]).</span><span class="nf">ToSKColor</span><span class="p">();</span>
+
+    <span class="c1">// gradient background with 3 colors</span>
+    <span class="n">backgroundBrush</span><span class="p">.</span><span class="n">Shader</span> <span class="p">=</span> <span class="n">SKShader</span><span class="p">.</span><span class="nf">CreateRadialGradient</span> <span class="p">(</span>
+        <span class="k">new</span> <span class="nf">SKPoint</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="n">info</span><span class="p">.</span><span class="n">Height</span> <span class="p">*</span> <span class="p">.</span><span class="m">8f</span><span class="p">),</span>
+        <span class="n">info</span><span class="p">.</span><span class="n">Height</span><span class="p">*.</span><span class="m">8f</span><span class="p">,</span>
+        <span class="k">new</span> <span class="n">SKColor</span><span class="p">[]</span> <span class="p">{</span> <span class="n">gradientStart</span><span class="p">,</span> <span class="n">gradientMid</span><span class="p">,</span> <span class="n">gradientEnd</span> <span class="p">},</span>
+        <span class="k">new</span> <span class="kt">float</span><span class="p">[]</span> <span class="p">{</span> <span class="m">0</span><span class="p">,</span> <span class="p">.</span><span class="m">5f</span><span class="p">,</span>  <span class="m">1</span> <span class="p">},</span>
+        <span class="n">SKShaderTileMode</span><span class="p">.</span><span class="n">Clamp</span><span class="p">);</span>
+
+    <span class="n">SKRect</span> <span class="n">backgroundBounds</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">SKRect</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="n">info</span><span class="p">.</span><span class="n">Width</span><span class="p">,</span> <span class="n">info</span><span class="p">.</span><span class="n">Height</span><span class="p">);</span>
+    <span class="n">canvas</span><span class="p">.</span><span class="nf">DrawRect</span><span class="p">(</span><span class="n">backgroundBounds</span><span class="p">,</span> <span class="n">backgroundBrush</span><span class="p">);</span>
+<span class="p">}</span></code></pre></figure>
+
+<blockquote>
+  <p>The documentation and samples for SkiaSharp are excellent, don’t be scared to check them out.  For example, here are the docs for <a href="https://docs.microsoft.com/en-us/xamarin/xamarin-forms/user-interface/graphics/skiasharp/effects/shaders/circular-gradients">Creating Radial Gradients</a></p>
+</blockquote>
+
+<h3 id="temperature-slider">Temperature Slider</h3>
+<p>Okay, this is the fun bit, that temperature slider.  Notice how it has a slider thumb and above it, it dynamically eats into (or clips) the slider background. There isn’t a control like this in Xamarin.Forms (or anywhere for that matter), so it’s time to write a control in SkiaSharp, named appropriately <code class="highlighter-rouge">GaugeControl</code>.</p>
+
+<div class="myvideo">
+   <video style="display:block;" autoplay="" controls="" loop="loop">
+       <source src="assets/videos/dayvsnight-slider.mp4" type="video/mp4" />
+   </video>
+</div>
+
+<p>The background of the slider is really just a <code class="highlighter-rouge">RoundedRect</code> with a gradient fill. No big deal.  However, the trick is to have a bit “clipped” out where the slider thumb is.  Well, it turns out that with SkiaSharp you can provide a path to clip out of the drawing, which is what we do above the slider thumb.</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="n">SKPath</span> <span class="n">clipPath</span> <span class="p">=</span> <span class="n">SKPath</span><span class="p">.</span><span class="nf">ParseSvgPathData</span><span class="p">(</span><span class="s">"M.021 28.481a25.933 25.933 0 0 0 8.824-2.112 27.72 27.72 0 0 0 7.391-5.581l19.08-17.045S39.879.5 44.516.5s9.352 3.243 9.352 3.243l20.74 18.628a30.266 30.266 0 0 0 4.525 3.545c3.318 2.263 11.011 2.564 11.011 2.564z"</span><span class="p">);</span>
+
+<span class="p">...</span>
+
+<span class="c1">// get density</span>
+<span class="kt">float</span> <span class="n">density</span> <span class="p">=</span> <span class="n">info</span><span class="p">.</span><span class="n">Size</span><span class="p">.</span><span class="n">Width</span> <span class="p">/</span> <span class="p">(</span><span class="kt">float</span><span class="p">)</span><span class="k">this</span><span class="p">.</span><span class="n">Width</span><span class="p">;</span>
+
+<span class="c1">// get the path of the clip region</span>
+<span class="kt">var</span> <span class="n">scaledClipPath</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">SKPath</span><span class="p">(</span><span class="n">clipPath</span><span class="p">);</span>
+<span class="n">scaledClipPath</span><span class="p">.</span><span class="nf">Transform</span><span class="p">(</span><span class="n">SKMatrix</span><span class="p">.</span><span class="nf">MakeScale</span><span class="p">(</span><span class="n">density</span><span class="p">,</span> <span class="n">density</span><span class="p">));</span>
+<span class="n">scaledClipPath</span><span class="p">.</span><span class="nf">GetTightBounds</span><span class="p">(</span><span class="k">out</span> <span class="kt">var</span> <span class="n">tightBounds</span><span class="p">);</span>
+
+<span class="c1">// apply translations to position the clip path</span>
+<span class="n">canvas</span><span class="p">.</span><span class="nf">Translate</span><span class="p">(</span><span class="n">translateX</span><span class="p">,</span> <span class="n">translateY</span><span class="p">);</span>
+<span class="n">canvas</span><span class="p">.</span><span class="nf">ClipPath</span><span class="p">(</span><span class="n">scaledClipPath</span><span class="p">,</span> <span class="n">SKClipOperation</span><span class="p">.</span><span class="n">Difference</span><span class="p">,</span> <span class="k">true</span><span class="p">);</span>
+<span class="n">canvas</span><span class="p">.</span><span class="nf">Translate</span><span class="p">(-</span><span class="n">translateX</span><span class="p">,</span> <span class="p">-</span><span class="n">translateY</span><span class="p">);</span>
+
+<span class="p">...</span></code></pre></figure>
+
+<blockquote>
+  <p>One thing to note in the code above is that when you are dealing with SkiaSharp you are dealing with pixels, so if you are used to working with Xamarin.Forms units you need to actually work out the scaling of your device.</p>
+</blockquote>
+
+<p>The key line in there is the <code class="highlighter-rouge">ClipPath</code> method call which uses the path and a <code class="highlighter-rouge">SKClipOperation.Difference</code> which basically means, only render whatever you output where it falls outside of the clip path.  One thing to consider is that every drawing operation you perform after you call <code class="highlighter-rouge">ClipPath</code> will have the clipping applied.  But one little trick you can do is restore you canvas to a point before the clipping by using <code class="highlighter-rouge">SKAutoCanvasRestore</code>.</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="c1">// do some drawing stuff here - it won't be clipped</span>
+<span class="p">...</span>
+<span class="k">using</span> <span class="p">(</span><span class="k">new</span> <span class="nf">SKAutoCanvasRestore</span><span class="p">(</span><span class="n">canvas</span><span class="p">))</span>
+<span class="p">{</span>
+    <span class="p">...</span>
+    <span class="n">canvas</span><span class="p">.</span><span class="nf">ClipPath</span><span class="p">(</span><span class="n">scaledClipPath</span><span class="p">,</span> <span class="n">SKClipOperation</span><span class="p">.</span><span class="n">Difference</span><span class="p">,</span> <span class="k">true</span><span class="p">);</span>
+    <span class="p">...</span>
+    <span class="c1">// everything here will have the clipping applied</span>
+    <span class="p">...</span>
+<span class="p">}</span>
+<span class="c1">// after the USING the canvas is restored to it's previous state so no clipping will happen</span>
+<span class="p">...</span></code></pre></figure>
+
+<p><em>Handling User Input</em></p>
+
+<p>It’s one thing to draw the control, it’s quite another to make it interact with the user.  In our case, we want to detect when the user drags on the control so that we can update the position of the thumb slider and the clipping path.  To do this we use a Xamarin.Forms effect which reports touch operations.</p>
+
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;Grid&gt;</span>
+    <span class="nt">&lt;skia:SKCanvasView</span> <span class="na">x:Name=</span><span class="s">"TempGaugeCanvas"</span> <span class="na">PaintSurface=</span><span class="s">"TempGaugeCanvas_PaintSurface"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;Grid.Effects&gt;</span>
+        <span class="nt">&lt;local:TouchEffect</span> <span class="na">Capture=</span><span class="s">"True"</span> <span class="na">TouchAction=</span><span class="s">"TouchEffect_TouchAction"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;/Grid.Effects&gt;</span>
+<span class="nt">&lt;/Grid&gt;</span></code></pre></figure>
+
+<p>So when we get a TouchAction we update the percent of the slider, which in turn calls <code class="highlighter-rouge">InvalidateSurface</code> causing a redraw of the SkiaSharp canvas.</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">private</span> <span class="k">void</span> <span class="nf">TouchEffect_TouchAction</span><span class="p">(</span><span class="kt">object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">TouchEffect</span><span class="p">.</span><span class="n">TouchActionEventArgs</span> <span class="n">args</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">Percent</span> <span class="p">=</span> <span class="p">(</span><span class="n">args</span><span class="p">.</span><span class="n">Location</span><span class="p">.</span><span class="n">X</span> <span class="p">/</span> <span class="n">TempGaugeCanvas</span><span class="p">.</span><span class="n">Width</span><span class="p">)</span> <span class="p">*</span> <span class="m">100</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">public</span> <span class="kt">double</span> <span class="n">Percent</span>
+<span class="p">{</span>
+    <span class="k">get</span> <span class="p">=&gt;</span> <span class="n">percent</span><span class="p">;</span>
+    <span class="k">set</span>
+    <span class="p">{</span>
+        <span class="n">percent</span> <span class="p">=</span> <span class="k">value</span><span class="p">;</span>
+        <span class="n">TempGaugeCanvas</span><span class="p">.</span><span class="nf">InvalidateSurface</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<blockquote>
+  <p>The <code class="highlighter-rouge">TouchEffect</code> I lifted from the awesome SkiaSharp samples. For more about the TouchEffect check out <a href="https://docs.microsoft.com/en-us/xamarin/xamarin-forms/user-interface/graphics/skiasharp/paths/finger-paint">Finger Painting in SkiaSharp</a> in the Docs.</p>
+</blockquote>
+
+<h3 id="switching-themes">Switching Themes</h3>
+<p>Another interesting bit about this design is the dark and light themes.  For this UI Challenge we make it so when you click on the profile image it toggles between dark and light.  In a real application you would probably tie this to user preferences, or even cooler, to the ambient light sensor of the device so it automatically switches based on lighting conditions. For us thought, it’s just tied to the profile image, like so:</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">private</span> <span class="k">void</span> <span class="nf">ProfileImage_Tapped</span><span class="p">(</span><span class="kt">object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">EventArgs</span> <span class="n">e</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">themeName</span> <span class="p">==</span> <span class="s">"light"</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">themeName</span> <span class="p">=</span> <span class="s">"dark"</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">else</span>
+    <span class="p">{</span>
+        <span class="n">themeName</span> <span class="p">=</span> <span class="s">"light"</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="n">ThemeHelper</span><span class="p">.</span><span class="nf">ChangeTheme</span><span class="p">(</span><span class="n">themeName</span><span class="p">);</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>The result is quite nice though, as shown in this video:</p>
+
+<div class="myvideo">
+   <video style="display:block; height:600px;" autoplay="" controls="" loop="loop">
+       <source src="assets/videos/dayvsnight-themechange.mp4" type="video/mp4" />
+   </video>
+</div>
+
+<p><em>Multiple Theme Files</em></p>
+
+<p>I have multiple themes (technically <code class="highlighter-rouge">ResourceDictionary</code>) that have different values for resources. For example:</p>
+
+<p><strong>LightTheme.xaml</strong></p>
+
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;ResourceDictionary</span> <span class="na">xmlns=</span><span class="s">"http://xamarin.com/schemas/2014/forms"</span> 
+             <span class="na">xmlns:x=</span><span class="s">"http://schemas.microsoft.com/winfx/2009/xaml"</span>
+             <span class="na">x:Class=</span><span class="s">"DayVsNight.Themes.LightTheme"</span><span class="nt">&gt;</span>
+
+    <span class="c">&lt;!-- Background Image --&gt;</span>
+    <span class="nt">&lt;x:String</span> <span class="na">x:Key=</span><span class="s">"MountainImage"</span><span class="nt">&gt;</span>mountain_light<span class="nt">&lt;/x:String&gt;</span>
+
+    <span class="nt">&lt;Color</span> <span class="na">x:Key=</span><span class="s">"HeaderColor"</span><span class="nt">&gt;</span>#213654<span class="nt">&lt;/Color&gt;</span>
+    <span class="nt">&lt;Color</span> <span class="na">x:Key=</span><span class="s">"ArrowColor"</span><span class="nt">&gt;</span>#768ea0<span class="nt">&lt;/Color&gt;</span>
+    <span class="nt">&lt;Color</span> <span class="na">x:Key=</span><span class="s">"BorderColor"</span><span class="nt">&gt;</span>#d2d7dd<span class="nt">&lt;/Color&gt;</span>
+    <span class="nt">&lt;Color</span> <span class="na">x:Key=</span><span class="s">"TagColor"</span><span class="nt">&gt;</span>#ffa318<span class="nt">&lt;/Color&gt;</span>
+    <span class="nt">&lt;Color</span> <span class="na">x:Key=</span><span class="s">"TabSubTextColor"</span><span class="nt">&gt;</span>#96a7dd<span class="nt">&lt;/Color&gt;</span>
+    <span class="nt">&lt;Color</span> <span class="na">x:Key=</span><span class="s">"SubTextColor"</span><span class="nt">&gt;</span>#95a8b6<span class="nt">&lt;/Color&gt;</span>
+    <span class="nt">&lt;Color</span> <span class="na">x:Key=</span><span class="s">"TempLabelColor"</span><span class="nt">&gt;</span>#ffffff<span class="nt">&lt;/Color&gt;</span>
+    
+    <span class="c">&lt;!--BackgroundGradients--&gt;</span>
+    <span class="nt">&lt;Color</span> <span class="na">x:Key=</span><span class="s">"BackgroundGradientStartColor"</span><span class="nt">&gt;</span>#FFF1EA<span class="nt">&lt;/Color&gt;</span>
+    <span class="nt">&lt;Color</span> <span class="na">x:Key=</span><span class="s">"BackgroundGradientMidColor"</span><span class="nt">&gt;</span>#D6D7E3<span class="nt">&lt;/Color&gt;</span>
+    <span class="nt">&lt;Color</span> <span class="na">x:Key=</span><span class="s">"BackgroundGradientEndColor"</span><span class="nt">&gt;</span>#F0F6FF<span class="nt">&lt;/Color&gt;</span>
+    
+    <span class="c">&lt;!--Gauge Gradients--&gt;</span>
+    <span class="nt">&lt;Color</span> <span class="na">x:Key=</span><span class="s">"GaugeGradientStartColor"</span><span class="nt">&gt;</span>#99C2FF<span class="nt">&lt;/Color&gt;</span>
+    <span class="nt">&lt;Color</span> <span class="na">x:Key=</span><span class="s">"GaugeGradientEndColor"</span><span class="nt">&gt;</span>#FB7D80<span class="nt">&lt;/Color&gt;</span>
+<span class="nt">&lt;/ResourceDictionary&gt;</span></code></pre></figure>
+
+<p><strong>DarkTheme.xaml</strong></p>
+
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;ResourceDictionary</span> <span class="na">xmlns=</span><span class="s">"http://xamarin.com/schemas/2014/forms"</span> 
+             <span class="na">xmlns:x=</span><span class="s">"http://schemas.microsoft.com/winfx/2009/xaml"</span>
+             <span class="na">x:Class=</span><span class="s">"DayVsNight.Themes.DarkTheme"</span><span class="nt">&gt;</span>
+
+    <span class="c">&lt;!-- Background Image --&gt;</span>
+    <span class="nt">&lt;x:String</span> <span class="na">x:Key=</span><span class="s">"MountainImage"</span><span class="nt">&gt;</span>mountain_dark<span class="nt">&lt;/x:String&gt;</span>
+
+    <span class="nt">&lt;Color</span> <span class="na">x:Key=</span><span class="s">"HeaderColor"</span><span class="nt">&gt;</span>#FFFFFF<span class="nt">&lt;/Color&gt;</span>
+    <span class="nt">&lt;Color</span> <span class="na">x:Key=</span><span class="s">"ArrowColor"</span><span class="nt">&gt;</span>#768ea0<span class="nt">&lt;/Color&gt;</span>
+    <span class="nt">&lt;Color</span> <span class="na">x:Key=</span><span class="s">"BorderColor"</span><span class="nt">&gt;</span>#d2d7dd<span class="nt">&lt;/Color&gt;</span>
+    <span class="nt">&lt;Color</span> <span class="na">x:Key=</span><span class="s">"TagColor"</span><span class="nt">&gt;</span>#ffa318<span class="nt">&lt;/Color&gt;</span>
+    <span class="nt">&lt;Color</span> <span class="na">x:Key=</span><span class="s">"TabSubTextColor"</span><span class="nt">&gt;</span>#FFFFFF<span class="nt">&lt;/Color&gt;</span>
+    <span class="nt">&lt;Color</span> <span class="na">x:Key=</span><span class="s">"SubTextColor"</span><span class="nt">&gt;</span>#FFFFFF<span class="nt">&lt;/Color&gt;</span>
+    <span class="nt">&lt;Color</span> <span class="na">x:Key=</span><span class="s">"TempLabelColor"</span><span class="nt">&gt;</span>#ffffff<span class="nt">&lt;/Color&gt;</span>
+
+    <span class="c">&lt;!--BackgroundGradients--&gt;</span>
+    <span class="nt">&lt;Color</span> <span class="na">x:Key=</span><span class="s">"BackgroundGradientStartColor"</span><span class="nt">&gt;</span>#E8D6CB<span class="nt">&lt;/Color&gt;</span>
+    <span class="nt">&lt;Color</span> <span class="na">x:Key=</span><span class="s">"BackgroundGradientMidColor"</span><span class="nt">&gt;</span>#6683A9<span class="nt">&lt;/Color&gt;</span>
+    <span class="nt">&lt;Color</span> <span class="na">x:Key=</span><span class="s">"BackgroundGradientEndColor"</span><span class="nt">&gt;</span>#192E4A<span class="nt">&lt;/Color&gt;</span>
+
+    <span class="c">&lt;!--Gauge Gradients--&gt;</span>
+    <span class="nt">&lt;Color</span> <span class="na">x:Key=</span><span class="s">"GaugeGradientStartColor"</span><span class="nt">&gt;</span>#7A89B1<span class="nt">&lt;/Color&gt;</span>
+    <span class="nt">&lt;Color</span> <span class="na">x:Key=</span><span class="s">"GaugeGradientEndColor"</span><span class="nt">&gt;</span>#FB7D80<span class="nt">&lt;/Color&gt;</span>
+
+<span class="nt">&lt;/ResourceDictionary&gt;</span></code></pre></figure>
+
+<blockquote>
+  <p>For this challenge we just have a dark and light theme, but of course you could have as many themes as you like. Or even allow the user to create their own.</p>
+</blockquote>
+
+<p><em>Theme Switcher</em></p>
+
+<p>To go along with the themes we have a helper to switch between them.  This essentially just loads resources from a resource dictionary into the application resources and then fires a message through the <code class="highlighter-rouge">MessagingCenter</code> so that other parts of the application can know when themes are switched.</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">static</span> <span class="k">class</span> <span class="nc">ThemeHelper</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">static</span> <span class="kt">string</span> <span class="n">CurrentTheme</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">static</span> <span class="k">void</span> <span class="nf">ChangeTheme</span><span class="p">(</span><span class="kt">string</span> <span class="n">theme</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">// don't change to the same theme</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">theme</span> <span class="p">==</span> <span class="n">CurrentTheme</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
+
+        <span class="n">ResourceDictionary</span> <span class="n">applicationResourceDictionary</span> <span class="p">=</span> <span class="n">Application</span><span class="p">.</span><span class="n">Current</span><span class="p">.</span><span class="n">Resources</span><span class="p">;</span>
+        <span class="n">ResourceDictionary</span> <span class="n">newTheme</span> <span class="p">=</span> <span class="k">null</span><span class="p">;</span>
+
+        <span class="k">switch</span> <span class="p">(</span><span class="n">theme</span><span class="p">.</span><span class="nf">ToLowerInvariant</span><span class="p">())</span>
+        <span class="p">{</span>
+            <span class="k">case</span> <span class="s">"light"</span><span class="p">:</span>
+                <span class="n">newTheme</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">LightTheme</span><span class="p">();</span>
+                <span class="k">break</span><span class="p">;</span>
+            <span class="k">case</span> <span class="s">"dark"</span><span class="p">:</span>
+                <span class="n">newTheme</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">DarkTheme</span><span class="p">();</span>
+                <span class="k">break</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="k">foreach</span> <span class="p">(</span><span class="kt">var</span> <span class="n">merged</span> <span class="k">in</span> <span class="n">newTheme</span><span class="p">.</span><span class="n">MergedDictionaries</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">applicationResourceDictionary</span><span class="p">.</span><span class="n">MergedDictionaries</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="n">merged</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="nf">ManuallyCopyThemes</span><span class="p">(</span><span class="n">newTheme</span><span class="p">,</span> <span class="n">applicationResourceDictionary</span><span class="p">);</span>
+
+        <span class="n">CurrentTheme</span> <span class="p">=</span> <span class="n">theme</span><span class="p">;</span>
+        <span class="n">MessagingCenter</span><span class="p">.</span><span class="n">Send</span><span class="p">&lt;</span><span class="n">ThemeMessage</span><span class="p">&gt;(</span><span class="k">new</span> <span class="nf">ThemeMessage</span><span class="p">(),</span> <span class="n">ThemeMessage</span><span class="p">.</span><span class="n">ThemeChanged</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">private</span> <span class="k">static</span> <span class="k">void</span> <span class="nf">ManuallyCopyThemes</span><span class="p">(</span><span class="n">ResourceDictionary</span> <span class="n">fromResource</span><span class="p">,</span> <span class="n">ResourceDictionary</span> <span class="n">toResource</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">foreach</span> <span class="p">(</span><span class="kt">var</span> <span class="n">item</span> <span class="k">in</span> <span class="n">fromResource</span><span class="p">.</span><span class="n">Keys</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">toResource</span><span class="p">[</span><span class="n">item</span><span class="p">]</span> <span class="p">=</span> <span class="n">fromResource</span><span class="p">[</span><span class="n">item</span><span class="p">];</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p><em>Using Dynamic Resources</em></p>
+
+<p>In order for Views to respond to changes in the Application Resources the key is to use <code class="highlighter-rouge">DynamicResource</code> instead of <code class="highlighter-rouge">StaticResource</code>.</p>
+
+<blockquote>
+  <p><code class="highlighter-rouge">DynamicResource</code> will automatically respond if the resource value changes, <a href="https://docs.microsoft.com/en-us/xamarin/xamarin-forms/user-interface/styles/xaml/dynamic">check the documentation here</a></p>
+</blockquote>
+
+<p>As an example, if you look at the styles setup in the <code class="highlighter-rouge">App.xaml</code>, you’ll see that I have used <code class="highlighter-rouge">DynamicResource</code> for the <code class="highlighter-rouge">TextColor</code> so that it’ll update when the <code class="highlighter-rouge">ThemeManager</code> changes the Color values, no additional code required.</p>
+
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="c">&lt;!--  Styles  --&gt;</span>
+<span class="nt">&lt;Style</span> <span class="na">x:Key=</span><span class="s">"Header"</span> <span class="na">TargetType=</span><span class="s">"Label"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;Setter</span> <span class="na">Property=</span><span class="s">"FontFamily"</span> <span class="na">Value=</span><span class="s">"{StaticResource TextBold}"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;Setter</span> <span class="na">Property=</span><span class="s">"FontSize"</span> <span class="na">Value=</span><span class="s">"30"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;Setter</span> <span class="na">Property=</span><span class="s">"TextColor"</span> <span class="na">Value=</span><span class="s">"{DynamicResource HeaderColor}"</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/Style&gt;</span></code></pre></figure>
+
+<p>And to make the mountain image at the bottom change it is dynamically linked to an image name from the theme.</p>
+
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;Image</span>
+    <span class="na">Grid.RowSpan=</span><span class="s">"2"</span>
+    <span class="na">Aspect=</span><span class="s">"AspectFill"</span>
+    <span class="na">HorizontalOptions=</span><span class="s">"Fill"</span>
+    <span class="na">Source=</span><span class="s">"{DynamicResource MountainImage}"</span>
+    <span class="na">VerticalOptions=</span><span class="s">"End"</span> <span class="nt">/&gt;</span></code></pre></figure>
+
+<p><em>Sending Theme Message</em></p>
+
+<p>One aspect that will not automatically update when the theme changes is the SkiaSharp elements, so we need to trigger them to update somehow. As mentioned previously, we use the <code class="highlighter-rouge">MessagingCenter</code> (although any notification mechanism would work).</p>
+
+<p>In the <code class="highlighter-rouge">MainPage</code> we register for notifications in the OnAppearing.  When it fires (from the <code class="highlighter-rouge">ThemeHelper</code>), we call <code class="highlighter-rouge">UpdateTheme</code>, which effectively just calls <code class="highlighter-rouge">InvalidateSurface</code> which asks SkiaSharp to redraw the background.</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">protected</span> <span class="k">override</span> <span class="k">void</span> <span class="nf">OnAppearing</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="k">base</span><span class="p">.</span><span class="nf">OnAppearing</span><span class="p">();</span>
+    <span class="n">MessagingCenter</span><span class="p">.</span><span class="n">Subscribe</span><span class="p">&lt;</span><span class="n">ThemeMessage</span><span class="p">&gt;(</span><span class="k">this</span><span class="p">,</span> <span class="n">ThemeMessage</span><span class="p">.</span><span class="n">ThemeChanged</span><span class="p">,</span> <span class="p">(</span><span class="n">tm</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="nf">UpdateTheme</span><span class="p">(</span><span class="n">tm</span><span class="p">));</span>
+<span class="p">}</span>
+
+<span class="k">private</span> <span class="k">void</span> <span class="nf">UpdateTheme</span><span class="p">(</span><span class="n">ThemeMessage</span> <span class="n">tm</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">BackgroundGradient</span><span class="p">.</span><span class="nf">InvalidateSurface</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="k">protected</span> <span class="k">override</span> <span class="k">void</span> <span class="nf">OnDisappearing</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="k">base</span><span class="p">.</span><span class="nf">OnDisappearing</span><span class="p">();</span>
+    <span class="n">MessagingCenter</span><span class="p">.</span><span class="n">Unsubscribe</span><span class="p">&lt;</span><span class="n">ThemeMessage</span><span class="p">&gt;(</span><span class="k">this</span><span class="p">,</span> <span class="n">ThemeMessage</span><span class="p">.</span><span class="n">ThemeChanged</span><span class="p">);</span>
+<span class="p">}</span></code></pre></figure>
+
+<blockquote>
+  <p>Always remember to Unsubscribe from the <code class="highlighter-rouge">MessagingCenter</code></p>
+</blockquote>
+
+<p>Finally, in the Background SkiaSharp paint code we read the new colour values from the application dictionary that are used to draw the Gradient.</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp">    <span class="c1">// get the brush based on the theme</span>
+    <span class="n">SKColor</span> <span class="n">gradientStart</span> <span class="p">=</span> <span class="p">((</span><span class="n">Color</span><span class="p">)</span><span class="n">Application</span><span class="p">.</span><span class="n">Current</span><span class="p">.</span><span class="n">Resources</span><span class="p">[</span><span class="s">"BackgroundGradientStartColor"</span><span class="p">]).</span><span class="nf">ToSKColor</span><span class="p">();</span>
+    <span class="n">SKColor</span> <span class="n">gradientMid</span> <span class="p">=</span> <span class="p">((</span><span class="n">Color</span><span class="p">)</span><span class="n">Application</span><span class="p">.</span><span class="n">Current</span><span class="p">.</span><span class="n">Resources</span><span class="p">[</span><span class="s">"BackgroundGradientMidColor"</span><span class="p">]).</span><span class="nf">ToSKColor</span><span class="p">();</span>
+    <span class="n">SKColor</span> <span class="n">gradientEnd</span> <span class="p">=</span> <span class="p">((</span><span class="n">Color</span><span class="p">)</span><span class="n">Application</span><span class="p">.</span><span class="n">Current</span><span class="p">.</span><span class="n">Resources</span><span class="p">[</span><span class="s">"BackgroundGradientEndColor"</span><span class="p">]).</span><span class="nf">ToSKColor</span><span class="p">();</span></code></pre></figure>
+
+<p>The same sort of logic also applies to the background gradients in the <code class="highlighter-rouge">GaugeView</code>.</p>
+
+<h3 id="security-zones">Security Zones</h3>
+<p>The two sections right down the bottom of the page are simply horizontal scrolling <code class="highlighter-rouge">StackLayout</code> with <code class="highlighter-rouge">Grids</code> in them and using the <code class="highlighter-rouge">PancakeView</code> to give them rounded corners.</p>
+
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;ScrollView</span> <span class="na">HorizontalScrollBarVisibility=</span><span class="s">"Never"</span> <span class="na">Orientation=</span><span class="s">"Horizontal"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;StackLayout</span> <span class="na">Orientation=</span><span class="s">"Horizontal"</span><span class="nt">&gt;</span>
+        <span class="c">&lt;!--  room  --&gt;</span>
+        <span class="nt">&lt;pancake:PancakeView</span> <span class="na">CornerRadius=</span><span class="s">"10"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;Grid</span>
+                <span class="na">BackgroundColor=</span><span class="s">"Red"</span>
+                <span class="na">HeightRequest=</span><span class="s">"100"</span>
+                <span class="na">WidthRequest=</span><span class="s">"150"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;Image</span> <span class="na">Aspect=</span><span class="s">"AspectFill"</span> <span class="na">Source=</span><span class="s">"Room1"</span> <span class="nt">/&gt;</span>
+                <span class="nt">&lt;Frame</span>
+                    <span class="na">Margin=</span><span class="s">"5"</span>
+                    <span class="na">Padding=</span><span class="s">"10,5"</span>
+                    <span class="na">BackgroundColor=</span><span class="s">"{StaticResource TagColor}"</span>
+                    <span class="na">CornerRadius=</span><span class="s">"15"</span>
+                    <span class="na">HasShadow=</span><span class="s">"False"</span>
+                    <span class="na">HorizontalOptions=</span><span class="s">"Start"</span>
+                    <span class="na">VerticalOptions=</span><span class="s">"Start"</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;Label</span> <span class="na">Style=</span><span class="s">"{StaticResource TagLabel}"</span> <span class="na">Text=</span><span class="s">"Zone 1"</span> <span class="nt">/&gt;</span>
+                <span class="nt">&lt;/Frame&gt;</span>
+            <span class="nt">&lt;/Grid&gt;</span>
+        <span class="nt">&lt;/pancake:PancakeView&gt;</span>
+        <span class="nt">&lt;pancake:PancakeView</span> <span class="na">CornerRadius=</span><span class="s">"10"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;Grid</span>
+                <span class="na">BackgroundColor=</span><span class="s">"Red"</span>
+                <span class="na">HeightRequest=</span><span class="s">"100"</span>
+                <span class="na">WidthRequest=</span><span class="s">"150"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;Image</span> <span class="na">Aspect=</span><span class="s">"AspectFill"</span> <span class="na">Source=</span><span class="s">"Room2"</span> <span class="nt">/&gt;</span>
+                <span class="nt">&lt;Frame</span>
+                    <span class="na">Margin=</span><span class="s">"5"</span>
+                    <span class="na">Padding=</span><span class="s">"10,5"</span>
+                    <span class="na">BackgroundColor=</span><span class="s">"{StaticResource TagColor}"</span>
+                    <span class="na">CornerRadius=</span><span class="s">"15"</span>
+                    <span class="na">HasShadow=</span><span class="s">"False"</span>
+                    <span class="na">HorizontalOptions=</span><span class="s">"Start"</span>
+                    <span class="na">VerticalOptions=</span><span class="s">"Start"</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;Label</span> <span class="na">Style=</span><span class="s">"{StaticResource TagLabel}"</span> <span class="na">Text=</span><span class="s">"Zone 2"</span> <span class="nt">/&gt;</span>
+                <span class="nt">&lt;/Frame&gt;</span>
+            <span class="nt">&lt;/Grid&gt;</span>
+        <span class="nt">&lt;/pancake:PancakeView&gt;</span>
+        <span class="nt">&lt;pancake:PancakeView</span> <span class="na">CornerRadius=</span><span class="s">"10"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;Grid</span>
+                <span class="na">BackgroundColor=</span><span class="s">"Red"</span>
+                <span class="na">HeightRequest=</span><span class="s">"100"</span>
+                <span class="na">WidthRequest=</span><span class="s">"150"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;Image</span> <span class="na">Aspect=</span><span class="s">"AspectFill"</span> <span class="na">Source=</span><span class="s">"Room3"</span> <span class="nt">/&gt;</span>
+                <span class="nt">&lt;Frame</span>
+                    <span class="na">Margin=</span><span class="s">"5"</span>
+                    <span class="na">Padding=</span><span class="s">"10,5"</span>
+                    <span class="na">BackgroundColor=</span><span class="s">"{StaticResource TagColor}"</span>
+                    <span class="na">CornerRadius=</span><span class="s">"15"</span>
+                    <span class="na">HasShadow=</span><span class="s">"False"</span>
+                    <span class="na">HorizontalOptions=</span><span class="s">"Start"</span>
+                    <span class="na">VerticalOptions=</span><span class="s">"Start"</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;Label</span> <span class="na">Style=</span><span class="s">"{StaticResource TagLabel}"</span> <span class="na">Text=</span><span class="s">"Zone 3"</span> <span class="nt">/&gt;</span>
+                <span class="nt">&lt;/Frame&gt;</span>
+            <span class="nt">&lt;/Grid&gt;</span>
+        <span class="nt">&lt;/pancake:PancakeView&gt;</span>
+    <span class="nt">&lt;/StackLayout&gt;</span>
+<span class="nt">&lt;/ScrollView&gt;</span></code></pre></figure>
+
+<p>In a real solution, you might want to try using the new <code class="highlighter-rouge">CollectionView</code>, but for the sake of our exercise, the <code class="highlighter-rouge">ScrollView</code> will do.</p>
+
+<h2 id="the-final-result">The Final Result</h2>
+<p>I think we could call this Xamarin.Forms UI Challenge a success. It’s great to see how well SkiaSharp integrates with Xamarin.Forms to allow us to create crazy-cool custom controls. Also multiple themes/styles is not too hard to implement as well.</p>
+
+<h3 id="ios-version">iOS Version</h3>
+<div class="myvideo">
+   <video style="display:block; height:600px;" autoplay="" controls="" loop="loop">
+       <source src="assets/videos/dayvsnight-ios.mp4" type="video/mp4" />
+   </video>
+</div>
+
+<h3 id="android-version">Android Version</h3>
+<div class="myvideo">
+   <video style="display:block; height:600px;" autoplay="" controls="" loop="loop">
+       <source src="assets/videos/dayvsnight-android.mp4" type="video/mp4" />
+   </video>
+</div>
+
+<h2 id="get-the-code">Get the code</h2>
+<p>All the code is available open source on GitHub at <a href="https://github.com/kphillpotts/DayVsNight">https://github.com/kphillpotts/DayVsNight</a>.</p>
+
+<h3 id="techniques-used">Techniques Used</h3>
+<ul>
+  <li>ImageCirclePlugin</li>
+  <li>PancakeView</li>
+  <li>Custom Fonts</li>
+  <li>XAML Styles and Resources</li>
+  <li>Theme Switching</li>
+  <li>SkiaSharp controls</li>
+  <li>MessagingCenter notifications</li>
+</ul>
+
+<h2 id="watch-me-code-it">Watch me code it</h2>
+<p>I actually did this UI Challenge live over Twitch, so if you want to watch hours of me coding this up then check out these recordings over at YouTube.</p>
+
+<h4 id="part-1">Part 1</h4>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/p6VTXVfJMoQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+
+<h4 id="part-2">Part 2</h4>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/wl85fSpH4vE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+
+<h4 id="part-3">Part 3</h4>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/dB8eXit39UA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+
+<p>If you want to catch me doing other live coding things follow me on Twitch. It’s a great platform where we can chat as we build software, ask questions, submit code).  Follow me at <a href="https://www.twitch.tv/kymphillpotts">https://www.twitch.tv/kymphillpotts</a> and come join in the fun!</p>
+
+<p><a href="https://twitch.tv/kymphillpotts" target="_blank"><img src="assets/images/twitch_banner.png" /></a></p>
+
+<p>I hope you find these posts useful, feel free to leave me a comment below or reach out to me via <a href="https://twitter.com/kphillpotts">Twitter</a> with some feedback.</p>
+
+<p>Until next time, Happy Coding</p>
+
+<p>❤
+Kym</p>
+
+                </div>
+            </section>
+
+            <!-- Email subscribe form at the bottom of the page -->
+            
+
+            <footer class="post-full-footer">
+                <!-- Everything inside the #author tags pulls data from the author -->
+                <!-- #author-->
+                
+                    
+                        <section class="author-card">
+                            
+                                <img class="author-profile-image" src="/assets/images/kphillpotts.jpg" alt="kphillpotts" />
+                            
+                            <section class="author-card-content">
+                                <h4 class="author-card-name"><a href="/author/kphillpotts">Kym Phillpotts</a></h4>
+                                
+                                    <p>Geek, Parent, Human, Xamarin University Instructor. Co-curator of http://weeklyxamarin.com  and twitch streaming live coding at http://twitch.tv/kymphillpotts.</p>
+                                
+                            </section>
+                        </section>
+                        <div class="post-full-footer-right">
+                            <a class="author-card-button" href="/author/kphillpotts">Read More</a>
+                        </div>
+                    
+                
+                <!-- /author  -->
+            </footer>
+            <!-- If you use Disqus comments, just uncomment this block.
+            The only thing you need to change is "test-apkdzgmqhj" - which
+            should be replaced with your own Disqus site-id. -->
+            
+                <section class="post-full-comments">
+                    <div id="disqus_thread"></div>
+                    <script>
+                        var disqus_config = function () {
+                            this.page.url = 'https://kymphillpotts.com/xamarin-forms-ui-challenge-dayvsnight.html';
+                            this.page.identifier = '/xamarin-forms-ui-challenge-dayvsnight.html';
+                        };
+                        (function() {
+                            var d = document, s = d.createElement('script');
+                            s.src = 'https://kymphillpotts.disqus.com/embed.js';
+                            s.setAttribute('data-timestamp', +new Date());
+                            (d.head || d.body).appendChild(s);
+                        })();
+                    </script>
+                    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                </section>
+            
+
+        </article>
+
+    </div>
+</main>
+
+<!-- Links to Previous/Next posts -->
+<aside class="read-next outer">
+    <div class="inner">
+        <div class="read-next-feed">
+            
+                
+                
+                
+                
+                    <article class="read-next-card"
+                        
+                            style="background-image: url(/assets/images/blog-cover.jpg)"
+                        
+                    >
+                        <header class="read-next-card-header">
+                            <small class="read-next-card-header-sitetitle">&mdash; Kym's Blog &mdash;</small>
+                            
+                                <h3 class="read-next-card-header-title"><a href="/tag/xamarin/">Xamarin</a></h3>
+                            
+                        </header>
+                        <div class="read-next-divider"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 14.5s2 3 5 3 5.5-2.463 5.5-5.5S21 6.5 18 6.5c-5 0-7 11-12 11C2.962 17.5.5 15.037.5 12S3 6.5 6 6.5s4.5 3.5 4.5 3.5"/></svg>
+</div>
+                        <div class="read-next-card-content">
+                            <ul>
+                                
+                                
+                                  
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/xamarin-forms-ui-challenge-artauction.html">Xamarin.Forms UI Challenges - Art Auction</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/5907-2/">Microsoft //Build/ Recap for Xamarin Developers</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/simple-animation-with-xamarin-forms/">Simple Animation with Xamarin.Forms</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                            </ul>
+                        </div>
+                        <footer class="read-next-card-footer">
+                            <a href="/tag/xamarin/">
+                                
+                                    See all 44 posts  →
+                                
+                            </a>
+                        </footer>
+                    </article>
+                
+            
+
+            <!-- If there's a next post, display it using the same markup included from - partials/post-card.hbs -->
+            
+
+            <!-- If there's a previous post, display it using the same markup included from - partials/post-card.hbs -->
+            
+                
+    <article class="post-card post-template">
+        
+            <a class="post-card-image-link" href="/xamarin-forms-ui-challenge-artauction.html">
+                <div class="post-card-image" style="background-image: url(/assets/images/covers/artauction.jpg)"></div>
+            </a>
+        
+        <div class="post-card-content">
+            <a class="post-card-content-link" href="/xamarin-forms-ui-challenge-artauction.html">
+                <header class="post-card-header">
+                    
+                        
+                            
+                                <span class="post-card-tags">Xamarin</span>
+                            
+                        
+                    
+
+                    <h2 class="post-card-title">Xamarin.Forms UI Challenges - Art Auction</h2>
+                </header>
+                <section class="post-card-excerpt">
+                    <p>It’s time for another Xamarin.Forms UI Challenge! This time we are going to see how we can reproduce a design I found over at Dribbble by Alex Pesenka. Let’s break it down The</p>
+                </section>
+            </a>
+            <footer class="post-card-meta">
+                
+                    
+                        
+                        <img class="author-profile-image" src="/assets/images/kphillpotts.jpg" alt="Kym Phillpotts" />
+                        
+                        <span class="post-card-author">
+                            <a href="/author/kphillpotts/">Kym Phillpotts</a>
+                        </span>
+                    
+                
+            </footer>
+        </div>
+    </article>
+
+            
+
+        </div>
+    </div>
+</aside>
+
+<!-- Floating header which appears on-scroll, included from includes/floating-header.hbs -->
+<div class="floating-header">
+    <div class="floating-header-logo">
+        <a href="https://kymphillpotts.com/">
+            
+            <span>Kym's Blog</span>
+        </a>
+    </div>
+    <span class="floating-header-divider">&mdash;</span>
+    <div class="floating-header-title">Xamarin.Forms UI Challenges - Day vs Night</div>
+    <div class="floating-header-share">
+        <div class="floating-header-share-label">Share this <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M7.5 15.5V4a1.5 1.5 0 1 1 3 0v4.5h2a1 1 0 0 1 1 1h2a1 1 0 0 1 1 1H18a1.5 1.5 0 0 1 1.5 1.5v3.099c0 .929-.13 1.854-.385 2.748L17.5 23.5h-9c-1.5-2-5.417-8.673-5.417-8.673a1.2 1.2 0 0 1 1.76-1.605L7.5 15.5zm6-6v2m-3-3.5v3.5m6-1v2"/>
+</svg>
+</div>
+        <a class="floating-header-share-tw" href="https://twitter.com/share?text=Xamarin.Forms+UI+Challenges+-+Day+vs+Night&amp;url=https://kphillpotts.github.io/xamarin-forms-ui-challenge-dayvsnight.html"
+            onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg>
+
+        </a>
+        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=https://kphillpotts.github.io/xamarin-forms-ui-challenge-dayvsnight.html"
+            onclick="window.open(this.href, 'share-facebook','width=580,height=296');return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M19 6h5V0h-5c-3.86 0-7 3.14-7 7v3H8v6h4v16h6V16h5l1-6h-6V7c0-.542.458-1 1-1z"/></svg>
+
+        </a>
+    </div>
+    <progress class="progress" value="0">
+        <div class="progress-container">
+            <span class="progress-bar"></span>
+        </div>
+    </progress>
+</div>
+
+
+<!-- /post -->
+
+<!-- The #contentFor helper here will send everything inside it up to the matching #block helper found in default.hbs -->
+
+
+        <!-- Previous/next page links - displayed on every page -->
+        
+
+        <!-- The footer at the very bottom of the screen -->
+        <footer class="site-footer outer">
+            <div class="site-footer-content inner">
+                <section class="copyright"><a href="https://kymphillpotts.com/">Kym's Blog</a> &copy; 2019</section>
+                <section class="poweredby">Proudly published with <a href="https://jekyllrb.com/">Jekyll</a> &
+                    <a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a> using
+                    <a href="https://github.com/jekyller/jasper2" target="_blank" rel="noopener">Jasper2</a></section>
+                <nav class="site-footer-nav">
+                    <a href="/">Latest Posts</a>
+                    
+                    <a href="https://twitter.com/kphillpotts" target="_blank" rel="noopener">Twitter</a>
+                    <a href="https://ghost.org" target="_blank" rel="noopener">Ghost</a>
+                </nav>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- The big email subscribe modal content -->
+    
+
+    <!-- highlight.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.10.0/components/prism-abap.min.js"></script>
+    <script>$(document).ready(function() {
+      $('pre code').each(function(i, block) {
+        hljs.highlightBlock(block);
+      });
+    });</script>
+
+    <!-- jQuery + Fitvids, which makes all video embeds responsive -->
+    <script
+        src="https://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous">
+    </script>
+    <script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="https://demo.ghost.io/assets/js/jquery.fitvids.js?v=724281a32e"></script>
+
+
+    <!-- Paginator increased to "infinit" in _config.yml -->
+    <!-- if paginator.posts  -->
+    <!-- <script>
+        var maxPages = parseInt('');
+    </script>
+    <script src="/assets/js/infinitescroll.js"></script> -->
+    <!-- /endif -->
+
+    
+
+
+    <!-- Add Google Analytics  -->
+    <!-- Google Analytics Tracking code -->
+ <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-69281367-1', 'auto');
+  ga('send', 'pageview');
+
+ </script>
+
+
+    <!-- The #block helper will pull in data from the #contentFor other template files. In this case, there's some JavaScript which we only want to use in post.hbs, but it needs to be included down here, after jQuery has already loaded. -->
+    
+        <script>
+
+// NOTE: Scroll performance is poor in Safari
+// - this appears to be due to the events firing much more slowly in Safari.
+//   Dropping the scroll event and using only a raf loop results in smoother
+//   scrolling but continuous processing even when not scrolling
+$(document).ready(function () {
+    // Start fitVids
+    var $postContent = $(".post-full-content");
+    $postContent.fitVids();
+    // End fitVids
+
+    var progressBar = document.querySelector('progress');
+    var header = document.querySelector('.floating-header');
+    var title = document.querySelector('.post-full-title');
+
+    var lastScrollY = window.scrollY;
+    var lastWindowHeight = window.innerHeight;
+    var lastDocumentHeight = $(document).height();
+    var ticking = false;
+
+    function onScroll() {
+        lastScrollY = window.scrollY;
+        requestTick();
+    }
+
+    function onResize() {
+        lastWindowHeight = window.innerHeight;
+        lastDocumentHeight = $(document).height();
+        requestTick();
+    }
+
+    function requestTick() {
+        if (!ticking) {
+            requestAnimationFrame(update);
+        }
+        ticking = true;
+    }
+
+    function update() {
+        var trigger = title.getBoundingClientRect().top + window.scrollY;
+        var triggerOffset = title.offsetHeight + 35;
+        var progressMax = lastDocumentHeight - lastWindowHeight;
+
+        // show/hide floating header
+        if (lastScrollY >= trigger + triggerOffset) {
+            header.classList.add('floating-active');
+        } else {
+            header.classList.remove('floating-active');
+        }
+
+        progressBar.setAttribute('max', progressMax);
+        progressBar.setAttribute('value', lastScrollY);
+
+        ticking = false;
+    }
+
+    window.addEventListener('scroll', onScroll, {passive: true});
+    window.addEventListener('resize', onResize, false);
+
+    update();
+});
+</script>
+
+    
+
+    <!-- Ghost outputs important scripts and data with this tag - it should always be the very last thing before the closing body tag -->
+    <!-- ghost_foot -->
+
+</body>
+</html>
