@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator>
   <link href="https://kymphillpotts.com/author/kphillpotts/feed.xml" rel="self" type="application/atom+xml" />
   <link href="https://kymphillpotts.com/" rel="alternate" type="text/html" />
-  <updated>2019-07-13T14:31:41+10:00</updated>
+  <updated>2019-09-01T21:47:12+10:00</updated>
   <id>https://kymphillpotts.com/author/kphillpotts/feed.xml</id>
 
   
@@ -30,6 +30,78 @@
   
   
 
+  
+    <entry>
+      <title type="html">My Visual Studio 2019 Theme</title>
+      <link href="https://kymphillpotts.com/my-visual-studio-2019-theme.html" rel="alternate" type="text/html" title="My Visual Studio 2019 Theme" />
+      <published>2019-09-01T10:00:00+10:00</published>
+      <updated>2019-09-01T10:00:00+10:00</updated>
+      <id>https://kymphillpotts.com/my-visual-studio-2019-theme</id>
+      <content type="html" xml:base="https://kymphillpotts.com/my-visual-studio-2019-theme.html">&lt;p&gt;I’ve had a couple of people ask me for my Visual Studio 2019 theme that I use when live streaming, so I thought I’d just blog it out as a reference for myself and for others who are interested.&lt;/p&gt;
+
+&lt;h2 id=&quot;whats-it-look-like&quot;&gt;What’s it look like&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/images/posts/theme/xaml.jpg&quot; alt=&quot;Xaml&quot; title=&quot;xaml view&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/posts/theme/code.jpg&quot; alt=&quot;Code&quot; title=&quot;code view&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;font&quot;&gt;Font&lt;/h2&gt;
+&lt;p&gt;My font is &lt;a href=&quot;https://github.com/tonsky/FiraCode&quot;&gt;Fira Code Retina&lt;/a&gt; which I zoom in at 200%.  Mostly because I’m an old man with bad eye-sight, but also because I like my fonts to be big and colourful.&lt;/p&gt;
+
+&lt;h2 id=&quot;colors&quot;&gt;Colors&lt;/h2&gt;
+&lt;p&gt;To be honest, I can’t remember where I got the initial colors from  but over time I have done some customization on them so they are a little unique.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;/assets/data/Exported-2019-09-01.vssettings&quot;&gt;I’ve exported my settings and you can get them from here&lt;/a&gt;. So hopefully if you are interested you can check them out and import them.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Just don’t blame me if it breaks your Visual Studio ;-)&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;extensions-that-i-use&quot;&gt;Extensions that I use&lt;/h2&gt;
+&lt;p&gt;I don’t use a lot of extensions for code formatting, but the ones I do are:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://marketplace.visualstudio.com/items?itemName=OmarRwemi.BetterComments&quot;&gt;Better Comments&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://marketplace.visualstudio.com/items?itemName=StanislavKuzmichArtStea1th.EnhancedSyntaxHighlighting&quot;&gt;Enahnced Syntax Highlighting&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://marketplace.visualstudio.com/items?itemName=NicoVermeir.XAMLStyler&quot;&gt;XAML Styler&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;shameless-twitch-plug&quot;&gt;Shameless Twitch plug&lt;/h2&gt;
+&lt;p&gt;If you want to catch me doing live coding follow me on Twitch. It’s a great platform where we can chat as we build software. Follow me at &lt;a href=&quot;https://www.twitch.tv/kymphillpotts&quot;&gt;https://www.twitch.tv/kymphillpotts&lt;/a&gt; and come join in the fun!&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://twitch.tv/kymphillpotts&quot; target=&quot;_blank&quot;&gt;&lt;img src=&quot;assets/images/twitch_banner.png&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;I hope you find these posts useful, feel free to leave me a comment below or reach out to me via &lt;a href=&quot;https://twitter.com/kphillpotts&quot;&gt;Twitter&lt;/a&gt; with some feedback.&lt;/p&gt;
+
+&lt;p&gt;Until next time, Happy Coding&lt;/p&gt;
+
+&lt;p&gt;❤
+Kym&lt;/p&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>Kym Phillpotts</name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="Other" />
+      
+
+      
+        <summary type="html">I’ve had a couple of people ask me for my Visual Studio 2019 theme that I use when live streaming, so I thought I’d just blog it out as a reference for myself and for others who are interested.</summary>
+      
+
+      
+      
+    </entry>
   
     <entry>
       <title type="html">Xamarin.Forms UI Challenges - Day vs Night</title>
@@ -1664,7 +1736,7 @@ Kym&lt;/p&gt;</content>
       
 
       
-        <summary type="html">I’ve been writing a few unit tests recently. I actually like writing unit tests, I find something very cathartic about seeing those little green ticks show up.  However, one thing that can make writing unit tests a drag is setting up testing data for each test. Well, there are some nice patterns and tools out there to help. Let’s check some out… AutoFixture If you just need to generate some data (and don’t care too much about what it contains) you might want to have a look at a nice little library called AutoFixture AutoFixture is an open source library for .NET designed to minimize the ‘Arrange’ phase of your unit tests in order to maximize maintainability. Its primary goal is to allow developers to focus on what is being tested rather than how to set up the test scenario, by making it easier to create object graphs containing test data. TestCase Attribute Sometimes you want to run a number of values through a unit test and you don’t necessarily want to write different unit tests for each of them. The TestCase attribute is very useful here because you can get Nunit to just pass a series of values in: [TestCase(12, 2, 6)] [TestCase(12, 4, 3)] public void DivideTest(int n, int d, int q) { Assert.AreEqual(q, n / d); } A really nice thing about TestCase is that each element will appear as a different unit test in your runner, which means if one of the values fails you can instantly see which one failed. I’ve used this pretty extensively in the past, but one area where this starts to make your unit tests hard to understand is when you have a lot of values – pretty soon the number of attributes starts to make it kind of difficult to understand. But fear not, the TestCaseSource attribute is here to save you. TestCaseSource Attribute This is something that has been around forever, but I’ve never bothered playing with. Turns out it’s a really nice way of structuring that test data. Basically, you create a class that returns an IEnumerable of your test data. public class MyTests { [Test, TestCaseSource(typeof(MyDataClass), &quot;TestCases&quot;)] public int DivideTest(int n, int d) { return n / d; } } public class MyDataClass { public static IEnumerable TestCases { get { yield return new TestCaseData(12, 3).Returns(4); yield return new TestCaseData(12, 2).Returns(6); yield return new TestCaseData(12, 4).Returns(3); } } } Now in my case, I was writing some tests for a simple converter application with some numeric buttons, a backspace key, a decimal point key ‘.’. You know, a numeric keypad. It actually turns out that there are a number of things to consider. For example, what if someone tries to enter two decimal points, or maybe tries to have a bunch of leading zeros. Putting the scenarios into a TestCaseSource made this easy to write and also easy to visualize. NOTE: my architecture is MVVM, so I made sure I used commands behind all the buttons which means I can test what happens when a user presses a button (effectively testing the UI). For my unit test inputs, I provided a string with the keys pressed and had a little method to execute the appropriate command on the ViewModel. [Test, TestCaseSource(typeof(KeySequenceTestData), &quot;KeySequenceData&quot;)] public string KeySequence_Commands_GivesCorrectValue (string keySequence)  {     var vm = new MainViewModel();     foreach (var key in keySequence)         ProcessCharacter(vm, key);     return vm.FromValue; } private void ProcessCharacter(MainViewModel vm, char character) {     switch (character)     {         case '&amp;lt;': // user hits the backspace key             vm.BackSpaceCommand.Execute(null);             break;         case '.': // user hits the decimal point              vm.DecimalPointCommand.Execute(null);             break;         default: // any other key (which in case is a number key)             vm.NumberCommand.Execute(character.ToString());             break;     } } public class KeySequenceTestData {     public static IEnumerable KeySequenceData     {         get         {             // simple numeric value tests              yield return new TestCaseData(&quot;0&quot;).Returns(&quot;0&quot;);             yield return new TestCaseData(&quot;1&quot;).Returns(&quot;1&quot;);             yield return new TestCaseData(&quot;99&quot;).Returns(&quot;99&quot;);             yield return new TestCaseData(&quot;909&quot;).Returns(&quot;909&quot;);             // testing leading and trailing zeros             yield return new TestCaseData(&quot;00&quot;).Returns(&quot;0&quot;);             yield return new TestCaseData(&quot;10&quot;).Returns(&quot;10&quot;);             yield return new TestCaseData(&quot;0.&quot;).Returns(&quot;0.&quot;);             yield return new TestCaseData(&quot;.0&quot;).Returns(&quot;0.0&quot;);             yield return new TestCaseData(&quot;...0&quot;).Returns(&quot;0.0&quot;);             yield return new TestCaseData(&quot;.000&quot;).Returns(&quot;0.000&quot;);             yield return new TestCaseData(&quot;000.&quot;).Returns(&quot;0.&quot;);             yield return new TestCaseData(&quot;000.00&quot;).Returns(&quot;0.00&quot;);             yield return new TestCaseData(&quot;10.00001&quot;).Returns(&quot;10.00001&quot;);             yield return new TestCaseData(&quot;10.10&quot;).Returns(&quot;10.10&quot;);             yield return new TestCaseData(&quot;10..10&quot;).Returns(&quot;10.10&quot;);             yield return new TestCaseData(&quot;10.10.&quot;).Returns(&quot;10.10&quot;);             yield return new TestCaseData(&quot;001.10.&quot;).Returns(&quot;1.10&quot;);             // testing hitting the back key             yield return new TestCaseData(&quot;&amp;lt;&quot;).Returns(&quot;0&quot;);             yield return new TestCaseData(&quot;&amp;lt;.&quot;).Returns(&quot;0.&quot;);             yield return new TestCaseData(&quot;&amp;lt;&amp;lt;&quot;).Returns(&quot;0&quot;);             yield return new TestCaseData(&quot;0&amp;lt;0&quot;).Returns(&quot;0&quot;);             yield return new TestCaseData(&quot;12&amp;lt;&quot;).Returns(&quot;1&quot;);             yield return new TestCaseData(&quot;1&amp;lt;2&quot;).Returns(&quot;2&quot;);             yield return new TestCaseData(&quot;12&amp;lt;&amp;lt;&quot;).Returns(&quot;0&quot;);             yield return new TestCaseData(&quot;0.9&amp;lt;&quot;).Returns(&quot;0.&quot;);             yield return new TestCaseData(&quot;0.&amp;lt;9&amp;lt;&quot;).Returns(&quot;0&quot;);         }     } } The Builder Pattern for Test Data The Builder pattern turns out to be a nice pattern for creating test data. I first heard of this usage from Steve Smith when he appeared on .NET Rocks episode 1494. You should take a listen to that episode. The Basic idea is you create yourself a Builder class for your model object that goes and creates an object for you with some default values and then you have builder methods that allow you to set specific values if that is important for your test. Why not just create the objects with their values straight in your test? Well, you don’t want your tests littered with code to setup objects because it distracts you from the purpose of your test… and what if you change that model object later, you’ve got a thousand different unit tests you need to update. Here is a trivial example: As I said, I’m working on a simple converter application which has a variety of different Unit objects. So I create myself Builder object which allows me to easily create a Unit to covert. public class UnitBuilder { private string name = &quot;A Unit&quot;; private string description = &quot;Description of a unit&quot;; private UnitCategory category = UnitCategory.Weight; private double baseUnitValue = 1; public BaseUnit Build() { return new BaseUnit(name, description, category, baseUnitValue); } public UnitBuilder WithName(string name) { this.name = name; return this; } public UnitBuilder WithDescription(string description) { this.description = description; return this; } public UnitBuilder WithCategory(UnitCategory category) { this.category = category; return this; } public UnitBuilder WithBaseUnitValue (double baseUnitValue) { this.baseUnitValue = baseUnitValue; return this; } /// /// Implicit converter object, so we can turn a builder straight into a unit /// Builder Instance public static implicit operator BaseUnit(UnitBuilder instance) { return instance.Build(); } } Once I have that setup, within my unit test I can use this builder object to create my Unit objects. It will have default values but allows me to override whatever I want, all without having a hard dependency on the constructor for the object. For example, [Test] public void SimpleConversion_OneUnit() {     BaseUnit cm = new UnitBuilder().WithName(&quot;centimeters&quot;).WithBaseUnitValue(1);     BaseUnit meter = new UnitBuilder().WithName(&quot;meters&quot;).WithBaseUnitValue(100);     Converter.ConvertUnit(cm, meter, 1).ShouldEqual(0.01);     Converter.ConvertUnit(meter, cm, 1).ShouldEqual(100); } This just makes it really nice to construct tests which are nice a readable without being polluted with too much setup code. You can read a bunch more about this pattern at: Flexible and expressive unit tests with the builder pattern Improve tests with the builder pattern for test data One last thing you may notice, I also used a little library called Should, which makes reading the unit test just a teeny-tiny bit more readable. public void Should_assertions() { object obj = null; obj.ShouldBeNull(); obj = new object(); obj.ShouldBeType(typeof(object)); obj.ShouldEqual(obj); obj.ShouldNotBeNull(); obj.ShouldNotBeSameAs(new object()); obj.ShouldNotBeType(typeof(string)); obj.ShouldNotEqual(&quot;foo&quot;); obj = &quot;x&quot;; obj.ShouldNotBeInRange(&quot;y&quot;, &quot;z&quot;); obj.ShouldBeInRange(&quot;a&quot;, &quot;z&quot;); obj.ShouldBeSameAs(&quot;x&quot;); &quot;This String&quot;.ShouldContain(&quot;This&quot;); &quot;This String&quot;.ShouldNotBeEmpty(); &quot;This String&quot;.ShouldNotContain(&quot;foobar&quot;); false.ShouldBeFalse(); true.ShouldBeTrue(); var list = new List&amp;lt;&amp;gt;(); list.ShouldBeEmpty(); list.ShouldNotContain(new object()); var item = new object(); list.Add(item); list.ShouldNotBeEmpty(); list.ShouldContain(item); } In Conclusion These are just some little things that you may consider next time you are writing unit tests. It will make setting up your data a little easier whilst also creating more maintainable and easier to read unit tests. Till next time, happy coding!</summary>
+        <summary type="html">I’ve been writing a few unit tests recently. I actually like writing unit tests, I find something very cathartic about seeing those little green ticks show up.  However, one thing that can make writing unit tests a drag is setting up testing data for each test. Well, there are some nice patterns and tools out there to help. Let’s check some out…</summary>
       
 
       
@@ -2201,194 +2273,6 @@ Kym&lt;/p&gt;</content>
 
       
         <summary type="html">When your app is all about the images, sometimes you want your images to be hero of the UI.  That’s what this weeks Xamarin.Forms Layout Challenge is all about.    Normally I prefer a light themed application, so just to change things up a bit, I thought I would go for a dark themed layout. They say, variety is the spice of life.</summary>
-      
-
-      
-      
-    </entry>
-  
-    <entry>
-      <title type="html">Xamarin.Forms Layout Challenges – Timeline</title>
-      <link href="https://kymphillpotts.com/xamarin-forms-layout-challenges-timeline/" rel="alternate" type="text/html" title="Xamarin.Forms Layout Challenges &amp;#8211; Timeline" />
-      <published>2017-03-10T01:53:17+11:00</published>
-      <updated>2017-03-10T01:53:17+11:00</updated>
-      <id>https://kymphillpotts.com/xamarin-forms-layout-challenges-timeline</id>
-      <content type="html" xml:base="https://kymphillpotts.com/xamarin-forms-layout-challenges-timeline/">&lt;p&gt;A layout I’m seeing more and more these days is a timeline of activities.  This is useful for things like transportation schedules or class times.  So let’s put together a simple layout for a timeline using a ListView with headers and footers and a custom ViewCell.&lt;!--more--&gt;&lt;/p&gt;
-
-&lt;div id=&quot;gallery-1&quot; class=&quot;gallery galleryid-5699 gallery-columns-2 gallery-size-full&quot;&gt;
-  &lt;dl class=&quot;gallery-item&quot;&gt;
-    &lt;dt class=&quot;gallery-icon portrait&quot;&gt;
-      &lt;img src=&quot;https://i1.wp.com/res.cloudinary.com/dlstb15av/image/upload/v1506381680/iPhone6-1-e1489032290107_p5pgok.png?resize=247%2C440&quot; class=&quot;attachment-full size-full&quot; alt=&quot;&quot; data-recalc-dims=&quot;1&quot; /&gt;
-    &lt;/dt&gt;
-  &lt;/dl&gt;
-  
-  &lt;dl class=&quot;gallery-item&quot;&gt;
-    &lt;dt class=&quot;gallery-icon portrait&quot;&gt;
-      &lt;img src=&quot;https://i0.wp.com/res.cloudinary.com/dlstb15av/image/upload/v1506381679/AndroidPixel-1-e1489032278518_xgnvkx.png?resize=241%2C440&quot; class=&quot;attachment-full size-full&quot; alt=&quot;&quot; data-recalc-dims=&quot;1&quot; /&gt;
-    &lt;/dt&gt;
-  &lt;/dl&gt;
-  
-  &lt;br style=&quot;clear: both&quot; /&gt;
-&lt;/div&gt;
-
-&lt;p&gt; &lt;/p&gt;
-
-&lt;h2 id=&quot;page-structure&quot;&gt;Page Structure&lt;/h2&gt;
-
-&lt;p&gt;This page is just a simple ListView, nothing really more complex than that.  I turned the Separators off.  Set the RowHeight to something that feels nice.&lt;/p&gt;
-
-&lt;pre class=&quot;lang:xhtml decode:true&quot;&gt;&amp;lt;ListView
-    x:Name=&quot;timelineListView&quot;
-    ItemTapped=&quot;timelineListView_ItemTapped&quot;
-    ItemsSource=&quot;{Binding .}&quot;
-    RowHeight=&quot;75&quot;
-    SeparatorVisibility=&quot;None&quot;&amp;gt;&lt;/pre&gt;
-
-&lt;p&gt;Also, you may notice I have an ItemTapped hooked up that doesn’t do much:&lt;/p&gt;
-
-&lt;pre class=&quot;lang:c# decode:true &quot;&gt;private void timelineListView_ItemTapped(object sender, ItemTappedEventArgs e)
-{
-  timelineListView.SelectedItem = null;
-}&lt;/pre&gt;
-
-&lt;p&gt;It just disables a row from being selected, mainly because it  looks rubbish when one of the rows is selected… but of course depending on your layout, you might actually want to do Master / Detail style navigation.&lt;/p&gt;
-
-&lt;h2 id=&quot;header&quot;&gt;Header&lt;/h2&gt;
-
-&lt;p&gt;If you want something to appear above your ListView and have it scroll with the ListView use a header.&lt;/p&gt;
-
-&lt;p&gt;Pro Tip: Whatever you do, do NOT put a ScrollView around the entire page.  Having nested scrolling containers (eg. ScrollView with ListView inside) is just going end with tears.  Use a Header instead.&lt;/p&gt;
-
-&lt;p&gt;For our header, it’s just a simple stack layout with some labels and a bit of padding&lt;/p&gt;
-
-&lt;pre class=&quot;lang:xhtml decode:true&quot;&gt;&amp;lt;ListView.Header&amp;gt;
-      &amp;lt;StackLayout Padding=&quot;20,40,0,30&quot;&amp;gt;
-        &amp;lt;Label Style=&quot;{StaticResource PageHeaderLabel}&quot; Text=&quot;Class Schedule&quot; /&amp;gt;
-        &amp;lt;Label Style=&quot;{StaticResource SubHeaderLabel}&quot; Text=&quot;8 Mar 2017&quot; /&amp;gt;
-      &amp;lt;/StackLayout&amp;gt;
-    &amp;lt;/ListView.Header&amp;gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;footer&quot;&gt;Footer&lt;/h2&gt;
-
-&lt;p&gt;Down the bottom of the list, we have just put an image.  Not for any particularly good reason, just to jazz up the page a bit and show how footers work.  You could easily get rid of it and have a nice layout, I figured I’d just include it to complete the header / footer idea.&lt;/p&gt;
-
-&lt;p&gt;In our case the footer contains a Grid with two rows. The actual background image “Footer.png” occupies both the rows.  Then we have a transparent-to-white gradient image that is overlaid in the first row.  Basically just creating a fade in effect for the image.&lt;/p&gt;
-
-&lt;pre class=&quot;lang:xhtml decode:true&quot;&gt;&amp;lt;ListView.Footer&amp;gt;
-      &amp;lt;Grid RowSpacing=&quot;0&quot;&amp;gt;
-        &amp;lt;Grid.RowDefinitions&amp;gt;
-          &amp;lt;RowDefinition Height=&quot;64&quot; /&amp;gt;
-          &amp;lt;RowDefinition Height=&quot;100&quot; /&amp;gt;
-        &amp;lt;/Grid.RowDefinitions&amp;gt;
-        &amp;lt;Image Grid.RowSpan=&quot;2&quot; Aspect=&quot;AspectFill&quot; HorizontalOptions=&quot;Fill&quot; VerticalOptions=&quot;Start&quot; Source=&quot;YogaImage.png&quot; /&amp;gt;
-        &amp;lt;Image Aspect=&quot;Fill&quot; Grid.RowSpan=&quot;2&quot; HorizontalOptions=&quot;Fill&quot; Source=&quot;FadeToWhite.png&quot; /&amp;gt;
-      &amp;lt;/Grid&amp;gt;
-    &amp;lt;/ListView.Footer&amp;gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;viewcell&quot;&gt;ViewCell&lt;/h2&gt;
-
-&lt;p&gt;All the real magic happens in the ViewCell which defines what each row is going to look like.&lt;/p&gt;
-
-&lt;p&gt;At it’s core it’s just a simple Grid with 3 columns and two rows.&lt;/p&gt;
-
-&lt;p&gt;&lt;img class=&quot;alignnone size-full wp-image-5731&quot; src=&quot;https://i1.wp.com/res.cloudinary.com/dlstb15av/image/upload/v1506381678/GridLayout_fjz7js.png?resize=250%2C51&quot; alt=&quot;&quot; data-recalc-dims=&quot;1&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;The only really interesting bit of this is the actual lines and circles that form the timeline.  This is achieved by a thin vertical BoxView that runs the height of the Viewcell.  Overlayed in the first row is our circle image.  Nothing magical here.&lt;/p&gt;
-
-&lt;p&gt;Now you might notice that it uses a ValueConverter for the IsVisible property, this is kind of a hack to make the line not appear in the last row.  Our model object (which would actually probably be a ViewModel in a real app) has a property called IsLast which is set to true for the last row.  And then we have a NotBooleanConverter assigned to the IsVisible of the line, so basically the line isn’t rendered on the last row.  It feels a bit awkward, but off the top of my head, given the time, I couldn’t think of a better option.&lt;/p&gt;
-
-&lt;pre class=&quot;lang:xhtml decode:true&quot;&gt;&amp;lt;ListView.ItemTemplate&amp;gt;
-      &amp;lt;DataTemplate&amp;gt;
-        &amp;lt;ViewCell&amp;gt;
-          &amp;lt;Grid ColumnSpacing=&quot;0&quot; RowSpacing=&quot;0&quot;&amp;gt;
-            &amp;lt;Grid.ColumnDefinitions&amp;gt;
-              &amp;lt;ColumnDefinition Width=&quot;100&quot; /&amp;gt;
-              &amp;lt;ColumnDefinition Width=&quot;30&quot; /&amp;gt;
-              &amp;lt;ColumnDefinition Width=&quot;*&quot; /&amp;gt;
-            &amp;lt;/Grid.ColumnDefinitions&amp;gt;
-            &amp;lt;Grid.RowDefinitions&amp;gt;
-              &amp;lt;RowDefinition Height=&quot;Auto&quot; /&amp;gt;
-              &amp;lt;RowDefinition Height=&quot;*&quot; /&amp;gt;
-            &amp;lt;/Grid.RowDefinitions&amp;gt;
-
-            &amp;lt;Label HorizontalOptions=&quot;Center&quot; Style=&quot;{StaticResource ClassTimeLabel}&quot; Text=&quot;{Binding ClassTime, StringFormat='{0:H:mm}'}&quot; /&amp;gt;
-
-            &amp;lt;Label
-              Grid.Column=&quot;2&quot;
-              Margin=&quot;20,0&quot;
-              Style=&quot;{StaticResource ClassNameLabel}&quot;
-              Text=&quot;{Binding ClassName}&quot; /&amp;gt;
-
-            &amp;lt;Label
-              Grid.Row=&quot;1&quot;
-              Grid.Column=&quot;2&quot;
-              Margin=&quot;20,0&quot;
-              Style=&quot;{StaticResource ClassInstructorLabel}&quot;
-              Text=&quot;{Binding Instructor}&quot; /&amp;gt;
-
-            &amp;lt;BoxView
-              Grid.RowSpan=&quot;2&quot;
-              Grid.Column=&quot;1&quot;
-              BackgroundColor=&quot;{StaticResource TimelineColor}&quot;
-              HorizontalOptions=&quot;Center&quot;
-              IsVisible=&quot;{Binding IsLast, Converter={local:NotBooleanConverter}}&quot;
-              VerticalOptions=&quot;Fill&quot;
-              WidthRequest=&quot;3&quot; /&amp;gt;
-
-            &amp;lt;Image Grid.Column=&quot;1&quot; Source=&quot;Bullet.png&quot; /&amp;gt;
-
-          &amp;lt;/Grid&amp;gt;
-        &amp;lt;/ViewCell&amp;gt;
-      &amp;lt;/DataTemplate&amp;gt;
-    &amp;lt;/ListView.ItemTemplate&amp;gt;
-&lt;/pre&gt;
-
-&lt;h2 id=&quot;wrap-up&quot;&gt;Wrap Up&lt;/h2&gt;
-
-&lt;p&gt;So that is it, a simple timeline using a ListView.  It works pretty nicely.&lt;/p&gt;
-
-&lt;p&gt;Here are some links for further information about some of the techniques:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://developer.xamarin.com/guides/xamarin-forms/user-interface/listview/&quot;&gt;Xamarin ListView documentation&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://developer.xamarin.com/guides/xamarin-forms/user-interface/listview/customizing-list-appearance/#Headers_and_Footers&quot;&gt;Headers and Footers&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://developer.xamarin.com/guides/xamarin-forms/user-interface/listview/customizing-cell-appearance/#Custom_Cells&quot;&gt;Custom Cells&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;As YouTubers would say: “let me know in the comments if you liked this” 🙂 Also, If you have any layouts that you thing would be interesting to cover, just let me know.&lt;/p&gt;
-
-&lt;p&gt;Oh yeah, and you can grab the project over at &lt;a href=&quot;https://github.com/kphillpotts/XamarinFormsLayoutChallenges&quot;&gt;https://github.com/kphillpotts/XamarinFormsLayoutChallenges&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Also, make sure you check out some of the other layouts in &lt;a href=&quot;http://www.kymphillpotts.com/xamarin-forms-layout-challenges/&quot;&gt;Xamarin.Forms Layout Challenges&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Happy Layouts!&lt;/p&gt;
-
-&lt;p&gt; &lt;/p&gt;
-
-&lt;p&gt; &lt;/p&gt;
-
-&lt;p&gt; &lt;/p&gt;</content>
-
-      
-      
-      
-      
-      
-
-      <author>
-          <name>Kym Phillpotts</name>
-        
-        
-      </author>
-
-      
-
-      
-        <category term="Xamarin" />
-      
-
-      
-        <summary type="html">A layout I’m seeing more and more these days is a timeline of activities.  This is useful for things like transportation schedules or class times.  So let’s put together a simple layout for a timeline using a ListView with headers and footers and a custom ViewCell.</summary>
       
 
       
