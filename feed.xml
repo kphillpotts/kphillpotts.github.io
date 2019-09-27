@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="https://kymphillpotts.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://kymphillpotts.com/" rel="alternate" type="text/html" /><updated>2019-09-27T12:57:31+10:00</updated><id>https://kymphillpotts.com/</id><title type="html">Kym’s Blog</title><subtitle>I write about Azure, Xamarin.Forms, Connected Apps and whatever else might be on my mind.</subtitle><entry><title type="html">Xamarin.Forms UI Challenges - Unzone</title><link href="https://kymphillpotts.com/xamarin-forms-ui-challenge-unzone.html" rel="alternate" type="text/html" title="Xamarin.Forms UI Challenges - Unzone" /><published>2019-09-27T12:40:00+10:00</published><updated>2019-09-27T12:40:00+10:00</updated><id>https://kymphillpotts.com/xamarin-forms-ui-challenge-unzone</id><content type="html" xml:base="https://kymphillpotts.com/xamarin-forms-ui-challenge-unzone.html">&lt;p&gt;Well thought out animations can help your applications come to life through having better user experience and a sense of joy.  This Xamarin.Forms UI Challenge illustrates how simple it can be to add compelling animations into your applications.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="https://kymphillpotts.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://kymphillpotts.com/" rel="alternate" type="text/html" /><updated>2019-09-27T13:04:50+10:00</updated><id>https://kymphillpotts.com/</id><title type="html">Kym’s Blog</title><subtitle>I write about Azure, Xamarin.Forms, Connected Apps and whatever else might be on my mind.</subtitle><entry><title type="html">Xamarin.Forms UI Challenges - Unzone</title><link href="https://kymphillpotts.com/xamarin-forms-ui-challenge-unzone.html" rel="alternate" type="text/html" title="Xamarin.Forms UI Challenges - Unzone" /><published>2019-09-27T12:40:00+10:00</published><updated>2019-09-27T12:40:00+10:00</updated><id>https://kymphillpotts.com/xamarin-forms-ui-challenge-unzone</id><content type="html" xml:base="https://kymphillpotts.com/xamarin-forms-ui-challenge-unzone.html">&lt;p&gt;Well thought out animations can help your applications come to life through having better user experience and a sense of joy.  This Xamarin.Forms UI Challenge illustrates how simple it can be to add compelling animations into your applications.&lt;/p&gt;
 
 &lt;h2 id=&quot;the-design&quot;&gt;The Design&lt;/h2&gt;
 
@@ -113,7 +113,7 @@ There is really just one of these cells and it is designed to show your current 
 
 &lt;div class=&quot;myvideo&quot;&gt;
    &lt;video style=&quot;display:block;&quot; autoplay=&quot;&quot; controls=&quot;&quot; loop=&quot;loop&quot;&gt;
-       &lt;source src=&quot;assets/videos/Unzone1.mp4&quot; type=&quot;video/mp4&quot; /&gt;
+       &lt;source src=&quot;assets/videos/UnZone1.mp4&quot; type=&quot;video/mp4&quot; /&gt;
    &lt;/video&gt;
 &lt;/div&gt;
 
@@ -156,7 +156,7 @@ There is really just one of these cells and it is designed to show your current 
 
 &lt;div class=&quot;myvideo&quot;&gt;
    &lt;video style=&quot;display:block;&quot; autoplay=&quot;&quot; controls=&quot;&quot; loop=&quot;loop&quot;&gt;
-       &lt;source src=&quot;assets/videos/Unzone2.mp4&quot; type=&quot;video/mp4&quot; /&gt;
+       &lt;source src=&quot;assets/videos/UnZone2.mp4&quot; type=&quot;video/mp4&quot; /&gt;
    &lt;/video&gt;
 &lt;/div&gt;
 
@@ -207,7 +207,7 @@ There is really just one of these cells and it is designed to show your current 
 
 &lt;div class=&quot;myvideo&quot;&gt;
    &lt;video style=&quot;display:block;&quot; autoplay=&quot;&quot; controls=&quot;&quot; loop=&quot;loop&quot;&gt;
-       &lt;source src=&quot;assets/videos/Unzone3.mp4&quot; type=&quot;video/mp4&quot; /&gt;
+       &lt;source src=&quot;assets/videos/UnZone3.mp4&quot; type=&quot;video/mp4&quot; /&gt;
    &lt;/video&gt;
 &lt;/div&gt;
 
@@ -278,7 +278,7 @@ There is really just one of these cells and it is designed to show your current 
 
 &lt;div class=&quot;myvideo&quot;&gt;
    &lt;video style=&quot;display:block;&quot; autoplay=&quot;&quot; controls=&quot;&quot; loop=&quot;loop&quot;&gt;
-       &lt;source src=&quot;assets/videos/Unzone4.mp4&quot; type=&quot;video/mp4&quot; /&gt;
+       &lt;source src=&quot;assets/videos/UnZone4.mp4&quot; type=&quot;video/mp4&quot; /&gt;
    &lt;/video&gt;
 &lt;/div&gt;
 
@@ -309,7 +309,7 @@ There is really just one of these cells and it is designed to show your current 
 
 &lt;div class=&quot;myvideo&quot;&gt;
    &lt;video style=&quot;display:block;&quot; autoplay=&quot;&quot; controls=&quot;&quot; loop=&quot;loop&quot;&gt;
-       &lt;source src=&quot;assets/videos/Unzone5.mp4&quot; type=&quot;video/mp4&quot; /&gt;
+       &lt;source src=&quot;assets/videos/UnZone5.mp4&quot; type=&quot;video/mp4&quot; /&gt;
    &lt;/video&gt;
 &lt;/div&gt;
 
