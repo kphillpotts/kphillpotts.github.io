@@ -1,0 +1,1239 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <!-- Document Settings -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- Base Meta -->
+    <!-- dynamically fixing the title for tag/author pages -->
+
+
+
+    <title>Xamarin.Forms UI Challenges - Unzone</title>
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Styles'n'Scripts -->
+    <link rel="stylesheet" type="text/css" href="/assets/built/screen.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/built/screen.edited.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/built/syntax.css" />
+    <!-- highlight.js -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+    <style>.hljs { background: none; }</style>
+
+    <!--[if IE]>
+        <style>
+            p, ol, ul{
+                width: 100%;
+            }
+            blockquote{
+                width: 100%;
+            }
+        </style>
+    <![endif]-->
+    
+    <!-- This tag outputs SEO meta+structured data and other important settings -->
+    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="/assets/images/icons/apple-touch-icon-57x57.png" />
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/assets/images/icons/apple-touch-icon-114x114.png" />
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/assets/images/icons/apple-touch-icon-72x72.png" />
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/images/icons/apple-touch-icon-144x144.png" />
+<link rel="apple-touch-icon-precomposed" sizes="60x60" href=/"assets/images/icons/apple-touch-icon-60x60.png" />
+<link rel="apple-touch-icon-precomposed" sizes="120x120" href="/assets/images/icons/apple-touch-icon-120x120.png" />
+<link rel="apple-touch-icon-precomposed" sizes="76x76" href="/assets/images/icons/apple-touch-icon-76x76.png" />
+<link rel="apple-touch-icon-precomposed" sizes="152x152" href="/assets/images/icons/apple-touch-icon-152x152.png" />
+<link rel="icon" type="image/png" href="/assets/images/icons/favicon-196x196.png" sizes="196x196" />
+<link rel="icon" type="image/png" href="/assets/images/icons/favicon-96x96.png" sizes="96x96" />
+<link rel="icon" type="image/png" href="/assets/images/icons/favicon-32x32.png" sizes="32x32" />
+<link rel="icon" type="image/png" href="/assets/images/icons/favicon-16x16.png" sizes="16x16" />
+<link rel="icon" type="image/png" href="/assets/images/icons/favicon-128.png" sizes="128x128" />
+<meta name="application-name" content="&nbsp;"/>
+<meta name="msapplication-TileColor" content="#FFFFFF" />
+<meta name="msapplication-TileImage" content="/assets/images/icons/mstile-144x144.png" />
+<meta name="msapplication-square70x70logo" content="/assets/images/icons/mstile-70x70.png" />
+<meta name="msapplication-square150x150logo" content="/assets/images/icons/mstile-150x150.png" />
+<meta name="msapplication-wide310x150logo" content="/assets/images/icons/mstile-310x150.png" />
+<meta name="msapplication-square310x310logo" content="/assets/images/icons/mstile-310x310.png" />
+
+
+<meta name="description" content="Unzone Xamarin.Forms UI challenge and Animations" />
+    <link rel="shortcut icon" href="https://kymphillpotts.com/assets/images/icons/favicon-96x96.png" type="image/png" />
+    <link rel="canonical" href="https://kymphillpotts.com/xamarin-forms-ui-challenge-unzone.html" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+
+     <!--title below is coming from _includes/dynamic_title-->
+    <meta property="og:site_name" content="Kym's Blog" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Xamarin.Forms UI Challenges - Unzone" />
+    <meta property="og:description" content="Unzone Xamarin.Forms UI challenge and Animations" />
+    <meta property="og:url" content="https://kymphillpotts.com/xamarin-forms-ui-challenge-unzone.html" />
+    <meta property="og:image" content="https://kymphillpotts.com/assets/images/covers/unzone.png" />
+    <meta property="article:publisher" content="https://www.facebook.com/" />
+    <meta property="article:tag" content="Xamarin" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Xamarin.Forms UI Challenges - Unzone" />
+    <meta name="twitter:description" content="Unzone Xamarin.Forms UI challenge and Animations" />
+    <meta name="twitter:url" content="https://kymphillpotts.com/" />
+    <meta name="twitter:image" content="https://kymphillpotts.com/assets/images/covers/unzone.png" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="Kym's Blog" />
+    <meta name="twitter:label2" content="Filed under" />
+    <meta name="twitter:data2" content="Xamarin" />
+    <meta name="twitter:site" content="@kphillpotts" />
+    <meta name="twitter:creator" content="@kphillpotts" />
+    <meta property="og:image:width" content="2000" />
+    <meta property="og:image:height" content="666" />
+
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Website",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Kym's Blog",
+        "logo": "https://kymphillpotts.com/false"
+    },
+    "url": "https://kymphillpotts.com/xamarin-forms-ui-challenge-unzone.html",
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://kymphillpotts.com/assets/images/covers/unzone.png",
+        "width": 2000,
+        "height": 666
+    },
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://kymphillpotts.com/xamarin-forms-ui-challenge-unzone.html"
+    },
+    "description": "Unzone Xamarin.Forms UI challenge and Animations"
+}
+    </script>
+
+    <!-- <script type="text/javascript" src="https://demo.ghost.io/public/ghost-sdk.min.js?v=724281a32e"></script>
+    <script type="text/javascript">
+    ghost.init({
+    	clientId: "ghost-frontend",
+    	clientSecret: "f84a07a72b17"
+    });
+    </script> -->
+
+    <meta name="generator" content="Jekyll 3.6.2" />
+    <link rel="alternate" type="application/rss+xml" title="Xamarin.Forms UI Challenges - Unzone" href="/feed.xml" />
+
+
+</head>
+<body class="post-template">
+
+    <div class="site-wrapper">
+        <!-- All the main content gets inserted here, index.hbs, post.hbs, etc -->
+        <!-- default -->
+
+<!-- The tag above means: insert everything in this file
+into the {body} of the default.hbs template -->
+
+<header class="site-header outer">
+    <div class="inner">
+        <nav class="site-nav">
+    <div class="site-nav-left">
+        
+            
+                <a class="site-nav-logo" href="https://kymphillpotts.com/">Kym's Blog</a>
+            
+        
+        
+            <ul class="nav" role="menu">
+    <li class="nav-home" role="menuitem"><a href="/">Home</a></li>
+    
+
+
+    <li class="nav-about" role="menuitem"><a href="/about/">About Me</a></li>
+    <li class="nav-xamarin" role="menuitem"><a href="/tag/xamarin/">Xamarin</a></li>
+    <li class="nav-azure" role="menuitem"><a href="/tag/azure/">Azure</a></li>
+    <li class="nav-stream" role="menuitem"><a href="/tag/stream/">Streams</a></li>
+    <li class="nav-other" role="menuitem"><a href="/tag/other/">Other</a></li>
+
+
+</ul>
+
+        
+    </div>
+    <div class="site-nav-right">
+        <div class="social-links">
+            
+            
+                <a class="social-link social-link-tw" href="https://twitter.com/kphillpotts" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg>
+</a>
+            
+        </div>
+        
+    </div>
+</nav>
+
+    </div>
+</header>
+
+<!-- Everything inside the #post tags pulls data from the post -->
+<!-- #post -->
+
+<main id="site-main" class="site-main outer" role="main">
+    <div class="inner">
+
+        <article class="post-full  ">
+
+            <header class="post-full-header">
+                <section class="post-full-meta">
+                    <time class="post-full-meta-date" datetime="27 September 2019">27 September 2019</time>
+                    
+                        <span class="date-divider">/</span>
+                        
+                            
+                               <a href='/tag/xamarin/'>XAMARIN</a>
+                            
+                        
+                    
+                </section>
+                <h1 class="post-full-title">Xamarin.Forms UI Challenges - Unzone</h1>
+            </header>
+
+            
+            <figure class="post-full-image" style="background-image: url(/assets/images/covers/unzone.png)">
+            </figure>
+            
+
+            <section class="post-full-content">
+                <div class="kg-card-markdown">
+                    <p>Well thought out animations can help your applications come to life through having better user experience and a sense of joy.  This Xamarin.Forms UI Challenge illustrates how simple it can be to add compelling animations into your applications.</p>
+
+<h2 id="the-design">The Design</h2>
+
+<p><img src="assets/images/posts/unzone/unzone_animation.gif" /></p>
+
+<p>This is a great looking design called <a href="https://dribbble.com/shots/1551934-Unzone-Details-popup-animation">Unzone</a> created by <a href="https://dribbble.com/rickwaalders">Rick Waalders</a>. The star of this design is the flip animations, which do a great job of adding personality and being functional without becoming annoying.</p>
+
+<p>The key elements we will focus on in this challenge are:</p>
+<ul>
+  <li>Creating a modal dialog style interaction by fading the background when a cell is clicked</li>
+  <li>Flying in the cancel button from the bottom of the page</li>
+  <li>Open and Close animations for the buttons on the modal dialog</li>
+  <li>Flipping the dialog when the Delete button is clicked</li>
+  <li>Remove a cell with a nice little bounce effect.</li>
+</ul>
+
+<h2 id="basic-page-layout">Basic Page Layout</h2>
+<p>If you have checked out any of my other Xamarin.Forms UI Challenges, you are probably aware that I really enjoy using a <code class="highlighter-rouge">Grid</code> as the main layout container for pages.  However, this challenge requires very exacting positioning of elements so this time we opt for an <code class="highlighter-rouge">AbsoluteLayout</code> to make sure we can get the positioning correct.</p>
+
+<p><code class="highlighter-rouge">AbsoluteLayout</code> is great for very specific positioning and is pretty efficient because it doesn’t consume a bunch of layout cycles.  However, it is pretty complex and you don’t get some of the dynamic goodness of managed layouts (like <code class="highlighter-rouge">Grid</code>).</p>
+
+<blockquote>
+  <p>Do check out the <a href="https://docs.microsoft.com/en-us/xamarin/xamarin-forms/user-interface/layouts/absolute-layout">documentation</a>, which is top notch.</p>
+</blockquote>
+
+<p>The list of cells is a <code class="highlighter-rouge">StackLayout</code> with a <code class="highlighter-rouge">BindableLayout.ItemsSource</code> to create a cell for each row of data.</p>
+
+<h2 id="cells">Cells</h2>
+<p>You may notice that there are two types of custom cells, PersonTimeCell and a YouTimeCell.  To keep things simple, these two cells are defined in their own classes.</p>
+
+<p><strong>PersonTimeCell</strong></p>
+
+<p><img src="assets/images/posts/unzone/persontimecell.png" /></p>
+
+<p>This is the main cell that is used for the different time zones in the list. If you have a look at it, it’s a pretty simple layout which consists of a <code class="highlighter-rouge">Grid</code> of three columns and a <code class="highlighter-rouge">StackLayout</code> for the middle column.</p>
+
+<p><strong>YouTimeCell</strong></p>
+
+<p><img src="assets/images/posts/unzone/youtimecell.png" />
+There is really just one of these cells and it is designed to show your current time zone.</p>
+
+<h3 id="datatemplateselector">DataTemplateSelector</h3>
+
+<p>What brings this all together is the <code class="highlighter-rouge">DataTemplateSelector</code> which allows us to specify which cell is used for a particular row of data. If we look at the data that is backing the cells there is a field called <code class="highlighter-rouge">TimeInfoType</code> which specifies if it’s a <em>Person</em> or a  <em>You</em> type of cell.</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="nf">MainViewModel</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">Locations</span> <span class="p">=</span> <span class="k">new</span> <span class="n">ObservableCollection</span><span class="p">&lt;</span><span class="n">TimeInfo</span><span class="p">&gt;();</span>
+    <span class="n">Locations</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="k">new</span> <span class="nf">TimeInfo</span><span class="p">()</span> <span class="p">{</span> <span class="n">UserName</span> <span class="p">=</span> <span class="s">"Kym"</span><span class="p">,</span> <span class="n">CurrentTime</span> <span class="p">=</span> <span class="s">"10:49"</span><span class="p">,</span> <span class="n">Location</span> <span class="p">=</span> <span class="s">"Melbourne"</span><span class="p">,</span> <span class="n">TimeZoneId</span> <span class="p">=</span> <span class="s">"AEST"</span><span class="p">,</span> <span class="n">TimeInfoType</span> <span class="p">=</span> <span class="n">TimeInfo</span><span class="p">.</span><span class="n">TimeInfoTypeEnum</span><span class="p">.</span><span class="n">Person</span> <span class="p">});</span>
+    <span class="n">Locations</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="k">new</span> <span class="nf">TimeInfo</span><span class="p">()</span> <span class="p">{</span> <span class="n">UserName</span> <span class="p">=</span> <span class="s">"Frank"</span><span class="p">,</span> <span class="n">CurrentTime</span> <span class="p">=</span> <span class="s">"14:49"</span><span class="p">,</span> <span class="n">Location</span> <span class="p">=</span> <span class="s">"Berlin"</span><span class="p">,</span> <span class="n">TimeZoneId</span> <span class="p">=</span> <span class="s">"CST"</span><span class="p">,</span> <span class="n">TimeInfoType</span> <span class="p">=</span> <span class="n">TimeInfo</span><span class="p">.</span><span class="n">TimeInfoTypeEnum</span><span class="p">.</span><span class="n">Person</span> <span class="p">});</span>
+    <span class="n">Locations</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="k">new</span> <span class="nf">TimeInfo</span><span class="p">()</span> <span class="p">{</span> <span class="n">UserName</span> <span class="p">=</span> <span class="s">"Helen"</span><span class="p">,</span> <span class="n">CurrentTime</span> <span class="p">=</span> <span class="s">"23:00"</span><span class="p">,</span> <span class="n">Location</span> <span class="p">=</span> <span class="s">"Copenhagen"</span><span class="p">,</span> <span class="n">TimeZoneId</span> <span class="p">=</span> <span class="s">"CST"</span><span class="p">,</span> <span class="n">TimeInfoType</span> <span class="p">=</span> <span class="n">TimeInfo</span><span class="p">.</span><span class="n">TimeInfoTypeEnum</span><span class="p">.</span><span class="n">Person</span> <span class="p">});</span>
+    <span class="n">Locations</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="k">new</span> <span class="nf">TimeInfo</span><span class="p">()</span> <span class="p">{</span> <span class="n">UserName</span> <span class="p">=</span> <span class="s">"You"</span><span class="p">,</span> <span class="n">CurrentTime</span> <span class="p">=</span> <span class="s">"23:00"</span><span class="p">,</span> <span class="n">Location</span> <span class="p">=</span> <span class="s">"Melborune"</span><span class="p">,</span> <span class="n">TimeZoneId</span> <span class="p">=</span> <span class="s">"AEST"</span><span class="p">,</span> <span class="n">TimeInfoType</span> <span class="p">=</span> <span class="n">TimeInfo</span><span class="p">.</span><span class="n">TimeInfoTypeEnum</span><span class="p">.</span><span class="n">You</span> <span class="p">});</span>
+    <span class="n">Locations</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="k">new</span> <span class="nf">TimeInfo</span><span class="p">()</span> <span class="p">{</span> <span class="n">UserName</span> <span class="p">=</span> <span class="s">"James"</span><span class="p">,</span> <span class="n">CurrentTime</span> <span class="p">=</span> <span class="s">"11:30"</span><span class="p">,</span> <span class="n">Location</span> <span class="p">=</span> <span class="s">"Seattle"</span><span class="p">,</span> <span class="n">TimeZoneId</span> <span class="p">=</span> <span class="s">"PST"</span><span class="p">,</span> <span class="n">TimeInfoType</span> <span class="p">=</span> <span class="n">TimeInfo</span><span class="p">.</span><span class="n">TimeInfoTypeEnum</span><span class="p">.</span><span class="n">Person</span> <span class="p">});</span>
+
+<span class="p">}</span></code></pre></figure>
+
+<p>It all kind of makes sense when you have a look at our <code class="highlighter-rouge">DataTemplateSelector</code> class.</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">class</span> <span class="nc">TimeCellDataTemplateSelector</span> <span class="p">:</span> <span class="n">DataTemplateSelector</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="n">DataTemplate</span> <span class="n">PersonTemplate</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+    <span class="k">public</span> <span class="n">DataTemplate</span> <span class="n">YouTemplate</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+
+    <span class="k">protected</span> <span class="k">override</span> <span class="n">DataTemplate</span> <span class="nf">OnSelectTemplate</span><span class="p">(</span><span class="kt">object</span> <span class="n">item</span><span class="p">,</span> <span class="n">BindableObject</span> <span class="n">container</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">// have a look at the item and return the right type of cell</span>
+        <span class="k">if</span> <span class="p">(((</span><span class="n">TimeInfo</span><span class="p">)</span><span class="n">item</span><span class="p">).</span><span class="n">TimeInfoType</span> <span class="p">==</span> <span class="n">TimeInfoType</span><span class="p">.</span><span class="n">Person</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">PersonTemplate</span><span class="p">;</span>
+        <span class="k">else</span>
+            <span class="k">return</span> <span class="n">YouTemplate</span><span class="p">;</span>
+
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>And then we apply the DataTemplateSelector in our XAML via the <code class="highlighter-rouge">BindableLayout.ItemTemplateSelector</code>.</p>
+
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;ContentPage.Resources&gt;</span>
+    <span class="nt">&lt;ResourceDictionary&gt;</span>
+        <span class="nt">&lt;DataTemplate</span> <span class="na">x:Key=</span><span class="s">"PersonTimeCell"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;controls:TimeCell</span> <span class="na">HeightRequest=</span><span class="s">"80"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;controls:TimeCell.GestureRecognizers&gt;</span>
+                    <span class="nt">&lt;TapGestureRecognizer</span> <span class="na">Tapped=</span><span class="s">"TimeCellTapRecognizer_Tapped"</span> <span class="nt">/&gt;</span>
+                <span class="nt">&lt;/controls:TimeCell.GestureRecognizers&gt;</span>
+            <span class="nt">&lt;/controls:TimeCell&gt;</span>
+        <span class="nt">&lt;/DataTemplate&gt;</span>
+
+        <span class="nt">&lt;DataTemplate</span> <span class="na">x:Key=</span><span class="s">"YouTimeCell"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;controls:YouTimeCell</span> <span class="na">HeightRequest=</span><span class="s">"160"</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;/DataTemplate&gt;</span>
+
+        <span class="nt">&lt;controls:TimeCellDataTemplateSelector</span>
+            <span class="na">x:Key=</span><span class="s">"TimeCellDataTemplateSelector"</span>
+            <span class="na">PersonTemplate=</span><span class="s">"{StaticResource PersonTimeCell}"</span>
+            <span class="na">YouTemplate=</span><span class="s">"{StaticResource YouTimeCell}"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;/ResourceDictionary&gt;</span>
+<span class="nt">&lt;/ContentPage.Resources&gt;</span>
+
+...
+
+<span class="nt">&lt;ScrollView&gt;</span>
+    <span class="nt">&lt;StackLayout</span>
+        <span class="na">x:Name=</span><span class="s">"ViewStack"</span>
+        <span class="na">BindableLayout.ItemTemplateSelector=</span><span class="s">"{StaticResource TimeCellDataTemplateSelector}"</span>
+        <span class="na">BindableLayout.ItemsSource=</span><span class="s">"{Binding Locations}"</span>
+        <span class="na">Spacing=</span><span class="s">"0"</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/ScrollView&gt;</span></code></pre></figure>
+
+<p>Okay, so that’s probably enough about how the collection of timezones is constructed.  Let’s get into the fun stuff.</p>
+
+<h2 id="popup-with-faded-background">Popup with faded background</h2>
+<p>The design has a nice effect when the user selects one of the person cells where it darkens everything except the selected cell.</p>
+
+<div class="myvideo">
+   <video style="display:block;" autoplay="" controls="" loop="loop">
+       <source src="assets/videos/unzone1.mp4" type="video/mp4" />
+   </video>
+</div>
+
+<p>In reality, it’s very simple to achieve.  The basics of it are:</p>
+
+<ul>
+  <li>
+    <p>Fade in a whole screen dark overlay over the content.  This stops the user from selecting things in the background. You can set it’s <code class="highlighter-rouge">BackgroundColor</code> to have some transparency baked in too (<code class="highlighter-rouge">#CC000000</code>) which means the user can still see the content behind it.</p>
+  </li>
+  <li>
+    <p>Have an additional <code class="highlighter-rouge">PersonCell</code> that sits over the overlay which is positioned exactly where the selected cell is located.  Now, set the <code class="highlighter-rouge">BindingContext</code> of the <em>fake cell</em> to the binding context of the selected cell so that it shows the same data.</p>
+  </li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">private</span> <span class="k">async</span> <span class="k">void</span> <span class="nf">TimeCellTapRecognizer_Tapped</span><span class="p">(</span><span class="kt">object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">EventArgs</span> <span class="n">e</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">// get the cell that was tapped</span>
+    <span class="n">selectedElement</span> <span class="p">=</span> <span class="p">(</span><span class="n">TimeCell</span><span class="p">)</span><span class="n">sender</span><span class="p">;</span>
+    <span class="n">selectedIndex</span> <span class="p">=</span> <span class="n">ViewStack</span><span class="p">.</span><span class="n">Children</span><span class="p">.</span><span class="nf">IndexOf</span><span class="p">(</span><span class="n">selectedElement</span><span class="p">);</span>
+
+    <span class="c1">// set the binding context to the panel</span>
+    <span class="c1">// so that it can be inherited by the FakeCell and</span>
+    <span class="c1">// any other controls required on the popup.</span>
+    <span class="n">FrontSide</span><span class="p">.</span><span class="n">BindingContext</span> <span class="p">=</span> <span class="n">selectedElement</span><span class="p">.</span><span class="n">BindingContext</span><span class="p">;</span>
+
+    <span class="c1">// position the popups</span>
+    <span class="nf">PositionDropDown</span><span class="p">(</span><span class="n">selectedElement</span><span class="p">,</span> <span class="n">FrontSide</span><span class="p">);</span>
+    <span class="nf">PositionDropDown</span><span class="p">(</span><span class="n">selectedElement</span><span class="p">,</span> <span class="n">BackSide</span><span class="p">);</span>
+
+    <span class="c1">// fade in the overlay</span>
+    <span class="n">FadeBackground</span><span class="p">.</span><span class="n">Opacity</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span>
+    <span class="n">FadeBackground</span><span class="p">.</span><span class="n">IsVisible</span> <span class="p">=</span> <span class="k">true</span><span class="p">;</span>
+    <span class="n">_</span> <span class="p">=</span> <span class="n">FadeBackground</span><span class="p">.</span><span class="nf">FadeTo</span><span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="n">animationSpeed</span><span class="p">);</span>
+
+    <span class="p">...</span>
+<span class="p">}</span></code></pre></figure>
+
+<h2 id="animating-the-close-button">Animating the Close Button</h2>
+<p>Another really nice effect is the Close button that pops in from the bottom when a cell is selected.</p>
+
+<div class="myvideo">
+   <video style="display:block;" autoplay="" controls="" loop="loop">
+       <source src="assets/videos/unzone2.mp4" type="video/mp4" />
+   </video>
+</div>
+
+<p>This is really just a case of positioning the close button relative to the selected cell and then doing some animations to adjust it’s Position, Rotation and Opacity.</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="p">...</span>
+<span class="c1">// position the close button</span>
+<span class="kt">var</span> <span class="n">padding</span> <span class="p">=</span> <span class="m">40</span><span class="p">;</span>
+<span class="kt">var</span> <span class="n">xPos</span> <span class="p">=</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="n">Width</span> <span class="p">/</span> <span class="m">2</span><span class="p">)</span> <span class="p">-</span> <span class="p">(</span><span class="n">CloseButton</span><span class="p">.</span><span class="n">Width</span> <span class="p">/</span> <span class="m">2</span><span class="p">);</span>
+<span class="kt">var</span> <span class="n">yPos</span> <span class="p">=</span> <span class="n">selectedElement</span><span class="p">.</span><span class="n">Bounds</span><span class="p">.</span><span class="n">Y</span> <span class="p">+</span> <span class="n">FrontSide</span><span class="p">.</span><span class="n">Bounds</span><span class="p">.</span><span class="n">Height</span> <span class="p">+</span> <span class="n">padding</span><span class="p">;</span>
+<span class="kt">var</span> <span class="n">closeButtonRect</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Rectangle</span><span class="p">(</span><span class="n">xPos</span><span class="p">,</span> <span class="n">yPos</span><span class="p">,</span> <span class="n">CloseButton</span><span class="p">.</span><span class="n">Width</span><span class="p">,</span> <span class="n">CloseButton</span><span class="p">.</span><span class="n">Height</span><span class="p">);</span>
+<span class="n">AbsoluteLayout</span><span class="p">.</span><span class="nf">SetLayoutBounds</span><span class="p">(</span><span class="n">CloseButton</span><span class="p">,</span> <span class="n">closeButtonRect</span><span class="p">);</span>
+<span class="p">...</span>
+<span class="nf">AnimateCloseButton</span><span class="p">(</span><span class="n">CloseButton</span><span class="p">,</span> <span class="n">entering</span><span class="p">:</span><span class="k">true</span><span class="p">);</span>
+<span class="p">...</span></code></pre></figure>
+
+<p>The entering and exiting animations vary slightly which is why it passes in an parameter into the AnimateCloseButton method.</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">private</span> <span class="k">void</span> <span class="nf">AnimateCloseButton</span><span class="p">(</span><span class="n">VisualElement</span> <span class="n">elementToTransform</span><span class="p">,</span> <span class="kt">bool</span> <span class="n">entering</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">var</span> <span class="n">startingTranslation</span> <span class="p">=</span> <span class="n">entering</span> <span class="p">?</span> <span class="m">100</span> <span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+    <span class="kt">var</span> <span class="n">endingTranslation</span> <span class="p">=</span> <span class="n">entering</span> <span class="p">?</span> <span class="m">0</span> <span class="p">:</span> <span class="m">100</span><span class="p">;</span>
+    <span class="kt">var</span> <span class="n">translationEasing</span> <span class="p">=</span> <span class="n">entering</span> <span class="p">?</span> <span class="n">Easing</span><span class="p">.</span><span class="n">SpringOut</span> <span class="p">:</span> <span class="n">Easing</span><span class="p">.</span><span class="n">SinIn</span><span class="p">;</span>
+
+    <span class="kt">var</span> <span class="n">startingOpacity</span> <span class="p">=</span> <span class="n">entering</span> <span class="p">?</span> <span class="m">0</span> <span class="p">:</span> <span class="m">1</span><span class="p">;</span>
+    <span class="kt">var</span> <span class="n">endingOpacity</span> <span class="p">=</span> <span class="n">entering</span> <span class="p">?</span> <span class="m">1</span> <span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+
+    <span class="kt">var</span> <span class="n">startingRotation</span> <span class="p">=</span> <span class="n">entering</span> <span class="p">?</span> <span class="p">-</span><span class="m">90</span> <span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+    <span class="kt">var</span> <span class="n">endingRotation</span> <span class="p">=</span> <span class="n">entering</span> <span class="p">?</span> <span class="m">0</span> <span class="p">:</span> <span class="m">180</span><span class="p">;</span>
+
+    <span class="n">elementToTransform</span><span class="p">.</span><span class="n">TranslationY</span> <span class="p">=</span> <span class="n">startingTranslation</span><span class="p">;</span>
+    <span class="n">elementToTransform</span><span class="p">.</span><span class="n">Opacity</span> <span class="p">=</span> <span class="n">startingOpacity</span><span class="p">;</span>
+    <span class="n">elementToTransform</span><span class="p">.</span><span class="n">Rotation</span> <span class="p">=</span> <span class="n">startingRotation</span><span class="p">;</span>
+
+    <span class="n">elementToTransform</span><span class="p">.</span><span class="nf">FadeTo</span><span class="p">(</span><span class="n">endingOpacity</span><span class="p">,</span> <span class="m">500</span><span class="p">);</span>
+    <span class="n">elementToTransform</span><span class="p">.</span><span class="nf">RotateTo</span><span class="p">(</span><span class="n">endingRotation</span><span class="p">,</span> <span class="m">700</span><span class="p">,</span> <span class="n">Easing</span><span class="p">.</span><span class="n">SinInOut</span><span class="p">);</span>
+    <span class="n">elementToTransform</span><span class="p">.</span><span class="nf">TranslateTo</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="n">endingTranslation</span><span class="p">,</span> <span class="m">600</span><span class="p">,</span> <span class="n">translationEasing</span><span class="p">);</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>Really the only interesting part of this is that it uses the animation extension methods which Xamarin.Forms provides, namely <code class="highlighter-rouge">FadeTo</code>, <code class="highlighter-rouge">RotateTo</code> and <code class="highlighter-rouge">TranslateTo</code>.  These are awaitable methods, but if you don’t await them, you can kick of multiple animations that run at the same time.</p>
+
+<blockquote>
+  <p>You might notice that we always position the close image beneath the <em>fake cell</em>, which is mostly fine for the purpose of this UI Challenge, but in reality you and your designer would probably have to think about this a little more.  What happens when when the selected cell is at the bottom of the screen?</p>
+</blockquote>
+
+<h2 id="folding-down-the-buttons">Folding down the buttons</h2>
+<p>Even though the folding down buttons are a little gratuitous they add a bit of personality to the app.  The key behind this effect is to adjust the rotation of elements so that they appear to fold down.</p>
+
+<div class="myvideo">
+   <video style="display:block;" autoplay="" controls="" loop="loop">
+       <source src="assets/videos/unzone3.mp4" type="video/mp4" />
+   </video>
+</div>
+
+<blockquote>
+  <p>Rotation can be done on the X, Y and Z axis</p>
+</blockquote>
+
+<p>An important thing to know about rotations is that they happen around the <code class="highlighter-rouge">AnchorX</code> and <code class="highlighter-rouge">AnchorY</code> of the element.  Think of the the <code class="highlighter-rouge">Anchor</code> as the rotation point.</p>
+
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;Grid</span>
+    <span class="na">x:Name=</span><span class="s">"DeleteDropDown"</span>
+    <span class="na">Grid.Row=</span><span class="s">"1"</span>
+    <span class="na">Grid.Column=</span><span class="s">"0"</span>
+    <span class="na">AnchorY=</span><span class="s">"0"</span>
+    <span class="na">BackgroundColor=</span><span class="s">"{StaticResource DropDownColor1}"</span>
+    <span class="na">HeightRequest=</span><span class="s">"80"</span><span class="nt">&gt;</span></code></pre></figure>
+
+<p>The default value for <code class="highlighter-rouge">AnchorX</code> is .5 which means the middle (but not important for what we are doing).  The important thing is to have the <code class="highlighter-rouge">AnchorY</code> to “0” which means that the rotation is going to happen around the TOP of the element.</p>
+
+<p><strong>Step 1: Set the starting state</strong></p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="p">...</span>
+<span class="c1">// hide the dropdowns</span>
+<span class="n">DeleteDropDown</span><span class="p">.</span><span class="n">IsVisible</span> <span class="p">=</span> <span class="k">false</span><span class="p">;</span>
+<span class="n">EditDropDown</span><span class="p">.</span><span class="n">IsVisible</span> <span class="p">=</span> <span class="k">false</span><span class="p">;</span>
+<span class="n">InfoDropDown</span><span class="p">.</span><span class="n">IsVisible</span> <span class="p">=</span> <span class="k">false</span><span class="p">;</span>
+<span class="p">...</span>
+
+<span class="k">await</span> <span class="nf">OpenDropDown</span><span class="p">(</span><span class="n">DeleteDropDown</span><span class="p">);</span>
+<span class="k">await</span> <span class="nf">OpenDropDown</span><span class="p">(</span><span class="n">EditDropDown</span><span class="p">);</span>
+<span class="k">await</span> <span class="nf">OpenDropDown</span><span class="p">(</span><span class="n">InfoDropDown</span><span class="p">);</span>
+<span class="p">...</span></code></pre></figure>
+
+<p>You might notice that in the code above we are doing an <code class="highlighter-rouge">await</code> on the <code class="highlighter-rouge">OpenDropDown</code> method.  This is basically saying wait (without blocking the main UI thread) until the previous dropdown has finished.  If we didn’t have that, then they would all animate in at the same time and we would lose of staggered effect.</p>
+
+<p><strong>Step 2: Animate that puppy</strong></p>
+
+<p>When animating in with the <code class="highlighter-rouge">OpenDropDown</code> method we start by setting it’s initial Visibility, RotationX and Opacity.</p>
+
+<p>The fold down animation is actually a Fade and a RotationX.  In the below code you can see that the <code class="highlighter-rouge">FadeTo</code> is NOT awaited which means it will happen at the same time as the <code class="highlighter-rouge">RotateXTo</code> happens. It’s a small detail, but what I have learnt about design is that it’s all about the small details.</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">private</span> <span class="k">async</span> <span class="n">Task</span> <span class="nf">OpenDropDown</span><span class="p">(</span><span class="n">View</span> <span class="n">view</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">view</span><span class="p">.</span><span class="n">IsVisible</span> <span class="p">=</span> <span class="k">true</span><span class="p">;</span>
+    <span class="n">view</span><span class="p">.</span><span class="n">RotationX</span> <span class="p">=</span> <span class="p">-</span><span class="m">90</span><span class="p">;</span>
+    <span class="n">view</span><span class="p">.</span><span class="n">Opacity</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span>
+    <span class="n">_</span> <span class="p">=</span> <span class="n">view</span><span class="p">.</span><span class="nf">FadeTo</span><span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="n">animationSpeed</span><span class="p">);</span>
+    <span class="k">await</span> <span class="n">view</span><span class="p">.</span><span class="nf">RotateXTo</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="n">animationSpeed</span><span class="p">);</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>Closing the drop down is effectively the reverse. Start it fading, wait for it to rotate, and then set it invisible.</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">private</span> <span class="k">async</span> <span class="n">Task</span> <span class="nf">CloseDropDown</span><span class="p">(</span><span class="n">View</span> <span class="n">view</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">_</span> <span class="p">=</span> <span class="n">view</span><span class="p">.</span><span class="nf">FadeTo</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="n">animationSpeed</span><span class="p">);</span>
+    <span class="k">await</span> <span class="n">view</span><span class="p">.</span><span class="nf">RotateXTo</span><span class="p">(-</span><span class="m">90</span><span class="p">,</span> <span class="n">animationSpeed</span><span class="p">);</span>
+    <span class="n">view</span><span class="p">.</span><span class="n">IsVisible</span> <span class="p">=</span> <span class="k">false</span><span class="p">;</span>
+<span class="p">}</span></code></pre></figure>
+
+<h2 id="flipping-the-dialog">Flipping the dialog</h2>
+<p>Creating a flip effect consists of having a <code class="highlighter-rouge">from</code> and <code class="highlighter-rouge">to</code> view.</p>
+
+<ol>
+  <li>Rotating the <code class="highlighter-rouge">from</code> view around the middle of it’s Y axis until you are looking at it’s edge. (effectively invisible)</li>
+  <li>Swapping to the <code class="highlighter-rouge">to</code> view (also rotated)</li>
+  <li>Rotate the <code class="highlighter-rouge">to</code> view around it’s middle so that it comes into view.</li>
+</ol>
+
+<div class="myvideo">
+   <video style="display:block;" autoplay="" controls="" loop="loop">
+       <source src="assets/videos/unzone4.mp4" type="video/mp4" />
+   </video>
+</div>
+
+<p>It’s simpler than it sounds:</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">private</span> <span class="k">async</span> <span class="n">Task</span> <span class="nf">Flip</span> <span class="p">(</span><span class="n">VisualElement</span> <span class="k">from</span><span class="p">,</span> <span class="n">VisualElement</span> <span class="n">to</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">await</span> <span class="k">from</span><span class="p">.</span><span class="nf">RotateYTo</span><span class="p">(-</span><span class="m">90</span><span class="p">,</span> <span class="n">animationSpeed</span><span class="p">,</span> <span class="n">Easing</span><span class="p">.</span><span class="n">SpringIn</span><span class="p">);</span>
+    <span class="n">to</span><span class="p">.</span><span class="n">RotationY</span> <span class="p">=</span> <span class="m">90</span><span class="p">;</span>
+    <span class="n">to</span><span class="p">.</span><span class="n">IsVisible</span> <span class="p">=</span> <span class="k">true</span><span class="p">;</span>
+    <span class="k">from</span><span class="p">.</span><span class="n">IsVisible</span> <span class="p">=</span> <span class="k">false</span><span class="p">;</span>
+    <span class="k">await</span> <span class="n">to</span><span class="p">.</span><span class="nf">RotateYTo</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="n">animationSpeed</span><span class="p">,</span> <span class="n">Easing</span><span class="p">.</span><span class="n">SpringOut</span><span class="p">);</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>As a bonus you might notice there is a nice little <code class="highlighter-rouge">SpringIn</code> and <code class="highlighter-rouge">SpringOut</code> easing to give it a little bounce.</p>
+
+<h2 id="bouncing-up-the-items">Bouncing up the items</h2>
+<p>The final effect that is worth mentioning in this UI Challenge is the bounce animation for deleting an item from the list. I’ll admit this is a little hacky but seems to work quite nicely (just don’t try it with thousands of elements)</p>
+
+<p>The basic idea is:</p>
+<ul>
+  <li>Close down the overlays.</li>
+  <li>Iterate through all the items after the selected element</li>
+  <li>Create an animation to move it to location of the previous element with a bounce easing</li>
+  <li>Wait for all those animations to finish</li>
+  <li>Remove the selected element</li>
+</ul>
+
+<div class="myvideo">
+   <video style="display:block;" autoplay="" controls="" loop="loop">
+       <source src="assets/videos/unzone5.mp4" type="video/mp4" />
+   </video>
+</div>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">private</span> <span class="k">async</span> <span class="k">void</span> <span class="nf">YesButtonTapGestureRecognizer_Tapped</span><span class="p">(</span><span class="kt">object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">EventArgs</span> <span class="n">e</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">// close the overlays</span>
+    <span class="k">await</span> <span class="nf">Flip</span><span class="p">(</span><span class="n">BackSide</span><span class="p">,</span> <span class="n">FrontSide</span><span class="p">);</span>
+    <span class="nf">CloseDropDown</span><span class="p">(</span><span class="n">EditDropDown</span><span class="p">);</span>
+    <span class="k">await</span> <span class="nf">CloseDropDown</span><span class="p">(</span><span class="n">DeleteDropDown</span><span class="p">);</span>
+
+    <span class="c1">// fade out the overlay background</span>
+    <span class="k">await</span> <span class="n">FadeBackground</span><span class="p">.</span><span class="nf">FadeTo</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="n">animationSpeed</span><span class="p">);</span>
+    <span class="n">FadeBackground</span><span class="p">.</span><span class="n">IsVisible</span> <span class="p">=</span> <span class="k">false</span><span class="p">;</span>
+
+    <span class="c1">// go through all the elements after the selected item</span>
+    <span class="c1">// and translate them up to overlap the element before</span>
+    <span class="n">List</span><span class="p">&lt;</span><span class="n">Task</span><span class="p">&gt;</span> <span class="n">animations</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">Task</span><span class="p">&gt;();</span>
+
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="p">=</span> <span class="n">selectedIndex</span> <span class="p">+</span> <span class="m">1</span><span class="p">;</span> <span class="n">i</span> <span class="p">&lt;</span> <span class="n">ViewStack</span><span class="p">.</span><span class="n">Children</span><span class="p">.</span><span class="n">Count</span><span class="p">;</span> <span class="n">i</span><span class="p">++)</span>
+    <span class="p">{</span>
+        <span class="n">VisualElement</span> <span class="n">elementToMove</span><span class="p">;</span>
+        <span class="n">elementToMove</span> <span class="p">=</span> <span class="n">ViewStack</span><span class="p">.</span><span class="n">Children</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+        <span class="c1">// work out the bounds we are going to move them to</span>
+        <span class="kt">var</span> <span class="n">boundsToMoveTo</span> <span class="p">=</span> <span class="n">elementToMove</span><span class="p">.</span><span class="n">Bounds</span><span class="p">;</span>
+        <span class="n">boundsToMoveTo</span><span class="p">.</span><span class="n">Top</span> <span class="p">-=</span> <span class="n">selectedElement</span><span class="p">.</span><span class="n">Height</span><span class="p">;</span>
+        <span class="n">animations</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="n">elementToMove</span><span class="p">.</span><span class="nf">LayoutTo</span><span class="p">(</span><span class="n">boundsToMoveTo</span><span class="p">,</span> <span class="n">animationSpeed</span><span class="p">,</span> <span class="n">Easing</span><span class="p">.</span><span class="n">BounceOut</span><span class="p">));</span>
+    <span class="p">}</span>
+
+    <span class="c1">// wait for all those elements to move</span>
+    <span class="k">await</span> <span class="n">Task</span><span class="p">.</span><span class="nf">WhenAll</span><span class="p">(</span><span class="n">animations</span><span class="p">);</span>
+
+    <span class="c1">// fade out and then remove the selected</span>
+    <span class="k">await</span> <span class="n">selectedElement</span><span class="p">.</span><span class="nf">FadeTo</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="n">animationSpeed</span><span class="p">);</span>
+    <span class="n">ViewStack</span><span class="p">.</span><span class="n">Children</span><span class="p">.</span><span class="nf">Remove</span><span class="p">(</span><span class="n">selectedElement</span><span class="p">);</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>BTW, the reason for the FadeOut before removing the element is really just in case you are deleting the last element in the list.</p>
+
+<h1 id="summary">Summary</h1>
+<p>Okay, so that’s the key elements in this UI Challenge. It was definitely a fun UI to put together, and not too difficult when you break it apart into it’s elements.  Mostly it’s smoke and mirrors but it doesn’t provide a great looking UI.</p>
+
+<h2 id="get-the-code">Get the code</h2>
+<p>All the code is available open source on <a href="https://github.com/kphillpotts/UnZone">my github</a>.</p>
+
+<h2 id="watch-me-code-it">Watch me code it</h2>
+<p>I actually did this UI Challenge live over Twitch, so if you want to watch hours of me coding this up then check out these recordings.</p>
+
+<h4 id="part-1">Part 1</h4>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/J7UBWGPt3U0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+
+<h4 id="part-2">Part 2</h4>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/n6oEFvoAZ3k" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+
+<hr />
+
+<p>If you want to catch me doing other live coding things follow me on Twitch. It’s a great platform where we can chat as we build software, ask questions, submit code).  Follow me at <a href="https://www.twitch.tv/kymphillpotts">https://www.twitch.tv/kymphillpotts</a> and come join in the fun!</p>
+
+<p><a href="https://twitch.tv/kymphillpotts"><img src="https://kymphillpotts.com/assets/images/twitch_banner.png" alt="Kym's Twitch Channel" /></a></p>
+
+<p>If you can’t make it to the Twitch streams, then I also upload the videos to my <a href="https://www.youtube.com/user/kphillpotts/">YouTube Channel</a></p>
+
+<p>I hope these posts are useful for you, feel free to leave me a comment below or reach out to me via <a href="https://twitter.com/kphillpotts">Twitter</a>.</p>
+
+<p>Until next time, Happy Coding</p>
+
+<p>❤
+Kym</p>
+
+
+                </div>
+            </section>
+
+            <!-- Email subscribe form at the bottom of the page -->
+            
+
+            <footer class="post-full-footer">
+                <!-- Everything inside the #author tags pulls data from the author -->
+                <!-- #author-->
+                
+                    
+                        <section class="author-card">
+                            
+                                <img class="author-profile-image" src="/assets/images/kphillpotts.jpg" alt="kphillpotts" />
+                            
+                            <section class="author-card-content">
+                                <h4 class="author-card-name"><a href="/author/kphillpotts">Kym Phillpotts</a></h4>
+                                
+                                    <p>Geek, Parent, Human, Xamarin University Instructor. Co-curator of http://weeklyxamarin.com  and twitch streaming live coding at http://twitch.tv/kymphillpotts.</p>
+                                
+                            </section>
+                        </section>
+                        <div class="post-full-footer-right">
+                            <a class="author-card-button" href="/author/kphillpotts">Read More</a>
+                        </div>
+                    
+                
+                <!-- /author  -->
+            </footer>
+            <!-- If you use Disqus comments, just uncomment this block.
+            The only thing you need to change is "test-apkdzgmqhj" - which
+            should be replaced with your own Disqus site-id. -->
+            
+                <section class="post-full-comments">
+                    <div id="disqus_thread"></div>
+                    <script>
+                        var disqus_config = function () {
+                            this.page.url = 'https://kymphillpotts.com/xamarin-forms-ui-challenge-unzone.html';
+                            this.page.identifier = '/xamarin-forms-ui-challenge-unzone.html';
+                        };
+                        (function() {
+                            var d = document, s = d.createElement('script');
+                            s.src = 'https://kymphillpotts.disqus.com/embed.js';
+                            s.setAttribute('data-timestamp', +new Date());
+                            (d.head || d.body).appendChild(s);
+                        })();
+                    </script>
+                    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                </section>
+            
+
+        </article>
+
+    </div>
+</main>
+
+<!-- Links to Previous/Next posts -->
+<aside class="read-next outer">
+    <div class="inner">
+        <div class="read-next-feed">
+            
+                
+                
+                
+                
+                    <article class="read-next-card"
+                        
+                            style="background-image: url(/assets/images/blog-cover.jpg)"
+                        
+                    >
+                        <header class="read-next-card-header">
+                            <small class="read-next-card-header-sitetitle">&mdash; Kym's Blog &mdash;</small>
+                            
+                                <h3 class="read-next-card-header-title"><a href="/tag/xamarin/">Xamarin</a></h3>
+                            
+                        </header>
+                        <div class="read-next-divider"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 14.5s2 3 5 3 5.5-2.463 5.5-5.5S21 6.5 18 6.5c-5 0-7 11-12 11C2.962 17.5.5 15.037.5 12S3 6.5 6 6.5s4.5 3.5 4.5 3.5"/></svg>
+</div>
+                        <div class="read-next-card-content">
+                            <ul>
+                                
+                                
+                                  
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/xamarin-forms-ui-challenge-dayvsnight.html">Xamarin.Forms UI Challenges - Day vs Night</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/xamarin-forms-ui-challenge-artauction.html">Xamarin.Forms UI Challenges - Art Auction</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/5907-2/">Microsoft //Build/ Recap for Xamarin Developers</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                            </ul>
+                        </div>
+                        <footer class="read-next-card-footer">
+                            <a href="/tag/xamarin/">
+                                
+                                    See all 45 posts  →
+                                
+                            </a>
+                        </footer>
+                    </article>
+                
+            
+
+            <!-- If there's a next post, display it using the same markup included from - partials/post-card.hbs -->
+            
+
+            <!-- If there's a previous post, display it using the same markup included from - partials/post-card.hbs -->
+            
+                
+    <article class="post-card post-template">
+        
+            <a class="post-card-image-link" href="/my-visual-studio-2019-theme.html">
+                <div class="post-card-image" style="background-image: url(/assets/images/covers/theme.jpg)"></div>
+            </a>
+        
+        <div class="post-card-content">
+            <a class="post-card-content-link" href="/my-visual-studio-2019-theme.html">
+                <header class="post-card-header">
+                    
+                        
+                            
+                                <span class="post-card-tags">Other</span>
+                            
+                        
+                    
+
+                    <h2 class="post-card-title">My Visual Studio 2019 Theme</h2>
+                </header>
+                <section class="post-card-excerpt">
+                    <p>I’ve had a couple of people ask me for my Visual Studio 2019 theme that I use when live streaming, so I thought I’d just blog it out as a reference for myself</p>
+                </section>
+            </a>
+            <footer class="post-card-meta">
+                
+                    
+                        
+                        <img class="author-profile-image" src="/assets/images/kphillpotts.jpg" alt="Kym Phillpotts" />
+                        
+                        <span class="post-card-author">
+                            <a href="/author/kphillpotts/">Kym Phillpotts</a>
+                        </span>
+                    
+                
+            </footer>
+        </div>
+    </article>
+
+            
+
+        </div>
+    </div>
+</aside>
+
+<!-- Floating header which appears on-scroll, included from includes/floating-header.hbs -->
+<div class="floating-header">
+    <div class="floating-header-logo">
+        <a href="https://kymphillpotts.com/">
+            
+            <span>Kym's Blog</span>
+        </a>
+    </div>
+    <span class="floating-header-divider">&mdash;</span>
+    <div class="floating-header-title">Xamarin.Forms UI Challenges - Unzone</div>
+    <div class="floating-header-share">
+        <div class="floating-header-share-label">Share this <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M7.5 15.5V4a1.5 1.5 0 1 1 3 0v4.5h2a1 1 0 0 1 1 1h2a1 1 0 0 1 1 1H18a1.5 1.5 0 0 1 1.5 1.5v3.099c0 .929-.13 1.854-.385 2.748L17.5 23.5h-9c-1.5-2-5.417-8.673-5.417-8.673a1.2 1.2 0 0 1 1.76-1.605L7.5 15.5zm6-6v2m-3-3.5v3.5m6-1v2"/>
+</svg>
+</div>
+        <a class="floating-header-share-tw" href="https://twitter.com/share?text=Xamarin.Forms+UI+Challenges+-+Unzone&amp;url=https://kphillpotts.github.io/xamarin-forms-ui-challenge-unzone.html"
+            onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg>
+
+        </a>
+        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=https://kphillpotts.github.io/xamarin-forms-ui-challenge-unzone.html"
+            onclick="window.open(this.href, 'share-facebook','width=580,height=296');return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M19 6h5V0h-5c-3.86 0-7 3.14-7 7v3H8v6h4v16h6V16h5l1-6h-6V7c0-.542.458-1 1-1z"/></svg>
+
+        </a>
+    </div>
+    <progress class="progress" value="0">
+        <div class="progress-container">
+            <span class="progress-bar"></span>
+        </div>
+    </progress>
+</div>
+
+
+<!-- /post -->
+
+<!-- The #contentFor helper here will send everything inside it up to the matching #block helper found in default.hbs -->
+
+
+        <!-- Previous/next page links - displayed on every page -->
+        
+
+        <!-- The footer at the very bottom of the screen -->
+        <footer class="site-footer outer">
+            <div class="site-footer-content inner">
+                <section class="copyright"><a href="https://kymphillpotts.com/">Kym's Blog</a> &copy; 2019</section>
+                <section class="poweredby">Proudly published with <a href="https://jekyllrb.com/">Jekyll</a> &
+                    <a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a> using
+                    <a href="https://github.com/jekyller/jasper2" target="_blank" rel="noopener">Jasper2</a></section>
+                <nav class="site-footer-nav">
+                    <a href="/">Latest Posts</a>
+                    
+                    <a href="https://twitter.com/kphillpotts" target="_blank" rel="noopener">Twitter</a>
+                    <a href="https://ghost.org" target="_blank" rel="noopener">Ghost</a>
+                </nav>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- The big email subscribe modal content -->
+    
+
+    <!-- highlight.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.10.0/components/prism-abap.min.js"></script>
+    <script>$(document).ready(function() {
+      $('pre code').each(function(i, block) {
+        hljs.highlightBlock(block);
+      });
+    });</script>
+
+    <!-- jQuery + Fitvids, which makes all video embeds responsive -->
+    <script
+        src="https://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous">
+    </script>
+    <script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="https://demo.ghost.io/assets/js/jquery.fitvids.js?v=724281a32e"></script>
+
+
+    <!-- Paginator increased to "infinit" in _config.yml -->
+    <!-- if paginator.posts  -->
+    <!-- <script>
+        var maxPages = parseInt('');
+    </script>
+    <script src="/assets/js/infinitescroll.js"></script> -->
+    <!-- /endif -->
+
+    
+
+
+    <!-- Add Google Analytics  -->
+    <!-- Google Analytics Tracking code -->
+ <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-69281367-1', 'auto');
+  ga('send', 'pageview');
+
+ </script>
+
+
+    <!-- The #block helper will pull in data from the #contentFor other template files. In this case, there's some JavaScript which we only want to use in post.hbs, but it needs to be included down here, after jQuery has already loaded. -->
+    
+        <script>
+
+// NOTE: Scroll performance is poor in Safari
+// - this appears to be due to the events firing much more slowly in Safari.
+//   Dropping the scroll event and using only a raf loop results in smoother
+//   scrolling but continuous processing even when not scrolling
+$(document).ready(function () {
+    // Start fitVids
+    var $postContent = $(".post-full-content");
+    $postContent.fitVids();
+    // End fitVids
+
+    var progressBar = document.querySelector('progress');
+    var header = document.querySelector('.floating-header');
+    var title = document.querySelector('.post-full-title');
+
+    var lastScrollY = window.scrollY;
+    var lastWindowHeight = window.innerHeight;
+    var lastDocumentHeight = $(document).height();
+    var ticking = false;
+
+    function onScroll() {
+        lastScrollY = window.scrollY;
+        requestTick();
+    }
+
+    function onResize() {
+        lastWindowHeight = window.innerHeight;
+        lastDocumentHeight = $(document).height();
+        requestTick();
+    }
+
+    function requestTick() {
+        if (!ticking) {
+            requestAnimationFrame(update);
+        }
+        ticking = true;
+    }
+
+    function update() {
+        var trigger = title.getBoundingClientRect().top + window.scrollY;
+        var triggerOffset = title.offsetHeight + 35;
+        var progressMax = lastDocumentHeight - lastWindowHeight;
+
+        // show/hide floating header
+        if (lastScrollY >= trigger + triggerOffset) {
+            header.classList.add('floating-active');
+        } else {
+            header.classList.remove('floating-active');
+        }
+
+        progressBar.setAttribute('max', progressMax);
+        progressBar.setAttribute('value', lastScrollY);
+
+        ticking = false;
+    }
+
+    window.addEventListener('scroll', onScroll, {passive: true});
+    window.addEventListener('resize', onResize, false);
+
+    update();
+});
+</script>
+
+    
+
+    <!-- Ghost outputs important scripts and data with this tag - it should always be the very last thing before the closing body tag -->
+    <!-- ghost_foot -->
+
+</body>
+</html>
