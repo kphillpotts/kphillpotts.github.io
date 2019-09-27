@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator>
   <link href="https://kymphillpotts.com/tag/xamarin/feed.xml" rel="self" type="application/atom+xml" />
   <link href="https://kymphillpotts.com/" rel="alternate" type="text/html" />
-  <updated>2019-09-27T12:44:52+10:00</updated>
+  <updated>2019-09-27T12:57:31+10:00</updated>
   <id>https://kymphillpotts.com/tag/xamarin/feed.xml</id>
 
   
@@ -70,13 +70,13 @@
 
 &lt;p&gt;&lt;strong&gt;PersonTimeCell&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;assets/images/posts/unzone/persontimecell.png&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;assets/images/posts/unzone/PersonTimeCell.png&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;This is the main cell that is used for the different time zones in the list. If you have a look at it, it’s a pretty simple layout which consists of a &lt;code class=&quot;highlighter-rouge&quot;&gt;Grid&lt;/code&gt; of three columns and a &lt;code class=&quot;highlighter-rouge&quot;&gt;StackLayout&lt;/code&gt; for the middle column.&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;YouTimeCell&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;assets/images/posts/unzone/youtimecell.png&quot; /&gt;
+&lt;p&gt;&lt;img src=&quot;assets/images/posts/unzone/YouTimeCell.png&quot; /&gt;
 There is really just one of these cells and it is designed to show your current time zone.&lt;/p&gt;
 
 &lt;h3 id=&quot;datatemplateselector&quot;&gt;DataTemplateSelector&lt;/h3&gt;
@@ -152,7 +152,7 @@ There is really just one of these cells and it is designed to show your current 
 
 &lt;div class=&quot;myvideo&quot;&gt;
    &lt;video style=&quot;display:block;&quot; autoplay=&quot;&quot; controls=&quot;&quot; loop=&quot;loop&quot;&gt;
-       &lt;source src=&quot;assets/videos/unzone1.mp4&quot; type=&quot;video/mp4&quot; /&gt;
+       &lt;source src=&quot;assets/videos/Unzone1.mp4&quot; type=&quot;video/mp4&quot; /&gt;
    &lt;/video&gt;
 &lt;/div&gt;
 
@@ -195,7 +195,7 @@ There is really just one of these cells and it is designed to show your current 
 
 &lt;div class=&quot;myvideo&quot;&gt;
    &lt;video style=&quot;display:block;&quot; autoplay=&quot;&quot; controls=&quot;&quot; loop=&quot;loop&quot;&gt;
-       &lt;source src=&quot;assets/videos/unzone2.mp4&quot; type=&quot;video/mp4&quot; /&gt;
+       &lt;source src=&quot;assets/videos/Unzone2.mp4&quot; type=&quot;video/mp4&quot; /&gt;
    &lt;/video&gt;
 &lt;/div&gt;
 
@@ -246,7 +246,7 @@ There is really just one of these cells and it is designed to show your current 
 
 &lt;div class=&quot;myvideo&quot;&gt;
    &lt;video style=&quot;display:block;&quot; autoplay=&quot;&quot; controls=&quot;&quot; loop=&quot;loop&quot;&gt;
-       &lt;source src=&quot;assets/videos/unzone3.mp4&quot; type=&quot;video/mp4&quot; /&gt;
+       &lt;source src=&quot;assets/videos/Unzone3.mp4&quot; type=&quot;video/mp4&quot; /&gt;
    &lt;/video&gt;
 &lt;/div&gt;
 
@@ -317,7 +317,7 @@ There is really just one of these cells and it is designed to show your current 
 
 &lt;div class=&quot;myvideo&quot;&gt;
    &lt;video style=&quot;display:block;&quot; autoplay=&quot;&quot; controls=&quot;&quot; loop=&quot;loop&quot;&gt;
-       &lt;source src=&quot;assets/videos/unzone4.mp4&quot; type=&quot;video/mp4&quot; /&gt;
+       &lt;source src=&quot;assets/videos/Unzone4.mp4&quot; type=&quot;video/mp4&quot; /&gt;
    &lt;/video&gt;
 &lt;/div&gt;
 
@@ -348,7 +348,7 @@ There is really just one of these cells and it is designed to show your current 
 
 &lt;div class=&quot;myvideo&quot;&gt;
    &lt;video style=&quot;display:block;&quot; autoplay=&quot;&quot; controls=&quot;&quot; loop=&quot;loop&quot;&gt;
-       &lt;source src=&quot;assets/videos/unzone5.mp4&quot; type=&quot;video/mp4&quot; /&gt;
+       &lt;source src=&quot;assets/videos/Unzone5.mp4&quot; type=&quot;video/mp4&quot; /&gt;
    &lt;/video&gt;
 &lt;/div&gt;
 
