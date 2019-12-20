@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator>
   <link href="https://kymphillpotts.com/tag/xamarin/feed.xml" rel="self" type="application/atom+xml" />
   <link href="https://kymphillpotts.com/" rel="alternate" type="text/html" />
-  <updated>2019-09-27T13:04:50+10:00</updated>
+  <updated>2019-12-20T16:01:58+11:00</updated>
   <id>https://kymphillpotts.com/tag/xamarin/feed.xml</id>
 
   
@@ -30,6 +30,449 @@
   
   
 
+  
+    <entry>
+      <title type="html">Xamarin.Forms UI Challenges - RottenUI</title>
+      <link href="https://kymphillpotts.com/xamarin-forms-ui-challenge-rottenui.html" rel="alternate" type="text/html" title="Xamarin.Forms UI Challenges - RottenUI" />
+      <published>2019-12-20T16:00:24+11:00</published>
+      <updated>2019-12-20T16:00:24+11:00</updated>
+      <id>https://kymphillpotts.com/xamarin-forms-ui-challenge-rottenui</id>
+      <content type="html" xml:base="https://kymphillpotts.com/xamarin-forms-ui-challenge-rottenui.html">&lt;p&gt;This UI Challenge is all about composing overlapping elements in Xamarin.Forms. Overlapping elements is one of the subtle elements that can enhance a design and make it pop.&lt;/p&gt;
+
+&lt;h2 id=&quot;the-design&quot;&gt;The Design&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;assets/images/posts/rottenui/rottenui.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;This is a great looking design called &lt;a href=&quot;https://dribbble.com/shots/2784573-Rottentomatoes-App-Concept&quot;&gt;Rottentomatoes App Concept&lt;/a&gt; created by &lt;a href=&quot;https://dribbble.com/ghanipradita&quot;&gt;Ghani Pradita&lt;/a&gt;. Even though the design has two screens in it, the focus of this chanllenge was the details page.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;assets/images/posts/rottenui/rottenuiresult.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The key elements we will focus on in this challenge are:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Overlapping elements&lt;/li&gt;
+  &lt;li&gt;Custom rendering of shadows&lt;/li&gt;
+  &lt;li&gt;Tabbed bottom content&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;basic-page-layout&quot;&gt;Basic Page Layout&lt;/h2&gt;
+&lt;p&gt;If you have checked out any of my other Xamarin.Forms UI Challenges, you are probably aware that I really enjoy using a &lt;code class=&quot;highlighter-rouge&quot;&gt;Grid&lt;/code&gt; as the main layout container for pages.  At the surface the &lt;code class=&quot;highlighter-rouge&quot;&gt;Grid&lt;/code&gt; seems to be quite limited in terms of functionality, but the &lt;code class=&quot;highlighter-rouge&quot;&gt;Grid&lt;/code&gt; provides a couple of great benefits:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Responsive design&lt;/li&gt;
+  &lt;li&gt;Overlapping elements&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The &lt;code class=&quot;highlighter-rouge&quot;&gt;Grid&lt;/code&gt; makes a perfect layout for this sort of design.  The &lt;code class=&quot;highlighter-rouge&quot;&gt;Grid&lt;/code&gt; occupies the page, and is divided into two rows. The first row is for the background header of 200 units, whilst the second row occupies the rest of the page and is where the main content goes.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-xml&quot; data-lang=&quot;xml&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;Grid&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;Grid.RowDefinitions&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;RowDefinition&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Height=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;200&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;RowDefinition&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Height=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;*&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/Grid.RowDefinitions&amp;gt;&lt;/span&gt;
+    ...
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/Grid&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Okay, so let’s break this down into the various sections.&lt;/p&gt;
+
+&lt;h2 id=&quot;the-header&quot;&gt;The Header&lt;/h2&gt;
+&lt;p&gt;The header for the page has a few overlapped components.  First we have the background image, over that we have a play button and a white overlay.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;assets/images/posts/rottenui/pageheader.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;This is nice and  simple to implement with a &lt;code class=&quot;highlighter-rouge&quot;&gt;Grid&lt;/code&gt; because we can just put the elements into the same cell of the &lt;code class=&quot;highlighter-rouge&quot;&gt;Grid&lt;/code&gt; to have them overlay.  In this situation, order is important because the order that you put the elements in your &lt;code class=&quot;highlighter-rouge&quot;&gt;xaml&lt;/code&gt; file indicates the z-order.  Sometimes this can be a little confusing because the elements you want to be in front will actually go down the bottom of your &lt;code class=&quot;highlighter-rouge&quot;&gt;xaml&lt;/code&gt;.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-xml&quot; data-lang=&quot;xml&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;Image&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;Aspect=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;AspectFill&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;HeightRequest=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;200&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;Source=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{Binding BackdropUrl}&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;Image&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;Aspect=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Fill&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;HeightRequest=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;100&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;Source=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;white_gradient&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;VerticalOptions=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;End&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;Image&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;HorizontalOptions=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Center&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;Source=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;play_button&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;VerticalOptions=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Center&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Probably the only interesting point here is the white gradient down the bottom of the header.  There are a few different ways you could implement this.  First, and probably the technically best solution is to use SkiaSharp to render a transparent to white gradient.  In this case though, I have just implemented this with a very simple &lt;code class=&quot;highlighter-rouge&quot;&gt;.png&lt;/code&gt; file with a gradient and overlayed it over the image. Sometimes simple just works.&lt;/p&gt;
+
+&lt;h2 id=&quot;the-movie-details&quot;&gt;The Movie Details&lt;/h2&gt;
+&lt;p&gt;Okay onto the more interesting part, which is the movie details.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;assets/images/posts/rottenui/moviedetails.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;This get’s a little bit funky because we have numerous elements overlapping within the details section as well as the whole thing overlapping the header.  The trick here is that the details of the page actually sit in Row 0 of the table but span across 2 rows. (hence it sits above and overlapping the header).&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-xml&quot; data-lang=&quot;xml&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;Grid&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;Grid.Row=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;0&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;Grid.RowSpan=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;2&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;Margin=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;14,172,14,0&quot;&lt;/span&gt; 
+    &lt;span class=&quot;na&quot;&gt;ColumnSpacing=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;0&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;IsClippedToBounds=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;True&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;RowSpacing=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;0&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;Grid.RowDefinitions&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;RowDefinition&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Height=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;138&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;&amp;lt;!-- movie detail box --&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;RowDefinition&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Height=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;46&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;  &lt;span class=&quot;c&quot;&gt;&amp;lt;!-- rating button row --&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;RowDefinition&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Height=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;46&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;  &lt;span class=&quot;c&quot;&gt;&amp;lt;!-- spacing between button and tab--&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;RowDefinition&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Height=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;*&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;   &lt;span class=&quot;c&quot;&gt;&amp;lt;!-- rest of the page --&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/Grid.RowDefinitions&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;Grid.ColumnDefinitions&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;ColumnDefinition&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Width=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;150&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;ColumnDefinition&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Width=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;*&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/Grid.ColumnDefinitions&amp;gt;&lt;/span&gt;
+    ...&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;There are a couple of things to note in here.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;The &lt;code class=&quot;highlighter-rouge&quot;&gt;Margin=&quot;14,172,14,0&quot;&lt;/code&gt; is what brings the content down so that it doesn’t sit entirely at the top of the page.&lt;/li&gt;
+  &lt;li&gt;The &lt;code class=&quot;highlighter-rouge&quot;&gt;IsClippedToBounds=&quot;True&quot;&lt;/code&gt; is what allows the FRESH text to be clipped to the grid.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Okay, let’s break it down even further into the elements:&lt;/p&gt;
+
+&lt;h3 id=&quot;movie-information-container&quot;&gt;Movie Information Container&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&quot;assets/images/posts/rottenui/movieinfocontainer.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The main container for the movie information is a white &lt;code class=&quot;highlighter-rouge&quot;&gt;BoxView&lt;/code&gt; and a green &lt;code class=&quot;highlighter-rouge&quot;&gt;Boxview&lt;/code&gt; for the button with a combination of &lt;code class=&quot;highlighter-rouge&quot;&gt;CornerRadius&lt;/code&gt; to make it look pretty.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-xml&quot; data-lang=&quot;xml&quot;&gt;&lt;span class=&quot;c&quot;&gt;&amp;lt;!-- white panel --&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;BoxView&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;Grid.Row=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;0&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;Grid.ColumnSpan=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;2&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;BackgroundColor=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;White&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;CornerRadius=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;6,6,0,0&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;&amp;lt;!-- the add your rating button --&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;BoxView&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;Grid.Row=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;1&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;Grid.ColumnSpan=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;2&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;BackgroundColor=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{StaticResource ButtonColor}&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;CornerRadius=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;0,0,6,6&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;Label&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;Grid.Row=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;1&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;Grid.ColumnSpan=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;2&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;HorizontalOptions=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Center&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;Style=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{StaticResource MovieName}&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;Text=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;ADD YOUR RATING&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;TextColor=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;White&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;VerticalOptions=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Center&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;&amp;lt;!-- button shadow --&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;skia:SKCanvasView&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;Grid.Row=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;2&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;Grid.RowSpan=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;2&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;Grid.ColumnSpan=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;2&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;PaintSurface=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;SKCanvasView_PaintSurface&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;The hardest part was the shadow for the button. If you look at it carefully, you’ll notice that it’s actually smaller than the button and has a big blur.  I had to do this with SkiaSharp - because that’s where I go when I need to render funky things ;-)&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-csharp&quot; data-lang=&quot;csharp&quot;&gt;&lt;span class=&quot;k&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;SKCanvasView_PaintSurface&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;object&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sender&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;SkiaSharp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Views&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Forms&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SKPaintSurfaceEventArgs&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;SKImageInfo&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;info&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Info&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;SKSurface&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;surface&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Surface&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;SKCanvas&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;canvas&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;surface&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Canvas&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;n&quot;&gt;canvas&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Clear&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;using&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SKPaint&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;paint&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;SKPaint&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;// define the color for the shadow&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;SKColor&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;shadowColor&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Color&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;FromHex&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;#5ACB6E&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;ToSKColor&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+
+        &lt;span class=&quot;n&quot;&gt;paint&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;IsDither&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;paint&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;IsAntialias&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;paint&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Color&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;shadowColor&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+        &lt;span class=&quot;c1&quot;&gt;// create filter for drop shadow&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;paint&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ImageFilter&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;SKImageFilter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;CreateDropShadow&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;dx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; 
+            &lt;span class=&quot;n&quot;&gt;sigmaX&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;40&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sigmaY&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;40&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; 
+            &lt;span class=&quot;n&quot;&gt;color&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;shadowColor&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; 
+            &lt;span class=&quot;n&quot;&gt;shadowMode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;SKDropShadowImageFilterShadowMode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;DrawShadowOnly&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+        &lt;span class=&quot;c1&quot;&gt;// define where I want to draw the object&lt;/span&gt;
+        &lt;span class=&quot;kt&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;margin&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;info&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Width&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;kt&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;shadowBounds&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;SKRect&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;margin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;40&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;info&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Width&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;margin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;canvas&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;DrawRoundRect&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;shadowBounds&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;paint&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Fortunately, Skia is amazing and allows us to easily do things like create a shadow effect.&lt;/p&gt;
+
+&lt;h3 id=&quot;movie-information&quot;&gt;Movie Information&lt;/h3&gt;
+
+&lt;p&gt;The next bit is the movie information and ratings inside the container.  This is really just combination of &lt;code class=&quot;highlighter-rouge&quot;&gt;Grid&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;StackLayout&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;assets/images/posts/rottenui/movieinfodetails.png&quot; /&gt;&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-xml&quot; data-lang=&quot;xml&quot;&gt;&lt;span class=&quot;c&quot;&gt;&amp;lt;!--  movie information  --&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;Grid&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Grid.Row=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;0&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Grid.Column=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;1&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;Grid.RowDefinitions&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;RowDefinition&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Height=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;*&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;RowDefinition&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Height=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;*&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/Grid.RowDefinitions&amp;gt;&lt;/span&gt;
+
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;Image&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;Margin=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;0,0,-55,0&quot;&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;Source=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Fresh&quot;&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;TranslationX=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;-28&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;StackLayout&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Margin=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;14,0,0,0&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;VerticalOptions=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Center&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;Label&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Style=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{StaticResource MovieName}&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Text=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{Binding Title}&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;Label&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Style=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{StaticResource SubText}&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Text=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{Binding ReleaseDate}&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/StackLayout&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;BoxView&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;Margin=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;0,0,14,0&quot;&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;HeightRequest=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;.5&quot;&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;VerticalOptions=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;End&quot;&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;Color=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{StaticResource SubTextColor}&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;Grid&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Grid.Row=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;1&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;Grid.ColumnDefinitions&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;ColumnDefinition&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Width=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;*&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;ColumnDefinition&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Width=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;*&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;/Grid.ColumnDefinitions&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;StackLayout&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Margin=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;14,0,0,0&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;VerticalOptions=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Center&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;StackLayout&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Orientation=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Horizontal&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+                &lt;span class=&quot;nt&quot;&gt;&amp;lt;Image&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Source=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;rotten_popcorn&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+                &lt;span class=&quot;nt&quot;&gt;&amp;lt;Label&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Style=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{StaticResource MovieName}&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Text=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{Binding AudienceScore, StringFormat='{0:}%'}&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;/StackLayout&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;Label&lt;/span&gt;
+                &lt;span class=&quot;na&quot;&gt;Margin=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;0,-5,0,0&quot;&lt;/span&gt;
+                &lt;span class=&quot;na&quot;&gt;Style=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{StaticResource SubText}&quot;&lt;/span&gt;
+                &lt;span class=&quot;na&quot;&gt;Text=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Audience&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;/StackLayout&amp;gt;&lt;/span&gt;
+
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;StackLayout&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;Grid.Column=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;1&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;Margin=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;14,0,0,0&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;VerticalOptions=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Center&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;StackLayout&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Orientation=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Horizontal&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+                &lt;span class=&quot;nt&quot;&gt;&amp;lt;Image&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Source=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;rotten_tomato&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+                &lt;span class=&quot;nt&quot;&gt;&amp;lt;Label&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Style=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{StaticResource MovieName}&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Text=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{Binding TomatometerScore, StringFormat='{0:}%'}&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;/StackLayout&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;Label&lt;/span&gt;
+                &lt;span class=&quot;na&quot;&gt;Margin=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;0,-5,0,0&quot;&lt;/span&gt;
+                &lt;span class=&quot;na&quot;&gt;Style=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{StaticResource SubText}&quot;&lt;/span&gt;
+                &lt;span class=&quot;na&quot;&gt;Text=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Tomatometer&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;/StackLayout&amp;gt;&lt;/span&gt;
+
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/Grid&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/Grid&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;For the FRESH text unfortunately I couldn’t see a way of getting that to work with a label because the font spacing and size is very specific, so instead I used an image like this:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;assets/images/posts/rottenui/fresh.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;and then translated it using a negative right margin (to make it wider than the cell) and then translated it to the left so that it would go under the poster.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-xml&quot; data-lang=&quot;xml&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;Image&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;Margin=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;0,0,-55,0&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;Source=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Fresh&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;TranslationX=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;-28&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h3 id=&quot;the-poster&quot;&gt;The Poster&lt;/h3&gt;
+&lt;p&gt;And that just leaves us with the poster.  I used the most excellent &lt;code class=&quot;highlighter-rouge&quot;&gt;PancakeView&lt;/code&gt; to get the rounded corners.  But what is interesting about this is that because it’s got to go over all the other information it is the very last thing that appears in the &lt;code class=&quot;highlighter-rouge&quot;&gt;xaml&lt;/code&gt; even though it’s at the top.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-xml&quot; data-lang=&quot;xml&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;pancake:PancakeView&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;Grid.RowSpan=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;2&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;Margin=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;28,126,0,0&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;CornerRadius=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;20&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;HeightRequest=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;170&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;HorizontalOptions=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Start&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;IsClippedToBounds=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;True&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;VerticalOptions=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Start&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;WidthRequest=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;125&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;Image&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;Aspect=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;AspectFill&quot;&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;HeightRequest=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;170&quot;&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;HorizontalOptions=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Start&quot;&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;Source=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{Binding PosterUrl}&quot;&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;VerticalOptions=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Start&quot;&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;WidthRequest=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;125&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/pancake:PancakeView&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h2 id=&quot;the-tabbed-bottom-content&quot;&gt;The Tabbed Bottom Content&lt;/h2&gt;
+&lt;p&gt;Alright, so that just leaves us with the bottom tabs.  In Xamarin.Forms there is a &lt;code class=&quot;highlighter-rouge&quot;&gt;TabbedPage&lt;/code&gt;, but not a tabbed view.  There are a number of ones available in the Open Source community, but none that would deo exactly what I was after.  But, it is super easy to create your own.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;assets/videos/rottenuitab.gif&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;In our case we implemented this in it’s own &lt;code class=&quot;highlighter-rouge&quot;&gt;ContentView&lt;/code&gt; so as not to bloat the size of the &lt;code class=&quot;highlighter-rouge&quot;&gt;MainPage&lt;/code&gt;.  It’s implemented in a file called &lt;code class=&quot;highlighter-rouge&quot;&gt;DetailsSection.xaml&lt;/code&gt;.  The layout for the tab headers is just a &lt;code class=&quot;highlighter-rouge&quot;&gt;Grid&lt;/code&gt; with 5 columns.  Each column has a &lt;code class=&quot;highlighter-rouge&quot;&gt;Label&lt;/code&gt; which is shown on the Tab header.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-xml&quot; data-lang=&quot;xml&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;Grid&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Grid.Row=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;0&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;Grid.ColumnDefinitions&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;ColumnDefinition&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Width=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;*&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;ColumnDefinition&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Width=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;*&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;ColumnDefinition&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Width=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;*&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;ColumnDefinition&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Width=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;*&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;ColumnDefinition&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Width=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;*&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/Grid.ColumnDefinitions&amp;gt;&lt;/span&gt;
+
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;Label&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;x:Name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;InfoTab&quot;&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;Grid.Column=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;0&quot;&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;Style=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{StaticResource SelectedTabLabel}&quot;&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;Text=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Info&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;Label.GestureRecognizers&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;TapGestureRecognizer&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Tapped=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;TapGestureRecognizer_Tapped&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;/Label.GestureRecognizers&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/Label&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;Label&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;x:Name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;CastTab&quot;&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;Grid.Column=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;1&quot;&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;Style=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{StaticResource TabLabel}&quot;&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;Text=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Cast&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;Label.GestureRecognizers&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;TapGestureRecognizer&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Tapped=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;TapGestureRecognizer_Tapped&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;/Label.GestureRecognizers&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/Label&amp;gt;&lt;/span&gt;
+    ...
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/Grid&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;We also have the little orange element that moves with the selection.  This is just a a couple of &lt;code class=&quot;highlighter-rouge&quot;&gt;BoxView&lt;/code&gt; elements (which we will animate later)&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-xml&quot; data-lang=&quot;xml&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;BoxView&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;Grid.Row=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;1&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;HeightRequest=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;1&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;VerticalOptions=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Center&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;Color=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{StaticResource SubTextColor}&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;BoxView&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;x:Name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;SelectionUnderline&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;Grid.Row=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;1&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;CornerRadius=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;2&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;HeightRequest=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;5&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;HorizontalOptions=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Start&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;WidthRequest=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;40&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;Color=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Orange&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;To be fair, there is a tiny bit of structure for  the control by having a couple of collections for the headers and contents.  We load  these up in the constructor.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-csharp&quot; data-lang=&quot;csharp&quot;&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;selectionIndex&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;List&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Label&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tabHeaders&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;List&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Label&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;();&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;List&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;VisualElement&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tabContents&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;List&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;VisualElement&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;();&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;DetailsSection&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nf&quot;&gt;InitializeComponent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+
+    &lt;span class=&quot;n&quot;&gt;tabHeaders&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Add&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;InfoTab&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;tabHeaders&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Add&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;CastTab&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;tabHeaders&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Add&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;NewsTab&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;tabHeaders&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Add&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;CriticsTab&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;tabHeaders&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Add&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;MediaTab&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+    &lt;span class=&quot;n&quot;&gt;tabContents&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Add&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;InfoContent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;tabContents&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Add&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;CastContent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;tabContents&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Add&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;NewsContent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;tabContents&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Add&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;CriticsContent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;tabContents&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Add&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;MediaContent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;For each of the headers labels we have &lt;code class=&quot;highlighter-rouge&quot;&gt;TapGestureRecognizer&lt;/code&gt; that all call the same method. That method works out which index we have selected and then calls a method to do the tab switching.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-csharp&quot; data-lang=&quot;csharp&quot;&gt;&lt;span class=&quot;k&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;async&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;TapGestureRecognizer_Tapped&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;object&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sender&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;EventArgs&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kt&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tabIndex&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tabHeaders&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;IndexOf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Label&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sender&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;await&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;ShowSelection&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tabIndex&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;async&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Task&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;ShowSelection&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;newTab&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;newTab&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;selectionIndex&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;c1&quot;&gt;// navigate the selection pill&lt;/span&gt;
+    &lt;span class=&quot;kt&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;selectdTabLabel&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tabHeaders&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;newTab&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;_&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;SelectionUnderline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;TranslateTo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;selectdTabLabel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Bounds&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;150&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;easing&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Easing&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SinInOut&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+    &lt;span class=&quot;c1&quot;&gt;// update the style of the header to show it's selcted&lt;/span&gt;
+    &lt;span class=&quot;kt&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;unselectedStyle&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Style&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Application&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Current&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Resources&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;TabLabel&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+    &lt;span class=&quot;kt&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;selectedStyle&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Style&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Application&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Current&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Resources&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;SelectedTabLabel&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;tabHeaders&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;selectionIndex&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Style&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;unselectedStyle&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;selectdTabLabel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Style&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;selectedStyle&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;c1&quot;&gt;/// reveal the contents&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;await&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tabContents&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;selectionIndex&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;FadeTo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;tabContents&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;selectionIndex&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;IsVisible&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;tabContents&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;newTab&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;IsVisible&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;_&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tabContents&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;newTab&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;FadeTo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//ybadragon thanks!&lt;/span&gt;
+
+    &lt;span class=&quot;n&quot;&gt;selectionIndex&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;newTab&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Just to cover off the key things that happen inside &lt;code class=&quot;highlighter-rouge&quot;&gt;ShowSelection&lt;/code&gt; method above:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;We use a &lt;code class=&quot;highlighter-rouge&quot;&gt;TranslateTo&lt;/code&gt; animation to change the position of the orange indicator to the bounds of the selected header&lt;/li&gt;
+  &lt;li&gt;We use the application resources to change the style of the TabHeader labels&lt;/li&gt;
+  &lt;li&gt;We fade out the existing tab content&lt;/li&gt;
+  &lt;li&gt;We fade in the new tab content&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;summary&quot;&gt;Summary&lt;/h1&gt;
+&lt;p&gt;Okay, so that’s the key elements in this UI Challenge. It was definitely a fun UI to put together, and not too difficult when you break it apart into it’s elements.  Just remember people, &lt;code class=&quot;highlighter-rouge&quot;&gt;Grid&lt;/code&gt;s are your friends!&lt;/p&gt;
+
+&lt;div class=&quot;myvideo&quot;&gt;
+   &lt;video style=&quot;display:block;&quot; autoplay=&quot;&quot; controls=&quot;&quot; loop=&quot;loop&quot;&gt;
+       &lt;source src=&quot;assets/videos/rottenui.mp4&quot; type=&quot;video/mp4&quot; /&gt;
+   &lt;/video&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;components-used&quot;&gt;Components Used&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://docs.microsoft.com/en-us/xamarin/xamarin-forms/user-interface/graphics/skiasharp/&quot;&gt;SkiaSharp&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/sthewissen/Xamarin.Forms.PancakeView&quot;&gt;PancakeView&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;get-the-code&quot;&gt;Get the code&lt;/h2&gt;
+&lt;p&gt;All the code is available open source on &lt;a href=&quot;https://github.com/kphillpotts/rottenui&quot;&gt;my github&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;watch-me-code-it&quot;&gt;Watch me code it&lt;/h2&gt;
+&lt;p&gt;I actually did this UI Challenge live over Twitch, so if you want to watch hours of me coding this up then check out these recordings. And as a special bit of fun James Montemagno jumped in on the stream towards the end and shows a trick or two.  Thanks James!&lt;/p&gt;
+
+&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/7xNszLcE_A4&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;If you want to catch me doing other live coding things follow me on Twitch. It’s a great platform where we can chat as we build software, ask questions, submit code).  Follow me at &lt;a href=&quot;https://www.twitch.tv/kymphillpotts&quot;&gt;https://www.twitch.tv/kymphillpotts&lt;/a&gt; and come join in the fun!&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://twitch.tv/kymphillpotts&quot;&gt;&lt;img src=&quot;https://kymphillpotts.com/assets/images/twitch_banner.png&quot; alt=&quot;Kym's Twitch Channel&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;If you can’t make it to the Twitch streams, then I also upload the videos to my &lt;a href=&quot;https://www.youtube.com/user/kphillpotts/&quot;&gt;YouTube Channel&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;I hope these posts are useful for you, feel free to leave me a comment below or reach out to me via &lt;a href=&quot;https://twitter.com/kphillpotts&quot;&gt;Twitter&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Until next time, Happy Coding&lt;/p&gt;
+
+&lt;p&gt;❤
+Kym&lt;/p&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>Kym Phillpotts</name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="Xamarin" />
+      
+
+      
+        <summary type="html">This UI Challenge is all about composing overlapping elements in Xamarin.Forms. Overlapping elements is one of the subtle elements that can enhance a design and make it pop.</summary>
+      
+
+      
+      
+    </entry>
   
     <entry>
       <title type="html">Xamarin.Forms UI Challenges - Unzone</title>
@@ -1884,7 +2327,7 @@ Kym&lt;/p&gt;</content>
       
 
       
-        <summary type="html">I’ve been writing a few unit tests recently. I actually like writing unit tests, I find something very cathartic about seeing those little green ticks show up.  However, one thing that can make writing unit tests a drag is setting up testing data for each test. Well, there are some nice patterns and tools out there to help. Let’s check some out… AutoFixture If you just need to generate some data (and don’t care too much about what it contains) you might want to have a look at a nice little library called AutoFixture AutoFixture is an open source library for .NET designed to minimize the ‘Arrange’ phase of your unit tests in order to maximize maintainability. Its primary goal is to allow developers to focus on what is being tested rather than how to set up the test scenario, by making it easier to create object graphs containing test data. TestCase Attribute Sometimes you want to run a number of values through a unit test and you don’t necessarily want to write different unit tests for each of them. The TestCase attribute is very useful here because you can get Nunit to just pass a series of values in: [TestCase(12, 2, 6)] [TestCase(12, 4, 3)] public void DivideTest(int n, int d, int q) { Assert.AreEqual(q, n / d); } A really nice thing about TestCase is that each element will appear as a different unit test in your runner, which means if one of the values fails you can instantly see which one failed. I’ve used this pretty extensively in the past, but one area where this starts to make your unit tests hard to understand is when you have a lot of values – pretty soon the number of attributes starts to make it kind of difficult to understand. But fear not, the TestCaseSource attribute is here to save you. TestCaseSource Attribute This is something that has been around forever, but I’ve never bothered playing with. Turns out it’s a really nice way of structuring that test data. Basically, you create a class that returns an IEnumerable of your test data. public class MyTests { [Test, TestCaseSource(typeof(MyDataClass), &quot;TestCases&quot;)] public int DivideTest(int n, int d) { return n / d; } } public class MyDataClass { public static IEnumerable TestCases { get { yield return new TestCaseData(12, 3).Returns(4); yield return new TestCaseData(12, 2).Returns(6); yield return new TestCaseData(12, 4).Returns(3); } } } Now in my case, I was writing some tests for a simple converter application with some numeric buttons, a backspace key, a decimal point key ‘.’. You know, a numeric keypad. It actually turns out that there are a number of things to consider. For example, what if someone tries to enter two decimal points, or maybe tries to have a bunch of leading zeros. Putting the scenarios into a TestCaseSource made this easy to write and also easy to visualize. NOTE: my architecture is MVVM, so I made sure I used commands behind all the buttons which means I can test what happens when a user presses a button (effectively testing the UI). For my unit test inputs, I provided a string with the keys pressed and had a little method to execute the appropriate command on the ViewModel. [Test, TestCaseSource(typeof(KeySequenceTestData), &quot;KeySequenceData&quot;)] public string KeySequence_Commands_GivesCorrectValue (string keySequence)  {     var vm = new MainViewModel();     foreach (var key in keySequence)         ProcessCharacter(vm, key);     return vm.FromValue; } private void ProcessCharacter(MainViewModel vm, char character) {     switch (character)     {         case '&amp;lt;': // user hits the backspace key             vm.BackSpaceCommand.Execute(null);             break;         case '.': // user hits the decimal point              vm.DecimalPointCommand.Execute(null);             break;         default: // any other key (which in case is a number key)             vm.NumberCommand.Execute(character.ToString());             break;     } } public class KeySequenceTestData {     public static IEnumerable KeySequenceData     {         get         {             // simple numeric value tests              yield return new TestCaseData(&quot;0&quot;).Returns(&quot;0&quot;);             yield return new TestCaseData(&quot;1&quot;).Returns(&quot;1&quot;);             yield return new TestCaseData(&quot;99&quot;).Returns(&quot;99&quot;);             yield return new TestCaseData(&quot;909&quot;).Returns(&quot;909&quot;);             // testing leading and trailing zeros             yield return new TestCaseData(&quot;00&quot;).Returns(&quot;0&quot;);             yield return new TestCaseData(&quot;10&quot;).Returns(&quot;10&quot;);             yield return new TestCaseData(&quot;0.&quot;).Returns(&quot;0.&quot;);             yield return new TestCaseData(&quot;.0&quot;).Returns(&quot;0.0&quot;);             yield return new TestCaseData(&quot;...0&quot;).Returns(&quot;0.0&quot;);             yield return new TestCaseData(&quot;.000&quot;).Returns(&quot;0.000&quot;);             yield return new TestCaseData(&quot;000.&quot;).Returns(&quot;0.&quot;);             yield return new TestCaseData(&quot;000.00&quot;).Returns(&quot;0.00&quot;);             yield return new TestCaseData(&quot;10.00001&quot;).Returns(&quot;10.00001&quot;);             yield return new TestCaseData(&quot;10.10&quot;).Returns(&quot;10.10&quot;);             yield return new TestCaseData(&quot;10..10&quot;).Returns(&quot;10.10&quot;);             yield return new TestCaseData(&quot;10.10.&quot;).Returns(&quot;10.10&quot;);             yield return new TestCaseData(&quot;001.10.&quot;).Returns(&quot;1.10&quot;);             // testing hitting the back key             yield return new TestCaseData(&quot;&amp;lt;&quot;).Returns(&quot;0&quot;);             yield return new TestCaseData(&quot;&amp;lt;.&quot;).Returns(&quot;0.&quot;);             yield return new TestCaseData(&quot;&amp;lt;&amp;lt;&quot;).Returns(&quot;0&quot;);             yield return new TestCaseData(&quot;0&amp;lt;0&quot;).Returns(&quot;0&quot;);             yield return new TestCaseData(&quot;12&amp;lt;&quot;).Returns(&quot;1&quot;);             yield return new TestCaseData(&quot;1&amp;lt;2&quot;).Returns(&quot;2&quot;);             yield return new TestCaseData(&quot;12&amp;lt;&amp;lt;&quot;).Returns(&quot;0&quot;);             yield return new TestCaseData(&quot;0.9&amp;lt;&quot;).Returns(&quot;0.&quot;);             yield return new TestCaseData(&quot;0.&amp;lt;9&amp;lt;&quot;).Returns(&quot;0&quot;);         }     } } The Builder Pattern for Test Data The Builder pattern turns out to be a nice pattern for creating test data. I first heard of this usage from Steve Smith when he appeared on .NET Rocks episode 1494. You should take a listen to that episode. The Basic idea is you create yourself a Builder class for your model object that goes and creates an object for you with some default values and then you have builder methods that allow you to set specific values if that is important for your test. Why not just create the objects with their values straight in your test? Well, you don’t want your tests littered with code to setup objects because it distracts you from the purpose of your test… and what if you change that model object later, you’ve got a thousand different unit tests you need to update. Here is a trivial example: As I said, I’m working on a simple converter application which has a variety of different Unit objects. So I create myself Builder object which allows me to easily create a Unit to covert. public class UnitBuilder { private string name = &quot;A Unit&quot;; private string description = &quot;Description of a unit&quot;; private UnitCategory category = UnitCategory.Weight; private double baseUnitValue = 1; public BaseUnit Build() { return new BaseUnit(name, description, category, baseUnitValue); } public UnitBuilder WithName(string name) { this.name = name; return this; } public UnitBuilder WithDescription(string description) { this.description = description; return this; } public UnitBuilder WithCategory(UnitCategory category) { this.category = category; return this; } public UnitBuilder WithBaseUnitValue (double baseUnitValue) { this.baseUnitValue = baseUnitValue; return this; } /// /// Implicit converter object, so we can turn a builder straight into a unit /// Builder Instance public static implicit operator BaseUnit(UnitBuilder instance) { return instance.Build(); } } Once I have that setup, within my unit test I can use this builder object to create my Unit objects. It will have default values but allows me to override whatever I want, all without having a hard dependency on the constructor for the object. For example, [Test] public void SimpleConversion_OneUnit() {     BaseUnit cm = new UnitBuilder().WithName(&quot;centimeters&quot;).WithBaseUnitValue(1);     BaseUnit meter = new UnitBuilder().WithName(&quot;meters&quot;).WithBaseUnitValue(100);     Converter.ConvertUnit(cm, meter, 1).ShouldEqual(0.01);     Converter.ConvertUnit(meter, cm, 1).ShouldEqual(100); } This just makes it really nice to construct tests which are nice a readable without being polluted with too much setup code. You can read a bunch more about this pattern at: Flexible and expressive unit tests with the builder pattern Improve tests with the builder pattern for test data One last thing you may notice, I also used a little library called Should, which makes reading the unit test just a teeny-tiny bit more readable. public void Should_assertions() { object obj = null; obj.ShouldBeNull(); obj = new object(); obj.ShouldBeType(typeof(object)); obj.ShouldEqual(obj); obj.ShouldNotBeNull(); obj.ShouldNotBeSameAs(new object()); obj.ShouldNotBeType(typeof(string)); obj.ShouldNotEqual(&quot;foo&quot;); obj = &quot;x&quot;; obj.ShouldNotBeInRange(&quot;y&quot;, &quot;z&quot;); obj.ShouldBeInRange(&quot;a&quot;, &quot;z&quot;); obj.ShouldBeSameAs(&quot;x&quot;); &quot;This String&quot;.ShouldContain(&quot;This&quot;); &quot;This String&quot;.ShouldNotBeEmpty(); &quot;This String&quot;.ShouldNotContain(&quot;foobar&quot;); false.ShouldBeFalse(); true.ShouldBeTrue(); var list = new List&amp;lt;&amp;gt;(); list.ShouldBeEmpty(); list.ShouldNotContain(new object()); var item = new object(); list.Add(item); list.ShouldNotBeEmpty(); list.ShouldContain(item); } In Conclusion These are just some little things that you may consider next time you are writing unit tests. It will make setting up your data a little easier whilst also creating more maintainable and easier to read unit tests. Till next time, happy coding!</summary>
+        <summary type="html">I’ve been writing a few unit tests recently. I actually like writing unit tests, I find something very cathartic about seeing those little green ticks show up.  However, one thing that can make writing unit tests a drag is setting up testing data for each test. Well, there are some nice patterns and tools out there to help. Let’s check some out…</summary>
       
 
       
@@ -2421,194 +2864,6 @@ Kym&lt;/p&gt;</content>
 
       
         <summary type="html">When your app is all about the images, sometimes you want your images to be hero of the UI.  That’s what this weeks Xamarin.Forms Layout Challenge is all about.    Normally I prefer a light themed application, so just to change things up a bit, I thought I would go for a dark themed layout. They say, variety is the spice of life.</summary>
-      
-
-      
-      
-    </entry>
-  
-    <entry>
-      <title type="html">Xamarin.Forms Layout Challenges – Timeline</title>
-      <link href="https://kymphillpotts.com/xamarin-forms-layout-challenges-timeline/" rel="alternate" type="text/html" title="Xamarin.Forms Layout Challenges &amp;#8211; Timeline" />
-      <published>2017-03-10T01:53:17+11:00</published>
-      <updated>2017-03-10T01:53:17+11:00</updated>
-      <id>https://kymphillpotts.com/xamarin-forms-layout-challenges-timeline</id>
-      <content type="html" xml:base="https://kymphillpotts.com/xamarin-forms-layout-challenges-timeline/">&lt;p&gt;A layout I’m seeing more and more these days is a timeline of activities.  This is useful for things like transportation schedules or class times.  So let’s put together a simple layout for a timeline using a ListView with headers and footers and a custom ViewCell.&lt;!--more--&gt;&lt;/p&gt;
-
-&lt;div id=&quot;gallery-1&quot; class=&quot;gallery galleryid-5699 gallery-columns-2 gallery-size-full&quot;&gt;
-  &lt;dl class=&quot;gallery-item&quot;&gt;
-    &lt;dt class=&quot;gallery-icon portrait&quot;&gt;
-      &lt;img src=&quot;https://i1.wp.com/res.cloudinary.com/dlstb15av/image/upload/v1506381680/iPhone6-1-e1489032290107_p5pgok.png?resize=247%2C440&quot; class=&quot;attachment-full size-full&quot; alt=&quot;&quot; data-recalc-dims=&quot;1&quot; /&gt;
-    &lt;/dt&gt;
-  &lt;/dl&gt;
-  
-  &lt;dl class=&quot;gallery-item&quot;&gt;
-    &lt;dt class=&quot;gallery-icon portrait&quot;&gt;
-      &lt;img src=&quot;https://i0.wp.com/res.cloudinary.com/dlstb15av/image/upload/v1506381679/AndroidPixel-1-e1489032278518_xgnvkx.png?resize=241%2C440&quot; class=&quot;attachment-full size-full&quot; alt=&quot;&quot; data-recalc-dims=&quot;1&quot; /&gt;
-    &lt;/dt&gt;
-  &lt;/dl&gt;
-  
-  &lt;br style=&quot;clear: both&quot; /&gt;
-&lt;/div&gt;
-
-&lt;p&gt; &lt;/p&gt;
-
-&lt;h2 id=&quot;page-structure&quot;&gt;Page Structure&lt;/h2&gt;
-
-&lt;p&gt;This page is just a simple ListView, nothing really more complex than that.  I turned the Separators off.  Set the RowHeight to something that feels nice.&lt;/p&gt;
-
-&lt;pre class=&quot;lang:xhtml decode:true&quot;&gt;&amp;lt;ListView
-    x:Name=&quot;timelineListView&quot;
-    ItemTapped=&quot;timelineListView_ItemTapped&quot;
-    ItemsSource=&quot;{Binding .}&quot;
-    RowHeight=&quot;75&quot;
-    SeparatorVisibility=&quot;None&quot;&amp;gt;&lt;/pre&gt;
-
-&lt;p&gt;Also, you may notice I have an ItemTapped hooked up that doesn’t do much:&lt;/p&gt;
-
-&lt;pre class=&quot;lang:c# decode:true &quot;&gt;private void timelineListView_ItemTapped(object sender, ItemTappedEventArgs e)
-{
-  timelineListView.SelectedItem = null;
-}&lt;/pre&gt;
-
-&lt;p&gt;It just disables a row from being selected, mainly because it  looks rubbish when one of the rows is selected… but of course depending on your layout, you might actually want to do Master / Detail style navigation.&lt;/p&gt;
-
-&lt;h2 id=&quot;header&quot;&gt;Header&lt;/h2&gt;
-
-&lt;p&gt;If you want something to appear above your ListView and have it scroll with the ListView use a header.&lt;/p&gt;
-
-&lt;p&gt;Pro Tip: Whatever you do, do NOT put a ScrollView around the entire page.  Having nested scrolling containers (eg. ScrollView with ListView inside) is just going end with tears.  Use a Header instead.&lt;/p&gt;
-
-&lt;p&gt;For our header, it’s just a simple stack layout with some labels and a bit of padding&lt;/p&gt;
-
-&lt;pre class=&quot;lang:xhtml decode:true&quot;&gt;&amp;lt;ListView.Header&amp;gt;
-      &amp;lt;StackLayout Padding=&quot;20,40,0,30&quot;&amp;gt;
-        &amp;lt;Label Style=&quot;{StaticResource PageHeaderLabel}&quot; Text=&quot;Class Schedule&quot; /&amp;gt;
-        &amp;lt;Label Style=&quot;{StaticResource SubHeaderLabel}&quot; Text=&quot;8 Mar 2017&quot; /&amp;gt;
-      &amp;lt;/StackLayout&amp;gt;
-    &amp;lt;/ListView.Header&amp;gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;footer&quot;&gt;Footer&lt;/h2&gt;
-
-&lt;p&gt;Down the bottom of the list, we have just put an image.  Not for any particularly good reason, just to jazz up the page a bit and show how footers work.  You could easily get rid of it and have a nice layout, I figured I’d just include it to complete the header / footer idea.&lt;/p&gt;
-
-&lt;p&gt;In our case the footer contains a Grid with two rows. The actual background image “Footer.png” occupies both the rows.  Then we have a transparent-to-white gradient image that is overlaid in the first row.  Basically just creating a fade in effect for the image.&lt;/p&gt;
-
-&lt;pre class=&quot;lang:xhtml decode:true&quot;&gt;&amp;lt;ListView.Footer&amp;gt;
-      &amp;lt;Grid RowSpacing=&quot;0&quot;&amp;gt;
-        &amp;lt;Grid.RowDefinitions&amp;gt;
-          &amp;lt;RowDefinition Height=&quot;64&quot; /&amp;gt;
-          &amp;lt;RowDefinition Height=&quot;100&quot; /&amp;gt;
-        &amp;lt;/Grid.RowDefinitions&amp;gt;
-        &amp;lt;Image Grid.RowSpan=&quot;2&quot; Aspect=&quot;AspectFill&quot; HorizontalOptions=&quot;Fill&quot; VerticalOptions=&quot;Start&quot; Source=&quot;YogaImage.png&quot; /&amp;gt;
-        &amp;lt;Image Aspect=&quot;Fill&quot; Grid.RowSpan=&quot;2&quot; HorizontalOptions=&quot;Fill&quot; Source=&quot;FadeToWhite.png&quot; /&amp;gt;
-      &amp;lt;/Grid&amp;gt;
-    &amp;lt;/ListView.Footer&amp;gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;viewcell&quot;&gt;ViewCell&lt;/h2&gt;
-
-&lt;p&gt;All the real magic happens in the ViewCell which defines what each row is going to look like.&lt;/p&gt;
-
-&lt;p&gt;At it’s core it’s just a simple Grid with 3 columns and two rows.&lt;/p&gt;
-
-&lt;p&gt;&lt;img class=&quot;alignnone size-full wp-image-5731&quot; src=&quot;https://i1.wp.com/res.cloudinary.com/dlstb15av/image/upload/v1506381678/GridLayout_fjz7js.png?resize=250%2C51&quot; alt=&quot;&quot; data-recalc-dims=&quot;1&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;The only really interesting bit of this is the actual lines and circles that form the timeline.  This is achieved by a thin vertical BoxView that runs the height of the Viewcell.  Overlayed in the first row is our circle image.  Nothing magical here.&lt;/p&gt;
-
-&lt;p&gt;Now you might notice that it uses a ValueConverter for the IsVisible property, this is kind of a hack to make the line not appear in the last row.  Our model object (which would actually probably be a ViewModel in a real app) has a property called IsLast which is set to true for the last row.  And then we have a NotBooleanConverter assigned to the IsVisible of the line, so basically the line isn’t rendered on the last row.  It feels a bit awkward, but off the top of my head, given the time, I couldn’t think of a better option.&lt;/p&gt;
-
-&lt;pre class=&quot;lang:xhtml decode:true&quot;&gt;&amp;lt;ListView.ItemTemplate&amp;gt;
-      &amp;lt;DataTemplate&amp;gt;
-        &amp;lt;ViewCell&amp;gt;
-          &amp;lt;Grid ColumnSpacing=&quot;0&quot; RowSpacing=&quot;0&quot;&amp;gt;
-            &amp;lt;Grid.ColumnDefinitions&amp;gt;
-              &amp;lt;ColumnDefinition Width=&quot;100&quot; /&amp;gt;
-              &amp;lt;ColumnDefinition Width=&quot;30&quot; /&amp;gt;
-              &amp;lt;ColumnDefinition Width=&quot;*&quot; /&amp;gt;
-            &amp;lt;/Grid.ColumnDefinitions&amp;gt;
-            &amp;lt;Grid.RowDefinitions&amp;gt;
-              &amp;lt;RowDefinition Height=&quot;Auto&quot; /&amp;gt;
-              &amp;lt;RowDefinition Height=&quot;*&quot; /&amp;gt;
-            &amp;lt;/Grid.RowDefinitions&amp;gt;
-
-            &amp;lt;Label HorizontalOptions=&quot;Center&quot; Style=&quot;{StaticResource ClassTimeLabel}&quot; Text=&quot;{Binding ClassTime, StringFormat='{0:H:mm}'}&quot; /&amp;gt;
-
-            &amp;lt;Label
-              Grid.Column=&quot;2&quot;
-              Margin=&quot;20,0&quot;
-              Style=&quot;{StaticResource ClassNameLabel}&quot;
-              Text=&quot;{Binding ClassName}&quot; /&amp;gt;
-
-            &amp;lt;Label
-              Grid.Row=&quot;1&quot;
-              Grid.Column=&quot;2&quot;
-              Margin=&quot;20,0&quot;
-              Style=&quot;{StaticResource ClassInstructorLabel}&quot;
-              Text=&quot;{Binding Instructor}&quot; /&amp;gt;
-
-            &amp;lt;BoxView
-              Grid.RowSpan=&quot;2&quot;
-              Grid.Column=&quot;1&quot;
-              BackgroundColor=&quot;{StaticResource TimelineColor}&quot;
-              HorizontalOptions=&quot;Center&quot;
-              IsVisible=&quot;{Binding IsLast, Converter={local:NotBooleanConverter}}&quot;
-              VerticalOptions=&quot;Fill&quot;
-              WidthRequest=&quot;3&quot; /&amp;gt;
-
-            &amp;lt;Image Grid.Column=&quot;1&quot; Source=&quot;Bullet.png&quot; /&amp;gt;
-
-          &amp;lt;/Grid&amp;gt;
-        &amp;lt;/ViewCell&amp;gt;
-      &amp;lt;/DataTemplate&amp;gt;
-    &amp;lt;/ListView.ItemTemplate&amp;gt;
-&lt;/pre&gt;
-
-&lt;h2 id=&quot;wrap-up&quot;&gt;Wrap Up&lt;/h2&gt;
-
-&lt;p&gt;So that is it, a simple timeline using a ListView.  It works pretty nicely.&lt;/p&gt;
-
-&lt;p&gt;Here are some links for further information about some of the techniques:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://developer.xamarin.com/guides/xamarin-forms/user-interface/listview/&quot;&gt;Xamarin ListView documentation&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://developer.xamarin.com/guides/xamarin-forms/user-interface/listview/customizing-list-appearance/#Headers_and_Footers&quot;&gt;Headers and Footers&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://developer.xamarin.com/guides/xamarin-forms/user-interface/listview/customizing-cell-appearance/#Custom_Cells&quot;&gt;Custom Cells&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;As YouTubers would say: “let me know in the comments if you liked this” 🙂 Also, If you have any layouts that you thing would be interesting to cover, just let me know.&lt;/p&gt;
-
-&lt;p&gt;Oh yeah, and you can grab the project over at &lt;a href=&quot;https://github.com/kphillpotts/XamarinFormsLayoutChallenges&quot;&gt;https://github.com/kphillpotts/XamarinFormsLayoutChallenges&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Also, make sure you check out some of the other layouts in &lt;a href=&quot;http://www.kymphillpotts.com/xamarin-forms-layout-challenges/&quot;&gt;Xamarin.Forms Layout Challenges&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Happy Layouts!&lt;/p&gt;
-
-&lt;p&gt; &lt;/p&gt;
-
-&lt;p&gt; &lt;/p&gt;
-
-&lt;p&gt; &lt;/p&gt;</content>
-
-      
-      
-      
-      
-      
-
-      <author>
-          <name>Kym Phillpotts</name>
-        
-        
-      </author>
-
-      
-
-      
-        <category term="Xamarin" />
-      
-
-      
-        <summary type="html">A layout I’m seeing more and more these days is a timeline of activities.  This is useful for things like transportation schedules or class times.  So let’s put together a simple layout for a timeline using a ListView with headers and footers and a custom ViewCell.</summary>
       
 
       

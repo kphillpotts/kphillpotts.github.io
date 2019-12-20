@@ -1,4 +1,413 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="https://kymphillpotts.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://kymphillpotts.com/" rel="alternate" type="text/html" /><updated>2019-09-27T13:04:50+10:00</updated><id>https://kymphillpotts.com/</id><title type="html">Kym’s Blog</title><subtitle>I write about Azure, Xamarin.Forms, Connected Apps and whatever else might be on my mind.</subtitle><entry><title type="html">Xamarin.Forms UI Challenges - Unzone</title><link href="https://kymphillpotts.com/xamarin-forms-ui-challenge-unzone.html" rel="alternate" type="text/html" title="Xamarin.Forms UI Challenges - Unzone" /><published>2019-09-27T12:40:00+10:00</published><updated>2019-09-27T12:40:00+10:00</updated><id>https://kymphillpotts.com/xamarin-forms-ui-challenge-unzone</id><content type="html" xml:base="https://kymphillpotts.com/xamarin-forms-ui-challenge-unzone.html">&lt;p&gt;Well thought out animations can help your applications come to life through having better user experience and a sense of joy.  This Xamarin.Forms UI Challenge illustrates how simple it can be to add compelling animations into your applications.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="https://kymphillpotts.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://kymphillpotts.com/" rel="alternate" type="text/html" /><updated>2019-12-20T16:01:58+11:00</updated><id>https://kymphillpotts.com/</id><title type="html">Kym’s Blog</title><subtitle>I write about Azure, Xamarin.Forms, Connected Apps and whatever else might be on my mind.</subtitle><entry><title type="html">Xamarin.Forms UI Challenges - RottenUI</title><link href="https://kymphillpotts.com/xamarin-forms-ui-challenge-rottenui.html" rel="alternate" type="text/html" title="Xamarin.Forms UI Challenges - RottenUI" /><published>2019-12-20T16:00:24+11:00</published><updated>2019-12-20T16:00:24+11:00</updated><id>https://kymphillpotts.com/xamarin-forms-ui-challenge-rottenui</id><content type="html" xml:base="https://kymphillpotts.com/xamarin-forms-ui-challenge-rottenui.html">&lt;p&gt;This UI Challenge is all about composing overlapping elements in Xamarin.Forms. Overlapping elements is one of the subtle elements that can enhance a design and make it pop.&lt;/p&gt;
+
+&lt;h2 id=&quot;the-design&quot;&gt;The Design&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;assets/images/posts/rottenui/rottenui.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;This is a great looking design called &lt;a href=&quot;https://dribbble.com/shots/2784573-Rottentomatoes-App-Concept&quot;&gt;Rottentomatoes App Concept&lt;/a&gt; created by &lt;a href=&quot;https://dribbble.com/ghanipradita&quot;&gt;Ghani Pradita&lt;/a&gt;. Even though the design has two screens in it, the focus of this chanllenge was the details page.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;assets/images/posts/rottenui/rottenuiresult.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The key elements we will focus on in this challenge are:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Overlapping elements&lt;/li&gt;
+  &lt;li&gt;Custom rendering of shadows&lt;/li&gt;
+  &lt;li&gt;Tabbed bottom content&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;basic-page-layout&quot;&gt;Basic Page Layout&lt;/h2&gt;
+&lt;p&gt;If you have checked out any of my other Xamarin.Forms UI Challenges, you are probably aware that I really enjoy using a &lt;code class=&quot;highlighter-rouge&quot;&gt;Grid&lt;/code&gt; as the main layout container for pages.  At the surface the &lt;code class=&quot;highlighter-rouge&quot;&gt;Grid&lt;/code&gt; seems to be quite limited in terms of functionality, but the &lt;code class=&quot;highlighter-rouge&quot;&gt;Grid&lt;/code&gt; provides a couple of great benefits:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Responsive design&lt;/li&gt;
+  &lt;li&gt;Overlapping elements&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The &lt;code class=&quot;highlighter-rouge&quot;&gt;Grid&lt;/code&gt; makes a perfect layout for this sort of design.  The &lt;code class=&quot;highlighter-rouge&quot;&gt;Grid&lt;/code&gt; occupies the page, and is divided into two rows. The first row is for the background header of 200 units, whilst the second row occupies the rest of the page and is where the main content goes.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-xml&quot; data-lang=&quot;xml&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;Grid&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;Grid.RowDefinitions&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;RowDefinition&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Height=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;200&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;RowDefinition&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Height=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;*&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/Grid.RowDefinitions&amp;gt;&lt;/span&gt;
+    ...
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/Grid&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Okay, so let’s break this down into the various sections.&lt;/p&gt;
+
+&lt;h2 id=&quot;the-header&quot;&gt;The Header&lt;/h2&gt;
+&lt;p&gt;The header for the page has a few overlapped components.  First we have the background image, over that we have a play button and a white overlay.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;assets/images/posts/rottenui/pageheader.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;This is nice and  simple to implement with a &lt;code class=&quot;highlighter-rouge&quot;&gt;Grid&lt;/code&gt; because we can just put the elements into the same cell of the &lt;code class=&quot;highlighter-rouge&quot;&gt;Grid&lt;/code&gt; to have them overlay.  In this situation, order is important because the order that you put the elements in your &lt;code class=&quot;highlighter-rouge&quot;&gt;xaml&lt;/code&gt; file indicates the z-order.  Sometimes this can be a little confusing because the elements you want to be in front will actually go down the bottom of your &lt;code class=&quot;highlighter-rouge&quot;&gt;xaml&lt;/code&gt;.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-xml&quot; data-lang=&quot;xml&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;Image&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;Aspect=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;AspectFill&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;HeightRequest=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;200&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;Source=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{Binding BackdropUrl}&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;Image&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;Aspect=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Fill&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;HeightRequest=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;100&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;Source=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;white_gradient&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;VerticalOptions=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;End&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;Image&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;HorizontalOptions=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Center&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;Source=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;play_button&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;VerticalOptions=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Center&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Probably the only interesting point here is the white gradient down the bottom of the header.  There are a few different ways you could implement this.  First, and probably the technically best solution is to use SkiaSharp to render a transparent to white gradient.  In this case though, I have just implemented this with a very simple &lt;code class=&quot;highlighter-rouge&quot;&gt;.png&lt;/code&gt; file with a gradient and overlayed it over the image. Sometimes simple just works.&lt;/p&gt;
+
+&lt;h2 id=&quot;the-movie-details&quot;&gt;The Movie Details&lt;/h2&gt;
+&lt;p&gt;Okay onto the more interesting part, which is the movie details.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;assets/images/posts/rottenui/moviedetails.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;This get’s a little bit funky because we have numerous elements overlapping within the details section as well as the whole thing overlapping the header.  The trick here is that the details of the page actually sit in Row 0 of the table but span across 2 rows. (hence it sits above and overlapping the header).&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-xml&quot; data-lang=&quot;xml&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;Grid&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;Grid.Row=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;0&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;Grid.RowSpan=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;2&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;Margin=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;14,172,14,0&quot;&lt;/span&gt; 
+    &lt;span class=&quot;na&quot;&gt;ColumnSpacing=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;0&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;IsClippedToBounds=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;True&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;RowSpacing=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;0&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;Grid.RowDefinitions&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;RowDefinition&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Height=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;138&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;&amp;lt;!-- movie detail box --&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;RowDefinition&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Height=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;46&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;  &lt;span class=&quot;c&quot;&gt;&amp;lt;!-- rating button row --&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;RowDefinition&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Height=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;46&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;  &lt;span class=&quot;c&quot;&gt;&amp;lt;!-- spacing between button and tab--&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;RowDefinition&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Height=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;*&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;   &lt;span class=&quot;c&quot;&gt;&amp;lt;!-- rest of the page --&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/Grid.RowDefinitions&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;Grid.ColumnDefinitions&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;ColumnDefinition&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Width=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;150&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;ColumnDefinition&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Width=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;*&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/Grid.ColumnDefinitions&amp;gt;&lt;/span&gt;
+    ...&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;There are a couple of things to note in here.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;The &lt;code class=&quot;highlighter-rouge&quot;&gt;Margin=&quot;14,172,14,0&quot;&lt;/code&gt; is what brings the content down so that it doesn’t sit entirely at the top of the page.&lt;/li&gt;
+  &lt;li&gt;The &lt;code class=&quot;highlighter-rouge&quot;&gt;IsClippedToBounds=&quot;True&quot;&lt;/code&gt; is what allows the FRESH text to be clipped to the grid.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Okay, let’s break it down even further into the elements:&lt;/p&gt;
+
+&lt;h3 id=&quot;movie-information-container&quot;&gt;Movie Information Container&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&quot;assets/images/posts/rottenui/movieinfocontainer.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The main container for the movie information is a white &lt;code class=&quot;highlighter-rouge&quot;&gt;BoxView&lt;/code&gt; and a green &lt;code class=&quot;highlighter-rouge&quot;&gt;Boxview&lt;/code&gt; for the button with a combination of &lt;code class=&quot;highlighter-rouge&quot;&gt;CornerRadius&lt;/code&gt; to make it look pretty.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-xml&quot; data-lang=&quot;xml&quot;&gt;&lt;span class=&quot;c&quot;&gt;&amp;lt;!-- white panel --&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;BoxView&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;Grid.Row=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;0&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;Grid.ColumnSpan=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;2&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;BackgroundColor=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;White&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;CornerRadius=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;6,6,0,0&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;&amp;lt;!-- the add your rating button --&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;BoxView&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;Grid.Row=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;1&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;Grid.ColumnSpan=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;2&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;BackgroundColor=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{StaticResource ButtonColor}&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;CornerRadius=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;0,0,6,6&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;Label&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;Grid.Row=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;1&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;Grid.ColumnSpan=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;2&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;HorizontalOptions=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Center&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;Style=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{StaticResource MovieName}&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;Text=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;ADD YOUR RATING&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;TextColor=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;White&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;VerticalOptions=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Center&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;&amp;lt;!-- button shadow --&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;skia:SKCanvasView&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;Grid.Row=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;2&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;Grid.RowSpan=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;2&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;Grid.ColumnSpan=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;2&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;PaintSurface=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;SKCanvasView_PaintSurface&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;The hardest part was the shadow for the button. If you look at it carefully, you’ll notice that it’s actually smaller than the button and has a big blur.  I had to do this with SkiaSharp - because that’s where I go when I need to render funky things ;-)&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-csharp&quot; data-lang=&quot;csharp&quot;&gt;&lt;span class=&quot;k&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;SKCanvasView_PaintSurface&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;object&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sender&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;SkiaSharp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Views&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Forms&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SKPaintSurfaceEventArgs&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;SKImageInfo&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;info&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Info&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;SKSurface&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;surface&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Surface&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;SKCanvas&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;canvas&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;surface&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Canvas&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;n&quot;&gt;canvas&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Clear&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;using&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SKPaint&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;paint&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;SKPaint&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;// define the color for the shadow&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;SKColor&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;shadowColor&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Color&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;FromHex&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;#5ACB6E&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;ToSKColor&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+
+        &lt;span class=&quot;n&quot;&gt;paint&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;IsDither&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;paint&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;IsAntialias&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;paint&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Color&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;shadowColor&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+        &lt;span class=&quot;c1&quot;&gt;// create filter for drop shadow&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;paint&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ImageFilter&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;SKImageFilter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;CreateDropShadow&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;dx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; 
+            &lt;span class=&quot;n&quot;&gt;sigmaX&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;40&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sigmaY&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;40&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; 
+            &lt;span class=&quot;n&quot;&gt;color&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;shadowColor&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; 
+            &lt;span class=&quot;n&quot;&gt;shadowMode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;SKDropShadowImageFilterShadowMode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;DrawShadowOnly&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+        &lt;span class=&quot;c1&quot;&gt;// define where I want to draw the object&lt;/span&gt;
+        &lt;span class=&quot;kt&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;margin&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;info&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Width&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;kt&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;shadowBounds&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;SKRect&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;margin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;40&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;info&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Width&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;margin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;canvas&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;DrawRoundRect&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;shadowBounds&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;paint&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Fortunately, Skia is amazing and allows us to easily do things like create a shadow effect.&lt;/p&gt;
+
+&lt;h3 id=&quot;movie-information&quot;&gt;Movie Information&lt;/h3&gt;
+
+&lt;p&gt;The next bit is the movie information and ratings inside the container.  This is really just combination of &lt;code class=&quot;highlighter-rouge&quot;&gt;Grid&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;StackLayout&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;assets/images/posts/rottenui/movieinfodetails.png&quot; /&gt;&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-xml&quot; data-lang=&quot;xml&quot;&gt;&lt;span class=&quot;c&quot;&gt;&amp;lt;!--  movie information  --&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;Grid&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Grid.Row=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;0&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Grid.Column=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;1&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;Grid.RowDefinitions&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;RowDefinition&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Height=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;*&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;RowDefinition&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Height=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;*&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/Grid.RowDefinitions&amp;gt;&lt;/span&gt;
+
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;Image&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;Margin=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;0,0,-55,0&quot;&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;Source=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Fresh&quot;&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;TranslationX=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;-28&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;StackLayout&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Margin=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;14,0,0,0&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;VerticalOptions=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Center&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;Label&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Style=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{StaticResource MovieName}&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Text=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{Binding Title}&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;Label&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Style=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{StaticResource SubText}&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Text=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{Binding ReleaseDate}&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/StackLayout&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;BoxView&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;Margin=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;0,0,14,0&quot;&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;HeightRequest=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;.5&quot;&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;VerticalOptions=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;End&quot;&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;Color=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{StaticResource SubTextColor}&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;Grid&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Grid.Row=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;1&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;Grid.ColumnDefinitions&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;ColumnDefinition&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Width=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;*&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;ColumnDefinition&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Width=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;*&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;/Grid.ColumnDefinitions&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;StackLayout&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Margin=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;14,0,0,0&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;VerticalOptions=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Center&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;StackLayout&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Orientation=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Horizontal&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+                &lt;span class=&quot;nt&quot;&gt;&amp;lt;Image&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Source=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;rotten_popcorn&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+                &lt;span class=&quot;nt&quot;&gt;&amp;lt;Label&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Style=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{StaticResource MovieName}&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Text=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{Binding AudienceScore, StringFormat='{0:}%'}&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;/StackLayout&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;Label&lt;/span&gt;
+                &lt;span class=&quot;na&quot;&gt;Margin=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;0,-5,0,0&quot;&lt;/span&gt;
+                &lt;span class=&quot;na&quot;&gt;Style=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{StaticResource SubText}&quot;&lt;/span&gt;
+                &lt;span class=&quot;na&quot;&gt;Text=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Audience&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;/StackLayout&amp;gt;&lt;/span&gt;
+
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;StackLayout&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;Grid.Column=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;1&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;Margin=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;14,0,0,0&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;VerticalOptions=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Center&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;StackLayout&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Orientation=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Horizontal&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+                &lt;span class=&quot;nt&quot;&gt;&amp;lt;Image&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Source=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;rotten_tomato&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+                &lt;span class=&quot;nt&quot;&gt;&amp;lt;Label&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Style=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{StaticResource MovieName}&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Text=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{Binding TomatometerScore, StringFormat='{0:}%'}&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;/StackLayout&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;Label&lt;/span&gt;
+                &lt;span class=&quot;na&quot;&gt;Margin=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;0,-5,0,0&quot;&lt;/span&gt;
+                &lt;span class=&quot;na&quot;&gt;Style=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{StaticResource SubText}&quot;&lt;/span&gt;
+                &lt;span class=&quot;na&quot;&gt;Text=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Tomatometer&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;/StackLayout&amp;gt;&lt;/span&gt;
+
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/Grid&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/Grid&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;For the FRESH text unfortunately I couldn’t see a way of getting that to work with a label because the font spacing and size is very specific, so instead I used an image like this:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;assets/images/posts/rottenui/fresh.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;and then translated it using a negative right margin (to make it wider than the cell) and then translated it to the left so that it would go under the poster.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-xml&quot; data-lang=&quot;xml&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;Image&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;Margin=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;0,0,-55,0&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;Source=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Fresh&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;TranslationX=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;-28&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h3 id=&quot;the-poster&quot;&gt;The Poster&lt;/h3&gt;
+&lt;p&gt;And that just leaves us with the poster.  I used the most excellent &lt;code class=&quot;highlighter-rouge&quot;&gt;PancakeView&lt;/code&gt; to get the rounded corners.  But what is interesting about this is that because it’s got to go over all the other information it is the very last thing that appears in the &lt;code class=&quot;highlighter-rouge&quot;&gt;xaml&lt;/code&gt; even though it’s at the top.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-xml&quot; data-lang=&quot;xml&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;pancake:PancakeView&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;Grid.RowSpan=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;2&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;Margin=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;28,126,0,0&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;CornerRadius=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;20&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;HeightRequest=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;170&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;HorizontalOptions=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Start&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;IsClippedToBounds=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;True&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;VerticalOptions=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Start&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;WidthRequest=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;125&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;Image&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;Aspect=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;AspectFill&quot;&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;HeightRequest=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;170&quot;&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;HorizontalOptions=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Start&quot;&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;Source=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{Binding PosterUrl}&quot;&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;VerticalOptions=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Start&quot;&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;WidthRequest=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;125&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/pancake:PancakeView&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h2 id=&quot;the-tabbed-bottom-content&quot;&gt;The Tabbed Bottom Content&lt;/h2&gt;
+&lt;p&gt;Alright, so that just leaves us with the bottom tabs.  In Xamarin.Forms there is a &lt;code class=&quot;highlighter-rouge&quot;&gt;TabbedPage&lt;/code&gt;, but not a tabbed view.  There are a number of ones available in the Open Source community, but none that would deo exactly what I was after.  But, it is super easy to create your own.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;assets/videos/rottenuitab.gif&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;In our case we implemented this in it’s own &lt;code class=&quot;highlighter-rouge&quot;&gt;ContentView&lt;/code&gt; so as not to bloat the size of the &lt;code class=&quot;highlighter-rouge&quot;&gt;MainPage&lt;/code&gt;.  It’s implemented in a file called &lt;code class=&quot;highlighter-rouge&quot;&gt;DetailsSection.xaml&lt;/code&gt;.  The layout for the tab headers is just a &lt;code class=&quot;highlighter-rouge&quot;&gt;Grid&lt;/code&gt; with 5 columns.  Each column has a &lt;code class=&quot;highlighter-rouge&quot;&gt;Label&lt;/code&gt; which is shown on the Tab header.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-xml&quot; data-lang=&quot;xml&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;Grid&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Grid.Row=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;0&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;Grid.ColumnDefinitions&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;ColumnDefinition&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Width=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;*&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;ColumnDefinition&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Width=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;*&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;ColumnDefinition&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Width=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;*&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;ColumnDefinition&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Width=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;*&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;ColumnDefinition&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Width=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;*&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/Grid.ColumnDefinitions&amp;gt;&lt;/span&gt;
+
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;Label&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;x:Name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;InfoTab&quot;&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;Grid.Column=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;0&quot;&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;Style=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{StaticResource SelectedTabLabel}&quot;&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;Text=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Info&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;Label.GestureRecognizers&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;TapGestureRecognizer&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Tapped=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;TapGestureRecognizer_Tapped&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;/Label.GestureRecognizers&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/Label&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;Label&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;x:Name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;CastTab&quot;&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;Grid.Column=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;1&quot;&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;Style=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{StaticResource TabLabel}&quot;&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;Text=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Cast&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;Label.GestureRecognizers&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;TapGestureRecognizer&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Tapped=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;TapGestureRecognizer_Tapped&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;/Label.GestureRecognizers&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/Label&amp;gt;&lt;/span&gt;
+    ...
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/Grid&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;We also have the little orange element that moves with the selection.  This is just a a couple of &lt;code class=&quot;highlighter-rouge&quot;&gt;BoxView&lt;/code&gt; elements (which we will animate later)&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-xml&quot; data-lang=&quot;xml&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;BoxView&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;Grid.Row=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;1&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;HeightRequest=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;1&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;VerticalOptions=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Center&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;Color=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{StaticResource SubTextColor}&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;BoxView&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;x:Name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;SelectionUnderline&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;Grid.Row=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;1&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;CornerRadius=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;2&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;HeightRequest=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;5&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;HorizontalOptions=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Start&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;WidthRequest=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;40&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;Color=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Orange&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;To be fair, there is a tiny bit of structure for  the control by having a couple of collections for the headers and contents.  We load  these up in the constructor.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-csharp&quot; data-lang=&quot;csharp&quot;&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;selectionIndex&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;List&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Label&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tabHeaders&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;List&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Label&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;();&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;List&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;VisualElement&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tabContents&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;List&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;VisualElement&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;();&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;DetailsSection&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nf&quot;&gt;InitializeComponent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+
+    &lt;span class=&quot;n&quot;&gt;tabHeaders&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Add&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;InfoTab&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;tabHeaders&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Add&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;CastTab&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;tabHeaders&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Add&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;NewsTab&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;tabHeaders&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Add&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;CriticsTab&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;tabHeaders&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Add&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;MediaTab&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+    &lt;span class=&quot;n&quot;&gt;tabContents&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Add&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;InfoContent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;tabContents&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Add&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;CastContent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;tabContents&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Add&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;NewsContent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;tabContents&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Add&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;CriticsContent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;tabContents&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Add&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;MediaContent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;For each of the headers labels we have &lt;code class=&quot;highlighter-rouge&quot;&gt;TapGestureRecognizer&lt;/code&gt; that all call the same method. That method works out which index we have selected and then calls a method to do the tab switching.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-csharp&quot; data-lang=&quot;csharp&quot;&gt;&lt;span class=&quot;k&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;async&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;TapGestureRecognizer_Tapped&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;object&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sender&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;EventArgs&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kt&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tabIndex&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tabHeaders&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;IndexOf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Label&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sender&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;await&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;ShowSelection&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tabIndex&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;async&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Task&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;ShowSelection&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;newTab&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;newTab&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;selectionIndex&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;c1&quot;&gt;// navigate the selection pill&lt;/span&gt;
+    &lt;span class=&quot;kt&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;selectdTabLabel&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tabHeaders&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;newTab&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;_&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;SelectionUnderline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;TranslateTo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;selectdTabLabel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Bounds&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;150&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;easing&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Easing&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SinInOut&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+    &lt;span class=&quot;c1&quot;&gt;// update the style of the header to show it's selcted&lt;/span&gt;
+    &lt;span class=&quot;kt&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;unselectedStyle&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Style&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Application&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Current&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Resources&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;TabLabel&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+    &lt;span class=&quot;kt&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;selectedStyle&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Style&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Application&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Current&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Resources&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;SelectedTabLabel&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;tabHeaders&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;selectionIndex&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Style&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;unselectedStyle&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;selectdTabLabel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Style&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;selectedStyle&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;c1&quot;&gt;/// reveal the contents&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;await&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tabContents&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;selectionIndex&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;FadeTo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;tabContents&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;selectionIndex&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;IsVisible&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;tabContents&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;newTab&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;IsVisible&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;_&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tabContents&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;newTab&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;FadeTo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//ybadragon thanks!&lt;/span&gt;
+
+    &lt;span class=&quot;n&quot;&gt;selectionIndex&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;newTab&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Just to cover off the key things that happen inside &lt;code class=&quot;highlighter-rouge&quot;&gt;ShowSelection&lt;/code&gt; method above:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;We use a &lt;code class=&quot;highlighter-rouge&quot;&gt;TranslateTo&lt;/code&gt; animation to change the position of the orange indicator to the bounds of the selected header&lt;/li&gt;
+  &lt;li&gt;We use the application resources to change the style of the TabHeader labels&lt;/li&gt;
+  &lt;li&gt;We fade out the existing tab content&lt;/li&gt;
+  &lt;li&gt;We fade in the new tab content&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;summary&quot;&gt;Summary&lt;/h1&gt;
+&lt;p&gt;Okay, so that’s the key elements in this UI Challenge. It was definitely a fun UI to put together, and not too difficult when you break it apart into it’s elements.  Just remember people, &lt;code class=&quot;highlighter-rouge&quot;&gt;Grid&lt;/code&gt;s are your friends!&lt;/p&gt;
+
+&lt;div class=&quot;myvideo&quot;&gt;
+   &lt;video style=&quot;display:block;&quot; autoplay=&quot;&quot; controls=&quot;&quot; loop=&quot;loop&quot;&gt;
+       &lt;source src=&quot;assets/videos/rottenui.mp4&quot; type=&quot;video/mp4&quot; /&gt;
+   &lt;/video&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;components-used&quot;&gt;Components Used&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://docs.microsoft.com/en-us/xamarin/xamarin-forms/user-interface/graphics/skiasharp/&quot;&gt;SkiaSharp&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/sthewissen/Xamarin.Forms.PancakeView&quot;&gt;PancakeView&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;get-the-code&quot;&gt;Get the code&lt;/h2&gt;
+&lt;p&gt;All the code is available open source on &lt;a href=&quot;https://github.com/kphillpotts/rottenui&quot;&gt;my github&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;watch-me-code-it&quot;&gt;Watch me code it&lt;/h2&gt;
+&lt;p&gt;I actually did this UI Challenge live over Twitch, so if you want to watch hours of me coding this up then check out these recordings. And as a special bit of fun James Montemagno jumped in on the stream towards the end and shows a trick or two.  Thanks James!&lt;/p&gt;
+
+&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/7xNszLcE_A4&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;If you want to catch me doing other live coding things follow me on Twitch. It’s a great platform where we can chat as we build software, ask questions, submit code).  Follow me at &lt;a href=&quot;https://www.twitch.tv/kymphillpotts&quot;&gt;https://www.twitch.tv/kymphillpotts&lt;/a&gt; and come join in the fun!&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://twitch.tv/kymphillpotts&quot;&gt;&lt;img src=&quot;https://kymphillpotts.com/assets/images/twitch_banner.png&quot; alt=&quot;Kym's Twitch Channel&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;If you can’t make it to the Twitch streams, then I also upload the videos to my &lt;a href=&quot;https://www.youtube.com/user/kphillpotts/&quot;&gt;YouTube Channel&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;I hope these posts are useful for you, feel free to leave me a comment below or reach out to me via &lt;a href=&quot;https://twitter.com/kphillpotts&quot;&gt;Twitter&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Until next time, Happy Coding&lt;/p&gt;
+
+&lt;p&gt;❤
+Kym&lt;/p&gt;</content><author><name>Kym Phillpotts</name></author><category term="Xamarin" /><summary type="html">This UI Challenge is all about composing overlapping elements in Xamarin.Forms. Overlapping elements is one of the subtle elements that can enhance a design and make it pop.</summary></entry><entry><title type="html">Xamarin.Forms UI Challenges - Unzone</title><link href="https://kymphillpotts.com/xamarin-forms-ui-challenge-unzone.html" rel="alternate" type="text/html" title="Xamarin.Forms UI Challenges - Unzone" /><published>2019-09-27T12:40:00+10:00</published><updated>2019-09-27T12:40:00+10:00</updated><id>https://kymphillpotts.com/xamarin-forms-ui-challenge-unzone</id><content type="html" xml:base="https://kymphillpotts.com/xamarin-forms-ui-challenge-unzone.html">&lt;p&gt;Well thought out animations can help your applications come to life through having better user experience and a sense of joy.  This Xamarin.Forms UI Challenge illustrates how simple it can be to add compelling animations into your applications.&lt;/p&gt;
 
 &lt;h2 id=&quot;the-design&quot;&gt;The Design&lt;/h2&gt;
 
@@ -1848,7 +2257,7 @@ Kym&lt;/p&gt;</content><author><name>Kym Phillpotts</name></author><category ter
 
 &lt;p&gt;These are just some little things that you may consider next time you are writing unit tests. It will make setting up your data a little easier whilst also creating more maintainable and easier to read unit tests.&lt;/p&gt;
 
-&lt;p&gt;Till next time, happy coding!&lt;/p&gt;</content><author><name>Kym Phillpotts</name></author><category term="Other" /><category term="Xamarin" /><summary type="html">I’ve been writing a few unit tests recently. I actually like writing unit tests, I find something very cathartic about seeing those little green ticks show up.  However, one thing that can make writing unit tests a drag is setting up testing data for each test. Well, there are some nice patterns and tools out there to help. Let’s check some out… AutoFixture If you just need to generate some data (and don’t care too much about what it contains) you might want to have a look at a nice little library called AutoFixture AutoFixture is an open source library for .NET designed to minimize the ‘Arrange’ phase of your unit tests in order to maximize maintainability. Its primary goal is to allow developers to focus on what is being tested rather than how to set up the test scenario, by making it easier to create object graphs containing test data. TestCase Attribute Sometimes you want to run a number of values through a unit test and you don’t necessarily want to write different unit tests for each of them. The TestCase attribute is very useful here because you can get Nunit to just pass a series of values in: [TestCase(12, 2, 6)] [TestCase(12, 4, 3)] public void DivideTest(int n, int d, int q) { Assert.AreEqual(q, n / d); } A really nice thing about TestCase is that each element will appear as a different unit test in your runner, which means if one of the values fails you can instantly see which one failed. I’ve used this pretty extensively in the past, but one area where this starts to make your unit tests hard to understand is when you have a lot of values – pretty soon the number of attributes starts to make it kind of difficult to understand. But fear not, the TestCaseSource attribute is here to save you. TestCaseSource Attribute This is something that has been around forever, but I’ve never bothered playing with. Turns out it’s a really nice way of structuring that test data. Basically, you create a class that returns an IEnumerable of your test data. public class MyTests { [Test, TestCaseSource(typeof(MyDataClass), &quot;TestCases&quot;)] public int DivideTest(int n, int d) { return n / d; } } public class MyDataClass { public static IEnumerable TestCases { get { yield return new TestCaseData(12, 3).Returns(4); yield return new TestCaseData(12, 2).Returns(6); yield return new TestCaseData(12, 4).Returns(3); } } } Now in my case, I was writing some tests for a simple converter application with some numeric buttons, a backspace key, a decimal point key ‘.’. You know, a numeric keypad. It actually turns out that there are a number of things to consider. For example, what if someone tries to enter two decimal points, or maybe tries to have a bunch of leading zeros. Putting the scenarios into a TestCaseSource made this easy to write and also easy to visualize. NOTE: my architecture is MVVM, so I made sure I used commands behind all the buttons which means I can test what happens when a user presses a button (effectively testing the UI). For my unit test inputs, I provided a string with the keys pressed and had a little method to execute the appropriate command on the ViewModel. [Test, TestCaseSource(typeof(KeySequenceTestData), &quot;KeySequenceData&quot;)] public string KeySequence_Commands_GivesCorrectValue (string keySequence)  {     var vm = new MainViewModel();     foreach (var key in keySequence)         ProcessCharacter(vm, key);     return vm.FromValue; } private void ProcessCharacter(MainViewModel vm, char character) {     switch (character)     {         case '&amp;lt;': // user hits the backspace key             vm.BackSpaceCommand.Execute(null);             break;         case '.': // user hits the decimal point              vm.DecimalPointCommand.Execute(null);             break;         default: // any other key (which in case is a number key)             vm.NumberCommand.Execute(character.ToString());             break;     } } public class KeySequenceTestData {     public static IEnumerable KeySequenceData     {         get         {             // simple numeric value tests              yield return new TestCaseData(&quot;0&quot;).Returns(&quot;0&quot;);             yield return new TestCaseData(&quot;1&quot;).Returns(&quot;1&quot;);             yield return new TestCaseData(&quot;99&quot;).Returns(&quot;99&quot;);             yield return new TestCaseData(&quot;909&quot;).Returns(&quot;909&quot;);             // testing leading and trailing zeros             yield return new TestCaseData(&quot;00&quot;).Returns(&quot;0&quot;);             yield return new TestCaseData(&quot;10&quot;).Returns(&quot;10&quot;);             yield return new TestCaseData(&quot;0.&quot;).Returns(&quot;0.&quot;);             yield return new TestCaseData(&quot;.0&quot;).Returns(&quot;0.0&quot;);             yield return new TestCaseData(&quot;...0&quot;).Returns(&quot;0.0&quot;);             yield return new TestCaseData(&quot;.000&quot;).Returns(&quot;0.000&quot;);             yield return new TestCaseData(&quot;000.&quot;).Returns(&quot;0.&quot;);             yield return new TestCaseData(&quot;000.00&quot;).Returns(&quot;0.00&quot;);             yield return new TestCaseData(&quot;10.00001&quot;).Returns(&quot;10.00001&quot;);             yield return new TestCaseData(&quot;10.10&quot;).Returns(&quot;10.10&quot;);             yield return new TestCaseData(&quot;10..10&quot;).Returns(&quot;10.10&quot;);             yield return new TestCaseData(&quot;10.10.&quot;).Returns(&quot;10.10&quot;);             yield return new TestCaseData(&quot;001.10.&quot;).Returns(&quot;1.10&quot;);             // testing hitting the back key             yield return new TestCaseData(&quot;&amp;lt;&quot;).Returns(&quot;0&quot;);             yield return new TestCaseData(&quot;&amp;lt;.&quot;).Returns(&quot;0.&quot;);             yield return new TestCaseData(&quot;&amp;lt;&amp;lt;&quot;).Returns(&quot;0&quot;);             yield return new TestCaseData(&quot;0&amp;lt;0&quot;).Returns(&quot;0&quot;);             yield return new TestCaseData(&quot;12&amp;lt;&quot;).Returns(&quot;1&quot;);             yield return new TestCaseData(&quot;1&amp;lt;2&quot;).Returns(&quot;2&quot;);             yield return new TestCaseData(&quot;12&amp;lt;&amp;lt;&quot;).Returns(&quot;0&quot;);             yield return new TestCaseData(&quot;0.9&amp;lt;&quot;).Returns(&quot;0.&quot;);             yield return new TestCaseData(&quot;0.&amp;lt;9&amp;lt;&quot;).Returns(&quot;0&quot;);         }     } } The Builder Pattern for Test Data The Builder pattern turns out to be a nice pattern for creating test data. I first heard of this usage from Steve Smith when he appeared on .NET Rocks episode 1494. You should take a listen to that episode. The Basic idea is you create yourself a Builder class for your model object that goes and creates an object for you with some default values and then you have builder methods that allow you to set specific values if that is important for your test. Why not just create the objects with their values straight in your test? Well, you don’t want your tests littered with code to setup objects because it distracts you from the purpose of your test… and what if you change that model object later, you’ve got a thousand different unit tests you need to update. Here is a trivial example: As I said, I’m working on a simple converter application which has a variety of different Unit objects. So I create myself Builder object which allows me to easily create a Unit to covert. public class UnitBuilder { private string name = &quot;A Unit&quot;; private string description = &quot;Description of a unit&quot;; private UnitCategory category = UnitCategory.Weight; private double baseUnitValue = 1; public BaseUnit Build() { return new BaseUnit(name, description, category, baseUnitValue); } public UnitBuilder WithName(string name) { this.name = name; return this; } public UnitBuilder WithDescription(string description) { this.description = description; return this; } public UnitBuilder WithCategory(UnitCategory category) { this.category = category; return this; } public UnitBuilder WithBaseUnitValue (double baseUnitValue) { this.baseUnitValue = baseUnitValue; return this; } /// /// Implicit converter object, so we can turn a builder straight into a unit /// Builder Instance public static implicit operator BaseUnit(UnitBuilder instance) { return instance.Build(); } } Once I have that setup, within my unit test I can use this builder object to create my Unit objects. It will have default values but allows me to override whatever I want, all without having a hard dependency on the constructor for the object. For example, [Test] public void SimpleConversion_OneUnit() {     BaseUnit cm = new UnitBuilder().WithName(&quot;centimeters&quot;).WithBaseUnitValue(1);     BaseUnit meter = new UnitBuilder().WithName(&quot;meters&quot;).WithBaseUnitValue(100);     Converter.ConvertUnit(cm, meter, 1).ShouldEqual(0.01);     Converter.ConvertUnit(meter, cm, 1).ShouldEqual(100); } This just makes it really nice to construct tests which are nice a readable without being polluted with too much setup code. You can read a bunch more about this pattern at: Flexible and expressive unit tests with the builder pattern Improve tests with the builder pattern for test data One last thing you may notice, I also used a little library called Should, which makes reading the unit test just a teeny-tiny bit more readable. public void Should_assertions() { object obj = null; obj.ShouldBeNull(); obj = new object(); obj.ShouldBeType(typeof(object)); obj.ShouldEqual(obj); obj.ShouldNotBeNull(); obj.ShouldNotBeSameAs(new object()); obj.ShouldNotBeType(typeof(string)); obj.ShouldNotEqual(&quot;foo&quot;); obj = &quot;x&quot;; obj.ShouldNotBeInRange(&quot;y&quot;, &quot;z&quot;); obj.ShouldBeInRange(&quot;a&quot;, &quot;z&quot;); obj.ShouldBeSameAs(&quot;x&quot;); &quot;This String&quot;.ShouldContain(&quot;This&quot;); &quot;This String&quot;.ShouldNotBeEmpty(); &quot;This String&quot;.ShouldNotContain(&quot;foobar&quot;); false.ShouldBeFalse(); true.ShouldBeTrue(); var list = new List&amp;lt;&amp;gt;(); list.ShouldBeEmpty(); list.ShouldNotContain(new object()); var item = new object(); list.Add(item); list.ShouldNotBeEmpty(); list.ShouldContain(item); } In Conclusion These are just some little things that you may consider next time you are writing unit tests. It will make setting up your data a little easier whilst also creating more maintainable and easier to read unit tests. Till next time, happy coding!</summary></entry><entry><title type="html">FastScroll and SectionIndexer in Xamarin.Forms ListView</title><link href="https://kymphillpotts.com/fastscroll-and-sectionindexer-in-xamarin-forms-listview/" rel="alternate" type="text/html" title="FastScroll and SectionIndexer in Xamarin.Forms ListView" /><published>2018-01-18T21:12:06+11:00</published><updated>2018-01-18T21:12:06+11:00</updated><id>https://kymphillpotts.com/fastscroll-and-sectionindexer-in-xamarin-forms-listview</id><content type="html" xml:base="https://kymphillpotts.com/fastscroll-and-sectionindexer-in-xamarin-forms-listview/">&lt;p&gt;Those of you who have played around with ListViews in Xamarin.Android are probably familiar with the FastScroll and SectionIndexer features.  They essentially make it really easy for users to navigate long lists by providing them with a little “handle” to quickly drag through lists, and with the SectionIndexer it also gives them a nice little popup showing where they are up to in the list.&lt;/p&gt;
+&lt;p&gt;Till next time, happy coding!&lt;/p&gt;</content><author><name>Kym Phillpotts</name></author><category term="Other" /><category term="Xamarin" /><summary type="html">I’ve been writing a few unit tests recently. I actually like writing unit tests, I find something very cathartic about seeing those little green ticks show up.  However, one thing that can make writing unit tests a drag is setting up testing data for each test. Well, there are some nice patterns and tools out there to help. Let’s check some out…</summary></entry><entry><title type="html">FastScroll and SectionIndexer in Xamarin.Forms ListView</title><link href="https://kymphillpotts.com/fastscroll-and-sectionindexer-in-xamarin-forms-listview/" rel="alternate" type="text/html" title="FastScroll and SectionIndexer in Xamarin.Forms ListView" /><published>2018-01-18T21:12:06+11:00</published><updated>2018-01-18T21:12:06+11:00</updated><id>https://kymphillpotts.com/fastscroll-and-sectionindexer-in-xamarin-forms-listview</id><content type="html" xml:base="https://kymphillpotts.com/fastscroll-and-sectionindexer-in-xamarin-forms-listview/">&lt;p&gt;Those of you who have played around with ListViews in Xamarin.Android are probably familiar with the FastScroll and SectionIndexer features.  They essentially make it really easy for users to navigate long lists by providing them with a little “handle” to quickly drag through lists, and with the SectionIndexer it also gives them a nice little popup showing where they are up to in the list.&lt;/p&gt;
 
 &lt;p&gt;Unfortunately, this feature isn’t available in Xamarin.Forms ListViews running on Android.&lt;/p&gt;
 
@@ -1872,310 +2281,4 @@ Kym&lt;/p&gt;</content><author><name>Kym Phillpotts</name></author><category ter
   &lt;li&gt;&lt;a href=&quot;https://developer.xamarin.com/guides/xamarin-forms/platform-features/platform-specifics/consuming/android/#Enabling_Fast_Scrolling_in_a_ListView&quot;&gt;Docs on Fast Scrolling Platform Specific&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;So I hope that helps, and Happy Coding!&lt;/p&gt;</content><author><name>Kym Phillpotts</name></author><category term="Xamarin" /><summary type="html">Those of you who have played around with ListViews in Xamarin.Android are probably familiar with the FastScroll and SectionIndexer features. Unfortunately, this feature isn't available in Xamarin.Forms ListViews running on Android, or is it?</summary></entry><entry><title type="html">Xamarin Tools and Resources</title><link href="https://kymphillpotts.com/xamarin-tools-and-resources/" rel="alternate" type="text/html" title="Xamarin Tools and Resources" /><published>2017-08-24T09:33:01+10:00</published><updated>2017-08-24T09:33:01+10:00</updated><id>https://kymphillpotts.com/xamarin-tools-and-resources</id><content type="html" xml:base="https://kymphillpotts.com/xamarin-tools-and-resources/">&lt;p&gt;As software developers we often use a scary number of Tools and Utilities to get our jobs done. Whenever you learn a new platform you also need to work out the “tools of the trade”. I recently gave a talk on the tools and resources I use to do Xamarin development, so I thought I would just share these out on a blog post.&lt;!--more--&gt;&lt;/p&gt;
-
-&lt;p&gt;Be warned, the list I’m going through here is by no means a complete list of the tools available – just a list of the tools that I use. If you use some other tools that you think are worth sharing with the community then shoot me an email or leave a comment.&lt;/p&gt;
-
-&lt;p&gt;Given that much of development is not just writing code, I thought I would go through the tools that I use from concept through to supporting an app.&lt;/p&gt;
-
-&lt;p&gt;Okay, let’s go.&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h1 style=&quot;text-align: center;&quot;&gt;
-  Design
-&lt;/h1&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;The first thing you need to know to effectively design for a platform is the rules of the platform. Here are some handy links:&lt;/p&gt;
-
-&lt;h3 id=&quot;ios&quot;&gt;iOS&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://developer.apple.com/design/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;&lt;strong&gt;Apple Human Interface Guidelines&lt;/strong&gt;&lt;/a&gt; – These are the official apple guidelines, you should read them, however, they tend to be a little bland.&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;http://ivomynttinen.com/blog/ios-design-guidelines&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;&lt;strong&gt;The iOS Design Guidelines Cheatsheet&lt;/strong&gt; by Ivo Mynttinen&lt;/a&gt; – This is a much quicker, easier place to check out information about icons, fonts, iconography and design resources.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;android&quot;&gt;Android&lt;/h3&gt;
-
-&lt;p&gt;Android has come a long way in it’s design guidelines. It used to be all over the shop, but now things are much nicer.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://developer.android.com/design/index.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;&lt;strong&gt;Android Design Guidelines&lt;/strong&gt;&lt;/a&gt; – All the juicy guidance from google.&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://material.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;&lt;strong&gt;Material Design&lt;/strong&gt;&lt;/a&gt; – I find the Material Design website surprisingly bland and nasty to use, however, it does have some great resources, including all the &lt;a href=&quot;https://material.io/icons/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;icons&lt;/a&gt;, The design &lt;a href=&quot;https://material.io/guidelines/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;guidelines&lt;/a&gt;, a nifty &lt;a href=&quot;https://material.io/color/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;color tool&lt;/a&gt;, a handy reference for &lt;a href=&quot;https://material.io/devices/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;devices sizes and resolutions&lt;/a&gt; and other handy tools.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;uwp&quot;&gt;UWP&lt;/h3&gt;
-
-&lt;p&gt;Let’s not forget Universal Windows apps.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;&lt;a href=&quot;https://developer.microsoft.com/en-us/windows/apps/design&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;UWP Design Guidelines&lt;/a&gt;&lt;/strong&gt; – covers off everything you need to know to effectively design UWP apps, along with links into the new fancy pants &lt;a href=&quot;https://fluent.microsoft.com/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Fluid Design Language&lt;/a&gt;. They also have some really great advice for &lt;a href=&quot;https://docs.microsoft.com/en-us/windows/uwp/porting/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;porting applications from different platforms across to UWP&lt;/a&gt;.  One of the nice sections is a handy table which maps &lt;a href=&quot;https://docs.microsoft.com/en-us/windows/uwp/porting/android-ios-uwp-map&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Android and IOS concepts across to UWP.&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;design-is-a-process&quot;&gt;Design is a process&lt;/h3&gt;
-
-&lt;p&gt;I think one of the most underrated parts of developing an application is the process of going from a sketch through wire-framing to mock-ups and prototyping. The first thing I like to do when starting a design is seek inspiration. There are a bunch of great places you can go to get your brain juices flowing:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://dribbble.com/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;&lt;strong&gt;Dribbble&lt;/strong&gt;&lt;/a&gt; – This is probably my default go-to place for looking at beautiful UI and interaction designs.  So many talented people contribute designs.&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.behance.net/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;&lt;strong&gt;Behance&lt;/strong&gt;&lt;/a&gt; –  Another location for our hipster designer friends to submit their goods.&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;http://inspired-ui.com/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;&lt;strong&gt;Inspired UI&lt;/strong&gt;&lt;/a&gt; – A categorised selection of mobile designs. It has sections for iOS, iPad and Android.&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;http://collectui.com/designs&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;&lt;strong&gt;CollectUI&lt;/strong&gt;&lt;/a&gt; – Another categorised selection of design inspirations.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;&lt;a href=&quot;http://www.mobile-patterns.com/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Mobile Patterns&lt;/a&gt;&lt;/strong&gt; – Yet another set of mobile design inspirations. Also has sections for iOS and Android.&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://pttrns.com/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;&lt;strong&gt;Pttrns&lt;/strong&gt;&lt;/a&gt; – Mobile designs. This has sections for iPhone, iPad, Watch and Android.&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://snppts.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;&lt;strong&gt;Snppts&lt;/strong&gt;&lt;/a&gt; – Xamarin Forms UI Snippets.  This is a great site to look at if you are interested to see how other devs layout their Xamarin Forms pages, it has links to source code and XAML.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Next it’s on to the actual process.&lt;/p&gt;
-
-&lt;p&gt;For me, I like to start sketching on paper, I find this a very fast and adaptive way of designing the flow of applications. I personally use stencils for different device types that I print out from &lt;a href=&quot;https://www.interfacesketch.com/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Interface Sketch.&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Once I have an idea on paper I will move through to formalising the wire-frames and mock-ups, my tools of choice are:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://balsamiq.com&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;&lt;strong&gt;Balsamiq&lt;/strong&gt;&lt;/a&gt; – This is an unapologetically simple drawing tool for quick wire-frames an mock-ups. It deliberately tries to avoid representing a finished application. The reason for this is simple: If you want to get feedback on the basic wire-frame of an app and you give someone a colourised “realistic” looking design, they will probably spend a bunch of time telling you about what’s wrong with your font and colour choices as opposed to telling you what you really want to know – does this app flow nicely and represent the information in usable fashion.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Next it’s on to more of the Mockup and prototyping phases:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.sketchapp.com/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;&lt;strong&gt;Sketch&lt;/strong&gt;&lt;/a&gt; – Sketch has almost become the default for UI design in mobile and web applications, superseding things like Photoshop. The main reason is that modern app development means that you are going to be working on a variety of different sizes and densities, so it’s super important to be designing in Vector formats that can resize nicely. Sketch also has an amazing community of components available at places like &lt;a href=&quot;https://www.sketchappsources.com/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Sketch Resources&lt;/a&gt; and &lt;a href=&quot;https://sketchrepo.com&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;SketchRepo&lt;/a&gt;.&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://zeplin.io&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;&lt;strong&gt;Zeplin&lt;/strong&gt;&lt;/a&gt; – Zeplin is a great way of getting the information about fonts and colors and stuff from those sketch files so you can use them in development.&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;http://www.adobe.com/au/products/experience-design.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;&lt;strong&gt;Adobe Experience Designer (XD)&lt;/strong&gt;&lt;/a&gt;  – I’ve been playing around with Adobe XD recently and I’ve really enjoyed using this app. It may become my default designer tool (at least for mock-ups). It pretty blatantly copies the great things from sketch and at the moment it is free to use whilst in Beta. My opinion may change when I have to pay for it via Adobe Cloud.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;image-and-font-resources&quot;&gt;Image and Font Resources&lt;/h3&gt;
-
-&lt;p&gt;Lastly for design, here are some resources I use for icons and fonts (because I’m really not great at creating icons).  And let’s face it, good choice of fonts and icons can make or break an application:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.iconfinder.com/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;&lt;strong&gt;IconFinder&lt;/strong&gt;&lt;/a&gt; – lots of icons in multiple sizes.  It has a paid section, but it’s also got a lot of free resources.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;&lt;a href=&quot;https://www.syncfusion.com/downloads/metrostudio&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;MetroStudio&lt;/a&gt;&lt;/strong&gt; – This is a great Windows app that has thousands of icons that you can search through and also combine together. Free.&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://icons8.com/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;&lt;strong&gt;Icons8&lt;/strong&gt;&lt;/a&gt; – Thousands of free icons in different styles and sizes.  You can also recolour them as well.&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://material.io/icons/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;&lt;strong&gt;Official Material Design Icons&lt;/strong&gt;&lt;/a&gt; – If you are designing for Android you should probably try and stick the the official icons if you can.  Get’em here.&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://fonts.google.com/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;&lt;strong&gt;Google Fonts&lt;/strong&gt;&lt;/a&gt; – Google has loads of fonts you can download and use in your apps.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;&lt;a href=&quot;https://www.fontsquirrel.com/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Font Squirrel&lt;/a&gt;&lt;/strong&gt; – If you are after something a little more wacky, Font Squirrel probably has you covered.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;&lt;a href=&quot;http://iosfontlist.com/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;iOS Font List&lt;/a&gt;&lt;/strong&gt; – Not really a font archive, but a great resource to see what fonts are available on different versions of iOS.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;hr /&gt;
-
-&lt;h1 style=&quot;text-align: center;&quot;&gt;
-  Develop
-&lt;/h1&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;Let’s talk IDEs first and foremost. I use VS2017 on PC and on Mac, both are amazing IDEs. I also use Visual Studio Code on Mac and PC, mostly for editing Mark Down files or file previewing. I don’t use a lot of different Extensions in the IDE’s but here are some of my favorites:&lt;/p&gt;
-
-&lt;h3 id=&quot;vs2017-mac-extensions&quot;&gt;VS2017 Mac Extensions&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.mfractor.com/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;&lt;strong&gt;mFractor&lt;/strong&gt;&lt;/a&gt; – An amazing set of tools targeted right at Xamarin developers to help them get their job done.  I won’t say this is like ReSharper for VSMac, because it’s actually more useful than that. It’s got cool editor extensions like quick navigation between Views and ViewModels, Android Resource previewing and checking, a nifty Image Resizer, and tons more stuff.  If you live in VSMac then seriously check it out.&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/Redth/XamarinStudio.RedthsAddin&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;&lt;strong&gt;ObliteratePaths&lt;/strong&gt;&lt;/a&gt; – Redths extension for nuking Bin and Obj folders.  This is super handy for getting rid of those folders before emailing some source code to someone else… Also Clean and Rebuild sometimes doesn’t really clean.  James Montemagno has a good &lt;a href=&quot;http://motzcod.es/post/120368961047/xamarin-studio-obliterate-output-paths-binobj&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;blog post on how to install&lt;/a&gt;.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;vs2017-pc-extensions&quot;&gt;VS2017 PC Extensions&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://marketplace.visualstudio.com/items?itemName=TeamXavalon.XAMLStyler&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;&lt;strong&gt;XAML Styler&lt;/strong&gt;&lt;/a&gt; – Formats your XAML when you save your XAML files. This just makes working with XAML nicer.  Also if you work with a team then you can have consistent indenting and attributes across your files.&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://marketplace.visualstudio.com/items?itemName=MadsKristensen.CleanSolution&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;&lt;strong&gt;Clean Solution&lt;/strong&gt;&lt;/a&gt; – Cleans up the solution for the next time you open it. Closes open documents and collapses folders automatically when a solution is being closed.&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://marketplace.visualstudio.com/items?itemName=VisualStudioProductTeam.ProductivityPowerPack2017&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;&lt;strong&gt;Productivity Power Tools 2017&lt;/strong&gt;&lt;/a&gt; – Installs a whole bunch of useful IDE extensions.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;working-with-data&quot;&gt;Working with Data&lt;/h3&gt;
-
-&lt;p&gt;Like it or not, a great deal of our time is working with Data.  In a mobile context that mostly means hitting Web Services and local databases (SQLite or Realm). Here are my favorite tools and libraries:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;&lt;a href=&quot;https://www.getpostman.com/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Postman&lt;/a&gt;&lt;/strong&gt; – This is an essential tool for hitting web services checking requests and responses. It has amazing capabilities like the ability to share request information with other members of your team, creating tests and also basically just seeing how an API works and what it’s going to give you back. Another tool I use to create my Data Transfer Objects (DTO’s) for services is sites like &lt;a href=&quot;http://json2csharp.com/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;json2csharp&lt;/a&gt;. The workflow looks something like this: Make A Request in Postman, copy the resulting JSON into JSON2CSharp (or in VS2017 PC, you can just use Edit -&amp;gt; Paste Special -&amp;gt; Paste JSON as CSharp). Create DTO classes… too easy!&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/paulcbetts/refit&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;&lt;strong&gt;Refit&lt;/strong&gt;&lt;/a&gt; – Simplify calling Rest services.  If you want to simplify your code for calling web services give Refit a shot, you can basically just create an interface which describes your web service, then let it do all the hard work of accessing the service… no need to worry about doing the serializing and deserializing yourself or creating GET and PUT methods… it’ll do it for you.&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;http://www.thepollyproject.org/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;&lt;strong&gt;Polly&lt;/strong&gt;&lt;/a&gt; – Automatic retry policies. The reality is that on mobile devices your connection sucks. It’s going to disappear for no apparent reason and sometimes the best thing is to just reissue a request. Polly is going to help you out here by allowing you to define automatic retry policies.&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;http://www.newtonsoft.com/json&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;&lt;strong&gt;JSON.NET&lt;/strong&gt;&lt;/a&gt; – The &lt;strong&gt;only&lt;/strong&gt; library for parsing JSON results.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Rob Gibbens has a really great blog post on putting some of these tools together in his Resilient Network Services with Mobile Xamarin Apps article, you should definitely read this. &lt;a href=&quot;http://arteksoftware.com/resilient-network-services-with-xamarin/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;http://arteksoftware.com/resilient-network-services-with-xamarin/&lt;/a&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;sqlite&quot;&gt;SQLite&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;&lt;a href=&quot;https://www.nuget.org/packages/sqlite-net-pcl&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Sqlite-Net-PCL&lt;/a&gt;&lt;/strong&gt; – Dead simple SQLite integration – This package from Frank Krueger is the best way (I know of) to integrate SQLite into your Xamarin Apps. It also provides a light weight ORM interface to make it really simple to use.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Sometimes, you need to have a look at those pesky SQLite databases, here are my favorite tools:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;http://datumapps.com/datum.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;&lt;strong&gt;Datum&lt;/strong&gt;&lt;/a&gt; – SQLite browser (Mac) – Available from the App Store.  There is a free edition and it just seems to work.&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;http://sqlitebrowser.org/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;&lt;strong&gt;DB Browser for SQLite&lt;/strong&gt;&lt;/a&gt; –  free cross platform tool which will allow you to create databases, define the schema, and add records to the database.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;cloud-town&quot;&gt;Cloud Town&lt;/h3&gt;
-
-&lt;p&gt;It’s a cloud first world… or that’s what they tell me. Azure is my go to cloud provider…&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;&lt;a href=&quot;https://www.nuget.org/packages/Microsoft.Azure.Mobile.Client/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Azure Mobile Client SDK&lt;/a&gt;&lt;/strong&gt; – A really nice client library that provides abstraction over the HTTP messaging and all the other hard stuff.&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/MikeCodesDotNet/App-Service-Helpers&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;&lt;strong&gt;App Service Helpers&lt;/strong&gt;&lt;/a&gt; – Some of the Xamarin Dev Evangelist types have also create a helper class that makes it even easier&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Talking of Azure services, the Cognitive services stuff in Azure is amazing. Some great speech and vision API’s.. If you ever wanted to write “&lt;a href=&quot;https://www.youtube.com/watch?v=ACmydtFDTGs&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Not Hotdog&lt;/a&gt;” but don’t have the required Machine Learning / AI qualifications, let &lt;a href=&quot;https://azure.microsoft.com/en-au/services/cognitive-services/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Cognitive Services&lt;/a&gt; do it for you.&lt;/p&gt;
-
-&lt;h3 id=&quot;debugging-and-profiling&quot;&gt;Debugging and Profiling&lt;/h3&gt;
-
-&lt;p&gt;Let’s face it, unless you are super-human you probably spend half your time &lt;em&gt;writing&lt;/em&gt; bugs. So debugging and profiling is an important part of #developerlife. Here are the tools I tend to use:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.jetbrains.com/decompiler/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;&lt;strong&gt;JetBrains dotPeek&lt;/strong&gt;&lt;/a&gt; – Because sometimes you just have to decompile some stuff to see how it works.&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://developer.android.com/studio/profile/monitor.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;&lt;strong&gt;Android Device Monitor&lt;/strong&gt;&lt;/a&gt; – Comes with the Android Studio and is installed with Xamarin. I mainly use this for looking at logs but it’s also useful for looking at process memory usage and accessing the file system on emulators.&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://developer.android.com/studio/debug/dev-options.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;&lt;strong&gt;On-Device Developer Options&lt;/strong&gt;&lt;/a&gt; – Android devices also have some pretty cool tools built right in under the Developer Options. I mainly use this to debug overdraw and to slow down animations, but there is other cool stuff in there as well.&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://developer.apple.com/library/content/documentation/DeveloperTools/Conceptual/InstrumentsUserGuide/index.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;&lt;strong&gt;Xcode Instruments&lt;/strong&gt;&lt;/a&gt; – Event though it’s part of XCode and targetted at Objective-C and Swift apps, you can also use this to profile your Xamarin.IOS applications. Well technically, it doesn’t really understand anything about Xamarin and managed memory, but still it can be used to track things like allocations and memory usage. &lt;a href=&quot;https://developer.xamarin.com/guides/ios/deployment,_testing,_and_metrics/using_instruments_to_detect_native_leaks_using_markheap/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Xamarin has some docs on using it too&lt;/a&gt;.&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://developer.apple.com/download/more/?q=Additional%20Tools&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;&lt;strong&gt;Network Link Conditioner&lt;/strong&gt;&lt;/a&gt; – Another cool tool which can be used to test how your Xamarin.iOS app handles crappy networks is the Network Link Conditioner. Here is a &lt;a href=&quot;http://nshipster.com/network-link-conditioner/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;pretty good reference&lt;/a&gt; to get you started.&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.xamarin.com/profiler&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;&lt;strong&gt;Xamarin Profiler&lt;/strong&gt;&lt;/a&gt; – When all else fails I pull out the big guns… The Xamarin Profiler! Unfortunately this is a Visual Studio Enterprise feature but it’s definitely worth its weight in gold when trying to find memory leaks in your Xamarin applications.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;&lt;a href=&quot;https://docs.microsoft.com/en-au/visualstudio/profiling/index&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Visual Studio 2017 Profiler Tools&lt;/a&gt;&lt;/strong&gt; – Also don’t forget that you can also use the Visual Studio Profiler for profiling quite a bit of stuff. Especially Shared PCLs and libraries that you are using.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;visual-design&quot;&gt;Visual Design&lt;/h3&gt;
-
-&lt;p&gt;I’m not too bad at laying out screens, but I still love to be able to get previews of what I’m doing. In Xamarin.IOS and Xamarin.Android you are fine because you have the Designers built into Visual Studio. For Xamarin.Forms things get a little bit trickier. Here are some tools I use to keep myself going insane whilst laying out screens.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;http://gorillaplayer.com/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;&lt;strong&gt;Gorilla Player&lt;/strong&gt;&lt;/a&gt; – This is a great tool, which is now free. It allows you to preview your Xamarin.Forms XAML on multiple devices, it requires a little bit of setup but once you are setup anytime you save your XAML file it will be sent out to gorilla player on whatever devices (or simulators) you have connected so you can preview. Pro Tip: run it on multiple different sized devices (and OS’s) at the same time to see how things look.&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.xamarin.com/live&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;&lt;strong&gt;Xamarin Live Player&lt;/strong&gt;&lt;/a&gt; – This is the new kid on the block. This allows you to preview your applications (actually running) on a device as you edit your code (not only your XAML). Also works with Xamarin.IOS and Xamarin.Android. It’s still pretty heavily under development, but you should definitely give this a shot. Also, sign up for the Xamarin Live Player Alpha to get the latest bits.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;&lt;a href=&quot;https://developer.xamarin.com/guides/cross-platform/workbooks/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Xamarin WorkBooks&lt;/a&gt;&lt;/strong&gt; – A great way to experimenting with different things and also useful for documentation. There is also the &lt;a href=&quot;https://developer.xamarin.com/guides/cross-platform/inspector/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Xamarin Inspector&lt;/a&gt; which you can use to interrogate the UI of your application.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;&lt;a href=&quot;https://www.paintcodeapp.com/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;PaintCode&lt;/a&gt;&lt;/strong&gt; – This one is a little different, but with PaintCode you can draw your images and vectors and then have it spit out source code for your designs. It’s a paid mac app, but if you are going to be doing lots of graphics it may just be worth it. Especially, if you want to use drawing code to provide resolution independence.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;mirroring-devices&quot;&gt;Mirroring Devices&lt;/h3&gt;
-
-&lt;p&gt;You always want to be testing on physical devices, and heaven forbid, sometimes you even have to present your apps to other people. Here are some tools to help:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;&lt;a href=&quot;http://vysor.io&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Vysor&lt;/a&gt;&lt;/strong&gt; – This is a sweet little utility for mirroring your Android physical device to your screen. You can even interact with the device through your mouse. Highly recommended!&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://medium.com/@patrickswong/how-to-mirror-your-iphone-with-a-lightning-cable-using-quicktime-in-os-x-yosemite-ace3f40ef483&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;&lt;strong&gt;QuickTime Player&lt;/strong&gt;&lt;/a&gt; – For mirroring iOS devices my goto is the inbuilt QuickTime Player. Great for mirroring your iOS devices during demonstrations.&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.airserver.com/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;&lt;strong&gt;AirServer&lt;/strong&gt;&lt;/a&gt; – If you want to mirror your iOS device to windows I have found that this works very well. It also works for Android and Miracast as well. It’s a paid app though.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;mvvm-life&quot;&gt;MVVM Life&lt;/h3&gt;
-
-&lt;p&gt;I often joke that &lt;em&gt;to be good at MVVM you really just need to have a really strong opinions and tell everyone else they are doing it wrong&lt;/em&gt;. But seriously MVVM is a great architecture for building your applications. I tend to stay fairly light weight and don’t use many frameworks, having said that here are some frameworks and l do use:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/Fody/PropertyChanged&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;&lt;strong&gt;Fody Property Changed&lt;/strong&gt;&lt;/a&gt; – This is an code weaver that can help you out writing your INotifyPropertyChange notifications and keep your code nice and clean.  Clean models FTW.&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/jamesmontemagno/mvvm-helpers&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;&lt;strong&gt;MVVMHelpers&lt;/strong&gt;&lt;/a&gt; – a nice light weight set of MVVM Helpers from James Montemagno that just has the stuff you need.&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/xamarinhq/xamu-infrastructure&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;&lt;strong&gt;Xamarin University Infrastructure&lt;/strong&gt;&lt;/a&gt; – There are some great bits in here, including abstractions for the Xamarin Forms navigation service, a bunch of converters, behaviors, and services. Dig through and check it out.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;And then there are the frameworks. Like I said I don’t use a lot of these, but I would feel like a bad developer if I didn’t mention them 🙂 :&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/PrismLibrary/Prism&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;&lt;strong&gt;Prism&lt;/strong&gt;&lt;/a&gt; – Has an amazing navigation system. There is also an &lt;a href=&quot;https://xamgirl.com/prism-in-xamarin-forms-step-by-step-part-1/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;excellent series of blog posts from XamGirl&lt;/a&gt; to help get you started.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;&lt;a href=&quot;https://github.com/rid00z/FreshMvvm&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;FreshMvvM&lt;/a&gt;&lt;/strong&gt; – Super lightweight and just includes the stuff that vanilla Xamarin.Forms leaves out&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;&lt;a href=&quot;https://exrin.net/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;ExRin&lt;/a&gt;&lt;/strong&gt; – A larger framework for enterprise scale apps&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;&lt;a href=&quot;https://www.mvvmcross.com/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;MVVMCross&lt;/a&gt;&lt;/strong&gt; – Very popular Framework&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;http://www.mvvmlight.net/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;&lt;strong&gt;MVVMLight&lt;/strong&gt;&lt;/a&gt; – yet another popular framework&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://reactiveui.net/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;&lt;strong&gt;ReactiveUI&lt;/strong&gt;&lt;/a&gt; – Reactive programming is definitely something I should look into more.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;libraries-and-components&quot;&gt;Libraries and Components&lt;/h3&gt;
-
-&lt;p&gt;I’m a lazy developer. If I can find an existing component and library to do what I want, I’ll use it.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;&lt;a href=&quot;https://github.com/xamarin/XamarinComponents&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Xamarin Plugins&lt;/a&gt;&lt;/strong&gt; – This is the motherload of components you can use with your Xamarin applications that give you a cross platform API to access device specific things. You should seriously check this out. The most common ones I use in just about every project are:
-    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;https://github.com/jamesmontemagno/ConnectivityPlugin&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;&lt;strong&gt;Connectivity&lt;/strong&gt;&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;https://github.com/molinch/FFImageLoading&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;&lt;strong&gt;FFImageLoading&lt;/strong&gt;&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;https://github.com/jamesmontemagno/SettingsPlugin&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;&lt;strong&gt;Settings&lt;/strong&gt;&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;https://github.com/dsplaisted/PCLStorage&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;&lt;strong&gt;PCL File Storage&lt;/strong&gt;&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;https://github.com/aritchie/userdialogs&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;&lt;strong&gt;ACR User Dialogs&lt;/strong&gt;&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;But there are some other amazing libraries, like:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/martijn00/LottieXamarin&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;&lt;strong&gt;Lottie&lt;/strong&gt;&lt;/a&gt; – If you are working with designers who are throwing After Effects animations at you, or if you just want to spice up your UI have a look at this bad boy.&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/jsmarcus/Xamarin.Plugins/tree/master/Iconize&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;&lt;strong&gt;Iconize&lt;/strong&gt;&lt;/a&gt; – Provides a nice easy way to integrate font libraries like FontAwesome into your applications. Using these will help you keep your file sizes down and provide images that scale nicely.&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/rotorgames/Rg.Plugins.Popup&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;&lt;strong&gt;RG.Plugins.Popup&lt;/strong&gt;&lt;/a&gt; – If you want to create popups in your app, this is a really nice approach.&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/MarcBruins/awesome-xamarin&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;&lt;strong&gt;Awesome Xamarin&lt;/strong&gt;&lt;/a&gt; – There are a million other libraries you should consider, Marc Bruins has a great list.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;And then we have the UI Components from the vendors. I have students quite regularly ask things like “I want to build a grid control with XYZ features, how should I do it”… normally my answer is don’t. Save yourself some time and check out components from vendors who do this stuff for a living. The cost saving in terms of time is normally worth it.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;&lt;a href=&quot;https://www.syncfusion.com/products/xamarin&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;SyncFusion&lt;/a&gt;&lt;/strong&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;http://www.telerik.com/xamarin-ui&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;&lt;strong&gt;Telerik&lt;/strong&gt;&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.devexpress.com/products/xamarin/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;&lt;strong&gt;DevExpress&lt;/strong&gt;&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.infragistics.com/products/xamarin&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;&lt;strong&gt;Infragistics&lt;/strong&gt;&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.steema.com/product/forms&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;&lt;strong&gt;Steema&lt;/strong&gt;&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;http://www.goxuni.com/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;&lt;strong&gt;GrapeCity&lt;/strong&gt;&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;hr /&gt;
-
-&lt;h1 style=&quot;text-align: center;&quot;&gt;
-  Test
-&lt;/h1&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;We all unit test, right? Sure. 🙂 If you are using Nunit then you’ll want to use:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.google.com.au/url?sa=t&amp;amp;rct=j&amp;amp;q=&amp;amp;esrc=s&amp;amp;source=web&amp;amp;cd=1&amp;amp;cad=rja&amp;amp;uact=8&amp;amp;ved=0ahUKEwjZqvrFru3VAhVFvrwKHePjBZAQFggoMAA&amp;amp;url=https%3A%2F%2Fmarketplace.visualstudio.com%2Fitems%3FitemName%3DNUnitDevelopers.NUnit3TestAdapter&amp;amp;usg=AFQjCNFmslTGuiphMZ9AIzclWitYyhPnwA&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;&lt;strong&gt;Nunit Test Adapter&lt;/strong&gt;&lt;/a&gt; – plugs into Visual Studio so you can integrate unit tests into your VS Life.&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://marketplace.visualstudio.com/items?itemName=NUnitDevelopers.NUnitTemplatesforVisualStudio&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;&lt;strong&gt;Nunit Templates&lt;/strong&gt;&lt;/a&gt; – a set of templates for creating unit test files… because nobody has time to remember all those attributes. But speaking of attributes, here is a &lt;a href=&quot;https://lukewickstead.wordpress.com/2013/01/16/nunit-cheat-sheet/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;nice cheat sheet for Nunit&lt;/a&gt;.&lt;/li&gt;
-  &lt;li&gt;Visual Studio 2017 now has a great feature called Live Testing, which I would highly recommend having a look at as well.&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/AutoFixture/AutoFixture&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;&lt;strong&gt;AutoFixture&lt;/strong&gt;&lt;/a&gt; – because sometimes you can’t be bother creating your own data for unit tests. This library will reflect over your models, so you can just ask it to create a bunch of objects for you.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;ui-testing&quot;&gt;UI Testing&lt;/h3&gt;
-
-&lt;p&gt;Mobile applications run on a bunch of different devices, so you’ll want to make sure you test how your UI is going to look on a range of devices. You can find some good stats on iOS and Android usage information here over at &lt;a href=&quot;https://data.apteligent.com/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Apteligent&lt;/a&gt;. Also, you don’t want to be testing UI manually, because it’s really slow and inconsistent.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://developer.xamarin.com/guides/testcloud/uitest/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;&lt;strong&gt;Xamarin.UITest&lt;/strong&gt;&lt;/a&gt; – Write your tests in C# and test on simulators and devices.&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.xamarin.com/test-cloud/recorder&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;&lt;strong&gt;Xamarin Test Recorder&lt;/strong&gt;&lt;/a&gt; – Record your interactions with your application and output them as UITests. The fastest way to create your tests… then take the code and fine tune as required. Often, the thing to do is to move them across to a page object type of structure so they are more maintainable. &lt;a href=&quot;https://danatxamarin.com/2015/05/12/building-a-scalable-test-suite-with-xamarin-uitest-and-page-objects/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Here is a good blog series on it&lt;/a&gt;.&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.xamarin.com/test-cloud&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;&lt;strong&gt;Test Cloud&lt;/strong&gt;&lt;/a&gt; – When you are ready to test on &lt;a href=&quot;https://testcloud.xamarin.com/devices&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;thousands of physical devices&lt;/a&gt;, you should consider having a look at Test Cloud. They’ve got more devices than you can poke a stick at.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;hr /&gt;
-
-&lt;h1 style=&quot;text-align: center;&quot;&gt;
-  Deploy
-&lt;/h1&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;Continuous Integration and Continuous Deployment practices these days should be considered a “must have”. And with the tools available it’s really very simple to get started. Here are my favorites:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://mobile.azure.com&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;&lt;strong&gt;Mobile Center&lt;/strong&gt;&lt;/a&gt; – – This is an amazing service from Microsoft. It’s dead simple to setup automated builds. Check it out. It also does crash reporting which is an essential part of any mobile application.&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://raygun.com/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;&lt;strong&gt;RayGun&lt;/strong&gt;&lt;/a&gt; – A great analytics tool.&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.bitrise.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;&lt;strong&gt;BitRise&lt;/strong&gt;&lt;/a&gt; – I’ve really enjoyed creating builds through BitRise. It’s simple to use and very powerful.&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://fastlane.tools/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;&lt;strong&gt;Fastlane&lt;/strong&gt;&lt;/a&gt; – A collection of amazing tools to help you with iOS provisioning Profile hell and automated deployments to the app stores&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;hr /&gt;
-
-&lt;h1 style=&quot;text-align: center;&quot;&gt;
-  Staying Up To Date
-&lt;/h1&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;Finally it’s worth mentioning that keeping up to date with all the tools and new stuff happening in the Xamarin (and mobile) world is hard (but necessary). Instead of putting out all the sources here, let me point you to my blog post on &lt;a href=&quot;http://www.kymphillpotts.com/staying-up-to-date-with-xamarin-development/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Staying up to Date with Xamarin Development&lt;/a&gt;.&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h1 style=&quot;text-align: center;&quot;&gt;
-  Conclusion
-&lt;/h1&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;So there you have it people, a grab bag of tools, libraries and resources I use for Xamarin Development. I hope you find it useful. Maybe you have some tools or resources which you consider essential… please let me know or post some comments below. Remember, sharing is caring.&lt;/p&gt;
-
-&lt;p&gt;Take care, and happy coding!&lt;/p&gt;</content><author><name>Kym Phillpotts</name></author><category term="Xamarin" /><summary type="html">As software developers we often use a scary number of Tools and Utilities to get our jobs done. Whenever you learn a new platform you also need to work out the “tools of the trade”. I recently gave a talk on the tools and resources I use to do Xamarin development, so I thought I would just share these out on a blog post.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://res.cloudinary.com/dlstb15av/image/upload/v1506381714/tools_cv36dh.jpg" /></entry></feed>
+&lt;p&gt;So I hope that helps, and Happy Coding!&lt;/p&gt;</content><author><name>Kym Phillpotts</name></author><category term="Xamarin" /><summary type="html">Those of you who have played around with ListViews in Xamarin.Android are probably familiar with the FastScroll and SectionIndexer features. Unfortunately, this feature isn't available in Xamarin.Forms ListViews running on Android, or is it?</summary></entry></feed>
