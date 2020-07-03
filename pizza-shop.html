@@ -1,0 +1,1266 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <!-- Document Settings -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- Base Meta -->
+    <!-- dynamically fixing the title for tag/author pages -->
+
+
+
+    <title>Xamarin.Forms UI Challenges - Pizza Shop</title>
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Styles'n'Scripts -->
+    <link rel="stylesheet" type="text/css" href="/assets/built/screen.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/built/screen.edited.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/built/syntax.css" />
+    <!-- highlight.js -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+    <style>.hljs { background: none; }</style>
+
+    <!--[if IE]>
+        <style>
+            p, ol, ul{
+                width: 100%;
+            }
+            blockquote{
+                width: 100%;
+            }
+        </style>
+    <![endif]-->
+    
+    <!-- This tag outputs SEO meta+structured data and other important settings -->
+    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="/assets/images/icons/apple-touch-icon-57x57.png" />
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/assets/images/icons/apple-touch-icon-114x114.png" />
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/assets/images/icons/apple-touch-icon-72x72.png" />
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/images/icons/apple-touch-icon-144x144.png" />
+<link rel="apple-touch-icon-precomposed" sizes="60x60" href=/"assets/images/icons/apple-touch-icon-60x60.png" />
+<link rel="apple-touch-icon-precomposed" sizes="120x120" href="/assets/images/icons/apple-touch-icon-120x120.png" />
+<link rel="apple-touch-icon-precomposed" sizes="76x76" href="/assets/images/icons/apple-touch-icon-76x76.png" />
+<link rel="apple-touch-icon-precomposed" sizes="152x152" href="/assets/images/icons/apple-touch-icon-152x152.png" />
+<link rel="icon" type="image/png" href="/assets/images/icons/favicon-196x196.png" sizes="196x196" />
+<link rel="icon" type="image/png" href="/assets/images/icons/favicon-96x96.png" sizes="96x96" />
+<link rel="icon" type="image/png" href="/assets/images/icons/favicon-32x32.png" sizes="32x32" />
+<link rel="icon" type="image/png" href="/assets/images/icons/favicon-16x16.png" sizes="16x16" />
+<link rel="icon" type="image/png" href="/assets/images/icons/favicon-128.png" sizes="128x128" />
+<meta name="application-name" content="&nbsp;"/>
+<meta name="msapplication-TileColor" content="#FFFFFF" />
+<meta name="msapplication-TileImage" content="/assets/images/icons/mstile-144x144.png" />
+<meta name="msapplication-square70x70logo" content="/assets/images/icons/mstile-70x70.png" />
+<meta name="msapplication-square150x150logo" content="/assets/images/icons/mstile-150x150.png" />
+<meta name="msapplication-wide310x150logo" content="/assets/images/icons/mstile-310x150.png" />
+<meta name="msapplication-square310x310logo" content="/assets/images/icons/mstile-310x310.png" />
+
+
+<meta name="description" content="Pizza Xamarin.Forms UI challenge" />
+    <link rel="shortcut icon" href="https://kymphillpotts.com/assets/images/icons/favicon-96x96.png" type="image/png" />
+    <link rel="canonical" href="https://kymphillpotts.com/pizza-shop.html" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+
+     <!--title below is coming from _includes/dynamic_title-->
+    <meta property="og:site_name" content="Kym's Blog" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Xamarin.Forms UI Challenges - Pizza Shop" />
+    <meta property="og:description" content="Pizza Xamarin.Forms UI challenge" />
+    <meta property="og:url" content="https://kymphillpotts.com/pizza-shop.html" />
+    <meta property="og:image" content="https://kymphillpotts.com/assets/images/posts/pizza/pizza-design.gif" />
+    <meta property="article:publisher" content="https://www.facebook.com/" />
+    <meta property="article:tag" content="Xamarin" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Xamarin.Forms UI Challenges - Pizza Shop" />
+    <meta name="twitter:description" content="Pizza Xamarin.Forms UI challenge" />
+    <meta name="twitter:url" content="https://kymphillpotts.com/" />
+    <meta name="twitter:image" content="https://kymphillpotts.com/assets/images/posts/pizza/pizza-design.gif" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="Kym's Blog" />
+    <meta name="twitter:label2" content="Filed under" />
+    <meta name="twitter:data2" content="Xamarin" />
+    <meta name="twitter:site" content="@kphillpotts" />
+    <meta name="twitter:creator" content="@kphillpotts" />
+    <meta property="og:image:width" content="2000" />
+    <meta property="og:image:height" content="666" />
+
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Website",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Kym's Blog",
+        "logo": "https://kymphillpotts.com/false"
+    },
+    "url": "https://kymphillpotts.com/pizza-shop.html",
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://kymphillpotts.com/assets/images/posts/pizza/pizza-design.gif",
+        "width": 2000,
+        "height": 666
+    },
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://kymphillpotts.com/pizza-shop.html"
+    },
+    "description": "Pizza Xamarin.Forms UI challenge"
+}
+    </script>
+
+    <!-- <script type="text/javascript" src="https://demo.ghost.io/public/ghost-sdk.min.js?v=724281a32e"></script>
+    <script type="text/javascript">
+    ghost.init({
+    	clientId: "ghost-frontend",
+    	clientSecret: "f84a07a72b17"
+    });
+    </script> -->
+
+    <meta name="generator" content="Jekyll 3.6.2" />
+    <link rel="alternate" type="application/rss+xml" title="Xamarin.Forms UI Challenges - Pizza Shop" href="/feed.xml" />
+
+
+</head>
+<body class="post-template">
+
+    <div class="site-wrapper">
+        <!-- All the main content gets inserted here, index.hbs, post.hbs, etc -->
+        <!-- default -->
+
+<!-- The tag above means: insert everything in this file
+into the {body} of the default.hbs template -->
+
+<header class="site-header outer">
+    <div class="inner">
+        <nav class="site-nav">
+    <div class="site-nav-left">
+        
+            
+                <a class="site-nav-logo" href="https://kymphillpotts.com/">Kym's Blog</a>
+            
+        
+        
+            <ul class="nav" role="menu">
+    <li class="nav-home" role="menuitem"><a href="/">Home</a></li>
+    
+
+
+    <li class="nav-about" role="menuitem"><a href="/about/">About Me</a></li>
+    <li class="nav-xamarin" role="menuitem"><a href="/tag/xamarin/">Xamarin</a></li>
+    <li class="nav-azure" role="menuitem"><a href="/tag/azure/">Azure</a></li>
+    <li class="nav-stream" role="menuitem"><a href="/tag/stream/">Streams</a></li>
+    <li class="nav-other" role="menuitem"><a href="/tag/other/">Other</a></li>
+
+
+</ul>
+
+        
+    </div>
+    <div class="site-nav-right">
+        <div class="social-links">
+            
+            
+                <a class="social-link social-link-tw" href="https://twitter.com/kphillpotts" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg>
+</a>
+            
+        </div>
+        
+    </div>
+</nav>
+
+    </div>
+</header>
+
+<!-- Everything inside the #post tags pulls data from the post -->
+<!-- #post -->
+
+<main id="site-main" class="site-main outer" role="main">
+    <div class="inner">
+
+        <article class="post-full  ">
+
+            <header class="post-full-header">
+                <section class="post-full-meta">
+                    <time class="post-full-meta-date" datetime=" 3 July 2020"> 3 July 2020</time>
+                    
+                        <span class="date-divider">/</span>
+                        
+                            
+                               <a href='/tag/xamarin/'>XAMARIN</a>
+                            
+                        
+                    
+                </section>
+                <h1 class="post-full-title">Xamarin.Forms UI Challenges - Pizza Shop</h1>
+            </header>
+
+            
+            <figure class="post-full-image" style="background-image: url(/assets/images/posts/pizza/pizza-design.gif)">
+            </figure>
+            
+
+            <section class="post-full-content">
+                <div class="kg-card-markdown">
+                    <p>Pizza is like the entire food pyramid.  And This Xamarin UI Challenge, like our friend the pizza, has lots of delicious ingredients including animations, transitions, custom buttons, fonts and a sprinkle of SkiaSharp. Nom Nom.</p>
+
+<h2 id="the-design">The Design</h2>
+
+<p><img src="assets/images/posts/pizza/pizza-design.gif" /></p>
+
+<p>This is a great looking design called <a href="https://dribbble.com/shots/10921038-Pizza-Shop-app-Interaction">Pizza Shop app Interaction</a> created by <a href="https://dribbble.com/bidyutbera">Bidyut Kumar Bera</a>. It’s a lovely playful design that uses thoughtful animations and transitions to enhance the user experience of the app.</p>
+
+<blockquote>
+  <p>Animations should always serve a purpose</p>
+</blockquote>
+
+<p>The key elements we will focus on in this challenge are:</p>
+<ul>
+  <li>Flying pizzas around the screen using an animation state helper</li>
+  <li>Custom stepper button with flip up labels</li>
+  <li>“Chomp Button” when a pizza is added to the cart</li>
+</ul>
+
+<h2 id="basic-page-layout">Basic Page Layout</h2>
+
+<p>The main page of the application uses a <code class="highlighter-rouge">Grid</code> as it’s main container which is fine for most of the elements. However, in order to control over the position of the flying pizza another key element is using an <code class="highlighter-rouge">AbsoluteLayout</code> which allows us to have precise control of the pizza.</p>
+
+<h2 id="flying-pizzas">Flying Pizzas</h2>
+
+<p>In this design there are ingredients flying all over the screen.  To simplify this we use an AnimationStateEngine class to control the positions of the pizza for various states.</p>
+
+<p><img src="assets/images/posts/pizza/pizza-states.gif" /></p>
+
+<p>There are five states which are represented in an enumeration:</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">enum</span> <span class="n">State</span>
+<span class="p">{</span>
+    <span class="n">Start</span><span class="p">,</span>
+    <span class="n">Entrance</span><span class="p">,</span>
+    <span class="n">Small</span><span class="p">,</span>
+    <span class="n">Medium</span><span class="p">,</span>
+    <span class="n">Large</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>We use a custom AnimationStateEngine to control elements for each of the states. There is quite a bit of code to setup the various elements, but as an example for the pizza we setup positions and rotation for the pizza for each state.</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="n">animState</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">AnimationStateMachine</span><span class="p">();</span>
+
+<span class="n">animState</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="n">State</span><span class="p">.</span><span class="n">Start</span><span class="p">,</span> <span class="k">new</span> <span class="n">ViewTransition</span><span class="p">[]</span>
+<span class="p">{</span>
+    <span class="k">new</span> <span class="nf">ViewTransition</span><span class="p">(</span><span class="n">Pizza</span><span class="p">,</span> <span class="n">AnimationType</span><span class="p">.</span><span class="n">Layout</span><span class="p">,</span> <span class="n">startRect</span><span class="p">),</span>
+    <span class="k">new</span> <span class="nf">ViewTransition</span><span class="p">(</span><span class="n">Pizza</span><span class="p">,</span> <span class="n">AnimationType</span><span class="p">.</span><span class="n">Rotation</span><span class="p">,</span> <span class="m">0</span><span class="p">),</span>
+    <span class="p">...</span>
+<span class="p">}</span>
+
+<span class="n">animState</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="n">State</span><span class="p">.</span><span class="n">Entrance</span><span class="p">,</span> <span class="k">new</span> <span class="n">ViewTransition</span><span class="p">[]</span>
+<span class="p">{</span>
+    <span class="k">new</span> <span class="nf">ViewTransition</span><span class="p">(</span><span class="n">Pizza</span><span class="p">,</span> <span class="n">AnimationType</span><span class="p">.</span><span class="n">Layout</span><span class="p">,</span> <span class="n">entranceRect</span><span class="p">),</span>
+    <span class="k">new</span> <span class="nf">ViewTransition</span><span class="p">(</span><span class="n">Pizza</span><span class="p">,</span> <span class="n">AnimationType</span><span class="p">.</span><span class="n">Rotation</span><span class="p">,</span> <span class="m">20</span><span class="p">),</span>
+    <span class="p">...</span>
+<span class="p">}</span>
+
+<span class="n">animState</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="n">State</span><span class="p">.</span><span class="n">Small</span><span class="p">,</span> <span class="k">new</span> <span class="n">ViewTransition</span><span class="p">[]</span>
+<span class="p">{</span>
+    <span class="k">new</span> <span class="nf">ViewTransition</span><span class="p">(</span><span class="n">Pizza</span><span class="p">,</span> <span class="n">AnimationType</span><span class="p">.</span><span class="n">Layout</span><span class="p">,</span> <span class="n">smallRect</span><span class="p">),</span>
+    <span class="k">new</span> <span class="nf">ViewTransition</span><span class="p">(</span><span class="n">Pizza</span><span class="p">,</span> <span class="n">AnimationType</span><span class="p">.</span><span class="n">Rotation</span><span class="p">,</span> <span class="m">45</span><span class="p">),</span>
+    <span class="p">...</span>
+<span class="p">}</span>
+
+<span class="n">animState</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="n">State</span><span class="p">.</span><span class="n">Medium</span><span class="p">,</span> <span class="k">new</span> <span class="n">ViewTransition</span><span class="p">[]</span>
+<span class="p">{</span>
+    <span class="k">new</span> <span class="nf">ViewTransition</span><span class="p">(</span><span class="n">Pizza</span><span class="p">,</span> <span class="n">AnimationType</span><span class="p">.</span><span class="n">Layout</span><span class="p">,</span> <span class="n">mediumRect</span><span class="p">),</span>
+    <span class="k">new</span> <span class="nf">ViewTransition</span><span class="p">(</span><span class="n">Pizza</span><span class="p">,</span> <span class="n">AnimationType</span><span class="p">.</span><span class="n">Rotation</span><span class="p">,</span> <span class="m">90</span><span class="p">),</span>
+    <span class="p">...</span>
+<span class="p">}</span>
+
+<span class="n">animState</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="n">State</span><span class="p">.</span><span class="n">Large</span><span class="p">,</span> <span class="k">new</span> <span class="n">ViewTransition</span><span class="p">[]</span>
+<span class="p">{</span>
+    <span class="k">new</span> <span class="nf">ViewTransition</span><span class="p">(</span><span class="n">Pizza</span><span class="p">,</span> <span class="n">AnimationType</span><span class="p">.</span><span class="n">Layout</span><span class="p">,</span> <span class="n">largeRect</span><span class="p">),</span>
+    <span class="k">new</span> <span class="nf">ViewTransition</span><span class="p">(</span><span class="n">Pizza</span><span class="p">,</span> <span class="n">AnimationType</span><span class="p">.</span><span class="n">Rotation</span><span class="p">,</span> <span class="m">135</span><span class="p">),</span>
+    <span class="p">...</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>Then to do the animation it’s just a matter of activating a particular state and the AnimationStateEngine will handle the translations for us.</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">private</span> <span class="k">void</span> <span class="nf">PizzaRulerThumb_Tapped</span><span class="p">(</span><span class="kt">object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">EventArgs</span> <span class="n">e</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">// navigate to the next state</span>
+    <span class="k">switch</span> <span class="p">(</span><span class="n">animState</span><span class="p">.</span><span class="n">CurrentState</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">case</span> <span class="n">State</span><span class="p">.</span><span class="n">Small</span><span class="p">:</span>
+            <span class="n">animState</span><span class="p">.</span><span class="nf">Go</span><span class="p">(</span><span class="n">State</span><span class="p">.</span><span class="n">Medium</span><span class="p">);</span>
+            <span class="k">break</span><span class="p">;</span>
+        <span class="k">case</span> <span class="n">State</span><span class="p">.</span><span class="n">Medium</span><span class="p">:</span>
+            <span class="n">animState</span><span class="p">.</span><span class="nf">Go</span><span class="p">(</span><span class="n">State</span><span class="p">.</span><span class="n">Large</span><span class="p">);</span>
+            <span class="k">break</span><span class="p">;</span>
+        <span class="k">case</span> <span class="n">State</span><span class="p">.</span><span class="n">Large</span><span class="p">:</span>
+            <span class="n">animState</span><span class="p">.</span><span class="nf">Go</span><span class="p">(</span><span class="n">State</span><span class="p">.</span><span class="n">Small</span><span class="p">);</span>
+            <span class="k">break</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>As I said, there is quite a bit more in the code and you should definitely checkout the code if you are interested in the inner workings of it.  But hopefully that gives you enough of a clue to see the benefits of this sort of approach.</p>
+
+<h2 id="custom-stepper">Custom stepper</h2>
+
+<p>The design calls for a fancy stepper control that rotates the quantity up and down.</p>
+
+<p><img src="assets/images/posts/pizza/stepper.gif" /></p>
+
+<p>The main layout of this is a <code class="highlighter-rouge">Grid</code>.  The first column just has the the Label.  So not particularly interesting.</p>
+
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;Grid</span>
+    <span class="na">x:Name=</span><span class="s">"QuantitySelect"</span>
+    <span class="na">Margin=</span><span class="s">"20,30"</span>
+    <span class="na">ColumnSpacing=</span><span class="s">"40"</span>
+    <span class="na">VerticalOptions=</span><span class="s">"End"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;Grid.ColumnDefinitions&gt;</span>
+        <span class="nt">&lt;ColumnDefinition</span> <span class="na">Width=</span><span class="s">"Auto"</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;ColumnDefinition</span> <span class="na">Width=</span><span class="s">"*"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;/Grid.ColumnDefinitions&gt;</span>
+
+    <span class="nt">&lt;Label</span>
+        <span class="na">FontSize=</span><span class="s">"18"</span>
+        <span class="na">Style=</span><span class="s">"{StaticResource DescriptionText}"</span>
+        <span class="na">Text=</span><span class="s">"Quantity"</span>
+        <span class="na">VerticalOptions=</span><span class="s">"Center"</span> <span class="nt">/&gt;</span>
+    ...
+<span class="nt">&lt;/Grid&gt;</span></code></pre></figure>
+
+<p>The second column is where the magic happens.  To create the buttons and outline for the stepper button, we just use a frame and a couple of buttons with appropriate <code class="highlighter-rouge">Border</code> and <code class="highlighter-rouge">CornerRadius</code> settings. But interestingly here we don’t enclose the buttons inside the frame, rather we use the magic of <code class="highlighter-rouge">Grid</code> to have the elements overlapping each other.</p>
+
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;Frame</span>
+    <span class="na">Grid.Column=</span><span class="s">"1"</span>
+    <span class="na">Padding=</span><span class="s">"0"</span>
+    <span class="na">BackgroundColor=</span><span class="s">"Transparent"</span>
+    <span class="na">BorderColor=</span><span class="s">"White"</span>
+    <span class="na">CornerRadius=</span><span class="s">"25"</span>
+    <span class="na">HasShadow=</span><span class="s">"False"</span>
+    <span class="na">HeightRequest=</span><span class="s">"50"</span>
+    <span class="na">HorizontalOptions=</span><span class="s">"Fill"</span>
+    <span class="na">VerticalOptions=</span><span class="s">"Center"</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;Button</span>
+    <span class="na">x:Name=</span><span class="s">"DecreaseButton"</span>
+    <span class="na">Grid.Column=</span><span class="s">"1"</span>
+    <span class="na">Margin=</span><span class="s">"10,0,0,0"</span>
+    <span class="na">Clicked=</span><span class="s">"DecreaseButton_Clicked"</span>
+    <span class="na">HorizontalOptions=</span><span class="s">"Start"</span>
+    <span class="na">Style=</span><span class="s">"{StaticResource QuantityButton}"</span>
+    <span class="na">Text=</span><span class="s">"-"</span>
+    <span class="na">VerticalOptions=</span><span class="s">"Center"</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;Button</span>
+    <span class="na">x:Name=</span><span class="s">"IncreaseButton"</span>
+    <span class="na">Grid.Column=</span><span class="s">"1"</span>
+    <span class="na">Margin=</span><span class="s">"0,0,10,0"</span>
+    <span class="na">Clicked=</span><span class="s">"IncreaseButton_Clicked"</span>
+    <span class="na">HorizontalOptions=</span><span class="s">"End"</span>
+    <span class="na">Style=</span><span class="s">"{StaticResource QuantityButton}"</span>
+    <span class="na">Text=</span><span class="s">"+"</span>
+    <span class="na">VerticalOptions=</span><span class="s">"Center"</span> <span class="nt">/&gt;</span>
+
+    <span class="nt">&lt;controls:FerrisLabel</span>
+        <span class="na">x:Name=</span><span class="s">"QuantityLabel"</span>
+        <span class="na">Grid.Column=</span><span class="s">"1"</span>
+        <span class="na">HorizontalOptions=</span><span class="s">"Center"</span>
+        <span class="na">Text=</span><span class="s">"1"</span>
+        <span class="na">TextStyle=</span><span class="s">"{StaticResource QuantityStyle}"</span>
+        <span class="na">VerticalOptions=</span><span class="s">"Center"</span> <span class="nt">/&gt;</span></code></pre></figure>
+
+<h2 id="the-ferris-label-control">The Ferris Label Control</h2>
+<p>Now for the rotating label. We put this into a custom control because it’s used in multiple places in the design so we can reuse it. It’s called a <code class="highlighter-rouge">FerrisLabel</code> which is kind of play on the words that it’s like a carousel but vertical.</p>
+
+<p>It’s actually quite simple.  It uses two labels and a couple bindable properties that respond to when the text changes to kick of an animation.</p>
+
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;Grid</span>
+    <span class="na">x:Class=</span><span class="s">"Pizza.Controls.FerrisLabel"</span>
+    <span class="na">xmlns=</span><span class="s">"http://xamarin.com/schemas/2014/forms"</span>
+    <span class="na">xmlns:x=</span><span class="s">"http://schemas.microsoft.com/winfx/2009/xaml"</span>
+    <span class="na">xmlns:controls=</span><span class="s">"clr-namespace:Pizza.Controls"</span>
+    <span class="na">xmlns:mc=</span><span class="s">"http://schemas.openxmlformats.org/markup-compatibility/2006"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;Label</span>
+        <span class="na">x:Name=</span><span class="s">"CurrentLabel"</span>
+        <span class="na">HorizontalOptions=</span><span class="s">"Center"</span>
+        <span class="na">VerticalOptions=</span><span class="s">"Center"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;Label</span>
+        <span class="na">x:Name=</span><span class="s">"NextLabel"</span>
+        <span class="na">HorizontalOptions=</span><span class="s">"Center"</span>
+        <span class="na">Opacity=</span><span class="s">"0"</span>
+        <span class="na">VerticalOptions=</span><span class="s">"Center"</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/Grid&gt;</span></code></pre></figure>
+
+<p>Behind the scenes, we have an <code class="highlighter-rouge">AnimationOffset</code> property which controls which way the animations should go (up or down, or even diagonal if you want).  Also a <code class="highlighter-rouge">BindableProperty</code> for the Text, which kicks of the animations when it detects a change.</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp">        <span class="k">public</span> <span class="n">Point</span> <span class="n">AnimationOffset</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+
+        <span class="k">public</span> <span class="k">static</span> <span class="k">readonly</span> <span class="n">BindableProperty</span> <span class="n">TextProperty</span> <span class="p">=</span> <span class="n">BindableProperty</span><span class="p">.</span><span class="nf">Create</span><span class="p">(</span><span class="k">nameof</span><span class="p">(</span><span class="n">Text</span><span class="p">),</span> <span class="k">typeof</span><span class="p">(</span><span class="kt">string</span><span class="p">),</span> <span class="k">typeof</span><span class="p">(</span><span class="n">FerrisLabel</span><span class="p">),</span> <span class="k">default</span><span class="p">(</span><span class="kt">string</span><span class="p">),</span> <span class="n">propertyChanged</span><span class="p">:</span> <span class="n">OnTextChanged</span><span class="p">);</span>
+        <span class="k">public</span> <span class="kt">string</span> <span class="n">Text</span>
+        <span class="p">{</span>
+            <span class="k">get</span>
+            <span class="p">{</span>
+                <span class="k">return</span> <span class="p">(</span><span class="kt">string</span><span class="p">)</span><span class="nf">GetValue</span><span class="p">(</span><span class="n">TextProperty</span><span class="p">);</span>
+            <span class="p">}</span>
+
+            <span class="k">set</span>
+            <span class="p">{</span>
+                <span class="nf">SetValue</span><span class="p">(</span><span class="n">TextProperty</span><span class="p">,</span> <span class="k">value</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+
+        <span class="k">static</span> <span class="k">void</span> <span class="nf">OnTextChanged</span><span class="p">(</span><span class="n">BindableObject</span> <span class="n">bindable</span><span class="p">,</span> <span class="kt">object</span> <span class="n">oldValue</span><span class="p">,</span> <span class="kt">object</span> <span class="n">newValue</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="k">try</span>
+            <span class="p">{</span>
+                <span class="kt">var</span> <span class="n">control</span> <span class="p">=</span> <span class="p">(</span><span class="n">FerrisLabel</span><span class="p">)</span><span class="n">bindable</span><span class="p">;</span>
+
+                <span class="kt">var</span> <span class="k">value</span> <span class="p">=</span> <span class="p">(</span><span class="kt">string</span><span class="p">)</span><span class="n">newValue</span><span class="p">;</span>
+
+                <span class="n">control</span><span class="p">.</span><span class="nf">ApplyText</span><span class="p">((</span><span class="kt">string</span><span class="p">)</span><span class="n">oldValue</span><span class="p">,</span> <span class="k">value</span><span class="p">);</span>
+            <span class="p">}</span>
+            <span class="k">catch</span> <span class="p">(</span><span class="n">Exception</span> <span class="n">ex</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="c1">// TODO: Handle exception.</span>
+            <span class="p">}</span>
+        <span class="p">}</span></code></pre></figure>
+
+<p>So from there it’s just a matter of doing the animations:</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">async</span> <span class="k">void</span> <span class="nf">ApplyText</span><span class="p">(</span><span class="kt">string</span> <span class="n">oldValue</span><span class="p">,</span> <span class="kt">string</span> <span class="n">newValue</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">// update the labels</span>
+    <span class="n">Current</span><span class="p">.</span><span class="n">Text</span> <span class="p">=</span> <span class="n">oldValue</span><span class="p">;</span>
+    <span class="n">Current</span><span class="p">.</span><span class="n">TranslationY</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span>
+    <span class="n">Current</span><span class="p">.</span><span class="n">TranslationX</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span>
+    <span class="n">Current</span><span class="p">.</span><span class="n">Opacity</span> <span class="p">=</span> <span class="m">1</span><span class="p">;</span>
+
+    <span class="c1">// set the starting positions</span>
+    <span class="n">Current</span><span class="p">.</span><span class="n">TranslationY</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span>
+    <span class="n">_</span> <span class="p">=</span> <span class="n">Current</span><span class="p">.</span><span class="nf">TranslateTo</span><span class="p">(-</span><span class="n">AnimationOffset</span><span class="p">.</span><span class="n">X</span><span class="p">,</span> <span class="p">-</span><span class="n">AnimationOffset</span><span class="p">.</span><span class="n">Y</span><span class="p">);</span>
+    <span class="n">_</span> <span class="p">=</span> <span class="n">Current</span><span class="p">.</span><span class="nf">FadeTo</span><span class="p">(</span><span class="m">0</span><span class="p">);</span>
+
+    <span class="c1">// animate in the next label</span>
+    <span class="n">Next</span><span class="p">.</span><span class="n">Text</span> <span class="p">=</span> <span class="n">newValue</span><span class="p">;</span>
+    <span class="n">Next</span><span class="p">.</span><span class="n">TranslationY</span> <span class="p">=</span> <span class="n">AnimationOffset</span><span class="p">.</span><span class="n">Y</span><span class="p">;</span>
+    <span class="n">Next</span><span class="p">.</span><span class="n">TranslationX</span> <span class="p">=</span> <span class="n">AnimationOffset</span><span class="p">.</span><span class="n">X</span><span class="p">;</span>
+    <span class="n">Next</span><span class="p">.</span><span class="n">Opacity</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span>
+    <span class="n">_</span> <span class="p">=</span> <span class="n">Next</span><span class="p">.</span><span class="nf">TranslateTo</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">);</span>
+    <span class="k">await</span> <span class="n">Next</span><span class="p">.</span><span class="nf">FadeTo</span><span class="p">(</span><span class="m">1</span><span class="p">);</span>
+
+    <span class="c1">// recycle the views</span>
+    <span class="n">Current</span> <span class="p">=</span> <span class="n">NextLabel</span><span class="p">;</span>
+    <span class="n">Next</span> <span class="p">=</span> <span class="n">CurrentLabel</span><span class="p">;</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>So back in our calling code all we need to do is update the property and the animations get triggered from the bindable property.</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">private</span> <span class="k">async</span> <span class="k">void</span> <span class="nf">DecreaseButton_Clicked</span><span class="p">(</span><span class="kt">object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">EventArgs</span> <span class="n">e</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">currentQuantity</span> <span class="p">==</span> <span class="m">1</span><span class="p">)</span>
+        <span class="k">return</span><span class="p">;</span>
+    <span class="k">else</span>
+        <span class="n">currentQuantity</span><span class="p">--;</span>
+
+    <span class="n">QuantityLabel</span><span class="p">.</span><span class="n">AnimationOffset</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Point</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="p">-</span><span class="m">20</span><span class="p">);</span>
+    <span class="n">QuantityLabel</span><span class="p">.</span><span class="n">Text</span> <span class="p">=</span> <span class="n">currentQuantity</span><span class="p">.</span><span class="nf">ToString</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="k">private</span> <span class="k">async</span> <span class="k">void</span> <span class="nf">IncreaseButton_Clicked</span><span class="p">(</span><span class="kt">object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">EventArgs</span> <span class="n">e</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">currentQuantity</span><span class="p">++;</span>
+    <span class="n">QuantityLabel</span><span class="p">.</span><span class="n">AnimationOffset</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Point</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">20</span><span class="p">);</span>
+    <span class="n">QuantityLabel</span><span class="p">.</span><span class="n">Text</span> <span class="p">=</span> <span class="n">currentQuantity</span><span class="p">.</span><span class="nf">ToString</span><span class="p">();</span>
+<span class="p">}</span></code></pre></figure>
+
+<h2 id="chomping-pizza-button">Chomping Pizza Button</h2>
+
+<p>This is my favorite piece of animation. It’s a very playful way of adding the pizza to the shopping cart.</p>
+
+<p><img src="assets/images/posts/pizza/chomping-pizza.gif" /></p>
+
+<p>The key to this animation is having a hidden <code class="highlighter-rouge">FlyingPizza</code> image, which is exactly over top of the normal pizza image.  Once the Pizza needs to fly, we make it it visible, animate it’s <code class="highlighter-rouge">LayoutBounds</code> so that it flies down to the bottom right of the <code class="highlighter-rouge">PlaceOrderButton</code>.  Then at the same time, adjust the bounds of the Button to allow a space for the pizza.  There is also a little bit of animation to rotate the pizza as it’s flying and as it lands on the button.</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">private</span> <span class="k">async</span> <span class="n">Task</span> <span class="nf">PizzaFly</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="c1">// check if the pizza is already flying</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">FlyingPizza</span><span class="p">.</span><span class="n">IsVisible</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
+
+    <span class="c1">// eat the pizza</span>
+    <span class="n">FlyingPizza</span><span class="p">.</span><span class="n">IsVisible</span> <span class="p">=</span> <span class="k">true</span><span class="p">;</span>
+
+    <span class="c1">// position pizza</span>
+    <span class="n">AbsoluteLayout</span><span class="p">.</span><span class="nf">SetLayoutBounds</span><span class="p">(</span><span class="n">FlyingPizza</span><span class="p">,</span> <span class="n">Pizza</span><span class="p">.</span><span class="n">Bounds</span><span class="p">);</span>
+
+    <span class="c1">// get the bounds of the button</span>
+    <span class="kt">var</span> <span class="n">buttonBounds</span> <span class="p">=</span> <span class="n">PlaceOrderButton</span><span class="p">.</span><span class="n">Bounds</span><span class="p">;</span>
+
+    <span class="c1">// work out where it needs to fly to?</span>
+    <span class="kt">var</span> <span class="n">size</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Size</span><span class="p">(</span><span class="n">buttonBounds</span><span class="p">.</span><span class="n">Height</span><span class="p">,</span> <span class="n">buttonBounds</span><span class="p">.</span><span class="n">Height</span><span class="p">);</span>
+    <span class="kt">var</span> <span class="n">location</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Point</span><span class="p">(</span><span class="n">buttonBounds</span><span class="p">.</span><span class="n">Right</span> <span class="p">-</span> <span class="n">size</span><span class="p">.</span><span class="n">Width</span><span class="p">,</span> <span class="n">buttonBounds</span><span class="p">.</span><span class="n">Top</span><span class="p">);</span>
+    <span class="kt">var</span> <span class="n">chompBounds</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Rectangle</span><span class="p">(</span><span class="n">location</span><span class="p">,</span> <span class="n">size</span><span class="p">);</span>
+
+    <span class="c1">// animate the pizza down</span>
+    <span class="n">_</span> <span class="p">=</span> <span class="n">FlyingPizza</span><span class="p">.</span><span class="nf">LayoutTo</span><span class="p">(</span><span class="n">chompBounds</span><span class="p">,</span> <span class="m">500</span><span class="p">,</span> <span class="n">Easing</span><span class="p">.</span><span class="n">SinInOut</span><span class="p">);</span>
+    <span class="n">_</span> <span class="p">=</span> <span class="n">FlyingPizza</span><span class="p">.</span><span class="nf">RelRotateTo</span><span class="p">(</span><span class="m">90</span><span class="p">,</span> <span class="m">500</span><span class="p">,</span> <span class="n">Easing</span><span class="p">.</span><span class="n">SinInOut</span><span class="p">);</span>
+
+    <span class="c1">// do the button chomp</span>
+    <span class="kt">var</span> <span class="n">buttonChompBounds</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Rectangle</span><span class="p">(</span><span class="n">PlaceOrderButton</span><span class="p">.</span><span class="n">Bounds</span><span class="p">.</span><span class="n">Location</span><span class="p">,</span>
+        <span class="k">new</span> <span class="nf">Size</span><span class="p">(</span><span class="n">PlaceOrderButton</span><span class="p">.</span><span class="n">Width</span> <span class="p">-</span> <span class="n">buttonBounds</span><span class="p">.</span><span class="n">Height</span><span class="p">,</span> <span class="n">buttonBounds</span><span class="p">.</span><span class="n">Height</span><span class="p">));</span>
+    <span class="k">await</span> <span class="n">PlaceOrderButton</span><span class="p">.</span><span class="nf">LayoutTo</span><span class="p">(</span><span class="n">buttonChompBounds</span><span class="p">,</span> <span class="m">500</span><span class="p">,</span> <span class="n">Easing</span><span class="p">.</span><span class="n">SinInOut</span><span class="p">);</span>
+
+    <span class="n">_</span> <span class="p">=</span> <span class="n">FlyingPizza</span><span class="p">.</span><span class="nf">RelRotateTo</span><span class="p">(-</span><span class="m">90</span><span class="p">,</span> <span class="m">500</span><span class="p">,</span> <span class="n">Easing</span><span class="p">.</span><span class="n">SinInOut</span><span class="p">);</span>
+
+    <span class="c1">// close the button chomp</span>
+    <span class="k">await</span> <span class="n">PlaceOrderButton</span><span class="p">.</span><span class="nf">LayoutTo</span><span class="p">(</span><span class="n">buttonBounds</span><span class="p">,</span> <span class="m">500</span><span class="p">,</span> <span class="n">Easing</span><span class="p">.</span><span class="n">SinInOut</span><span class="p">);</span>
+
+    <span class="n">FlyingPizza</span><span class="p">.</span><span class="n">IsVisible</span> <span class="p">=</span> <span class="k">false</span><span class="p">;</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>Not terribly complicated code, but it’s a really nice effect. To move it back out of the button when the quantity decreases there is another method called <code class="highlighter-rouge">RegurgitatePizza</code> which pretty much does the same thing but in reverse.</p>
+
+<h2 id="the-ruler">The Ruler</h2>
+
+<p>As with a lot of complex designs there are often things which require some custom graphics.  In this case the ruler for the pizza size is rendered using <code class="highlighter-rouge">SkiaSharp</code>.</p>
+
+<p><img src="assets/images/posts/pizza/ruler.gif" /></p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="n">SKPaint</span> <span class="n">rulerPaint</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">SKPaint</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">Color</span> <span class="p">=</span> <span class="n">SKColors</span><span class="p">.</span><span class="n">White</span><span class="p">,</span>
+    <span class="n">StrokeWidth</span> <span class="p">=</span> <span class="m">2</span><span class="p">,</span>
+    <span class="n">Style</span> <span class="p">=</span> <span class="n">SKPaintStyle</span><span class="p">.</span><span class="n">Stroke</span>
+<span class="p">};</span>
+
+<span class="k">private</span> <span class="k">void</span> <span class="nf">PizzaRuler_PaintSurface</span><span class="p">(</span><span class="kt">object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">SkiaSharp</span><span class="p">.</span><span class="n">Views</span><span class="p">.</span><span class="n">Forms</span><span class="p">.</span><span class="n">SKPaintSurfaceEventArgs</span> <span class="n">e</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">var</span> <span class="n">canvas</span> <span class="p">=</span> <span class="n">e</span><span class="p">.</span><span class="n">Surface</span><span class="p">.</span><span class="n">Canvas</span><span class="p">;</span>
+
+    <span class="c1">// draw the main ruler line</span>
+    <span class="n">canvas</span><span class="p">.</span><span class="nf">DrawLine</span><span class="p">(</span><span class="k">new</span> <span class="nf">SKPoint</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">),</span> <span class="k">new</span> <span class="nf">SKPoint</span><span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="n">Info</span><span class="p">.</span><span class="n">Width</span><span class="p">,</span> <span class="m">0</span><span class="p">),</span> <span class="n">rulerPaint</span><span class="p">);</span>
+
+    <span class="c1">// draw the ticks</span>
+    <span class="kt">var</span> <span class="n">numberOfTicks</span> <span class="p">=</span> <span class="m">30</span><span class="p">;</span>
+    <span class="kt">var</span> <span class="n">distanceBetweenTicks</span> <span class="p">=</span> <span class="n">e</span><span class="p">.</span><span class="n">Info</span><span class="p">.</span><span class="n">Width</span> <span class="p">/</span> <span class="n">numberOfTicks</span><span class="p">;</span>
+
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span> <span class="n">i</span> <span class="p">&lt;=</span> <span class="n">numberOfTicks</span><span class="p">;</span> <span class="n">i</span><span class="p">++)</span>
+    <span class="p">{</span>
+        <span class="c1">// every 5th tick is full height</span>
+        <span class="kt">float</span> <span class="n">tickHeight</span> <span class="p">=</span> <span class="p">(</span><span class="n">i</span> <span class="p">%</span> <span class="m">5</span><span class="p">)</span> <span class="p">==</span> <span class="m">0</span> <span class="p">?</span> <span class="n">e</span><span class="p">.</span><span class="n">Info</span><span class="p">.</span><span class="n">Height</span> <span class="p">:</span> <span class="p">(</span><span class="kt">float</span><span class="p">)(</span><span class="n">e</span><span class="p">.</span><span class="n">Info</span><span class="p">.</span><span class="n">Height</span> <span class="p">/</span> <span class="m">2</span><span class="p">);</span>
+        
+        <span class="n">canvas</span><span class="p">.</span><span class="nf">DrawLine</span><span class="p">(</span>
+            <span class="k">new</span> <span class="nf">SKPoint</span><span class="p">(</span><span class="n">i</span> <span class="p">*</span> <span class="n">distanceBetweenTicks</span><span class="p">,</span> <span class="m">0</span><span class="p">),</span>
+            <span class="k">new</span> <span class="nf">SKPoint</span><span class="p">(</span><span class="n">i</span> <span class="p">*</span> <span class="n">distanceBetweenTicks</span><span class="p">,</span> <span class="n">tickHeight</span><span class="p">),</span>
+            <span class="n">rulerPaint</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>And finally there is the button which appears on the ruler, which is only interesting in so much that it has a constant animation showing the direction of the arrow.  You can’t achieve this with the normal Animation extension methods but with a custom animation you can do this very easy by just setting the repeat to true:</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="c1">// create continuous animation for thumb</span>
+<span class="n">pulse</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Animation</span><span class="p">();</span>
+<span class="n">pulse</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="p">.</span><span class="m">5</span><span class="p">,</span> <span class="k">new</span> <span class="nf">Animation</span><span class="p">(</span><span class="n">a</span> <span class="p">=&gt;</span> <span class="n">PizzaThumbLabel</span><span class="p">.</span><span class="n">TranslationX</span> <span class="p">=</span> <span class="n">a</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">5</span><span class="p">,</span> <span class="n">Easing</span><span class="p">.</span><span class="n">SinInOut</span><span class="p">));</span>
+<span class="n">pulse</span><span class="p">.</span><span class="nf">Add</span><span class="p">(.</span><span class="m">5</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="k">new</span> <span class="nf">Animation</span><span class="p">(</span><span class="n">a</span> <span class="p">=&gt;</span> <span class="n">PizzaThumbLabel</span><span class="p">.</span><span class="n">TranslationX</span> <span class="p">=</span> <span class="n">a</span><span class="p">,</span> <span class="m">5</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="n">Easing</span><span class="p">.</span><span class="n">SinInOut</span><span class="p">));</span>
+<span class="c1">// start the animation continuously</span>
+<span class="n">pulse</span><span class="p">.</span><span class="nf">Commit</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="s">"pulse"</span><span class="p">,</span> <span class="n">length</span><span class="p">:</span><span class="m">500</span><span class="p">,</span> <span class="n">repeat</span><span class="p">:</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="k">true</span><span class="p">);</span></code></pre></figure>
+
+<h2 id="summary">Summary</h2>
+<p>Okay, so that’s the key elements in this UI Challenge. It was a lot of fun to put together and the final result is pretty delicious.</p>
+
+<p><img src="assets/images/posts/pizza/final.gif" /></p>
+
+<h2 id="get-the-code">Get the code</h2>
+<p>There are some complexities which I haven’t gone into in this blog post, but  I’ve covered most of the interesting ingredients.  All the code is available open source on <a href="https://github.com/kphillpotts/pizza">my github</a>.</p>
+
+<h2 id="watch-me-code-it">Watch me code it</h2>
+<p>I actually did this UI Challenge live over Twitch, so if you want to watch hours of me coding this up then check out these recordings.</p>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/ffgTho5YBCE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/3q2y15POx6g" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/IpuJtIPdaK0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/pKveUoplD7E" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+
+<hr />
+
+<p>If you want to catch me doing other live coding things follow me on Twitch. It’s a great platform where we can chat as we build software.  Follow me at <a href="https://www.twitch.tv/kymphillpotts">https://www.twitch.tv/kymphillpotts</a> and come join in the fun!</p>
+
+<p><a href="https://twitch.tv/kymphillpotts"><img src="https://kymphillpotts.com/assets/images/twitch_banner.png" alt="Kym's Twitch Channel" /></a></p>
+
+<p>If you can’t make it to the Twitch streams, then I also upload the videos to my <a href="https://www.youtube.com/user/kphillpotts/">YouTube Channel</a></p>
+
+<p>I hope these posts are useful for you, feel free to leave me a comment below or reach out to me via <a href="https://twitter.com/kphillpotts">Twitter</a>.</p>
+
+<p>Until next time, Happy Coding</p>
+
+<p>❤
+Kym</p>
+
+                </div>
+            </section>
+
+            <!-- Email subscribe form at the bottom of the page -->
+            
+
+            <footer class="post-full-footer">
+                <!-- Everything inside the #author tags pulls data from the author -->
+                <!-- #author-->
+                
+                    
+                        <section class="author-card">
+                            
+                                <img class="author-profile-image" src="/assets/images/kphillpotts.jpg" alt="kphillpotts" />
+                            
+                            <section class="author-card-content">
+                                <h4 class="author-card-name"><a href="/author/kphillpotts">Kym Phillpotts</a></h4>
+                                
+                                    <p>Geek, Parent, Human, Xamarin University Instructor. Co-curator of http://weeklyxamarin.com  and twitch streaming live coding at http://twitch.tv/kymphillpotts.</p>
+                                
+                            </section>
+                        </section>
+                        <div class="post-full-footer-right">
+                            <a class="author-card-button" href="/author/kphillpotts">Read More</a>
+                        </div>
+                    
+                
+                <!-- /author  -->
+            </footer>
+            <!-- If you use Disqus comments, just uncomment this block.
+            The only thing you need to change is "test-apkdzgmqhj" - which
+            should be replaced with your own Disqus site-id. -->
+            
+                <section class="post-full-comments">
+                    <div id="disqus_thread"></div>
+                    <script>
+                        var disqus_config = function () {
+                            this.page.url = 'https://kymphillpotts.com/pizza-shop.html';
+                            this.page.identifier = '/pizza-shop.html';
+                        };
+                        (function() {
+                            var d = document, s = d.createElement('script');
+                            s.src = 'https://kymphillpotts.disqus.com/embed.js';
+                            s.setAttribute('data-timestamp', +new Date());
+                            (d.head || d.body).appendChild(s);
+                        })();
+                    </script>
+                    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                </section>
+            
+
+        </article>
+
+    </div>
+</main>
+
+<!-- Links to Previous/Next posts -->
+<aside class="read-next outer">
+    <div class="inner">
+        <div class="read-next-feed">
+            
+                
+                
+                
+                
+                    <article class="read-next-card"
+                        
+                            style="background-image: url(/assets/images/blog-cover.jpg)"
+                        
+                    >
+                        <header class="read-next-card-header">
+                            <small class="read-next-card-header-sitetitle">&mdash; Kym's Blog &mdash;</small>
+                            
+                                <h3 class="read-next-card-header-title"><a href="/tag/xamarin/">Xamarin</a></h3>
+                            
+                        </header>
+                        <div class="read-next-divider"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 14.5s2 3 5 3 5.5-2.463 5.5-5.5S21 6.5 18 6.5c-5 0-7 11-12 11C2.962 17.5.5 15.037.5 12S3 6.5 6 6.5s4.5 3.5 4.5 3.5"/></svg>
+</div>
+                        <div class="read-next-card-content">
+                            <ul>
+                                
+                                
+                                  
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/xamarin-forms-ui-challenge-rottenui.html">Xamarin.Forms UI Challenges - RottenUI</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/xamarin-forms-ui-challenge-unzone.html">Xamarin.Forms UI Challenges - Unzone</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/xamarin-forms-ui-challenge-dayvsnight.html">Xamarin.Forms UI Challenges - Day vs Night</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                            </ul>
+                        </div>
+                        <footer class="read-next-card-footer">
+                            <a href="/tag/xamarin/">
+                                
+                                    See all 47 posts  →
+                                
+                            </a>
+                        </footer>
+                    </article>
+                
+            
+
+            <!-- If there's a next post, display it using the same markup included from - partials/post-card.hbs -->
+            
+
+            <!-- If there's a previous post, display it using the same markup included from - partials/post-card.hbs -->
+            
+                
+    <article class="post-card post-template">
+        
+            <a class="post-card-image-link" href="/xamarin-forms-ui-challenge-rottenui.html">
+                <div class="post-card-image" style="background-image: url(/assets/images/covers/rottenui.png)"></div>
+            </a>
+        
+        <div class="post-card-content">
+            <a class="post-card-content-link" href="/xamarin-forms-ui-challenge-rottenui.html">
+                <header class="post-card-header">
+                    
+                        
+                            
+                                <span class="post-card-tags">Xamarin</span>
+                            
+                        
+                    
+
+                    <h2 class="post-card-title">Xamarin.Forms UI Challenges - RottenUI</h2>
+                </header>
+                <section class="post-card-excerpt">
+                    <p>This UI Challenge is all about composing overlapping elements in Xamarin.Forms. Overlapping elements is one of the subtle elements that can enhance a design and make it pop. The Design This is a</p>
+                </section>
+            </a>
+            <footer class="post-card-meta">
+                
+                    
+                        
+                        <img class="author-profile-image" src="/assets/images/kphillpotts.jpg" alt="Kym Phillpotts" />
+                        
+                        <span class="post-card-author">
+                            <a href="/author/kphillpotts/">Kym Phillpotts</a>
+                        </span>
+                    
+                
+            </footer>
+        </div>
+    </article>
+
+            
+
+        </div>
+    </div>
+</aside>
+
+<!-- Floating header which appears on-scroll, included from includes/floating-header.hbs -->
+<div class="floating-header">
+    <div class="floating-header-logo">
+        <a href="https://kymphillpotts.com/">
+            
+            <span>Kym's Blog</span>
+        </a>
+    </div>
+    <span class="floating-header-divider">&mdash;</span>
+    <div class="floating-header-title">Xamarin.Forms UI Challenges - Pizza Shop</div>
+    <div class="floating-header-share">
+        <div class="floating-header-share-label">Share this <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M7.5 15.5V4a1.5 1.5 0 1 1 3 0v4.5h2a1 1 0 0 1 1 1h2a1 1 0 0 1 1 1H18a1.5 1.5 0 0 1 1.5 1.5v3.099c0 .929-.13 1.854-.385 2.748L17.5 23.5h-9c-1.5-2-5.417-8.673-5.417-8.673a1.2 1.2 0 0 1 1.76-1.605L7.5 15.5zm6-6v2m-3-3.5v3.5m6-1v2"/>
+</svg>
+</div>
+        <a class="floating-header-share-tw" href="https://twitter.com/share?text=Xamarin.Forms+UI+Challenges+-+Pizza+Shop&amp;url=https://kphillpotts.github.io/pizza-shop.html"
+            onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg>
+
+        </a>
+        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=https://kphillpotts.github.io/pizza-shop.html"
+            onclick="window.open(this.href, 'share-facebook','width=580,height=296');return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M19 6h5V0h-5c-3.86 0-7 3.14-7 7v3H8v6h4v16h6V16h5l1-6h-6V7c0-.542.458-1 1-1z"/></svg>
+
+        </a>
+    </div>
+    <progress class="progress" value="0">
+        <div class="progress-container">
+            <span class="progress-bar"></span>
+        </div>
+    </progress>
+</div>
+
+
+<!-- /post -->
+
+<!-- The #contentFor helper here will send everything inside it up to the matching #block helper found in default.hbs -->
+
+
+        <!-- Previous/next page links - displayed on every page -->
+        
+
+        <!-- The footer at the very bottom of the screen -->
+        <footer class="site-footer outer">
+            <div class="site-footer-content inner">
+                <section class="copyright"><a href="https://kymphillpotts.com/">Kym's Blog</a> &copy; 2020</section>
+                <section class="poweredby">Proudly published with <a href="https://jekyllrb.com/">Jekyll</a> &
+                    <a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a> using
+                    <a href="https://github.com/jekyller/jasper2" target="_blank" rel="noopener">Jasper2</a></section>
+                <nav class="site-footer-nav">
+                    <a href="/">Latest Posts</a>
+                    
+                    <a href="https://twitter.com/kphillpotts" target="_blank" rel="noopener">Twitter</a>
+                    <a href="https://ghost.org" target="_blank" rel="noopener">Ghost</a>
+                </nav>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- The big email subscribe modal content -->
+    
+
+    <!-- highlight.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.10.0/components/prism-abap.min.js"></script>
+    <script>$(document).ready(function() {
+      $('pre code').each(function(i, block) {
+        hljs.highlightBlock(block);
+      });
+    });</script>
+
+    <!-- jQuery + Fitvids, which makes all video embeds responsive -->
+    <script
+        src="https://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous">
+    </script>
+    <script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="https://demo.ghost.io/assets/js/jquery.fitvids.js?v=724281a32e"></script>
+
+
+    <!-- Paginator increased to "infinit" in _config.yml -->
+    <!-- if paginator.posts  -->
+    <!-- <script>
+        var maxPages = parseInt('');
+    </script>
+    <script src="/assets/js/infinitescroll.js"></script> -->
+    <!-- /endif -->
+
+    
+
+
+    <!-- Add Google Analytics  -->
+    <!-- Google Analytics Tracking code -->
+ <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-69281367-1', 'auto');
+  ga('send', 'pageview');
+
+ </script>
+
+
+    <!-- The #block helper will pull in data from the #contentFor other template files. In this case, there's some JavaScript which we only want to use in post.hbs, but it needs to be included down here, after jQuery has already loaded. -->
+    
+        <script>
+
+// NOTE: Scroll performance is poor in Safari
+// - this appears to be due to the events firing much more slowly in Safari.
+//   Dropping the scroll event and using only a raf loop results in smoother
+//   scrolling but continuous processing even when not scrolling
+$(document).ready(function () {
+    // Start fitVids
+    var $postContent = $(".post-full-content");
+    $postContent.fitVids();
+    // End fitVids
+
+    var progressBar = document.querySelector('progress');
+    var header = document.querySelector('.floating-header');
+    var title = document.querySelector('.post-full-title');
+
+    var lastScrollY = window.scrollY;
+    var lastWindowHeight = window.innerHeight;
+    var lastDocumentHeight = $(document).height();
+    var ticking = false;
+
+    function onScroll() {
+        lastScrollY = window.scrollY;
+        requestTick();
+    }
+
+    function onResize() {
+        lastWindowHeight = window.innerHeight;
+        lastDocumentHeight = $(document).height();
+        requestTick();
+    }
+
+    function requestTick() {
+        if (!ticking) {
+            requestAnimationFrame(update);
+        }
+        ticking = true;
+    }
+
+    function update() {
+        var trigger = title.getBoundingClientRect().top + window.scrollY;
+        var triggerOffset = title.offsetHeight + 35;
+        var progressMax = lastDocumentHeight - lastWindowHeight;
+
+        // show/hide floating header
+        if (lastScrollY >= trigger + triggerOffset) {
+            header.classList.add('floating-active');
+        } else {
+            header.classList.remove('floating-active');
+        }
+
+        progressBar.setAttribute('max', progressMax);
+        progressBar.setAttribute('value', lastScrollY);
+
+        ticking = false;
+    }
+
+    window.addEventListener('scroll', onScroll, {passive: true});
+    window.addEventListener('resize', onResize, false);
+
+    update();
+});
+</script>
+
+    
+
+    <!-- Ghost outputs important scripts and data with this tag - it should always be the very last thing before the closing body tag -->
+    <!-- ghost_foot -->
+
+</body>
+</html>
