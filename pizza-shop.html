@@ -145,11 +145,12 @@ into the {body} of the default.hbs template -->
     
 
 
-    <li class="nav-about" role="menuitem"><a href="/about/">About Me</a></li>
     <li class="nav-xamarin" role="menuitem"><a href="/tag/xamarin/">Xamarin</a></li>
-    <li class="nav-azure" role="menuitem"><a href="/tag/azure/">Azure</a></li>
+    <!-- <li class="nav-azure" role="menuitem"><a href="/tag/azure/">Azure</a></li> -->
+    <li class="nav-uichallenge" role="menuitem"><a href="/uichallenges/">UI Challenges</a></li>
     <li class="nav-stream" role="menuitem"><a href="/tag/stream/">Streams</a></li>
     <li class="nav-other" role="menuitem"><a href="/tag/other/">Other</a></li>
+    <li class="nav-about" role="menuitem"><a href="/about/">About Me</a></li>
 
 
 </ul>
@@ -222,7 +223,7 @@ into the {body} of the default.hbs template -->
 
 <h2 id="basic-page-layout">Basic Page Layout</h2>
 
-<p>The main page of the application uses a <code class="highlighter-rouge">Grid</code> as it’s main container which is fine for most of the elements. However, in order to control over the position of the flying pizza another key element is using an <code class="highlighter-rouge">AbsoluteLayout</code> which allows us to have precise control of the pizza.</p>
+<p>The main page of the application uses a <code class="highlighter-rouge">Grid</code> as its main container which is fine for most of the elements. However, in order to control over the position of the flying pizza another key element is using an <code class="highlighter-rouge">AbsoluteLayout</code> which allows us to have precise control of the pizza.</p>
 
 <h2 id="flying-pizzas">Flying Pizzas</h2>
 
@@ -367,9 +368,9 @@ into the {body} of the default.hbs template -->
         <span class="na">VerticalOptions=</span><span class="s">"Center"</span> <span class="nt">/&gt;</span></code></pre></figure>
 
 <h2 id="the-ferris-label-control">The Ferris Label Control</h2>
-<p>Now for the rotating label. We put this into a custom control because it’s used in multiple places in the design so we can reuse it. It’s called a <code class="highlighter-rouge">FerrisLabel</code> which is kind of play on the words that it’s like a carousel but vertical.</p>
+<p>Now for the rotating label. We put this into a custom control because it’s used in multiple places in the design so we can reuse it. It’s called a <code class="highlighter-rouge">FerrisLabel</code> which is kind of a play on the words that it’s like a carousel but vertical.</p>
 
-<p>It’s actually quite simple.  It uses two labels and a couple bindable properties that respond to when the text changes to kick of an animation.</p>
+<p>It’s actually quite simple.  It uses two labels and a couple bindable properties that respond to when the text changes to kick off an animation.</p>
 
 <figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;Grid</span>
     <span class="na">x:Class=</span><span class="s">"Pizza.Controls.FerrisLabel"</span>
@@ -388,7 +389,7 @@ into the {body} of the default.hbs template -->
         <span class="na">VerticalOptions=</span><span class="s">"Center"</span> <span class="nt">/&gt;</span>
 <span class="nt">&lt;/Grid&gt;</span></code></pre></figure>
 
-<p>Behind the scenes, we have an <code class="highlighter-rouge">AnimationOffset</code> property which controls which way the animations should go (up or down, or even diagonal if you want).  Also a <code class="highlighter-rouge">BindableProperty</code> for the Text, which kicks of the animations when it detects a change.</p>
+<p>Behind the scenes, we have an <code class="highlighter-rouge">AnimationOffset</code> property which controls which way the animations should go (up or down, or even diagonal if you want).  Also a <code class="highlighter-rouge">BindableProperty</code> for the Text, which kicks off the animations when it detects a change.</p>
 
 <figure class="highlight"><pre><code class="language-csharp" data-lang="csharp">        <span class="k">public</span> <span class="n">Point</span> <span class="n">AnimationOffset</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
 
@@ -476,7 +477,7 @@ into the {body} of the default.hbs template -->
 
 <p><img src="assets/images/posts/pizza/chomping-pizza.gif" /></p>
 
-<p>The key to this animation is having a hidden <code class="highlighter-rouge">FlyingPizza</code> image, which is exactly over top of the normal pizza image.  Once the Pizza needs to fly, we make it it visible, animate it’s <code class="highlighter-rouge">LayoutBounds</code> so that it flies down to the bottom right of the <code class="highlighter-rouge">PlaceOrderButton</code>.  Then at the same time, adjust the bounds of the Button to allow a space for the pizza.  There is also a little bit of animation to rotate the pizza as it’s flying and as it lands on the button.</p>
+<p>The key to this animation is having a hidden <code class="highlighter-rouge">FlyingPizza</code> image, which is exactly over top of the normal pizza image.  Once the Pizza needs to fly, we make it it visible, animate its <code class="highlighter-rouge">LayoutBounds</code> so that it flies down to the bottom right of the <code class="highlighter-rouge">PlaceOrderButton</code>.  Then at the same time, adjust the bounds of the Button to allow a space for the pizza.  There is also a little bit of animation to rotate the pizza as it’s flying and as it lands on the button.</p>
 
 <figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">private</span> <span class="k">async</span> <span class="n">Task</span> <span class="nf">PizzaFly</span><span class="p">()</span>
 <span class="p">{</span>
@@ -552,7 +553,7 @@ into the {body} of the default.hbs template -->
     <span class="p">}</span>
 <span class="p">}</span></code></pre></figure>
 
-<p>And finally there is the button which appears on the ruler, which is only interesting in so much that it has a constant animation showing the direction of the arrow.  You can’t achieve this with the normal Animation extension methods but with a custom animation you can do this very easy by just setting the repeat to true:</p>
+<p>And finally there is the button which appears on the ruler, which is only interesting in so much that it has a constant animation showing the direction of the arrow.  You can’t achieve this with the normal Animation extension methods but with a custom animation you can do this very easily by just setting the repeat to true:</p>
 
 <figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="c1">// create continuous animation for thumb</span>
 <span class="n">pulse</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Animation</span><span class="p">();</span>
@@ -613,7 +614,7 @@ Kym</p>
                             <section class="author-card-content">
                                 <h4 class="author-card-name"><a href="/author/kphillpotts">Kym Phillpotts</a></h4>
                                 
-                                    <p>Geek, Parent, Human, Xamarin University Instructor. Co-curator of http://weeklyxamarin.com  and twitch streaming live coding at http://twitch.tv/kymphillpotts.</p>
+                                    <p>Geek, Parent, Human, Senior Content Developer at Microsoft. Co-curator of http://weeklyxamarin.com  and twitch streaming live coding at http://twitch.tv/kymphillpotts.</p>
                                 
                             </section>
                         </section>
@@ -1138,7 +1139,7 @@ Kym</p>
                     <a href="/">Latest Posts</a>
                     
                     <a href="https://twitter.com/kphillpotts" target="_blank" rel="noopener">Twitter</a>
-                    <a href="https://ghost.org" target="_blank" rel="noopener">Ghost</a>
+                    <a href="https://youtube.com/kphillpotts" target="_blank" rel="noopener">YouTube</a>
                 </nav>
             </div>
         </footer>

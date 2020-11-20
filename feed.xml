@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="https://kymphillpotts.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://kymphillpotts.com/" rel="alternate" type="text/html" /><updated>2020-07-03T13:47:04+10:00</updated><id>https://kymphillpotts.com/</id><title type="html">Kym’s Blog</title><subtitle>I write about Azure, Xamarin.Forms, Connected Apps and whatever else might be on my mind.</subtitle><entry><title type="html">Xamarin.Forms UI Challenges - Pizza Shop</title><link href="https://kymphillpotts.com/pizza-shop.html" rel="alternate" type="text/html" title="Xamarin.Forms UI Challenges - Pizza Shop" /><published>2020-07-03T09:00:24+10:00</published><updated>2020-07-03T09:00:24+10:00</updated><id>https://kymphillpotts.com/pizza-shop</id><content type="html" xml:base="https://kymphillpotts.com/pizza-shop.html">&lt;p&gt;Pizza is like the entire food pyramid.  And This Xamarin UI Challenge, like our friend the pizza, has lots of delicious ingredients including animations, transitions, custom buttons, fonts and a sprinkle of SkiaSharp. Nom Nom.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="https://kymphillpotts.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://kymphillpotts.com/" rel="alternate" type="text/html" /><updated>2020-11-20T19:11:49+11:00</updated><id>https://kymphillpotts.com/</id><title type="html">Kym’s Blog</title><subtitle>I write about Azure, Xamarin.Forms, Connected Apps and whatever else might be on my mind.</subtitle><entry><title type="html">Xamarin.Forms UI Challenges - Pizza Shop</title><link href="https://kymphillpotts.com/pizza-shop.html" rel="alternate" type="text/html" title="Xamarin.Forms UI Challenges - Pizza Shop" /><published>2020-07-03T09:00:24+10:00</published><updated>2020-07-03T09:00:24+10:00</updated><id>https://kymphillpotts.com/pizza-shop</id><content type="html" xml:base="https://kymphillpotts.com/pizza-shop.html">&lt;p&gt;Pizza is like the entire food pyramid.  And This Xamarin UI Challenge, like our friend the pizza, has lots of delicious ingredients including animations, transitions, custom buttons, fonts and a sprinkle of SkiaSharp. Nom Nom.&lt;/p&gt;
 
 &lt;h2 id=&quot;the-design&quot;&gt;The Design&lt;/h2&gt;
 
@@ -19,7 +19,7 @@
 
 &lt;h2 id=&quot;basic-page-layout&quot;&gt;Basic Page Layout&lt;/h2&gt;
 
-&lt;p&gt;The main page of the application uses a &lt;code class=&quot;highlighter-rouge&quot;&gt;Grid&lt;/code&gt; as it’s main container which is fine for most of the elements. However, in order to control over the position of the flying pizza another key element is using an &lt;code class=&quot;highlighter-rouge&quot;&gt;AbsoluteLayout&lt;/code&gt; which allows us to have precise control of the pizza.&lt;/p&gt;
+&lt;p&gt;The main page of the application uses a &lt;code class=&quot;highlighter-rouge&quot;&gt;Grid&lt;/code&gt; as its main container which is fine for most of the elements. However, in order to control over the position of the flying pizza another key element is using an &lt;code class=&quot;highlighter-rouge&quot;&gt;AbsoluteLayout&lt;/code&gt; which allows us to have precise control of the pizza.&lt;/p&gt;
 
 &lt;h2 id=&quot;flying-pizzas&quot;&gt;Flying Pizzas&lt;/h2&gt;
 
@@ -164,9 +164,9 @@
         &lt;span class=&quot;na&quot;&gt;VerticalOptions=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Center&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;h2 id=&quot;the-ferris-label-control&quot;&gt;The Ferris Label Control&lt;/h2&gt;
-&lt;p&gt;Now for the rotating label. We put this into a custom control because it’s used in multiple places in the design so we can reuse it. It’s called a &lt;code class=&quot;highlighter-rouge&quot;&gt;FerrisLabel&lt;/code&gt; which is kind of play on the words that it’s like a carousel but vertical.&lt;/p&gt;
+&lt;p&gt;Now for the rotating label. We put this into a custom control because it’s used in multiple places in the design so we can reuse it. It’s called a &lt;code class=&quot;highlighter-rouge&quot;&gt;FerrisLabel&lt;/code&gt; which is kind of a play on the words that it’s like a carousel but vertical.&lt;/p&gt;
 
-&lt;p&gt;It’s actually quite simple.  It uses two labels and a couple bindable properties that respond to when the text changes to kick of an animation.&lt;/p&gt;
+&lt;p&gt;It’s actually quite simple.  It uses two labels and a couple bindable properties that respond to when the text changes to kick off an animation.&lt;/p&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-xml&quot; data-lang=&quot;xml&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;Grid&lt;/span&gt;
     &lt;span class=&quot;na&quot;&gt;x:Class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Pizza.Controls.FerrisLabel&quot;&lt;/span&gt;
@@ -185,7 +185,7 @@
         &lt;span class=&quot;na&quot;&gt;VerticalOptions=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Center&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
 &lt;span class=&quot;nt&quot;&gt;&amp;lt;/Grid&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;p&gt;Behind the scenes, we have an &lt;code class=&quot;highlighter-rouge&quot;&gt;AnimationOffset&lt;/code&gt; property which controls which way the animations should go (up or down, or even diagonal if you want).  Also a &lt;code class=&quot;highlighter-rouge&quot;&gt;BindableProperty&lt;/code&gt; for the Text, which kicks of the animations when it detects a change.&lt;/p&gt;
+&lt;p&gt;Behind the scenes, we have an &lt;code class=&quot;highlighter-rouge&quot;&gt;AnimationOffset&lt;/code&gt; property which controls which way the animations should go (up or down, or even diagonal if you want).  Also a &lt;code class=&quot;highlighter-rouge&quot;&gt;BindableProperty&lt;/code&gt; for the Text, which kicks off the animations when it detects a change.&lt;/p&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-csharp&quot; data-lang=&quot;csharp&quot;&gt;        &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Point&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;AnimationOffset&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 
@@ -273,7 +273,7 @@
 
 &lt;p&gt;&lt;img src=&quot;assets/images/posts/pizza/chomping-pizza.gif&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;The key to this animation is having a hidden &lt;code class=&quot;highlighter-rouge&quot;&gt;FlyingPizza&lt;/code&gt; image, which is exactly over top of the normal pizza image.  Once the Pizza needs to fly, we make it it visible, animate it’s &lt;code class=&quot;highlighter-rouge&quot;&gt;LayoutBounds&lt;/code&gt; so that it flies down to the bottom right of the &lt;code class=&quot;highlighter-rouge&quot;&gt;PlaceOrderButton&lt;/code&gt;.  Then at the same time, adjust the bounds of the Button to allow a space for the pizza.  There is also a little bit of animation to rotate the pizza as it’s flying and as it lands on the button.&lt;/p&gt;
+&lt;p&gt;The key to this animation is having a hidden &lt;code class=&quot;highlighter-rouge&quot;&gt;FlyingPizza&lt;/code&gt; image, which is exactly over top of the normal pizza image.  Once the Pizza needs to fly, we make it it visible, animate its &lt;code class=&quot;highlighter-rouge&quot;&gt;LayoutBounds&lt;/code&gt; so that it flies down to the bottom right of the &lt;code class=&quot;highlighter-rouge&quot;&gt;PlaceOrderButton&lt;/code&gt;.  Then at the same time, adjust the bounds of the Button to allow a space for the pizza.  There is also a little bit of animation to rotate the pizza as it’s flying and as it lands on the button.&lt;/p&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-csharp&quot; data-lang=&quot;csharp&quot;&gt;&lt;span class=&quot;k&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;async&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Task&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;PizzaFly&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
@@ -349,7 +349,7 @@
     &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;p&gt;And finally there is the button which appears on the ruler, which is only interesting in so much that it has a constant animation showing the direction of the arrow.  You can’t achieve this with the normal Animation extension methods but with a custom animation you can do this very easy by just setting the repeat to true:&lt;/p&gt;
+&lt;p&gt;And finally there is the button which appears on the ruler, which is only interesting in so much that it has a constant animation showing the direction of the arrow.  You can’t achieve this with the normal Animation extension methods but with a custom animation you can do this very easily by just setting the repeat to true:&lt;/p&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-csharp&quot; data-lang=&quot;csharp&quot;&gt;&lt;span class=&quot;c1&quot;&gt;// create continuous animation for thumb&lt;/span&gt;
 &lt;span class=&quot;n&quot;&gt;pulse&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Animation&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
