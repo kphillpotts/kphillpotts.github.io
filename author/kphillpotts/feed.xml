@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator>
   <link href="https://kymphillpotts.com/author/kphillpotts/feed.xml" rel="self" type="application/atom+xml" />
   <link href="https://kymphillpotts.com/" rel="alternate" type="text/html" />
-  <updated>2020-11-20T19:11:49+11:00</updated>
+  <updated>2021-04-25T22:35:56+10:00</updated>
   <id>https://kymphillpotts.com/author/kphillpotts/feed.xml</id>
 
   
@@ -30,6 +30,476 @@
   
   
 
+  
+    <entry>
+      <title type="html">Xamarin Tools 2021</title>
+      <link href="https://kymphillpotts.com/xamarin-tools-2021.html" rel="alternate" type="text/html" title="Xamarin Tools 2021" />
+      <published>2021-04-23T23:00:24+10:00</published>
+      <updated>2021-04-23T23:00:24+10:00</updated>
+      <id>https://kymphillpotts.com/xamarin-tools-2021</id>
+      <content type="html" xml:base="https://kymphillpotts.com/xamarin-tools-2021.html">&lt;p&gt;Choosing the right tools and resources can make all the difference in being a productive and effective developer. So, what are all the tools and libraries you should be using to build your Xamarin apps in 2021?&lt;/p&gt;
+
+&lt;p&gt;I did a &lt;a href=&quot;https://kymphillpotts.com/xamarin-tools-and-resources/&quot;&gt;similar post a few years ago&lt;/a&gt; but so much has changed in the Xamarin ecosystem I figured it was time for an update. I was curious what members of the Xamarin Community were using, so I sent the following tweet for their input on what they use.&lt;/p&gt;
+
+&lt;blockquote class=&quot;twitter-tweet&quot;&gt;&lt;p lang=&quot;en&quot; dir=&quot;ltr&quot;&gt;Hey &lt;a href=&quot;https://twitter.com/hashtag/Xamarin?src=hash&amp;amp;ref_src=twsrc%5Etfw&quot;&gt;#Xamarin&lt;/a&gt; twitter friends. What are great tools/resources are you using to develop your Xamarin apps?&lt;br /&gt;&lt;br /&gt;Let me start:&lt;br /&gt;* XamlStyler&lt;br /&gt;* MFractor&lt;br /&gt;* Vysor&lt;br /&gt;* SkiaSharp&lt;br /&gt;* Xamarin Community Toolkit&lt;br /&gt;* Lottie&lt;br /&gt;* AdobeXD&lt;br /&gt;* Hot Reload &amp;amp; MVVM Refactorings in VS&lt;br /&gt;* SVGRepo&lt;br /&gt;* PowerTools&lt;/p&gt;&amp;mdash; Kym Phillpotts (@kphillpotts) &lt;a href=&quot;https://twitter.com/kphillpotts/status/1383995524953477125?ref_src=twsrc%5Etfw&quot;&gt;April 19, 2021&lt;/a&gt;&lt;/blockquote&gt;
+&lt;script async=&quot;&quot; src=&quot;https://platform.twitter.com/widgets.js&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;It got fairly good traction, and lots of insightful replies from the community. This blog lists out those resources and (hopefully) makes a pretty good starting point for finding “best of breed” components for your next Xamarin app.&lt;/p&gt;
+
+&lt;p&gt;First a big thanks to the following people for their kind contributions:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;a href=&quot;https://twitter.com/@adpead&quot;&gt;@adpead&lt;/a&gt;
+&lt;a href=&quot;https://twitter.com/@allanritchie911&quot;&gt;@allanritchie911&lt;/a&gt;
+&lt;a href=&quot;https://twitter.com/@AltevirNeto&quot;&gt;@AltevirNeto&lt;/a&gt;
+&lt;a href=&quot;https://twitter.com/@AndrewSheley&quot;&gt;@AndrewSheley&lt;/a&gt;
+&lt;a href=&quot;https://twitter.com/@Andrik_Just4Fun&quot;&gt;@Andrik_Just4Fun&lt;/a&gt;
+&lt;a href=&quot;https://twitter.com/@beeradmoore&quot;&gt;@beeradmoore&lt;/a&gt;
+&lt;a href=&quot;https://twitter.com/@Boehm412&quot;&gt;@Boehm412&lt;/a&gt;
+&lt;a href=&quot;https://twitter.com/@bratschecody&quot;&gt;@bratschecody&lt;/a&gt;
+&lt;a href=&quot;https://twitter.com/@brungarc&quot;&gt;@brungarc&lt;/a&gt;
+&lt;a href=&quot;https://twitter.com/@DanJSiegel&quot;&gt;@DanJSiegel&lt;/a&gt;
+&lt;a href=&quot;https://twitter.com/@David_PETRIC_&quot;&gt;@David_PETRIC_&lt;/a&gt;
+&lt;a href=&quot;https://twitter.com/@devnl&quot;&gt;@devnl&lt;/a&gt;
+&lt;a href=&quot;https://twitter.com/@dpechie&quot;&gt;@dpechie&lt;/a&gt;
+&lt;a href=&quot;https://twitter.com/@dylbot9000&quot;&gt;@dylbot9000&lt;/a&gt;
+&lt;a href=&quot;https://twitter.com/@faraimuteroza&quot;&gt;@faraimuteroza&lt;/a&gt;
+&lt;a href=&quot;https://twitter.com/@GenieSoftStudio&quot;&gt;@GenieSoftStudio&lt;/a&gt;
+&lt;a href=&quot;https://twitter.com/@ibm515511&quot;&gt;@ibm515511&lt;/a&gt;
+&lt;a href=&quot;https://twitter.com/@IKrugers&quot;&gt;@IKrugers&lt;/a&gt;
+&lt;a href=&quot;https://twitter.com/@InquisitorJax&quot;&gt;@InquisitorJax&lt;/a&gt;
+&lt;a href=&quot;https://twitter.com/@ivrmirx&quot;&gt;@ivrmirx&lt;/a&gt;
+&lt;a href=&quot;https://twitter.com/@jfversluis&quot;&gt;@jfversluis&lt;/a&gt;
+&lt;a href=&quot;https://twitter.com/@jmparent_dev&quot;&gt;@jmparent_dev&lt;/a&gt;
+&lt;a href=&quot;https://twitter.com/@JosueYeray&quot;&gt;@JosueYeray&lt;/a&gt;
+&lt;a href=&quot;https://twitter.com/@kwlothrop&quot;&gt;@kwlothrop&lt;/a&gt;
+&lt;a href=&quot;https://twitter.com/@LarsDuewel&quot;&gt;@LarsDuewel&lt;/a&gt;
+&lt;a href=&quot;https://twitter.com/@leolimanfl&quot;&gt;@leolimanfl&lt;/a&gt;
+&lt;a href=&quot;https://twitter.com/@luismatosluna&quot;&gt;@luismatosluna&lt;/a&gt;
+&lt;a href=&quot;https://twitter.com/@mallibone&quot;&gt;@mallibone&lt;/a&gt;
+&lt;a href=&quot;https://twitter.com/@matthewrdev&quot;&gt;@matthewrdev&lt;/a&gt;
+&lt;a href=&quot;https://twitter.com/@mayaraga2690&quot;&gt;@mayaraga2690&lt;/a&gt;
+&lt;a href=&quot;https://twitter.com/@michaldobro&quot;&gt;@michaldobro&lt;/a&gt;
+&lt;a href=&quot;https://twitter.com/@mr_javicho&quot;&gt;@mr_javicho&lt;/a&gt;
+&lt;a href=&quot;https://twitter.com/@mrwcjoughin&quot;&gt;@mrwcjoughin&lt;/a&gt;
+&lt;a href=&quot;https://twitter.com/@normanmackay3&quot;&gt;@normanmackay3&lt;/a&gt;
+&lt;a href=&quot;https://twitter.com/@Osoy13&quot;&gt;@Osoy13&lt;/a&gt;
+&lt;a href=&quot;https://twitter.com/@PatGet&quot;&gt;@PatGet&lt;/a&gt;
+&lt;a href=&quot;https://twitter.com/@pauloquicoli&quot;&gt;@pauloquicoli&lt;/a&gt;
+&lt;a href=&quot;https://twitter.com/@RaamAkkireddy&quot;&gt;@RaamAkkireddy&lt;/a&gt;
+&lt;a href=&quot;https://twitter.com/@rdavis_au&quot;&gt;@rdavis_au&lt;/a&gt;
+&lt;a href=&quot;https://twitter.com/@sphauck&quot;&gt;@sphauck&lt;/a&gt;
+&lt;a href=&quot;https://twitter.com/@steven1909&quot;&gt;@steven1909&lt;/a&gt;
+&lt;a href=&quot;https://twitter.com/@stntz&quot;&gt;@stntz&lt;/a&gt;
+&lt;a href=&quot;https://twitter.com/@strifex24&quot;&gt;@strifex24&lt;/a&gt;
+&lt;a href=&quot;https://twitter.com/@unofficial_mozi&quot;&gt;@unofficial_mozi&lt;/a&gt;
+&lt;a href=&quot;https://twitter.com/@usdivers&quot;&gt;@usdivers&lt;/a&gt;
+&lt;a href=&quot;https://twitter.com/@WorldWeatherApp&quot;&gt;@WorldWeatherApp&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;This post got a little bit out of hand, so I’ve tried to categorize all the suggestions (and a few bonus ones) to help you quickly find all the goodness.&lt;/p&gt;
+
+&lt;h2 id=&quot;table-of-contents&quot;&gt;Table of Contents&lt;/h2&gt;
+
+&lt;blockquote&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;strong&gt;Design&lt;/strong&gt;
+      &lt;ul&gt;
+        &lt;li&gt;&lt;a href=&quot;#design-guidelines&quot;&gt;Design Guidelines&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;#design-tools&quot;&gt;Design Tools&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;#Image-and-font-resources&quot;&gt;Image and Font Resources&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;#design-inspiration&quot;&gt;Design Inspiration&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/li&gt;
+    &lt;li&gt;&lt;strong&gt;Develop&lt;/strong&gt;
+      &lt;ul&gt;
+        &lt;li&gt;&lt;a href=&quot;#extensions--add-ins&quot;&gt;Extensions &amp;amp; Add-Ins&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;#device-mirroring-and-emulation&quot;&gt;Device Mirroring and Emulation&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;#working-with-data&quot;&gt;Working with Data&lt;/a&gt;
+          &lt;ul&gt;
+            &lt;li&gt;&lt;a href=&quot;#web-things&quot;&gt;Web Things&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;#local-data&quot;&gt;Local Data&lt;/a&gt;&lt;/li&gt;
+          &lt;/ul&gt;
+        &lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;#mvvm-life&quot;&gt;MVVM Life&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;#debugging-and-logging&quot;&gt;Debugging and Logging&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;#xamarinforms-libraries&quot;&gt;Xamarin.Forms Libraries&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#build-and-deploy&quot;&gt;&lt;strong&gt;Build and Deploy&lt;/strong&gt;&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#other-resources&quot;&gt;&lt;strong&gt;Other Resources&lt;/strong&gt;&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#wrap-up&quot;&gt;&lt;strong&gt;Wrap-up&lt;/strong&gt;&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/blockquote&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;design&quot;&gt;Design&lt;/h2&gt;
+
+&lt;p&gt;We constantly hear about how designers should learn to code, but I think that in order to create amazing products, developers should learn a bit about design and how to use design tools. Here are the most popular highlighted by the community.&lt;/p&gt;
+
+&lt;h3 id=&quot;design-guidelines&quot;&gt;Design Guidelines&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://developer.apple.com/design/&quot;&gt;&lt;strong&gt;Apple Developer Design Website&lt;/strong&gt;&lt;/a&gt; - This is Apples landing page for all things design. Specifically you should check out the &lt;a href=&quot;https://developer.apple.com/design/human-interface-guidelines/&quot;&gt;Human Interface Guidelines&lt;/a&gt;.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://ivomynttinen.com/blog/ios-design-guidelines&quot;&gt;&lt;strong&gt;The iOS Design Guidelines Cheatsheet&lt;/strong&gt;&lt;/a&gt; - This is a much quicker, easier place to check out information about icons, fonts, iconography and design resources.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://developer.android.com/design&quot;&gt;&lt;strong&gt;Android Developers Design for Android&lt;/strong&gt;&lt;/a&gt; - Android Design Guidelines. All the juicy guidance from google.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://material.io/&quot;&gt;&lt;strong&gt;Material Design Homepage&lt;/strong&gt;&lt;/a&gt; - Material design is the cornerstone of Android design. This page links out to some useful information and tools for Material design.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;design-tools&quot;&gt;Design Tools&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://www.adobe.com/products/xd/pricing/individual.html&quot;&gt;&lt;strong&gt;Adobe XD&lt;/strong&gt;&lt;/a&gt; - Adobe XD is a vector based design tool specifically designed for creating UI’s and enhancing collaboration between designers and developers.  It’s actually my preferred design tool at the moment.  If you wanting to get started &lt;a href=&quot;https://helpx.adobe.com/xd/tutorials.html&quot;&gt;Adobe has some pretty good tutorials&lt;/a&gt; on their website. Available for PC and Mac with a Free tier (which is all you need).&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://www.figma.com/&quot;&gt;&lt;strong&gt;Figma&lt;/strong&gt;&lt;/a&gt; - Another very popular design tool recommended by the community. &lt;em&gt;“Figma brings your teams together to design better products from start to finish.”&lt;/em&gt;. Figma has a &lt;a href=&quot;https://www.youtube.com/channel/UCQsVmhSa4X-G3lHlUtejzLA&quot;&gt;YouTube channel&lt;/a&gt; with good learning content. [PC and Mac - Free version available].&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://www.sketch.com/&quot;&gt;&lt;strong&gt;Sketch App&lt;/strong&gt;&lt;/a&gt; - Sketch is the original UI specific design tool. At one time, it was my preferred design tool but more recently Adobe XD and Figma have entered the scene.  Also it’s Mac only and there is no free version. But having said all that, it’s still very popular and an excellent tool.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://zeplin.io/&quot;&gt;&lt;strong&gt;Zeplin&lt;/strong&gt;&lt;/a&gt; - Zeplin is a plugin and standalone desktop application for Mac and Windows specifically designed to bridge the gap between designers and engineers. It takes designs from Sketch, Adobe XD CC, Figma, or Adobe Photoshop CC and exports them into a format which generates code snippets, design specs, and assets. There is a free version which allows you to work on 1 project, but beyond that it’ll cost you.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://paintcodeapp.com&quot;&gt;&lt;strong&gt;PaintCode&lt;/strong&gt;&lt;/a&gt; - PaintCode is a unique vector drawing app that generates Objective-C or Swift code in real time, acting as a bridge between developers and graphic designers.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://github.com/xamarin/KimonoDesigner&quot;&gt;&lt;strong&gt;Kimono Designer&lt;/strong&gt;&lt;/a&gt; - Kimono Designer allows a developer to graphically edit SkiaSharp based graphic objects that can be converted to code and included in any cross-platform language and OS that SkiaSharp supports.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;A few people mentioned other Adobe products such as &lt;a href=&quot;https://www.adobe.com/products/illustrator.html&quot;&gt;&lt;strong&gt;Illustrator&lt;/strong&gt;&lt;/a&gt; and &lt;a href=&quot;https://www.adobe.com/products/photoshop.html&quot;&gt;&lt;strong&gt;Photoshop&lt;/strong&gt;&lt;/a&gt; which are great products for Vector and Bitmap images, but primarily aimed at designers. They are not free. I have a subscription, but rarely use them for mobile development. If you are after free options, you could try &lt;a href=&quot;https://www.gimp.org/&quot;&gt;&lt;strong&gt;Gimp&lt;/strong&gt;&lt;/a&gt;, &lt;a href=&quot;https://www.getpaint.net/&quot;&gt;&lt;strong&gt;paint.net&lt;/strong&gt;&lt;/a&gt; and &lt;a href=&quot;https://inkscape.org/&quot;&gt;&lt;strong&gt;InkScape&lt;/strong&gt;&lt;/a&gt;.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;image-and-font-resources&quot;&gt;Image and Font Resources&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://materialdesignicons.com&quot;&gt;&lt;strong&gt;Material Design Icons&lt;/strong&gt;&lt;/a&gt; - Material Design Icons is a large collection of free icons. The website allows you to download them as SVGs, PNGs, and Android resources.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://www.svgrepo.com&quot;&gt;&lt;strong&gt;SVG Repo&lt;/strong&gt;&lt;/a&gt; - A fantastic resource of SVGs in Monocolor, Multicolor, Outlined and Filled styles.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;undraw.co&quot;&gt;&lt;strong&gt;unDraw&lt;/strong&gt;&lt;/a&gt; - If you are looking for great looking illustrations in SVG or PNG formats, look no further.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://www.syncfusion.com/downloads/metrostudio&quot;&gt;&lt;strong&gt;Metro Studio&lt;/strong&gt;&lt;/a&gt; - Syncfusion Metro Studio is a collection of over 7,000 flat and wireframe icon templates that can be easily customized to create thousands of unique icons. It also supports creating custom icon font packages from selected sets of icons.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://icons8.com/&quot;&gt;&lt;strong&gt;Icons8&lt;/strong&gt;&lt;/a&gt; - Thousands of free icons in different styles and sizes.  You can also recolour them as well.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://fonts.google.com/&quot;&gt;&lt;strong&gt;Google Fonts&lt;/strong&gt;&lt;/a&gt; - Google has loads of fonts you can download and use in your apps.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://www.fontsquirrel.com/&quot;&gt;&lt;strong&gt;Font Squirrel&lt;/strong&gt;&lt;/a&gt; - If you are after something a little more wacky, Font Squirrel probably has you covered.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://github.com/sw-yx/spark-joy/blob/master/README.md#logos-incl-company-logos&quot;&gt;&lt;strong&gt;Spark Joy - Design Tools and Tips for Developers in a Hurry&lt;/strong&gt;&lt;/a&gt; - This is a bonus one.  It’s a github repo which lists out a kazillion design resources (mostly aimed at web devs, but still useful for Xamarin / Mobile devs). I’ve linked to the logo section, but there is also sooo much other goodness in here.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;design-inspiration&quot;&gt;Design Inspiration&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://dribbble.com/&quot;&gt;&lt;strong&gt;Dribbble&lt;/strong&gt;&lt;/a&gt; - This is probably my default go-to place for looking at beautiful UI and interaction designs.  So many talented people contribute designs.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://www.behance.net/&amp;quot;&quot;&gt;&lt;strong&gt;Behance&lt;/strong&gt;&lt;/a&gt; - Another location for our hipster designer friends to submit their goods.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://snppts.dev/&quot;&gt;&lt;strong&gt;Snppts&lt;/strong&gt;&lt;/a&gt; - Xamarin Forms UI Snippets.  This is a great site to look at if you are interested to see how other devs layout their Xamarin Forms pages, it has links to source code and XAML.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://github.com/jsuarezruiz/xamarin-forms-goodlooking-UI&quot;&gt;&lt;strong&gt;Xamarin.Forms goodlooking UI samples&lt;/strong&gt;&lt;/a&gt; - A resource of some of the best looking Xamarin.Forms interfaces out there.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;develop&quot;&gt;Develop&lt;/h2&gt;
+
+&lt;p&gt;Developers love tools; they make our life better. Most of us (except perhaps the geekiest) will use an IDE to develop applications. From the community responses it looks like people are using &lt;a href=&quot;https://visualstudio.microsoft.com/downloads/&quot;&gt;&lt;strong&gt;Visual Studio, Visual Studio for Mac&lt;/strong&gt;&lt;/a&gt; and &lt;a href=&quot;https://www.jetbrains.com/rider/download/&quot;&gt;&lt;strong&gt;Rider&lt;/strong&gt;&lt;/a&gt; for  development. (oh yeah and let’s not forget the greatest developer tool of all time &lt;a href=&quot;https://stackoverlow.com&quot;&gt;&lt;strong&gt;StackOverflow&lt;/strong&gt;&lt;/a&gt;). You might even find yourself using &lt;a href=&quot;https://developer.apple.com/xcode/&quot;&gt;&lt;strong&gt;XCode&lt;/strong&gt;&lt;/a&gt; for some iOS things like editing storyboards. Apart form that, below are some resources and tools that might help you develop your apps.&lt;/p&gt;
+
+&lt;h3 id=&quot;extensions--add-ins&quot;&gt;Extensions &amp;amp; Add-Ins&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://www.mfractor.com/&quot;&gt;&lt;strong&gt;MFractor&lt;/strong&gt;&lt;/a&gt; - MFractor is a powerful productivity tool for Xamarin developers. This tool is specifically for Xamarin developers and has loads of great features, especially for XAML developers. There is a free “Lite edition”, or if you are serious get the “Full” edition - you won’t regret it. Available for Visual Studio Windows and Mac.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://marketplace.visualstudio.com/items?itemName=TeamXavalon.XAMLStyler&quot;&gt;&lt;strong&gt;XamlStyler&lt;/strong&gt;&lt;/a&gt; - XAML Styler is a visual studio extension that formats XAML source code based on a set of styling rules. This tool can help you/your team maintain a better XAML coding style as well as a much better XAML readability. I love this tool! As a bonus &lt;a href=&quot;https://www.sharpnado.com/xamarin-forms-xamlstyler-config/&quot;&gt;Sharpnado wrote a cool blog post&lt;/a&gt; on how you can setup a config file to keep your project consistent amongst your team.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://github.com/ademanuele/VSMac-CodeCoverage&quot;&gt;&lt;strong&gt;VSMac-CodeCoverage&lt;/strong&gt;&lt;/a&gt; - A code coverage extension for Visual Studio for Mac that provides a new pad for displaying coverage statistics and visualizing line coverage in the editor margin.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://www.jetbrains.com/resharper/&quot;&gt;&lt;strong&gt;Resharper&lt;/strong&gt;&lt;/a&gt; - Visual Studio Extension which provides an absolute truck load of refactoring and code quality tools for all types of .NET projects. Personally, I don’t use this any more because there have been so many great refactoring additions to core Visual Studio, but it is still super popular amongst .NET devs.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;device-mirroring-and-emulation&quot;&gt;Device Mirroring and Emulation&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://github.com/Genymobile/scrcpy&quot;&gt;&lt;strong&gt;scrcpy&lt;/strong&gt;&lt;/a&gt; - This application provides display and control of Android devices connected on USB (or over TCP/IP). It works on GNU/Linux, Windows and macOS. I don’t use this at the moment, but that may change because this gets really great reviews.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://www.airdroid.com/en/personal/&quot;&gt;&lt;strong&gt;AirDroid&lt;/strong&gt;&lt;/a&gt; - AirDroid  enables you to transfer files across different platforms, mirror and remote control mobile devices, receive and reply to messages on the computer.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://www.genymotion.com/desktop/&quot;&gt;&lt;strong&gt;Genymotion Desktop&lt;/strong&gt;&lt;/a&gt; - Let’s face it, Android emulators can be in pain in the butt. Genymotion aims to remove that pain but giving you a better Android emulator than the one provided by Google.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://www.airsquirrels.com/reflector&quot;&gt;&lt;strong&gt;Reflector&lt;/strong&gt;&lt;/a&gt; - Allows you to mirror your iOS and Android device to a bunch of different devices.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://www.vysor.io/&quot;&gt;&lt;strong&gt;Vysor&lt;/strong&gt;&lt;/a&gt; - Vysor allows you to mirror your Android device as an emulator on your desktop. I normally use this when I am mirroring my Android device during development, because I can control my physical device with a mouse.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;working-with-data&quot;&gt;Working with Data&lt;/h3&gt;
+
+&lt;p&gt;Like it or not, a great deal of our time is working with Data.  In a mobile context that mostly means hitting Web Services and local databases. Here are some great tools to help you out.&lt;/p&gt;
+
+&lt;h3 id=&quot;web-things&quot;&gt;Web Things&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://www.telerik.com/fiddler/&quot;&gt;&lt;strong&gt;Fiddler&lt;/strong&gt;&lt;/a&gt; - Fiddler is a debugging proxy server tool used to log, inspect, and alter HTTP and HTTPS traffic between a computer and a web server or servers. There are a few different editions now, but there is still the &lt;a href=&quot;https://www.telerik.com/fiddler/fiddler-classic&quot;&gt;Classic&lt;/a&gt; version which is free.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://www.postman.com/&quot;&gt;&lt;strong&gt;Postman&lt;/strong&gt;&lt;/a&gt; - Postman is a popular API client that makes it easy for developers to create, share, test and document APIs. This is done by allowing users to create and save simple and complex HTTP/s requests, as well as read their responses. The result - more efficient and less tedious work. Another option suggested is &lt;a href=&quot;https://install.advancedrestclient.com/install&quot;&gt;&lt;strong&gt;Advanced REST Client&lt;/strong&gt;&lt;/a&gt;.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://quicktype.io/&quot;&gt;&lt;strong&gt;Quicktype&lt;/strong&gt;&lt;/a&gt; - This tool is fantastic.  If you’ve got some JSON you can paste it in and it will generate you models and serialization code.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://github.com/reactiveui/refit&quot;&gt;&lt;strong&gt;Refit&lt;/strong&gt;&lt;/a&gt; - Simplify calling Rest services.  If you want to simplify your code for calling web services give Refit a shot, you can basically just create an interface which describes your web service, then let it do all the hard work of accessing the service - no need to worry about doing the serializing and deserializing yourself or creating GET and PUT methods.  It’ll do it for you.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://github.com/BSiLabs/HttpTracer&quot;&gt;&lt;strong&gt;HttpTracer&lt;/strong&gt;&lt;/a&gt; - A simple http tracing library to write request and response information to your output window. Making your life easier when debugging http calls!&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://github.com/App-vNext/Polly&quot;&gt;&lt;strong&gt;Polly&lt;/strong&gt;&lt;/a&gt;- Automatic retry policies. The reality is that on mobile devices your connection sucks. It’s going to disappear for no apparent reason and sometimes the best thing is to just reissue a request. Polly is going to help you out here by allowing you to define automatic retry policies.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;http://www.newtonsoft.com/json&quot;&gt;&lt;strong&gt;Newtonsoft Json.NET&lt;/strong&gt;&lt;/a&gt; still my goto library for anything to do with serializing, deserializing and parsing  JSON results.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://github.com/protobuf-net/protobuf-net&quot;&gt;&lt;strong&gt;protobuf-net&lt;/strong&gt;&lt;/a&gt; - protobuf-net is a contract based serializer for .NET code, that happens to write data in the “protocol buffers” serialization format engineered by Google.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://restsharp.dev/&quot;&gt;&lt;strong&gt;RestSharp&lt;/strong&gt;&lt;/a&gt; - Featuring automatic serialization and deserialization, request and response type detection, variety of authentications and other useful features.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://github.com/alexrainman/ModernHttpClient&quot;&gt;&lt;strong&gt;modernhttpclient-updated&lt;/strong&gt;&lt;/a&gt; - This library brings the latest platform-specific networking libraries to Xamarin applications via a custom HttpClient handler.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;local-data&quot;&gt;Local Data&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://github.com/praeclarum/sqlite-net&quot;&gt;&lt;strong&gt;Sqlite-Net&lt;/strong&gt;&lt;/a&gt; Dead simple SQLite integration – This package from Frank Krueger is the best way (I know of) to integrate SQLite into your Xamarin Apps. It also provides a light weight ORM interface to make it really simple to use. There is also an option to provide encryption support with &lt;a href=&quot;https://www.nuget.org/packages/sqlite-net-sqlcipher&quot;&gt;sqlite-net-sqlcipher&lt;/a&gt;.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://www.litedb.org/&quot;&gt;&lt;strong&gt;LiteDB&lt;/strong&gt;&lt;/a&gt; - Embedded NoSQL database for .NET. An open source MongoDB-like database with zero conﬁguration - mobile ready&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://sqlitebrowser.org/&quot;&gt;&lt;strong&gt;DB Browser for SQLite&lt;/strong&gt;&lt;/a&gt; - A free cross platform tool which will allow you to create databases, define the schema, and add records to the database.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://github.com/reactiveui/Akavache&quot;&gt;&lt;strong&gt;Akavache&lt;/strong&gt;&lt;/a&gt; - An asynchronous, persistent key-value store created for writing desktop and mobile applications, based on SQLite3. Akavache is great for both storing important data as well as cached local data that expires.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://github.com/jamesmontemagno/monkey-cache&quot;&gt;&lt;strong&gt;Monkey Cache&lt;/strong&gt;&lt;/a&gt; - A great dead-simple caching library for any .NET application. It can work with File, SQLite and LiteDB persistence.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;mvvm-life&quot;&gt;MVVM Life&lt;/h3&gt;
+
+&lt;p&gt;I often joke that &lt;em&gt;to be good at MVVM you really just need to have a really strong opinions and tell everyone else they are doing it wrong&lt;/em&gt;. But seriously MVVM is a great architecture for building your applications. I feel that in the future we are also going to see more and more MVU. In the meantime, check out these great MVVM frameworks and libraries.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://github.com/jamesmontemagno/mvvm-helpers&quot;&gt;&lt;strong&gt;MVVM Helpers&lt;/strong&gt;&lt;/a&gt; - James Montemagno’s Collection of MVVM helper classes for any application. I &lt;em&gt;think&lt;/em&gt; this is getting merged into the Xamarin Community Toolkit, but I still like to use this directly sometimes.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://github.com/Fody/PropertyChanged&quot;&gt;&lt;strong&gt;Fody Property Changed&lt;/strong&gt;&lt;/a&gt; - This is an code weaver that can help you out writing your INotifyPropertyChange notifications and keep your code nice and clean. Not everyone loves this because it does magic behind the scenes, but still pretty popular.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://github.com/PrismLibrary/Prism&quot;&gt;&lt;strong&gt;Prism&lt;/strong&gt;&lt;/a&gt; - Prism is a framework for building loosely coupled, maintainable, and testable XAML applications in WPF, Xamarin Forms, and Uno / Win UI Applications. A very popular choice for people looking for an MVVM framework.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://github.com/rid00z/FreshMvvm&quot;&gt;&lt;strong&gt;FreshMVVM&lt;/strong&gt;&lt;/a&gt; - FreshMvvm is a super light Mvvm Framework designed specifically for Xamarin.Forms. It’s designed to be Easy, Simple and Flexible.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://www.mvvmcross.com/&quot;&gt;&lt;strong&gt;MvvmCross&lt;/strong&gt;&lt;/a&gt; - Share behavior and business logic in a single codebase across supported platforms, using the Model-View-ViewModel (MVVM) design pattern. MvvmCross is a framework specifically developed for Xamarin and the mobile ecosystem.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://reactiveui.net&quot;&gt;&lt;strong&gt;ReactiveUI&lt;/strong&gt;&lt;/a&gt; - An advanced, composable, functional reactive model-view-viewmodel framework for all .NET platforms! I don’t do a lot of Reactive programming is definitely something I should look into more.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://github.com/runceel/ReactiveProperty&quot;&gt;&lt;strong&gt;ReactiveProperty&lt;/strong&gt;&lt;/a&gt; - ReactiveProperty provides MVVM and asynchronous support features under &lt;a href=&quot;http://reactivex.io/&quot;&gt;Reactive Extensions&lt;/a&gt;.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;http://www.mvvmlight.net/&quot;&gt;&lt;strong&gt;MvvmLight&lt;/strong&gt;&lt;/a&gt; - Yet another popular framework for cross platform MVVM.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;debugging-and-logging&quot;&gt;Debugging and Logging&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://www.linqpad.net/&quot;&gt;&lt;strong&gt;LinqPad&lt;/strong&gt;&lt;/a&gt; - LinqPad is a great tool to just smash out some code and test it out. No more creating a new VS Solution called Console765.exe.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://github.com/moq/moq4&quot;&gt;&lt;strong&gt;moq&lt;/strong&gt;&lt;/a&gt; - The most popular and friendly mocking library for .NET&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://github.com/serilog/serilog&quot;&gt;&lt;strong&gt;SeriLog&lt;/strong&gt;&lt;/a&gt; - Serilog is a diagnostic logging library for .NET applications. It is easy to set up, has a clean API, and runs on all recent .NET platforms.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;&quot;&gt;&lt;strong&gt;xunit&lt;/strong&gt;&lt;/a&gt; - xUnit.net is a free, open source, community-focused unit testing tool for the .NET Framework. Written by the original inventor of NUnit v2, xUnit.net is the latest technology for unit testing C#, F#, VB.NET and other .NET languages. xUnit.net works with ReSharper, CodeRush, TestDriven.NET and Xamarin.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://github.com/AutoFixture/AutoFixture&quot;&gt;&lt;strong&gt;AutoFixture&lt;/strong&gt;&lt;/a&gt; - Because sometimes you can’t be bothered creating your own data for unit tests. This library will reflect over your models, so you can just ask it to create a bunch of objects for you.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;xamarinforms-libraries&quot;&gt;Xamarin.Forms Libraries&lt;/h3&gt;
+
+&lt;p&gt;Xamarin.Forms is the way &lt;em&gt;most&lt;/em&gt; people develop Xamarin Applications and it has some amazing libraries you can use to help you out.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://github.com/aritchie/userdialogs&quot;&gt;&lt;strong&gt;ACR User Dialogs&lt;/strong&gt;&lt;/a&gt; - A cross platform library that allows you to call for standard user dialogs from a shared/portable library. Supports Android, iOS, and Unified Windows Platform (UWP, UAP). This is a popular library to show dialogs, but looking at the github repo it looks like it may not be getting any more updates.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://github.com/AndreiMisiukevich/CardView&quot;&gt;&lt;strong&gt;CardsView&lt;/strong&gt;&lt;/a&gt; - In my opinion, this is the best Carousel style control available for Xamarin.Forms. It is very flexible and performs excellently.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://github.com/sthewissen/Xamarin.Forms.DebugRainbows&quot;&gt;&lt;strong&gt;Debug Rainbows&lt;/strong&gt;&lt;/a&gt; - This is a niftly little addition to your app used for debugging layouts. Flip a switch in your XAML and you can see the bounds of your controls. As Steven himself says, “The package you didn’t even know you needed”!&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://github.com/luberda-molinet/FFImageLoading&quot;&gt;&lt;strong&gt;FFImageLoading&lt;/strong&gt;&lt;/a&gt; - This is an amazing library for better downloading and caching of images across all the platforms.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://github.com/beraybentesen/glide-xamarin-android&quot;&gt;&lt;strong&gt;Glide&lt;/strong&gt;&lt;/a&gt; - Glide is a fast and efficient image loading library for Android focused on smooth scrolling. There is also a Xamarin.Forms focused version called &lt;a href=&quot;https://github.com/jonathanpeppers/glidex&quot;&gt;GlideX&lt;/a&gt;.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://grialkit.com/&quot;&gt;&lt;strong&gt;GrailKit&lt;/strong&gt;&lt;/a&gt; - Designed for .NET Developers. Grial UI Kit provides a complete ready made collection of fully customizable beautiful XAML templates, UI screens and resources to help you build cross-platform apps with Xamarin.Forms.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://github.com/Baseflow/LottieXamarin&quot;&gt;&lt;strong&gt;Lottie&lt;/strong&gt;&lt;/a&gt; - If you are working with designers who are throwing After Effects animations at you, or if you just want to spice up your UI with animations have a look at this bad boy. To go along with this you’ll also want to have a look at &lt;a href=&quot;https://lottiefiles.com/&quot;&gt;&lt;strong&gt;Lottie Files&lt;/strong&gt;&lt;/a&gt; which has free animation files and some very cool tools for creating and editing Lottie files.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://github.com/mgierlasinski/MagicGradients&quot;&gt;&lt;strong&gt;MagicGradients&lt;/strong&gt;&lt;/a&gt; - If you love gradients (and who doesn’t) this library is for you.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://www.mapbox.com/&quot;&gt;&lt;strong&gt;Mapbox&lt;/strong&gt;&lt;/a&gt; - If Apple or Google Maps aren’t doing it for you, or if you want to have offline maps this could be a good solution. There is &lt;a href=&quot;https://github.com/NAXAM/mapbox-xamarin-forms&quot;&gt;&lt;strong&gt;MapBox Xamarin Forms&lt;/strong&gt;&lt;/a&gt; to use as well.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://github.com/sthewissen/Xamarin.Forms.PancakeView&quot;&gt;&lt;strong&gt;PancakeView&lt;/strong&gt;&lt;/a&gt; - A delicous library that provides an extended ContentView for Xamarin.Forms with rounded corners, borders, shadows. As I understand it, most of the functionality is being moved into Xamarin Community Toolkit. But I still love you. Regardless,  you’ll still see PancakeView referenced in a bunch of solutions and tutorials.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://github.com/rotorgames/Rg.Plugins.Popup&quot;&gt;&lt;strong&gt;Rg.Plugins.Popup&lt;/strong&gt;&lt;/a&gt; - Rg.Plugins.Popup - is a cross platform plugin for Xamarin.Forms which allows you to open Xamarin.Forms pages as a popup that can be shared across iOS, Android, UWP, and macOS.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://github.com/GiampaoloGabba/Xamarin.Plugin.SharedTransitions&quot;&gt;&lt;strong&gt;Shared Transitions&lt;/strong&gt;&lt;/a&gt; - If you want to provide dynamic transitions between your pages you can do it in platform specific code… or just use Shared Transitions!&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://github.com/roubachof&quot;&gt;&lt;strong&gt;Sharpnado&lt;/strong&gt;&lt;/a&gt; - Sharpnado is a great collection of UI based improvements, including &lt;a href=&quot;https://github.com/roubachof/Sharpnado.Tabs&quot;&gt;Tabs&lt;/a&gt;, &lt;a href=&quot;https://github.com/roubachof/Sharpnado.HorizontalListView&quot;&gt;HorizontalListView&lt;/a&gt;, &lt;a href=&quot;https://github.com/roubachof/Sharpnado.MaterialFrame&quot;&gt;MaterialFrame&lt;/a&gt;, &lt;a href=&quot;https://github.com/roubachof/Sharpnado.Shadows&quot;&gt;Shadows&lt;/a&gt; and a pretty cool &lt;a href=&quot;https://github.com/roubachof/Sharpnado.TaskLoaderView&quot;&gt;TaskLoaderView&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://github.com/shinyorg&quot;&gt;&lt;strong&gt;Shiny&lt;/strong&gt;&lt;/a&gt; - Xamarin.Essentials has some fantastic platform abstractions for devices, but Shiny really… err… shines when it comes to deep platform abstractions for things like Background Jobs and location.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://github.com/mono/SkiaSharp&quot;&gt;&lt;strong&gt;SkiaSharp&lt;/strong&gt;&lt;/a&gt; - I can’t even tell you how much I love SkiaSharp for doing cross platform 2D Graphics. It’s super fast and super powerful.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://github.com/xamarin/Essentials&quot;&gt;&lt;strong&gt;Xamarin.Essentials&lt;/strong&gt;&lt;/a&gt; - This library provides so many amazing abstractions over the platform APIs. It is now part of the standard template when creating a Xamarin.Forms application. Between Essentials and Shiny I feel like I may never need to write platform specific code ever again.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://github.com/xamarin/XamarinCommunityToolkit&quot;&gt;&lt;strong&gt;Xamarin Community Toolkit&lt;/strong&gt;&lt;/a&gt; - A collection of Animations, Behaviors, Converters, Controls and Effects for mobile development with Xamarin.Forms. This library is almost certainly going to be a “must have” for new Xamarin.Forms projects. Very importantly, it is providing a bridge of new features as we head towards the MAUI future.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;build-and-deploy&quot;&gt;Build and Deploy&lt;/h2&gt;
+
+&lt;p&gt;Continuous Integration and Continuous Deployment practices these days should be considered a &lt;em&gt;must have&lt;/em&gt;. And with the tools available it’s really very simple to get started.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://github.com/dansiegel/Mobile.BuildTools&quot;&gt;&lt;strong&gt;Mobile.BuildTools&lt;/strong&gt;&lt;/a&gt; - The Mobile.BuildTools are a collection of MSBuild Tasks that help make MSBuild smarter in handling the build process for CI/CD with Mobile Applications.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://appcenter.ms/&quot;&gt;&lt;strong&gt;Visual Studio App Center&lt;/strong&gt;&lt;/a&gt; - Connect to GitHub, Bitbucket, GitLab, or Azure DevOps and build your app in the cloud on every commit. Automatically run unit tests, release to testers and stores, or test your UI on real devices.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://azure.microsoft.com/services/devops/pipelines/&quot;&gt;&lt;strong&gt;Azure DevOps - Azure Pipelines&lt;/strong&gt;&lt;/a&gt; - Get cloud-hosted pipelines for Linux, macOS and Windows. Build web, desktop and mobile applications. Deploy to any cloud or on‑premises. Very full featured and customizable.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://github.com/features/actions&quot;&gt;&lt;strong&gt;Github Actions&lt;/strong&gt;&lt;/a&gt; - If you are on GitHub then GitHub Actions seems to me to be something which is growing in momentum.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;other-resources&quot;&gt;Other Resources&lt;/h2&gt;
+
+&lt;p&gt;This blog post was meant to be much shorter, but there is just so much awesome stuff available for the Xamarin Ecosystem that I couldn’t help myself. Other resources you might want to check out are:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/XamSome/awesome-xamarin&quot;&gt;&lt;strong&gt;Awesome Xamarin&lt;/strong&gt;&lt;/a&gt; - it lists outs &lt;em&gt;loads&lt;/em&gt; of other libraries and tools for just about everything.&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/jsuarezruiz/awesome-xamarin-forms&quot;&gt;&lt;strong&gt;Awesome Xamarin.Forms&lt;/strong&gt;&lt;/a&gt; - A curated list of awesome Xamarin.Forms libraries and resources.&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://luismts.com/design-tools-xamarin-forms/&quot;&gt;&lt;strong&gt;Design Tools for Xamarin Forms&lt;/strong&gt;&lt;/a&gt; - Design tools and resources for Xamarin.Forms&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;wrap-up&quot;&gt;Wrap-up&lt;/h2&gt;
+
+&lt;p&gt;So there you have it people, a grab bag of tools, libraries and resources I (and the community) recommend for Xamarin Development. I hope you find it useful. Maybe you have some tools or resources which you consider essential… please let me know or post some comments below. Remember, sharing is caring.&lt;/p&gt;
+
+&lt;p&gt;Take care, and happy coding!&lt;/p&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>Kym Phillpotts</name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="Xamarin" />
+      
+
+      
+        <summary type="html">Choosing the right tools and resources can make all the difference in being a productive and effective developer. So, what are all the tools and libraries you should be using to build your Xamarin apps in 2021?</summary>
+      
+
+      
+      
+    </entry>
   
     <entry>
       <title type="html">Xamarin.Forms UI Challenges - Pizza Shop</title>
@@ -2746,278 +3216,6 @@ Kym&lt;/p&gt;</content>
 
       
         <summary type="html">Those of you know me (or have visited my blog) know that I love playing around with Xamarin.Forms Layouts.   Recently, Matt Soucoup was on the Xamarin Show talking about Animations. He showed how easy it is to do simple animations in Xamarin Forms. Personally, I don’t think developers do enough with animations – they can really spice up your UI and show your users how much you care.</summary>
-      
-
-      
-      
-    </entry>
-  
-    <entry>
-      <title type="html">Unit Testing Tips</title>
-      <link href="https://kymphillpotts.com/unit-testing-tips/" rel="alternate" type="text/html" title="Unit Testing Tips" />
-      <published>2018-03-07T19:50:32+11:00</published>
-      <updated>2018-03-07T19:50:32+11:00</updated>
-      <id>https://kymphillpotts.com/unit-testing-tips</id>
-      <content type="html" xml:base="https://kymphillpotts.com/unit-testing-tips/">&lt;p&gt;I’ve been writing a few unit tests recently. I actually like writing unit tests, I find something very cathartic about seeing those little green ticks show up.  However, one thing that can make writing unit tests a drag is setting up testing data for each test. Well, there are some nice patterns and tools out there to help. Let’s check some out…&lt;/p&gt;
-
-&lt;h2 id=&quot;autofixture&quot;&gt;AutoFixture&lt;/h2&gt;
-
-&lt;p&gt;If you just need to generate some data (and don’t care too much about what it contains) you might want to have a look at a nice little library called AutoFixture&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;AutoFixture is an open source library for .NET designed to minimize the ‘Arrange’ phase of your unit tests in order to maximize maintainability. Its primary goal is to allow developers to focus on what is being tested rather than how to set up the test scenario, by making it easier to create object graphs containing test data.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h2 id=&quot;testcase-attribute&quot;&gt;TestCase Attribute&lt;/h2&gt;
-
-&lt;p&gt;Sometimes you want to run a number of values through a unit test and you don’t necessarily want to write different unit tests for each of them. The TestCase attribute is very useful here because you can get Nunit to just pass a series of values in:&lt;/p&gt;
-
-&lt;div class=&quot;language-csharp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;na&quot;&gt;[TestCase(12, 2, 6)]&lt;/span&gt;
-&lt;span class=&quot;na&quot;&gt;[TestCase(12, 4, 3)]&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;DivideTest&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;d&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;q&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;Assert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;AreEqual&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;q&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;d&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;A really nice thing about TestCase is that each element will appear as a different unit test in your runner, which means if one of the values fails you can instantly see which one failed. I’ve used this pretty extensively in the past, but one area where this starts to make your unit tests hard to understand is when you have a lot of values – pretty soon the number of attributes starts to make it kind of difficult to understand. But fear not, the TestCaseSource attribute is here to save you.&lt;/p&gt;
-
-&lt;h2 id=&quot;testcasesource-attribute&quot;&gt;TestCaseSource Attribute&lt;/h2&gt;
-
-&lt;p&gt;This is something that has been around forever, but I’ve never bothered playing with. Turns out it’s a really nice way of structuring that test data. Basically, you create a class that returns an IEnumerable of your test data.&lt;/p&gt;
-
-&lt;div class=&quot;language-csharp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;MyTests&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Test&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;TestCaseSource&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;typeof&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;MyDataClass&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;TestCases&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)]&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;DivideTest&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;d&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;d&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;MyDataClass&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;IEnumerable&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;TestCases&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;get&lt;/span&gt;
-        &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-            &lt;span class=&quot;k&quot;&gt;yield&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;TestCaseData&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;12&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Returns&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-            &lt;span class=&quot;k&quot;&gt;yield&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;TestCaseData&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;12&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Returns&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-            &lt;span class=&quot;k&quot;&gt;yield&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;TestCaseData&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;12&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Returns&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;  
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Now in my case, I was writing some tests for a simple converter application with some numeric buttons, a backspace key, a decimal point key ‘.’. You know, a numeric keypad. It actually turns out that there are a number of things to consider. For example, what if someone tries to enter two decimal points, or maybe tries to have a bunch of leading zeros. Putting the scenarios into a TestCaseSource made this easy to write and also easy to visualize.&lt;/p&gt;
-
-&lt;p&gt;NOTE: my architecture is MVVM, so I made sure I used commands behind all the buttons which means I can test what happens when a user presses a button (effectively testing the UI). For my unit test inputs, I provided a string with the keys pressed and had a little method to execute the appropriate command on the ViewModel.&lt;/p&gt;
-
-&lt;div class=&quot;language-csharp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;na&quot;&gt;[Test, TestCaseSource(typeof(KeySequenceTestData), &quot;KeySequenceData&quot;)]&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;public&lt;/span&gt;&lt;span class=&quot;err&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;err&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;KeySequence_Commands_GivesCorrectValue&lt;/span&gt;&lt;span class=&quot;err&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;err&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;keySequence&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;err&quot;&gt; &lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-&lt;span class=&quot;err&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;var&lt;/span&gt;&lt;span class=&quot;err&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;vm&lt;/span&gt;&lt;span class=&quot;err&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;err&quot;&gt; &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;err&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;MainViewModel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
- 
-&lt;span class=&quot;err&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;foreach&lt;/span&gt;&lt;span class=&quot;err&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;var&lt;/span&gt;&lt;span class=&quot;err&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;err&quot;&gt; &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;in&lt;/span&gt;&lt;span class=&quot;err&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;keySequence&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;err&quot;&gt;        &lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;ProcessCharacter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;vm&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;err&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
- 
-&lt;span class=&quot;err&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;&lt;span class=&quot;err&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;vm&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;FromValue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;private&lt;/span&gt;&lt;span class=&quot;err&quot;&gt; &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;void&lt;/span&gt;&lt;span class=&quot;err&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;ProcessCharacter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;MainViewModel&lt;/span&gt;&lt;span class=&quot;err&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;vm&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;err&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;char&lt;/span&gt;&lt;span class=&quot;err&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;character&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-&lt;span class=&quot;err&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;switch&lt;/span&gt;&lt;span class=&quot;err&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;character&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;err&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-&lt;span class=&quot;err&quot;&gt;        &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;case&lt;/span&gt;&lt;span class=&quot;err&quot;&gt; &lt;/span&gt;&lt;span class=&quot;sc&quot;&gt;'&amp;lt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;err&quot;&gt; &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;// user hits the backspace key&lt;/span&gt;
-&lt;span class=&quot;err&quot;&gt;            &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;vm&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;BackSpaceCommand&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Execute&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;err&quot;&gt;            &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;break&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;err&quot;&gt;        &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;case&lt;/span&gt;&lt;span class=&quot;err&quot;&gt; &lt;/span&gt;&lt;span class=&quot;sc&quot;&gt;'.'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;err&quot;&gt; &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;// user hits the decimal point &lt;/span&gt;
-&lt;span class=&quot;err&quot;&gt;            &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;vm&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;DecimalPointCommand&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Execute&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;err&quot;&gt;            &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;break&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;err&quot;&gt;        &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;default&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;err&quot;&gt; &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;// any other key (which in case is a number key)&lt;/span&gt;
-&lt;span class=&quot;err&quot;&gt;            &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;vm&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;NumberCommand&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Execute&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;character&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;ToString&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;());&lt;/span&gt;
-&lt;span class=&quot;err&quot;&gt;            &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;break&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;err&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;public&lt;/span&gt;&lt;span class=&quot;err&quot;&gt; &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;err&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;KeySequenceTestData&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-&lt;span class=&quot;err&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;public&lt;/span&gt;&lt;span class=&quot;err&quot;&gt; &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;static&lt;/span&gt;&lt;span class=&quot;err&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;IEnumerable&lt;/span&gt;&lt;span class=&quot;err&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;KeySequenceData&lt;/span&gt;
-&lt;span class=&quot;err&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-&lt;span class=&quot;err&quot;&gt;        &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;get&lt;/span&gt;
-&lt;span class=&quot;err&quot;&gt;        &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-&lt;span class=&quot;err&quot;&gt;            &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;// simple numeric value tests &lt;/span&gt;
-&lt;span class=&quot;err&quot;&gt;            &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;yield&lt;/span&gt;&lt;span class=&quot;err&quot;&gt; &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;&lt;span class=&quot;err&quot;&gt; &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;err&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;TestCaseData&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;0&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Returns&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;0&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;err&quot;&gt;            &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;yield&lt;/span&gt;&lt;span class=&quot;err&quot;&gt; &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;&lt;span class=&quot;err&quot;&gt; &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;err&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;TestCaseData&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;1&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Returns&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;1&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;err&quot;&gt;            &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;yield&lt;/span&gt;&lt;span class=&quot;err&quot;&gt; &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;&lt;span class=&quot;err&quot;&gt; &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;err&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;TestCaseData&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;99&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Returns&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;99&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;err&quot;&gt;            &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;yield&lt;/span&gt;&lt;span class=&quot;err&quot;&gt; &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;&lt;span class=&quot;err&quot;&gt; &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;err&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;TestCaseData&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;909&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Returns&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;909&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
- 
-&lt;span class=&quot;err&quot;&gt;            &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;// testing leading and trailing zeros&lt;/span&gt;
-&lt;span class=&quot;err&quot;&gt;            &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;yield&lt;/span&gt;&lt;span class=&quot;err&quot;&gt; &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;&lt;span class=&quot;err&quot;&gt; &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;err&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;TestCaseData&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;00&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Returns&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;0&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;err&quot;&gt;            &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;yield&lt;/span&gt;&lt;span class=&quot;err&quot;&gt; &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;&lt;span class=&quot;err&quot;&gt; &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;err&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;TestCaseData&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;10&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Returns&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;10&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;err&quot;&gt;            &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;yield&lt;/span&gt;&lt;span class=&quot;err&quot;&gt; &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;&lt;span class=&quot;err&quot;&gt; &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;err&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;TestCaseData&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;0.&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Returns&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;0.&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;err&quot;&gt;            &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;yield&lt;/span&gt;&lt;span class=&quot;err&quot;&gt; &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;&lt;span class=&quot;err&quot;&gt; &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;err&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;TestCaseData&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;.0&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Returns&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;0.0&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;err&quot;&gt;            &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;yield&lt;/span&gt;&lt;span class=&quot;err&quot;&gt; &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;&lt;span class=&quot;err&quot;&gt; &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;err&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;TestCaseData&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;...0&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Returns&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;0.0&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;err&quot;&gt;            &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;yield&lt;/span&gt;&lt;span class=&quot;err&quot;&gt; &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;&lt;span class=&quot;err&quot;&gt; &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;err&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;TestCaseData&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;.000&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Returns&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;0.000&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;err&quot;&gt;            &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;yield&lt;/span&gt;&lt;span class=&quot;err&quot;&gt; &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;&lt;span class=&quot;err&quot;&gt; &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;err&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;TestCaseData&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;000.&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Returns&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;0.&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;err&quot;&gt;            &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;yield&lt;/span&gt;&lt;span class=&quot;err&quot;&gt; &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;&lt;span class=&quot;err&quot;&gt; &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;err&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;TestCaseData&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;000.00&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Returns&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;0.00&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;err&quot;&gt;            &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;yield&lt;/span&gt;&lt;span class=&quot;err&quot;&gt; &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;&lt;span class=&quot;err&quot;&gt; &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;err&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;TestCaseData&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;10.00001&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Returns&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;10.00001&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;err&quot;&gt;            &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;yield&lt;/span&gt;&lt;span class=&quot;err&quot;&gt; &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;&lt;span class=&quot;err&quot;&gt; &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;err&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;TestCaseData&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;10.10&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Returns&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;10.10&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;err&quot;&gt;            &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;yield&lt;/span&gt;&lt;span class=&quot;err&quot;&gt; &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;&lt;span class=&quot;err&quot;&gt; &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;err&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;TestCaseData&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;10..10&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Returns&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;10.10&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;err&quot;&gt;            &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;yield&lt;/span&gt;&lt;span class=&quot;err&quot;&gt; &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;&lt;span class=&quot;err&quot;&gt; &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;err&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;TestCaseData&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;10.10.&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Returns&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;10.10&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;err&quot;&gt;            &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;yield&lt;/span&gt;&lt;span class=&quot;err&quot;&gt; &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;&lt;span class=&quot;err&quot;&gt; &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;err&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;TestCaseData&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;001.10.&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Returns&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;1.10&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
- 
-&lt;span class=&quot;err&quot;&gt;            &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;// testing hitting the back key&lt;/span&gt;
-&lt;span class=&quot;err&quot;&gt;            &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;yield&lt;/span&gt;&lt;span class=&quot;err&quot;&gt; &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;&lt;span class=&quot;err&quot;&gt; &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;err&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;TestCaseData&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&amp;lt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Returns&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;0&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;err&quot;&gt;            &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;yield&lt;/span&gt;&lt;span class=&quot;err&quot;&gt; &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;&lt;span class=&quot;err&quot;&gt; &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;err&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;TestCaseData&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&amp;lt;.&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Returns&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;0.&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;err&quot;&gt;            &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;yield&lt;/span&gt;&lt;span class=&quot;err&quot;&gt; &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;&lt;span class=&quot;err&quot;&gt; &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;err&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;TestCaseData&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&amp;lt;&amp;lt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Returns&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;0&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;err&quot;&gt;            &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;yield&lt;/span&gt;&lt;span class=&quot;err&quot;&gt; &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;&lt;span class=&quot;err&quot;&gt; &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;err&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;TestCaseData&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;0&amp;lt;0&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Returns&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;0&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;err&quot;&gt;            &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;yield&lt;/span&gt;&lt;span class=&quot;err&quot;&gt; &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;&lt;span class=&quot;err&quot;&gt; &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;err&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;TestCaseData&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;12&amp;lt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Returns&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;1&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;err&quot;&gt;            &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;yield&lt;/span&gt;&lt;span class=&quot;err&quot;&gt; &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;&lt;span class=&quot;err&quot;&gt; &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;err&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;TestCaseData&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;1&amp;lt;2&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Returns&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;2&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;err&quot;&gt;            &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;yield&lt;/span&gt;&lt;span class=&quot;err&quot;&gt; &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;&lt;span class=&quot;err&quot;&gt; &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;err&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;TestCaseData&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;12&amp;lt;&amp;lt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Returns&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;0&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;err&quot;&gt;            &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;yield&lt;/span&gt;&lt;span class=&quot;err&quot;&gt; &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;&lt;span class=&quot;err&quot;&gt; &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;err&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;TestCaseData&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;0.9&amp;lt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Returns&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;0.&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;err&quot;&gt;            &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;yield&lt;/span&gt;&lt;span class=&quot;err&quot;&gt; &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;&lt;span class=&quot;err&quot;&gt; &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;err&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;TestCaseData&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;0.&amp;lt;9&amp;lt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Returns&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;0&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;err&quot;&gt;        &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;err&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;the-builder-pattern-for-test-data&quot;&gt;The Builder Pattern for Test Data&lt;/h2&gt;
-
-&lt;p&gt;The Builder pattern turns out to be a nice pattern for creating test data. I first heard of this usage from Steve Smith when he appeared on &lt;a href=&quot;https://www.dotnetrocks.com/?show=1494&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;.NET Rocks episode 1494&lt;/a&gt;. You should take a listen to that episode.&lt;/p&gt;
-
-&lt;p&gt;The Basic idea is you create yourself a Builder class for your model object that goes and creates an object for you with some default values and then you have builder methods that allow you to set specific values if that is important for your test. Why not just create the objects with their values straight in your test? Well, you don’t want your tests littered with code to setup objects because it distracts you from the purpose of your test… and what if you change that model object later, you’ve got a thousand different unit tests you need to update.&lt;/p&gt;
-
-&lt;p&gt;Here is a trivial example: As I said, I’m working on a simple converter application which has a variety of different Unit objects. So I create myself Builder object which allows me to easily create a Unit to covert.&lt;/p&gt;
-
-&lt;div class=&quot;language-csharp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;UnitBuilder&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;string&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;A Unit&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;string&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;description&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Description of a unit&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;UnitCategory&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;category&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;UnitCategory&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Weight&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;double&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;baseUnitValue&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-
-    &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;BaseUnit&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Build&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;BaseUnit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;description&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;category&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;baseUnitValue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-    &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;UnitBuilder&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;WithName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;string&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-    &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;UnitBuilder&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;WithDescription&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;string&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;description&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;description&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;description&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-    &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;UnitBuilder&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;WithCategory&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;UnitCategory&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;category&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;category&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;category&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-    &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;UnitBuilder&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;WithBaseUnitValue&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;double&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;baseUnitValue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;baseUnitValue&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;baseUnitValue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-    &lt;span class=&quot;c1&quot;&gt;/// &lt;/span&gt;
-    &lt;span class=&quot;c1&quot;&gt;/// Implicit converter object, so we can turn a builder straight into a unit&lt;/span&gt;
-    &lt;span class=&quot;c1&quot;&gt;///&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;Builder&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Instance&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;implicit&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;operator&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;BaseUnit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;UnitBuilder&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;instance&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; 
-    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;instance&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Build&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; 
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Once I have that setup, within my unit test I can use this builder object to create my Unit objects. It will have default values but allows me to override whatever I want, all without having a hard dependency on the constructor for the object. For example,&lt;/p&gt;
-
-&lt;div class=&quot;language-csharp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;na&quot;&gt;[Test]&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;public&lt;/span&gt;&lt;span class=&quot;err&quot;&gt; &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;void&lt;/span&gt;&lt;span class=&quot;err&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;SimpleConversion_OneUnit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-&lt;span class=&quot;err&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;BaseUnit&lt;/span&gt;&lt;span class=&quot;err&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cm&lt;/span&gt;&lt;span class=&quot;err&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;err&quot;&gt; &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;err&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;UnitBuilder&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;WithName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;centimeters&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;WithBaseUnitValue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;err&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;BaseUnit&lt;/span&gt;&lt;span class=&quot;err&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;meter&lt;/span&gt;&lt;span class=&quot;err&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;err&quot;&gt; &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;err&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;UnitBuilder&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;WithName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;meters&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;WithBaseUnitValue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;100&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;err&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Converter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;ConvertUnit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cm&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;err&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;meter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;err&quot;&gt; &lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;ShouldEqual&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;0.01&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;err&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Converter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;ConvertUnit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;meter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;err&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cm&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;err&quot;&gt; &lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;ShouldEqual&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;100&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;This just makes it really nice to construct tests which are nice a readable without being polluted with too much setup code. You can read a bunch more about this pattern at:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.kenneth-truyers.net/2013/07/15/flexible-and-expressive-unit-tests-with-the-builder-pattern/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Flexible and expressive unit tests with the builder pattern&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://ardalis.com/improve-tests-with-the-builder-pattern-for-test-data&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Improve tests with the builder pattern for test data&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;One last thing you may notice, I also used a little library called Should, which makes reading the unit test just a teeny-tiny bit more readable.&lt;/p&gt;
-
-&lt;div class=&quot;language-csharp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Should_assertions&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-   &lt;span class=&quot;kt&quot;&gt;object&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;obj&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-   &lt;span class=&quot;n&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;ShouldBeNull&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-
-    &lt;span class=&quot;n&quot;&gt;obj&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;ShouldBeType&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;typeof&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;ShouldEqual&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;ShouldNotBeNull&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;ShouldNotBeSameAs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;());&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;ShouldNotBeType&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;typeof&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;ShouldNotEqual&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;foo&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-
-    &lt;span class=&quot;n&quot;&gt;obj&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;x&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;ShouldNotBeInRange&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;y&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;z&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;ShouldBeInRange&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;a&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;z&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;ShouldBeSameAs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;x&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-
-    &lt;span class=&quot;s&quot;&gt;&quot;This String&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;ShouldContain&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;This&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;s&quot;&gt;&quot;This String&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;ShouldNotBeEmpty&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-    &lt;span class=&quot;s&quot;&gt;&quot;This String&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;ShouldNotContain&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;foobar&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-
-    &lt;span class=&quot;k&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;ShouldBeFalse&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;ShouldBeTrue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-
-    &lt;span class=&quot;kt&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;list&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;List&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&amp;gt;();&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;ShouldBeEmpty&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;ShouldNotContain&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;());&lt;/span&gt;
-
-    &lt;span class=&quot;kt&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;item&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Add&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;item&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;ShouldNotBeEmpty&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;ShouldContain&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;item&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;in-conclusion&quot;&gt;In Conclusion&lt;/h2&gt;
-
-&lt;p&gt;These are just some little things that you may consider next time you are writing unit tests. It will make setting up your data a little easier whilst also creating more maintainable and easier to read unit tests.&lt;/p&gt;
-
-&lt;p&gt;Till next time, happy coding!&lt;/p&gt;</content>
-
-      
-      
-      
-      
-      
-
-      <author>
-          <name>Kym Phillpotts</name>
-        
-        
-      </author>
-
-      
-
-      
-        <category term="Other" />
-      
-        <category term="Xamarin" />
-      
-
-      
-        <summary type="html">I’ve been writing a few unit tests recently. I actually like writing unit tests, I find something very cathartic about seeing those little green ticks show up.  However, one thing that can make writing unit tests a drag is setting up testing data for each test. Well, there are some nice patterns and tools out there to help. Let’s check some out…</summary>
       
 
       
