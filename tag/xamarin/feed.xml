@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator>
   <link href="https://kymphillpotts.com/tag/xamarin/feed.xml" rel="self" type="application/atom+xml" />
   <link href="https://kymphillpotts.com/" rel="alternate" type="text/html" />
-  <updated>2021-04-25T23:03:47+10:00</updated>
+  <updated>2021-09-18T13:01:19+10:00</updated>
   <id>https://kymphillpotts.com/tag/xamarin/feed.xml</id>
 
   
@@ -30,6 +30,434 @@
   
   
 
+  
+    <entry>
+      <title type="html">Avatar Groups</title>
+      <link href="https://kymphillpotts.com/avatar-groups.html" rel="alternate" type="text/html" title="Avatar Groups" />
+      <published>2021-09-18T10:00:00+10:00</published>
+      <updated>2021-09-18T10:00:00+10:00</updated>
+      <id>https://kymphillpotts.com/avatar-groups</id>
+      <content type="html" xml:base="https://kymphillpotts.com/avatar-groups.html">&lt;p&gt;Overlapping avatar badges are an effective way to show a collection of people, especially where space is at a premium. In this article we look at how to create this UI in Xamarin.Forms and MAUI.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;assets/images/posts/avatargroups/avatars.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Along the way, we will touch on a few other interesting concepts like:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Bindable Layouts&lt;/li&gt;
+  &lt;li&gt;DataTemplate Selectors&lt;/li&gt;
+  &lt;li&gt;MultiValue Converters&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;a href=&quot;https://github.com/kphillpotts/AvatarGroup&quot;&gt;The code for this article is available over on my Github.&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;lets-start-at-the-beginning&quot;&gt;Let’s start at the beginning&lt;/h2&gt;
+
+&lt;p&gt;The first thing we want is to have some data which is going be exposed via a simple Model and ViewModel.&lt;/p&gt;
+
+&lt;h3 id=&quot;person-model&quot;&gt;Person Model&lt;/h3&gt;
+
+&lt;div class=&quot;language-csharp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Person&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;// whatever properties you have for a person&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;// but the most important one we will use is&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;// the image for the person&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;string&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Image&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;peopleviewmodel&quot;&gt;PeopleViewModel&lt;/h3&gt;
+
+&lt;p&gt;We are going to support adding and removing people at runtime, which means we have an &lt;code class=&quot;highlighter-rouge&quot;&gt;AddUserCommand&lt;/code&gt;, a &lt;code class=&quot;highlighter-rouge&quot;&gt;RemoveUserCommand&lt;/code&gt;, and we expose the data through an &lt;code class=&quot;highlighter-rouge&quot;&gt;ObservableCollection&lt;/code&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;language-csharp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;PeopleViewModel&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;BaseViewModel&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ICommand&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;AddUserCommand&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ICommand&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;RemoveUserCommand&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ObservableCollection&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Person&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;People&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ObservableCollection&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Person&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;();&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;PeopleViewModel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;// setup the commands&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;AddUserCommand&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Command&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;AddPerson&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;RemoveUserCommand&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Command&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;RemovePerson&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;nf&quot;&gt;CreateSampleData&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;CreateSampleData&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;// create 5 peeps&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;++)&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;nf&quot;&gt;AddPerson&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;AddPerson&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;// add a person using an Image from pravatar.cc&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;People&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Add&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Person&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Image&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;$&quot;https://i.pravatar.cc/64?img=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;People&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Count&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;RemovePerson&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;People&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Any&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;People&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Remove&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;People&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Last&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;());&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;TIP: There are some nice services you can use for mock random avatars. Here are a few you I’ve use for mockups and design work.&lt;/p&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;a href=&quot;https://randomuser.me&quot;&gt;randomuser.me&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;https://pravatar.cc&quot;&gt;pravatar.cc&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;https://uifaces.co&quot;&gt;UI Faces&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;show-me-the-avatars&quot;&gt;Show me the avatars&lt;/h2&gt;
+
+&lt;p&gt;We can start out the UI simply by using a horizontal &lt;code class=&quot;highlighter-rouge&quot;&gt;StackLayout&lt;/code&gt; and the &lt;code class=&quot;highlighter-rouge&quot;&gt;BindableLayout&lt;/code&gt; attached extension.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;a href=&quot;https://docs.microsoft.com/en-us/xamarin/xamarin-forms/user-interface/layouts/bindable-layouts&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;BindableLayouts&lt;/code&gt;&lt;/a&gt; give you the ability to have a Layout generate its content by binding to a collection of items.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;div class=&quot;language-xml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;StackLayout&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;BindableLayout.ItemsSource=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{Binding People}&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;HorizontalOptions=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;CenterAndExpand&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;Orientation=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Horizontal&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;VerticalOptions=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Center&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;BindableLayout.ItemTemplate&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;DataTemplate&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;Frame&lt;/span&gt;
+                &lt;span class=&quot;na&quot;&gt;Margin=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;-20,0,0,0&quot;&lt;/span&gt;
+                &lt;span class=&quot;na&quot;&gt;Padding=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;0&quot;&lt;/span&gt;
+                &lt;span class=&quot;na&quot;&gt;CornerRadius=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;24&quot;&lt;/span&gt;
+                &lt;span class=&quot;na&quot;&gt;HeightRequest=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;48&quot;&lt;/span&gt;
+                &lt;span class=&quot;na&quot;&gt;IsClippedToBounds=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;True&quot;&lt;/span&gt;
+                &lt;span class=&quot;na&quot;&gt;WidthRequest=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;48&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+                &lt;span class=&quot;nt&quot;&gt;&amp;lt;Image&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Source=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{Binding Image}&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;/Frame&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;/DataTemplate&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/BindableLayout.ItemTemplate&amp;gt;&lt;/span&gt;
+    
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/StackLayout&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;There are a couple of interesting things in that markup.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Negative Margins&lt;/strong&gt; - This allows us to overlap the elements, notice the &lt;code class=&quot;highlighter-rouge&quot;&gt;Margin=&quot;-20,0,0,0&quot;&lt;/code&gt;.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Circular images&lt;/strong&gt; - There are a number of different ways of doing this, but a simple &lt;code class=&quot;highlighter-rouge&quot;&gt;Frame&lt;/code&gt;  with a &lt;code class=&quot;highlighter-rouge&quot;&gt;CornerRadius&lt;/code&gt; does the job.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;And that’s going to give us a pretty decent looking group of overlapping avatars.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;assets/images/posts/avatargroups/simple_avatars.png&quot; alt=&quot;Simple Avatars&quot; /&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Another good option here is to use the &lt;a href=&quot;https://docs.microsoft.com/en-us/xamarin/community-toolkit/views/avatarview&quot;&gt;AvatarView&lt;/a&gt; in the &lt;a href=&quot;https://github.com/xamarin/XamarinCommunityToolkit&quot;&gt;Xamarin Community Toolkit&lt;/a&gt;. The cool thing about the AvatarView is that it handles showing initials for avatars if it can’t load an image.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;improving-the-look&quot;&gt;Improving the look&lt;/h3&gt;
+&lt;p&gt;For our simple avatars, we can make them look a little more dynamic by giving the illusion of the avatars cutting into each other. Like this:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;assets/images/posts/avatargroups/simple_avatars_styled.png&quot; alt=&quot;Cutout Avatars&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;We can achieve this effect in a number of ways, but an easy way would be to have a thick border (frame) around each avatar using the background color (in our case white). Also, it’s probably time to introduce a few styles for consistency and reuse as well.&lt;/p&gt;
+
+&lt;div class=&quot;language-xml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;...
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;ResourceDictionary&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;Style&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;x:Key=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;avatarFrame&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;TargetType=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Frame&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;Setter&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Property=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Margin&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Value=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;-20,0,0,0&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;Setter&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Property=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Padding&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Value=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;0&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;Setter&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Property=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;BackgroundColor&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Value=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;White&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;Setter&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Property=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;CornerRadius&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Value=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;24&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;Setter&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Property=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;HasShadow&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Value=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;False&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;Setter&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Property=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;HeightRequest&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Value=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;48&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;Setter&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Property=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;VerticalOptions&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Value=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Start&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;Setter&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Property=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;WidthRequest&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Value=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;48&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/Style&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;Style&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;x:Key=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;contentFrame&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;TargetType=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Frame&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;Setter&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Property=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Padding&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Value=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;0&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;Setter&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Property=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;BackgroundColor&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Value=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;White&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;Setter&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Property=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;CornerRadius&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Value=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;21&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;Setter&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Property=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;HasShadow&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Value=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;False&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;Setter&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Property=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;HeightRequest&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Value=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;42&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;Setter&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Property=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;VerticalOptions&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Value=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Center&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;Setter&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Property=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;HorizontalOptions&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Value=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Center&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;Setter&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Property=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;IsClippedToBounds&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Value=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;True&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;Setter&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Property=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;WidthRequest&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Value=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;42&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/Style&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/ResourceDictionary&amp;gt;&lt;/span&gt;
+
+...
+
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;StackLayout&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;BindableLayout.ItemsSource=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{Binding People}&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;HorizontalOptions=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;CenterAndExpand&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;Orientation=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Horizontal&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;VerticalOptions=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Center&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;BindableLayout.ItemTemplate&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;DataTemplate&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;Frame&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Style=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{StaticResource avatarFrame}&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+                &lt;span class=&quot;nt&quot;&gt;&amp;lt;Frame&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Style=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{StaticResource contentFrame}&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+                    &lt;span class=&quot;nt&quot;&gt;&amp;lt;Image&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Source=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{Binding Image}&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+                &lt;span class=&quot;nt&quot;&gt;&amp;lt;/Frame&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;/Frame&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;/DataTemplate&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/BindableLayout.ItemTemplate&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/StackLayout&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;adding-a-counter&quot;&gt;Adding a counter&lt;/h2&gt;
+
+&lt;p&gt;If we have learnt anything during the last year or two of global events, it’s that too many people in one place can be a problem. The same goes for our avatar collection. At the moment, we are showing all the avatars, which is a bit of a problem if you have lots of people in your list.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;assets/images/posts/avatargroups/too_many_avatars.png&quot; alt=&quot;Too Many Avatars&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Let’s say we want to just show the first X number of people and then have a counter indicating how many more.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;assets/images/posts/avatargroups/avatars.png&quot; alt=&quot;Avatars with Counter&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;A simple approach (although not everyone’s favorite) is to create another property on the ViewModel that takes the first X people and include a counter as the last element.&lt;/p&gt;
+
+&lt;div class=&quot;language-csharp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;List&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PeopleCount&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;get&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;kt&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;numberToShow&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;List&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;returnList&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;List&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;();&lt;/span&gt;
+
+        &lt;span class=&quot;c1&quot;&gt;// add the number of people we are after&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;returnList&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;AddRange&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;People&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Take&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;numberToShow&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
+
+        &lt;span class=&quot;c1&quot;&gt;// if we have more people than we want to show, add a count&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;People&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Count&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;numberToShow&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;returnList&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Add&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;People&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Count&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;numberToShow&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;returnList&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Note:&lt;/p&gt;
+  &lt;ul&gt;
+    &lt;li&gt;Notice the new &lt;code class=&quot;highlighter-rouge&quot;&gt;PeopleCount&lt;/code&gt; Property is now a collection of &lt;code class=&quot;highlighter-rouge&quot;&gt;object&lt;/code&gt; - that’s because the collection can now contain &lt;code class=&quot;highlighter-rouge&quot;&gt;People&lt;/code&gt; objects and a counter of type &lt;code class=&quot;highlighter-rouge&quot;&gt;int&lt;/code&gt;.&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;If the number of people can change at runtime, it is also necessary to manually raise property changes in your ViewModel to tell the UI to update when you add or remove items from the People Collection.&lt;/p&gt;
+
+&lt;div class=&quot;language-csharp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;AddPerson&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;// add a person using an Image from pravatar.cc&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;People&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Add&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Person&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Image&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;$&quot;https://i.pravatar.cc/64?img=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;People&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Count&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+    &lt;span class=&quot;nf&quot;&gt;OnPropertyChanged&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;nameof&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;PeopleCount&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;RemovePerson&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;People&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Any&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;People&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Remove&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;People&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Last&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;());&lt;/span&gt;
+        &lt;span class=&quot;nf&quot;&gt;OnPropertyChanged&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;nameof&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;PeopleCount&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;visualising-different-data-types&quot;&gt;Visualising different data types&lt;/h3&gt;
+
+&lt;p&gt;A &lt;code class=&quot;highlighter-rouge&quot;&gt;DataTemplateSelector&lt;/code&gt; is a nifty way of being able to select a visualisation for an item based on the data being displayed. In our case, we will create a &lt;code class=&quot;highlighter-rouge&quot;&gt;DataTemplateSelector&lt;/code&gt; to show either a person or a counter template based on the type of the item.&lt;/p&gt;
+
+&lt;div class=&quot;language-csharp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;PersonListDataTemplateSelector&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;DataTemplateSelector&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;DataTemplate&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PersonTemplate&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;DataTemplate&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;CounterTemplate&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;protected&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;override&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;DataTemplate&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;OnSelectTemplate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;object&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;item&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;BindableObject&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;container&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;item&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;is&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Models&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Person&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PersonTemplate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;CounterTemplate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Now we add the DataTemplateSelector to your page along with DataTemplates for each type&lt;/p&gt;
+
+&lt;div class=&quot;language-xml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;DataTemplate&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;x:Key=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;personTemplate&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;Frame&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Style=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{StaticResource avatarFrame}&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;Frame&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Style=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{StaticResource contentFrame}&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;Image&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Source=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{Binding Image}&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;/Frame&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/Frame&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/DataTemplate&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;DataTemplate&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;x:Key=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;counterTemplate&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;Frame&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Style=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{StaticResource avatarFrame}&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;Frame&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;BackgroundColor=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;LightGray&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Style=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{StaticResource contentFrame}&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;Label&lt;/span&gt;
+                &lt;span class=&quot;na&quot;&gt;FontSize=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;16&quot;&lt;/span&gt;
+                &lt;span class=&quot;na&quot;&gt;HorizontalOptions=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Center&quot;&lt;/span&gt;
+                &lt;span class=&quot;na&quot;&gt;Text=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{Binding ., StringFormat='+{0}'}&quot;&lt;/span&gt;
+                &lt;span class=&quot;na&quot;&gt;TextColor=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Black&quot;&lt;/span&gt;
+                &lt;span class=&quot;na&quot;&gt;VerticalOptions=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Center&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;/Frame&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/Frame&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/DataTemplate&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;templates:PersonListDataTemplateSelector&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;x:Key=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;personDataTemplateSelector&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;CounterTemplate=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{StaticResource counterTemplate}&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;PersonTemplate=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{StaticResource personTemplate}&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Lastly we can update the our &lt;code class=&quot;highlighter-rouge&quot;&gt;StackLayout&lt;/code&gt; to be bound to the new Property on the ViewModel and the &lt;code class=&quot;highlighter-rouge&quot;&gt;DataTemplateSelector&lt;/code&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;language-xml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;StackLayout&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;BindableLayout.ItemTemplateSelector=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{StaticResource personDataTemplateSelector}&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;BindableLayout.ItemsSource=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{Binding PeopleCount}&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;HorizontalOptions=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;CenterAndExpand&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;Orientation=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Horizontal&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;VerticalOptions=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Center&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;using-multivalue-converters&quot;&gt;Using MultiValue Converters&lt;/h2&gt;
+
+&lt;p&gt;What we have right now works fine, but we have to keep our &lt;code class=&quot;highlighter-rouge&quot;&gt;PeopleCount&lt;/code&gt; collection in sync by raising &lt;code class=&quot;highlighter-rouge&quot;&gt;OnPropertyChanged&lt;/code&gt; whenever the main &lt;code class=&quot;highlighter-rouge&quot;&gt;Person&lt;/code&gt; collection changes. A lot of people aren’t going to like that, so we can try an alternative approach of using a converter to do the work for us.&lt;/p&gt;
+
+&lt;p&gt;Unfortunately a single Converter isn’t going to do the job because we need our UI to update if either the collection changes entirely, or if the count in the collection changes. This is where a &lt;a href=&quot;https://docs.microsoft.com/en-us/xamarin/xamarin-forms/app-fundamentals/data-binding/multibinding&quot;&gt;MultiValueConverter&lt;/a&gt; can help us.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;MultiBinding provides the ability to attach a collection of Binding objects to a single binding target property. They are created with the MultiBinding class, which evaluates all of its Binding objects, and returns a single value through a IMultiValueConverter instance provided by your application. In addition, MultiBinding reevaluates all of its Binding objects when any of the bound data changes.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;First thing, let’s create a &lt;code class=&quot;highlighter-rouge&quot;&gt;PeopleMultiBind&lt;/code&gt; converter:&lt;/p&gt;
+
+&lt;div class=&quot;language-csharp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;PeopleMultiBind&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;IMultiValueConverter&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;NumberToShow&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;object&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Convert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;values&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Type&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;targetType&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;object&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;parameter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;CultureInfo&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;culture&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;foreach&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;value&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;values&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;value&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;is&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;IEnumerable&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Person&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;enumerable&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+                &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+                    &lt;span class=&quot;c1&quot;&gt;// get the first X number of people&lt;/span&gt;
+                    &lt;span class=&quot;n&quot;&gt;List&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;returnList&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;List&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;();&lt;/span&gt;
+                    &lt;span class=&quot;n&quot;&gt;returnList&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;AddRange&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;enumerable&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Take&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;NumberToShow&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
+
+                    &lt;span class=&quot;c1&quot;&gt;// if there are even more people - add a counter element&lt;/span&gt;
+                    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;enumerable&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Count&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;NumberToShow&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+                    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+                        &lt;span class=&quot;n&quot;&gt;returnList&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Add&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;enumerable&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Count&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;NumberToShow&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+                    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+                    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;returnList&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+                &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;
+                    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;ConvertBack&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;object&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;targetTypes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;object&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;parameter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;CultureInfo&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;culture&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;throw&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;NotImplementedException&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;It’s basically doing the same thing as our property earlier, where we take the first X objects (in our case we have a property &lt;code class=&quot;highlighter-rouge&quot;&gt;NumberToShow&lt;/code&gt;) and then if we have more, we and an int to the end of the collection.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;We can now delete that &lt;code class=&quot;highlighter-rouge&quot;&gt;PeopleCount&lt;/code&gt; property on our ViewModel and the &lt;code class=&quot;highlighter-rouge&quot;&gt;OnPorpertyChanged&lt;/code&gt; lines of  our &lt;code class=&quot;highlighter-rouge&quot;&gt;AddPerson&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;RemovePerson&lt;/code&gt; commands, because our MultiValueConverter is going to take care of it all&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Now we tie it all together by referencing the converter in our &lt;code class=&quot;highlighter-rouge&quot;&gt;ResourceDictionary&lt;/code&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-xml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    &lt;span class=&quot;nt&quot;&gt;&amp;lt;converters:PeopleMultiBind&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;x:Key=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;peopleMulti&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;NumberToShow=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;5&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;And then update our Binding to use the multi-bind, as such:&lt;/p&gt;
+
+&lt;div class=&quot;language-xml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;StackLayout&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;BindableLayout.ItemTemplateSelector=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{StaticResource personDataTemplateSelector}&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;HorizontalOptions=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;CenterAndExpand&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;Orientation=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Horizontal&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;VerticalOptions=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Center&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;BindableLayout.ItemsSource&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;MultiBinding&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Converter=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{StaticResource peopleMulti}&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;Binding&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Path=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;People&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;Binding&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Path=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;People.Count&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;/MultiBinding&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/BindableLayout.ItemsSource&amp;gt;&lt;/span&gt;
+
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;BindableLayout.EmptyViewTemplate&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;DataTemplate&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;Label&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Text=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Nobody&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;/DataTemplate&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/BindableLayout.EmptyViewTemplate&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/StackLayout&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Notice how the &lt;code class=&quot;highlighter-rouge&quot;&gt;ItemsSource&lt;/code&gt; indicates is now &lt;code class=&quot;highlighter-rouge&quot;&gt;MultiBinding&lt;/code&gt; to  the &lt;code class=&quot;highlighter-rouge&quot;&gt;People&lt;/code&gt; collection and &lt;em&gt;also&lt;/em&gt; the &lt;code class=&quot;highlighter-rouge&quot;&gt;Count&lt;/code&gt; property in the collection. Nice!&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;For added awesomeness we also add an &lt;code class=&quot;highlighter-rouge&quot;&gt;EmptyViewTemplate&lt;/code&gt; to show something different when there are no people.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;\assets\images\posts\avatargroups\avatars_changing.gif&quot; alt=&quot;Avatars Changing&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;wrap-up&quot;&gt;Wrap-up&lt;/h2&gt;
+
+&lt;p&gt;Well that’s it, we have looked at creating an overlapping avatar group using a variety of techniques. Mind you, if you are not expecting the collection of avatars to change at runtime you could probably do away with the second half of this blog post - but it’s a fun experiment anyway.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;a href=&quot;https://github.com/kphillpotts/AvatarGroup&quot;&gt;The code for this article is available over on my Github.&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Thanks for reading, hope you found this useful, and happy coding!&lt;/p&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>Kym Phillpotts</name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="Xamarin" />
+      
+
+      
+        <summary type="html">Overlapping avatar badges are an effective way to show a collection of people, especially where space is at a premium. In this article we look at how to create this UI in Xamarin.Forms and MAUI.</summary>
+      
+
+      
+      
+    </entry>
   
     <entry>
       <title type="html">Xamarin Tools 2021</title>
@@ -3224,64 +3652,6 @@ Kym&lt;/p&gt;</content>
 
       
         <summary type="html">I’ve been writing a few unit tests recently. I actually like writing unit tests, I find something very cathartic about seeing those little green ticks show up.  However, one thing that can make writing unit tests a drag is setting up testing data for each test. Well, there are some nice patterns and tools out there to help. Let’s check some out…</summary>
-      
-
-      
-      
-    </entry>
-  
-    <entry>
-      <title type="html">FastScroll and SectionIndexer in Xamarin.Forms ListView</title>
-      <link href="https://kymphillpotts.com/fastscroll-and-sectionindexer-in-xamarin-forms-listview/" rel="alternate" type="text/html" title="FastScroll and SectionIndexer in Xamarin.Forms ListView" />
-      <published>2018-01-18T21:12:06+11:00</published>
-      <updated>2018-01-18T21:12:06+11:00</updated>
-      <id>https://kymphillpotts.com/fastscroll-and-sectionindexer-in-xamarin-forms-listview</id>
-      <content type="html" xml:base="https://kymphillpotts.com/fastscroll-and-sectionindexer-in-xamarin-forms-listview/">&lt;p&gt;Those of you who have played around with ListViews in Xamarin.Android are probably familiar with the FastScroll and SectionIndexer features.  They essentially make it really easy for users to navigate long lists by providing them with a little “handle” to quickly drag through lists, and with the SectionIndexer it also gives them a nice little popup showing where they are up to in the list.&lt;/p&gt;
-
-&lt;p&gt;Unfortunately, this feature isn’t available in Xamarin.Forms ListViews running on Android.&lt;/p&gt;
-
-&lt;p&gt;&lt;img class=&quot;alignnone size-full wp-image-5863&quot; src=&quot;https://i1.wp.com/www.kymphillpotts.com/wp-content/uploads/2018/01/Or-is-it.jpg?resize=250%2C208&quot; alt=&quot;&quot; data-recalc-dims=&quot;1&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Well, it actually turns out is available through an Android Platform-Specific by the name of &lt;strong&gt;SetIsFastScrollEnabled.&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;And it’s dead simple to use, just with a single line of code:&lt;/p&gt;
-
-&lt;p&gt;&lt;span class=&quot;syntax-container syntax-theme-base&quot;&gt;&lt;code class=&quot;syntax highlighted&quot;&gt;&amp;lt;span class=&quot;csharp&quot;&amp;gt;listView.&amp;lt;span class=&quot;function&quot;&amp;gt;On&amp;lt;/span&amp;gt;&amp;lt;span class=&quot;operator&quot;&amp;gt;&amp;lt;&amp;lt;/span&amp;gt;&amp;lt;span class=&quot;type&quot;&amp;gt;Android&amp;lt;/span&amp;gt;&amp;lt;span class=&quot;operator&quot;&amp;gt;&amp;gt;&amp;lt;/span&amp;gt;().&amp;lt;span class=&quot;function&quot;&amp;gt;SetIsFastScrollEnabled&amp;lt;/span&amp;gt;(&amp;lt;span class=&quot;constant&quot;&amp;gt;true&amp;lt;/span&amp;gt;);&amp;lt;/span&amp;gt;&lt;/code&gt;&lt;/span&gt;&lt;/p&gt;
-
-&lt;p&gt;Once you add that code, you will get the FastScroll thumb, but as a super-duper bonus if your ListView is grouped then you also get the SectionIndexer. So now your Xamarin.Forms lists can look like this:&lt;/p&gt;
-
-&lt;p&gt;&lt;img class=&quot;alignnone size-full wp-image-5860&quot; src=&quot;https://i2.wp.com/www.kymphillpotts.com/wp-content/uploads/2018/01/FastScrollIndexer.gif?resize=410%2C728&quot; alt=&quot;&quot; data-recalc-dims=&quot;1&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Note: One thing to be aware of, in order for the FastScroll thumb to be visible, you will have to have a sufficiently large number of rows in your ListView (about 3 times as many rows as you have screen real estate for).&lt;/p&gt;
-
-&lt;p&gt;Further reading:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://developer.xamarin.com/guides/xamarin-forms/platform-features/platform-specifics/consuming/android/#Enabling_Fast_Scrolling_in_a_ListView&quot;&gt;Docs on Fast Scrolling Platform Specific&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;So I hope that helps, and Happy Coding!&lt;/p&gt;</content>
-
-      
-      
-      
-      
-      
-
-      <author>
-          <name>Kym Phillpotts</name>
-        
-        
-      </author>
-
-      
-
-      
-        <category term="Xamarin" />
-      
-
-      
-        <summary type="html">Those of you who have played around with ListViews in Xamarin.Android are probably familiar with the FastScroll and SectionIndexer features. Unfortunately, this feature isn't available in Xamarin.Forms ListViews running on Android, or is it?</summary>
       
 
       

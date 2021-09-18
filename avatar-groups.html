@@ -1,0 +1,1283 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <!-- Document Settings -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- Base Meta -->
+    <!-- dynamically fixing the title for tag/author pages -->
+
+
+
+    <title>Avatar Groups</title>
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Styles'n'Scripts -->
+    <link rel="stylesheet" type="text/css" href="/assets/built/screen.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/built/screen.edited.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/built/syntax.css" />
+    <!-- highlight.js -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+    <style>.hljs { background: none; }</style>
+
+    <!--[if IE]>
+        <style>
+            p, ol, ul{
+                width: 100%;
+            }
+            blockquote{
+                width: 100%;
+            }
+        </style>
+    <![endif]-->
+    
+    <!-- This tag outputs SEO meta+structured data and other important settings -->
+    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="/assets/images/icons/apple-touch-icon-57x57.png" />
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/assets/images/icons/apple-touch-icon-114x114.png" />
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/assets/images/icons/apple-touch-icon-72x72.png" />
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/images/icons/apple-touch-icon-144x144.png" />
+<link rel="apple-touch-icon-precomposed" sizes="60x60" href=/"assets/images/icons/apple-touch-icon-60x60.png" />
+<link rel="apple-touch-icon-precomposed" sizes="120x120" href="/assets/images/icons/apple-touch-icon-120x120.png" />
+<link rel="apple-touch-icon-precomposed" sizes="76x76" href="/assets/images/icons/apple-touch-icon-76x76.png" />
+<link rel="apple-touch-icon-precomposed" sizes="152x152" href="/assets/images/icons/apple-touch-icon-152x152.png" />
+<link rel="icon" type="image/png" href="/assets/images/icons/favicon-196x196.png" sizes="196x196" />
+<link rel="icon" type="image/png" href="/assets/images/icons/favicon-96x96.png" sizes="96x96" />
+<link rel="icon" type="image/png" href="/assets/images/icons/favicon-32x32.png" sizes="32x32" />
+<link rel="icon" type="image/png" href="/assets/images/icons/favicon-16x16.png" sizes="16x16" />
+<link rel="icon" type="image/png" href="/assets/images/icons/favicon-128.png" sizes="128x128" />
+<meta name="application-name" content="&nbsp;"/>
+<meta name="msapplication-TileColor" content="#FFFFFF" />
+<meta name="msapplication-TileImage" content="/assets/images/icons/mstile-144x144.png" />
+<meta name="msapplication-square70x70logo" content="/assets/images/icons/mstile-70x70.png" />
+<meta name="msapplication-square150x150logo" content="/assets/images/icons/mstile-150x150.png" />
+<meta name="msapplication-wide310x150logo" content="/assets/images/icons/mstile-310x150.png" />
+<meta name="msapplication-square310x310logo" content="/assets/images/icons/mstile-310x310.png" />
+
+
+<meta name="description" content="I write about Azure, Xamarin.Forms, Connected Apps and whatever else might be on my mind." />
+    <link rel="shortcut icon" href="https://kymphillpotts.com/assets/images/icons/favicon-96x96.png" type="image/png" />
+    <link rel="canonical" href="https://kymphillpotts.com/avatar-groups.html" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+
+     <!--title below is coming from _includes/dynamic_title-->
+    <meta property="og:site_name" content="Kym's Blog" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Avatar Groups" />
+    <meta property="og:description" content="I write about Azure, Xamarin.Forms, Connected Apps and whatever else might be on my mind." />
+    <meta property="og:url" content="https://kymphillpotts.com/avatar-groups.html" />
+    <meta property="og:image" content="https://kymphillpotts.com/assets/images/covers/avatars.jpg" />
+    <meta property="article:publisher" content="https://www.facebook.com/" />
+    <meta property="article:tag" content="Xamarin" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Avatar Groups" />
+    <meta name="twitter:description" content="I write about Azure, Xamarin.Forms, Connected Apps and whatever else might be on my mind." />
+    <meta name="twitter:url" content="https://kymphillpotts.com/" />
+    <meta name="twitter:image" content="https://kymphillpotts.com/assets/images/covers/avatars.jpg" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="Kym's Blog" />
+    <meta name="twitter:label2" content="Filed under" />
+    <meta name="twitter:data2" content="Xamarin" />
+    <meta name="twitter:site" content="@kphillpotts" />
+    <meta name="twitter:creator" content="@kphillpotts" />
+    <meta property="og:image:width" content="2000" />
+    <meta property="og:image:height" content="666" />
+
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Website",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Kym's Blog",
+        "logo": "https://kymphillpotts.com/false"
+    },
+    "url": "https://kymphillpotts.com/avatar-groups.html",
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://kymphillpotts.com/assets/images/covers/avatars.jpg",
+        "width": 2000,
+        "height": 666
+    },
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://kymphillpotts.com/avatar-groups.html"
+    },
+    "description": "I write about Azure, Xamarin.Forms, Connected Apps and whatever else might be on my mind."
+}
+    </script>
+
+    <!-- <script type="text/javascript" src="https://demo.ghost.io/public/ghost-sdk.min.js?v=724281a32e"></script>
+    <script type="text/javascript">
+    ghost.init({
+    	clientId: "ghost-frontend",
+    	clientSecret: "f84a07a72b17"
+    });
+    </script> -->
+
+    <meta name="generator" content="Jekyll 3.6.2" />
+    <link rel="alternate" type="application/rss+xml" title="Avatar Groups" href="/feed.xml" />
+
+
+</head>
+<body class="post-template">
+
+    <div class="site-wrapper">
+        <!-- All the main content gets inserted here, index.hbs, post.hbs, etc -->
+        <!-- default -->
+
+<!-- The tag above means: insert everything in this file
+into the {body} of the default.hbs template -->
+
+<header class="site-header outer">
+    <div class="inner">
+        <nav class="site-nav">
+    <div class="site-nav-left">
+        
+            
+                <a class="site-nav-logo" href="https://kymphillpotts.com/">Kym's Blog</a>
+            
+        
+        
+            <ul class="nav" role="menu">
+    <li class="nav-home" role="menuitem"><a href="/">Home</a></li>
+    
+
+
+    <li class="nav-xamarin" role="menuitem"><a href="/tag/xamarin/">Xamarin</a></li>
+    <!-- <li class="nav-azure" role="menuitem"><a href="/tag/azure/">Azure</a></li> -->
+    <li class="nav-uichallenge" role="menuitem"><a href="/uichallenges/">UI Challenges</a></li>
+    <li class="nav-stream" role="menuitem"><a href="/tag/stream/">Streams</a></li>
+    <li class="nav-other" role="menuitem"><a href="/tag/other/">Other</a></li>
+    <li class="nav-about" role="menuitem"><a href="/about/">About Me</a></li>
+
+
+</ul>
+
+        
+    </div>
+    <div class="site-nav-right">
+        <div class="social-links">
+            
+            
+                <a class="social-link social-link-tw" href="https://twitter.com/kphillpotts" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg>
+</a>
+            
+        </div>
+        
+    </div>
+</nav>
+
+    </div>
+</header>
+
+<!-- Everything inside the #post tags pulls data from the post -->
+<!-- #post -->
+
+<main id="site-main" class="site-main outer" role="main">
+    <div class="inner">
+
+        <article class="post-full  ">
+
+            <header class="post-full-header">
+                <section class="post-full-meta">
+                    <time class="post-full-meta-date" datetime="18 September 2021">18 September 2021</time>
+                    
+                        <span class="date-divider">/</span>
+                        
+                            
+                               <a href='/tag/xamarin/'>XAMARIN</a>
+                            
+                        
+                    
+                </section>
+                <h1 class="post-full-title">Avatar Groups</h1>
+            </header>
+
+            
+            <figure class="post-full-image" style="background-image: url(/assets/images/covers/avatars.jpg)">
+            </figure>
+            
+
+            <section class="post-full-content">
+                <div class="kg-card-markdown">
+                    <p>Overlapping avatar badges are an effective way to show a collection of people, especially where space is at a premium. In this article we look at how to create this UI in Xamarin.Forms and MAUI.</p>
+
+<p><img src="assets/images/posts/avatargroups/avatars.png" /></p>
+
+<p>Along the way, we will touch on a few other interesting concepts like:</p>
+
+<ul>
+  <li>Bindable Layouts</li>
+  <li>DataTemplate Selectors</li>
+  <li>MultiValue Converters</li>
+</ul>
+
+<blockquote>
+  <p><a href="https://github.com/kphillpotts/AvatarGroup">The code for this article is available over on my Github.</a></p>
+</blockquote>
+
+<h2 id="lets-start-at-the-beginning">Let’s start at the beginning</h2>
+
+<p>The first thing we want is to have some data which is going be exposed via a simple Model and ViewModel.</p>
+
+<h3 id="person-model">Person Model</h3>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">class</span> <span class="nc">Person</span>
+<span class="p">{</span>
+    <span class="c1">// whatever properties you have for a person</span>
+    <span class="c1">// but the most important one we will use is</span>
+    <span class="c1">// the image for the person</span>
+    <span class="k">public</span> <span class="kt">string</span> <span class="n">Image</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="peopleviewmodel">PeopleViewModel</h3>
+
+<p>We are going to support adding and removing people at runtime, which means we have an <code class="highlighter-rouge">AddUserCommand</code>, a <code class="highlighter-rouge">RemoveUserCommand</code>, and we expose the data through an <code class="highlighter-rouge">ObservableCollection</code>.</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">class</span> <span class="nc">PeopleViewModel</span> <span class="p">:</span> <span class="n">BaseViewModel</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="n">ICommand</span> <span class="n">AddUserCommand</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">private</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+    <span class="k">public</span> <span class="n">ICommand</span> <span class="n">RemoveUserCommand</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">private</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+
+    <span class="k">public</span> <span class="n">ObservableCollection</span><span class="p">&lt;</span><span class="n">Person</span><span class="p">&gt;</span> <span class="n">People</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span> <span class="p">=</span> <span class="k">new</span> <span class="n">ObservableCollection</span><span class="p">&lt;</span><span class="n">Person</span><span class="p">&gt;();</span>
+
+    <span class="k">public</span> <span class="nf">PeopleViewModel</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">// setup the commands</span>
+        <span class="n">AddUserCommand</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Command</span><span class="p">(</span><span class="n">AddPerson</span><span class="p">);</span>
+        <span class="n">RemoveUserCommand</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Command</span><span class="p">(</span><span class="n">RemovePerson</span><span class="p">);</span>
+        <span class="nf">CreateSampleData</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="k">private</span> <span class="k">void</span> <span class="nf">CreateSampleData</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">// create 5 peeps</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span> <span class="n">i</span> <span class="p">&lt;</span> <span class="m">5</span><span class="p">;</span> <span class="n">i</span><span class="p">++)</span>
+        <span class="p">{</span>
+            <span class="nf">AddPerson</span><span class="p">();</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">private</span> <span class="k">void</span> <span class="nf">AddPerson</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">// add a person using an Image from pravatar.cc</span>
+        <span class="n">People</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="k">new</span> <span class="n">Person</span> <span class="p">{</span> <span class="n">Image</span> <span class="p">=</span> <span class="s">$"https://i.pravatar.cc/64?img=</span><span class="p">{</span><span class="n">People</span><span class="p">.</span><span class="n">Count</span><span class="p">+</span><span class="m">1</span><span class="p">}</span><span class="s">"</span> <span class="p">});</span>
+    <span class="p">}</span>
+
+    <span class="k">private</span> <span class="k">void</span> <span class="nf">RemovePerson</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">People</span><span class="p">.</span><span class="nf">Any</span><span class="p">())</span>
+        <span class="p">{</span>
+            <span class="n">People</span><span class="p">.</span><span class="nf">Remove</span><span class="p">(</span><span class="n">People</span><span class="p">.</span><span class="nf">Last</span><span class="p">());</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p>TIP: There are some nice services you can use for mock random avatars. Here are a few you I’ve use for mockups and design work.</p>
+  <ul>
+    <li><a href="https://randomuser.me">randomuser.me</a></li>
+    <li><a href="https://pravatar.cc">pravatar.cc</a></li>
+    <li><a href="https://uifaces.co">UI Faces</a></li>
+  </ul>
+</blockquote>
+
+<h2 id="show-me-the-avatars">Show me the avatars</h2>
+
+<p>We can start out the UI simply by using a horizontal <code class="highlighter-rouge">StackLayout</code> and the <code class="highlighter-rouge">BindableLayout</code> attached extension.</p>
+
+<blockquote>
+  <p><a href="https://docs.microsoft.com/en-us/xamarin/xamarin-forms/user-interface/layouts/bindable-layouts"><code class="highlighter-rouge">BindableLayouts</code></a> give you the ability to have a Layout generate its content by binding to a collection of items.</p>
+</blockquote>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;StackLayout</span>
+    <span class="na">BindableLayout.ItemsSource=</span><span class="s">"{Binding People}"</span>
+    <span class="na">HorizontalOptions=</span><span class="s">"CenterAndExpand"</span>
+    <span class="na">Orientation=</span><span class="s">"Horizontal"</span>
+    <span class="na">VerticalOptions=</span><span class="s">"Center"</span><span class="nt">&gt;</span>
+
+    <span class="nt">&lt;BindableLayout.ItemTemplate&gt;</span>
+        <span class="nt">&lt;DataTemplate&gt;</span>
+            <span class="nt">&lt;Frame</span>
+                <span class="na">Margin=</span><span class="s">"-20,0,0,0"</span>
+                <span class="na">Padding=</span><span class="s">"0"</span>
+                <span class="na">CornerRadius=</span><span class="s">"24"</span>
+                <span class="na">HeightRequest=</span><span class="s">"48"</span>
+                <span class="na">IsClippedToBounds=</span><span class="s">"True"</span>
+                <span class="na">WidthRequest=</span><span class="s">"48"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;Image</span> <span class="na">Source=</span><span class="s">"{Binding Image}"</span> <span class="nt">/&gt;</span>
+            <span class="nt">&lt;/Frame&gt;</span>
+        <span class="nt">&lt;/DataTemplate&gt;</span>
+    <span class="nt">&lt;/BindableLayout.ItemTemplate&gt;</span>
+    
+<span class="nt">&lt;/StackLayout&gt;</span>
+</code></pre></div></div>
+
+<p>There are a couple of interesting things in that markup.</p>
+
+<ul>
+  <li><strong>Negative Margins</strong> - This allows us to overlap the elements, notice the <code class="highlighter-rouge">Margin="-20,0,0,0"</code>.</li>
+  <li><strong>Circular images</strong> - There are a number of different ways of doing this, but a simple <code class="highlighter-rouge">Frame</code>  with a <code class="highlighter-rouge">CornerRadius</code> does the job.</li>
+</ul>
+
+<p>And that’s going to give us a pretty decent looking group of overlapping avatars.</p>
+
+<p><img src="assets/images/posts/avatargroups/simple_avatars.png" alt="Simple Avatars" /></p>
+
+<blockquote>
+  <p>Another good option here is to use the <a href="https://docs.microsoft.com/en-us/xamarin/community-toolkit/views/avatarview">AvatarView</a> in the <a href="https://github.com/xamarin/XamarinCommunityToolkit">Xamarin Community Toolkit</a>. The cool thing about the AvatarView is that it handles showing initials for avatars if it can’t load an image.</p>
+</blockquote>
+
+<h3 id="improving-the-look">Improving the look</h3>
+<p>For our simple avatars, we can make them look a little more dynamic by giving the illusion of the avatars cutting into each other. Like this:</p>
+
+<p><img src="assets/images/posts/avatargroups/simple_avatars_styled.png" alt="Cutout Avatars" /></p>
+
+<p>We can achieve this effect in a number of ways, but an easy way would be to have a thick border (frame) around each avatar using the background color (in our case white). Also, it’s probably time to introduce a few styles for consistency and reuse as well.</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>...
+<span class="nt">&lt;ResourceDictionary&gt;</span>
+    <span class="nt">&lt;Style</span> <span class="na">x:Key=</span><span class="s">"avatarFrame"</span> <span class="na">TargetType=</span><span class="s">"Frame"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;Setter</span> <span class="na">Property=</span><span class="s">"Margin"</span> <span class="na">Value=</span><span class="s">"-20,0,0,0"</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;Setter</span> <span class="na">Property=</span><span class="s">"Padding"</span> <span class="na">Value=</span><span class="s">"0"</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;Setter</span> <span class="na">Property=</span><span class="s">"BackgroundColor"</span> <span class="na">Value=</span><span class="s">"White"</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;Setter</span> <span class="na">Property=</span><span class="s">"CornerRadius"</span> <span class="na">Value=</span><span class="s">"24"</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;Setter</span> <span class="na">Property=</span><span class="s">"HasShadow"</span> <span class="na">Value=</span><span class="s">"False"</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;Setter</span> <span class="na">Property=</span><span class="s">"HeightRequest"</span> <span class="na">Value=</span><span class="s">"48"</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;Setter</span> <span class="na">Property=</span><span class="s">"VerticalOptions"</span> <span class="na">Value=</span><span class="s">"Start"</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;Setter</span> <span class="na">Property=</span><span class="s">"WidthRequest"</span> <span class="na">Value=</span><span class="s">"48"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;/Style&gt;</span>
+    <span class="nt">&lt;Style</span> <span class="na">x:Key=</span><span class="s">"contentFrame"</span> <span class="na">TargetType=</span><span class="s">"Frame"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;Setter</span> <span class="na">Property=</span><span class="s">"Padding"</span> <span class="na">Value=</span><span class="s">"0"</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;Setter</span> <span class="na">Property=</span><span class="s">"BackgroundColor"</span> <span class="na">Value=</span><span class="s">"White"</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;Setter</span> <span class="na">Property=</span><span class="s">"CornerRadius"</span> <span class="na">Value=</span><span class="s">"21"</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;Setter</span> <span class="na">Property=</span><span class="s">"HasShadow"</span> <span class="na">Value=</span><span class="s">"False"</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;Setter</span> <span class="na">Property=</span><span class="s">"HeightRequest"</span> <span class="na">Value=</span><span class="s">"42"</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;Setter</span> <span class="na">Property=</span><span class="s">"VerticalOptions"</span> <span class="na">Value=</span><span class="s">"Center"</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;Setter</span> <span class="na">Property=</span><span class="s">"HorizontalOptions"</span> <span class="na">Value=</span><span class="s">"Center"</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;Setter</span> <span class="na">Property=</span><span class="s">"IsClippedToBounds"</span> <span class="na">Value=</span><span class="s">"True"</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;Setter</span> <span class="na">Property=</span><span class="s">"WidthRequest"</span> <span class="na">Value=</span><span class="s">"42"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;/Style&gt;</span>
+<span class="nt">&lt;/ResourceDictionary&gt;</span>
+
+...
+
+<span class="nt">&lt;StackLayout</span>
+    <span class="na">BindableLayout.ItemsSource=</span><span class="s">"{Binding People}"</span>
+    <span class="na">HorizontalOptions=</span><span class="s">"CenterAndExpand"</span>
+    <span class="na">Orientation=</span><span class="s">"Horizontal"</span>
+    <span class="na">VerticalOptions=</span><span class="s">"Center"</span><span class="nt">&gt;</span>
+
+    <span class="nt">&lt;BindableLayout.ItemTemplate&gt;</span>
+        <span class="nt">&lt;DataTemplate&gt;</span>
+            <span class="nt">&lt;Frame</span> <span class="na">Style=</span><span class="s">"{StaticResource avatarFrame}"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;Frame</span> <span class="na">Style=</span><span class="s">"{StaticResource contentFrame}"</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;Image</span> <span class="na">Source=</span><span class="s">"{Binding Image}"</span> <span class="nt">/&gt;</span>
+                <span class="nt">&lt;/Frame&gt;</span>
+            <span class="nt">&lt;/Frame&gt;</span>
+        <span class="nt">&lt;/DataTemplate&gt;</span>
+    <span class="nt">&lt;/BindableLayout.ItemTemplate&gt;</span>
+
+<span class="nt">&lt;/StackLayout&gt;</span>
+</code></pre></div></div>
+
+<h2 id="adding-a-counter">Adding a counter</h2>
+
+<p>If we have learnt anything during the last year or two of global events, it’s that too many people in one place can be a problem. The same goes for our avatar collection. At the moment, we are showing all the avatars, which is a bit of a problem if you have lots of people in your list.</p>
+
+<p><img src="assets/images/posts/avatargroups/too_many_avatars.png" alt="Too Many Avatars" /></p>
+
+<p>Let’s say we want to just show the first X number of people and then have a counter indicating how many more.</p>
+
+<p><img src="assets/images/posts/avatargroups/avatars.png" alt="Avatars with Counter" /></p>
+
+<p>A simple approach (although not everyone’s favorite) is to create another property on the ViewModel that takes the first X people and include a counter as the last element.</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="n">List</span><span class="p">&lt;</span><span class="kt">object</span><span class="p">&gt;</span> <span class="n">PeopleCount</span>
+<span class="p">{</span>
+    <span class="k">get</span>
+    <span class="p">{</span>
+        <span class="kt">var</span> <span class="n">numberToShow</span> <span class="p">=</span> <span class="m">5</span><span class="p">;</span>
+        <span class="n">List</span><span class="p">&lt;</span><span class="kt">object</span><span class="p">&gt;</span> <span class="n">returnList</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="kt">object</span><span class="p">&gt;();</span>
+
+        <span class="c1">// add the number of people we are after</span>
+        <span class="n">returnList</span><span class="p">.</span><span class="nf">AddRange</span><span class="p">(</span><span class="n">People</span><span class="p">.</span><span class="nf">Take</span><span class="p">(</span><span class="n">numberToShow</span><span class="p">));</span>
+
+        <span class="c1">// if we have more people than we want to show, add a count</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">People</span><span class="p">.</span><span class="n">Count</span> <span class="p">&gt;</span> <span class="n">numberToShow</span><span class="p">)</span>
+            <span class="n">returnList</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="n">People</span><span class="p">.</span><span class="n">Count</span> <span class="p">-</span> <span class="n">numberToShow</span><span class="p">);</span>
+
+        <span class="k">return</span> <span class="n">returnList</span><span class="p">;</span>
+<span class="p">}</span> 
+</code></pre></div></div>
+
+<blockquote>
+  <p>Note:</p>
+  <ul>
+    <li>Notice the new <code class="highlighter-rouge">PeopleCount</code> Property is now a collection of <code class="highlighter-rouge">object</code> - that’s because the collection can now contain <code class="highlighter-rouge">People</code> objects and a counter of type <code class="highlighter-rouge">int</code>.</li>
+  </ul>
+</blockquote>
+
+<p>If the number of people can change at runtime, it is also necessary to manually raise property changes in your ViewModel to tell the UI to update when you add or remove items from the People Collection.</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">private</span> <span class="k">void</span> <span class="nf">AddPerson</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="c1">// add a person using an Image from pravatar.cc</span>
+    <span class="n">People</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="k">new</span> <span class="n">Person</span> <span class="p">{</span> <span class="n">Image</span> <span class="p">=</span> <span class="s">$"https://i.pravatar.cc/64?img=</span><span class="p">{</span><span class="n">People</span><span class="p">.</span><span class="n">Count</span> <span class="p">+</span> <span class="m">1</span><span class="p">}</span><span class="s">"</span> <span class="p">});</span>
+    <span class="nf">OnPropertyChanged</span><span class="p">(</span><span class="k">nameof</span><span class="p">(</span><span class="n">PeopleCount</span><span class="p">));</span>
+<span class="p">}</span>
+
+<span class="k">private</span> <span class="k">void</span> <span class="nf">RemovePerson</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">People</span><span class="p">.</span><span class="nf">Any</span><span class="p">())</span>
+    <span class="p">{</span>
+        <span class="n">People</span><span class="p">.</span><span class="nf">Remove</span><span class="p">(</span><span class="n">People</span><span class="p">.</span><span class="nf">Last</span><span class="p">());</span>
+        <span class="nf">OnPropertyChanged</span><span class="p">(</span><span class="k">nameof</span><span class="p">(</span><span class="n">PeopleCount</span><span class="p">));</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="visualising-different-data-types">Visualising different data types</h3>
+
+<p>A <code class="highlighter-rouge">DataTemplateSelector</code> is a nifty way of being able to select a visualisation for an item based on the data being displayed. In our case, we will create a <code class="highlighter-rouge">DataTemplateSelector</code> to show either a person or a counter template based on the type of the item.</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">class</span> <span class="nc">PersonListDataTemplateSelector</span> <span class="p">:</span> <span class="n">DataTemplateSelector</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="n">DataTemplate</span> <span class="n">PersonTemplate</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+    <span class="k">public</span> <span class="n">DataTemplate</span> <span class="n">CounterTemplate</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+
+    <span class="k">protected</span> <span class="k">override</span> <span class="n">DataTemplate</span> <span class="nf">OnSelectTemplate</span><span class="p">(</span><span class="kt">object</span> <span class="n">item</span><span class="p">,</span> <span class="n">BindableObject</span> <span class="n">container</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">item</span> <span class="k">is</span> <span class="n">Models</span><span class="p">.</span><span class="n">Person</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">PersonTemplate</span><span class="p">;</span>
+        <span class="k">else</span>
+            <span class="k">return</span> <span class="n">CounterTemplate</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Now we add the DataTemplateSelector to your page along with DataTemplates for each type</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;DataTemplate</span> <span class="na">x:Key=</span><span class="s">"personTemplate"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;Frame</span> <span class="na">Style=</span><span class="s">"{StaticResource avatarFrame}"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;Frame</span> <span class="na">Style=</span><span class="s">"{StaticResource contentFrame}"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;Image</span> <span class="na">Source=</span><span class="s">"{Binding Image}"</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;/Frame&gt;</span>
+    <span class="nt">&lt;/Frame&gt;</span>
+<span class="nt">&lt;/DataTemplate&gt;</span>
+
+<span class="nt">&lt;DataTemplate</span> <span class="na">x:Key=</span><span class="s">"counterTemplate"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;Frame</span> <span class="na">Style=</span><span class="s">"{StaticResource avatarFrame}"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;Frame</span> <span class="na">BackgroundColor=</span><span class="s">"LightGray"</span> <span class="na">Style=</span><span class="s">"{StaticResource contentFrame}"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;Label</span>
+                <span class="na">FontSize=</span><span class="s">"16"</span>
+                <span class="na">HorizontalOptions=</span><span class="s">"Center"</span>
+                <span class="na">Text=</span><span class="s">"{Binding ., StringFormat='+{0}'}"</span>
+                <span class="na">TextColor=</span><span class="s">"Black"</span>
+                <span class="na">VerticalOptions=</span><span class="s">"Center"</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;/Frame&gt;</span>
+    <span class="nt">&lt;/Frame&gt;</span>
+<span class="nt">&lt;/DataTemplate&gt;</span>
+
+<span class="nt">&lt;templates:PersonListDataTemplateSelector</span>
+    <span class="na">x:Key=</span><span class="s">"personDataTemplateSelector"</span>
+    <span class="na">CounterTemplate=</span><span class="s">"{StaticResource counterTemplate}"</span>
+    <span class="na">PersonTemplate=</span><span class="s">"{StaticResource personTemplate}"</span> <span class="nt">/&gt;</span>
+</code></pre></div></div>
+
+<p>Lastly we can update the our <code class="highlighter-rouge">StackLayout</code> to be bound to the new Property on the ViewModel and the <code class="highlighter-rouge">DataTemplateSelector</code>.</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;StackLayout</span>
+    <span class="na">BindableLayout.ItemTemplateSelector=</span><span class="s">"{StaticResource personDataTemplateSelector}"</span>
+    <span class="na">BindableLayout.ItemsSource=</span><span class="s">"{Binding PeopleCount}"</span>
+    <span class="na">HorizontalOptions=</span><span class="s">"CenterAndExpand"</span>
+    <span class="na">Orientation=</span><span class="s">"Horizontal"</span>
+    <span class="na">VerticalOptions=</span><span class="s">"Center"</span> <span class="nt">/&gt;</span>
+</code></pre></div></div>
+
+<h2 id="using-multivalue-converters">Using MultiValue Converters</h2>
+
+<p>What we have right now works fine, but we have to keep our <code class="highlighter-rouge">PeopleCount</code> collection in sync by raising <code class="highlighter-rouge">OnPropertyChanged</code> whenever the main <code class="highlighter-rouge">Person</code> collection changes. A lot of people aren’t going to like that, so we can try an alternative approach of using a converter to do the work for us.</p>
+
+<p>Unfortunately a single Converter isn’t going to do the job because we need our UI to update if either the collection changes entirely, or if the count in the collection changes. This is where a <a href="https://docs.microsoft.com/en-us/xamarin/xamarin-forms/app-fundamentals/data-binding/multibinding">MultiValueConverter</a> can help us.</p>
+
+<blockquote>
+  <p>MultiBinding provides the ability to attach a collection of Binding objects to a single binding target property. They are created with the MultiBinding class, which evaluates all of its Binding objects, and returns a single value through a IMultiValueConverter instance provided by your application. In addition, MultiBinding reevaluates all of its Binding objects when any of the bound data changes.</p>
+</blockquote>
+
+<p>First thing, let’s create a <code class="highlighter-rouge">PeopleMultiBind</code> converter:</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">class</span> <span class="nc">PeopleMultiBind</span> <span class="p">:</span> <span class="n">IMultiValueConverter</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="kt">int</span> <span class="n">NumberToShow</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span> <span class="p">=</span> <span class="m">5</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="kt">object</span> <span class="nf">Convert</span><span class="p">(</span><span class="kt">object</span><span class="p">[]</span> <span class="n">values</span><span class="p">,</span> <span class="n">Type</span> <span class="n">targetType</span><span class="p">,</span> <span class="kt">object</span> <span class="n">parameter</span><span class="p">,</span> <span class="n">CultureInfo</span> <span class="n">culture</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">foreach</span> <span class="p">(</span><span class="kt">var</span> <span class="k">value</span> <span class="k">in</span> <span class="n">values</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="k">if</span> <span class="p">(</span><span class="k">value</span> <span class="k">is</span> <span class="n">IEnumerable</span><span class="p">&lt;</span><span class="n">Person</span><span class="p">&gt;</span> <span class="n">enumerable</span><span class="p">)</span>
+                <span class="p">{</span>
+                    <span class="c1">// get the first X number of people</span>
+                    <span class="n">List</span><span class="p">&lt;</span><span class="kt">object</span><span class="p">&gt;</span> <span class="n">returnList</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="kt">object</span><span class="p">&gt;();</span>
+                    <span class="n">returnList</span><span class="p">.</span><span class="nf">AddRange</span><span class="p">(</span><span class="n">enumerable</span><span class="p">.</span><span class="nf">Take</span><span class="p">(</span><span class="n">NumberToShow</span><span class="p">));</span>
+
+                    <span class="c1">// if there are even more people - add a counter element</span>
+                    <span class="k">if</span> <span class="p">(</span><span class="n">enumerable</span><span class="p">.</span><span class="nf">Count</span><span class="p">()</span> <span class="p">&gt;</span> <span class="n">NumberToShow</span><span class="p">)</span>
+                    <span class="p">{</span>
+                        <span class="n">returnList</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="n">enumerable</span><span class="p">.</span><span class="nf">Count</span><span class="p">()</span> <span class="p">-</span> <span class="n">NumberToShow</span><span class="p">);</span>
+                    <span class="p">}</span>
+
+                    <span class="k">return</span> <span class="n">returnList</span><span class="p">;</span>
+                <span class="p">}</span>
+                <span class="k">else</span>
+                    <span class="k">return</span> <span class="k">null</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="k">return</span> <span class="k">null</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="kt">object</span><span class="p">[]</span> <span class="nf">ConvertBack</span><span class="p">(</span><span class="kt">object</span> <span class="k">value</span><span class="p">,</span> <span class="n">Type</span><span class="p">[]</span> <span class="n">targetTypes</span><span class="p">,</span> <span class="kt">object</span> <span class="n">parameter</span><span class="p">,</span> <span class="n">CultureInfo</span> <span class="n">culture</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">throw</span> <span class="k">new</span> <span class="nf">NotImplementedException</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>It’s basically doing the same thing as our property earlier, where we take the first X objects (in our case we have a property <code class="highlighter-rouge">NumberToShow</code>) and then if we have more, we and an int to the end of the collection.</p>
+
+<blockquote>
+  <p>We can now delete that <code class="highlighter-rouge">PeopleCount</code> property on our ViewModel and the <code class="highlighter-rouge">OnPorpertyChanged</code> lines of  our <code class="highlighter-rouge">AddPerson</code> and <code class="highlighter-rouge">RemovePerson</code> commands, because our MultiValueConverter is going to take care of it all</p>
+</blockquote>
+
+<p>Now we tie it all together by referencing the converter in our <code class="highlighter-rouge">ResourceDictionary</code></p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="nt">&lt;converters:PeopleMultiBind</span> <span class="na">x:Key=</span><span class="s">"peopleMulti"</span> <span class="na">NumberToShow=</span><span class="s">"5"</span> <span class="nt">/&gt;</span>
+</code></pre></div></div>
+
+<p>And then update our Binding to use the multi-bind, as such:</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;StackLayout</span>
+    <span class="na">BindableLayout.ItemTemplateSelector=</span><span class="s">"{StaticResource personDataTemplateSelector}"</span>
+    <span class="na">HorizontalOptions=</span><span class="s">"CenterAndExpand"</span>
+    <span class="na">Orientation=</span><span class="s">"Horizontal"</span>
+    <span class="na">VerticalOptions=</span><span class="s">"Center"</span><span class="nt">&gt;</span>
+
+    <span class="nt">&lt;BindableLayout.ItemsSource&gt;</span>
+        <span class="nt">&lt;MultiBinding</span> <span class="na">Converter=</span><span class="s">"{StaticResource peopleMulti}"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;Binding</span> <span class="na">Path=</span><span class="s">"People"</span> <span class="nt">/&gt;</span>
+            <span class="nt">&lt;Binding</span> <span class="na">Path=</span><span class="s">"People.Count"</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;/MultiBinding&gt;</span>
+    <span class="nt">&lt;/BindableLayout.ItemsSource&gt;</span>
+
+    <span class="nt">&lt;BindableLayout.EmptyViewTemplate&gt;</span>
+        <span class="nt">&lt;DataTemplate&gt;</span>
+            <span class="nt">&lt;Label</span> <span class="na">Text=</span><span class="s">"Nobody"</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;/DataTemplate&gt;</span>
+    <span class="nt">&lt;/BindableLayout.EmptyViewTemplate&gt;</span>
+<span class="nt">&lt;/StackLayout&gt;</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p>Notice how the <code class="highlighter-rouge">ItemsSource</code> indicates is now <code class="highlighter-rouge">MultiBinding</code> to  the <code class="highlighter-rouge">People</code> collection and <em>also</em> the <code class="highlighter-rouge">Count</code> property in the collection. Nice!</p>
+</blockquote>
+
+<p>For added awesomeness we also add an <code class="highlighter-rouge">EmptyViewTemplate</code> to show something different when there are no people.</p>
+
+<p><img src="\assets\images\posts\avatargroups\avatars_changing.gif" alt="Avatars Changing" /></p>
+
+<h2 id="wrap-up">Wrap-up</h2>
+
+<p>Well that’s it, we have looked at creating an overlapping avatar group using a variety of techniques. Mind you, if you are not expecting the collection of avatars to change at runtime you could probably do away with the second half of this blog post - but it’s a fun experiment anyway.</p>
+
+<blockquote>
+  <p><a href="https://github.com/kphillpotts/AvatarGroup">The code for this article is available over on my Github.</a></p>
+</blockquote>
+
+<p>Thanks for reading, hope you found this useful, and happy coding!</p>
+
+                </div>
+            </section>
+
+            <!-- Email subscribe form at the bottom of the page -->
+            
+
+            <footer class="post-full-footer">
+                <!-- Everything inside the #author tags pulls data from the author -->
+                <!-- #author-->
+                
+                    
+                        <section class="author-card">
+                            
+                                <img class="author-profile-image" src="/assets/images/kphillpotts.jpg" alt="kphillpotts" />
+                            
+                            <section class="author-card-content">
+                                <h4 class="author-card-name"><a href="/author/kphillpotts">Kym Phillpotts</a></h4>
+                                
+                                    <p>Geek, Parent, Human, Senior Content Developer at Microsoft. Co-curator of http://weeklyxamarin.com  and twitch streaming live coding at http://twitch.tv/kymphillpotts.</p>
+                                
+                            </section>
+                        </section>
+                        <div class="post-full-footer-right">
+                            <a class="author-card-button" href="/author/kphillpotts">Read More</a>
+                        </div>
+                    
+                
+                <!-- /author  -->
+            </footer>
+            <!-- If you use Disqus comments, just uncomment this block.
+            The only thing you need to change is "test-apkdzgmqhj" - which
+            should be replaced with your own Disqus site-id. -->
+            
+                <section class="post-full-comments">
+                    <div id="disqus_thread"></div>
+                    <script>
+                        var disqus_config = function () {
+                            this.page.url = 'https://kymphillpotts.com/avatar-groups.html';
+                            this.page.identifier = '/avatar-groups.html';
+                        };
+                        (function() {
+                            var d = document, s = d.createElement('script');
+                            s.src = 'https://kymphillpotts.disqus.com/embed.js';
+                            s.setAttribute('data-timestamp', +new Date());
+                            (d.head || d.body).appendChild(s);
+                        })();
+                    </script>
+                    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                </section>
+            
+
+        </article>
+
+    </div>
+</main>
+
+<!-- Links to Previous/Next posts -->
+<aside class="read-next outer">
+    <div class="inner">
+        <div class="read-next-feed">
+            
+                
+                
+                
+                
+                    <article class="read-next-card"
+                        
+                            style="background-image: url(/assets/images/blog-cover.jpg)"
+                        
+                    >
+                        <header class="read-next-card-header">
+                            <small class="read-next-card-header-sitetitle">&mdash; Kym's Blog &mdash;</small>
+                            
+                                <h3 class="read-next-card-header-title"><a href="/tag/xamarin/">Xamarin</a></h3>
+                            
+                        </header>
+                        <div class="read-next-divider"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 14.5s2 3 5 3 5.5-2.463 5.5-5.5S21 6.5 18 6.5c-5 0-7 11-12 11C2.962 17.5.5 15.037.5 12S3 6.5 6 6.5s4.5 3.5 4.5 3.5"/></svg>
+</div>
+                        <div class="read-next-card-content">
+                            <ul>
+                                
+                                
+                                  
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/xamarin-tools-2021.html">Xamarin Tools 2021</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/pizza-shop.html">Xamarin.Forms UI Challenges - Pizza Shop</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/xamarin-forms-ui-challenge-rottenui.html">Xamarin.Forms UI Challenges - RottenUI</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                            </ul>
+                        </div>
+                        <footer class="read-next-card-footer">
+                            <a href="/tag/xamarin/">
+                                
+                                    See all 49 posts  →
+                                
+                            </a>
+                        </footer>
+                    </article>
+                
+            
+
+            <!-- If there's a next post, display it using the same markup included from - partials/post-card.hbs -->
+            
+
+            <!-- If there's a previous post, display it using the same markup included from - partials/post-card.hbs -->
+            
+                
+    <article class="post-card post-template">
+        
+            <a class="post-card-image-link" href="/xamarin-tools-2021.html">
+                <div class="post-card-image" style="background-image: url(/assets/images/covers/xamarin-tools-2021.jpg)"></div>
+            </a>
+        
+        <div class="post-card-content">
+            <a class="post-card-content-link" href="/xamarin-tools-2021.html">
+                <header class="post-card-header">
+                    
+                        
+                            
+                                <span class="post-card-tags">Xamarin</span>
+                            
+                        
+                    
+
+                    <h2 class="post-card-title">Xamarin Tools 2021</h2>
+                </header>
+                <section class="post-card-excerpt">
+                    <p>Choosing the right tools and resources can make all the difference in being a productive and effective developer. So, what are all the tools and libraries you should be using to build your</p>
+                </section>
+            </a>
+            <footer class="post-card-meta">
+                
+                    
+                        
+                        <img class="author-profile-image" src="/assets/images/kphillpotts.jpg" alt="Kym Phillpotts" />
+                        
+                        <span class="post-card-author">
+                            <a href="/author/kphillpotts/">Kym Phillpotts</a>
+                        </span>
+                    
+                
+            </footer>
+        </div>
+    </article>
+
+            
+
+        </div>
+    </div>
+</aside>
+
+<!-- Floating header which appears on-scroll, included from includes/floating-header.hbs -->
+<div class="floating-header">
+    <div class="floating-header-logo">
+        <a href="https://kymphillpotts.com/">
+            
+            <span>Kym's Blog</span>
+        </a>
+    </div>
+    <span class="floating-header-divider">&mdash;</span>
+    <div class="floating-header-title">Avatar Groups</div>
+    <div class="floating-header-share">
+        <div class="floating-header-share-label">Share this <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M7.5 15.5V4a1.5 1.5 0 1 1 3 0v4.5h2a1 1 0 0 1 1 1h2a1 1 0 0 1 1 1H18a1.5 1.5 0 0 1 1.5 1.5v3.099c0 .929-.13 1.854-.385 2.748L17.5 23.5h-9c-1.5-2-5.417-8.673-5.417-8.673a1.2 1.2 0 0 1 1.76-1.605L7.5 15.5zm6-6v2m-3-3.5v3.5m6-1v2"/>
+</svg>
+</div>
+        <a class="floating-header-share-tw" href="https://twitter.com/share?text=Avatar+Groups&amp;url=https://kphillpotts.github.io/avatar-groups.html"
+            onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg>
+
+        </a>
+        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=https://kphillpotts.github.io/avatar-groups.html"
+            onclick="window.open(this.href, 'share-facebook','width=580,height=296');return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M19 6h5V0h-5c-3.86 0-7 3.14-7 7v3H8v6h4v16h6V16h5l1-6h-6V7c0-.542.458-1 1-1z"/></svg>
+
+        </a>
+    </div>
+    <progress class="progress" value="0">
+        <div class="progress-container">
+            <span class="progress-bar"></span>
+        </div>
+    </progress>
+</div>
+
+
+<!-- /post -->
+
+<!-- The #contentFor helper here will send everything inside it up to the matching #block helper found in default.hbs -->
+
+
+        <!-- Previous/next page links - displayed on every page -->
+        
+
+        <!-- The footer at the very bottom of the screen -->
+        <footer class="site-footer outer">
+            <div class="site-footer-content inner">
+                <section class="copyright"><a href="https://kymphillpotts.com/">Kym's Blog</a> &copy; 2021</section>
+                <section class="poweredby">Proudly published with <a href="https://jekyllrb.com/">Jekyll</a> &
+                    <a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a> using
+                    <a href="https://github.com/jekyller/jasper2" target="_blank" rel="noopener">Jasper2</a></section>
+                <nav class="site-footer-nav">
+                    <a href="/">Latest Posts</a>
+                    
+                    <a href="https://twitter.com/kphillpotts" target="_blank" rel="noopener">Twitter</a>
+                    <a href="https://youtube.com/kphillpotts" target="_blank" rel="noopener">YouTube</a>
+                </nav>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- The big email subscribe modal content -->
+    
+
+    <!-- highlight.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.10.0/components/prism-abap.min.js"></script>
+    <script>$(document).ready(function() {
+      $('pre code').each(function(i, block) {
+        hljs.highlightBlock(block);
+      });
+    });</script>
+
+    <!-- jQuery + Fitvids, which makes all video embeds responsive -->
+    <script
+        src="https://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous">
+    </script>
+    <script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="https://demo.ghost.io/assets/js/jquery.fitvids.js?v=724281a32e"></script>
+
+
+    <!-- Paginator increased to "infinit" in _config.yml -->
+    <!-- if paginator.posts  -->
+    <!-- <script>
+        var maxPages = parseInt('');
+    </script>
+    <script src="/assets/js/infinitescroll.js"></script> -->
+    <!-- /endif -->
+
+    
+
+
+    <!-- Add Google Analytics  -->
+    <!-- Google Analytics Tracking code -->
+ <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-69281367-1', 'auto');
+  ga('send', 'pageview');
+
+ </script>
+
+
+    <!-- The #block helper will pull in data from the #contentFor other template files. In this case, there's some JavaScript which we only want to use in post.hbs, but it needs to be included down here, after jQuery has already loaded. -->
+    
+        <script>
+
+// NOTE: Scroll performance is poor in Safari
+// - this appears to be due to the events firing much more slowly in Safari.
+//   Dropping the scroll event and using only a raf loop results in smoother
+//   scrolling but continuous processing even when not scrolling
+$(document).ready(function () {
+    // Start fitVids
+    var $postContent = $(".post-full-content");
+    $postContent.fitVids();
+    // End fitVids
+
+    var progressBar = document.querySelector('progress');
+    var header = document.querySelector('.floating-header');
+    var title = document.querySelector('.post-full-title');
+
+    var lastScrollY = window.scrollY;
+    var lastWindowHeight = window.innerHeight;
+    var lastDocumentHeight = $(document).height();
+    var ticking = false;
+
+    function onScroll() {
+        lastScrollY = window.scrollY;
+        requestTick();
+    }
+
+    function onResize() {
+        lastWindowHeight = window.innerHeight;
+        lastDocumentHeight = $(document).height();
+        requestTick();
+    }
+
+    function requestTick() {
+        if (!ticking) {
+            requestAnimationFrame(update);
+        }
+        ticking = true;
+    }
+
+    function update() {
+        var trigger = title.getBoundingClientRect().top + window.scrollY;
+        var triggerOffset = title.offsetHeight + 35;
+        var progressMax = lastDocumentHeight - lastWindowHeight;
+
+        // show/hide floating header
+        if (lastScrollY >= trigger + triggerOffset) {
+            header.classList.add('floating-active');
+        } else {
+            header.classList.remove('floating-active');
+        }
+
+        progressBar.setAttribute('max', progressMax);
+        progressBar.setAttribute('value', lastScrollY);
+
+        ticking = false;
+    }
+
+    window.addEventListener('scroll', onScroll, {passive: true});
+    window.addEventListener('resize', onResize, false);
+
+    update();
+});
+</script>
+
+    
+
+    <!-- Ghost outputs important scripts and data with this tag - it should always be the very last thing before the closing body tag -->
+    <!-- ghost_foot -->
+
+</body>
+</html>
