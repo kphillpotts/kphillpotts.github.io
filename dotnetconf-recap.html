@@ -1,0 +1,1083 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <!-- Document Settings -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- Base Meta -->
+    <!-- dynamically fixing the title for tag/author pages -->
+
+
+
+    <title>.NET Conf recap</title>
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Styles'n'Scripts -->
+    <link rel="stylesheet" type="text/css" href="/assets/built/screen.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/built/screen.edited.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/built/syntax.css" />
+    <!-- highlight.js -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+    <style>.hljs { background: none; }</style>
+
+    <!--[if IE]>
+        <style>
+            p, ol, ul{
+                width: 100%;
+            }
+            blockquote{
+                width: 100%;
+            }
+        </style>
+    <![endif]-->
+    
+    <!-- This tag outputs SEO meta+structured data and other important settings -->
+    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="/assets/images/icons/apple-touch-icon-57x57.png" />
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/assets/images/icons/apple-touch-icon-114x114.png" />
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/assets/images/icons/apple-touch-icon-72x72.png" />
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/images/icons/apple-touch-icon-144x144.png" />
+<link rel="apple-touch-icon-precomposed" sizes="60x60" href=/"assets/images/icons/apple-touch-icon-60x60.png" />
+<link rel="apple-touch-icon-precomposed" sizes="120x120" href="/assets/images/icons/apple-touch-icon-120x120.png" />
+<link rel="apple-touch-icon-precomposed" sizes="76x76" href="/assets/images/icons/apple-touch-icon-76x76.png" />
+<link rel="apple-touch-icon-precomposed" sizes="152x152" href="/assets/images/icons/apple-touch-icon-152x152.png" />
+<link rel="icon" type="image/png" href="/assets/images/icons/favicon-196x196.png" sizes="196x196" />
+<link rel="icon" type="image/png" href="/assets/images/icons/favicon-96x96.png" sizes="96x96" />
+<link rel="icon" type="image/png" href="/assets/images/icons/favicon-32x32.png" sizes="32x32" />
+<link rel="icon" type="image/png" href="/assets/images/icons/favicon-16x16.png" sizes="16x16" />
+<link rel="icon" type="image/png" href="/assets/images/icons/favicon-128.png" sizes="128x128" />
+<meta name="application-name" content="&nbsp;"/>
+<meta name="msapplication-TileColor" content="#FFFFFF" />
+<meta name="msapplication-TileImage" content="/assets/images/icons/mstile-144x144.png" />
+<meta name="msapplication-square70x70logo" content="/assets/images/icons/mstile-70x70.png" />
+<meta name="msapplication-square150x150logo" content="/assets/images/icons/mstile-150x150.png" />
+<meta name="msapplication-wide310x150logo" content="/assets/images/icons/mstile-310x150.png" />
+<meta name="msapplication-square310x310logo" content="/assets/images/icons/mstile-310x310.png" />
+
+
+<meta name="description" content="I write about Azure, Xamarin.Forms, Connected Apps and whatever else might be on my mind." />
+    <link rel="shortcut icon" href="https://kymphillpotts.com/assets/images/icons/favicon-96x96.png" type="image/png" />
+    <link rel="canonical" href="https://kymphillpotts.com/dotnetconf-recap.html" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+
+     <!--title below is coming from _includes/dynamic_title-->
+    <meta property="og:site_name" content="Kym's Blog" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content=".NET Conf recap" />
+    <meta property="og:description" content="I write about Azure, Xamarin.Forms, Connected Apps and whatever else might be on my mind." />
+    <meta property="og:url" content="https://kymphillpotts.com/dotnetconf-recap.html" />
+    <meta property="og:image" content="https://kymphillpotts.com/assets/images/posts/dotnetConf2021/cover.png" />
+    <meta property="article:publisher" content="https://www.facebook.com/" />
+    <meta property="article:tag" content="Xamarin" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content=".NET Conf recap" />
+    <meta name="twitter:description" content="I write about Azure, Xamarin.Forms, Connected Apps and whatever else might be on my mind." />
+    <meta name="twitter:url" content="https://kymphillpotts.com/" />
+    <meta name="twitter:image" content="https://kymphillpotts.com/assets/images/posts/dotnetConf2021/cover.png" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="Kym's Blog" />
+    <meta name="twitter:label2" content="Filed under" />
+    <meta name="twitter:data2" content="Xamarin" />
+    <meta name="twitter:site" content="@kphillpotts" />
+    <meta name="twitter:creator" content="@kphillpotts" />
+    <meta property="og:image:width" content="2000" />
+    <meta property="og:image:height" content="666" />
+
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Website",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Kym's Blog",
+        "logo": "https://kymphillpotts.com/false"
+    },
+    "url": "https://kymphillpotts.com/dotnetconf-recap.html",
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://kymphillpotts.com/assets/images/posts/dotnetConf2021/cover.png",
+        "width": 2000,
+        "height": 666
+    },
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://kymphillpotts.com/dotnetconf-recap.html"
+    },
+    "description": "I write about Azure, Xamarin.Forms, Connected Apps and whatever else might be on my mind."
+}
+    </script>
+
+    <!-- <script type="text/javascript" src="https://demo.ghost.io/public/ghost-sdk.min.js?v=724281a32e"></script>
+    <script type="text/javascript">
+    ghost.init({
+    	clientId: "ghost-frontend",
+    	clientSecret: "f84a07a72b17"
+    });
+    </script> -->
+
+    <meta name="generator" content="Jekyll 3.6.2" />
+    <link rel="alternate" type="application/rss+xml" title=".NET Conf recap" href="/feed.xml" />
+
+
+</head>
+<body class="post-template">
+
+    <div class="site-wrapper">
+        <!-- All the main content gets inserted here, index.hbs, post.hbs, etc -->
+        <!-- default -->
+
+<!-- The tag above means: insert everything in this file
+into the {body} of the default.hbs template -->
+
+<header class="site-header outer">
+    <div class="inner">
+        <nav class="site-nav">
+    <div class="site-nav-left">
+        
+            
+                <a class="site-nav-logo" href="https://kymphillpotts.com/">Kym's Blog</a>
+            
+        
+        
+            <ul class="nav" role="menu">
+    <li class="nav-home" role="menuitem"><a href="/">Home</a></li>
+    
+
+
+    <li class="nav-xamarin" role="menuitem"><a href="/tag/xamarin/">Xamarin</a></li>
+    <!-- <li class="nav-azure" role="menuitem"><a href="/tag/azure/">Azure</a></li> -->
+    <li class="nav-uichallenge" role="menuitem"><a href="/uichallenges/">UI Challenges</a></li>
+    <li class="nav-stream" role="menuitem"><a href="/tag/stream/">Streams</a></li>
+    <li class="nav-other" role="menuitem"><a href="/tag/other/">Other</a></li>
+    <li class="nav-about" role="menuitem"><a href="/about/">About Me</a></li>
+
+
+</ul>
+
+        
+    </div>
+    <div class="site-nav-right">
+        <div class="social-links">
+            
+            
+                <a class="social-link social-link-tw" href="https://twitter.com/kphillpotts" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg>
+</a>
+            
+        </div>
+        
+    </div>
+</nav>
+
+    </div>
+</header>
+
+<!-- Everything inside the #post tags pulls data from the post -->
+<!-- #post -->
+
+<main id="site-main" class="site-main outer" role="main">
+    <div class="inner">
+
+        <article class="post-full  ">
+
+            <header class="post-full-header">
+                <section class="post-full-meta">
+                    <time class="post-full-meta-date" datetime=" 5 December 2021"> 5 December 2021</time>
+                    
+                        <span class="date-divider">/</span>
+                        
+                            
+                               <a href='/tag/xamarin/'>XAMARIN</a>
+                            
+                        
+                    
+                </section>
+                <h1 class="post-full-title">.NET Conf recap</h1>
+            </header>
+
+            
+            <figure class="post-full-image" style="background-image: url(/assets/images/posts/dotnetConf2021/cover.png)">
+            </figure>
+            
+
+            <section class="post-full-content">
+                <div class="kg-card-markdown">
+                    <p>There have been a tonne of announcements at .NET Conf 2021 including .NET 6, C# 10, Visual Studio 2022, and MAUI Preview 10. This post is a recap of the most important parts for Xamarin, Blazor and Maui developers. For those of you who don’t want to sit through hours of videos, I have watched the sessions and linked the resources so you don’t have to.</p>
+
+<p>The purpose of this post is <strong>not</strong> to summarize the content from the various announcements, but rather point you (and me) to the best resources to get up to speed with all the new goodness. People like to consume different types of information, so I’ve broadly classified them into: Websites (🌐), Blogs and Articles (📄) and Videos (📺).</p>
+
+<h1 id="net-conf">.NET Conf</h1>
+<ul>
+  <li>🌐 <a href="https://www.dotnetconf.net/"><strong>.NET Conf Website</strong></a></li>
+  <li>📄 <a href="https://github.com/dotnet-presentations/dotNETConf/tree/master/2021/MainEvent/Technical"><strong>Session Slides and Videos</strong></a></li>
+  <li>📺 <a href="https://www.youtube.com/playlist?list=PLdo4fOcmZ0oVFtp9MDEBNbA2sSqYvXSXO"><strong>Session Replays</strong></a></li>
+</ul>
+
+<p><img src="assets/images/posts/dotnetConf2021/Slide3.PNG" /></p>
+<h1 id="net-6">.NET 6</h1>
+<ul>
+  <li>📄 <a href="https://devblogs.microsoft.com/dotnet/announcing-net-6/"><strong>Announcing .NET 6 — The Fastest .NET Yet</strong></a> - Richard Lander.
+    <blockquote>
+      <p>This is an absolute monster of a blog post that covers a huge number of the .NET 6 release features. If you only have time to read one article, then make it this one.</p>
+    </blockquote>
+  </li>
+  <li>📄 <a href="https://devblogs.microsoft.com/dotnet/performance-improvements-in-net-6/"><strong>Performance Improvements in .NET 6</strong></a> - Stephen Toub
+    <blockquote>
+      <p>This is a <strong>very</strong> deep dive into the performance work in .NET 6. Not for the faint of heart.</p>
+    </blockquote>
+  </li>
+  <li>📄 <a href="https://dotnet.microsoft.com/platform/support/policy/dotnet-core"><strong>.NET and .NET Core Support Policy</strong></a>
+    <blockquote>
+      <p>What you need to know about the support lifecycle of .NET versions. The take away, is that .NET 6 is here for a long time, and you are going to end up migrating here at some point ;-)</p>
+    </blockquote>
+  </li>
+  <li>🌐 <a href="http://aka.ms/dotnet-upgrade-assistant"><strong>.NET Upgrade Assistant</strong></a>
+    <blockquote>
+      <p>Speaking of migrating to .NET 6, this tool is here to help you. For many projects it might be a matter of flipping a setting in a project file, but for others (particularly older .NET Framework projects) this command line tool is for you.</p>
+    </blockquote>
+  </li>
+  <li>📺 <a href="https://channel9.msdn.com/Events/dotnetConf/2021/Keynote"><strong>.NET Conf Keynote</strong></a> - Scott Hunter + Friends - ⏰ <strong>70 mins</strong>
+    <blockquote>
+      <p>This keynote by Scott Hunter and Friends covers all the key announcements around .NET 6. If you are going to watch only one video, make it this one.</p>
+    </blockquote>
+  </li>
+  <li>📺 <a href="https://docs.microsoft.com/en-us/events/dotnetconf-2021/speed-up-your-net-development-with-hot-reload"><strong>Speed up your .NET development with Hot Reload</strong></a> - 
+Dmitry Lyalin - ⏰ <strong>28 mins</strong>
+    <blockquote>
+      <p>This looks at the incredibly useful Hot Reload and how it works in Visual Studio 2022 with demos across .NET MAUI, Blazor, ASP.NET Core and desktop apps.</p>
+    </blockquote>
+  </li>
+</ul>
+
+<p><img src="assets/images/posts/dotnetConf2021/Slide12.PNG" /></p>
+
+<ul>
+  <li>📄 <a href="https://devblogs.microsoft.com/dotnet/welcome-to-csharp-10/"><strong>Welcome to C# 10</strong></a> - Kathleen Dollard
+    <blockquote>
+      <p>C# 10 has some lovely features to make your code cleaner, like <code class="highlighter-rouge">Gobal Usings</code> and <code class="highlighter-rouge">File-scoped namespaces</code>. This post, covers the most important C# 10 improvements.</p>
+    </blockquote>
+  </li>
+  <li>📺 <a href="https://docs.microsoft.com/en-us/events/dotnetconf-2021/whats-new-in-c-10"><strong>What’s new in C# 10</strong></a> - Mads Torgersen &amp; Dustin Campbell - ⏰ <strong>30 mins</strong>
+    <blockquote>
+      <p>Mads and Dustin for a discussion and demonstration of the features of C #10 with a all-code, no-slide approach we all love ;-)</p>
+    </blockquote>
+  </li>
+</ul>
+
+<p><img src="assets/images/posts/dotnetConf2021/Slide15.PNG" /></p>
+
+<ul>
+  <li>📄 <a href="https://devblogs.microsoft.com/visualstudio/visual-studio-2022-now-available/"><strong>Visual Studio 2022 now available</strong></a> - Amanda Silver
+    <blockquote>
+      <p>The announcement blog of VS 2022.</p>
+    </blockquote>
+  </li>
+  <li>📄 <a href="https://docs.microsoft.com/en-us/visualstudio/releases/2022/mac-release-notes-preview#whats-new-in-visual-studio-2022-for-mac"><strong>What’s New in Visual Studio 2022 for Mac</strong></a> - Docs Release list
+    <blockquote>
+      <p>Visual Studio 2022 for Mac is still in Preview, but that’s not going to stop you Mac people from using it. This page is a good place to look at for the latest release notes.</p>
+    </blockquote>
+  </li>
+  <li>📺 <a href="https://www.youtube.com/watch?v=f8jXO946eDw"><strong>Welcome to Visual Studio 2022</strong></a> – Scott Hanselman and friends - ⏰ <strong>33 mins</strong>
+    <blockquote>
+      <p>This is the keynote for the launch of VS2022. It’s a nice relaxed overview of the key features. This is what I imagine having a party over to Scott’s house would be like.</p>
+    </blockquote>
+  </li>
+  <li>📺 <a href="https://www.youtube.com/watch?v=8KsVw52hDVU"><strong>Visual Studio 2022 for .NET XAML developers</strong></a> - Dmitry Lyalin - ⏰ <strong>19 mins</strong>
+    <blockquote>
+      <p>I admit it, I still like XAML and VS 2022 has some nice features for XAML geeks that apply to WPF <strong>and</strong> Xamarin / MAUI projects.</p>
+    </blockquote>
+  </li>
+  <li>📺 <a href="https://www.youtube.com/watch?v=LUlbO5MjPjU"><strong>Building cross platform apps with .NET MAUI in Visual Studio 2022</strong></a> - Maddy Leger Montaquila - ⏰ <strong>17 mins</strong>
+    <blockquote>
+      <p>Maddy looks at the Preview version of VS 2022 which has all the goodness for us MAUI developers.</p>
+    </blockquote>
+  </li>
+  <li>📺 <a href="https://www.youtube.com/watch?v=B6K_UTYKHEA"><strong>What’s new for Visual Studio 2022 for Mac</strong></a> - Jordan Matthiesen - ⏰ <strong>19 mins</strong>
+    <blockquote>
+      <p>Learn about all the new capabilities and improvements in Visual Studio for Mac.</p>
+    </blockquote>
+  </li>
+  <li>🌐 <a href="https://www.youtube.com/visualstudio/"><strong>Visual Studio Youtube Channel</strong></a>
+    <blockquote>
+      <p>The official youtube channel for VS. Most interesting here is the <a href="https://www.youtube.com/playlist?list=PLReL099Y5nRdcMhrBc9y1dMhUYBk7hknY">Tips and Tricks playlists</a> but there is also some other gems on the site as well.</p>
+    </blockquote>
+  </li>
+</ul>
+
+<p><img src="assets/images/posts/dotnetConf2021/Slide18.PNG" /></p>
+<ul>
+  <li>📄 <a href="https://devblogs.microsoft.com/dotnet/announcing-net-maui-preview-10/"><strong>Announcing .NET MAUI Preview 10</strong></a> - David Ortinau
+    <blockquote>
+      <p>.NET Multi-platform App UI (MAUI) Preview 10 is now available atop the stable release of .NET 6, and you can get it in the preview channel of Visual Studio 2022. This new release includes the merging of the remaining Windows App SDK dependencies, and ongoing progress to complete the remaining controls and control features. Might be time to start getting on the MAUI train!</p>
+    </blockquote>
+  </li>
+  <li>📄 <a href="https://github.com/dotnet/maui/wiki/Roadmap"><strong>.NET MAUI Roadmap</strong></a>
+    <blockquote>
+      <p>Useful resource to keep on track of the upcoming releases of MAUI.</p>
+    </blockquote>
+  </li>
+  <li>📄 <a href="https://github.com/dotnet/maui/wiki"><strong>.NET MAUI Wiki</strong></a>
+    <blockquote>
+      <p>Useful resource for quick docs and migration information.</p>
+    </blockquote>
+  </li>
+  <li>📺 <a href="https://docs.microsoft.com/en-us/events/dotnetconf-2021/introduction-to-net-maui"><strong>Introduction to .NET MAUI</strong></a> - Maddy Leger Montaquila - ⏰ <strong>29 mins</strong>
+    <blockquote>
+      <p>Join Maddy, .NET MAUI Program Manager, to get a first look of .NET MAUI in .NET 6 and learn how you can start using it today.</p>
+    </blockquote>
+  </li>
+  <li>📺 <a href="https://docs.microsoft.com/en-us/events/dotnetconf-2021/drawn-controls-in-net-maui"><strong>Drawn controls in .NET MAUI</strong></a> - Javier Suárez Ruiz - ⏰ <strong>30 mins</strong>
+    <blockquote>
+      <p>Learn all the basics of .NET MAUI Graphics, a new cross-platform graphics library included with .NET MAUI as well as use this library to create fully drawn controls. We will see what advantages brings this new way of creating controls and we will analyze concepts such as performance and other related aspects.</p>
+    </blockquote>
+  </li>
+  <li>📺 <a href="https://docs.microsoft.com/en-us/events/dotnetconf-2021/welcome-to-maui-community-toolkit"><strong>Welcome to Maui Community Toolkit</strong></a> - Pedro Jesus, Gerald Versluis - ⏰ <strong>29 mins</strong>
+    <blockquote>
+      <p>Everything that you need to know about the Maui Community Toolkit and the migration between the old (but gold) Xamarin Community Toolkit.</p>
+    </blockquote>
+  </li>
+</ul>
+
+<p><img src="assets/images/posts/dotnetConf2021/Slide22.PNG" /></p>
+<ul>
+  <li>📄 <a href="https://devblogs.microsoft.com/dotnet/announcing-asp-net-core-in-net-6/"><strong>Announcing ASP.NET Core in .NET 6</strong></a> - Daniel Roth
+    <blockquote>
+      <p>This blog post covers all the new stuff in ASP.NET Core, but also a section focused on Blazor Improvements.</p>
+    </blockquote>
+  </li>
+  <li>🌐 <a href="aka.ms/blazor-fluent-ui"><strong>Blazor Fluent UI Components</strong></a>
+    <blockquote>
+      <p>Want your Blazor app to have the Windows 11 Fluent experience? Yeah, me neither, but you can!</p>
+    </blockquote>
+  </li>
+  <li>📺 <a href="https://docs.microsoft.com/en-us/events/dotnetconf-2021/enterprise-grade-blazor-apps-with-net-6"><strong>Enterprise-grade Blazor apps with .NET 6</strong></a> - Daniel Roth - ⏰ <strong>30 mins</strong>
+    <blockquote>
+      <p>A look at the new support for Hot Reload, error boundaries, state preservation during prerendering, faster file uploads, query string handling, adding page metadata, and integrating Blazor components into existing JavaScript based apps.</p>
+    </blockquote>
+  </li>
+  <li>📺 <a href="https://docs.microsoft.com/en-us/events/dotnetconf-2021/responsive-and-adaptive-tactics-for-blazor-applications"><strong>Response and Adaptive Tactics for Blazor Applications</strong></a> - Ed Charbeneau - ⏰ <strong>27 mins</strong>
+    <blockquote>
+      <p>Learn about CSS techniques like CSS Grid, Flexbox and media queries. We will also explore techniques for adaptive the user interface at runtime for maximum control. These tactics apply to Blazor WASM, Server, and Blazor Hybrid.</p>
+    </blockquote>
+  </li>
+  <li>📺 <a href="https://docs.microsoft.com/en-us/events/dotnetconf-2021/next-generation-blazor-components-with-net-6"><strong>Next-generation Blazor components with .NET 6</strong></a> - Daniel Roth, Javier Calvarro Nelson - ⏰ <strong>31 mins</strong>
+    <blockquote>
+      <p>A look at the new improvements to the Blazor component model, including required component parameters, generic type inference from ancestor components, JavaScript initializers, and handling of static web assets.</p>
+    </blockquote>
+  </li>
+  <li>📺 <a href="https://docs.microsoft.com/en-us/events/dotnetconf-2021/new-blazor-webassembly-capabilities-in-net-6"><strong>New Blazor WebAssembly capabilities in .NET 6</strong></a> - Steve Sanderson - ⏰ <strong>31 mins</strong>
+    <blockquote>
+      <p>Want your mind blown 🤯 - then check out this session which deals with embedding native dependencies into Blazor.</p>
+    </blockquote>
+  </li>
+  <li>📺 <a href="https://docs.microsoft.com/en-us/events/dotnetconf-2021/building-a-production-ready-blazor-wasm-app"><strong>Building A Production Ready Blazor WASM App</strong></a> - Steve Peirce - ⏰ <strong>29 mins</strong>
+    <blockquote>
+      <p>Steve talks about writing production ready code that includes: How to test your Blazor application, How to improve performance of your application, and Common tips and tricks.</p>
+    </blockquote>
+  </li>
+  <li>📺 <a href="https://www.youtube.com/watch?v=swwWgFZJvEs"><strong>.NET MAUI Blazor - Build Hybrid Mobile, Desktop, and Web apps</strong></a> - Daniel Roth - ⏰ <strong>5 mins</strong>
+    <blockquote>
+      <p>Quick overview of the what/why of the MAUI / Blazor love child Blaui!</p>
+    </blockquote>
+  </li>
+  <li>📺 <a href="https://docs.microsoft.com/en-us/events/dotnetconf-2021/build-cross-platform-native-apps-with-net-maui-and-blazor"><strong>Build cross-platform native apps with .NET MAUI and Blazor</strong></a> - Eilon Lipton - ⏰ <strong>29 mins</strong>
+    <blockquote>
+      <p>The power of Blazor is coming to native apps on desktop and mobile devices! Use existing Blazor web components and get the power of native apps, or supercharge your existing native apps with the power and reach of Blazor with the new BlazorWebView control for .NET MAUI, WPF, and WinForms.</p>
+    </blockquote>
+  </li>
+</ul>
+
+<hr />
+
+<p>Well, that’s a lot of links, but hopefully you find it useful to get up to speed with all the new goodness.</p>
+
+                </div>
+            </section>
+
+            <!-- Email subscribe form at the bottom of the page -->
+            
+
+            <footer class="post-full-footer">
+                <!-- Everything inside the #author tags pulls data from the author -->
+                <!-- #author-->
+                
+                    
+                        <section class="author-card">
+                            
+                                <img class="author-profile-image" src="/assets/images/kphillpotts.jpg" alt="kphillpotts" />
+                            
+                            <section class="author-card-content">
+                                <h4 class="author-card-name"><a href="/author/kphillpotts">Kym Phillpotts</a></h4>
+                                
+                                    <p>Geek, Parent, Human, Senior Content Developer at Microsoft. Co-curator of http://weeklyxamarin.com  and twitch streaming live coding at http://twitch.tv/kymphillpotts.</p>
+                                
+                            </section>
+                        </section>
+                        <div class="post-full-footer-right">
+                            <a class="author-card-button" href="/author/kphillpotts">Read More</a>
+                        </div>
+                    
+                
+                <!-- /author  -->
+            </footer>
+            <!-- If you use Disqus comments, just uncomment this block.
+            The only thing you need to change is "test-apkdzgmqhj" - which
+            should be replaced with your own Disqus site-id. -->
+            
+                <section class="post-full-comments">
+                    <div id="disqus_thread"></div>
+                    <script>
+                        var disqus_config = function () {
+                            this.page.url = 'https://kymphillpotts.com/dotnetconf-recap.html';
+                            this.page.identifier = '/dotnetconf-recap.html';
+                        };
+                        (function() {
+                            var d = document, s = d.createElement('script');
+                            s.src = 'https://kymphillpotts.disqus.com/embed.js';
+                            s.setAttribute('data-timestamp', +new Date());
+                            (d.head || d.body).appendChild(s);
+                        })();
+                    </script>
+                    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                </section>
+            
+
+        </article>
+
+    </div>
+</main>
+
+<!-- Links to Previous/Next posts -->
+<aside class="read-next outer">
+    <div class="inner">
+        <div class="read-next-feed">
+            
+                
+                
+                
+                
+                    <article class="read-next-card"
+                        
+                            style="background-image: url(/assets/images/blog-cover.jpg)"
+                        
+                    >
+                        <header class="read-next-card-header">
+                            <small class="read-next-card-header-sitetitle">&mdash; Kym's Blog &mdash;</small>
+                            
+                                <h3 class="read-next-card-header-title"><a href="/tag/xamarin/">Xamarin</a></h3>
+                            
+                        </header>
+                        <div class="read-next-divider"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 14.5s2 3 5 3 5.5-2.463 5.5-5.5S21 6.5 18 6.5c-5 0-7 11-12 11C2.962 17.5.5 15.037.5 12S3 6.5 6 6.5s4.5 3.5 4.5 3.5"/></svg>
+</div>
+                        <div class="read-next-card-content">
+                            <ul>
+                                
+                                
+                                  
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/avatar-groups.html">Avatar Groups</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/xamarin-tools-2021.html">Xamarin Tools 2021</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/pizza-shop.html">Xamarin.Forms UI Challenges - Pizza Shop</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                            </ul>
+                        </div>
+                        <footer class="read-next-card-footer">
+                            <a href="/tag/xamarin/">
+                                
+                                    See all 50 posts  →
+                                
+                            </a>
+                        </footer>
+                    </article>
+                
+            
+
+            <!-- If there's a next post, display it using the same markup included from - partials/post-card.hbs -->
+            
+
+            <!-- If there's a previous post, display it using the same markup included from - partials/post-card.hbs -->
+            
+                
+    <article class="post-card post-template">
+        
+            <a class="post-card-image-link" href="/avatar-groups.html">
+                <div class="post-card-image" style="background-image: url(/assets/images/covers/avatars.jpg)"></div>
+            </a>
+        
+        <div class="post-card-content">
+            <a class="post-card-content-link" href="/avatar-groups.html">
+                <header class="post-card-header">
+                    
+                        
+                            
+                                <span class="post-card-tags">Xamarin</span>
+                            
+                        
+                    
+
+                    <h2 class="post-card-title">Avatar Groups</h2>
+                </header>
+                <section class="post-card-excerpt">
+                    <p>Overlapping avatar badges are an effective way to show a collection of people, especially where space is at a premium. In this article we look at how to create this UI in Xamarin.Forms</p>
+                </section>
+            </a>
+            <footer class="post-card-meta">
+                
+                    
+                        
+                        <img class="author-profile-image" src="/assets/images/kphillpotts.jpg" alt="Kym Phillpotts" />
+                        
+                        <span class="post-card-author">
+                            <a href="/author/kphillpotts/">Kym Phillpotts</a>
+                        </span>
+                    
+                
+            </footer>
+        </div>
+    </article>
+
+            
+
+        </div>
+    </div>
+</aside>
+
+<!-- Floating header which appears on-scroll, included from includes/floating-header.hbs -->
+<div class="floating-header">
+    <div class="floating-header-logo">
+        <a href="https://kymphillpotts.com/">
+            
+            <span>Kym's Blog</span>
+        </a>
+    </div>
+    <span class="floating-header-divider">&mdash;</span>
+    <div class="floating-header-title">.NET Conf recap</div>
+    <div class="floating-header-share">
+        <div class="floating-header-share-label">Share this <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M7.5 15.5V4a1.5 1.5 0 1 1 3 0v4.5h2a1 1 0 0 1 1 1h2a1 1 0 0 1 1 1H18a1.5 1.5 0 0 1 1.5 1.5v3.099c0 .929-.13 1.854-.385 2.748L17.5 23.5h-9c-1.5-2-5.417-8.673-5.417-8.673a1.2 1.2 0 0 1 1.76-1.605L7.5 15.5zm6-6v2m-3-3.5v3.5m6-1v2"/>
+</svg>
+</div>
+        <a class="floating-header-share-tw" href="https://twitter.com/share?text=.NET+Conf+recap&amp;url=https://kphillpotts.github.io/dotnetconf-recap.html"
+            onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg>
+
+        </a>
+        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=https://kphillpotts.github.io/dotnetconf-recap.html"
+            onclick="window.open(this.href, 'share-facebook','width=580,height=296');return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M19 6h5V0h-5c-3.86 0-7 3.14-7 7v3H8v6h4v16h6V16h5l1-6h-6V7c0-.542.458-1 1-1z"/></svg>
+
+        </a>
+    </div>
+    <progress class="progress" value="0">
+        <div class="progress-container">
+            <span class="progress-bar"></span>
+        </div>
+    </progress>
+</div>
+
+
+<!-- /post -->
+
+<!-- The #contentFor helper here will send everything inside it up to the matching #block helper found in default.hbs -->
+
+
+        <!-- Previous/next page links - displayed on every page -->
+        
+
+        <!-- The footer at the very bottom of the screen -->
+        <footer class="site-footer outer">
+            <div class="site-footer-content inner">
+                <section class="copyright"><a href="https://kymphillpotts.com/">Kym's Blog</a> &copy; 2021</section>
+                <section class="poweredby">Proudly published with <a href="https://jekyllrb.com/">Jekyll</a> &
+                    <a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a> using
+                    <a href="https://github.com/jekyller/jasper2" target="_blank" rel="noopener">Jasper2</a></section>
+                <nav class="site-footer-nav">
+                    <a href="/">Latest Posts</a>
+                    
+                    <a href="https://twitter.com/kphillpotts" target="_blank" rel="noopener">Twitter</a>
+                    <a href="https://youtube.com/kphillpotts" target="_blank" rel="noopener">YouTube</a>
+                </nav>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- The big email subscribe modal content -->
+    
+
+    <!-- highlight.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.10.0/components/prism-abap.min.js"></script>
+    <script>$(document).ready(function() {
+      $('pre code').each(function(i, block) {
+        hljs.highlightBlock(block);
+      });
+    });</script>
+
+    <!-- jQuery + Fitvids, which makes all video embeds responsive -->
+    <script
+        src="https://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous">
+    </script>
+    <script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="https://demo.ghost.io/assets/js/jquery.fitvids.js?v=724281a32e"></script>
+
+
+    <!-- Paginator increased to "infinit" in _config.yml -->
+    <!-- if paginator.posts  -->
+    <!-- <script>
+        var maxPages = parseInt('');
+    </script>
+    <script src="/assets/js/infinitescroll.js"></script> -->
+    <!-- /endif -->
+
+    
+
+
+    <!-- Add Google Analytics  -->
+    <!-- Google Analytics Tracking code -->
+ <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-69281367-1', 'auto');
+  ga('send', 'pageview');
+
+ </script>
+
+
+    <!-- The #block helper will pull in data from the #contentFor other template files. In this case, there's some JavaScript which we only want to use in post.hbs, but it needs to be included down here, after jQuery has already loaded. -->
+    
+        <script>
+
+// NOTE: Scroll performance is poor in Safari
+// - this appears to be due to the events firing much more slowly in Safari.
+//   Dropping the scroll event and using only a raf loop results in smoother
+//   scrolling but continuous processing even when not scrolling
+$(document).ready(function () {
+    // Start fitVids
+    var $postContent = $(".post-full-content");
+    $postContent.fitVids();
+    // End fitVids
+
+    var progressBar = document.querySelector('progress');
+    var header = document.querySelector('.floating-header');
+    var title = document.querySelector('.post-full-title');
+
+    var lastScrollY = window.scrollY;
+    var lastWindowHeight = window.innerHeight;
+    var lastDocumentHeight = $(document).height();
+    var ticking = false;
+
+    function onScroll() {
+        lastScrollY = window.scrollY;
+        requestTick();
+    }
+
+    function onResize() {
+        lastWindowHeight = window.innerHeight;
+        lastDocumentHeight = $(document).height();
+        requestTick();
+    }
+
+    function requestTick() {
+        if (!ticking) {
+            requestAnimationFrame(update);
+        }
+        ticking = true;
+    }
+
+    function update() {
+        var trigger = title.getBoundingClientRect().top + window.scrollY;
+        var triggerOffset = title.offsetHeight + 35;
+        var progressMax = lastDocumentHeight - lastWindowHeight;
+
+        // show/hide floating header
+        if (lastScrollY >= trigger + triggerOffset) {
+            header.classList.add('floating-active');
+        } else {
+            header.classList.remove('floating-active');
+        }
+
+        progressBar.setAttribute('max', progressMax);
+        progressBar.setAttribute('value', lastScrollY);
+
+        ticking = false;
+    }
+
+    window.addEventListener('scroll', onScroll, {passive: true});
+    window.addEventListener('resize', onResize, false);
+
+    update();
+});
+</script>
+
+    
+
+    <!-- Ghost outputs important scripts and data with this tag - it should always be the very last thing before the closing body tag -->
+    <!-- ghost_foot -->
+
+</body>
+</html>

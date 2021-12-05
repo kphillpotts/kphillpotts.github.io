@@ -1,4 +1,191 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="https://kymphillpotts.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://kymphillpotts.com/" rel="alternate" type="text/html" /><updated>2021-09-18T13:01:19+10:00</updated><id>https://kymphillpotts.com/</id><title type="html">Kym’s Blog</title><subtitle>I write about Azure, Xamarin.Forms, Connected Apps and whatever else might be on my mind.</subtitle><entry><title type="html">Avatar Groups</title><link href="https://kymphillpotts.com/avatar-groups.html" rel="alternate" type="text/html" title="Avatar Groups" /><published>2021-09-18T10:00:00+10:00</published><updated>2021-09-18T10:00:00+10:00</updated><id>https://kymphillpotts.com/avatar-groups</id><content type="html" xml:base="https://kymphillpotts.com/avatar-groups.html">&lt;p&gt;Overlapping avatar badges are an effective way to show a collection of people, especially where space is at a premium. In this article we look at how to create this UI in Xamarin.Forms and MAUI.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="https://kymphillpotts.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://kymphillpotts.com/" rel="alternate" type="text/html" /><updated>2021-12-05T17:04:36+11:00</updated><id>https://kymphillpotts.com/</id><title type="html">Kym’s Blog</title><subtitle>I write about Azure, Xamarin.Forms, Connected Apps and whatever else might be on my mind.</subtitle><entry><title type="html">.NET Conf recap</title><link href="https://kymphillpotts.com/dotnetconf-recap.html" rel="alternate" type="text/html" title=".NET Conf recap" /><published>2021-12-05T11:00:00+11:00</published><updated>2021-12-05T11:00:00+11:00</updated><id>https://kymphillpotts.com/dotnetconf-recap</id><content type="html" xml:base="https://kymphillpotts.com/dotnetconf-recap.html">&lt;p&gt;There have been a tonne of announcements at .NET Conf 2021 including .NET 6, C# 10, Visual Studio 2022, and MAUI Preview 10. This post is a recap of the most important parts for Xamarin, Blazor and Maui developers. For those of you who don’t want to sit through hours of videos, I have watched the sessions and linked the resources so you don’t have to.&lt;/p&gt;
+
+&lt;p&gt;The purpose of this post is &lt;strong&gt;not&lt;/strong&gt; to summarize the content from the various announcements, but rather point you (and me) to the best resources to get up to speed with all the new goodness. People like to consume different types of information, so I’ve broadly classified them into: Websites (🌐), Blogs and Articles (📄) and Videos (📺).&lt;/p&gt;
+
+&lt;h1 id=&quot;net-conf&quot;&gt;.NET Conf&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;🌐 &lt;a href=&quot;https://www.dotnetconf.net/&quot;&gt;&lt;strong&gt;.NET Conf Website&lt;/strong&gt;&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;📄 &lt;a href=&quot;https://github.com/dotnet-presentations/dotNETConf/tree/master/2021/MainEvent/Technical&quot;&gt;&lt;strong&gt;Session Slides and Videos&lt;/strong&gt;&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;📺 &lt;a href=&quot;https://www.youtube.com/playlist?list=PLdo4fOcmZ0oVFtp9MDEBNbA2sSqYvXSXO&quot;&gt;&lt;strong&gt;Session Replays&lt;/strong&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;assets/images/posts/dotnetConf2021/Slide3.PNG&quot; /&gt;&lt;/p&gt;
+&lt;h1 id=&quot;net-6&quot;&gt;.NET 6&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;📄 &lt;a href=&quot;https://devblogs.microsoft.com/dotnet/announcing-net-6/&quot;&gt;&lt;strong&gt;Announcing .NET 6 — The Fastest .NET Yet&lt;/strong&gt;&lt;/a&gt; - Richard Lander.
+    &lt;blockquote&gt;
+      &lt;p&gt;This is an absolute monster of a blog post that covers a huge number of the .NET 6 release features. If you only have time to read one article, then make it this one.&lt;/p&gt;
+    &lt;/blockquote&gt;
+  &lt;/li&gt;
+  &lt;li&gt;📄 &lt;a href=&quot;https://devblogs.microsoft.com/dotnet/performance-improvements-in-net-6/&quot;&gt;&lt;strong&gt;Performance Improvements in .NET 6&lt;/strong&gt;&lt;/a&gt; - Stephen Toub
+    &lt;blockquote&gt;
+      &lt;p&gt;This is a &lt;strong&gt;very&lt;/strong&gt; deep dive into the performance work in .NET 6. Not for the faint of heart.&lt;/p&gt;
+    &lt;/blockquote&gt;
+  &lt;/li&gt;
+  &lt;li&gt;📄 &lt;a href=&quot;https://dotnet.microsoft.com/platform/support/policy/dotnet-core&quot;&gt;&lt;strong&gt;.NET and .NET Core Support Policy&lt;/strong&gt;&lt;/a&gt;
+    &lt;blockquote&gt;
+      &lt;p&gt;What you need to know about the support lifecycle of .NET versions. The take away, is that .NET 6 is here for a long time, and you are going to end up migrating here at some point ;-)&lt;/p&gt;
+    &lt;/blockquote&gt;
+  &lt;/li&gt;
+  &lt;li&gt;🌐 &lt;a href=&quot;http://aka.ms/dotnet-upgrade-assistant&quot;&gt;&lt;strong&gt;.NET Upgrade Assistant&lt;/strong&gt;&lt;/a&gt;
+    &lt;blockquote&gt;
+      &lt;p&gt;Speaking of migrating to .NET 6, this tool is here to help you. For many projects it might be a matter of flipping a setting in a project file, but for others (particularly older .NET Framework projects) this command line tool is for you.&lt;/p&gt;
+    &lt;/blockquote&gt;
+  &lt;/li&gt;
+  &lt;li&gt;📺 &lt;a href=&quot;https://channel9.msdn.com/Events/dotnetConf/2021/Keynote&quot;&gt;&lt;strong&gt;.NET Conf Keynote&lt;/strong&gt;&lt;/a&gt; - Scott Hunter + Friends - ⏰ &lt;strong&gt;70 mins&lt;/strong&gt;
+    &lt;blockquote&gt;
+      &lt;p&gt;This keynote by Scott Hunter and Friends covers all the key announcements around .NET 6. If you are going to watch only one video, make it this one.&lt;/p&gt;
+    &lt;/blockquote&gt;
+  &lt;/li&gt;
+  &lt;li&gt;📺 &lt;a href=&quot;https://docs.microsoft.com/en-us/events/dotnetconf-2021/speed-up-your-net-development-with-hot-reload&quot;&gt;&lt;strong&gt;Speed up your .NET development with Hot Reload&lt;/strong&gt;&lt;/a&gt; - 
+Dmitry Lyalin - ⏰ &lt;strong&gt;28 mins&lt;/strong&gt;
+    &lt;blockquote&gt;
+      &lt;p&gt;This looks at the incredibly useful Hot Reload and how it works in Visual Studio 2022 with demos across .NET MAUI, Blazor, ASP.NET Core and desktop apps.&lt;/p&gt;
+    &lt;/blockquote&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;assets/images/posts/dotnetConf2021/Slide12.PNG&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;📄 &lt;a href=&quot;https://devblogs.microsoft.com/dotnet/welcome-to-csharp-10/&quot;&gt;&lt;strong&gt;Welcome to C# 10&lt;/strong&gt;&lt;/a&gt; - Kathleen Dollard
+    &lt;blockquote&gt;
+      &lt;p&gt;C# 10 has some lovely features to make your code cleaner, like &lt;code class=&quot;highlighter-rouge&quot;&gt;Gobal Usings&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;File-scoped namespaces&lt;/code&gt;. This post, covers the most important C# 10 improvements.&lt;/p&gt;
+    &lt;/blockquote&gt;
+  &lt;/li&gt;
+  &lt;li&gt;📺 &lt;a href=&quot;https://docs.microsoft.com/en-us/events/dotnetconf-2021/whats-new-in-c-10&quot;&gt;&lt;strong&gt;What’s new in C# 10&lt;/strong&gt;&lt;/a&gt; - Mads Torgersen &amp;amp; Dustin Campbell - ⏰ &lt;strong&gt;30 mins&lt;/strong&gt;
+    &lt;blockquote&gt;
+      &lt;p&gt;Mads and Dustin for a discussion and demonstration of the features of C #10 with a all-code, no-slide approach we all love ;-)&lt;/p&gt;
+    &lt;/blockquote&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;assets/images/posts/dotnetConf2021/Slide15.PNG&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;📄 &lt;a href=&quot;https://devblogs.microsoft.com/visualstudio/visual-studio-2022-now-available/&quot;&gt;&lt;strong&gt;Visual Studio 2022 now available&lt;/strong&gt;&lt;/a&gt; - Amanda Silver
+    &lt;blockquote&gt;
+      &lt;p&gt;The announcement blog of VS 2022.&lt;/p&gt;
+    &lt;/blockquote&gt;
+  &lt;/li&gt;
+  &lt;li&gt;📄 &lt;a href=&quot;https://docs.microsoft.com/en-us/visualstudio/releases/2022/mac-release-notes-preview#whats-new-in-visual-studio-2022-for-mac&quot;&gt;&lt;strong&gt;What’s New in Visual Studio 2022 for Mac&lt;/strong&gt;&lt;/a&gt; - Docs Release list
+    &lt;blockquote&gt;
+      &lt;p&gt;Visual Studio 2022 for Mac is still in Preview, but that’s not going to stop you Mac people from using it. This page is a good place to look at for the latest release notes.&lt;/p&gt;
+    &lt;/blockquote&gt;
+  &lt;/li&gt;
+  &lt;li&gt;📺 &lt;a href=&quot;https://www.youtube.com/watch?v=f8jXO946eDw&quot;&gt;&lt;strong&gt;Welcome to Visual Studio 2022&lt;/strong&gt;&lt;/a&gt; – Scott Hanselman and friends - ⏰ &lt;strong&gt;33 mins&lt;/strong&gt;
+    &lt;blockquote&gt;
+      &lt;p&gt;This is the keynote for the launch of VS2022. It’s a nice relaxed overview of the key features. This is what I imagine having a party over to Scott’s house would be like.&lt;/p&gt;
+    &lt;/blockquote&gt;
+  &lt;/li&gt;
+  &lt;li&gt;📺 &lt;a href=&quot;https://www.youtube.com/watch?v=8KsVw52hDVU&quot;&gt;&lt;strong&gt;Visual Studio 2022 for .NET XAML developers&lt;/strong&gt;&lt;/a&gt; - Dmitry Lyalin - ⏰ &lt;strong&gt;19 mins&lt;/strong&gt;
+    &lt;blockquote&gt;
+      &lt;p&gt;I admit it, I still like XAML and VS 2022 has some nice features for XAML geeks that apply to WPF &lt;strong&gt;and&lt;/strong&gt; Xamarin / MAUI projects.&lt;/p&gt;
+    &lt;/blockquote&gt;
+  &lt;/li&gt;
+  &lt;li&gt;📺 &lt;a href=&quot;https://www.youtube.com/watch?v=LUlbO5MjPjU&quot;&gt;&lt;strong&gt;Building cross platform apps with .NET MAUI in Visual Studio 2022&lt;/strong&gt;&lt;/a&gt; - Maddy Leger Montaquila - ⏰ &lt;strong&gt;17 mins&lt;/strong&gt;
+    &lt;blockquote&gt;
+      &lt;p&gt;Maddy looks at the Preview version of VS 2022 which has all the goodness for us MAUI developers.&lt;/p&gt;
+    &lt;/blockquote&gt;
+  &lt;/li&gt;
+  &lt;li&gt;📺 &lt;a href=&quot;https://www.youtube.com/watch?v=B6K_UTYKHEA&quot;&gt;&lt;strong&gt;What’s new for Visual Studio 2022 for Mac&lt;/strong&gt;&lt;/a&gt; - Jordan Matthiesen - ⏰ &lt;strong&gt;19 mins&lt;/strong&gt;
+    &lt;blockquote&gt;
+      &lt;p&gt;Learn about all the new capabilities and improvements in Visual Studio for Mac.&lt;/p&gt;
+    &lt;/blockquote&gt;
+  &lt;/li&gt;
+  &lt;li&gt;🌐 &lt;a href=&quot;https://www.youtube.com/visualstudio/&quot;&gt;&lt;strong&gt;Visual Studio Youtube Channel&lt;/strong&gt;&lt;/a&gt;
+    &lt;blockquote&gt;
+      &lt;p&gt;The official youtube channel for VS. Most interesting here is the &lt;a href=&quot;https://www.youtube.com/playlist?list=PLReL099Y5nRdcMhrBc9y1dMhUYBk7hknY&quot;&gt;Tips and Tricks playlists&lt;/a&gt; but there is also some other gems on the site as well.&lt;/p&gt;
+    &lt;/blockquote&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;assets/images/posts/dotnetConf2021/Slide18.PNG&quot; /&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;📄 &lt;a href=&quot;https://devblogs.microsoft.com/dotnet/announcing-net-maui-preview-10/&quot;&gt;&lt;strong&gt;Announcing .NET MAUI Preview 10&lt;/strong&gt;&lt;/a&gt; - David Ortinau
+    &lt;blockquote&gt;
+      &lt;p&gt;.NET Multi-platform App UI (MAUI) Preview 10 is now available atop the stable release of .NET 6, and you can get it in the preview channel of Visual Studio 2022. This new release includes the merging of the remaining Windows App SDK dependencies, and ongoing progress to complete the remaining controls and control features. Might be time to start getting on the MAUI train!&lt;/p&gt;
+    &lt;/blockquote&gt;
+  &lt;/li&gt;
+  &lt;li&gt;📄 &lt;a href=&quot;https://github.com/dotnet/maui/wiki/Roadmap&quot;&gt;&lt;strong&gt;.NET MAUI Roadmap&lt;/strong&gt;&lt;/a&gt;
+    &lt;blockquote&gt;
+      &lt;p&gt;Useful resource to keep on track of the upcoming releases of MAUI.&lt;/p&gt;
+    &lt;/blockquote&gt;
+  &lt;/li&gt;
+  &lt;li&gt;📄 &lt;a href=&quot;https://github.com/dotnet/maui/wiki&quot;&gt;&lt;strong&gt;.NET MAUI Wiki&lt;/strong&gt;&lt;/a&gt;
+    &lt;blockquote&gt;
+      &lt;p&gt;Useful resource for quick docs and migration information.&lt;/p&gt;
+    &lt;/blockquote&gt;
+  &lt;/li&gt;
+  &lt;li&gt;📺 &lt;a href=&quot;https://docs.microsoft.com/en-us/events/dotnetconf-2021/introduction-to-net-maui&quot;&gt;&lt;strong&gt;Introduction to .NET MAUI&lt;/strong&gt;&lt;/a&gt; - Maddy Leger Montaquila - ⏰ &lt;strong&gt;29 mins&lt;/strong&gt;
+    &lt;blockquote&gt;
+      &lt;p&gt;Join Maddy, .NET MAUI Program Manager, to get a first look of .NET MAUI in .NET 6 and learn how you can start using it today.&lt;/p&gt;
+    &lt;/blockquote&gt;
+  &lt;/li&gt;
+  &lt;li&gt;📺 &lt;a href=&quot;https://docs.microsoft.com/en-us/events/dotnetconf-2021/drawn-controls-in-net-maui&quot;&gt;&lt;strong&gt;Drawn controls in .NET MAUI&lt;/strong&gt;&lt;/a&gt; - Javier Suárez Ruiz - ⏰ &lt;strong&gt;30 mins&lt;/strong&gt;
+    &lt;blockquote&gt;
+      &lt;p&gt;Learn all the basics of .NET MAUI Graphics, a new cross-platform graphics library included with .NET MAUI as well as use this library to create fully drawn controls. We will see what advantages brings this new way of creating controls and we will analyze concepts such as performance and other related aspects.&lt;/p&gt;
+    &lt;/blockquote&gt;
+  &lt;/li&gt;
+  &lt;li&gt;📺 &lt;a href=&quot;https://docs.microsoft.com/en-us/events/dotnetconf-2021/welcome-to-maui-community-toolkit&quot;&gt;&lt;strong&gt;Welcome to Maui Community Toolkit&lt;/strong&gt;&lt;/a&gt; - Pedro Jesus, Gerald Versluis - ⏰ &lt;strong&gt;29 mins&lt;/strong&gt;
+    &lt;blockquote&gt;
+      &lt;p&gt;Everything that you need to know about the Maui Community Toolkit and the migration between the old (but gold) Xamarin Community Toolkit.&lt;/p&gt;
+    &lt;/blockquote&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;assets/images/posts/dotnetConf2021/Slide22.PNG&quot; /&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;📄 &lt;a href=&quot;https://devblogs.microsoft.com/dotnet/announcing-asp-net-core-in-net-6/&quot;&gt;&lt;strong&gt;Announcing ASP.NET Core in .NET 6&lt;/strong&gt;&lt;/a&gt; - Daniel Roth
+    &lt;blockquote&gt;
+      &lt;p&gt;This blog post covers all the new stuff in ASP.NET Core, but also a section focused on Blazor Improvements.&lt;/p&gt;
+    &lt;/blockquote&gt;
+  &lt;/li&gt;
+  &lt;li&gt;🌐 &lt;a href=&quot;aka.ms/blazor-fluent-ui&quot;&gt;&lt;strong&gt;Blazor Fluent UI Components&lt;/strong&gt;&lt;/a&gt;
+    &lt;blockquote&gt;
+      &lt;p&gt;Want your Blazor app to have the Windows 11 Fluent experience? Yeah, me neither, but you can!&lt;/p&gt;
+    &lt;/blockquote&gt;
+  &lt;/li&gt;
+  &lt;li&gt;📺 &lt;a href=&quot;https://docs.microsoft.com/en-us/events/dotnetconf-2021/enterprise-grade-blazor-apps-with-net-6&quot;&gt;&lt;strong&gt;Enterprise-grade Blazor apps with .NET 6&lt;/strong&gt;&lt;/a&gt; - Daniel Roth - ⏰ &lt;strong&gt;30 mins&lt;/strong&gt;
+    &lt;blockquote&gt;
+      &lt;p&gt;A look at the new support for Hot Reload, error boundaries, state preservation during prerendering, faster file uploads, query string handling, adding page metadata, and integrating Blazor components into existing JavaScript based apps.&lt;/p&gt;
+    &lt;/blockquote&gt;
+  &lt;/li&gt;
+  &lt;li&gt;📺 &lt;a href=&quot;https://docs.microsoft.com/en-us/events/dotnetconf-2021/responsive-and-adaptive-tactics-for-blazor-applications&quot;&gt;&lt;strong&gt;Response and Adaptive Tactics for Blazor Applications&lt;/strong&gt;&lt;/a&gt; - Ed Charbeneau - ⏰ &lt;strong&gt;27 mins&lt;/strong&gt;
+    &lt;blockquote&gt;
+      &lt;p&gt;Learn about CSS techniques like CSS Grid, Flexbox and media queries. We will also explore techniques for adaptive the user interface at runtime for maximum control. These tactics apply to Blazor WASM, Server, and Blazor Hybrid.&lt;/p&gt;
+    &lt;/blockquote&gt;
+  &lt;/li&gt;
+  &lt;li&gt;📺 &lt;a href=&quot;https://docs.microsoft.com/en-us/events/dotnetconf-2021/next-generation-blazor-components-with-net-6&quot;&gt;&lt;strong&gt;Next-generation Blazor components with .NET 6&lt;/strong&gt;&lt;/a&gt; - Daniel Roth, Javier Calvarro Nelson - ⏰ &lt;strong&gt;31 mins&lt;/strong&gt;
+    &lt;blockquote&gt;
+      &lt;p&gt;A look at the new improvements to the Blazor component model, including required component parameters, generic type inference from ancestor components, JavaScript initializers, and handling of static web assets.&lt;/p&gt;
+    &lt;/blockquote&gt;
+  &lt;/li&gt;
+  &lt;li&gt;📺 &lt;a href=&quot;https://docs.microsoft.com/en-us/events/dotnetconf-2021/new-blazor-webassembly-capabilities-in-net-6&quot;&gt;&lt;strong&gt;New Blazor WebAssembly capabilities in .NET 6&lt;/strong&gt;&lt;/a&gt; - Steve Sanderson - ⏰ &lt;strong&gt;31 mins&lt;/strong&gt;
+    &lt;blockquote&gt;
+      &lt;p&gt;Want your mind blown 🤯 - then check out this session which deals with embedding native dependencies into Blazor.&lt;/p&gt;
+    &lt;/blockquote&gt;
+  &lt;/li&gt;
+  &lt;li&gt;📺 &lt;a href=&quot;https://docs.microsoft.com/en-us/events/dotnetconf-2021/building-a-production-ready-blazor-wasm-app&quot;&gt;&lt;strong&gt;Building A Production Ready Blazor WASM App&lt;/strong&gt;&lt;/a&gt; - Steve Peirce - ⏰ &lt;strong&gt;29 mins&lt;/strong&gt;
+    &lt;blockquote&gt;
+      &lt;p&gt;Steve talks about writing production ready code that includes: How to test your Blazor application, How to improve performance of your application, and Common tips and tricks.&lt;/p&gt;
+    &lt;/blockquote&gt;
+  &lt;/li&gt;
+  &lt;li&gt;📺 &lt;a href=&quot;https://www.youtube.com/watch?v=swwWgFZJvEs&quot;&gt;&lt;strong&gt;.NET MAUI Blazor - Build Hybrid Mobile, Desktop, and Web apps&lt;/strong&gt;&lt;/a&gt; - Daniel Roth - ⏰ &lt;strong&gt;5 mins&lt;/strong&gt;
+    &lt;blockquote&gt;
+      &lt;p&gt;Quick overview of the what/why of the MAUI / Blazor love child Blaui!&lt;/p&gt;
+    &lt;/blockquote&gt;
+  &lt;/li&gt;
+  &lt;li&gt;📺 &lt;a href=&quot;https://docs.microsoft.com/en-us/events/dotnetconf-2021/build-cross-platform-native-apps-with-net-maui-and-blazor&quot;&gt;&lt;strong&gt;Build cross-platform native apps with .NET MAUI and Blazor&lt;/strong&gt;&lt;/a&gt; - Eilon Lipton - ⏰ &lt;strong&gt;29 mins&lt;/strong&gt;
+    &lt;blockquote&gt;
+      &lt;p&gt;The power of Blazor is coming to native apps on desktop and mobile devices! Use existing Blazor web components and get the power of native apps, or supercharge your existing native apps with the power and reach of Blazor with the new BlazorWebView control for .NET MAUI, WPF, and WinForms.&lt;/p&gt;
+    &lt;/blockquote&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;Well, that’s a lot of links, but hopefully you find it useful to get up to speed with all the new goodness.&lt;/p&gt;</content><author><name>Kym Phillpotts</name></author><category term="Xamarin" /><summary type="html">There have been a tonne of announcements at .NET Conf 2021 including .NET 6, C# 10, Visual Studio 2022, and MAUI Preview 10. This post is a recap of the most important parts for Xamarin, Blazor and Maui developers. For those of you who don’t want to sit through hours of videos, I have watched the sessions and linked the resources so you don’t have to.</summary></entry><entry><title type="html">Avatar Groups</title><link href="https://kymphillpotts.com/avatar-groups.html" rel="alternate" type="text/html" title="Avatar Groups" /><published>2021-09-18T10:00:00+10:00</published><updated>2021-09-18T10:00:00+10:00</updated><id>https://kymphillpotts.com/avatar-groups</id><content type="html" xml:base="https://kymphillpotts.com/avatar-groups.html">&lt;p&gt;Overlapping avatar badges are an effective way to show a collection of people, especially where space is at a premium. In this article we look at how to create this UI in Xamarin.Forms and MAUI.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;assets/images/posts/avatargroups/avatars.png&quot; /&gt;&lt;/p&gt;
 
@@ -2977,135 +3164,4 @@ Kym&lt;/p&gt;</content><author><name>Kym Phillpotts</name></author><category ter
 
 &lt;p&gt;Happy Coding,
 ❤
-Kym&lt;/p&gt;</content><author><name>Kym Phillpotts</name></author><category term="Other" /><summary type="html">Have you ever wanted to record or live stream your meetup? It’s not as hard as you might think. In this post, we will go through how we stream the Melbourne Xamarin Meetup live to the Internet via Twitch.</summary></entry><entry><title type="html">Microsoft //Build/ Recap for Xamarin Developers</title><link href="https://kymphillpotts.com/5907-2/" rel="alternate" type="text/html" title="Microsoft //Build/ Recap for Xamarin Developers" /><published>2018-05-17T21:16:31+10:00</published><updated>2018-05-17T21:16:31+10:00</updated><id>https://kymphillpotts.com/build-recap-for-xamarin-developers</id><content type="html" xml:base="https://kymphillpotts.com/5907-2/">&lt;p&gt;I presented a session on all the imprortant stuff from Microsoft //Build/ for Xamarin Developers at the Melbourne Xamarin User Group yesterday. Just sharing out the links from the session.&lt;/p&gt;
-
-&lt;iframe src=&quot;https://www.slideshare.net/slideshow/embed_code/97354210&quot; width=&quot;700&quot; height=&quot;574&quot; allowfullscreen=&quot;&quot; webkitallowfullscreen=&quot;&quot; mozallowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
-
-&lt;p&gt;The slides are available over at &lt;a href=&quot;https://www.slideshare.net/kphillpotts/microsoft-build-recap-for-xamarin-developers&quot;&gt;SlideShare&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Links to all the gory details are over at &lt;a href=&quot;https://aka.ms/XamBuild2018&quot;&gt;https://aka.ms/XamBuild2018&lt;/a&gt; and included below. (saved you a click)&lt;/p&gt;
-
-&lt;h2 id=&quot;general-recaps-tldr-versions&quot;&gt;General Recaps (tl;dr versions)&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://blog.xamarin.com/xamarin-build-2018/&quot;&gt;All Things Xamarin at Build 2018 – Xamarin Blog&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://blog.xamarin.com/podcast-build-2018-recap-mobile-developers/&quot;&gt;Xamarin Podcast – Build 2018 Recap for Mobile Developers&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://channel9.msdn.com/Events/Build/2018&quot;&gt;Recordings of all Build Sessions&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://channel9.msdn.com/Events/Build/2018?sort=status&amp;amp;direction=desc&amp;amp;c=BMinnick&amp;amp;c=david-ortinau&amp;amp;c=james-montemagno&amp;amp;c=jim-bennett&amp;amp;c=jordan%2Bmatthiesen&amp;amp;c=Laurent-Bugnion&amp;amp;c=matt-soucoup&amp;amp;c=Miguel-de-Icaza&amp;amp;c=mikayla-hutchinson&amp;amp;c=Scott-Guthrie&amp;amp;c=simina-pasat&amp;amp;term=&quot;&gt;Xamarin Focused Sessions&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;tooling&quot;&gt;Tooling&lt;/h2&gt;
-
-&lt;h4 id=&quot;xamarin-tools-for-visual-studio-pc&quot;&gt;Xamarin Tools for Visual Studio (PC)&lt;/h4&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://blog.xamarin.com/new-xamarin-android-ios-templates/&quot;&gt;Updated iOS and Android Templates&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://docs.microsoft.com/en-us/xamarin/android/get-started/installation/android-emulator/xamarin-device-manager&quot;&gt;Xamarin.Android Device Manager&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://docs.microsoft.com/en-us/visualstudio/releasenotes/vs2017-relnotes#android-auto-sdk&quot;&gt;Improved Android SDK Management&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://blog.xamarin.com/automatic-provisioning-visual-studio-2017/&quot;&gt;Automatic iOS Device Provisioning&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://blog.xamarin.com/new-xamarin-forms-xaml-intellisense-visual-studio-2017/&quot;&gt;Intellisense Improvements&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&quot;visual-studio-for-mac&quot;&gt;Visual Studio for Mac&lt;/h4&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://blogs.msdn.microsoft.com/visualstudio/2018/05/07/visual-studio-for-mac-version-7-5-and-beyond/&quot;&gt;Visual Studio For Mac Improvements&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://docs.microsoft.com/en-us/visualstudio/releasenotes/vs2017-mac-relnotes&quot;&gt;Visual Studio For Mac Release Notes&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&quot;visual-studio-live-share&quot;&gt;Visual Studio Live Share&lt;/h4&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.visualstudio.com/services/live-share/&quot;&gt;Live Share web site&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&quot;intellicode&quot;&gt;IntelliCode&lt;/h4&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.visualstudio.com/services/intellicode/&quot;&gt;IntelliCode web site&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&quot;hyper-v-android-emulators&quot;&gt;Hyper-V Android Emulators&lt;/h4&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://blogs.msdn.microsoft.com/visualstudio/2018/05/08/hyper-v-android-emulator-support/&quot;&gt;Visual Studio Blog Post – Hyper-V Android Emulator Support&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://docs.microsoft.com/en-us/xamarin/android/get-started/installation/android-emulator/hardware-acceleration&quot;&gt;Android Emulator Hardware Acceleration&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&quot;xamarin-live-reload&quot;&gt;Xamarin Live Reload&lt;/h4&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://docs.microsoft.com/en-us/xamarin/xamarin-forms/xaml/live-reload&quot;&gt;Xamarin Live Reload Docs&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&quot;xamarin-essentials&quot;&gt;Xamarin Essentials&lt;/h4&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://docs.microsoft.com/en-us/xamarin/essentials/&quot;&gt;Get Started Docs&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/xamarin/Essentials&quot;&gt;Github Repo&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;xamarinforms-30&quot;&gt;Xamarin.Forms 3.0&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://developer.xamarin.com/releases/xamarin-forms/xamarin-forms-3.0/3.0.0/&quot;&gt;Release Notes – List of fixes&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/davidortinau/flexibility&quot;&gt;Flexibility Sample&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/Microsoft/ConferenceVision&quot;&gt;Build Conference Vision Sample&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&quot;visual-state-manager&quot;&gt;Visual State Manager&lt;/h4&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://docs.microsoft.com/xamarin/xamarin-forms/user-interface/visual-state-manager&quot;&gt;Visual State Manager Docs&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://university.xamarin.com/lightninglectures/xamarin-forms-30-visual-state-manager&quot;&gt;Xamarin University Lightning Lecture&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&quot;flexlayout&quot;&gt;FlexLayout&lt;/h4&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://docs.microsoft.com/xamarin/xamarin-forms/user-interface/layouts/flex-layout&quot;&gt;FlexLayout Docs&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://university.xamarin.com/lightninglectures/xamarin-forms-30-flex-layout&quot;&gt;Xamarin University Lightning Lecture – FlexLayout&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&quot;css-styling&quot;&gt;CSS Styling&lt;/h4&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://docs.microsoft.com/xamarin/xamarin-forms/user-interface/styles/css&quot;&gt;CSS Styling Docs&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://university.xamarin.com/lightninglectures/xamarin-forms-30-css&quot;&gt;Xamarin University Lightning Lecture – CSS&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&quot;right-to-left-support&quot;&gt;Right-To-Left Support&lt;/h4&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://docs.microsoft.com/en-us/xamarin/xamarin-forms/app-fundamentals/localization/right-to-left&quot;&gt;Right-To-Left Docs&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://blog.xamarin.com/right-to-left-localization-xamarin-forms/&quot;&gt;Xamarin Blog Post&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://university.xamarin.com/lightninglectures/xamarin-forms-30-right-to-left&quot;&gt;Xamarin University Lightning Lecture – Right-To-Left&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&quot;wpf-support&quot;&gt;WPF Support&lt;/h4&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://docs.microsoft.com/xamarin/xamarin-forms/platform/wpf&quot;&gt;WPF Support Docs&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://university.xamarin.com/lightninglectures/xamarin-forms-30-wpf&quot;&gt;Xamarin University Lightning Lecutre – WPF&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&quot;f100-contributions&quot;&gt;F100 Contributions&lt;/h4&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/xamarin/Xamarin.Forms/projects/5?card_filter_query=label%3Af100&quot;&gt;F100 Project Board – Github&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;other-interesting-things&quot;&gt;Other Interesting Things&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://azure.microsoft.com/en-us/build/announcements/&quot;&gt;All The Azure Announcements&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://blogs.windows.com/buildingapps/2018/05/07/a-new-microsoft-store-revenue-share-is-coming/&quot;&gt;New Revenue Share Q&amp;amp;A&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://blogs.msdn.microsoft.com/vsappcenter/microsoft-and-github-present-an-integrated-continuous-integration-and-delivery-solution-for-mobile/&quot;&gt;Visual Studio App Center and Git&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://pumpingco.de/blog/14317/&quot;&gt;Developer Centric Annoucements&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;build-tour&quot;&gt;Build Tour&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://insiderdevtour.com/&quot;&gt;Insider Dev Tour&lt;/a&gt; – Catch up with the a day of build recap&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>Kym Phillpotts</name></author><category term="Xamarin" /><summary type="html">I presented a session on all the imprortant stuff from Microsoft //Build/ for Xamarin Developers at the Melbourne Xamarin User Group yesterday. Just sharing out the links from the session.</summary></entry></feed>
+Kym&lt;/p&gt;</content><author><name>Kym Phillpotts</name></author><category term="Other" /><summary type="html">Have you ever wanted to record or live stream your meetup? It’s not as hard as you might think. In this post, we will go through how we stream the Melbourne Xamarin Meetup live to the Internet via Twitch.</summary></entry></feed>
