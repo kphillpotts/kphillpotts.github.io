@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator>
   <link href="https://kymphillpotts.com/tag/xamarin/feed.xml" rel="self" type="application/atom+xml" />
   <link href="https://kymphillpotts.com/" rel="alternate" type="text/html" />
-  <updated>2021-12-05T18:29:09+11:00</updated>
+  <updated>2022-07-24T23:58:07+10:00</updated>
   <id>https://kymphillpotts.com/tag/xamarin/feed.xml</id>
 
   
@@ -85,6 +85,7 @@ Dmitry Lyalin - ⏰ &lt;strong&gt;28 mins&lt;/strong&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;&lt;img src=&quot;assets/images/posts/dotnetConf2021/Slide12.PNG&quot; /&gt;&lt;/p&gt;
+&lt;h1 id=&quot;c-10&quot;&gt;C# 10&lt;/h1&gt;
 
 &lt;ul&gt;
   &lt;li&gt;📄 &lt;a href=&quot;https://devblogs.microsoft.com/dotnet/welcome-to-csharp-10/&quot;&gt;&lt;strong&gt;Welcome to C# 10&lt;/strong&gt;&lt;/a&gt; - Kathleen Dollard
@@ -100,6 +101,7 @@ Dmitry Lyalin - ⏰ &lt;strong&gt;28 mins&lt;/strong&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;&lt;img src=&quot;assets/images/posts/dotnetConf2021/Slide15.PNG&quot; /&gt;&lt;/p&gt;
+&lt;h1 id=&quot;visual-studio-2022&quot;&gt;Visual Studio 2022&lt;/h1&gt;
 
 &lt;ul&gt;
   &lt;li&gt;📄 &lt;a href=&quot;https://devblogs.microsoft.com/visualstudio/visual-studio-2022-now-available/&quot;&gt;&lt;strong&gt;Visual Studio 2022 now available&lt;/strong&gt;&lt;/a&gt; - Amanda Silver
@@ -140,6 +142,8 @@ Dmitry Lyalin - ⏰ &lt;strong&gt;28 mins&lt;/strong&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;&lt;img src=&quot;assets/images/posts/dotnetConf2021/Slide18.PNG&quot; /&gt;&lt;/p&gt;
+&lt;h1 id=&quot;maui-preview-10&quot;&gt;MAUI Preview 10&lt;/h1&gt;
+
 &lt;ul&gt;
   &lt;li&gt;📄 &lt;a href=&quot;https://devblogs.microsoft.com/dotnet/announcing-net-maui-preview-10/&quot;&gt;&lt;strong&gt;Announcing .NET MAUI Preview 10&lt;/strong&gt;&lt;/a&gt; - David Ortinau
     &lt;blockquote&gt;
@@ -174,6 +178,8 @@ Dmitry Lyalin - ⏰ &lt;strong&gt;28 mins&lt;/strong&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;&lt;img src=&quot;assets/images/posts/dotnetConf2021/Slide22.PNG&quot; /&gt;&lt;/p&gt;
+&lt;h1 id=&quot;blazor&quot;&gt;Blazor&lt;/h1&gt;
+
 &lt;ul&gt;
   &lt;li&gt;📄 &lt;a href=&quot;https://devblogs.microsoft.com/dotnet/announcing-asp-net-core-in-net-6/&quot;&gt;&lt;strong&gt;Announcing ASP.NET Core in .NET 6&lt;/strong&gt;&lt;/a&gt; - Daniel Roth
     &lt;blockquote&gt;

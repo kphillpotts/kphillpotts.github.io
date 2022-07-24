@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator>
   <link href="https://kymphillpotts.com/author/kphillpotts/feed.xml" rel="self" type="application/atom+xml" />
   <link href="https://kymphillpotts.com/" rel="alternate" type="text/html" />
-  <updated>2021-12-05T18:29:09+11:00</updated>
+  <updated>2022-07-24T23:58:07+10:00</updated>
   <id>https://kymphillpotts.com/author/kphillpotts/feed.xml</id>
 
   
@@ -30,6 +30,454 @@
   
   
 
+  
+    <entry>
+      <title type="html">ClassFly UI - XAML vs Blazor - Part 1 - XAML</title>
+      <link href="https://kymphillpotts.com/maui-ui-july.html" rel="alternate" type="text/html" title="ClassFly UI - XAML vs Blazor - Part 1 - XAML" />
+      <published>2022-07-23T10:00:00+10:00</published>
+      <updated>2022-07-23T10:00:00+10:00</updated>
+      <id>https://kymphillpotts.com/maui-ui-july</id>
+      <content type="html" xml:base="https://kymphillpotts.com/maui-ui-july.html">&lt;p&gt;.NET MAUI gives you a lot of flexibility in how you create your applications. Not only can you target multiple different Operating System platforms (like iOS, Android, Windows, Mac, etc.), you can also target multiple different Form Factors (like phones, tablets, desktop, tv, watch, etc) and you can write your applications using C# Markup, XAML and even Blazor.&lt;/p&gt;
+
+&lt;p&gt;With so much choice at our fingertips it can be hard to work out which path to take.&lt;/p&gt;
+
+&lt;iframe src=&quot;https://giphy.com/embed/3o85xIO33l7RlmLR4I&quot; width=&quot;480&quot; height=&quot;361&quot; frameborder=&quot;0&quot; class=&quot;giphy-embed&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
+&lt;p&gt;&lt;a href=&quot;https://giphy.com/gifs/yosub-girl-taco-why-not-both-3o85xIO33l7RlmLR4I&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Recently &lt;a href=&quot;https://twitter.com/lachlanwgordon&quot;&gt;Lachlan Gordon&lt;/a&gt; and I have been playing around with Blazor and thought it would be interesting to compare the approaches of XAML vs Blazor. So we set about creating the same application UI using XAML and Blazor to discover the pros and cons.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;This is a 2 part blog post by &lt;a href=&quot;https://twitter.com/lachlanwgordon&quot;&gt;Lachlan Gordon&lt;/a&gt; and myself for the &lt;a href=&quot;https://goforgoldman.com/2022/05/19/maui-ui-july.html&quot;&gt;.NET MAUI UI July&lt;/a&gt; initiative kicked off by &lt;a href=&quot;https://twitter.com/mattgoldman&quot;&gt;Matt Goldman&lt;/a&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;ui-inspiration&quot;&gt;UI Inspiration&lt;/h3&gt;
+&lt;p&gt;The design we’re implementing is a music teacher’s app that we found on dribbble, created by Sumit Choudhary. You can check it out at &lt;a href=&quot;https://dribbble.com/shots/17453615-Classfly-Music-app-concept&quot;&gt;https://dribbble.com/shots/17453615-Classfly-Music-app-concept&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;assets/images/posts/mauiuijuly2022/design.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;It’s a nice looking design, but not anything too crazy - which is exactly what we were after; an app design which represents a pretty common pattern.&lt;/p&gt;
+
+&lt;h3 id=&quot;the-plan&quot;&gt;The Plan&lt;/h3&gt;
+&lt;p&gt;So here is the plan. I’m going to break down the design of the app from a XAML perspective. Lachlan is going to break down implementing the UI in MAUI Blazor over on his blog &lt;a href=&quot;https://www.lachlanwgorgon.com&quot;&gt;https://www.lachlanwgorgon.com&lt;/a&gt; and then we will provide a blog post summarizing the pros and cons.&lt;/p&gt;
+
+&lt;iframe src=&quot;https://giphy.com/embed/ZbOXZEugwT26awakGe&quot; width=&quot;480&quot; height=&quot;480&quot; frameborder=&quot;0&quot; class=&quot;giphy-embed&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;project-structure&quot;&gt;Project Structure&lt;/h2&gt;
+&lt;p&gt;One of the beauties of working in a environment like .NET is code sharing, and for us it means we can have a shared NetStandard library that has our Models, Data Services, and any business logic, which is shared between the XAML version and the Blazor version.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;assets/images/posts/mauiuijuly2022/solution_structure.png&quot; alt=&quot;Solution Structure&quot; /&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;TIP:&lt;/strong&gt; Use NetStandard libraries to share code independent of UI implementation&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Okay, enough rambling, let’s get into the layouts…&lt;/p&gt;
+
+&lt;h2 id=&quot;course-list-page&quot;&gt;Course List Page&lt;/h2&gt;
+&lt;p&gt;Looking at the first page, it’s a pretty standard mobile looking screen. It has a title, a list of items and a tab bar at the bottom.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;assets/images/posts/mauiuijuly2022/courselistlayout.png&quot; alt=&quot;Course List Page&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Let’s look into some of the interesting bits.&lt;/p&gt;
+
+&lt;h3 id=&quot;title&quot;&gt;Title&lt;/h3&gt;
+&lt;p&gt;For the purposes of this exercise I used the &lt;code class=&quot;highlighter-rouge&quot;&gt;Shell.TitleView&lt;/code&gt; element with a simple grid containing a &lt;code class=&quot;highlighter-rouge&quot;&gt;Label&lt;/code&gt; and an &lt;code class=&quot;highlighter-rouge&quot;&gt;Image&lt;/code&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;language-xml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;Shell.TitleView&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;Grid&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Margin=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;10,0,10,0&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;ColumnDefinitions=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;*,30&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;Label&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;Style=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{StaticResource CourseHeaderText}&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;Text=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Choose a course&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;VerticalOptions=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Center&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;Image&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;Grid.Column=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;1&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;HeightRequest=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;28&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;HorizontalOptions=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Center&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;Source=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;menu.png&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;VerticalOptions=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Center&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;WidthRequest=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;28&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/Grid&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/Shell.TitleView&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;One thing I learnt here is that you should specify the full source name in an image including the extension. It works fine without the extension on Android but on Windows it won’t display. Turns out this is a known issue: &lt;a href=&quot;https://github.com/dotnet/maui/issues/3459&quot;&gt;#3459 - [Windows] Images are not rendered if the extension is not specified&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;search-bar&quot;&gt;Search Bar&lt;/h3&gt;
+&lt;p&gt;To create the search bar I used a &lt;code class=&quot;highlighter-rouge&quot;&gt;SearchBar&lt;/code&gt; with a &lt;code class=&quot;highlighter-rouge&quot;&gt;Border&lt;/code&gt; around it, which seems obvious, but there were some interesting bits&lt;/p&gt;
+
+&lt;div class=&quot;language-xml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;Border&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;Grid.Row=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;0&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;Margin=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;10,0,10,0&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;Stroke=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;#CCCCCC&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;StrokeShape=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;RoundRectangle 20&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;StrokeThickness=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;1&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;SearchBar&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;x:Name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;CourseSearchBar&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Placeholder=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Search courses&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;SearchBar.Behaviors&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;toolkit:EventToCommandBehavior&lt;/span&gt;
+                &lt;span class=&quot;na&quot;&gt;Command=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{Binding SearchTermCommand}&quot;&lt;/span&gt;
+                &lt;span class=&quot;na&quot;&gt;CommandParameter=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{Binding Text, Source={x:Reference CourseSearchBar}}&quot;&lt;/span&gt;
+                &lt;span class=&quot;na&quot;&gt;EventName=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;TextChanged&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;/SearchBar.Behaviors&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/SearchBar&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/Border&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;First, there is a bug where the search bar does not size correctly on Android  &lt;a href=&quot;https://github.com/dotnet/maui/issues/7137&quot;&gt;#7137 - [Android] [ScenarioDay] The default size of SearchBar is wrong, it does not fill the space&lt;/a&gt;. I could work around this with a bit of code which forces a width when the size is allocated&lt;/p&gt;
+
+&lt;div class=&quot;language-csharp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;DeviceInfo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Platform&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;DevicePlatform&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Android&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;width&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;CourseSearchBar&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;WidthRequest&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;width&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;In reality I should probably deal with the padding and margins of the layouts around it. but as a quick hack, did the job.&lt;/p&gt;
+
+&lt;p&gt;The other thing I found limiting about the &lt;code class=&quot;highlighter-rouge&quot;&gt;SearchBar&lt;/code&gt; is that even though it has command for Search, it’s not enough, for example, as far as I could tell there isn’t a ClearCommand and there is no command (only an event) for TextChanged. So in the end what worked best was using the &lt;code class=&quot;highlighter-rouge&quot;&gt;EventToCommandBehaviour&lt;/code&gt; in the &lt;code class=&quot;highlighter-rouge&quot;&gt;Maui Community Tookit&lt;/code&gt; to issue the SearchCommand when the &lt;code class=&quot;highlighter-rouge&quot;&gt;TextChanged&lt;/code&gt; event occurred.&lt;/p&gt;
+
+&lt;h3 id=&quot;collectionview&quot;&gt;CollectionView&lt;/h3&gt;
+&lt;p&gt;If you have ever used the &lt;code class=&quot;highlighter-rouge&quot;&gt;CollectionView&lt;/code&gt; in Xamarin.Forms then you pretty much know how to use the &lt;code class=&quot;highlighter-rouge&quot;&gt;CollectionView&lt;/code&gt; in MAUI.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;assets/images/posts/mauiuijuly2022/cells.png&quot; alt=&quot;CollectionView Rows&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The rows (cells) in the design call for a couple of interesting things:&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;Borders and Shadows around the cell&lt;/li&gt;
+  &lt;li&gt;Alternating background colours behind the instrument image.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;The &lt;code class=&quot;highlighter-rouge&quot;&gt;DataTemplate&lt;/code&gt; for the cells is &lt;code class=&quot;highlighter-rouge&quot;&gt;Grid&lt;/code&gt; of two columns surrounded by a border. Images in the first column and a &lt;code class=&quot;highlighter-rouge&quot;&gt;StackLayout&lt;/code&gt; with 3 labels in the second column&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;assets/images/posts/mauiuijuly2022/collectionviewcell.png&quot; alt=&quot;CollectionView Cell&quot; /&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-xml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;Border&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;Padding=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;16,8&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;Background=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;White&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;Stroke=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;#CCCCCC&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;StrokeShape=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;RoundRectangle 20&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;StrokeThickness=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;1&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;Border.Shadow&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;Shadow&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;Brush=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{StaticResource Gray500}&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;Opacity=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;.15&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;Radius=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;10&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;Offset=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;5,5&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/Border.Shadow&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;Border.GestureRecognizers&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;TapGestureRecognizer&lt;/span&gt; 
+            &lt;span class=&quot;na&quot;&gt;Command=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{Binding Source={RelativeSource AncestorType={x:Type vm:ClassListViewModel}},
+                    Path=GoToCourseDetailsCommand}&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;CommandParameter=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{Binding .}&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/Border.GestureRecognizers&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;Grid&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;ColumnDefinitions=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Auto,*&quot;&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;ColumnSpacing=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;20&quot;&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;InputTransparent=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;True&quot;&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;IsClippedToBounds=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;False&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;Image&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;HeightRequest=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;80&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;Source=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{Binding ., Converter={StaticResource IndexToBackgroundImageConverter}, 
+                    ConverterParameter={x:Reference CourseCollectionView}}&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;WidthRequest=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;80&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;Image&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;HeightRequest=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;80&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;Source=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{Binding Image}&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;WidthRequest=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;80&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;VerticalStackLayout&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Grid.Column=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;1&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;Label&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Style=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{StaticResource CourseHeaderText}&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Text=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{Binding Name}&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;Label&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Style=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{StaticResource CourseSmallText}&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Text=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;in class&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;Label&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Style=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{StaticResource CourseSmallText}&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Text=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{Binding MemberCount, StringFormat='{0} Members'}&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;/VerticalStackLayout&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/Grid&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/Border&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The alternating rows have a different colour squiggle behind the instrument which is achieved by having a different background image on odd and even cells determined by a Converter.&lt;/p&gt;
+
+&lt;div class=&quot;language-xml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;ContentPage.Resources&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;ResourceDictionary&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;converters:IndexToObjectConverter&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;x:Key=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;IndexToBackgroundImageConverter&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;EvenObject=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;highlight_green.png&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;OddObject=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;highlight_yellow.png&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+...
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;language-csharp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;IndexToObjectConverter&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;IValueConverter&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;object&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;EvenObject&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;object&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;OddObject&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;object&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Convert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;object&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Type&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;targetType&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;object&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;parameter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;CultureInfo&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;culture&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;index&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;kt&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;itemSource&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;CollectionView&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;parameter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ItemsSource&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;itemSource&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;is&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;IList&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;index&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;IndexOf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;index&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;IEnumerable&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;itemSource&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;ToList&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;IndexOf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;index&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;%&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;?&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;EvenObject&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;OddObject&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;object&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;ConvertBack&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;object&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Type&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;targetType&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;object&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;parameter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;CultureInfo&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;culture&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;throw&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;NotImplementedException&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Using a converter like this is one way to do alternating rows and because we are just changing one thing (the image source) it’s fine. Another approach is to use a DataTemplateSelector if you want to have completely different styled alternating rows. A third approach is to convince your designer not to do alternating rows. 😀&lt;/p&gt;
+
+&lt;h4 id=&quot;tab-bar&quot;&gt;Tab Bar&lt;/h4&gt;
+&lt;p&gt;For the purposes of this exercise I did not get around to doing a proper TabBar for the design. Ultimately I’d like to be able to use a customized version of the Shell Tabs but that is for another article. So instead I used just a grid with some buttons and a border with a gradient.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;assets/images/posts/mauiuijuly2022/tabbar.png&quot; alt=&quot;TabBar&quot; /&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-xml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;&amp;lt;!-- resources --&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;Color&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;x:Key=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;TabBarDark&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;#384054&lt;span class=&quot;nt&quot;&gt;&amp;lt;/Color&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;Color&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;x:Key=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;TabBarLight&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;#505A70&lt;span class=&quot;nt&quot;&gt;&amp;lt;/Color&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;LinearGradientBrush&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;x:Key=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;TabBarGradient&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;StartPoint=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;0,0&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;EndPoint=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;1,1&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;GradientStop&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Offset=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;0.1&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Color=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{StaticResource TabBarLight}&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;GradientStop&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Offset=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;1.0&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Color=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{StaticResource TabBarDark}&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/LinearGradientBrush&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;&amp;lt;!-- tab bar --&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;Border&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;Grid.Row=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;2&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;Margin=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;-1&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;Padding=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;20&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;Background=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{StaticResource TabBarGradient}&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;Stroke=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;#CCCCCC&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;StrokeShape=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;RoundRectangle 20,20,0,0&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;StrokeThickness=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;0&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;Grid&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;ColumnDefinitions=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;*,*,*,*&quot;&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;HeightRequest=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;30&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;ImageButton&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;...&lt;/span&gt;
+        &lt;span class=&quot;err&quot;&gt;&amp;lt;ImageButton&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;...&lt;/span&gt;
+        &lt;span class=&quot;err&quot;&gt;&amp;lt;ImageButton&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;...&lt;/span&gt;
+        &lt;span class=&quot;err&quot;&gt;&amp;lt;ImageButton&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;...&lt;/span&gt;
+    &lt;span class=&quot;err&quot;&gt;&amp;lt;/Grid&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/Border&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;Notice that Margin of -1 in the border, this is a workaround for a known bug &lt;a href=&quot;https://github.com/dotnet/maui/issues/7764&quot;&gt;#7764 - Border Margin&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;course-details-page&quot;&gt;Course Details Page&lt;/h2&gt;
+
+&lt;p&gt;The basic layout of this page a TitleView (similar to the first page), then a Grid with two rows for the top image and the CollectionView panel at the bottom.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;assets/images/posts/mauiuijuly2022/coursedetails.png&quot; alt=&quot;Course Details Page&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;titleview&quot;&gt;TitleView&lt;/h3&gt;
+&lt;p&gt;The &lt;code class=&quot;highlighter-rouge&quot;&gt;TitleView&lt;/code&gt; is exactly the same as on the first page with the slight exception that the text on the &lt;code class=&quot;highlighter-rouge&quot;&gt;Label&lt;/code&gt; is bound to the Selected &lt;code class=&quot;highlighter-rouge&quot;&gt;Course.Name&lt;/code&gt; property.&lt;/p&gt;
+
+&lt;h3 id=&quot;top-section&quot;&gt;Top Section&lt;/h3&gt;
+
+&lt;p&gt;The top image isn’t particularly interesting other than we can use things like a &lt;code class=&quot;highlighter-rouge&quot;&gt;LinearGradientBrush&lt;/code&gt; and a &lt;code class=&quot;highlighter-rouge&quot;&gt;Border&lt;/code&gt; to overlay some fading over top of the image.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;assets/images/posts/mauiuijuly2022/topcoursedetails.png&quot; alt=&quot;Top Image&quot; /&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-xml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;LinearGradientBrush&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;x:Key=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;WhiteFadeGradient&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;StartPoint=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;0,0&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;EndPoint=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;0,1&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;GradientStop&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Offset=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;0.0&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Color=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;White&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;GradientStop&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Offset=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;1.0&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Color=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;#00FFFFFF&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/LinearGradientBrush&amp;gt;&lt;/span&gt;
+
+... 
+
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;Grid&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;RowDefinitions=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;.25*, .75*&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;Image&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;Margin=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;0,0,0,-20&quot;&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;Aspect=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;AspectFill&quot;&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;HorizontalOptions=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Fill&quot;&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;Source=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;piano_large.jpg&quot;&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;VerticalOptions=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Start&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;Border&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;Grid.Row=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;0&quot;&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;Margin=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;-2&quot;&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;Background=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{StaticResource WhiteFadeGradient}&quot;&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;HeightRequest=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;30&quot;&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;HorizontalOptions=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Fill&quot;&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;Stroke=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;#CCCCCC&quot;&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;StrokeShape=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Rectangle&quot;&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;StrokeThickness=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;0&quot;&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;VerticalOptions=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Start&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;bottom-card&quot;&gt;Bottom Card&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;assets/images/posts/mauiuijuly2022/bottomcard.png&quot; alt=&quot;Bottom Card&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The bottom card shape is done with yet another &lt;code class=&quot;highlighter-rouge&quot;&gt;Border&lt;/code&gt; to create the card shape.&lt;/p&gt;
+
+&lt;p&gt;The contents of the bottom card are contained within a grid with rows for the Card Header and the CollectionView&lt;/p&gt;
+
+&lt;div class=&quot;language-xml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;Border&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;Grid.Row=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;1&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;Margin=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;-2&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;Padding=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;16,16&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;Background=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;White&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;Stroke=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;#CCCCCC&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;StrokeShape=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;RoundRectangle 20,20,0,0&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;StrokeThickness=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;1&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;Border.Shadow&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;Shadow&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;Brush=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Black&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;Opacity=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;0.2&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;Radius=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;20&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;Offset=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;-20,-20&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/Border.Shadow&amp;gt;&lt;/span&gt;
+
+    &lt;span class=&quot;c&quot;&gt;&amp;lt;!-- Card Contents--&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;Grid&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;RowDefinitions=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;60,*&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+        
+        &lt;span class=&quot;c&quot;&gt;&amp;lt;!-- Card Header --&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;Image&lt;/span&gt; 
+            &lt;span class=&quot;na&quot;&gt;Aspect=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Fill&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;HeightRequest=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;20&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;HorizontalOptions=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Start&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;Source=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;highlight_heading.png&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;VerticalOptions=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Center&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;WidthRequest=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;200&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;Label&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;Grid.Row=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;0&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;Style=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{StaticResource CourseHeaderText}&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;Text=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Select Mentor&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;VerticalOptions=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Center&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;Rectangle&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;Fill=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{StaticResource Gray100}&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;HeightRequest=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;2&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;HorizontalOptions=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Center&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;VerticalOptions=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;End&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt; 
+
+        &lt;span class=&quot;c&quot;&gt;&amp;lt;!-- Mentor List --&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;CollectionView&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;...&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;x:Name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;MentorsCollectionView&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;Grid.Row=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;1&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;Margin=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;0,20,0,0&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;ItemsSource=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{Binding Course.Mentors}&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;CollectionView.ItemsLayout&amp;gt;&lt;/span&gt;
+                &lt;span class=&quot;nt&quot;&gt;&amp;lt;LinearItemsLayout&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;ItemSpacing=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;10&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Orientation=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Vertical&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;/CollectionView.ItemsLayout&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;CollectionView.ItemTemplate&amp;gt;&lt;/span&gt;
+                &lt;span class=&quot;nt&quot;&gt;&amp;lt;DataTemplate&amp;gt;&lt;/span&gt;
+                    ...
+                &lt;span class=&quot;nt&quot;&gt;&amp;lt;/DataTemplate&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;/CollectionView.ItemTemplate&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;/CollectionView&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/Grid&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/Border&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;mentor-cell&quot;&gt;Mentor cell&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;assets/images/posts/mauiuijuly2022/mentorcell.png&quot; alt=&quot;Mentor Cell&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The layout of the Mentor cell is a pretty straight forward &lt;code class=&quot;highlighter-rouge&quot;&gt;Grid&lt;/code&gt; so not much to discuss there. The interesting parts are the alternating background colors and “cutout” behind the profile photos.&lt;/p&gt;
+
+&lt;p&gt;The colors are done using a alternating row converter just like in the first page, but this time it returns a color rather than an image.&lt;/p&gt;
+&lt;div class=&quot;language-xml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;Color&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;x:Key=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;EvenRowColor&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;#278C7E&lt;span class=&quot;nt&quot;&gt;&amp;lt;/Color&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;Color&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;x:Key=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;OddRowColor&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;#FFD051&lt;span class=&quot;nt&quot;&gt;&amp;lt;/Color&amp;gt;&lt;/span&gt;
+...
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;converters:IndexToObjectConverter&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;x:Key=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;IndexToBackgroundColorConverter&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;EvenObject=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{StaticResource EvenRowColor}&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;OddObject=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{StaticResource OddRowColor}&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The “cutout” section is done through an &lt;code class=&quot;highlighter-rouge&quot;&gt;Image.Clip&lt;/code&gt; which clips just the bottom corners of the image to match the corners of the background &lt;code class=&quot;highlighter-rouge&quot;&gt;RoundRectangle&lt;/code&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;language-xml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;DataTemplate&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;Grid&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;ColumnDefinitions=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;60,5,*,20&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;ColumnSpacing=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;15&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;RoundRectangle&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;Grid.Column=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;0&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;CornerRadius=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;10&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;Fill=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{Binding ., Converter={StaticResource IndexToBackgroundColorConverter},
+                   ConverterParameter={x:Reference MentorsCollectionView}}&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;HeightRequest=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;50&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;HorizontalOptions=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Center&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;VerticalOptions=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;End&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;WidthRequest=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;50&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;Image&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;HeightRequest=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;60&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;HorizontalOptions=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Center&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;Source=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{Binding Image}&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;VerticalOptions=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;End&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;WidthRequest=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;60&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;Image.Clip&amp;gt;&lt;/span&gt;
+                &lt;span class=&quot;nt&quot;&gt;&amp;lt;RoundRectangleGeometry&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;CornerRadius=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;10&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Rect=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;5,0,50,60&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;/Image.Clip&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;/Image&amp;gt;&lt;/span&gt;
+
+        &lt;span class=&quot;c&quot;&gt;&amp;lt;!-- vertical divider line --&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;Rectangle&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;Grid.Column=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;1&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;Fill=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{StaticResource Gray100}&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;HeightRequest=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;30&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;HorizontalOptions=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Center&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;VerticalOptions=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Center&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;WidthRequest=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;2&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;VerticalStackLayout&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Grid.Column=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;2&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;Label&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Style=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{StaticResource CourseHeaderText}&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Text=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{Binding Name}&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;Label&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Style=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{StaticResource CourseSmallText}&quot;&lt;/span&gt; 
+                   &lt;span class=&quot;na&quot;&gt;Text=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{Binding FollowerCount, StringFormat='{0} Followers'}&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;/VerticalStackLayout&amp;gt;&lt;/span&gt;
+
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;Image&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;Grid.Column=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;3&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;HorizontalOptions=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Center&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;Source=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;right.png&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;VerticalOptions=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Center&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/Grid&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/DataTemplate&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h2 id=&quot;summary&quot;&gt;Summary&lt;/h2&gt;
+
+&lt;p&gt;Okay, so thats about it for this blog post… I’m already behind schedule for MAUI UI July. The follow up to this is an article by Lachlan on how to implement the same thing in MAUI Blazor (I’ll post a link here when that’s available). Then stay tuned for a shared article where we discuss the advantages and disadvantages of using Blazor layout vs XAML layouts.&lt;/p&gt;
+
+&lt;p&gt;Till then, please check out the other &lt;a href=&quot;https://goforgoldman.com/2022/05/19/maui-ui-july.html&quot;&gt;.NET MAUI UI July&lt;/a&gt; articles and thanks again to  &lt;a href=&quot;https://twitter.com/mattgoldman&quot;&gt;Matt Goldman&lt;/a&gt; for organizing.&lt;/p&gt;
+
+&lt;h2 id=&quot;source-code&quot;&gt;Source Code&lt;/h2&gt;
+&lt;p&gt;If you want to check out the source code, it’s available over at https://github.com/kphillpotts/MAUI-UI-July&lt;/p&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>Kym Phillpotts</name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="MAUI" />
+      
+        <category term="Blazor" />
+      
+
+      
+        <summary type="html">.NET MAUI gives you a lot of flexibility in how you create your applications. Not only can you target multiple different Operating System platforms (like iOS, Android, Windows, Mac, etc.), you can also target multiple different Form Factors (like phones, tablets, desktop, tv, watch, etc) and you can write your applications using C# Markup, XAML and even Blazor.</summary>
+      
+
+      
+      
+    </entry>
   
     <entry>
       <title type="html">.NET Conf recap</title>
@@ -85,6 +533,7 @@ Dmitry Lyalin - ⏰ &lt;strong&gt;28 mins&lt;/strong&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;&lt;img src=&quot;assets/images/posts/dotnetConf2021/Slide12.PNG&quot; /&gt;&lt;/p&gt;
+&lt;h1 id=&quot;c-10&quot;&gt;C# 10&lt;/h1&gt;
 
 &lt;ul&gt;
   &lt;li&gt;📄 &lt;a href=&quot;https://devblogs.microsoft.com/dotnet/welcome-to-csharp-10/&quot;&gt;&lt;strong&gt;Welcome to C# 10&lt;/strong&gt;&lt;/a&gt; - Kathleen Dollard
@@ -100,6 +549,7 @@ Dmitry Lyalin - ⏰ &lt;strong&gt;28 mins&lt;/strong&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;&lt;img src=&quot;assets/images/posts/dotnetConf2021/Slide15.PNG&quot; /&gt;&lt;/p&gt;
+&lt;h1 id=&quot;visual-studio-2022&quot;&gt;Visual Studio 2022&lt;/h1&gt;
 
 &lt;ul&gt;
   &lt;li&gt;📄 &lt;a href=&quot;https://devblogs.microsoft.com/visualstudio/visual-studio-2022-now-available/&quot;&gt;&lt;strong&gt;Visual Studio 2022 now available&lt;/strong&gt;&lt;/a&gt; - Amanda Silver
@@ -140,6 +590,8 @@ Dmitry Lyalin - ⏰ &lt;strong&gt;28 mins&lt;/strong&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;&lt;img src=&quot;assets/images/posts/dotnetConf2021/Slide18.PNG&quot; /&gt;&lt;/p&gt;
+&lt;h1 id=&quot;maui-preview-10&quot;&gt;MAUI Preview 10&lt;/h1&gt;
+
 &lt;ul&gt;
   &lt;li&gt;📄 &lt;a href=&quot;https://devblogs.microsoft.com/dotnet/announcing-net-maui-preview-10/&quot;&gt;&lt;strong&gt;Announcing .NET MAUI Preview 10&lt;/strong&gt;&lt;/a&gt; - David Ortinau
     &lt;blockquote&gt;
@@ -174,6 +626,8 @@ Dmitry Lyalin - ⏰ &lt;strong&gt;28 mins&lt;/strong&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;&lt;img src=&quot;assets/images/posts/dotnetConf2021/Slide22.PNG&quot; /&gt;&lt;/p&gt;
+&lt;h1 id=&quot;blazor&quot;&gt;Blazor&lt;/h1&gt;
+
 &lt;ul&gt;
   &lt;li&gt;📄 &lt;a href=&quot;https://devblogs.microsoft.com/dotnet/announcing-asp-net-core-in-net-6/&quot;&gt;&lt;strong&gt;Announcing ASP.NET Core in .NET 6&lt;/strong&gt;&lt;/a&gt; - Daniel Roth
     &lt;blockquote&gt;
@@ -3339,198 +3793,6 @@ Kym&lt;/p&gt;</content>
 
       
         <summary type="html">It’s time for another Xamarin.Forms UI Challenge! This time we are going to see how we can reproduce a design I found over at Dribbble by Alex Pesenka. Let’s break it down The design has a reasonably complex layout involving animated popups and overlays, which makes it a good candidate for a Xamarin.Forms UI challenge.</summary>
-      
-
-      
-      
-    </entry>
-  
-    <entry>
-      <title type="html">How to stream a meetup</title>
-      <link href="https://kymphillpotts.com/how-to-stream-a-meetup.html" rel="alternate" type="text/html" title="How to stream a meetup" />
-      <published>2019-02-25T12:16:31+11:00</published>
-      <updated>2019-02-25T12:16:31+11:00</updated>
-      <id>https://kymphillpotts.com/how-to-stream-a-meetup</id>
-      <content type="html" xml:base="https://kymphillpotts.com/how-to-stream-a-meetup.html">&lt;p&gt;Have you ever wanted to record or live stream your meetup? It’s not as hard as you might think.  In this post, we will go through how &lt;em&gt;we&lt;/em&gt; stream the &lt;a href=&quot;https://www.meetup.com/en-AU/Melbourne-Xamarin-Meetup/&quot;&gt;Melbourne Xamarin Meetup&lt;/a&gt; live to the Internet via Twitch.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Be aware that there are many different possible solutions and technologies you could use to stream, depending on what your goals are, what your budget is, and what equipment you already have available. What we will discuss here is what we have used and found successful, bearing in mind we try and keep a fairly minimalist setup.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;Let’s get straight into it. This is the setup that we currently use:&lt;br /&gt;
-&lt;img src=&quot;assets/images/posts/streaming-topology-0000.png&quot; alt=&quot;Streaming Topology&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;hardware-breakdown&quot;&gt;Hardware Breakdown&lt;/h2&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;Microphone&lt;/strong&gt;: &lt;a href=&quot;https://www.amazon.com/Blue-Yeti-USB-Microphone-Silver/dp/B002VA464S&quot;&gt;Blue Yeti USB Microphone&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Webcam&lt;/strong&gt;: &lt;a href=&quot;https://www.amazon.com/Logitech-Widescreen-Calling-Recording-Desktop/dp/B006JH8T3S/&quot;&gt;Logitech C920 Webcam&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Presenter Computer&lt;/strong&gt;: PC/Mac doesn’t matter as long as it has a HDMI output.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Capture Device&lt;/strong&gt;: &lt;a href=&quot;https://www.amazon.com/AVerMedia-Portable-Pass-Through-Playstation-GC513/dp/B0763TFZWT/&quot;&gt;AVerMedia Live Gamer Portable 2 Plus&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Projector&lt;/strong&gt;: Whatever as long as it has a HDMI input.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;USB Hub&lt;/strong&gt;: &lt;a href=&quot;https://www.amazon.com/Anker-9-Port-Smart-Charging-Adapter/dp/B005NGQWL2&quot;&gt;Anker USB 3.0 10 Port Hub&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Stream Deck&lt;/strong&gt;: &lt;a href=&quot;https://www.amazon.com/Elgato-Stream-Deck-Controller-Customizable/dp/B06XKNZT1P&quot;&gt;Elgato Stream Deck&lt;/a&gt; (optional)&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Local Storage&lt;/strong&gt;: &lt;a href=&quot;https://www.amazon.com/LaCie-Rugged-Thunderbolt-Portable-LAC9000488/dp/B00LN8QJYY&quot;&gt;LaCie Rugged Thunderbolt and USB 3.0 Portable Drive&lt;/a&gt; (optional)&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Streaming / Recording Computer&lt;/strong&gt;: I use an old-ish Macbook Pro 15”, but PC is cool too.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Bonus Item&lt;/strong&gt;: &lt;a href=&quot;https://www.amazon.com.au/gp/product/B0795GG65Y/&quot;&gt;Ottertooth Selfie Stick Tripod&lt;/a&gt; for the webcam.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Okay, so that’s what we currently use, and it seems like a whole bunch of hardware. Let me break it down a little more with regard to  the decision process for each of the various aspects of the setup.&lt;/p&gt;
-
-&lt;h3 id=&quot;audio&quot;&gt;Audio&lt;/h3&gt;
-
-&lt;p&gt;Audio is crucial, if your audience can’t hear the presenter then really there isn’t much point broadcasting your meetup at all.  I use a &lt;a href=&quot;https://www.amazon.com/Blue-Yeti-USB-Microphone-Silver/dp/B002VA464S&quot;&gt;Blue Yeti USB Microphone&lt;/a&gt; because it’s a very versatile microphone which allows you to have “directional” recording so that you can focus on the speakers audio but reduce the sound coming from the audience shuffling in their seats.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;&lt;strong&gt;Pro Tip:&lt;/strong&gt; The directional aspect is a double edged sword - It does reduce “background” noise, but it also means it’s hard to pick up questions being asked - as such, I ask the presenters to always make sure they repeat any questions before answering them (which arguably is good practice anyway).&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;I’d highly recommend avoiding the audio input on your webcam or PC if you can avoid it. It will probably sound rubbish.&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h3 id=&quot;video&quot;&gt;Video&lt;/h3&gt;
-
-&lt;p&gt;&lt;strong&gt;Webcam&lt;/strong&gt;: Technically, you don’t need to have a camera at all if you don’t want to have video of the presenter. However, having video of the presenter as well as their desktop really makes a much compelling session.  We use a &lt;a href=&quot;https://www.amazon.com/Logitech-Widescreen-Calling-Recording-Desktop/dp/B006JH8T3S/&quot;&gt;Logitech C920 Webcam&lt;/a&gt;, but any webcam would do.  Having said that, the C920 is a pretty popular choice for streamers because it’s low cost but still gives a pretty good image. (also, I just happen to have one laying around)&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;&lt;strong&gt;Pro Tip:&lt;/strong&gt; We mount the webcam on a little Selfie Stick Tripod.  This allows us to have better control over the position of the camera. Having a webcam mounted on a monitor doesn’t give a great camera angle. Make sure you get one that extends &amp;gt; 1m in height so it can see over the desk.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;strong&gt;Presenter Computer&lt;/strong&gt;: This is the source for slides and code the presenter is showing. The only requirement we have is that the presenter computer has a HDMI output, so presenters can use a PC or Mac.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;&lt;strong&gt;Pro Tip:&lt;/strong&gt; Don’t put a burdon on your presenters in terms of setting up hardware or software (they have enough to focus on already). You might notice in our configuration, all the presenter needs to do is plug in a HDMI cable - so the whole recording process is completely transparent to them.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;strong&gt;Capture Device&lt;/strong&gt;: You will need a way of capturing the presenters desktop. We use a Avermedia capture device, but there are others on the market.  Another popular choice is the Elgato HD60(s). The idea is that you pass the HDMI from the presenters machine through the capture device and then out to the projector.  This gives you a way to “capture” the video on the way through and send to your broadcasting machine.&lt;/p&gt;
-
-&lt;p&gt;The reason I chose the Avermedia is that it has support for recording directly onto an SD card on device, which means that if all of my computer hardware fails (or I get a BSOD) I could still record the presentation onto the card.  The Avermedia also supports 4K - but in reality I can’t see that being useful for some years to come. So you could probably go for a cheaper option.&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h3 id=&quot;record--streaming&quot;&gt;Record / Streaming&lt;/h3&gt;
-
-&lt;p&gt;&lt;strong&gt;USB Hub&lt;/strong&gt;: With all this hardware, you are going to have a lot of USB inputs - probably more than you have ports for on your computer (especially if you use a Mac). Having a hub also simplifies your life because you will essentially just have a single USB coming into your broadcasting computer.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;&lt;strong&gt;Pro Tip:&lt;/strong&gt; Prefer a powered USB 3.0 hub. There’s lots of data going through and also the devices need power.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;strong&gt;Stream Deck&lt;/strong&gt;: This is COMPLETELY OPTIONAL. I use it to transition easily between scenes (full webcam, presenters desktop, presenters desktop with webcam overlayed). It is super convenient and means I don’t have to be clicking around software, but as I said, it’s completely optional.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;&lt;strong&gt;Pro Tip:&lt;/strong&gt; If you are going to get a Stream Deck, make sure you get the one with 15 buttons.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;img src=&quot;assets/images/posts/stream-machine.png&quot; alt=&quot;Streaming Machine&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Local Storage&lt;/strong&gt;: Again, this is optional (if you have a large drive in your broadcast machine). I have a macbook with a 256G drive and it’s always full, so having an external drive works for me. The reason I even need hard drive space is because I stream out to Twitch, but I also record locally as well. This means that even if the internet goes down, I still have a recording.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;&lt;strong&gt;Pro Tip:&lt;/strong&gt; Always record locally as well.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;strong&gt;Recording / Streaming Computer&lt;/strong&gt;: I use a Macbook Pro 15” (Mid 2015) / 2.5Ghz i7 / 16GB Memory.  It handles the recording process easily. But given the software we are going to use (OBS) works on both PC and Mac feel free to use whatever you want. However, you will need to have a reasonably powerful machine, because it’s going to bo doing some video encoding.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;&lt;strong&gt;Pro Tip:&lt;/strong&gt; Test, test test. Always test to make sure that your machine can keep up with the CPU load before you use it in anger.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;hr /&gt;
-
-&lt;h3 id=&quot;software&quot;&gt;Software&lt;/h3&gt;
-
-&lt;p&gt;We now have a bunch of hardware configured and connected, but how do we put all of this together and stream and/or record the session.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Open Broadcast Software (OBS) Studio&lt;/strong&gt;: This is the (software) heart of the solution. OBS is free software and it works on Windows / Mac and Linux. Essentially what OBS allows you to do is create &lt;code class=&quot;highlighter-rouge&quot;&gt;Scenes&lt;/code&gt; with your various Audio / Video sources and output them to your favorite streaming platform and/or record locally.  There is a lot of information on the internet about configuring and using OBS, so I won’t try and reproduce that here, but here are the key things unique to our environment.&lt;/p&gt;
-
-&lt;p&gt;We have 4 Scenes setup in OBS, but of course do whatever is right for you setup. Our four basic scenes are:&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Starting Soon&lt;/strong&gt; - This is what we show as everyone is getting ready&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;assets/images/posts/Scene1.png&quot; alt=&quot;Scene1&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Desktop - with speaker side by side&lt;/strong&gt; - A nice scene for doing introductions and general admin before getting into the presentation.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;assets/images/posts/Scene2.png&quot; alt=&quot;Scene2&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Desktop - with speaker inset&lt;/strong&gt; - A scene to focus on the presentation.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;assets/images/posts/Scene3.png&quot; alt=&quot;Scene3&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Stream Ending&lt;/strong&gt; - This is what we show for a minute or so once the stream finishes, we normally put the date of the next meeting on this page&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;assets/images/posts/Scene4.png&quot; alt=&quot;Scene4&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Also, here are some settings I use in OBS that you might find useful:&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Output -&amp;gt; Rate Control -&amp;gt; CBR&lt;/code&gt; - Twitch seems to handle Constant Bit Rate streams a little better than Variable Bit Rate (VBR).&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Output -&amp;gt; Bitrate&lt;/code&gt; - 2500. That seems to be a nice compromise. Remember, you don’t want to output at such a high bitrate that all of your audience is buffering.&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Video -&amp;gt; Output (Scaled) Resolution&lt;/code&gt; - 1280x720. We output at 720 because again, it isn’t too taxing for people watching the stream&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Video -&amp;gt; FPS&lt;/code&gt; - 30. You don’t need 60 frames per second for a coding presentation.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;&lt;strong&gt;Pro Tip:&lt;/strong&gt; OBS has an &lt;code class=&quot;highlighter-rouge&quot;&gt;Auto Configuration Wizard&lt;/code&gt; which will help you set a baseline for your settings giving account to the power of your computer and the bandwidth available.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;strong&gt;Twitch&lt;/strong&gt;: We use Twitch as our streaming platform. I have found Twitch to have higher quality streams than Youtube live. It’s also starting to get some good developer focused channels as well. Here are a couple of important things you’ll want to setup in twitch:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Make sure you check a setting in your Twitch dashboard to &lt;code class=&quot;highlighter-rouge&quot;&gt;Store past broadcasts&lt;/code&gt;, if you don’t recordings will not be available after you have finished your stream.&lt;/li&gt;
-  &lt;li&gt;Even if you do store your past broadcasts, Twitch will only keep them for 14 days. We also have a &lt;a href=&quot;https://www.youtube.com/channel/UCIFSs792nxCmr0trPq_hsrQ&quot;&gt;YouTube channel&lt;/a&gt; which is where we archive our recordings to.  And the nice thing is, Twitch has a way of pushing your videos straight across to Youtube without you having to download and re-upload them to Youtube.&lt;/li&gt;
-  &lt;li&gt;Make sure you update your &lt;code class=&quot;highlighter-rouge&quot;&gt;Stream Information&lt;/code&gt; before you stream to indicate the title of the presentation&lt;/li&gt;
-  &lt;li&gt;Make sure you Tweet out before that you are going live, so people have time to tune in. We will normally start broadcasting about 5-10 minutes before our presentation to give people time to tune in.&lt;/li&gt;
-  &lt;li&gt;Have someone with a mobile device and the Twitch App installed to monitor the Twitch chat, so you can relay “questions from the internet”&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;but-my-internet-sucks&quot;&gt;But, my internet sucks&lt;/h2&gt;
-&lt;p&gt;We are fortunate to have pretty good bandwidth and stability where we hold our meetups, so streaming has not been a problem. However, not everyone is so fortunate. If you fall into this camp then remember that with OBS you don’t HAVE to stream, you can use it purely to record the session onto your local hard drive and then upload later on.&lt;/p&gt;
-
-&lt;p&gt;It’s simple, in OBS there are two buttons: &lt;code class=&quot;highlighter-rouge&quot;&gt;Start Recording&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;Start Streaming&lt;/code&gt;.  If you just want to record locally and not stream, just hit the &lt;code class=&quot;highlighter-rouge&quot;&gt;Start Recording&lt;/code&gt; button. If you want to stream AND record locally (which is what I’d recommend) then hit both buttons.  This is also one of the reasons I love OBS, it’s the same bit of software regardless of if you want to stream, record for later, or both.&lt;/p&gt;
-
-&lt;h2 id=&quot;future-improvements&quot;&gt;Future improvements&lt;/h2&gt;
-&lt;p&gt;Our streaming setup is pretty basic, and there are always ways to improve it. Having said that, it has served us pretty well.  Here are the changes I’d make if I had more money / time:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;strong&gt;Audio&lt;/strong&gt;: Get a wireless Lavalier microphone.  This would give us much better speaker audio, and it would also allow the speaker to walk around the room without impacting audio.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;strong&gt;Video&lt;/strong&gt;: Upgrade from a simple webcam to a DSLR or Camcorder with HDMI output. This would give better quality video. Also, If we had this on a tripod with a pan head we could follow the speaker as they move around.  Even better, if we had multiple cameras, we could have different camera angles.&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;I hope this has given you some insight into the setup we use for streaming at the Melbourne Xamarin Meetup.  If you have any questions or comments or suggestions please shoot them through, or if you want any further information let me know, I’m always happy to help however I can.&lt;/p&gt;
-
-&lt;p&gt;Happy Coding,
-❤
-Kym&lt;/p&gt;</content>
-
-      
-      
-      
-      
-      
-
-      <author>
-          <name>Kym Phillpotts</name>
-        
-        
-      </author>
-
-      
-
-      
-        <category term="Other" />
-      
-
-      
-        <summary type="html">Have you ever wanted to record or live stream your meetup? It’s not as hard as you might think. In this post, we will go through how we stream the Melbourne Xamarin Meetup live to the Internet via Twitch.</summary>
       
 
       

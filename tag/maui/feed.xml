@@ -1,0 +1,482 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<feed xmlns="http://www.w3.org/2005/Atom" >
+  <generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator>
+  <link href="https://kymphillpotts.com/tag/maui/feed.xml" rel="self" type="application/atom+xml" />
+  <link href="https://kymphillpotts.com/" rel="alternate" type="text/html" />
+  <updated>2022-07-24T23:58:07+10:00</updated>
+  <id>https://kymphillpotts.com/tag/maui/feed.xml</id>
+
+  
+  
+  
+
+  
+    <title type="html">Kym’s Blog | </title>
+  
+
+  
+    <subtitle>I write about Azure, Xamarin.Forms, Connected Apps and whatever else might be on my mind.</subtitle>
+  
+
+  
+
+  
+    
+      
+    
+  
+
+  
+  
+
+  
+    <entry>
+      <title type="html">ClassFly UI - XAML vs Blazor - Part 1 - XAML</title>
+      <link href="https://kymphillpotts.com/maui-ui-july.html" rel="alternate" type="text/html" title="ClassFly UI - XAML vs Blazor - Part 1 - XAML" />
+      <published>2022-07-23T10:00:00+10:00</published>
+      <updated>2022-07-23T10:00:00+10:00</updated>
+      <id>https://kymphillpotts.com/maui-ui-july</id>
+      <content type="html" xml:base="https://kymphillpotts.com/maui-ui-july.html">&lt;p&gt;.NET MAUI gives you a lot of flexibility in how you create your applications. Not only can you target multiple different Operating System platforms (like iOS, Android, Windows, Mac, etc.), you can also target multiple different Form Factors (like phones, tablets, desktop, tv, watch, etc) and you can write your applications using C# Markup, XAML and even Blazor.&lt;/p&gt;
+
+&lt;p&gt;With so much choice at our fingertips it can be hard to work out which path to take.&lt;/p&gt;
+
+&lt;iframe src=&quot;https://giphy.com/embed/3o85xIO33l7RlmLR4I&quot; width=&quot;480&quot; height=&quot;361&quot; frameborder=&quot;0&quot; class=&quot;giphy-embed&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
+&lt;p&gt;&lt;a href=&quot;https://giphy.com/gifs/yosub-girl-taco-why-not-both-3o85xIO33l7RlmLR4I&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Recently &lt;a href=&quot;https://twitter.com/lachlanwgordon&quot;&gt;Lachlan Gordon&lt;/a&gt; and I have been playing around with Blazor and thought it would be interesting to compare the approaches of XAML vs Blazor. So we set about creating the same application UI using XAML and Blazor to discover the pros and cons.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;This is a 2 part blog post by &lt;a href=&quot;https://twitter.com/lachlanwgordon&quot;&gt;Lachlan Gordon&lt;/a&gt; and myself for the &lt;a href=&quot;https://goforgoldman.com/2022/05/19/maui-ui-july.html&quot;&gt;.NET MAUI UI July&lt;/a&gt; initiative kicked off by &lt;a href=&quot;https://twitter.com/mattgoldman&quot;&gt;Matt Goldman&lt;/a&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;ui-inspiration&quot;&gt;UI Inspiration&lt;/h3&gt;
+&lt;p&gt;The design we’re implementing is a music teacher’s app that we found on dribbble, created by Sumit Choudhary. You can check it out at &lt;a href=&quot;https://dribbble.com/shots/17453615-Classfly-Music-app-concept&quot;&gt;https://dribbble.com/shots/17453615-Classfly-Music-app-concept&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;assets/images/posts/mauiuijuly2022/design.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;It’s a nice looking design, but not anything too crazy - which is exactly what we were after; an app design which represents a pretty common pattern.&lt;/p&gt;
+
+&lt;h3 id=&quot;the-plan&quot;&gt;The Plan&lt;/h3&gt;
+&lt;p&gt;So here is the plan. I’m going to break down the design of the app from a XAML perspective. Lachlan is going to break down implementing the UI in MAUI Blazor over on his blog &lt;a href=&quot;https://www.lachlanwgorgon.com&quot;&gt;https://www.lachlanwgorgon.com&lt;/a&gt; and then we will provide a blog post summarizing the pros and cons.&lt;/p&gt;
+
+&lt;iframe src=&quot;https://giphy.com/embed/ZbOXZEugwT26awakGe&quot; width=&quot;480&quot; height=&quot;480&quot; frameborder=&quot;0&quot; class=&quot;giphy-embed&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;project-structure&quot;&gt;Project Structure&lt;/h2&gt;
+&lt;p&gt;One of the beauties of working in a environment like .NET is code sharing, and for us it means we can have a shared NetStandard library that has our Models, Data Services, and any business logic, which is shared between the XAML version and the Blazor version.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;assets/images/posts/mauiuijuly2022/solution_structure.png&quot; alt=&quot;Solution Structure&quot; /&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;TIP:&lt;/strong&gt; Use NetStandard libraries to share code independent of UI implementation&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Okay, enough rambling, let’s get into the layouts…&lt;/p&gt;
+
+&lt;h2 id=&quot;course-list-page&quot;&gt;Course List Page&lt;/h2&gt;
+&lt;p&gt;Looking at the first page, it’s a pretty standard mobile looking screen. It has a title, a list of items and a tab bar at the bottom.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;assets/images/posts/mauiuijuly2022/courselistlayout.png&quot; alt=&quot;Course List Page&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Let’s look into some of the interesting bits.&lt;/p&gt;
+
+&lt;h3 id=&quot;title&quot;&gt;Title&lt;/h3&gt;
+&lt;p&gt;For the purposes of this exercise I used the &lt;code class=&quot;highlighter-rouge&quot;&gt;Shell.TitleView&lt;/code&gt; element with a simple grid containing a &lt;code class=&quot;highlighter-rouge&quot;&gt;Label&lt;/code&gt; and an &lt;code class=&quot;highlighter-rouge&quot;&gt;Image&lt;/code&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;language-xml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;Shell.TitleView&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;Grid&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Margin=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;10,0,10,0&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;ColumnDefinitions=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;*,30&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;Label&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;Style=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{StaticResource CourseHeaderText}&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;Text=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Choose a course&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;VerticalOptions=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Center&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;Image&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;Grid.Column=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;1&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;HeightRequest=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;28&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;HorizontalOptions=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Center&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;Source=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;menu.png&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;VerticalOptions=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Center&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;WidthRequest=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;28&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/Grid&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/Shell.TitleView&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;One thing I learnt here is that you should specify the full source name in an image including the extension. It works fine without the extension on Android but on Windows it won’t display. Turns out this is a known issue: &lt;a href=&quot;https://github.com/dotnet/maui/issues/3459&quot;&gt;#3459 - [Windows] Images are not rendered if the extension is not specified&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;search-bar&quot;&gt;Search Bar&lt;/h3&gt;
+&lt;p&gt;To create the search bar I used a &lt;code class=&quot;highlighter-rouge&quot;&gt;SearchBar&lt;/code&gt; with a &lt;code class=&quot;highlighter-rouge&quot;&gt;Border&lt;/code&gt; around it, which seems obvious, but there were some interesting bits&lt;/p&gt;
+
+&lt;div class=&quot;language-xml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;Border&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;Grid.Row=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;0&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;Margin=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;10,0,10,0&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;Stroke=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;#CCCCCC&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;StrokeShape=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;RoundRectangle 20&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;StrokeThickness=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;1&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;SearchBar&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;x:Name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;CourseSearchBar&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Placeholder=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Search courses&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;SearchBar.Behaviors&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;toolkit:EventToCommandBehavior&lt;/span&gt;
+                &lt;span class=&quot;na&quot;&gt;Command=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{Binding SearchTermCommand}&quot;&lt;/span&gt;
+                &lt;span class=&quot;na&quot;&gt;CommandParameter=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{Binding Text, Source={x:Reference CourseSearchBar}}&quot;&lt;/span&gt;
+                &lt;span class=&quot;na&quot;&gt;EventName=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;TextChanged&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;/SearchBar.Behaviors&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/SearchBar&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/Border&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;First, there is a bug where the search bar does not size correctly on Android  &lt;a href=&quot;https://github.com/dotnet/maui/issues/7137&quot;&gt;#7137 - [Android] [ScenarioDay] The default size of SearchBar is wrong, it does not fill the space&lt;/a&gt;. I could work around this with a bit of code which forces a width when the size is allocated&lt;/p&gt;
+
+&lt;div class=&quot;language-csharp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;DeviceInfo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Platform&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;DevicePlatform&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Android&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;width&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;CourseSearchBar&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;WidthRequest&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;width&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;In reality I should probably deal with the padding and margins of the layouts around it. but as a quick hack, did the job.&lt;/p&gt;
+
+&lt;p&gt;The other thing I found limiting about the &lt;code class=&quot;highlighter-rouge&quot;&gt;SearchBar&lt;/code&gt; is that even though it has command for Search, it’s not enough, for example, as far as I could tell there isn’t a ClearCommand and there is no command (only an event) for TextChanged. So in the end what worked best was using the &lt;code class=&quot;highlighter-rouge&quot;&gt;EventToCommandBehaviour&lt;/code&gt; in the &lt;code class=&quot;highlighter-rouge&quot;&gt;Maui Community Tookit&lt;/code&gt; to issue the SearchCommand when the &lt;code class=&quot;highlighter-rouge&quot;&gt;TextChanged&lt;/code&gt; event occurred.&lt;/p&gt;
+
+&lt;h3 id=&quot;collectionview&quot;&gt;CollectionView&lt;/h3&gt;
+&lt;p&gt;If you have ever used the &lt;code class=&quot;highlighter-rouge&quot;&gt;CollectionView&lt;/code&gt; in Xamarin.Forms then you pretty much know how to use the &lt;code class=&quot;highlighter-rouge&quot;&gt;CollectionView&lt;/code&gt; in MAUI.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;assets/images/posts/mauiuijuly2022/cells.png&quot; alt=&quot;CollectionView Rows&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The rows (cells) in the design call for a couple of interesting things:&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;Borders and Shadows around the cell&lt;/li&gt;
+  &lt;li&gt;Alternating background colours behind the instrument image.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;The &lt;code class=&quot;highlighter-rouge&quot;&gt;DataTemplate&lt;/code&gt; for the cells is &lt;code class=&quot;highlighter-rouge&quot;&gt;Grid&lt;/code&gt; of two columns surrounded by a border. Images in the first column and a &lt;code class=&quot;highlighter-rouge&quot;&gt;StackLayout&lt;/code&gt; with 3 labels in the second column&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;assets/images/posts/mauiuijuly2022/collectionviewcell.png&quot; alt=&quot;CollectionView Cell&quot; /&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-xml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;Border&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;Padding=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;16,8&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;Background=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;White&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;Stroke=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;#CCCCCC&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;StrokeShape=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;RoundRectangle 20&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;StrokeThickness=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;1&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;Border.Shadow&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;Shadow&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;Brush=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{StaticResource Gray500}&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;Opacity=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;.15&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;Radius=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;10&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;Offset=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;5,5&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/Border.Shadow&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;Border.GestureRecognizers&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;TapGestureRecognizer&lt;/span&gt; 
+            &lt;span class=&quot;na&quot;&gt;Command=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{Binding Source={RelativeSource AncestorType={x:Type vm:ClassListViewModel}},
+                    Path=GoToCourseDetailsCommand}&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;CommandParameter=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{Binding .}&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/Border.GestureRecognizers&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;Grid&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;ColumnDefinitions=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Auto,*&quot;&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;ColumnSpacing=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;20&quot;&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;InputTransparent=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;True&quot;&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;IsClippedToBounds=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;False&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;Image&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;HeightRequest=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;80&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;Source=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{Binding ., Converter={StaticResource IndexToBackgroundImageConverter}, 
+                    ConverterParameter={x:Reference CourseCollectionView}}&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;WidthRequest=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;80&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;Image&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;HeightRequest=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;80&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;Source=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{Binding Image}&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;WidthRequest=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;80&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;VerticalStackLayout&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Grid.Column=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;1&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;Label&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Style=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{StaticResource CourseHeaderText}&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Text=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{Binding Name}&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;Label&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Style=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{StaticResource CourseSmallText}&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Text=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;in class&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;Label&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Style=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{StaticResource CourseSmallText}&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Text=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{Binding MemberCount, StringFormat='{0} Members'}&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;/VerticalStackLayout&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/Grid&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/Border&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The alternating rows have a different colour squiggle behind the instrument which is achieved by having a different background image on odd and even cells determined by a Converter.&lt;/p&gt;
+
+&lt;div class=&quot;language-xml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;ContentPage.Resources&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;ResourceDictionary&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;converters:IndexToObjectConverter&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;x:Key=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;IndexToBackgroundImageConverter&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;EvenObject=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;highlight_green.png&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;OddObject=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;highlight_yellow.png&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+...
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;language-csharp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;IndexToObjectConverter&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;IValueConverter&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;object&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;EvenObject&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;object&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;OddObject&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;object&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Convert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;object&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Type&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;targetType&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;object&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;parameter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;CultureInfo&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;culture&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;index&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;kt&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;itemSource&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;CollectionView&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;parameter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ItemsSource&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;itemSource&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;is&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;IList&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;index&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;IndexOf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;index&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;IEnumerable&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;itemSource&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;ToList&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;IndexOf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;index&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;%&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;?&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;EvenObject&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;OddObject&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;object&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;ConvertBack&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;object&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Type&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;targetType&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;object&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;parameter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;CultureInfo&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;culture&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;throw&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;NotImplementedException&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Using a converter like this is one way to do alternating rows and because we are just changing one thing (the image source) it’s fine. Another approach is to use a DataTemplateSelector if you want to have completely different styled alternating rows. A third approach is to convince your designer not to do alternating rows. 😀&lt;/p&gt;
+
+&lt;h4 id=&quot;tab-bar&quot;&gt;Tab Bar&lt;/h4&gt;
+&lt;p&gt;For the purposes of this exercise I did not get around to doing a proper TabBar for the design. Ultimately I’d like to be able to use a customized version of the Shell Tabs but that is for another article. So instead I used just a grid with some buttons and a border with a gradient.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;assets/images/posts/mauiuijuly2022/tabbar.png&quot; alt=&quot;TabBar&quot; /&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-xml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;&amp;lt;!-- resources --&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;Color&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;x:Key=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;TabBarDark&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;#384054&lt;span class=&quot;nt&quot;&gt;&amp;lt;/Color&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;Color&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;x:Key=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;TabBarLight&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;#505A70&lt;span class=&quot;nt&quot;&gt;&amp;lt;/Color&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;LinearGradientBrush&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;x:Key=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;TabBarGradient&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;StartPoint=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;0,0&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;EndPoint=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;1,1&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;GradientStop&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Offset=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;0.1&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Color=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{StaticResource TabBarLight}&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;GradientStop&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Offset=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;1.0&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Color=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{StaticResource TabBarDark}&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/LinearGradientBrush&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;&amp;lt;!-- tab bar --&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;Border&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;Grid.Row=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;2&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;Margin=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;-1&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;Padding=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;20&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;Background=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{StaticResource TabBarGradient}&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;Stroke=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;#CCCCCC&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;StrokeShape=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;RoundRectangle 20,20,0,0&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;StrokeThickness=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;0&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;Grid&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;ColumnDefinitions=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;*,*,*,*&quot;&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;HeightRequest=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;30&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;ImageButton&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;...&lt;/span&gt;
+        &lt;span class=&quot;err&quot;&gt;&amp;lt;ImageButton&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;...&lt;/span&gt;
+        &lt;span class=&quot;err&quot;&gt;&amp;lt;ImageButton&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;...&lt;/span&gt;
+        &lt;span class=&quot;err&quot;&gt;&amp;lt;ImageButton&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;...&lt;/span&gt;
+    &lt;span class=&quot;err&quot;&gt;&amp;lt;/Grid&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/Border&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;Notice that Margin of -1 in the border, this is a workaround for a known bug &lt;a href=&quot;https://github.com/dotnet/maui/issues/7764&quot;&gt;#7764 - Border Margin&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;course-details-page&quot;&gt;Course Details Page&lt;/h2&gt;
+
+&lt;p&gt;The basic layout of this page a TitleView (similar to the first page), then a Grid with two rows for the top image and the CollectionView panel at the bottom.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;assets/images/posts/mauiuijuly2022/coursedetails.png&quot; alt=&quot;Course Details Page&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;titleview&quot;&gt;TitleView&lt;/h3&gt;
+&lt;p&gt;The &lt;code class=&quot;highlighter-rouge&quot;&gt;TitleView&lt;/code&gt; is exactly the same as on the first page with the slight exception that the text on the &lt;code class=&quot;highlighter-rouge&quot;&gt;Label&lt;/code&gt; is bound to the Selected &lt;code class=&quot;highlighter-rouge&quot;&gt;Course.Name&lt;/code&gt; property.&lt;/p&gt;
+
+&lt;h3 id=&quot;top-section&quot;&gt;Top Section&lt;/h3&gt;
+
+&lt;p&gt;The top image isn’t particularly interesting other than we can use things like a &lt;code class=&quot;highlighter-rouge&quot;&gt;LinearGradientBrush&lt;/code&gt; and a &lt;code class=&quot;highlighter-rouge&quot;&gt;Border&lt;/code&gt; to overlay some fading over top of the image.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;assets/images/posts/mauiuijuly2022/topcoursedetails.png&quot; alt=&quot;Top Image&quot; /&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-xml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;LinearGradientBrush&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;x:Key=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;WhiteFadeGradient&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;StartPoint=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;0,0&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;EndPoint=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;0,1&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;GradientStop&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Offset=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;0.0&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Color=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;White&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;GradientStop&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Offset=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;1.0&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Color=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;#00FFFFFF&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/LinearGradientBrush&amp;gt;&lt;/span&gt;
+
+... 
+
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;Grid&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;RowDefinitions=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;.25*, .75*&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;Image&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;Margin=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;0,0,0,-20&quot;&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;Aspect=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;AspectFill&quot;&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;HorizontalOptions=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Fill&quot;&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;Source=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;piano_large.jpg&quot;&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;VerticalOptions=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Start&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;Border&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;Grid.Row=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;0&quot;&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;Margin=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;-2&quot;&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;Background=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{StaticResource WhiteFadeGradient}&quot;&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;HeightRequest=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;30&quot;&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;HorizontalOptions=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Fill&quot;&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;Stroke=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;#CCCCCC&quot;&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;StrokeShape=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Rectangle&quot;&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;StrokeThickness=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;0&quot;&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;VerticalOptions=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Start&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;bottom-card&quot;&gt;Bottom Card&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;assets/images/posts/mauiuijuly2022/bottomcard.png&quot; alt=&quot;Bottom Card&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The bottom card shape is done with yet another &lt;code class=&quot;highlighter-rouge&quot;&gt;Border&lt;/code&gt; to create the card shape.&lt;/p&gt;
+
+&lt;p&gt;The contents of the bottom card are contained within a grid with rows for the Card Header and the CollectionView&lt;/p&gt;
+
+&lt;div class=&quot;language-xml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;Border&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;Grid.Row=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;1&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;Margin=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;-2&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;Padding=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;16,16&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;Background=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;White&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;Stroke=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;#CCCCCC&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;StrokeShape=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;RoundRectangle 20,20,0,0&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;StrokeThickness=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;1&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;Border.Shadow&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;Shadow&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;Brush=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Black&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;Opacity=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;0.2&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;Radius=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;20&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;Offset=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;-20,-20&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/Border.Shadow&amp;gt;&lt;/span&gt;
+
+    &lt;span class=&quot;c&quot;&gt;&amp;lt;!-- Card Contents--&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;Grid&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;RowDefinitions=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;60,*&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+        
+        &lt;span class=&quot;c&quot;&gt;&amp;lt;!-- Card Header --&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;Image&lt;/span&gt; 
+            &lt;span class=&quot;na&quot;&gt;Aspect=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Fill&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;HeightRequest=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;20&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;HorizontalOptions=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Start&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;Source=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;highlight_heading.png&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;VerticalOptions=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Center&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;WidthRequest=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;200&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;Label&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;Grid.Row=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;0&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;Style=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{StaticResource CourseHeaderText}&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;Text=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Select Mentor&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;VerticalOptions=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Center&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;Rectangle&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;Fill=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{StaticResource Gray100}&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;HeightRequest=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;2&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;HorizontalOptions=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Center&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;VerticalOptions=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;End&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt; 
+
+        &lt;span class=&quot;c&quot;&gt;&amp;lt;!-- Mentor List --&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;CollectionView&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;...&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;x:Name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;MentorsCollectionView&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;Grid.Row=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;1&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;Margin=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;0,20,0,0&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;ItemsSource=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{Binding Course.Mentors}&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;CollectionView.ItemsLayout&amp;gt;&lt;/span&gt;
+                &lt;span class=&quot;nt&quot;&gt;&amp;lt;LinearItemsLayout&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;ItemSpacing=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;10&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Orientation=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Vertical&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;/CollectionView.ItemsLayout&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;CollectionView.ItemTemplate&amp;gt;&lt;/span&gt;
+                &lt;span class=&quot;nt&quot;&gt;&amp;lt;DataTemplate&amp;gt;&lt;/span&gt;
+                    ...
+                &lt;span class=&quot;nt&quot;&gt;&amp;lt;/DataTemplate&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;/CollectionView.ItemTemplate&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;/CollectionView&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/Grid&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/Border&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;mentor-cell&quot;&gt;Mentor cell&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;assets/images/posts/mauiuijuly2022/mentorcell.png&quot; alt=&quot;Mentor Cell&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The layout of the Mentor cell is a pretty straight forward &lt;code class=&quot;highlighter-rouge&quot;&gt;Grid&lt;/code&gt; so not much to discuss there. The interesting parts are the alternating background colors and “cutout” behind the profile photos.&lt;/p&gt;
+
+&lt;p&gt;The colors are done using a alternating row converter just like in the first page, but this time it returns a color rather than an image.&lt;/p&gt;
+&lt;div class=&quot;language-xml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;Color&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;x:Key=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;EvenRowColor&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;#278C7E&lt;span class=&quot;nt&quot;&gt;&amp;lt;/Color&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;Color&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;x:Key=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;OddRowColor&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;#FFD051&lt;span class=&quot;nt&quot;&gt;&amp;lt;/Color&amp;gt;&lt;/span&gt;
+...
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;converters:IndexToObjectConverter&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;x:Key=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;IndexToBackgroundColorConverter&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;EvenObject=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{StaticResource EvenRowColor}&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;OddObject=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{StaticResource OddRowColor}&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The “cutout” section is done through an &lt;code class=&quot;highlighter-rouge&quot;&gt;Image.Clip&lt;/code&gt; which clips just the bottom corners of the image to match the corners of the background &lt;code class=&quot;highlighter-rouge&quot;&gt;RoundRectangle&lt;/code&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;language-xml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;DataTemplate&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;Grid&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;ColumnDefinitions=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;60,5,*,20&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;ColumnSpacing=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;15&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;RoundRectangle&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;Grid.Column=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;0&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;CornerRadius=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;10&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;Fill=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{Binding ., Converter={StaticResource IndexToBackgroundColorConverter},
+                   ConverterParameter={x:Reference MentorsCollectionView}}&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;HeightRequest=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;50&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;HorizontalOptions=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Center&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;VerticalOptions=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;End&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;WidthRequest=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;50&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;Image&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;HeightRequest=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;60&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;HorizontalOptions=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Center&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;Source=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{Binding Image}&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;VerticalOptions=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;End&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;WidthRequest=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;60&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;Image.Clip&amp;gt;&lt;/span&gt;
+                &lt;span class=&quot;nt&quot;&gt;&amp;lt;RoundRectangleGeometry&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;CornerRadius=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;10&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Rect=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;5,0,50,60&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;/Image.Clip&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;/Image&amp;gt;&lt;/span&gt;
+
+        &lt;span class=&quot;c&quot;&gt;&amp;lt;!-- vertical divider line --&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;Rectangle&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;Grid.Column=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;1&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;Fill=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{StaticResource Gray100}&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;HeightRequest=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;30&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;HorizontalOptions=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Center&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;VerticalOptions=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Center&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;WidthRequest=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;2&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;VerticalStackLayout&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Grid.Column=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;2&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;Label&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Style=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{StaticResource CourseHeaderText}&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Text=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{Binding Name}&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;Label&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Style=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{StaticResource CourseSmallText}&quot;&lt;/span&gt; 
+                   &lt;span class=&quot;na&quot;&gt;Text=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{Binding FollowerCount, StringFormat='{0} Followers'}&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;/VerticalStackLayout&amp;gt;&lt;/span&gt;
+
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;Image&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;Grid.Column=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;3&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;HorizontalOptions=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Center&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;Source=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;right.png&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;VerticalOptions=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Center&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/Grid&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/DataTemplate&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h2 id=&quot;summary&quot;&gt;Summary&lt;/h2&gt;
+
+&lt;p&gt;Okay, so thats about it for this blog post… I’m already behind schedule for MAUI UI July. The follow up to this is an article by Lachlan on how to implement the same thing in MAUI Blazor (I’ll post a link here when that’s available). Then stay tuned for a shared article where we discuss the advantages and disadvantages of using Blazor layout vs XAML layouts.&lt;/p&gt;
+
+&lt;p&gt;Till then, please check out the other &lt;a href=&quot;https://goforgoldman.com/2022/05/19/maui-ui-july.html&quot;&gt;.NET MAUI UI July&lt;/a&gt; articles and thanks again to  &lt;a href=&quot;https://twitter.com/mattgoldman&quot;&gt;Matt Goldman&lt;/a&gt; for organizing.&lt;/p&gt;
+
+&lt;h2 id=&quot;source-code&quot;&gt;Source Code&lt;/h2&gt;
+&lt;p&gt;If you want to check out the source code, it’s available over at https://github.com/kphillpotts/MAUI-UI-July&lt;/p&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>Kym Phillpotts</name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="MAUI" />
+      
+        <category term="Blazor" />
+      
+
+      
+        <summary type="html">.NET MAUI gives you a lot of flexibility in how you create your applications. Not only can you target multiple different Operating System platforms (like iOS, Android, Windows, Mac, etc.), you can also target multiple different Form Factors (like phones, tablets, desktop, tv, watch, etc) and you can write your applications using C# Markup, XAML and even Blazor.</summary>
+      
+
+      
+      
+    </entry>
+  
+</feed>
